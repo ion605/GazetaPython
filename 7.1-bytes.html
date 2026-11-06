@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="CSS/main-style.css">
+
+<link rel="icon" type="img/png" href="images/logo-title.png">
+<title>Gazeta Python 7.1 Bytes</title>
+</head>
+
+<body>
+
+<div id="sus" class="main-1-1 navigare">
+<header>
+<div class="header-menu">
+<img src="images/logo-menu.svg" alt="Gazeta Python">
+<nav>
+  <ul>
+    <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+    <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+    <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+    <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+  </ul>
+</nav>
+</div>
+
+<div class="first-empty-1-1"></div>
+
+<div class="titlu-1-0">
+  <div class="grid-cell">
+    <img src="images/literaS.svg" alt="S" class="logo">
+    <h1>7.0 Tipuri de Secvențe binare - Binary Sequence Types</h1>
+  </div>
+</div>
+
+<div class="second-empty-1-1"></div>
+
+<div class="subtitlu-1-1">
+  <div class="grid-cell">
+    <h2>7.1 Obiectul de tip bytes (imutable) - bytes</h2>
+  </div>
+</div>
+
+<div class="third-empty-1-1"></div>
+
+<div class="ro-en-1-1 container-links ro-en">
+<div>
+  <ul>
+    <li>În acest capitol veți studia:</li>
+    <li><a href="#BL">Literali de tip Octeți</a></li>
+    <li><a href="#FB">Funcția Încorporată bytes()</a></li>
+    <li><a href="#FH">Metoda clasă bytes.fromhex()</a></li>
+    <li><a href="#MB">Tehnici Comune de Manipulare</a>
+      <ul>
+        <li><a href="#MBA">Indexare și Feliere</a></li>
+        <li><a href="#MBC">Căutare și Înlocuire</a></li>
+        <li><a href="#MBD">Separare și Îmbinare</a></li>
+      </ul>
+    </li>
+    <li><a href="#RW">Citirea, Modificarea și Scrierea unui Fișier Binar</a></li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li>In this chapter, you will study:</li>
+    <li><a href="#BL">Bytes Literals</a></li>
+    <li><a href="#FB">The Built-in bytes() Function</a></li>
+    <li><a href="#FH">bytes.fromhex() Class Method</a></li>
+    <li><a href="#MB">Common Manipulation Techniques</a>
+      <ul>
+        <li><a href="#MBA">Indexing and Slicing</a></li>
+        <li><a href="#MBC">Searching and Replacing</a></li>
+        <li><a href="#MBD">Splitting and Joining</a></li>
+      </ul>
+    </li>
+    <li><a href="#RW">Reading, Modifying, and Writing a Binary File</a></li>
+  </ul>
+</div>
+</div>
+</header>
+<div class="forth-empty-1-1"></div>
+
+<div class="contents-1-1">
+
+<div class="grid-container">
+  <dl>
+  <dt>Ce este un octet</dt>
+    <dd>Un octet este o unitate de stocare formată din 8 biți (opt cifre de 0 și 1). În lumea programării, un octet reprezintă un număr întreg cuprins între 0 și 255.</dd>
+  </dl>
+
+<dl>
+  <dt>What is a byte</dt>
+    <dd>A byte is a unit of storage consisting of 8 bits (eight 0s and 1s). In the world of programming, a byte represents an integer between 0 and 255.</dd>
+
+  </dl>
+</div>
+
+<p><a href="https://realpython.com/python-bytes/#bytes-like-objects-and-bytes" target="_blank">Bytes-Like Objects and bytes</a></p>
+
+<p><a href="https://realpython.com/ref/glossary/buffer-protocol/" target="_blank">buffer protocol</a></p>
+
+
+<h2 id="BL">Literali de tip octeți - Bytes Literals</h2>
+
+<div class="grid-container">
+  <div>
+    <p>bytes în Python este o secvență imutabilă de întregi pe 8 biți fără semn (valori de la 0 la 255), utilizată pentru a gestiona date binare brute.</p>
+    <p>Spre deosebire de șirurile de caractere obișnuite (str), care reprezintă text lizibil pentru oameni, obiectele bytes reprezintă date brute stocate în memorie (cum ar fi imagini, fluxuri de fișiere sau pachete de rețea).</p>
+  </div>
+
+  <div>
+    <p>bytes in Python is an immutable sequence of 8-bit unsigned integers (values ​​from 0 to 255), used to handle raw binary data.</p>
+    <p>Unlike regular strings (str), which represent human-readable text, bytes objects represent raw data stored in memory (such as images, file streams, or network packets).</p>
+  </div>
+</div>
+
+<div class="grid-container">
+  <dl>
+  <dt>Concepte cheie</dt>
+    <dd>Odată creat, un obiect bytes nu mai poate fi modificat.</dd>
+    <dd>Fiecare index dintr-o secvență bytes returnează un număr întreg între 0 și 255.</dd>
+    <dd>Codificare și decodificare:</dd>
+    <dd>str.encode('utf-8') convertește textul în binar (bytes).</dd>
+    <dd>bytes.decode('utf-8') convertește datele binare (bytes) înapoi în text (str).</dd>
+    <dd>Cazuri de utilizare frecvente: Citirea/scrierea fișierelor binare (rb/wb), lucrul cu socket-uri de rețea, hashing și parsarea protocoalelor binare.</dd>
+  </dl>
+
+  <dl>
+  <dt>Key Concepts</dt>
+    <dd>Once created, a bytes object cannot be changed.</dd>
+    <dd>Each index in a bytes sequence returns an integer between 0 and 255.</dd>
+    <dd>Encoding & Decoding:</dd>
+    <dd>str.encode('utf-8') converts text (str) into binary (bytes).
+    <dd>bytes.decode('utf-8') converts binary (bytes) back into text (str).
+    <dd>Common Use Cases: Reading/writing binary files (rb/wb), working with network sockets, hashing, and parsing binary protocols.</dd>
+  </dl>
+</div>
+
+<div class="grid-container">
+  <div>
+  <p>Folosește prefixul "b", constructorul bytes() sau codifică un șir de caractere pentru a crea octeți.</p>
+  <p>Când dai print() unui obiect de tip bytes (octeți):</p>
+  <p>Dacă numărul (octetul) corespunde unei litere sau cifre din tabelul ASCII (numerele 32 - 126), Python îți va afișa direct litera.</p>
+  <p>Dacă numărul este în afara acestui interval (cum sunt diacriticele sau caracterele speciale), Python îți va afișa codul lui în hexazecimal: \x...</p>
+  </div>
+
+  <div>
+  <p>Use "b" prefix, the bytes() constructor, or by encoding a string to create bytes.</p>
+<p>When you use print() on a bytes object:</p>
+  <p>If the number (byte) corresponds to a letter or digit in the ASCII table (numbers 32–126), Python will display the letter itself.</p>
+  <p>If the number falls outside this range (such as characters with diacritics or special characters), Python will display its hexadecimal code: \x...</p>
+  </div>
+</div>
+
+<pre><code>print(b'literal intre ghilimele simple') <span>==&gt; b'literal intre ghilimele simple'</span>
+
+print(b"literal intre ghilimele duble")  <span>==&gt; b'literal intre ghilimele duble'</span>
+</code></pre>
+
+
+<div class="grid-container">
+<pre><code><span># Utilizarea prefixului literal "b"</span>
+b_literal = b"Salut"
+
+print(b_literal)    <span>==&gt; b'Salut'</span>
+
+<span># Utilizarea bytes() cu șir de caractere și codificare</span>
+b_codificat = bytes("Salut", "utf-8")
+print(b_codificat)  <span>==&gt; b'Salut'</span>
+</code></pre>
+
+<pre><code><span># lista care reprezintă b"Salut"</span>
+data = b"Salut"
+numere = list(data)
+print(numere)      <span>==&gt; [83, 97, 108, 117, 116]</span>
+
+<span># Dintr-o listă de numere întregi (0-255)</span>
+b_intregi = bytes([83, 97, 108, 117, 116])
+print(b_intregi)  <span>==&gt; b'Salut'</span> 
+</code></pre>
+</div>
+
+<pre><code><span># Prin codificarea unui șir de caractere (string)</span>
+b_codificat = "Salut".encode("utf-8")
+print(b_codificat)  <span>==&gt; b'Salut'</span>
+</code></pre>
+
+<pre><code><span># encode dacă e nevoie de bytes</span>
+print("Între ghilimele duble".encode("utf-8"), "/", type("Între ghilimele duble".encode("utf-8")))
+<span>==&gt; b'\xc3\x8entre ghilimele duble' / &lt;class 'bytes'&gt;</span>
+print('Între ghilimele simple'.encode('utf-8'), '/', type('Între ghilimele simple'.encode('utf-8')))
+<span>==&gt; b'\xc3\x8entre ghilimele simple' / &lt;class 'bytes'&gt;</span>
+
+<span># decode pentru text</span> 
+print(b"\xc3\x8entre ghilimele duble".decode("utf-8"), "/", type(b"\xc3\x8entre ghilimele duble".decode("utf-8")))
+<span>==&gt; Între ghilimele duble / &lt;class 'str'&gt;</span>
+print(b'\xc3\x8entre ghilimele simple'.decode('utf-8'), "/", type(b'\xc3\x8entre ghilimele simple'.decode('utf-8')))
+<span>==&gt; Între ghilimele simple / &lt;class 'str'&gt;</span>
+</code></pre>
+
+<div class="grid-container">
+  <div>
+    <p>În Python 3, diferența fundamentală dintre str și bytes se reduce la un concept simplu: text lizibil pentru oameni, spre deosebire de date brute destinate calculatorului.</p>
+    <p>Iată o analiză detaliată a celor două tipuri de date, structurată astfel încât să te ajute să înțelegi exact cum și când se utilizează fiecare dintre ele.</p>
+  </div>
+
+  <div>
+    <p>In Python 3, the fundamental difference between str and bytes boils down to a simple concept: human-readable text versus raw data for the computer.</p>
+    <p>Here is a detailed breakdown of the two data types, structured to help you understand exactly how and when each one is used.</p>
+  </div>
+</div>
+
+<div class="grid-container">
+  <dl>
+  <dt>Ce este str (String)?</dt>
+    <dd>Tipul str reprezintă text abstract, conceput pentru a fi citit și înțeles de oameni.</dd>
+    <dd>Unitatea de bază: Un șir de caractere Unicode. Fiecare element din string este un caracter (o literă, un număr, un simbol sau un emoji).</dd>
+    <dd>Cum este salvat: Python gestionează codificarea în fundal, permițându-ți să folosești orice alfabet din lume (inclusiv diacritice precum ș, ț, î sau caractere chirilice, japoneze etc.).</dd>
+    <dd>Exemplu: "Măr" are o lungime de 3 caractere.</dd>
+  </dl>
+
+  <dl>
+  <dt>What is str (String)?</dt>
+    <dd>The str type represents abstract text, designed to be read and understood by humans.</dd>
+    <dd>Basic unit: A sequence of Unicode characters. Each element in the string is a character (a letter, a number, a symbol, or an emoji).</dd>
+    <dd>How it is stored: Python handles the encoding in the background, allowing you to use any alphabet from around the world (including diacritics like ș, ț, î, or Cyrillic characters, Japanese characters, etc.).</dd>
+    <dd>Example: "Măr" has a length of 3 characters.</dd>
+  </dl>
+</div>
+
+
+
+<div class="grid-container">
+  <dl>
+  <dt>Ce sunt obiectele de tip "bytes"?</dt>
+    <dd>Tipul bytes reprezintă date binare brute, concepute pentru a fi stocate pe hard disk sau transmise prin rețea.</dd>
+    <dd>Unitate de bază: O secvență de numere întregi cuprinse între 0 și 255 (reprezentând octeți/bytes).</dd>
+    <dd>Mod de afișare: Atunci când afișezi un obiect de tip bytes, Python încearcă să redea caracterele ASCII ori de câte ori este posibil (pentru o mai bună lizibilitate), în timp ce restul octeților sunt afișați sub formă de secvențe hexazecimale (în formatul \x..).</dd>
+    <dd>Exemplu: b"Mar" are o lungime de 3 octeți (deoarece caracterele ASCII standard ocupă 1 octet). În schimb, cuvântul "Măr" convertit în bytes (UTF-8) va fi format din 4 octeți (b'M\xc4\x83r'), deoarece caracterul cu diacritică "ă" ocupă 2 octeți.</dd>
+  </dl>
+
+  <dl>
+  <dt>What are bytes?</dt>
+    <dd>The bytes type represents raw binary data, designed to be stored on a hard drive or transmitted over a network.</dd>
+    <dd>Basic unit: A sequence of integers between 0 and 255 (representing octets/bytes).</dd>
+    <dd>How it is displayed: When you display a bytes object, Python attempts to show ASCII characters wherever possible (for readability), while displaying the remaining bytes as hexadecimal sequences (in the format \x..).</dd>
+    <dd>Example: b"Mar" has a length of 3 bytes (since standard ASCII characters occupy 1 byte). In contrast, the word "Măr" converted into bytes (UTF-8) will consist of 4 bytes (b'M\xc4\x83r'), because the diacritic character "ă" occupies 2 bytes.</dd>
+  </dl>
+</div>
+
+<table class="outer-hidden">
+<caption>Tabel Comparativ Direct</caption>
+<tr><th>Caracteristică</th><th>str (String)</th><th>bytes</th></tr>
+<tr><th>Ce reprezintă?</th><td>Text codificat în Unicode (pentru oameni)</td><td>Secvență de octeți bruți (pentru mașină)</td></tr>
+<tr><th>Elementul de bază</th><td>Un caracter text (ex: 'a', 'ș', '😂')</td><td>Un număr întreg între 0 și 255</td></tr>
+<tr><th>Sintaxă / Definire</th><td>Între ghilimele: "text" sau 'text'</td><td>Prefixat cu b: b"text" (doar caractere ASCII)</td></tr>
+<tr><th>Modificabilitate</th><td>Imutabil (nu poate fi modificat după creare)</td><td>Imutabil (există versiunea mutabilă numită bytearray)</td></tr>
+<tr><th>Utilizare principală</th><td>Manipulare de text în interiorul programului</td><td>Salvare fișiere (imagini, audio), conexiuni de rețea, criptografie</td></tr>
+</table>
+
+<div class="grid-container">
+  <dl>
+  <dt>Codificarea și Decodificarea</dt>
+    <dd>Deoarece calculatorul nu înțelege conceptul abstract de "literă", textul trebuie transformat în biți pentru a fi salvat sau trimis, și invers. Această transformare se face prin Encoding (Codificare) și Decoding (Decodificare), cel mai adesea folosind standardul UTF-8.</dd>
+  </dl>
+
+  <dl>
+  <dt>Encoding and Decoding</dt>
+    <dd>Since a computer does not understand the abstract concept of a "letter," text must be converted into bits—and vice versa—in order to be saved or transmitted. This transformation is performed through encoding and decoding, most commonly using the UTF-8 standard.</dd>
+  </dl>
+</div>
+
+<pre><code><span># Codificare și Decodificare</span>
+print("Bucureşti".encode("utf-8"), "/", type("Bucureşti".encode("utf-8")))
+<span>==&gt; b'Bucure\xc5\x9fti' / &lt;class 'bytes'&gt;</span>
+print(b"Bucure\xc5\x9fti".decode("utf-8"), "/", type(b"Bucure\xc5\x9fti".decode("utf-8")))
+<span>==&gt; Bucureşti / &lt;class 'str'&gt;</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="FB">Funcția încorporată bytes() - The Built-in bytes() Function</h2>
+
+<p><a href="https://www.w3schools.com/python/ref_func_bytes.asp" target="_blank">Python bytes() Function</a></p>
+
+<div class="grid-container">
+<p>Funcția bytes() din Python returnează o secvență nouă, imutabilă, de numere întregi din intervalul 0, 256. Aceasta este utilizată, în principal, pentru prelucrarea datelor binare, citirea fișierelor binare și gestionarea protocoalelor de rețea.</p>
+
+<p>bytes() function in Python returns a new, immutable sequence of integers in the range 0,256. It is primarily used for handling binary data, reading binary files, and managing network protocols.</p>
+</div>
+
+<p>Sintaxă bytes([source[, encoding[, errors]]])</p>
+
+<div class="grid-container">
+<ul>
+  <li>-source (Opțional): Datele utilizate pentru a inițializa obiectul de tip bytes.</li>
+  <li>-encoding (Opțional): Obligatoriu dacă source este un string. Specifică modul de codificare (exp., 'utf-8', 'ascii').</li>
+  <li>-errors (Opțional): Specifică modul în care sunt gestionate erorile apărute în timpul codificării (exp., 'strict', 'ignore', 'replace').</li>
+</ul>
+
+<ul>
+  <li>-source (Optional): The data used to initialize the bytes object.</li>
+  <li>-encoding (Optional): Required if the source is a string. Specifies how to encode it (e.g., 'utf-8', 'ascii').</li>
+  <li>-errors (Optional): Specifies how to handle encoding actions if they fail (e.g., 'strict', 'ignore', 'replace').</li>
+</ul>
+</div>
+
+<table class="outer-hidden">
+<caption>bytes() se comportă în funcție de tipul intrării</caption>
+<tr><th>Tip de intrare</th><th>Descriere / Comportament</th><th>Exemplu</th><th>Ieșire</th></tr>
+<tr><th>Fără argumente</th><td>Creează un obiect gol de bytes de dimensiunea 0.</td><td>bytes()</td><td>b''</td></tr>
+<tr><th>Întreg</th><td>Creează un obiect de tip bytes umplut cu zerouri, de dimensiunea specificată.</td><td>bytes(4)</td><td>b'\x00\x00\x00\x00'</td></tr>
+<tr><th>String</th><td>Convertește textul în octeți. Necesită parametrul de codificare.</td><td>bytes('Python', 'utf-8')</td><td>b'Python</td></tr>
+<tr><th>Iterabil de numere întregi</th><td>Convertește o listă/un tuplu de numere întregi (de la 0 la 255) în octeți.</td><td>bytes([65, 66, 67])</td><td>b'ABC' (valori ASCII)</td></tr>
+</table>
+
+<div class="grid-container">
+<p>La conversia unui șir de caractere, fiecare caracter este mapat la reprezentarea sa specifică sub formă de octeți, utilizând schema de codificare aleasă.</p>
+
+<p>When converting a string, each character is mapped to its specific byte representation using the chosen encoding scheme.</p>
+</div>
+
+<pre><code><span># Conversia textului într-un flux de octeți</span>
+data = bytes("Salut Lume!", "utf-8")
+print(data)  <span>==&gt; b'Salut Lume!'</span>
+
+bytes("Salut Lume!", encoding="utf-8") <span>==&gt; b'Salut Lume!'</span>
+</code></pre>
+
+<pre><code><span># Coversia unei liste</span>
+<span># 65 = 'A', 66 = 'B', 67 = 'C'</span>
+listă_binară = bytes([65, 66, 67])
+print(listă_binară)  <span>==&gt; b'ABC'</span>
+</code></pre>
+
+<pre><code><span># detectează eroarea</span>
+try:
+    mesaj = bytes(b"Salut")
+    mesaj[0] = 104
+except TypeError as e:
+    print(f"Eroare detectată: {e}")
+<span>==&gt; Eroare detectată: 'bytes' object does not support item assignment</span>
+
+<span># creează unul complet nou folosind tehnica de tăiere (slicing)</span>
+mesaj = bytes(b"Salut!")
+print(mesaj)  <span>==&gt; b'Salut!'</span>
+ 
+mesaj = b"s" + mesaj[1:]
+print(mesaj)  <span>==&gt; b'salut!'</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="FH">Metoda clasă bytes.fromhex() - bytes.fromhex() Class Method</h2>
+
+
+<p>Sintaxă bytes.fromhex(string)</p>
+
+<div class="grid-container">
+<p>Metoda clasă bytes.fromhex() din Python convertește un șir de cifre hexazecimale într-un obiect de tip bytes imuabil.</p>
+
+<p>The bytes.fromhex() class method in Python converts a string of hexadecimal digits into an immutable bytes object.</p>
+</div>
+
+<div class="grid-container">
+<dl>
+<dt>Reguli fundamentale</dt>
+  <dd>Metoda grupează câte două caractere hexazecimale pentru a forma un singur octet (8 biți).</dd>
+  <dd>Orice caractere de tip spațiu alb ASCII (spații, tab-uri, caractere de linie nouă) din cadrul șirului sunt omise automat. Acest lucru permite citirea cu ușurință a dump-urilor hexazecimale formatate sau spațiate.</dd>
+  <dd>Metoda acceptă exclusiv caractere hexazecimale și spații albe. Transmiterea unui șir care începe cu 0x sau care conține caractere ce nu sunt hexazecimale va genera o eroare de tip ValueError.</dd>
+</dl>
+
+<dl>
+<dt>Core Rules</dt>
+  <dd>The method pairs up every two hexadecimal characters to form one single byte (8 bits).</dd>
+  <dd>Any ASCII whitespace characters (spaces, tabs, newlines) within the string are automatically skipped. This allows you to read formatted or spaced hex dumps easily.</dd>
+  <dd>No 0x Prefix Allowed: The method expects only hexadecimal characters and whitespace. Passing a string starting with 0x or containing non-hex characters will throw a ValueError.</dd>
+</dl>
+</div>
+
+
+<div class="grid-container">
+<pre><code><span># Şir hexazecimal convertit într-un obiect tip bytes</span>
+șirhex = "53616c7574"
+octet = bytes.fromhex(șirhex)
+
+print(octet) <span>==&gt; b'Salut'</span>
+</code></pre>
+
+<pre><code><span># Controlul intrărilor hexazecimale cu spații</span>
+hexspațiat = "53 61 6c 75 74"
+spațiat = bytes.fromhex(hexspațiat)
+
+print(spațiat) <span>==&gt; b'Salut'</span>
+</code></pre>
+</div>
+
+<pre><code><span># octeți și numere intregi</span>
+print(bytes.fromhex("308cd9"))       <span>==&gt; b'0\x8c\xd9'</span>
+print(list(bytes.fromhex("308cd9"))) <span>==&gt; [48, 140, 217]</span>
+
+print(bytes.fromhex("30 8c d9"))       <span>==&gt; b'0\x8c\xd9'</span>
+print(list(bytes.fromhex("30 8c d9"))) <span>==&gt; [48, 140, 217]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="MB">Tehnici comune de manipulare - Common Manipulation Techniques</h2>
+
+<div class="grid-container">
+<p>Python oferă o varietate de metode pentru modificarea datelor de tip octeți.</p>
+
+<p>Python offers a variety of methods for modifying of bytes data.</p>
+</div>
+
+
+<h3 id="MBA">Indexare și feliere - Indexing and Slicing</h3>
+
+
+<div class="grid-container">
+  <div>
+  <p>Accesarea unui element dintr-un obiect de tip bytes returnează un întreg (valoarea ASCII/byte), în timp ce felierea returnează un nou obiect de tip bytes.</p>
+  <p>Indicele trebuie să fie în intervalul range(0, len(data)-1), altfel Python va genera o eroare de tip IndexError.</p>
+  </div>
+
+  <div>
+  <p>Accessing an element from a bytes object returns an integer (the ASCII/byte value), while slicing a bytes object returns a new bytes object.</p>
+  <p>The index must be in range(0, len(data)-1) otherwise Python will throw an IndexError.</p>
+  </div>
+</div>
+
+<div class="grid-container">
+<pre><code><span># Indexarea octeților (returnează un int)</span>
+data = b"Simptom"
+print(len(data)) <span>==&gt; 7</span>
+
+<span># Indexare pozitivă (începe de la 0)</span>
+print(data[0]) <span>==&gt; 83</span>
+
+<span># Indexare negativă (începe de la -1 de la sfârșit)</span>
+print(data[-1]) <span>==&gt; 109</span>
+</code></pre>
+
+<pre><code><span># Indice în afara intervalului</span>
+data = b"Simptom"
+
+try:
+    <span># Acest lucru va eșua, deoarece "Simptom"are doar 7 caractere (indicii de la 0 la 6)</span>
+    print(data[11])
+except IndexError as e:
+    print(f"Eroare detectată: {e}") <span>==&gt; Eroare detectată: index out of range</span>
+    print("Indicele solicitat este în afara intervalului pentru aceste date.") <span>==&gt; Indicele solicitat este în afara intervalului pentru aceste date.</span>
+</code></pre>
+</div>
+
+<pre><code><span># Felierea octeților (returnează un nou obiect de tip bytes).</span>
+data = b"Simptom"
+
+<span># Feliere de bază [start este inclus : stop este exclus]</span>
+print(data[0:2]) <span>==&gt; b'Si'</span>
+
+<span># Omiterea valorii de start (implicit 0) sau de stop (implicit sfârșitul)</span>
+print(data[:3]) <span>==&gt; b'Sim'</span>  
+print(data[2:]) <span>==&gt; b'mptom'</span>
+
+<span># Felierea unui singur octet pentru a-l păstra ca obiect de tip "bytes"</span>
+print(data[0:1]) <span>==&gt; b'S'</span> 
+
+<span># Utilizarea unui pas [::pas]</span>
+print(data[::2]) <span>==&gt; b'Smtm'</span> 
+
+<span># Inversarea unui obiect de tip "bytes"</span>
+print(data[::-1]) <span>==&gt; b'motpmiS'</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h3 id="MBC">Căutare și înlocuire - Searching and Replacing</h3>
+
+<div class="grid-container">
+<p>Atunci când se lucrează cu date binare, atât modelul de căutare, cât și elementul de înlocuire trebuie să fie obiecte de tip "bytes" (de exemplu, precedate de b'').</p>
+
+<p>When working with binary data is that both the search pattern and the replacement must be bytes-like objects (e.g., prefixed with b'')</p>
+</div>
+
+
+<pre><code><span># Înlocuire literală de octeți</span>
+data = b"Salut! Bun venit in lumea binara."
+
+<span># Ambele argumente trebuie să fie de tip octeți (bytes)</span>
+data_noua = data.replace(b"lumea", b"universul").replace(b"binara", b"binar")
+
+print(data_noua) <span>==&gt; b'Salut! Bun venit in universul binar.'</span>
+</code></pre>
+
+<pre><code><span># Definirea datelor sursă, a modelului de căutare și a înlocuirii</span>
+date = b"\x11\xAA\x22\xBB\x33\xAA\x44"
+de_inlocuit = b"\xAA"
+inlocuitor = b"\xCC"
+
+<span># Efectuarea înlocuirii</span>
+date_modificate = date.replace(de_inlocuit, inlocuitor)
+
+<span># Vizualizarea rezultatelor</span>
+print(f"Date originale: {date}")             <span>==&gt; Date originale: b'\x11\xaa"\xbb3\xaaD'</span>
+print(f"Date modificate: {date_modificate}") <span>==&gt; Date modificate: b'\x11\xcc"\xbb3\xccD'</span>
+print(date_modificate.hex()) <span>==&gt; 11cc22bb33cc44</span>
+</code></pre>
+
+<div class="grid-container">
+<dl>
+<dt>Date modificate: b'\x11\xcc"\xbb3\xccD'</dt>
+<dd>" este caracterul ASCII pentru \x22</dd>
+<dd>3 este caracterul ASCII pentru \x33</dd>
+<dd>D este caracterul ASCII pentru \x44</dd>
+</dl>
+
+<dl>
+<dt>Modified data: b'\x11\xcc"\xbb3\xccD'</dt>
+<dd>"  is the ASCII character for \x22</dd>
+<dd>3 is the ASCII character for \x33</dd>
+<dd>D is the ASCII character for \x44</dd>
+</dl>
+</div>
+
+
+<div class="grid-container">
+<p><b>Găsirea pozițiilor octeților (bytes.find()):</b> Pentru a verifica dacă există o anumită secvență de octeți sau pentru a localiza indicele de început al acesteia, utilizați find(). Aceasta returnează cel mai mic indice la care este găsită subsecvența sau -1, în caz contrar.</p>
+
+<p><b>Finding Byte Positions (bytes.find()):</b> To check if a specific byte sequence exists or to locate its starting index, use find(). It returns the lowest index where the subsequence is found, or -1 if it fails.</p>
+</div>
+
+
+<pre><code><span> # Determinarea pozițiilor octeților</span>
+date = b"\x00\x00\xff\x00\x12\x34"
+
+<span># Caută secvența hexazecimală \xff\x00</span>
+loc_poz = data.find(b"\xff\x00")
+
+print(loc_poz) <span>==&gt; 2</span>
+</code></pre>
+
+<div class="grid-container">
+  <div>
+  <p>În Python, acest cod este utilizat pentru a găsi poziția de memorie de început a unei secvențe specifice de octeți în cadrul unui șir de octeți mai mare.</p>
+  <p>Fiecare \x reprezintă un singur octet scris în notație hexazecimală (baza 16). Să analizăm indicele (poziția) fiecărui octet din variabila de date:</p>
+  </div>
+
+  <div>
+  <p>In Python, this code is used to find the starting memory position of a specific sequence of bytes within a larger byte string.</p>
+  <p>Each \x represents a single byte written in hexadecimal (base-16) notation. Let's look at the index (position) of each byte in data variable:</p>
+  </div>
+</div>
+
+<table class="outer-hidden">
+<caption>Analiza detaliată a datelor</caption>
+<tr><th>Index</th><th>Valoare octet (Hex)</th><th>Descriere</th></tr>
+<tr><td>0</td><td>\x00</td><td>Primul octet nul</td></tr>
+<tr><td>1</td><td>\x00</td><td>Al doilea octet nul</td></tr>
+<tr><td>2</td><td>\xff</td><td>Începutul secvenței de căutare</td></tr>
+<tr><td>3</td><td>\x00</td><td>Sfârșitul secvenței de căutare</td></tr>
+<tr><td>4</td><td>\x12</td><td>Valoare hex 12</td></tr>
+<tr><td>5</td><td>\x34</td><td>Valoare hex 34</td></tr>
+</table>
+
+
+<p>Înlocuire de octeți prin expresii regulate - Regex Byte Replacement</p>
+
+<pre><code>import re
+
+<span># Date binare care conțin șiruri de versiuni variabile (de ex., V1.2, V1.5)</span>
+date_binar = b"Data_V1.2_Setup_V1.5_Final"
+
+<span># Căutarea șablonului "V1." urmat de o cifră (reprezentată printr-un singur octet)</span>
+<span># De reținut că șablonul este un șir de octeți: b"..."</span>
+model = b"V1\.\d"
+
+<span># Înlocuirea tuturor aparițiilor folosind re.sub()</span>
+flux_curat = re.sub(model, b"V2.0", date_binar).replace(b"Final", b"Initial")
+
+print(flux_curat) <span>==&gt; b'Data_V2.0_Setup_V2.0_Initial'</span>
+</code></pre>
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+  <ol>
+    <li>re.sub(model, b"V2.0", date_binar): Identifică toate potrivirile de tipul V1. urmat de o cifră și le înlocuiește. Deoarece date_binar conține două astfel de potriviri (V1.2 și V1.5), ambele sunt înlocuite, rezultând b"Data_V2.0_Setup_V2.0_Final".</li>
+    <li>.replace(b"Final", b"Initial"): Înlocuiește secvența de octeți de la final, generând rezultatul final b'Data_V2.0_Setup_V2.0_Initial'.</li>
+  </ol>
+
+  <ol>
+    <li>re.sub(model, b"V2.0", data_binar): Finds all matches of V1. followed by a digit and replaces them. Because data_binar has two matches (V1.2 and V1.5), both are replaced, resulting in b"Data_V2.0_Setup_V2.0_Final".</li>
+    <li>.replace(b"Final", b"Initial"): Replaces the trailing byte sequence, giving the final output b'Data_V2.0_Setup_V2.0_Initial'.</li>
+  </ol>
+  </div>
+</div>
+
+
+<pre><code>import re
+
+date_binar = b"\x11\xAA\xBB\x22"
+
+de_inlocuit = b"\xAA\xBB"
+inlocuitor = b"\xCC\xDD"
+
+<span># Utilizarea re.sub cu literali de tip octeți (byte literals)</span>
+date_modificate = re.sub(de_inlocuit, inlocuitor, date_binar)
+
+print(f"Modificat cu Regex: b'\x11\xcc\xdd"'{date_modificate}") 
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h3 id="MBD">Separare și Îmbinare   - Splitting and Joining</h3>
+
+<pre><code><span># Separare și Îmbinare</span>
+fructe = b"gutui, pere, mere"
+print(type(fructe) <span>==> &lt;class 'bytes'&gt;</span>
+
+separat = fructe.split(b", ")
+print(separat)     <span>==> [b'gutui', b'pere', b'mere']</span>
+
+combinat = b" ".join(divizare)
+print(combinat)    <span>==> b'gutui pere mere'</span>
+</code></pre>
+
+<pre><code><span># Înlocuire și îndepărtare</span>
+text = b" salut lume "
+print(text)       <span>==> b' salut lume '</span>
+print(type(text)) <span>==> &lt;class 'bytes'&gt;</span>
+
+curat = text.strip().replace(b"lume", b"python")
+
+print(curat) <span>==> b'salut python'</span>
+</code></pre>
+
+
+<div class="grid-container">
+<p>În Python, poți diviza și reuni date binare folosind metode integrate precum int() și bin(), operatori pe biți sau clasele bytes pentru fluxuri de fișiere.</p>
+
+<p>You can split and join binary data in Python using built-in methods like int(), bin(), bitwise operators, or the bytes  classes for file streams.</p>
+</div>
+
+<p>Divizarea și combinarea numerelor binare (manipularea biților) - Splitting and Joining Binary Numbers (Bit Manipulation)</p>
+
+
+<div class="grid-container">
+<p>Pentru a împărți un număr întreg în segmente binare de lungime fixă ​​sau pentru a le reasambla, poți converti numărul într-un șir binar sau poți utiliza deplasarea pe biți.</p>
+
+<p>To split an integer into fixed-length binary chunks or reassemble them, you can convert the number to a binary string or use bit-shifting.</p>
+</div>
+
+<pre><code><span># Împărțirea unui număr în două jumătăți (de exemplu, de la 16 biți la două valori pe 8 biți)</span>
+def split_16bit(num):
+    binar = bin(num)[2:].rjust(16, '0')
+    return (int(binar[:8], 2), int(binar[8:], 2))
+
+
+<span># Exemplu: 4660 în binar este 0b010010 00110100</span>
+<span># 4660 = 0x1234 în hexazecimal</span>
+<span># Exemplu: 4646 în binar este 0b010010 00100110</span>
+<span># 4646 = 0x1226 în hexazecimal</span> 
+<span># Exemplu: 4460 în binar este 0b010001 01101100</span>
+<span># 4460 = 0x116C în hexazecimal</span>
+
+print(split_16bit(0x1234)) <span>==&gt; (18, 52)</span>
+print(split_16bit(0x1226)) <span>==&gt; (18, 38)</span>
+print(split_16bit(0x116C)) <span>==&gt; (17, 108)</span>
+</code></pre>
+
+<div class="grid-container">
+  <div>
+    <p>Acest cod împarte un întreg pe 16 biți în doi întregi separați pe 8 biți (octetul superior și octetul inferior), transformând numărul într-un șir binar, împărțind acest șir în două și reconvertind părțile rezultate în numere întregi.</p>
+    <p>Iată o explicație pas cu pas a modului în care funcționează codul, folosind exemplul 0x1234 (care înseamnă 4660 în sistemul zecimal):</p>
+  </div>
+
+  <div>
+    <p>This code splits a 16-bit integer into two separate 8-bit integers (the high byte and the low byte) by converting the number into a binary string, cutting the string in half, and converting those pieces back into integers.</p>
+    <p>Here is a step-by-step breakdown of how the code works using the example 0x1234 (which is 4660 in decimal):</p>
+  </div>
+</div>
+
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+<dl>
+  <dt>bin(num)[2:] (Conversia într-un șir binar)</dt>
+    <dd>bin(0x1234) convertește numărul într-un șir binar: '0b1001000110100'.</dd>
+    <dd>Segmentarea [2:] elimină prefixul '0b', păstrând doar cifrele binare propriu-zise: '1001000110100'.</dd>
+  <dt>.rjust(16, '0') (Completarea cu zerouri)</dt>
+    <dd>Dacă șirul binar are mai puțin de 16 cifre, acesta este completat cu zerouri în partea stângă, până când ajunge la o lungime de exact 16 caractere.</dd>
+    <dd>Rezultat: '0001001000110100'</dd>
+  <dt>binar[:8] and binar[8:] (Împărțirea șirului)</dt>
+    <dd>binar[:8] extrage primele 8 caractere (octetul superior / jumătatea superioară): '00010010'</dd>
+    <dd>binar[8:] extrage restul de 8 caractere (octetul inferior / jumătatea inferioară): '00110100'</dd>
+  <dt>int(..., 2) (Conversia înapoi în numere întregi)</dt>
+    <dd>int('00010010', 2) convertește primul șir binar înapoi într-un număr întreg (baza 2), care este 18 (sau 0x12 în hexazecimal).</dd>
+    <dd>int('00110100', 2) convertește al doilea șir binar înapoi într-un număr întreg (baza 2), care este 52 (sau 0x34 în hexazecimal).</dd>
+  </dl>
+  <p>Funcția returnează tuplul final: (18, 52).</p>
+  </div>
+</div>
+
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+  <dl>
+  <dt>bin(num)[2:] (Convert to Binary String)</dt>
+    <dd>bin(0x1234) converts the number to the binary string '0b1001000110100'.</dd>
+    <dd>The [2:] slice removes the '0b' prefix, leaving just the raw binary digits: '1001000110100'.</dd>
+  <dt>.rjust(16, '0') (Pad with Zeros)</dt>
+    <dd>If the binary string is shorter than 16 digits, this pads it with leading zeros on the left until it is exactly 16 characters long.</dd>
+    <dd>Result: '0001001000110100'</dd>
+  <dt>binar[:8] and binar[8:] (Split the String)</dt>
+    <dd>binar[:8] grabs the first 8 characters (the high byte / upper half): '00010010'</dd>
+    <dd>binar[8:] grabs the remaining 8 characters (the low byte / lower half): '00110100'</dd>
+  <dt>int(..., 2) (Convert Back to Integers)</dt>
+    <dd>int('00010010', 2) converts the first binary string back to a base-2 integer, which is 18 (or 0x12 in hex).</dd>
+    <dd>int('00110100', 2) converts the second binary string back to a base-2 integer, which is 52 (or 0x34 in hex).</dd>
+  </dl>
+  <p>The function returns the final tuple: (18, 52).</p>
+  </div>
+</div>
+
+<div class="grid-container">
+  <dl>
+  <dt>O metodă mai rapidă și mai eficientă (operatori pe biți)</dt>
+    <dd>Deși metoda bazată pe șiruri de caractere funcționează corect, ea este relativ lentă, deoarece transformă constant numerele în text și invers. În programare, această sarcină este, în mod tradițional, realizată mult mai rapid folosind operatori pe biți:</dd>
+  </dl>
+
+  <dl>
+  <dt>A Faster, More Efficient Way (Bitwise Operators)</dt>
+    <dd>While the string method works perfectly fine, it is relatively slow because it constantly translates numbers to text and back. In programming, this task is traditionally done much faster using bitwise operators:</dd>
+  </dl>
+</div>
+
+<pre><code><span># Împărțirea unui număr în două jumătăți (de exemplu, de la 16 biți la două valori pe 8 biți)</span>
+def split_16bit_bitwise(num):
+    octet_superior = (num &gt;&gt; 8) & 0xFF  <span># Deplasare la dreapta cu 8 biți</span>
+    octet_inferior = num & 0xFF         <span># Izolează cei 8 biți superiori</span>
+    return (octet_superior, octet_inferior)
+
+<span># Exemplu: 4660 în binar este 00010010 00110100</span>
+<span># 4660 în hexazecimal este 0x1234</span>
+octet_superior, octet_inferior = split_16bit_bitwise(4660)
+
+print(f"Octet superior: {octet_superior} (Hex: {hex(octet_superior)})")
+<span>==&gt; Octet superior: 18 (Hex: 0x12)</span>
+print(f"Octet inferior: {octet_inferior} (Hex: {hex(octet_inferior)})")
+<span>==&gt; Octet inferior: 52 (Hex: 0x34)</span>
+</code></pre>
+
+<pre><code><span># Împărțit în 2 octeți folosind formatul Big Endian</span>
+num = 4660
+
+octet_superior, octet_inferior = num.to_bytes(2, byteorder="big")
+
+print(f"Octet superior: {octet_superior} (Hex: {hex(octet_superior)})")
+<span>==&gt; Octet superior: 18 (Hex: 0x12)</span>
+print(f"Octet inferior: {octet_inferior} (Hex: {hex(octet_inferior)})")
+<span>==&gt; Octet inferior: 52 (Hex: 0x34)</span>
+</code></pre>
+
+
+<p>Asamblarea părţilor binare - Assembling the binary parts</p>
+ 
+<div class="grid-container">
+<pre><code><span># Reasamblarea părților binare prin deplasarea biților</span>
+def join_8bit(octet_superior, octet_inferior):
+    return (octet_superior &lt;&lt; 8) | octet_inferior
+
+print(join_8bit(18, 52)) <span>==&gt; 4660</span>
+print(join_8bit(18, 38)) <span>==&gt; 4646</span>
+print(join_8bit(17, 108)) <span>==&gt; 4460</span>
+</code></pre>
+
+<pre><code><span># Definește valorile pe 8 biți (octeți)</span>
+octet_superior = 0x12  <span># Exemplu: 18 în zecimal</span>
+octet_inferior = 0x34  <span># Exemplu: 52 în zecimal</span>
+
+reconstruit = (octet_superior &lt;&lt; 8) + octet_inferior
+
+print(reconstruit, "/", type(reconstruit)) <span>==&gt; 4660 / &lt;class 'int'&gt;</span>
+</code></pre>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+<h2 id="RW">Citirea, modificarea și scrierea unui fișier binar - Reading, Modifying, and Writing a Binary File</h2>
+
+<div class="grid-container">
+  <p>Atunci când lucrați cu fișiere fizice, asigurați-vă că le deschideți folosind modurile "rb" (citire binară) și "wb" (scriere binară).</p>
+
+  <p>When handling physical files, make sure to open them using "rb" (read binary) and "wb" (write binary) modes.</p>
+</div>
+
+<div class="grid-container">
+  <dl>
+  <dt>Regula de aur în Python 3</dt>
+    <dd>Când scrii o aplicație modernă, folosește strategia numită "Sandvișul Unicode":</dd>
+      <dd>La intrare: Convertește imediat datele primite (octeți) în text (str) folosind .decode().</dd>
+      <dd>În interiorul programului: Lucrează exclusiv cu str (procesare text, căutări, modificări).</dd>
+      <dd>La ieșire: Convertește textul (str) înapoi în bytes folosind .encode() chiar înainte de a trimite datele în exterior.</dd>
+  </dl>
+
+<dl>
+  <dt>The Golden Rule in Python 3</dt>
+    <dd>When writing a modern application, use the strategy known as the "Unicode Sandwich":</dd>
+      <dd>At the input: Immediately convert incoming data (bytes) into text (str) using .decode().</dd>
+      <dd>Inside the program: Work exclusively with str (text processing, searching, modifications).</dd>
+      <dd>At the output: Convert the text (str) back into bytes using .encode() just before sending the data externally.</dd>
+  </dl>
+</div>
+
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+<pre><code><span># Codul în limba română</span>
+import os
+
+<span># Să creăm un fișier binar fictiv care conține octeți, pentru a simula o intrare externă.</span>
+<span># Acești octeți reprezintă textul: "Salutare! Română: ș, ț, ă, î, â."</span>
+intrare_octeti = b"Salutare! Rom\xc3\xa2n\xc4\x83: \xc8\x99, \xc8\x9b, \xc4\x83, \xc3\xae, \xc3\xa2"
+with open("intrare_bruta.bin", "wb") as f:
+    f.write(intrare_octeti)
+
+<span># Intrarea (Stratul superior): Octeți primiți -> Decodificare imediată</span>
+def incarcare_date_externe(cale_fisier):
+    <span># Citește date binare brute (octeți) din lumea exterioară</span>
+    with open(cale_fisier, "rb") as f:
+        octeti_bruti = f.read()
+    
+    <span># Decodifică imediat în text (șir de caractere), folosind codificarea corectă</span>
+    text_curat = octeti_bruti.decode("utf-8")
+    return text_curat
+
+<span># Nucleul aplicației (Umplutura): Lucrați exclusiv cu "str"</span>
+def proces_text_logic(continut_text: str) -> str:
+    <span># În cadrul programului, îl tratăm pur și simplu ca text.</span>
+    <span># Manipularea șirurilor de caractere, căutarea și normalizarea majusculelor/minusculelor funcționează perfect.</span>
+    text_cu_majuscule = continut_text.upper()
+    
+   <span># Putem utiliza în siguranță metode bazate pe text, cum ar fi înlocuirea caracterelor.</span>
+    text_procesat = text_cu_majuscule.replace("SALUTARE", "BUNĂ ZIUA")
+    return text_procesat
+
+<span># Rezultatul (Stratul inferior): Codificarea textului -> Octeți rezultați</span>
+def salvare_date_externe(cale_fisier, continut_text: str):
+    <span># Chiar înainte de a părăsi aplicația, transformă textul înapoi în octeți.</span>
+    octeti_codificati = continut_text.encode("utf-8")
+    
+    <span># Scrieți octeții bruti la destinația externă</span>
+    with open(cale_fisier, "wb") as f:
+        f.write(octeti_codificati)
+        
+<span># Prepararea sandvișului</span>
+<span># Pasul 1: Decodifică</span>
+text_primit = incarcare_date_externe("intrare_bruta.bin")
+print(f"--- Pasul 1 (Date de intrare decodificate) ---\nType: {type(text_primit)}\nConţinut: {text_primit}\n")
+
+<span># Pasul 2: Prelucrare folosind șiruri de text pur</span>
+rezultat_aplicatie = proces_text_logic(text_primit)
+print(f"--- Pasul 2 (Procesare centrală) ---\nType: {type(rezultat_aplicatie)}\nConţinut: {rezultat_aplicatie}\n")
+
+<span># Pasul 3: Codificați și salvați</span>
+salvare_date_externe("rezultat_procesat.bin", rezultat_aplicatie)
+
+<span># Verificare: Să citim fișierul rezultat pentru a verifica dacă a fost salvat corect.</span>
+with open("rezultat_procesat.bin", "rb") as f:
+    octeti_rezultat_final = f.read()
+print(f"--- Pasul 3 (Octeți de ieșire neprelucrați) ---\n{octeti_rezultat_final}")
+
+<span># Curăță fișierele</span>
+os.remove("intrare_bruta.bin")
+os.remove("rezultat_procesat.bin")
+</code></pre>
+
+<pre>
+<span># Rezultat cod în limba română</span>
+--- Pasul 1 (Date de intrare decodificate) ---
+Type: &lt;class 'str'&gt;
+Conţinut: Salutare! Română: ș, ț, ă, î, â
+
+--- Pasul 2 (Procesare centrală) ---
+Type: &lt;class 'str'&gt;
+Conţinut: BUNĂ ZIUA! ROMÂNĂ: Ș, Ț, Ă, Î, Â
+
+--- Pasul 3 (Octeți de ieșire neprelucrați) ---
+b'BUN\xc4\x82 ZIUA! ROM\xc3\x82N\xc4\x82: \xc8\x98, \xc8\x9a, \xc4\x82, \xc3\x8e, \xc3\x82'
+</pre>
+  </div>
+</div>
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+<pre><code><span># English code</span>
+import os
+
+<span># Let's create a dummy binary file containing bytes to simulate external input.</span>
+<span># These bytes represent the text: "Salutare! Română: ș, ț, ă, î, â."</span>
+input_bytes = b"Salutare! Rom\xc3\xa2n\xc4\x83: \xc8\x99, \xc8\x9b, \xc4\x83, \xc3\xae, \xc3\xa2"
+with open("raw_input.bin", "wb") as f:
+    f.write(input_bytes)
+
+<span># THE INPUT (Top Crust): Bytes in -> Decode immediately</span>
+
+def load_external_data(file_path):
+    <span># Read raw binary data (bytes) from the outside world</span>
+    with open(file_path, "rb") as f:
+        raw_bytes = f.read()
+    
+    <span># IMMEDIATELY decode to text (str) using the correct encoding</span>
+    clean_text = raw_bytes.decode("utf-8")
+    return clean_text
+
+<span># THE APPLICATION CORE (The Filling): Work exclusively with 'str'</span>
+
+def process_text_logic(text_content: str) -> str:
+    <span># Inside the program, we treat it purely as text.</span>
+    <span># String manipulation, searching, and case folding work perfectly.</span>
+    uppercase_text = text_content.upper()
+    
+    <span># We can safely use text-based methods like replacing characters</span>
+    processed_text = uppercase_text.replace("SALUTARE", "BUNĂ ZIUA")
+    return processed_text
+
+<span># HE OUTPUT (Bottom Crust): Encode text -> Bytes out</span>
+
+def save_external_data(file_path, text_content: str):
+    <span># Just before leaving the app, turn the text back into bytes</span>
+    encoded_bytes = text_content.encode("utf-8")
+    
+    <span># Write the raw bytes out to the external destination</span>
+    with open(file_path, "wb") as f:
+        f.write(encoded_bytes)
+        
+<span># EXECUTING THE SANDWICH</span>
+
+<span># Step 1: Decode at the boundary</span>
+incoming_text = load_external_data("raw_input.bin")
+print(f"--- Step 1 (Decoded Input) ---\nType: {type(incoming_text)}\nContent: {incoming_text}\n")
+
+<span># Step 2: Process using pure text strings</span>
+app_result = process_text_logic(incoming_text)
+print(f"--- Step 2 (Core Processing) ---\nType: {type(app_result)}\nContent: {app_result}\n")
+
+<span># Step 3: Encode at the boundary and save</span>
+save_external_data("processed_output.bin", app_result)
+
+<span># Verification: Let's read the output file back to verify it saved correctly</span>
+with open("processed_output.bin", "rb") as f:
+    final_output_bytes = f.read()
+print(f"--- Step 3 (Raw Output Bytes) ---\n{final_output_bytes}")
+
+<span># Clean up files</span>
+os.remove("raw_input.bin")
+os.remove("processed_output.bin")
+</code></pre>
+
+
+<pre>
+<span># Result cod from English</span>
+--- Step 1 (Decoded Input) ---
+Type: &lt;class 'str'&gt;
+Content: Salutare! Română: ș, ț, ă, î, â
+
+--- Step 2 (Core Processing) ---
+Type: &lt;class 'str'&gt;
+Content: BUNĂ ZIUA! ROMÂNĂ: Ș, Ț, Ă, Î, Â
+
+--- Step 3 (Raw Output Bytes) ---
+b'BUN\xc4\x82 ZIUA! ROM\xc3\x82N\xc4\x82: \xc8\x98, \xc8\x9a, \xc4\x82, \xc3\x8e, \xc3\x82'
+</pre>
+  </div>
+</div>
+
+
+<div class="grid-container">
+<p>Pentru a furniza calea_sursei funcției de divizare a fișierelor binare, poți genera dinamic un fișier fictiv pe mașina ta locală, utilizând modulul tempfile, inclus în Python. Acest lucru îți permite să creezi o cale temporară sigură, populată cu date fictive (octeți), pentru a-ți testa codul.</p>
+
+<p>To provide a source_path for your binary splitting function, you can dynamically generate a real, mock file on your local machine using Python's built-in tempfile module. This allows you to generate a safe, temporary path filled with dummy byte data to test your code.</p>
+</div>
+
+<pre><code><span># Simulare</span>
+import os
+import tempfile
+
+def split_fisier_binar(calea_sursei, dim_segment=1024): 
+    segmente = [] 
+    with open(calea_sursei, 'rb') as f: 
+        while segment := f.read(dim_segment): 
+                segmente.append(segment) 
+    return segmente
+
+<span># Creează un fișier binar fictiv și obține calea_sursei</span>
+<span># Aceasta creează un fișier temporar sigur care se șterge automat la închidere</span>
+with tempfile.NamedTemporaryFile(delete=False) as fisier_fictiv:
+    <span># Scrie 5000 de octeți de date binare fictive (zerouri în acest caz)</span>
+    fisier_fictiv.write(b'\x00' * 5000)
+    
+    <span># Stochează calea de transmis în funcția ta</span>
+    calea_sursei_fictiv = fisier_fictiv.name
+
+try:
+    <span># Testează funcția ta folosind calea fictivă</span>
+    segmente = split_fisier_binar(calea_sursei_fictiv, dim_segment=1024)
+    
+    print(f"Calea fișierului fictiv generat: {calea_sursei_fictiv}")
+    print(f"Număr total de segmente create: {len(segmente)}")
+    print(f"Dimensiunea primului segment: {len(segmente[0])} octeți")
+    print(f"Dimensiunea ultimului segment: {len(segmente[-1])} octeți")
+
+finally:
+    <span># Şterge fișierul fictiv din sistem</span>
+    if os.path.exists(calea_sursei_fictiv):
+        os.remove(calea_sursei_fictiv)
+</code></pre>
+
+<pre><span># Rezultat</span>
+Calea fișierului fictiv generat: C:\Users\ionxx\AppData\Local\Temp\tmp3du6q4vv
+Număr total de segmente create: 5
+Dimensiunea primului segment: 1024 octeți
+Dimensiunea ultimului segment: 904 octeți
+</pre>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+  <div class="footer footer-link">
+    <footer>
+      &copy; <span id="year-picior"></span> Gazeta Python.
+      <address><a href="https://gazetapython.wordpress.com/" target="_blank">www.gazetapython.com</a></address>
+    </footer>
+  </div>
+</div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+<script src="JS/treileaGreeting.js"></script>
+<script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

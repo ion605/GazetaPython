@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/main-style.css">
+
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 2.7 String multiplication</title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-1 navigare">
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                        <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                        <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                        <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-1"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaT.svg" alt="T" class="logo">
+                    <h1>2.0 Tipuri Text-Text Type</h1>
+                </div>
+            </div>
+
+            <div class="second-empty-1-1"></div>
+
+            <div class="subtitlu-1-1">
+                <div class="grid-cell">
+                    <h2>2.7 Multiplicarea șirurilor-String multiplication</h2>
+                </div>
+            </div>
+
+          <div class="third-empty-1-1"></div>
+
+              <div class="ro-en-1-1 container-links ro-en">
+                <div>
+                <ul>
+                    <li>În acest capitol veți studia:</li>
+                    <li><a href="#AX">* Multiplicarea secventei</a></li>
+                    <li><a href="#TX">* Multiplicare pentru a crea un tabel</a></li>
+                    <li><a href="#ML">map(), funcția lambda si join()</a></li>
+                    <li><a href="#BF">bucla for</a></li>
+                    <li><a href="#BW">bucla while</a></li>
+                    <li><a href="#FR">Functia itertools.repeat()</a></li>
+                    <li><a href="#LC">List comprehension</a></li>
+                </ul>
+                </div>
+
+                <div>
+                <ul>
+                    <li>In this chapter, you will study:</li>
+                    <li><a href="#AX">* Sequence multiplication</a></li>
+                    <li><a href="#TX">* Multiplication to create a table</a></li>
+                    <li><a href="#ML">map(), the lambda function, and join()</a></li>
+                    <li><a href="#BF">for loop</a></li>
+                    <li><a href="#BW">while loop</a></li>
+                    <li><a href="#FR">The itertools.repeat() function</a></li>
+                    <li><a href="#LC">List comprehension</a></li>
+                </ul>
+            </div>
+          </div>
+        </header>
+
+        <div class="forth-empty-1-1"></div>
+
+        <div class="contents-1-1">
+
+            <div class="grid-container">
+                <div>
+                    <p><b>Multiplicarea șirurilor</b>, cunoscută și sub denumirea de <b>repetiție</b> a
+                        șirurilor, se realizează folosind operatorul de multiplicare (*). Această operație
+                        permite crearea unui nou șir prin repetarea unui șir existent de un număr de ori.</p>
+                    <p><b>Repetiția</b>, cunoscută și sub denumirea de <b>replicare</b>, implică crearea unei noi
+                        secvențe prin repetarea unei secvențe existente de un număr de ori.</p>
+                </div>
+
+                <div>
+                    <p><b>String multiplication</b>, also known as string <b>repetition</b>, is achieved using the
+                        multiplication operator (*). This operation allows for the creation of a new string by repeating
+                        an existing string a specified number of times.</p>
+                    <p><b>Repetition</b>, also known as <b>replication</b>, involves creating a new sequence by
+                        repeating an existing sequence a specified number of times.</p>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Caracteristici</dt>
+                    <dd>Operanzi: Un operand trebuie să fie un șir de caractere, iar celălalt trebuie să fie un număr
+                        întreg. Ordinea acestor operanzi nu contează.</dd>
+                    <dd>Rezultat: Rezultatul este un nou obiect șir de caractere în care șirul_original este concatenat
+                        cu el însuși de valoarea_întreagă de ori.</dd>
+                    <dd>Repetiții zero: Dacă valoarea_întreagă este 0, se returnează un șir gol ('').</dd>
+                    <dd>Repetiții negative: Dacă valoarea_întreagă este un număr negativ, se returnează un șir gol ('').
+                    </dd>
+                    <dd>Repetiții cu număr cu virgulă: Încercarea de a înmulți un șir cu un număr cu virgulă
+                        va crea TypeError.</dd>
+                    <dd>Multiplicarea a două șiruri de caractere (de exemplu, "2" * "3" va genera o eroare TypeError).
+                        Dacă aveți de-a face cu numere formatate ca text, trebuie mai întâi să le convertiți folosind
+                        funcția int() sau float().</dd>
+                    <dd>Eficiență: Înmulțirea șirurilor este, în general, cea mai eficientă și lizibilă metodă de a repeta un șir în Python, comparativ cu utilizarea buclelor sau a metodei str.join() în același scop.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Characteristics:</dt>
+                    <dd>Operands: One operand must be a string, and the other must be an integer. The order of these
+                        operands does not matter.</dd>
+                    <dd>Result: The result is a new string object where the original_string is concatenated with itself
+                        integer_value times.</dd>
+                    <dd>Zero Repetitions: If the integer_value is 0, an empty string ('') is returned.</dd>
+                    <dd>Negative Repetitions: If the integer_value is a negative number, an empty string ('') is
+                        returned.</dd>
+                    <dd>Float Repetitions: Attempting to multiply a string by a float will result in a TypeError.</dd>
+                    <dd>Multiply two strings together (e.g., "2" * "3" will throw a TypeError). If you are dealing with
+                        numbers formatted as text, you must convert them first using the int() or float() function.</dd>
+                    <dd>Efficiency: String multiplication is generally the most efficient and readable method for
+                        repeating a string in Python compared to using loops or str.join() for the same purpose.</dd>
+                </dl>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="AX">*Multiplicarea secvenței - *Sequence multiplication</h2>
+
+            <p>Sintaxă: șir_repetat = șir_original * valoare_întregră</p>
+
+<pre><code><span># Repetiție șir de caractere</span>
+text = "Python "
+text_repetat = text * 3   
+print(text_repetat) <span>==> Python Python Python</span>
+
+<span># Repetarea unui caracter de un număr fix de ori</span>
+print("-" * 26)     <span>==> --------------------------</span>
+
+<span># Exemplu cu variabilă</span>
+cuvânt = "Lume"
+număr_repetiții = 2
+șir_repetat_din_variabilă = cuvânt * număr_repetiții
+print(șir_repetat_din_variabilă)  <span>==> LumeLume</span>
+
+șir_gol = "salut" * 0
+print(șir_gol) <span>==> ""</span>
+înmulțire_negativă = "lume" * -2
+print(înmulțire_negativă) <span>==> ""</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Adăugarea de separatori în timpul repetiției. Dacă ai nevoie de un anumit caracter — precum o virgulă
+                    sau un caracter de linie nouă — între elementele repetate, grupează textul și separatorul între
+                    paranteze, apoi elimină separatorul suplimentar de la final:</p>
+                <p>Appending Separators During Repetition. If you need a specific character—like a comma or
+                    newline—between the repeated elements, group the text and the separator in parentheses, then slice
+                    out the trailing extra separator at the end:</p>
+            </div>
+
+<pre><code><span># Repetați cu o virgulă, apoi eliminați ultima virgulă</span>
+elimină_ultimul = ("Element," * 4)[:-1]
+print(elimină_ultimul) <span>==> Element,Element,Element,Element</span>
+</code></pre>
+
+<pre><code><span># Înmulțiți fiecare element cu 5</span>
+numere = [1, 2, 3, 4]
+multiplicator = 5
+
+rezultat = [x * multiplicator for x in numere]
+print(rezultat) <span>==> [5, 10, 15, 20]</span>
+
+<span># Înmulțirea tuturor numerelor dintr-o secvență</span>
+numere2 = [2, 3, 4]
+total = 1
+
+<span># Utilizarea unei bucle</span>
+for număr in numere2:
+    total *= număr
+print(total)  <span># Calculare: 2 * 3 * 4</span>
+<span>==> 24</span>
+
+<span># Utilizarea generării de liste (list comprehension) pentru a obține secvența</span>
+val = 7
+multiplicatori = range(1, 6) <span># 1 la 5</span>
+
+rezultat = [val * i for i in multiplicatori]
+print(rezultat) <span>==> [7, 14, 21, 28, 35]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="TX">*Multiplicare pentru a crea un tabel - *Multiplication to create a table</h2>
+
+
+            <div class="grid-container">
+                <div>
+                    <p>Pentru a crea un tabel simplu cu sau fără anteturi în Python, puteți utiliza built-in string
+                        formatting, modulul csv (Comma Separated Values) pentru ieșiri simple separate prin virgulă sau
+                        biblioteci terțe, cum ar fi prettytable sau tabulate, care oferă opțiuni pentru ascunderea
+                        anteturilor.</p>
+                    <p>Metodele de formatare a șirurilor încorporate în Python, în special f-string-urile (literali de
+                        șir formatați) și str.format(), pot fi utilizate pentru a crea tabele într-un format bazat pe
+                        text. Aceste metode oferă control asupra alinierii, padding-ului și lățimii câmpului, permițând
+                        crearea unei ieșiri structurate.</p>
+                </div>
+
+                <div>
+                    <p>To create a simple table with or no headers in Python, you can use built-in string formatting,
+                        the csv module for simple comma-separated output, or third-party libraries like prettytable or
+                        tabulate which offer options to hide headers.</p>
+                    <p>Python's built-in string formatting methods, specifically f-strings (formatted string literals)
+                        and str.format(), can be used to create tables in a text-based format. These methods offer
+                        control over alignment, padding, and field width, enabling the creation of structured output.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea metodelor încorporate (formatarea șirurilor de caractere)</dt>
+                    <dd>Pentru un control maxim fără biblioteci externe, puteți formata manual rezultatul. Această
+                        abordare este cea mai bună pentru tabelele simple, cu lățime fixă.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Using built-in methods (string formatting)</dt>
+                    <dd>For maximum control without any external libraries, you can format the output manually. This
+                        approach is best for simple, fixed-width tables.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>fructe = [
+["Mere", 100, 90],
+["Caise", 95, 85],
+["Pere", 80, 75]
+]
+
+for rând in fructe:
+    print(f"{rând[0]:&lt;10} {rând[1]:&lt;5} {rând[2]:&lt;5}")
+<span>==> Mere       100   90   
+    Caise      95    85   
+    Pere       80    75</span>   
+</code></pre>
+
+          <div class="grid-container">
+            <p><b>Șirurile f</b> (literale de șir formatate) și <b>șir.format()</b> pot fi folosite pentru a crea tabele
+                într-un format bazat pe text.</p>
+            <p><b>f-strings</b> (formatted string literals) and <b>str.format()</b>, can be used to create tables in a
+                text-based format.</p>
+          </div>
+
+
+<pre><code>date = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Herculane"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Lugoj"}
+]
+
+<span># Definiți lățimile coloanelor pentru formatare</span>
+nume_lățime = max(len(dicţionar["nume"]) for dicţionar in date) + 2
+vârstă_lățime = max(len(str(dicţionar["vârstă"])) for dicţionar in date) + 6
+oraș_lățime = max(len(dicţionar["oraş"]) for dicţionar in date) + 2
+
+<span># Imprimare antet</span>
+print(f"{'Numele':&lt;{nume_lățime}}{'Vârsta':^{vârstă_lățime}}{'Orașul':>{oraș_lățime}}")
+print(f"{'-' * nume_lățime}{'-' * vârstă_lățime}{'-' * oraș_lățime}")
+
+<span># Afișează rândurile de date</span>
+for rând in date:
+    print(f"{rând['nume']:&lt;{nume_lățime}}{rând['vârstă']:^{vârstă_lățime}}{rând['oraş']:>{oraș_lățime}}")
+<span>==> Numele    Vârsta      Orașul
+    ----------------------------
+    Virgil      85       Severin
+    Tatiana     90     Herculane
+    Sever       70         Lugoj</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>În acest exemplu:</dt>
+                    <dd>Calculul lățimii coloanei: Variabilele nume_lățime, vârstă_lățime și oraș_lățime determină
+                        dinamic lungimea maximă necesară pentru fiecare coloană pe baza datelor, plus o mică umplutură
+                        pentru lizibilitate.</dd>
+                    <dd>Formatarea antetului: Un șir f este utilizat pentru a imprima rândul antetului. Specificatorii
+                        de format :&lt;, :^ și :> sunt utilizați pentru alinierea la stânga, alinierea la centru și
+                        respectiv alinierea la dreapta, în cadrul lățimilor specificate ale coloanelor.</dd>
+                    <dd>Linie separatoare: O linie de cratime este imprimată pentru a separa antetul de date, folosind
+                        înmulțirea șirurilor ('-' * xxx_lățime).</dd>
+                    <dd>Formatarea rândurilor de date: O buclă iterează prin lista de date, iar pentru fiecare
+                        dicționar, un șir f formatează și imprimă rândul, aplicând aceleași specificații de aliniere și
+                        lățime ca și antetul.</dd>
+                    <dd>Această abordare permite crearea flexibilă a tabelelor prin ajustarea datelor, a lățimilor
+                        coloanelor și a specificatorilor de aliniere din cadrul șirurilor f.</dd>
+                </dl>
+
+                <dl>
+                    <dt>In this example:</dt>
+                    <dd>Column Width Calculation: The name_width, age_width, and city_width variables dynamically
+                        determine the maximum length required for each column based on the data, plus a small padding
+                        for readability.</dd>
+                    <dd>Header Formatting: An f-string is used to print the header row. The format specifiers :&lt;, :^,
+                        and :> are used for left-alignment, center-alignment, and right-alignment, respectively, within
+                        the specified column widths.</dd>
+                    <dd>Separator Line: A line of hyphens is printed to separate the header from the data, using string
+                        multiplication ('-' * xxx_width).</dd>
+                    <dd>Data Row Formatting: A loop iterates through the data list, and for each dictionary, an f-string
+                        formats and prints the row, applying the same alignment and width specifications as the header.
+                    </dd>
+                    <dd>This approach allows for flexible table creation by adjusting the data, column widths, and
+                        alignment specifiers within the f-strings.</dd>
+                </dl>
+            </div>
+
+            <p>Folosind o <b>funcție</b> personalizată - Using a personalized <b>function</b>.</p>
+
+<pre><code>def creare_imprimare_tabel(datele, antete=None):
+    """
+        Creează și afișează un tabel formatat dintr-o listă de liste sau o listă de dicționare.
+
+        Argumente:
+        datele (listă): O listă de liste (pentru rânduri) sau o listă de dicționare (pentru rânduri cu coloane denumite).
+        antete (listă, opțional): O listă de șiruri de caractere de utilizat ca antete de coloană.
+        Dacă None și datele sunt o listă de dicționare, cheile vor fi utilizate ca antete.
+    """
+
+    if not datele:
+        print("Nu există date de afișat.")
+        return
+
+    <span># Determinarea antetelor și a formatului datelor</span>
+
+    <span># Pentru o listă de dicţionare</span>
+    if isinstance(datele[0], dict):
+        if antete is None:
+            antete = list(datele[0].keys())
+        rânduri = [[rând[antet] for antet in antete] for rând in datele]
+    <span># Pentru o listă de liste</span>
+    else:
+        if antete is None:
+            antete = [f"Coloană {i+1}" for i in range(len(datele[0]))]
+        rânduri = datele
+
+    <span># Calculează lățimile maxime ale coloanelor</span>
+    lățime_coloane = [len(str(antet)) for antet in antete]
+    for rând in rânduri:
+        for i, articol in enumerate(rând):
+            lățime_coloane[i] = max(lățime_coloane[i], len(str(articol)))
+
+    <span># Imprimare antete</span>
+    antet_linie = " | ".join([str(antete[i]).ljust(lățime_coloane[i]) for i in range(len(antete))])
+    print(antet_linie)
+    print("-" * len(antet_linie))
+
+    <span># Imprimare rânduri de date</span>
+    for rând in rânduri:
+        rând_linie = " | ".join([str(rând[i]).ljust(lățime_coloane[i]) for i in range(len(rând))])
+        print(rând_linie)
+        
+print("Tabelul listei de liste:")
+lista_date_personale = [
+    ["Virgil", 52, "Timişoara"],
+    ["Tatiana", 70, "Craiova"],
+    ["Sever", 35, "Hunedoara"]
+]
+lista_nume_coloane = ["nume", "vârstă", "oraş"]
+creare_imprimare_tabel(lista_date_personale, lista_nume_coloane)
+        
+print("\nTabelul listei de dicționare:")
+lista_date_dicţionar = [
+{"Nume": "Mircea", "Vârstă": 57, "Ocupație": "Profesor"},
+{"Nume": "Doru", "Vârstă": 42, "Ocupație": "Șofer de camion"},
+{"Nume": "Vasile", "Vârstă": 67, "Ocupație": "Balet"}
+]
+creare_imprimare_tabel(lista_date_dicţionar) <span># Antete derivate automat din cheile de dicționar</span>
+
+<span>==></span>
+    Tabelul listei de liste:
+    nume    | vârstă | oraş     
+    ----------------------------
+    Virgil  | 52     | Timişoara
+    Tatiana | 70     | Craiova  
+    Sever   | 35     | Hunedoara
+
+Tabelul listei de dicționare:
+Nume   | Vârstă | Ocupație       
+---------------------------------
+Mircea | 57     | Profesor       
+Doru   | 42     | Șofer de camion
+Vasile | 67     | Balet
+        
+</code></pre>
+
+
+<pre><code>def tabele_multiple(sursa, antete=None):
+    """
+        Creează și afișează un tabel formatat din date(sursa).
+
+        Această funcție poate gestiona datele ca o listă de liste sau o listă de dicționare.
+        Calculează automat lățimea coloanelor pentru a asigura alinierea corectă.
+
+        Argumente:
+        date(sura-listă): O listă de liste, unde fiecare listă interioară reprezintă un rând,
+        sau o listă de dicționare, unde fiecare dicționar reprezintă un rând.
+        antete (listă, opțional): O listă de șiruri de caractere care vor fi utilizate ca anteturi de coloană.
+        Dacă datele(sursa) este o listă de dicționare, cheile vor fi utilizate ca anteturi dacă acest argument nu este furnizat.
+    """
+    if not sursa:
+        print("Nu există date de afișat.")
+        return
+
+    <span># Determinarea structurii datelor(sursa) și a anteturilor</span>
+    if isinstance(sursa[0], dict):
+        if antete is None:
+            antete = list(sursa[0].keys())
+        rânduri_pentru_tabel = [[rând.get(antet, "") for antet in antete] for rând in sursa]
+    elif isinstance(sursa[0], list):
+        if antete is None:
+            antete = [f"Coloană {i+1}" for i in range(len(sursa[0]))]
+        rânduri_pentru_tabel = sursa
+    else:
+        print("Format de date neacceptat. Vă rugăm să utilizați o listă de liste sau o listă de dicționare.")
+        return
+
+    <span># Calculează lățimea maximă pentru fiecare coloană</span>
+    lățimea_coloanelor = [len(antet) for antet in antete]
+    for rând in rânduri_pentru_tabel:
+        for i, element in enumerate(rând):
+            lățimea_coloanelor[i] = max(lățimea_coloanelor[i], len(str(element)))
+
+    <span># Imprimați tabelul</span>
+    try:
+        <span># Imprimați antetele</span>
+        rând_de_antet = " | ".join(f"{antet:&lt;{lățimea_coloanelor[i]}}" for i, antet in enumerate(antete))
+        print(rând_de_antet)
+        <span># Tipărire linie de separare</span>
+        separator = "-|-".join("-" * lățime for lățime in lățimea_coloanelor)
+        print(separator)
+        <span># Tipăriți rânduri de date</span>
+        for rând in rânduri_pentru_tabel:
+            textul_rândului = " | ".join(f"{str(element):&lt;{lățimea_coloanelor[i]}}" for i, element in enumerate(rând))
+            print(textul_rândului)
+    except Exception as e:
+        print(f"A apărut o eroare la imprimarea tabelului: {e}", file=sys.stderr)
+
+<span># Listă de liste cu anteturi personalizate</span>
+print("--- Exemplu listă de liste ---")
+listă_sursă = [["Mere", 10],["Pere", 25],["Gutui", 5]]
+listă_antet = ["Fructe", "Cantitate"]
+tabele_multiple(listă_sursă, antete=listă_antet)
+print("\n")
+<span>==></span>
+--- Exemplu listă de liste ---
+    Fructe | Cantitate
+    -------|----------
+    Mere   | 10       
+    Pere   | 25       
+    Gutui  | 5 
+
+<span># Lista de dicționare</span>
+print("--- Exemplu listă de dicționare ---")
+date_personale = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Herculane"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Lugoj"}
+]
+tabele_multiple(date_personale)
+print("\n")
+<span>==></span>
+--- Exemplu listă de dicționare ---
+    nume    | vârstă | oraş         
+    --------|--------|--------------
+    Virgil  | 85     | Turnu Severin
+    Tatiana | 90     | Herculane    
+    Sever   | 70     | Lugoj
+
+<span># Listă de dicționare cu anteturi specifice</span>
+print("--- Exemplu listă de dicționare cu anteturi specifice ---")
+date_nume_vârstă = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Herculane"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Lugoj"}
+]
+anteturi_de_subseturi = ["nume", "vârstă"]
+tabele_multiple(date_nume_vârstă, antete=anteturi_de_subseturi)
+print("\n")
+<span>==></span>
+--- Exemplu listă de dicționare cu anteturi specifice ---
+    nume    | vârstă
+    --------|-------
+    Virgil  | 85    
+    Tatiana | 90    
+    Sever   | 70    
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea bibliotecii prettytable.</dt>
+                    <dd>Biblioteca prettytable este excelentă pentru generarea de tabele ASCII atractive vizual și oferă
+                        o opțiune simplă pentru dezactivarea antetului.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Using the prettytable library.</dt>
+                    <dd>The prettytable library is excellent for generating visually appealing ASCII tables and provides
+                        a simple option to disable the header.</dd>
+                </dl>
+            </div>
+
+<pre><code><span># Mai întâi, instalați:</span> <a href="https://pip.pypa.io/en/latest/installation/" target="_blank" rel="noopener">pip install --upgrade pip</a> şi <a href="https://pypi.org/project/prettytable/" target="_blank" rel="noopener">pip install prettytable</a>
+from prettytable import PrettyTable
+
+fructe = [
+["Măr", 100, 90],
+["Caisă", 95, 85],
+["Pară", 80, 75]
+]
+
+tabel = PrettyTable()
+for rând in fructe:
+    tabel.add_row(rând)
+
+print("antet la imprimare")    
+print(tabel.get_string())
+    
+print("\nantet ascuns la imprimare")
+print(tabel.get_string(header=False))
+<span>==> antet la imprimare</span>
+    +---------+---------+---------+
+    | Field 1 | Field 2 | Field 3 |
+    +---------+---------+---------+
+    |   Măr   |   100   |    90   |
+    |  Caisă  |    95   |    85   |
+    |   Pară  |    80   |    75   |
+    +---------+---------+---------+
+
+<span>==> antet ascuns la imprimare</span>
++-------+-----+----+
+|  Măr  | 100 | 90 |
+| Caisă |  95 | 85 |
+|  Pară |  80 | 75 |
++-------+-----+----+
+</code></pre>
+
+<pre><code><span># Inițializați tabelul și definiți anteturile</span>
+tabel = PrettyTable()
+tabel.field_names = ["Nume Student", "Scor", "Gradul"]
+
+<span># Adăugați rânduri individuale</span>
+tabel.add_row(["Gheorghiu", 80, "B"])
+tabel.add_row(["Topolniță", 100, "A"])
+
+<span># Adăugați mai multe rânduri simultan</span>
+tabel.add_rows([
+["Gărdăreanu", 60, "C"],
+["Cernăianu", 92, "A"]
+])
+
+print(tabel)
+
++----------------- +---------+--------+
+|   Nume Student   |   Scor  | Gradul |
++------------------+---------+--------+
+|   Gheorghiu      |    80   |    B   |
+|   Topolniță      |    100  |    A   |
+|   Gărdăreanu     |    60   |    C   |
+|   Cernăianu      |    92   |    A   |
++------------------+---------+--------+
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea bibliotecii tabulate.</dt>
+                    <dd>Biblioteca tabulate este o modalitate simplă de a crea tabele bine formatate cu diverse stiluri.
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>Using the tabulate library.</dt>
+                    <dd>The Tabulate library is an easy way to create well-formatted tables with various styles.</dd>
+                </dl>
+            </div>
+
+
+<pre><code><span># Mai întâi, instalați-o cu pip:</span> <a href="https://pypi.org/project/tabulate/" target="_blank" rel="noopener">pip install tabulate</a>.
+from tabulate import tabulate
+
+def creează_imprimă_tabel(sursa_de_date, antete=None):
+    """
+    Creează și imprimă un tabel formatat din sursa_de_date.
+
+    Această funcție folosește biblioteca "tabulate" pentru o formatare simplă și eficientă a tabelului.
+    Dacă nu o aveți instalată, rulați "pip install tabulate" în terminal.
+
+    Argumente:
+    sursa_de_date (listă de liste sau listă de dicționare): Datele pentru popularea tabelului.
+    antente (listă sau "firstrow" sau "chei", opțional): Anteturile de coloană pentru tabel.
+        - Dacă este o listă de șiruri de caractere, acestea sunt utilizate direct ca anteturi.
+        - Dacă este "firstrow", primul rând din 'sursa_de_date' este utilizat ca anteturi.
+        - Dacă este "keys" (și 'sursa_de_date' este o listă de dicționare), se utilizează cheile dicționarului.
+        - Dacă este "None", nu se vor utiliza anteturi.
+    """
+    print(tabulate(sursa_de_date, headers=antete, tablefmt="grid"))
+
+<span># Cu anteturi furnizate sub formă de listă</span>
+print("--- Tabel cu anteturi sub formă de listă ---")
+listă_date = [
+    ["Aneta", 30, "Panciu"],
+    ["Vasile", 25, "Cluj"],
+    ["Nelu", 35, "Satu Mare"]
+]
+antete_coloane = ["Nume", "Vârstă", "Oraș"]
+creează_imprimă_tabel(listă_date, antete=antete_coloane)
+
+print("\n--- Anteturi din primul rând de date ---")
+date_primul_rând_antet = [
+    ["Nume", "Vârstă", "Oraș"],
+    ["Aneta", 30, "Panciu"],
+    ["Vasile", 25, "Cluj"],
+    ["Nelu", 35, "Satu Mare"]
+]
+creează_imprimă_tabel(date_primul_rând_antet, antete="firstrow")
+
+print("\n--- Datele ca o listă de dicționare ---")
+date_personale = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Herculane"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Lugoj"}
+]
+
+creează_imprimă_tabel(date_personale, antete="keys")
+<span>==></span>
+--- Tabel cu anteturi sub formă de listă ---
+   +--------+----------+-----------+
+   | Nume   |   Vârstă | Oraș      |
+   +========+==========+===========+
+   | Aneta  |       30 | Panciu    |
+   +--------+----------+-----------+
+   | Vasile |       25 | Cluj      |
+   +--------+----------+-----------+
+   | Nelu   |       35 | Satu Mare |
+   +--------+----------+-----------+
+
+--- Anteturi din primul rând de date ---
++--------+----------+-----------+
+| Nume   |   Vârstă | Oraș      |
++========+==========+===========+
+| Aneta  |       30 | Panciu    |
++--------+----------+-----------+
+| Vasile |       25 | Cluj      |
++--------+----------+-----------+
+| Nelu   |       35 | Satu Mare |
++--------+----------+-----------+
+
+--- Datele ca o listă de dicționare ---
++---------+----------+---------------+
+| nume    |   vârstă | oraş          |
++=========+==========+===============+
+| Virgil  |       85 | Turnu Severin |
++---------+----------+---------------+
+| Tatiana |       90 | Herculane     |
++---------+----------+---------------+
+| Sever   |       70 | Lugoj         |
++---------+----------+---------------+
+</code></pre>
+
+          <div class="grid-container">
+            <p>Argumentul <b>tablefmt</b> din biblioteca Python tabulate specifică formatul de ieșire dorit pentru un
+                tabel. Acesta permite utilizatorilor să controleze prezentarea vizuală a datelor la imprimarea lor
+                frumoasă.</p>
+                <p>The <b>tablefmt argument</b> in the Python tabulate library specifies the desired output format for a
+                table. It allows users to control the visual presentation of the data when pretty-printing it.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Iată câteva dintre valorile tablefmt acceptate în mod obișnuit și efectele acestora:</dt>
+                    <dd>"plain": Un format de text simplu cu spații duble care separă coloanele și fără pseudografice.
+                    </dd>
+                    <dd>"simple": Folosește cratime pentru separatoare.</dd>
+                    <dd>"grid": Creează un tabel cu linii de grilă între rânduri și coloane.</dd>
+                    <dd>"pipe": Formatează tabelul folosind caractere bară (|) ca separatoare de coloane.</dd>
+                    <dd>"orgtbl": Formatează tabelul pentru modul Emacs Org.</dd>
+                    <dd>"rst": Generează formatul de tabel reStructuredText.</dd>
+                    <dd>"mediawiki": Produce un tabel în markup MediaWiki.
+                    </dd>
+                    <dd>"latex": Generează un tabel LaTeX de bază.</dd>
+                    <dd>"latex_booktabs": Generează un tabel LaTeX folosind pachetul booktabs pentru o estetică
+                        îmbunătățită.</dd>
+                    <dd>"html": Afișează tabelul în format HTML, potrivit pentru pagini web.</dd>
+                    <dd>"psql": Formatează tabelul similar cu ieșirea consolei PostgreSQL.</dd>
+                    <dd>"github": Formatează tabelul pentru a fi compatibil cu GitHub Flavored Markdown.</dd>
+                    <dd>"rounded_grid": Un format de grilă cu colțuri rotunjite pentru margini.</dd>
+                    <dd>"fancy_grid": Un format de grilă mai sofisticat cu margini îmbunătățite.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Here are some of the commonly supported tablefmt values and their effects:</dt>
+                    <dd>"plain": A simple text format with double spaces separating columns and no pseudographics.</dd>
+                    <dd>"simple": Uses hyphens for separators.</dd>
+                    <dd>"grid": Creates a table with grid lines between rows and columns.</dd>
+                    <dd>"pipe": Formats the table using pipe characters (|) as column separators.</dd>
+                    <dd>"orgtbl": Formats the table for Emacs Org-mode.</dd>
+                    <dd>"rst": Generates reStructuredText table format.</dd>
+                    <dd>"mediawiki": Produces a table in MediaWiki markup.</dd>
+                    <dd>"latex": Generates a basic LaTeX table.</dd>
+                    <dd>"latex_booktabs": Generates a LaTeX table using the booktabs package for enhanced aesthetics.
+                    </dd>
+                    <dd>"html": Outputs the table in HTML format, suitable for web pages.</dd>
+                    <dd>"psql": Formats the table similar to PostgreSQL console output.</dd>
+                    <dd>"github": Formats the table to be compatible with GitHub Flavored Markdown.</dd>
+                    <dd>"rounded_grid": A grid format with rounded corners for the borders.</dd>
+                    <dd>"fancy_grid": A more sophisticated grid format with enhanced borders.</dd>
+                </dl>
+            </div>
+
+<pre><code>from tabulate import tabulate
+
+listă_sursă_nivel_2 = [["Mere", 10],["Pere", 25],["Gutui", 5]]
+listă_antet_2 = ["Fructe", "Cantitate"]
+
+<span># Comportamentul implicit cu o listă de liste va formata un tabel fără anteturi implicite</span>
+print("--- Exemplu de tabelare fară anteturi ---")
+print(tabulate(listă_sursă_nivel_2, tablefmt="plain"))
+print("\n")
+==> --- Exemplu de tabelare fară anteturi (plain) ---
+    Mere   10
+    Pere   25
+    Gutui   5
+
+print("--- Exemplu de tabelare cu anteturi---")
+print(tabulate(listă_sursă_nivel_2, headers=listă_antet_2, tablefmt="pipe"))
+--- Exemplu de tabelare cu anteturi (pipe)---
+| Fructe   |   Cantitate |
+|:---------|------------:|
+| Mere     |          10 |
+| Pere     |          25 |
+| Gutui    |           5 |
+</code></pre>
+
+
+<pre><code>from tabulate import tabulate
+
+date = [["zecimal", 3.1415], ["țelină", "32.0"]]
+headers = ["șiruri", "numere"]
+
+<span># Utilizarea formatului "grilă"</span>
+print("---Format grilă---")
+print(tabulate(date, headers=headers, tablefmt="grid"))
+==>---Format grilă---
+   +----------+----------+
+   | șiruri   |   numere |
+   +==========+==========+
+   | zecimal  |   3.1415 |
+   +----------+----------+
+   | țelină   |  32      |
+   +----------+----------+
+
+<span># Utilizarea formatului "html"</span>
+print("---Format html---")
+print(tabulate(date, headers=headers, tablefmt="html"))
+==>---Format html---
+   &lt;table&gt;
+   &lt;thead&gt;
+   &lt;tr&gt;&lt;th&gt;șiruri  &lt;/th&gt;&lt;th style="text-align: right;"&gt;  numere&lt;/th&gt;&lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+   &lt;tr&gt;&lt;td&gt;zecimal &lt;/td&gt;&lt;td style="text-align: right;"&gt;  3.1415&lt;/td&gt;&lt;/tr&gt;
+   &lt;tr&gt;&lt;td&gt;țelină  &lt;/td&gt;&lt;td style="text-align: right;"&gt; 32     &lt;/td&gt;&lt;/tr&gt;
+   &lt;/tbody&gt;
+   &lt;/table&gt;
+</code></pre>
+
+            <table class="outer-hidden">
+                <thead>
+                    <tr>
+                        <th>șiruri </th>
+                        <th style="text-align: right;"> numere</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>zecimal </td>
+                        <td style="text-align: right;"> 3.1415</td>
+                    </tr>
+                    <tr>
+                        <td>țelină </td>
+                        <td style="text-align: right;"> 32 </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="grid-container">
+            <dl>
+                <dt>Utilizarea bibliotecii rich.</dt>
+                <dd>Oferă o clasă Table puternică pentru crearea de tabele plăcute din punct de vedere estetic, cu
+                    culori și alte stiluri.</dd>
+            </dl>
+            <dl>
+                <dt>Using the <b>rich library.</b></dt>
+                <dd>Provides a powerful Table class for creating aesthetically pleasing tables with colors and other
+                    styles.</dd>
+            </dl>
+          </div>
+
+
+
+<pre><code><span># Mai întâi, instalați-o cu pip:</span> <a href="https://pypi.org/project/rich/" target="_blank" rel="noopener">pip install rich</a>.
+
+from rich.console import Console
+from rich.table import Table
+
+consolă = Console()
+tabel = Table(title="Exemplu de tabel rich")
+
+tabel.add_column("Nume", style="cyan", no_wrap=True)
+tabel.add_column("Vârstă", style="magenta")
+tabel.add_column("Oraş", justify="right", style="green")
+
+tabel.add_row("Alina", "30", "Bucureşti")
+tabel.add_row("Bobei", "25", "Strehaia")
+
+consolă.print(tabel)
+==> Exemplu de tabel rich     
+    ┏━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━┓
+    ┃ Nume  ┃ Vârstă ┃      Oraş ┃
+    ┡━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━┩
+    │ Alina │ 30     │ Bucureşti │
+    │ Bobei │ 25     │  Strehaia │
+    └───────┴────────┴───────────┘
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>from rich.console import Console și from rich.table import Table: Aceste linii importă clasele
+                        Console și Table necesare din biblioteca rich.</dd>
+                    <dd>consolă = Console(): O instanță Console. Acest obiect este utilizat pentru a
+                        imprima renderizabile Rich, asigurând stilizarea și formatarea corecte în terminal.</dd>
+                    <dd>tabel = Table(titlu="Datele mele eșantion"): Se instanțiază un obiect Table. Puteți furniza un
+                        argument title pentru un titlu deasupra tabelului.</dd>
+                    <dd>
+                        <dl>
+                            <dt>tabel.add_column(): Metoda add_column() este utilizată pentru a defini coloanele
+                                tabelului.</dt>
+                            <dd>Primul argument este textul antetului coloanei.</dd>
+                            <dd>justify: Specifică alinierea textului din coloană (de exemplu, "stânga", "dreapta",
+                                "centru").</dd>
+                            <dd>style: Aplică un stil Rich întregii coloane (de exemplu, "cyan", "magenta").</dd>
+                            <dd>no_wrap: Împiedică încadrarea textului din coloană la linia următoare.</dd>
+                        </dl>
+                    </dd>
+                    <dd>tabel.add_row(): Metoda add_row() este utilizată pentru a popula tabelul cu date. Fiecare
+                        argument corespunde unei celule din rând, în ordinea coloanelor adăugate.</dd>
+                    <dd>consolă.print(tabel): În cele din urmă, metoda print() a obiectului Console este utilizată
+                        pentru a reda și afișa tabelul formatat în terminalul dumneavoastră.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>from rich.console import Console and from rich.table import Table: These lines import the
+                        necessary Console and Table classes from the rich library.</dd>
+                    <dd>console = Console(): An instance of Console is created. This object is used to print Rich
+                        renderables, ensuring proper styling and formatting in the terminal.</dd>
+                    <dd>table = Table(title="My Sample Data"): A Table object is instantiated. You can provide a title
+                        argument for a heading above your table.</dd>
+                    <dd>
+                        <dl>
+                            <dt>table.add_column(): The add_column() method is used to define the columns of your table.
+                            </dt>
+                            <dd>The first argument is the column header text.</dd>
+                            <dd>justify: Specifies the alignment of text within the column (e.g., "left", "right",
+                                "center").</dd>
+                            <dd>style: Applies a Rich style to the entire column (e.g., "cyan", "magenta").</dd>
+                            <dd>no_wrap: Prevents text in the column from wrapping to the next line.</dd>
+                        </dl>
+                    </dd>
+                    <dd>table.add_row(): The add_row() method is used to populate the table with data. Each argument
+                        corresponds to a cell in the row, in the order of the added columns.</dd>
+                    <dd>console.print(table): Finally, the print() method of the Console object is used to render and
+                        display the formatted table in your terminal.</dd>
+                </dl>
+            </div>
+
+<pre><code>from rich.console import Console
+from rich.table import Table
+
+<span># Creați un obiect Console (opțional, dar este o practică bună pentru imprimarea randabilelor Rich)</span>
+consolă = Console()
+
+<span># Creați un obiect Table, oferind opțional un titlu.</span>
+tabel= Table(title="Datele celor plecați din oraşul natal")
+
+<span># Adăugați coloane în tabel</span>
+tabel.add_column("ID", justify="right", style="blue", no_wrap=True)
+tabel.add_column("Nume", style="magenta")
+tabel.add_column("Vârstă", justify="center", style="green")
+tabel.add_column("Oraş", style="cyan")
+
+<span># Adăugați rânduri în tabel cu datele corespunzătoare coloanelor</span>
+tabel.add_row("1", "Zoe", "36", "Craiova")
+tabel.add_row("2", "Brutus", "35", "Herculane")
+tabel.add_row("3", "Gheorghe", "42", "Cugir")
+tabel.add_row("4", "Alina", "33", "Humuleşti")
+
+<span># Afișează tabelul în consolă</span>
+consolă.print(tabel)
+<span>==> Datele celor plecatți din oraşul natal</span>
+    ┏━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━┓
+    ┃ ID ┃ Nume     ┃ Vârstă ┃ Oraş      ┃
+    ┡━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━┩
+    │  1 │ Zoe      │   36   │ Craiova   │
+    │  2 │ Brutus   │   35   │ Herculane │
+    │  3 │ Gheorghe │   42   │ Cugir     │
+    │  4 │ Alina    │   33   │ Humuleşti │
+    └────┴──────────┴────────┴───────────┘
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea bibliotecii pandas.</dt>
+                    <dd>Biblioteca pandas din Python este utilizată în mod obișnuit pentru a crea și manipula structuri
+                        de date tabelare numite DataFrames.</dd>
+                    <dd>Biblioteca pandas este excelentă pentru analiza și vizualizarea datelor și poate imprima cu
+                        ușurință tabele din diverse structuri de date.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Using the pandas library.</dt>
+                    <dd>The pandas library in Python is commonly used to create and manipulate tabular data structures
+                        called DataFrames. </dd>
+                    <dd>The pandas library is great for data analysis and visualization and can easily print tables from
+                        various data structures.</dd>
+                </dl>
+            </div>
+
+
+<pre><code><span># Mai întâi, instalați-o cu pip:</span> <a href="https://pandas.pydata.org/docs/getting_started/install.html" target="_blank" rel="noopener">pip install pandas</a>.
+import pandas as pd
+
+date_personale_panda = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Herculane"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Lugoj"}
+]
+df = pd.DataFrame(date_personale_panda)
+print("--- Exemplu tabel cu panda ---")
+print(df)
+<span> --- Exemplu tabel cu panda ---</span>
+      nume  vârstă           oraş
+0   Virgil      85  Turnu Severin
+1  Tatiana      90      Herculane
+2    Sever      70          Lugoj
+</code></pre>
+
+
+
+<pre><code>import pandas as pd
+
+<span># Creați un dicționar unde cheile sunt nume de coloane și valorile sunt liste de date</span>
+date = {
+'Nume': ['Costel', 'Alexandra', 'Bobo', 'Doru'],
+'Vârstă': [25, 30, 22, 35],
+'Oraș': ['Severin', 'Arad', 'Strehaia', 'Hunedoara']
+}
+
+<span># Creați un DataFrame din dicționar</span>
+df = pd.DataFrame(date)
+print(df)
+==>     Nume  Vârstă       Oraș
+0     Costel      25    Severin
+1  Alexandra      30       Arad
+2       Bobo      22   Strehaia
+3       Doru      35  Hunedoara
+</code></pre>
+
+
+
+<pre><code>import pandas as pd
+<span># Creați o listă de liste unde fiecare listă interioară reprezintă un rând</span>
+date = [
+['Alexe', 25, 'Piteşti'],
+['Costel', 30, 'Severin'],
+['Ionel', 22, 'Ciroboreni'],
+['Guse', 35, 'Resița']
+]
+
+<span># Creați un DataFrame, specificând numele coloanelor</span>
+df = pd.DataFrame(date, columns=['Nume', 'Vârstă', 'Oraș'])
+print(df)
+==>    Nume  Vârstă         Oraș
+   0   Alexe      25     Piteşti
+   1   Costel     30     Severin
+   2   Ionel      22  Ciroboreni
+   3   Guse       35      Resița
+</code></pre>
+
+
+
+<pre><code>import pandas as pd
+
+<span># Create an empty DataFrame</span>
+df = pd.DataFrame()
+
+<span># Add columns to the empty DataFrame</span>
+df['Nume'] = ['Barbu', 'Juvete']
+df['Punctaj'] = [90, 85]
+print(df)
+==>  Nume  Punctaj
+0   Barbu       90
+1  Juvete       85
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="ML">map(), funcția lambda și join() - map(), lambda function and join()</h2>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Repetați fiecare șir dintr-o listă cu map() și lambda.</dt>
+                    <dd>Pentru a repeta șiruri de caractere într-o listă folosind map() în Python, se poate folosi o
+                        funcție lambda pentru a aplica logica de repetiție a fiecărui element de șir.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Repeat every string in a list with <strong>map() and lambda.</strong></dt>
+                    <dd>To repeat strings within a list using map() in Python, a lambda function can be employed to
+                        apply the repetition logic to each string element.</dd>
+                </dl>
+            </div>
+
+
+<pre><code><span># Definiți o listă de șiruri de caractere</span>
+şiruri = ["salut", "lume", "python"]
+<span># Definiți numărul de repetări</span>
+repetiții = 3
+<span># Folosește map() cu o funcție lambda pentru a repeta fiecare șir</span>
+<span># Funcția lambda preia fiecare șir (x) și îl repetă de un număr de ori,</span>
+<span>#adăugând un spațiu între fiecare repetiție pentru claritate.</span>
+șiruri_repetate = list(map(lambda x: (x + " ") * repetiții, şiruri))
+print(șiruri_repetate) <span>==> ['salut salut salut ', 'lume lume lume ', 'python python python ']</span> 
+</code></pre>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>şiruri = ["salut", "lume", "python"]: Inițializează o listă care conține șirurile ce urmează să fie   procesate.</dd>
+                    <dd>repetiții = 3: Aceasta setează numărul dorit de repetări ale fiecărui șir.</dd>
+                    <dt>lambda x: (x + " ") este o funcție anonimă (funcția lambda)</dt>
+                    <dd>x reprezintă fiecare șir individual din şiruri în timpul iterației.</dd>
+                    <dd>Y = (x + " ") * repetiții concatenează un spațiu la șirul x și apoi repetă întregul șir rezultat
+                        (de exemplu, "salut") de numărul specificat de repetări.</dd>
+                    <dt>map(lambda x: Y, şiruri):</dt>
+                    <dd>map() aplică o anumită funcție tuturor elementelor dintr-un iterabil (în acest caz, şiruri).
+                    </dd>
+                    <dd>list(...): Funcția map() returnează un obiect map, care este un iterator. Conversia acestuia
+                        într-o listă materializează explicit rezultatele într-o listă nouă.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>strings = ["hello", "world", "python"]: This initializes a list containing the strings to be
+                        processed.</dd>
+                    <dd>repetitions = 3: This sets the desired number of times each string should be repeated.</dd>
+                    <dt>lambda x: (x + " ") is an anonymous function (lambda function).</dt>
+                    <dd>x represents each individual string from strings during the iteration.</dd>
+                    <dd>Y = (x + " ") * repetitions concatenates a space to the string x and then repeats the entire
+                        resulting string (e.g., "hello ") the specified repetitions number of times.</dd>
+                    <dt>map(lambda x: Y, strings):</dt>
+                    <dd>map() applies a given function to all items in an iterable (in this case, strings).</dd>
+                    <dd>list(...): The map() function returns a map object, which is an iterator. Converting it to a
+                        list explicitly materializes the results into a new list.</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Repetă fiecare caracter dintr-un șir cu <b>map(), lambda</b> și <b>.join()</b>.</dt>
+                    <dt>Aceasta necesită trei pași:</dt>
+                    <dd>Transmiteți o funcție lambda și șirul (care este un iterabil de caractere) către map().</dd>
+                    <dd>Funcția lambda repetă fiecare caracter.</dd>
+                    <dd>Utilizați metoda <b>şir.join()</b> pentru a combina caracterele rezultate într-un singur șir.
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>Repeat each character in a string with <b>map(), lambda</b> and <b>.join()</b>.</dt>
+                    <dt>This requires three steps:</dt>
+                    <dd>Pass a lambda function and the string (which is an iterable of characters) to map().</dd>
+                    <dd>The lambda function repeats each character.</dd>
+                    <dd>Use the <b>str.join()</b> method to combine the resulting characters into a single string.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>cuvânt = "salut"
+factor = 3
+<span># Se aplică o funcție lambda fiecărui caracter din șir</span>
+iterator_litere = map(lambda literă: literă * factor, cuvânt)
+print(f"Map iterator: {iterator_litere}") <span>==> Map iterator: &lt;map object at 0x000002BAD0996AA0&gt;</span>
+<span># Uniți caracterele din iterator înapoi într-un singur șir de caractere</span>
+rezultat = " ".join(iterator_litere)
+print(rezultat)  <span>==> sss aaa lll uuu ttt</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>cuvânt = "salut": Această variabilă definește intrarea.</dd>
+                    <dd>factor = 3: Această variabilă determină de câte ori va fi repetată fiecare literă.</dd>
+                    <dt>map(lambda literă: literă * factor, cuvânt):</dt>
+                    <dd>map() aplică o funcție fiecărui element dintr-un iterabil.</dd>
+                    <dd>lambda literă: literă * factor este o funcție care preia un singur caracter (literă) și
+                        îl repetă de "factor" de ori.</dd>
+                    <dd>"cuvânt" este iterabilul asupra căruia operează map(), procesând fiecare caracter (literă)
+                        individual.</dd>
+                    <dd>Această expresie returnează un obiect map care conține caracterele (literele) repetate.</dd>
+                    <dt>" ".join(iterator_litere):</dt>
+                    <dd>" ".join() este o metodă de tip șir de caractere care concatenează elementele unui iterabil (în
+                        acest caz, obiectul map iterator_litere) într-un singur șir de caractere, folosind un șir spațiu
+                        alb ca separator.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>word = "hello": This defines the input string.</dd>
+                    <dd>factor = 3: This variable determines how many times each character will be repeated.</dd>
+                    <dt>map(lambda char: char * factor, word):</dt>
+                    <dd>map() applies a function to each item in an iterable.</dd>
+                    <dd>lambda char: char * factor is an anonymous function that takes a single character (char) and
+                        repeats it factor times.</dd>
+                    <dd>word is the iterable over which map() operates, processing each character individually.</dd>
+                    <dd>This expression returns a map object containing the repeated characters.</dd>
+                    <dt>" ".join(repeated_characters):</dt>
+                    <dd>" ".join() is a string method that concatenates elements of an iterable (in this case, the
+                        repeated_characters map object) into a single string, using an white space string as the
+                        separator.</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <p>De asemenea, puteți efectua repetiții folosind bucle (for or while), recursivitate sau utilizând
+                    funcții încorporate pentru tipurile de date secvențiale.<br>
+                    Poți utiliza funcția range() pentru a repeta o acțiune de un anumit număr de ori fără a fi nevoie de
+                    o secvență.</p>
+
+                <p>You can also perform repetition using loops (for or while), recursion, or by leveraging built-in
+                    features for sequence data types.<br>
+                    You can use the range() function to repeat an action a specific number of times without needing a
+                    sequence.</p>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="BF">bucla for - for loop</h2>
+
+            <div class="grid-container">
+                <p><b>for loop</b> iterează peste elementele oricărei secvențe (cum ar fi o listă, un șir de caractere
+                    sau un tuplu) și execută un bloc de cod o dată pentru fiecare element. Ar trebui să utilizați o
+                    buclă for atunci când cunoașteți numărul de repetiții în avans.</p>
+
+                <p>A <b>for loop</b> iterates over the items of any sequence (such as a list, string, or tuple) and
+                    executes a code block once for each item. You should use a for loop when you know the number of
+                    repetitions in advance.</p>
+            </div>
+
+
+<pre><code><span># Buclarea peste o listă de șiruri de caractere</span>
+fructe = ["prune ", "mere ", "cireșe "]
+factor = 3
+
+for fruct in fructe:
+    print(f"Acum am {factor}: {fruct*factor}")
+==> Acum am 3: prune prune prune 
+    Acum am 3: mere mere mere 
+    Acum am 3: cireșe cireșe cireșe
+
+<span># Iterarea folosind range() și indici:</span>
+for i in range(len(fructe)):
+    print(f"Elementul de la indicele {i} este multiplicat de {factor} ori: {fructe[i]*factor}")
+==> Elementul de la indicele 0 este multiplicat de 3 ori: prune prune prune 
+    Elementul de la indicele 1 este multiplicat de 3 ori: mere mere mere 
+    Elementul de la indicele 2 este multiplicat de 3 ori: cireșe cireșe cireșe
+
+<span># Iterarea cu enumerate():</span>
+for indice, valoare in enumerate(fructe):
+    print(f"Indicele: {indice}, multiplicat de {factor} ori: {valoare*factor}")
+==> Indicele: 0, multiplicat de 3 ori: prune prune prune 
+    Indicele: 1, multiplicat de 3 ori: mere mere mere 
+    Indicele: 2, multiplicat de 3 ori: cireșe cireșe cireșe 
+</code></pre>
+
+
+<pre><code><span># Repetarea unui număr fix de ori</span>
+for i in range(3):
+    print("Salut, Python")
+==> Salut, Python
+    Salut, Python
+    Salut, Python
+</code></pre>
+
+            <p>Pentru mai multe detalii și exemple, consultați <a
+                    href="https://docs.python.org/3/reference/compound_stmts.html#the-for-statement" target="_blank"
+                    rel="noopener">Documentația oficială Python, "for loop".</a>
+            </p>
+
+            <p>For more details and examples, refer to the <a
+                    href="https://docs.python.org/3/reference/compound_stmts.html#the-for-statement" target="_blank"
+                    rel="noopener">Python official documentation, "for loop".</a></p>
+            <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="BW">bucla while - while loop</h2>
+
+            <div class="grid-container">
+                <p>O <b>buclă while</b> execută în mod repetat un bloc de cod atâta timp cât o anumită condiție este
+                    adevărată.
+                    Această structură de control este utilă în special atunci când numărul de iterații nu este cunoscut
+                    în prealabil și depinde de evaluarea condiției în timpul execuției.
+                </p>
+
+                <p>
+                    A <b>while loop</b> repeatedly executes a block of code as long as a given condition is true.
+                    This control structure is particularly useful when the number of iterations is not known beforehand
+                    and depends on the condition's evaluation during execution.
+                </p>
+            </div>
+
+
+<pre><code>Sintaxă:
+    
+while condition:
+    <span># Bloc de cod care va fi executat în mod repetat</span>
+    <span># (Instrucțiuni indentate)</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>condiție while: Cuvântul cheie "while" inițiază bucla, urmat de o condiție (o expresie
+                        booleană). Această condiție este evaluată la începutul fiecărei iterații.</dd>
+                    <dd>Două-puncte (:) la sfârșitul condiției unei instrucțiuni while marchează sfârșitul antetului buclei și semnalează începutul corpului acesteia.</dd>
+                    <dd>Bloc de cod indentat: Instrucțiunile indentate sub instrucțiunea while formează corpul buclei.
+                        Aceste instrucțiuni sunt executate în mod repetat atâta timp cât condiția este evaluată ca
+                        True.
+                    </dd>
+                    <dt>Cum are loc repetiția:</dt>
+                    <dd>Verificare inițială: Condiția este evaluată. Dacă este True blocul de cod din
+                        interiorul buclei este executat.</dd>
+                    <dd>Verificări ulterioare: După fiecare execuție a blocului de cod, condiția este evaluată din nou.
+                    </dd>
+                    <dd>Continuare: Dacă condiția este încă True, blocul de cod este executat din nou. Acest
+                        ciclu continuă.</dd>
+                    <dd>Terminare: Când condiția este evaluată ca falsă (False), bucla se termină, iar fluxul
+                        programului continuă cu instrucțiunea imediat următoare blocului indentat al buclei.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>while condition: The while keyword initiates the loop, followed by a condition (a boolean
+                        expression). This condition is evaluated at the beginning of each iteration.</dd>
+                    <dd>The colon (:) at the end of a while condition represents the end of the loop header and signals the start of the loop body</dd>
+                    <dd>Indented Code Block: The statements indented below the while statement form the loop's body.
+                        These statements are executed repeatedly as long as the condition evaluates to True.</dd>
+                    <dt>How Repetition Occurs:</dt>
+                    <dd>Initial Check: The condition is evaluated. If it's True, the code block inside the loop is
+                        executed.</dd>
+                    <dd>Subsequent Checks: After each execution of the code block, the condition is evaluated again.
+                    </dd>
+                    <dd>Continuation: If the condition is still True, the code block is executed again. This cycle
+                        continues.</dd>
+                    <dd>Termination: When the condition evaluates to False, the loop terminates, and the program flow
+                        continues with the statement immediately following the loop's indented block.</dd>
+                </dl>
+            </div>
+
+<pre><code>numără = 0
+while numără &lt; 3: <span># Două puncte marchează sfârșitul antetului</span>
+    print(f"Numărul este: {numără}") <span># Bloc de cod indentat (corpul buclei)</span>
+    numără += 1  <span># Incrementează numărul până când condiția este falsă</span>
+print("Bucla sa terminat.")
+==> Numărul este: 0
+    Numărul este: 1
+    Numărul este: 2
+    Bucla sa terminat.
+</code></pre>
+
+            <div class="grid-container">
+                <p>În acest exemplu, bucla continuă atâta timp cât "numără" este mai mic decât 3. În interiorul buclei,
+                    "numără" este incrementat la fiecare iterație, ceea ce duce în cele din urmă la faptul că, condiția
+                    "numără" &lt; 3 devine falsă (False) și încheie bucla.</p>
+
+                <p>In this example, the loop continues as long as count is less than 3. Inside the loop, count is
+                    incremented in each iteration, eventually leading to the condition count &lt; 3 becoming False and
+                    terminating the loop.</p>
+            </div>
+
+            <div class="grid-container">
+                <p><b>Iterating through characters of a string.</b><br>
+                    A while loop can be used with an index to access and process each character of a string
+                    sequentially.</p>
+
+                <p><b>Iterarea prin caracterele unui șir de caractere.</b><br>
+                    O buclă while poate fi utilizată cu un indice pentru a accesa și procesa secvențial fiecare caracter
+                    al unui șir de caractere.</p>
+            </div>
+
+
+<pre><code>cuvânt = "Salut"
+indice = 0
+factor = 3
+while indice &lt; len(cuvânt):
+    print(cuvânt[indice]*factor, end=" ")
+    indice += 1
+<span>==> SSS aaa lll uuu ttt</span>
+</code></pre>
+
+
+<pre><code>numără = 0
+factor = 2
+while numără &lt; 3:
+    intrare = input("Introduceți un cuvânt: ")
+    print(f"Ai introdus {intrare} și ai primit: {intrare*factor}")
+    numără += 1 <span># Incrementează numărul până când condiția este falsă</span>
+print("Bucla sa terminat.")
+==> Introduceți un cuvânt: Salut
+    Ai introdus Salut și ai primit: SalutSalut
+    Introduceți un cuvânt: Iubire
+    Ai introdus Iubire și ai primit: IubireIubire
+    Introduceți un cuvânt: La revedere
+    Ai introdus La revedere și ai primit: La revedereLa revedere
+    Bucla sa terminat.
+</code></pre>
+
+
+            <div class="grid-container">
+                <p><b>Căutarea subșirurilor sau a caracterelor.</b><br>
+                    O buclă while poate fi utilizată împreună cu metode de tip șir, cum ar fi in sau find(), pentru a
+                    localiza elemente specifice dintr-un șir.</p>
+
+                <p><b>Searching for substrings or characters</b>.<br>
+                    A while loop can be used in conjunction with string methods like in or find() to locate specific
+                    elements within a string.</p>
+            </div>
+
+
+<pre><code>propoziție = "Aneta are un câine și o pisică neagră care sare repede peste câinele tolănit."
+print(f"Propoziția are {len(propoziție)} de caractere.") <span>==> Propoziția are '77' de caractere.</span>
+căutare_caracter = "e"
+caracter_găsit = 0
+indice = 0
+while indice &lt; len(propoziție):
+    if propoziție[indice] == căutare_caracter:
+        caracter_găsit += 1
+    indice += 1
+print(f"Litera '{căutare_caracter}' apare de {caracter_găsit} ori.")
+<span>==> Litera 'e' apare de 13 ori.</span>
+</code></pre>
+
+
+<pre><code><span># căutarea unui caracter</span>
+șirul_meu = "salut lume"
+caracter_țintă = "u"
+indice = 0
+găsit_indice = -1
+
+while indice &lt; len(șirul_meu):
+    if șirul_meu[indice] == caracter_țintă:
+        găsit_indice = indice
+        break <span># Ieșire din buclă odată ce caracterul a fost găsit</span>
+    indice += 1
+
+if găsit_indice != -1:
+    print(f"Litera '{caracter_țintă}' a fost găsită la indexul {găsit_indice}.")
+else:
+    print(f"Litera '{caracter_țintă}' nu a fost găsită în șir.")
+<span>==> Litera 'u' a fost găsită la indexul 3.</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p><b>Crearea unei bucle while cu o structură "do-while".</b><br>
+                    Spre deosebire de alte limbaje, Python nu are o buclă do-while nativă. Cu toate acestea, puteți
+                    emula una folosind while True și o instrucțiune break pentru a ieși din buclă odată ce o condiție
+                    este îndeplinită.</p>
+
+                <p><b>Creating a while loop with a "do-while" structure.</b><br>
+                    Unlike some other languages, Python does not have a native do-while loop. However, you can emulate
+                    one by using while True and a break statement to exit the loop once a condition is met.</p>
+            </div>
+<pre><code>while True:
+    intrare_utilizator = input("Introduceți 'q': ")
+    if intrare_utilizator.lower() == 'q':
+        break
+print(f"Felicitari, ați introdus corect: '{intrare_utilizator}' este parola pentru ieșire.")
+print("Bucla s-a terminat.")
+==> Introduceți 'q': q
+    Felicitari, ați introdus corect: 'q' este parola pentru ieșire.
+    Bucla s-a terminat.
+</code></pre>
+
+            <div class="grid-container">
+                <p><b>Validarea datelor introduse de utilizator:</b><br>
+                    Buclele while sunt utilizate frecvent pentru a solicita în mod repetat introducerea unor date de
+                    către utilizator, până când este furnizat un șir de caractere valid sau așteptat.</p>
+
+                <p><b>Validating user input:</b><br>
+                    while loops are commonly used to repeatedly prompt for user input until a valid or expected string
+                    is provided.</p>
+            </div>
+
+
+<pre><code>parolă = ""
+while parolă != "secret":
+    parolă = input("Introduce parola: ")
+    if parolă != "secret":
+        print("Parolă incorectă. Încercați din nou.")
+print("Accesul aprobat")
+==> Introduce parola: sec
+    Parolă incorectă. Încercați din nou.
+    Introduce parola: secret
+    Accesul aprobat
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Considerați la utilizarea funcției "while" cu șiruri de caractere:</dt>
+                    <dd>Terminarea buclei: Asigurați-vă că, în cele din urmă, condiția buclei devine "False" pentru a
+                        evita buclele infinite. Aceasta implică adesea modificarea unei variabile din corpul buclei care
+                        influențează condiția.</dd>
+                    <dd>Gestionarea indicelui: Când iterați după indice, nu uitați să inițializați indicele corect (de
+                        obicei 0 pentru primul caracter) și să îl incrementați în cadrul buclei.</dd>
+                    <dd>Metode de șir de caractere: Utilizați metode de șir de caractere încorporate, cum ar fi len(),
+                        in, find(), lower(), upper() sau strip() pentru a simplifica manipularea șirurilor de caractere
+                        în cadrul buclei.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Considerations when using while with strings:</dt>
+                    <dd>Loop termination: Ensure the loop condition eventually becomes False to avoid infinite loops.
+                        This often involves modifying a variable within the loop's body that influences the condition.
+                    </dd>
+                    <dd>Index management: When iterating by index, remember to initialize the index correctly (usually
+                        to 0 for the first character) and increment it within the loop.</dd>
+                    <dd>String methods: Utilize built-in string methods like len(), in, find(), lower(), upper(), or
+                        strip() to simplify string manipulation within the loop.</dd>
+                </dl>
+            </div>
+
+
+            <p>Pentru mai multe detalii și exemple, consultați <a
+                    href="https://docs.python.org/3/reference/compound_stmts.html#the-while-statement" target="_blank"
+                    rel="noopener">Documentația oficială Python, "while loop".</a></p>
+
+
+            <p>For more details and examples, refer to the <a
+                    href="https://docs.python.org/3/reference/compound_stmts.html#the-while-statement" target="_blank"
+                    rel="noopener">Python official documentation, "while loop".</a></p>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="FR">Funcția itertools.repeat() - itertools.repeat() Function</h2>
+
+            <div class="grid-container">
+                <p><b>Funcția itertools.repeat()</b> din Python este utilizată pentru a crea un iterator care returnează
+                    un obiect specificat în mod repetat. Această funcție face parte din modulul itertools, care oferă o
+                    colecție de instrumente rapide și eficiente din punct de vedere al memoriei pentru crearea și lucrul
+                    cu iteratori.</p>
+
+                <p>The <b>itertools.repeat() function</b> in Python is used to create an iterator that returns a
+                    specified object repeatedly. This function is part of the itertools module, which provides a
+                    collection of fast, memory-efficient tools for creating and working with iterators.</p>
+            </div>
+
+
+            <p>itertools.repeat(object, times=None)</p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Caracteristici:</dt>
+                    <dd>Repetarea unui singur obiect: repeat() ia un obiect ca prim argument și returnează un iterator
+                        care produce acest obiect.</dd>
+                    <dd>Repetiție nedefinită: Dacă argumentul times nu este furnizat, repeat() va produce obiectul la
+                        infinit.</dd>
+                    <dd>Repetiție limitată: Dacă argumentul times este specificat, repeat() va produce obiectul exact de
+                        același număr de ori.</dd>
+                    <dd>Eficiență a memoriei: repeat() este leneșă, ceea ce înseamnă că stochează o singură referință la
+                        obiectul care se repetă, ceea ce o face eficientă din punct de vedere al memoriei în comparație
+                        cu crearea unei liste cu același obiect repetat de mai multe ori.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Key Features:</dt>
+                    <dd>Repetition of a single object: repeat() takes an object as its first argument and returns an
+                        iterator that yields this object.
+                    </dd>
+                    <dd>Indefinite repetition: If the times argument is not provided, repeat() will yield the object
+                        infinitely.</dd>
+                    <dd>Limited repetition: If the times argument is specified, repeat() will yield the object exactly
+                        that many times.</dd>
+                    <dd>Memory efficiency: repeat() is lazy, meaning it only stores a single reference to the object
+                        being repeated, making it memory-efficient compared to creating a list with the same object
+                        repeated many times.</dd>
+                </dl>
+            </div>
+
+<pre><code>from itertools import repeat
+
+<span># Repetă un cuvânt de 3 ori</span>
+for cuvânt in repeat("Salut", times=3):
+    print(cuvânt, end=", ")
+<span>==> Salut, Salut, Salut,</span>
+</code></pre>
+
+
+<pre><code>from itertools import repeat
+
+<span># Folosind repeat cu zip</span>
+fructe = ["măr", "pară", "cireșă", "caisă", "smochină"]
+inventar_zip = zip(fructe, repeat(0))
+print(f"Listă inventar tuple: {list(inventar_zip)}")
+
+inventar_dicţionar = dict(zip(fructe, repeat(0)))   <span># Inițializează inventarul cu 0 pentru fiecare fruct</span>
+print(f"Start inventar fructe cantitate: {inventar_dicţionar}")
+==> Listă inventar tuple: [('măr', 0), ('pară', 0), ('cireșă', 0), ('caisă', 0), ('smochină', 0)]
+    Start inventar fructe cantitate: {'măr': 0, 'pară': 0, 'cireșă': 0, 'caisă': 0, 'smochină': 0}
+</code></pre>
+
+
+<pre><code>import itertools
+
+numără = 0
+for item in itertools.repeat([1, 2]):
+    print(item)
+    numără += 1
+    if numără == 2: <span># Se oprește după 2 iterații</span>
+        break
+==> [1, 2]
+    [1, 2]
+</code></pre>
+
+                <p>Pentru mai multe detalii și exemple, consultați <a
+                    href="https://docs.python.org/3/library/itertools.html#itertools.repeat" target="_blank"
+                    rel="noopener">Documentația oficială Python itertools.repeat().</a></p>
+            
+                <p>For more details and examples, refer to the official <a
+                    href="https://docs.python.org/3/library/itertools.html#itertools.repeat" target="_blank"
+                    rel="noopener">Python itertools.repeat() documentation.</a></p>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="LC">List comprehension</h2>
+
+          <div class="grid-container">
+            <p>Pentru iterarea unei liste de șiruri de caractere, o înțelegere a listei este adesea considerată mai
+                "Pythonic" și mai ușor de citit decât map() cu lambda.</p>
+            <p>For iterating over a list of strings, a list comprehension is often considered more "Pythonic" and
+                readable than map() with lambda.</p>
+          </div>
+
+<pre><code>șiruri_de_caractere = ["salut", "lume", "python"]
+număr_repetiții = 3
+
+șiruri_repetate_comp = [șir * număr_repetiții for șir in șiruri_de_caractere]
+print(șiruri_repetate_comp)
+<span>==> ['salutsalutsalut', 'lumelumelume', 'pythonpythonpython']</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Puncte cheie:</dt>
+                    <dd>Atât concatenarea, cât și repetiția creează noi obiecte secvențiale; acestea nu modifică
+                        secvențele originale la locul lor.</dd>
+                    <dd>Pentru concatenare, ambii operanzi trebuie să fie de același tip de secvență (de exemplu, șir +
+                        șir). Încercarea de a concatena direct diferite tipuri de secvențe va duce la o eroare de tip
+                        TypeError.</dd>
+                    <dd>Pentru repetiție, un operand trebuie să fie o secvență, iar celălalt trebuie să fie un număr
+                        întreg. Un număr întreg negativ va duce la o secvență goală.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Key Points:</dt>
+                    <dd>Both concatenation and repetition create new sequence objects; they do not modify the original
+                        sequences in place.</dd>
+                    <dd>For concatenation, both operands must be of the same sequence type (e.g., string + string).
+                        Attempting to concatenate different sequence types directly will result in a TypeError.</dd>
+                    <dd>For repetition, one operand must be a sequence and the other must be an integer. A non-positive
+                        integer will result in an empty sequence.</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Comparație cu alte metode.</dt>
+                    <dd>Deși utilizarea funcției map() este o abordare validă și "funcțională", în special cu lambda
+                        pentru operații scurte, nu este întotdeauna cea mai lizibilă sau eficientă metodă pentru
+                        repetarea șirurilor de caractere.</dd>
+                    <dd>Înmulțirea șirurilor de caractere (*): Pentru repetarea unui singur șir de un număr stabilit de
+                        ori, operatorul * este cea mai simplă și mai directă metodă.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Comparison to other methods.</dt>
+                    <dd>While using map() is a valid and "functional" approach, especially with lambda for short
+                        operations, it is not always the most readable or efficient method for string repetition. </dd>
+                    <dd>String multiplication (*): For repeating a single string a set number of times, the * operator
+                        is the simplest and most direct method.</dd>
+                </dl>
+            </div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a>
+                    </address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+    <script src="JS/treileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

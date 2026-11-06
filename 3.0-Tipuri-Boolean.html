@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="CSS/main-style.css">
+
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 3.0 Tipuri Boolean</title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-0 navigare">
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                        <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                        <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                        <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-0"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaB.svg" alt="B" class="logo">
+                    <h1>3.0 Tipuri boolean - Boolean Types</h1>
+                </div>
+            </div>
+
+            <div class="ro-en-1-0 container-links ro-en">
+                <div>
+                    <ul>
+                        <li>În acest capitol veți studia:</li>
+                        <li><a href="#TB">Tipuri boolean</a></li>
+                        <li><a href="#AF">Adevărat vs. Fals</a></li>
+                        <li><a href="#BO">Operatori booleeni</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>In this chapter you will study:</li>
+                        <li><a href="#TB">Boolean Types</a></li>
+                        <li><a href="#AF">Truthy vs. Falsy</a></li>
+                        <li><a href="#BO">Boolean operators</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="second-empty-1-0"></div>
+
+        <div class="contents-1-0">
+
+            <h2 id="TB">Tipuri boolean - Boolean Types</h2>
+
+            <ul class="menu">
+                <li><a href="https://docs.python.org/3/library/stdtypes.html#boolean-type-bool" target="_blank"
+                        rel="noopener">Boolean
+                        Type - bool</a></li>
+
+                <li><a href="https://www.w3schools.com/python/python_booleans.asp" target="_blank" rel="noopener">Python
+                        Booleans</a>
+                </li>
+
+                <li><a href="https://docs.python.org/3/library/functions.html#bool" target="_blank" rel="noopener">Built-in
+                        Functions</a></li>
+            </ul>
+
+            <div class="grid-container">
+                <div>
+                    <p>Tipul de date boolean (bool) reprezintă una dintre cele două valori de adevăr predefinite:
+                        <b>True</b> sau <b>False</b>.
+                    </p>
+                    <p>Valorile True și False sunt sensibile la majuscule și trebuie scrise întotdeauna cu majusculă.
+                        Valorile booleene sunt deasemenea o subclasă a numerelor întregi (int), în care True se comportă
+                        ca 1, iar False se comportă ca 0.</p>
+                </div>
+
+                <div>
+                    <p>The Boolean data type (bool) represents one of two built-in truth values: <b>True</b> or
+                        <b>False</b>.
+                    </p>
+                    <p>True or False are case-sensitive and must always be capitalized. Booleans values are also a
+                        subclass of integers (int), where True behaves as 1 and False behaves as 0.</p>
+                </div>
+            </div>
+
+            <pre><code>print(type(True))   <span>==>&lt;class 'bool'></span>
+print(type(False))  <span>==>&lt;class 'bool'></span>
+
+print(True == 1)    <span>==>True</span>
+print(False == 0)   <span>==>True</span>
+
+print(issubclass(bool, int))  <span>==>True</span>
+print(isinstance(True, int))  <span>==>True</span>
+print(isinstance(False, int)) <span>==>True</span>
+
+print(True + True) <span>==> 2</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>În Python, o valoare booleană (reprezentată prin "tipul de date bool") este utilizată pentru a lua
+                    decizii și a controla fluxul unui program, prin evaluarea faptului dacă o condiție este adevărată
+                    (True) sau falsă (False).</p>
+                <p>In Python, a Boolean (represented as the "bool data type") is used to make decisions and control the
+                    flow of a program by evaluating whether a condition is True or False.</p>
+            </div>
+
+            <p>Valori booleene în diverse scenarii - Booleans in the different scenarios:</p>
+
+            <pre>
+<span>#Instrucțiuni condiționale (if, elif, else)</span>
+<span>#Valorile booleene determină ce bloc de cod se execută în funcție de o condiție.</span>
+este_conectat = True
+
+if este_conectat:
+    print("Bun venit!") <span>#Se execută deoarece condiția este adevărată.</span>
+else:
+    print("Te rog conecteazăte.")
+</pre>
+
+            <pre><code><span># Comparaţie</span>
+<span># Ori de câte ori compari două valori folosind operatori de comparare 
+(>, &lt;, ==, !=, >=, &lt;=), Python returnează automat o valoare booleană.</span>
+temperatura = 0
+îngheață = temperatura &lt;= 0  <span># Se evaluează ca adevărat</span>
+print(îngheață)  <span>==>True</span>
+îngheață = temperatura > 0  <span># Se evaluează ca fals</span>
+print(îngheață)  <span>==>False</span>
+</code></pre>
+
+            <pre><code><span># Comenzi de buclă (while)</span>
+<span># O buclă "while" verifică în mod continuu o condiție booleană</span>
+<span>#și se execută atâta timp cât acea condiție rămâne adevărată</span>
+
+timp_expirat = False
+while not timp_expirat:
+    print("Poți continua.")  <span>==> Poți continua.</span>
+    timp_expirat = True      <span># Încheie bucla</span>
+</code></pre>
+
+
+            <pre><code><span># O buclă "if" verifică condiții booleane</span>
+<span># Valorile booleene acționează ca "indicatori" (sau "semnalizatoare")</span> 
+<span>#pentru a monitoriza o stare sau un status în cadrul unei aplicații.</span>
+
+def proces_plata(suma):
+    if suma &lt;= 0:
+        return False  <span># Plata a eșuat</span>
+    return True  <span># Plata a reușit</span>
+    
+proces_plata(30)  ==> True
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="AF">Adevărat vs. Fals - Truthy vs. Falsy</h2>
+
+            <p>Următoarele valori specifice sunt evaluate explicit ca False de către funcția bool():</p>
+
+            <table class="outer-hidden">
+                <caption class="bold">Valori "falsy" (care returnează False)</caption>
+                <tr>
+                    <th>Categorie</th>
+                    <th> Cod Exemplu</th>
+                    <th> Rezultat</th>
+                </tr>
+                <tr>
+                    <td>Constants</td>
+                    <td>bool(None), bool(False)</td>
+                    <td>False, False</td>
+                </tr>
+                <tr>
+                    <td>Numeric Zeros</td>
+                    <td>bool(0), bool(0.0)</td>
+                    <td>False, Fals</td>
+                </tr>
+                <tr>
+                    <td>Empty Strings</td>
+                    <td>bool("")</td>
+                    <td>False</td>
+                </tr>
+                <tr>
+                    <td>Empty Collections</td>
+                    <td>bool([]) (Empty List)<br> bool(()) (Empty Tuple)<br> bool({}) (Empty Dict)<br> bool(set())
+                        (Empty Set)</td>
+                    <td>False<br> False<br> False<br> False</td>
+                </tr>
+            </table>
+
+            <p>Orice element care conține date sau reprezintă o valoare diferită de zero returnează True:</p>
+
+            <table class="outer-hidden">
+                <caption class="bold">Valori "truthy" (care returnează True)</caption>
+                <tr>
+                    <th>Categorie</th>
+                    <th> Cod Exemplu</th>
+                    <th> Rezultat</th>
+                </tr>
+                <tr>
+                    <td>Numere</td>
+                    <td>bool(42)<br> bool(-19) (Numerele negative sunt True)<br> bool(3.14)</td>
+                    <td>True<br> True<br> True</td>
+                </tr>
+                <tr>
+                    <td>Șiruri de caractere</td>
+                    <td>bool("Hello")<br> bool(" ") (Spațiile albe sunt date)</td>
+                    <td>True<br> True</td>
+                </tr>
+                <tr>
+                    <td>Populated Collections</td>
+                    <td>bool([1, 2, 3])<br> bool({"key": "value"})</td>
+                    <td>True<br> True</td>
+                </tr>
+            </table>
+
+            <p>Fără a menționa True or False<br>
+                Python efectuează automat această conversie pentru evaluarea valorii de adevăr în cadrul instrucțiunilor
+                "if" și al buclelor.</p>
+
+            <pre><code>username_list = ["administrator", "oaspete"]
+
+<span># Python evaluează implicit valoarea de adevăr a listei</span>
+if username_list:
+    print(f"Utilizatori găsiți: {username_list}")
+else:
+    print("Lista de utilizatori este goală!")
+<span>==> Utilizatori găsiți: ['administrator', 'oaspete']</span>
+</code></pre>
+
+            <p class="bold">Testarea obiectelor personalizate</p>
+            <pre><code>class Cont:
+    def __init__(self, balanță):
+        self.balanță = balanță
+
+    def __bool__(self):
+        <span># Contul este considerat "falsy" dacă balanță este 0 sau negativ</span>
+        return self.balanță > 0
+
+cont_activ = Cont(150)
+cont_fără_fonduri = Cont(0)
+
+print(bool(cont_activ))          <span>==> True</span>
+print(bool(cont_fără_fonduri))   <span>==> False</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="BO">Operatori booleeni - Boolean operators</h2>
+
+            <div class="grid-container">
+                <p>Python utilizează trei operatori logici booleeni principali: <b>and, or</b> și <b>not</b>. Acești
+                    operatori combină instrucțiuni condiționale și evaluează expresiile, rezultând o valoare booleană
+                    <b>True</b> sau <b>False</b>.
+                </p>
+
+                <p>Python uses three main logical Boolean operators: <b>and, or</b>, and <b>not</b>. These operators
+                    combine conditional statements and evaluate expressions down to a Boolean value of <b>True</b> or
+                    <b>False</b>.
+                </p>
+            </div>
+
+            <table class="outer-hidden">
+                <caption class="bold">Operatori booleeni</caption>
+                <tr>
+                    <th>Operator</th>
+                    <th> Regulă</th>
+                    <th> Exemplu</th>
+                    <th> Rezultat</th>
+                </tr>
+                <tr>
+                    <td>and</td>
+                    <td>True doar dacă ambele părți sunt adevărate.</td>
+                    <td>(5 > 3) and (10 &lt; 20)</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>or</td>
+                    <td>True dacă cel puțin o parte este adevărată</td>
+                    <td>(5 &lt; 3) or (10 &lt; 20)</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>not</td>
+                    <td>Inversează valoarea (True devine False)</td>
+                    <td>not (5 > 3)</td>
+                    <td>False</td>
+                </tr>
+            </table>
+
+            <p class="bold">Evaluare cu scurtcircuitare - Short-Circuit Evaluation</p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Python utilizează evaluarea cu scurtcircuitare pentru a optimiza performanța. Acesta încetează
+                        verificarea expresiilor imediat ce rezultatul final este garantat.</p>
+
+                    <ul>
+                        <li><b>and</b> realizează un scurtcircuit dacă expresia din stânga este False. Deoarece ambele
+                            expresii trebuie să fie adevărate, Python ignoră complet expresia din dreapta.</li>
+                        <li><b>or</b> realizează un scurtcircuit dacă expresia din stânga este True. Deoarece este
+                            suficient ca una singură să fie adevărată, acesta sare peste evaluarea părții din dreapta.
+                        </li>
+                    </ul>
+
+                    <p>Din acest motiv, <b>and</b> și <b>or</b> nu returnează întotdeauna o valoare strictă de tip
+                        <b>True</b> sau <b>False</b>. În schimb, ele returnează valoarea ultimului operand evaluat.
+                    </p>
+                </div>
+
+                <div>
+                    <p>Python uses short-circuit evaluation to optimize performance. It stops checking expressions as
+                        soon as the final result is guaranteed.
+                    <p>
+
+                    <ul>
+                        <li><b>and</b> short-circuits if the left expression is False. Because both must be true, Python
+                            ignores the right expression entirely.</li>
+                        <li><b>or</b> short-circuits if the left expression is True. Because only one needs to be true,
+                            it skips evaluating the right side.</li>
+                    </ul>
+
+                    <p>Because of this, <b>and</b> and <b>or</b> do not always return a strict <b>True</b> or
+                        <b>False</b> value. Instead, they return the value of the last evaluated operand.
+                    </p>
+                </div>
+            </div>
+
+            <pre><code>print(0 and 20) <span>==> 0 (0 este fals, deci "and" îl scurtcircuitează și îl returnează)</span>
+print(5 or 10)  <span>==> 5 (5 este adevărat, deci "or" îl scurtcircuitează și îl returnează)</span>
+</code></pre>
+
+            <p class="bold">Operatorul "and"</p>
+            <pre><code>scor = 65
+trecut = True
+
+<span># Ambele condiții trebuie să fie îndeplinite pentru a obține diploma.</span>
+if scor >= 65 and trecut:
+    print("Îți poți ridica diploma.")
+else:
+    print("Dai testul din nou.")
+<span>==> Îți poți ridica diploma.</span>
+</code></pre>
+
+            <p class="bold">Operatorul "or"</p>
+            <pre><code>este_luni = False
+zi_de_sărbătoare = True
+
+<span># Dacă oricare dintre condiții este adevărată, se va fi o zi liberă.</span>
+if este_luni or zi_de_sărbătoare:
+    print("E timpul să te relaxezi!")
+else:
+    print("Înapoi la muncă.")
+<span>==> E timpul să te relaxezi!</span>
+</code></pre>
+
+            <p class="bold">Operatorul "not"</p>
+            <p>Operatorul "not" se plasează în fața condiției pentru a-i inversa rezultatul.</p>
+
+            <pre><code>plouă = False
+
+<span># Rezultatul este True dacă nu plouă</span>
+if not plouă:
+    print("Hai la o plimbare.")
+else:
+    print("Rămâi în casă.")
+
+<span>==> Hai la o plimbare.</span>
+</code></pre>
+
+            <p class="bold">Precedența operatorilor (ordinea operațiilor)</p>
+
+            <div class="grid-container">
+                <p>Atunci când se combină mai mulți operatori într-o singură instrucțiune, Python îi evaluează într-o
+                    ordine specifică:</p>
+                <p>When mixing multiple operators in a single statement, Python evaluates them in a specific order:</p>
+            </div>
+
+            <ol>
+                <li>not (highest priority)</li>
+                <li>and</li>
+                <li>or (lowest priority)</li>
+            </ol>
+
+            <p>Folosește paranteze () pentru a specifica explicit ordinea de evaluare și pentru a menține codul lizibil.
+            </p>
+            <p>Use parentheses () to explicitly dictate evaluation order and keep your code readable.</p>
+
+            <pre><code>rezultat_default = True or False and False
+<span># "and" se evaluează primul în mod implicit: 
+True or (False and False) ==> True or False</span> 
+print(rezultat_default)  <span>==> True</span>
+
+rezultat_paranteză = (True or False) and False
+<span># Parantezele impun evaluarea mai întâi a operatorului "or": 
+(True or False) and False ==> True and False</span> 
+print(rezultat_paranteză)   <span>==> False</span>
+</code></pre>
+
+            <p class="bold">Operatori asociați: Comparare și identitate - Related Operators: Comparison & Identity</p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Expresiile booleene sunt adesea construite folosind operatori de comparare care returnează o
+                        valoare booleană:</p>
+
+                    <ul>
+                        <li>Comparare: == (egal cu), != (diferit de), >, &lt;, >=, &lt;=.</li>
+                        <li>Identitate: <b>is</b> verifică dacă două variabile indică exact același obiect din memoria
+                            calculatorului.</li>
+                        <li>Apartenență: <b>in</b> verifică dacă un anumit element există într-o colecție (cum ar fi o
+                            listă sau un șir de caractere).</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p>Boolean expressions are frequently built using comparison operators that output a Boolean value:
+                    </p>
+
+                    <ul>
+                        <li>Comparison: == (equal to), != (not equal to), >, &lt;, >=, &lt;=.</li>
+                        <li>Identity: <b>is</b> checks if two variables point to the exact same object in computer
+                            memory.</li>
+                        <li>Membership: <b>in</b> checks if a specific element exists inside a collection (like a list
+                            or string).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <pre><code>print(False == 0) ==> True
+print(True == 1)  ==> True
+</code></pre>
+
+            <p>Numerele întregi mici (de la -5 la 256) sau șirurile scurte returnează uneori <b>True</b> atât pentru ==,
+                cât și pentru <b>is</b>.<br>
+                Small integers (from -5 to 256) or short strings sometimes return <b>True</b> for both == and <b>is.</b>
+            </p>
+
+            <pre><code>x = 100
+y = 100
+print(x is y) <span>==> True (Datorită optimizării memoriei interne din Python)</span>
+print(id(x))  <span>==> 140716356837256</span>
+print(id(y))  <span>==> 140716356837256</span>
+
+x = 257
+y = 257
+print(x is y) <span>==> False</span>
+print(id(x))  <span>==> 2306467458672</span>
+print(id(y))  <span>==> 2306467457456</span>
+print(x == y) <span>==> True</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Din cauza acestei optimizări interne (numită "interning"), nu ar trebui să folosești niciodată "is"
+                    pentru a compara valori de tipuri primitive, precum numere întregi sau șiruri de caractere.
+                    Folosește întotdeauna "==" pentru valori și rezervă "is" pentru verificări de tipul variabilă is
+                    None.</p>
+
+                <p>Because of this background optimization (called "interning"), you should never use is to compare
+                    primitive data values like integers or strings. Always use == for values and reserve "is" for checks
+                    like variable is None.</p>
+            </div>
+
+            <p class="other">Pentru mai multe detalii și exemple, consultați
+                <a href="https://docs.python.org/3/c-api/bool.html" target="_blank" rel="noopener">Documentația oficială
+                    a tipurilor
+                    boolean Python</a><br>
+
+            <p class="other">For more details and examples, refer to the official
+                <a href="https://docs.python.org/3/c-api/bool.html" target="_blank" rel="noopener">Python Boolean types
+                    documentation</a>
+            </p>
+
+            <p class="other">For more details and examples, refer to the official
+                <a href="https://docs.python.org/3/reference/expressions.html" target="_blank" rel="noopener">Python
+                    Expressions
+                    documentation</a>
+            </p>
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a>
+                    </address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+    <script src="JS/doileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+</body>
+
+</html>

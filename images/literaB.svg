@@ -1,0 +1,16 @@
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" viewBox="-4 -8 48 48">
+  <!-- Blue Circle -->
+  <circle cx="16" cy="16" r="16" fill="#1f77b4"/>
+
+  <!-- Centered Text (Letter "GP") -->
+  <text
+    x="16"
+    y="16"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="'Algerian'"
+    font-size="24"
+    fill="white">
+    B
+  </text>
+</svg>

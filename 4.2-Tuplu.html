@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/main-style.css">
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 4.2 Tuplu</title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-1 navigare">
+
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                      <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                      <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                      <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                      <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-1"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaS.svg" alt="S" class="logo">
+                    <h1>4.0 Tipuri secvență - Sequence Types</h1>
+                </div>
+            </div>
+
+            <div class="second-empty-1-1"></div>
+
+            <div class="subtitlu-1-1">
+                <div class="grid-cell">
+                    <h2>4.2 Tuplu - Tuple</h2>
+                </div>
+            </div>
+
+            <div class="third-empty-1-1"></div>
+
+            <div class="ro-en-1-1 container-links ro-en">
+                <ul>
+                    <li>În acest capitol veți studia:</li>
+                    <li><a href="#WT">Ce este un tuplu în Python?</a></li>
+                    <li><a href="#DU">Definirea tuplurilor</a></li>
+                    <li><a href="#TA">Atribuire tupluri(despachetare)</a></li>
+                    <li><a href="#ZT">Combinarea tuplurilor</a></li>
+                    <li><a href="#IS">Indexarea și felierea unui tuplu</a></li>
+                    <li><a href="#TS">Schimbarea elementelor unui tuplu</a></li>
+                    <li><a href="#RV">Returnare a mai mult de o valoare (funcție)</a></li>
+                    <li><a href="#AT">Tupluri în argumentele funcțiilor</a></li>
+                    <li><a href="#CT">Copii ale unui tuplu</a></li>
+                    <li><a href="#TC">Concatenarea tuplurilor</a></li>
+                    <li><a href="#RE">Repetarea elementelor unui tuplu</a></li>
+                    <li><a href="#RT">Inversarea unui tuplu</a></li>
+                    <li><a href="#ST">Sortarea unui tuplu</a></li>
+                    <li><a href="#LV">Parcurgerea fiecărei valori dintr-un tuplu</a></li>
+                    <li><a href="#FI">Găsește și numără elementele dintr-un tuplu</a></li>
+                    <li><a href="#LT">Lungimea și compararea tuplurilor</a></li>
+                    <li><a href="#DB">Diferența dintre tupluri și liste în Python</a></li>
+                    <li><a href="#DW">Decizia de a utiliza tupluri</a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+
+                <ul>
+                    <li>In this chapter, you will study:</li>
+                    <li><a href="#WT">What Is a Python Tuple?</a></li>
+                    <li><a href="#DU">Defining Tuples</a></li>
+                    <li><a href="#TA">Tuple Assignment(unpacking)</a></li>
+                    <li><a href="#ZT">Zipping Tuples</a></li>
+                    <li><a href="#IS">Indexing and Slicing a Tuple</a></li>
+                    <li><a href="#TS">Tuple Element Swapping</a></li>
+                    <li><a href="#RV">Returning more than one value (function)</a></li>
+                    <li><a href="#AT">Tuples in function arguments</a></li>
+                    <li><a href="#CT">Copies of a Tuple</a></li>
+                    <li><a href="#TC">Concatenating Tuples</a></li>
+                    <li><a href="#RE">Repeating the items of a Tuple</a></li>
+                    <li><a href="#RT">Reversing a Tuple</a></li>
+                    <li><a href="#ST">Sorting a Tuple</a></li>
+                    <li><a href="#LV">Looping over each value in a tuple</a></li>
+                    <li><a href="#FI">Find and count items in a Tuple</a></li>
+                    <li><a href="#LT">Length and Comparing Tuples</a></li>
+                    <li><a href="#DB">Difference Between Tuples and Lists in Python</a></li>
+                    <li><a href="#DW">Deciding Whether to Use Tuples</a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="forth-empty-1-1"></div>
+
+        <div class="contents-1-1">
+
+            <h2 id="WT">Ce este un tuplu în Python? - What Is a Python Tuple?</h2>
+
+            <p><a href="https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences" target="_blank"
+                    rel="noopener">Tuples and Sequences</a></p>
+
+            <p><a href="https://www.w3schools.com/python/python_tuples.asp" target="_blank" rel="noopener">Python
+                    Tuples</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Un tuplu Python este un tip de date încorporat, utilizat pentru a stoca o colecție de elemente
+                        într-o ordine specifică, ce nu poate fi modificată după creare. Poate fi comparat cu o listă a
+                        cărei structură este fixă ​​și imuabilă.</p>
+                    <dl>
+                        <dt>Caracteristici principale:</dt>
+                        <dd>Imuabilitate: nu poți adăuga, elimina sau modifica elemente după ce tuplul a fost creat.
+                        </dd>
+                        <dd>Ordonare: elementele au o ordine definită care nu se schimbă, iar accesarea începând de la
+                            indicelui 0.</dd>
+                        <dd>Permite duplicate: același element poate apărea de mai multe ori în cadrul secvenței.</dd>
+                        <dd>Heterogenitate: poate conține simultan o combinație de tipuri de date diferite (șiruri de
+                            caractere, numere întregi, valori booleene sau chiar liste).</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>A Python tuple is a built-in data type used to store a collection of items in a specific order
+                        that cannot be changed after it is created. Compare with a list that is permanently locked in
+                        place.</p>
+                    <dl>
+                        <dt>Core Characteristics</dt>
+                        <dd>Immutable: You cannot add, remove, or modify items once the tuple is made.</dd>
+                        <dd>Ordered: Items have a defined order that will not change, and you look them up by index
+                            (starting at 0).</dd>
+                        <dd>Allows Duplicates: The same item can appear multiple times within the sequence.</dd>
+                        <dd>Heterogeneous: It can hold a mix of different data types (strings, integers, booleans, or
+                            even lists) at the same time.</dd>
+                    </dl>
+                </div>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="DU">Definirea tuplurilor - Defining Tuples</h2>
+
+            <div class="grid-container">
+                <p>Tuplurile sunt mai rapide decât listele și protejează integritatea datelor. Sunt utilizate frecvent
+                    pentru a stoca date corelate, cum ar fi înregistrări din baze de date sau perechi de coordonate.</p>
+
+                <p>Tuples are faster than lists and protect data integrity. They are commonly used to store related
+                    data, like database records or coordinate pairs.</p>
+            </div>
+
+            <p>Definește un tuplu: plasează valori separate prin virgulă între paranteze rotunde ()<br>
+                Define a tuple: place comma-separated values inside standard parentheses ()</p>
+
+<pre><code>nume = ("Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana")
+articole = ('ușă', 'pat', 'masă', 'oglindă', 'poartă')
+culori = ('verde', 'galbenă', 'roșie', 'galbenă', 'roz')
+fructe = ("mere", "pere", "cireșe", "caise")
+recorduri =  (90, 75, 80)
+</code></pre>
+
+<pre><code><span># Tuplu gol</span>
+tuplu_gol = () <span>==> &lt;class 'tuple'></span>
+
+<span># Un tuplu cu un singur element necesită o virgulă la final</span>
+un_fruct = ("smochină",)
+print(type(un_fruct)) <span>==> &lt;class 'tuple'></span>
+print(un_fruct[0] == un_fruct[-1])  <span>==> True</span>
+</code></pre>
+
+<pre><code><span># Tuplu cu tipuri de date mixte</span>
+profil_persoană = ("Linda", 59, "artistă")
+
+tuplu_mixt = (0, [1, 2, 3], (4, 5, 6), 7.0)
+print(tuplu_mixt)  <span>==> (0, [1, 2, 3], (4, 5, 6), 7.0)</span>
+print(type(tuplu_mixt))    <span>==> &lt;class 'tuple'></span>
+print(type(tuplu_mixt[1])) <span>==> &lt;class 'list'></span>
+</code></pre>
+
+<pre><code><span># Parantezele pot fi omise complet</span>
+coordonate = 36.4236, -73.0150
+print(type(coordonate)) <span>==> &lt;class 'tuple'></span>
+</code></pre>
+
+            <div class="grid-container">
+<pre><code><span># Utilizarea constructorului tuple()</span>
+
+numere = [0, 1, 3]
+tuplu_numere = tuple(numere)
+print(tuplu_numere, "/", type(tuplu_numere))
+<span>==> (0, 1, 3) / &lt;class 'tuple'></span>
+
+interval = range(5)
+tuplu_interval = tuple(interval)
+print(tuplu_interval, "/", type(tuplu_interval))
+<span>==> (0, 1, 2, 3, 4) / &lt;class 'tuple'></span>
+
+print(tuple("Pythonista"))
+<span>==> ('P', 'y', 't', 'h', 'o', 'n', 'i', 's', 't', 'a')</span>
+</code></pre>
+
+<pre><code>tuple({
+    "producător": "Ro",
+    "model": "361",
+    "pasager": 16,
+}.values())
+<span>==> ('Ro', '361', 16)</span>
+
+<span># o pereche de paranteze</span>
+print(x**2 for x in range(10))
+<span>==> &lt;generator object &lt;genexpr> at 0x00000196EF56EF60></span>
+
+<span># aplică tuple unei expresii generator</span>
+print(tuple(x**2 for x in range(10)))
+<span>==> (0, 1, 4, 9, 16, 25, 36, 49, 64, 81)</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+                <p>Există situații în care utilizarea parantezelor este obligatorie. De exemplu, interpolarea valorilor
+                    într-un șir de caractere folosind operatorul %.</p>
+
+                <p>There are situations where using the parentheses is required. For example, interpolating values in a
+                    string using the % operator.</p>
+            </div>
+
+<pre><code>print("Bună, %s! Ai %s ani." % ("Linda", 24))
+<span>==> Bună, Linda! Ai 24 ani.</span>
+
+<span># Fără paranteze</span>
+try:
+    print("Bună, %s! Ai %s ani." % "Linda", 24)
+except:
+    print("TypeError: nu există suficiente argumente pentru șirul de formatare")
+<span>==> print("TypeError: nu există suficiente argumente pentru șirul de formatare")</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+            <h2 id="TA">Atribuire tupluri(despachetare) - Tuple Assignment(unpacking)</h2>
+
+            <div class="grid-container">
+                <p>Atribuirea de tupluri (despachetare a tuplurilor sau atribuire paralelă) permite atribuirea unui
+                    tuplu de valori unui tuplu de variabile într-o singură linie de cod. Python evaluează întreaga parte
+                    dreaptă înainte de a modifica vreo variabilă din partea stângă, ceea ce previne conflictele de
+                    atribuire.</p>
+
+                <p>Tuple assignment (tuple unpacking or parallel assignment) allows you to assign a tuple of values to a
+                    tuple of variables in a single line of code. Python evaluates the entire right side before modifying
+                    any variables on the left side, which prevents assignment conflicts</p>
+            </div>
+
+            <div class="grid-container">
+<pre><code><span># Cu paranteze</span>
+(nume, vârstă, profesie) = ("Linda", 59, "artistă")
+
+<span># Fără paranteze</span>
+nume, vârstă, profesie = "Linda", 59, "artistă"
+print(f"{nume} are {vârstă} de ani şi este o {profesie} apreciată.")
+<span>==> Linda are 59 de ani şi este o artistă apreciată.</span>
+</code></pre>
+
+<pre><code><span># Tuplul de despachetat</span>
+artistă = ("Linda", 28, "Artistă")
+
+<span># Despachetarea în variabile individuale</span>
+nume, vârstă, profesie = artistă
+
+print(nume, vârstă, profesie) <span>==> Linda 28 Artistă</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+                <div>
+                    <p>La despachetare, numărul de variabile din partea stângă trebuie să corespundă numărului de valori
+                        din tuplu. În caz contrar, codul generează o eroare.</p>
+                    <p>Pentru a intercepta o eroare în Python atunci când despachetezi un tuplu cu un număr nepotrivit
+                        de elemente, folosește un bloc try si except.</p>
+                </div>
+
+                <div>
+                    <p>When unpacking, the number of variables on the left must match the number of values in the tuple.
+                        Otherwise, the code generates an error.</p>
+                    <p>To catch an Error in Python when unpacking a tuple with a mismatched size, use a try and except
+                        block.</p>
+                </div>
+            </div>
+
+            <div class="grid-container">
+<pre><code>
+t = ("ana", "vasile", "iorgu")
+try:
+    <span># Cod care ar putea eșua</span>
+    (nume1, nume2, nume3) = t
+    print(t[-1])
+except Exception as e:
+    <span># Cod care se execută dacă apare o eroare</span>
+    print(f"A apărut o eroare: {e}")
+
+<span>==> iorgu</span>
+</code></pre>
+
+<pre><code>t = ("geta", "vasile")
+try:
+    <span># Cod care ar putea eșua</span>
+    (nume1, nume2, nume3) = t
+    print(t[-1])
+except Exception as e:
+    <span># Cod care se execută dacă apare o eroare</span>
+    print(f"A apărut o eroare: {e}")
+
+<span>==> A apărut o eroare: not enough values to unpack (expected 3, got 2)</span>
+</code></pre>
+            </div>
+
+<pre><code>try:
+    (s1, s2, s3, s4, s5) = ("val1", "val2", "val3", "val4")
+except ValueError as e:
+    print(f"A apărut o eroare ValueError: {e}")
+else:
+    print(s1)
+
+<span>==> A apărut o eroare ValueError: not enough values to unpack (expected 5, got 4)</span>
+</code></pre>
+
+<pre><code>numele_vârstă = (('Busuioc', 'Cristina', 78), ('Matei', 'Andrei', 55), ('Murg', 'Mihai', 76), ('Petruțiu', 'Vasile', 66))
+nume, prenume, vârsta = numele_vârstă[2]
+print(nume, prenume, vârsta) <span>==> Murg Mihai 76</span>
+</code></pre>
+
+<pre><code>coordonatele_unui_punct = (-2, 7, 21)
+<span># descompunerea conținutului punctului în trei variabile</span>
+x, y, z = coordonatele_unui_punct
+print(f"x = {x}") <span>==> x = -2</span>
+print(f"y = {y}") <span>==> y = 7</span>
+print(f"z = {z}") <span>==> z = 21</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Pentru a concatena două sau mai multe tupluri, putem folosi semnul +, la fel ca în cazul șirurilor de
+                    caractere. Înmulțirea unui tuplu cu un număr întreg produce un tuplu care conține tuplul original
+                    repetat de atâtea ori.</p>
+
+                <p>To concatenate two or more tuples, we can use + sign as with strings. Multiplying a tuple by an
+                    integer produces a tuple containing the original tuple repeated that many times.</p>
+            </div>
+
+            <div class="grid-container">
+<pre><code>tuplu_1 = (1, 2)
+tuplu_2 = (3, 4)
+print(tuplu_1 + tuplu_2) <span>==> (1, 2, 3, 4)</span>
+</code></pre>
+
+<pre><code>tuplu = (1, 7, 9, 8)
+print(tuplu * 2)    <span>==> (1, 7, 9, 8, 1, 7, 9, 8)</span>
+print(2 * tuplu)    <span>==> (1, 7, 9, 8, 1, 7, 9, 8)</span>
+</code></pre>
+            </div>
+
+            <p>Despachetare extinsă cu operatorul asterix (*) - Extended Unpacking with the Star (*) operator</p>
+
+            <div class="grid-container">
+<pre><code>punctaj = (99, 89, 75, 67, 52)
+maxim, al_doilea, *restul = punctaj
+
+print(maxim)  <span>==> 99</span>
+print(restul)  <span>==> [75, 67, 52]</span> 
+</code></pre>
+
+<pre><code><span># Preia elemente din mijloc</span>
+fructe = ("măr", "portocală", "ananas", "cireașă")
+primul, *mijloc, ultimul = fructe
+
+print(mijloc)  <span>==> ['portocală', 'ananas']</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+<pre><code><span># Eliminarea unui element</span>
+coordonate = (16.7008, -44.0060, 11.75)
+lat, lon, _ = coordonate
+print(lat, lon) <span>==> 16.7008 -44.006</span>
+</code></pre>
+
+<pre><code><span># Despachetarea pentru a ignora valori multiple</span>
+primul, *_, ultimul = (1, 2, 3, 4, 5, 6)
+
+print(tuple((primul, ultimul))) <span>==> (1, 6)</span>
+</code></pre>
+            </div>
+
+            <p>Despachetarea tuplurilor imbricate - Unpacking Nested Tuples</p>
+<pre><code><span># Oglindirea structurii imbricate din partea stângă</span>
+tuplu_imbricat = ("Panait Istrate", (2026, "Angajare"), "Active")
+nume, (anul, departament), statut = tuplu_imbricat
+
+print(f"Departamentul: {departament}") <span>==> Departamentul: Angajare</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="ZT">Combinarea tuplurilor - Zipping Tuples</h2>
+
+            <div class="grid-container">
+                <p>Metoda zip() preia mai multe obiecte de tip secvență și returnează un obiect iterabil prin asocierea
+                    elementelor acestora.</p>
+
+                <p>The zip() method takes multiple sequence objects and returns an iterable object by matching their
+                    elements.</p>
+            </div>
+
+<pre><code>pronume = ("Cristina", "Andrei", "Mihai", "Vasile")
+nume = ("Busuioc", "Matei", "Murg", "Petruțiu")
+vârsta = (78, 55, 76, 66)
+combinat = zip(nume, pronume, vârsta)
+print(combinat) <span>==> &lt;zip object at 0x0000024130697D40></span>
+numele_vârstă = tuple(combinat)
+print(numele_vârstă)
+<span>==> (('Busuioc', 'Cristina', 78), ('Matei', 'Andrei', 55), ('Murg', 'Mihai', 76), ('Petruțiu', 'Vasile', 66))</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="IS">Indexarea și felierea unui tuplu - Indexing and Slicing a Tuple</h2>
+
+            <p><a href="https://www.w3schools.com/python/python_tuples_access.asp" target="_blank" rel="noopener">Python
+                    - Access Tuple Items</a></p>
+
+            <div class="grid-container">
+                <p>Extragerea unei secvențe dintr-un tuplu este la fel de simplă ca extragerea unei secvențe dintr-un
+                    șir de caractere sau dintr-o listă Python, respectând aceleași reguli. Pentru a accesa elementele
+                    dintr-un tuplu Python, introduceți indicele între paranteze pătrate ([]) imediat după numele
+                    tuplului. Python utilizează indexarea bazată pe zero, ceea ce înseamnă că primul element se află la
+                    indicele 0.</p>
+
+                <p>Slicing a tuple is as simple as slicing a Python string or a list with the same rules. To access
+                    items in a Python tuple, pass the index number inside square brackets ([]) immediately following the
+                    tuple name. Python utilizes zero-based indexing, meaning the very first item is located at index 0
+                </p>
+            </div>
+
+<pre><code>tuplu_mixt = (0, [1, 2, 3], (4, 5, 6), 7.0)
+
+print("Primul element:", tuplu_mixt[0])   <span>==> Primul element: 0</span>
+print("Ultimul element:", tuplu_mixt[-1]) <span>==> Ultimul element: 7.0</span>
+print("Tipul de date al celui de-al doilea element:", type(tuplu_mixt[1]))
+<span>==>Tipul de date al celui de-al doilea element: &lt;class 'list'></span>
+print(tuplu_mixt[2][1])  <span>==> 5</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Greșeli frecvente de evitat</dt>
+                    <dd>IndexError: Apare atunci când soliciți un indice care nu există (în afara limitelor).</dd>
+                    <dd>TypeError: Apare atunci când folosești o valoare care nu este număr întreg sau un șir de
+                        caractere ca indice.</dd>
+                    <dd>TypeError (Atribuire): Tuplurile sunt imuabile. Deși poți accesa elementele prin indexare, nu le
+                        poți modifica (e.g, fructe[0] = "măr" generează o eroare).</dd>
+                </dl>
+
+                <dl>
+                    <dt>Common Errors to Avoid</dt>
+                    <dd>IndexError:When you request an index that does not exist (out of bounds).</dd>
+                    <dd>TypeError: When you use a non-integer value or string as an index.</dd>
+                    <dd>TypeError (Assignment): Tuples are immutable. While you access items via indexing, you cannot
+                        alter them (e.g., fruits[0] = "aple" throws an error)</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <p>Pentru a gestiona în siguranță o eroare de tip IndexError în Python, plasează operațiunea de accesare
+                    a tuplului într-un bloc try și capturează excepția specifică folosind un bloc except IndexError.
+                    Astfel, previi blocarea întregului program atunci când soliciți un indice care nu există.</p>
+
+                <p>To safely handle an IndexError in Python, wrap your tuple access inside a try block and catch the
+                    specific exception using an except IndexError block. This prevents your entire program from crashing
+                    when you request an index that does not exist.</p>
+            </div>
+
+<pre><code><span># Sintaxă de bază</span>
+fructe = ("măr", "cireașă", "banană")
+
+try:
+    <span># Încercarea de a accesa un indice care nu există</span>
+    print(fructe[5])
+except IndexError:
+    <span># Acest cod se execută doar dacă apare o eroare de tip IndexError</span>
+    print("Eroare: Indicele este în afara intervalului!")
+<span>==> Eroare: Indicele este în afara intervalului!</span>
+</code></pre>
+
+            <div class="grid-container">
+<pre><code>fructe = ("măr", "cireașă", "banană")
+
+<span># util pentru logging or debugging</span>
+try:
+    print(fructe[10])
+except IndexError as e:
+    print(f"Eroare detectată.: {e}")
+<span>==> Eroare detectată: tuple index out of range</span>
+</code></pre>
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+
+<span># util pentru logging or debugging</span>
+try:
+    print(fructe[0.1])
+except TypeError as e:
+    print(f"Eroare detectată: {e}")
+<span>==> Eroare detectată: tuple indices must be integers or slices, not float</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+                <p>Pentru un cod mai curat, plasează codul care depinde de reușita blocului try în interiorul unui bloc
+                    else. Astfel, separi operațiunea de preluare a datelor de logica ulterioară.</p>
+
+                <p>For cleaner code, place code that depends on the try block succeeding inside an else block. This
+                    separates your data retrieval from your subsequent logic.</p>
+            </div>
+
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+indice_solicitat = 4
+
+try:
+    fruct = fructe[indice_solicitat]
+except IndexError:
+    print(f"Indicele {indice_solicitat} nu este disponibil.")
+else:
+    <span># Acest cod se execută doar dacă nu a fost generată nicio eroare în blocul try</span>
+    print(f"Succes! Fructul tău este: {fruct}")
+<span>==> Indicele 4 nu este disponibil.</span>
+</code></pre>
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+indice_solicitat = 2
+
+try:
+    fruct = fructe[indice_solicitat]
+except IndexError:
+    print(f"Indicele {indice_solicitat} nu este disponibil.")
+else:
+    <span># Acest cod se execută doar dacă nu a fost generată nicio eroare în blocul try</span>
+    print(f"Succes! Fructul tău este: {fruct}")
+<span>==> Succes! Fructul tău este: banană.</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Deși try-except este foarte eficient, poți preveni complet eroarea verificând lungimea tuplului cu
+                    ajutorul funcției len() înainte de a-l accesa.</p>
+
+                <p>While try-except is very efficient, you can also prevent the error entirely by checking the length of
+                    the tuple using the len() function before accessing it.</p>
+            </div>
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+indice = 2
+
+<span># Verifică dacă indicele este valid</span>
+if indice &lt; len(fructe):
+    print(f"Fructul de la indicele {indice} este: {fructe[indice]}.")
+else:
+    <span># Acest cod se execută dacă nu este îndeplinită condiția</span>
+    print("Indicele este în afara limitelor.")
+<span>==> Fructul de la indicele 2 este: banană.</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Pentru a gestiona simultan mai multe erori distincte, precum IndexError și ValueError, Python îți
+                    permite fie să le captezi separat folosind mai multe blocuri except, fie să le grupezi într-un
+                    singur bloc except folosind un tuplu.</p>
+
+                <p>To handle multiple distinct errors like IndexError and ValueError at once, Python allows you to
+                    either catch them separately using multiple except blocks or group them together in a single except
+                    block using a tuple.</p>
+            </div>
+
+            <div class="grid-container">
+                <p>Folosește blocuri except separate dacă dorești să oferi un răspuns sau o soluție specifică pentru
+                    fiecare eroare în parte. Python verifică blocurile de sus în jos și îl execută doar pe cel care
+                    corespunde erorii.</p>
+
+                <p>Use separate except blocks if you want to provide a unique response or fix for each specific error.
+                    Python checks the blocks from top to bottom and executes only the one that matches.</p>
+            </div>
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+introducere_date = input("Introduceți un număr de index: ") 
+
+try:
+    <span># generază ValueError dacă valoarea de intrare nu este un număr întreg</span>
+    indice = int(introducere_date)  
+    
+    <span># generază IndexError dacă numărul depășește limitele admise</span>
+    print(f"Fructul este: {fructe[indice]}")  
+
+except ValueError:
+    print("Eroare Valoare: Trebuie să introduceți un număr întreg valid!")
+
+except IndexError:
+    print("Eroare Indice: Acea poziție nu există în tuplu!")
+<span>==> Ați intodus numărul de index: 5.2</span>
+<span>==> Eroare Valoare: Trebuie să introduceți un număr întreg valid!</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Folosește un singur bloc except dacă dorești să gestionezi ambele erori exact în același mod.
+                    Grupează clasele de excepții între paranteze: (eroare1, eroare2).</p>
+
+                <p>Use a single except block if you want to handle both errors the exact same way. Group the exception
+                    classes inside parentheses (error1, error2)</p>
+            </div>
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+introducere_date = ("Salut")
+
+try:
+    indice = int(introducere_date)
+    print(fructe[indice])
+<span># Acest bloc capturează oricare dintre erori</span>
+except (IndexError, ValueError) as detalii_eroare:
+    
+    print("A apărut o problemă cu datele introduse sau cu selecția indicelui.")
+    print(f"Detalii: {detalii_eroare}")
+<span>==> A apărut o problemă cu datele introduse sau cu selecția indicelui.</span>
+<span>==> Detalii: invalid literal for int() with base 10: 'Salut'</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Ordinea excepțiilor contează</dt>
+                    <dd>Numeră întotdeauna erorile specifice (precum IndexError sau ValueError) înaintea celor generice
+                        (precum Exception). Dacă plasezi un bloc generic de tipul except Exception: la început, acesta
+                        va intercepta toate erorile, iar blocurile destinate erorilor specifice, aflate dedesubt, nu se
+                        vor executa niciodată.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Order of Exceptions Matter</dt>
+                    <dd>Always list specific errors (like IndexError or ValueError) before generic errors (like
+                        Exception). If you put a generic except Exception: block at the top, it will intercept all
+                        errors, and your specific error blocks underneath will never run.</dd>
+                </dl>
+            </div>
+
+<pre><code><span># practică bună</span>
+try:
+    <span># pune codul aici</span>
+except IndexError:
+    <span># remediere specifică</span>
+except Exception:
+    <span># plan de rezervă universal</span>
+</code></pre>
+
+            <p>Blocul finally trebuie să urmeze după orice blocuri except și else.<br>
+                The finally block must follow any except and else blocks.</p>
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+introducere_date = input("Introduce numărul de indice: ")
+
+try:
+    indice = int(introducere_date)
+    print(f"Result: {fructe[indice]}")
+except ValueError:
+    print("Eroare Valoare: Valoarea introdusă nu este fost un număr întreg.")
+except IndexError:
+    print("Eroare Indice: Indicele nu se află în intervalul admis.")
+else:
+    print("Succes: Fructul a fost găsit.")
+finally:
+    <span># Aceasta se execută întotdeauna, indiferent de ce s-a întâmplat anterior</span>
+    print("Curățare: Evaluare finalizată. Se resetează starea aplicației.")
+<span>==> Introduce numărul de indice: 5.2</span>
+<span>==> Eroare Valoare: Valoarea introdusă nu este fost un număr întreg.</span>
+<span>==> Curățare: Evaluare finalizată. Se resetează starea aplicației.</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>În aplicațiile reale, interacționezi adesea cu resurse externe. Dacă apare o eroare de tip IndexError
+                    în timpul procesării unui fișier, trebuie totuși să închizi acel fișier pentru a preveni scurgerile
+                    de memorie.</p>
+
+                <p>In real applications, you often deal with external resources. If an IndexError occurs halfway through
+                    processing a file, you still need to close that file to prevent memory leaks.</p>
+            </div>
+
+<pre><code>tuplu_de_date = (101, 200, 304)
+
+try:
+    <span># Deschideți o resursă externă sau un fișier simulat</span>
+    print("Se deschide fișierul jurnal de date...")
+    
+    <span># Simularea unui scenariu de prăbușire prin accesarea unui indice invalid</span>
+    element = tuplu_de_date[100] 
+    
+except IndexError:
+    print("Eroare de procesare: S-a încercat citirea unui pachet de date lipsă.")
+    
+finally:
+    <span># Acest lucru garantează că fișierul nu rămâne deschis în memorie</span>
+    print("Curățare: Închiderea în siguranță a fișierului jurnal de date.")
+<span>==> Se deschide fișierul jurnal de date...</span>
+<span>==> Eroare de procesare: S-a încercat citirea unui pachet de date lipsă.</span>
+<span>==> Curățare: Închiderea în siguranță a fișierului jurnal de date.</span>
+</code></pre>
+
+            <p>Extragerea mai multor elemente dintr-un tuplu: felierea.<br>
+                Retrieving Multiple Items From a Tuple: Slicing</p>
+
+            <p>tuplu_object[start:stop:step]</p>
+
+            <div class="grid-container">
+                <p>Operația de feliere (slicing) extrage o porțiune specifică a secvenței și returnează un nou tuplu,
+                    lăsând tuplul original neschimbat, întrucât tuplurile sunt imuabile.</p>
+
+                <p>Slicing extracts a specific portion of the sequence and returns a new tuple, leaving the original
+                    tuple unchanged since tuples are immutable.
+            </div>
+
+<pre><code>numere_tuplu = 3, 11, 4, 9, 10, 7
+
+try:
+    <span># Secționare cu un pas de 0</span>
+    print(numere_tuplu[::0])
+except ValueError as e:
+    print(f"Eroare detectată: {e}")
+<span>==> Eroare detectată: slice step cannot be zero</span> 
+</code></pre>
+
+            <div class="grid-container">
+                <p>Operația de feliere (slicing) nu generează erori în cazul indicilor care depășesc limitele permise.
+                    În schimb, aceasta eșuează silențios, returnând un tuplu gol sau o listă parțială, ceea ce poate
+                    cauza erori ulterior în programul tău.</p>
+
+                <p>Slicing does not throw errors for out-of-bounds numbers. Instead, it fails silently by returning an
+                    empty tuple or a partial list, which can cause bugs later in your program.</p>
+            </div>
+
+<pre><code>tuplu = (11, 12, 13, 14, 15)
+
+<span># Verifică valoarea start pentru slice</span>
+start, stop = 5, 10
+if start >= len(tuplu):
+    print("Atenţie!: Indicele de început este în afara intervalului!")
+    <span>==> Atenţie!: Indicele de început este în afara intervalului!</span>
+
+<span># Slicing în afara limitelor nu generează o eroare de tip IndexError</span>
+rezultat = tuplu[5:10]
+print(f"Rezultat: {rezultat}") <span>==> Rezultat: ()</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>if, else: If este adevărat, se execută instrucțiunea corespunzătoare.
+                    If este fals, se execută instrucțiunea din ramura else.</p>
+
+                <p>if, else: If is True is executed. If is False, else is executed.</p>
+            </div>
+
+
+            <div class="grid-container">
+<pre><code>tuplu = (11, 12, 13, 14, 15)
+
+<span># Verifică valoarea start pentru slice</span>
+start, stop = 5, 10
+if start >= len(tuplu):
+    print("Atenţie!: Indicele de început este în afara intervalului!")
+else:
+    rezultat = tuplu[start:stop]
+    print(f"Rezultat: {rezultat}")
+<span>==> Atenţie!: Indicele de început este în afara intervalului!</span>
+</code></pre>
+
+<pre><code>tuplu = (11, 12, 13, 14, 15)
+
+<span># Verifică valoarea start pentru slice</span>
+start, stop = 3, 10
+if start >= len(tuplu):
+    print("Atenţie!: Indicele de început este în afara intervalului!")
+else:
+    rezultat = tuplu[start:stop]
+print(f"Rezultat: {rezultat}")
+<span>==> Rezultat: (14, 15)</span>
+</code></pre>
+            </div>
+
+
+<pre><code>numere= (40, 50, 60, 70, 80, 90)
+<span># Extrage de la indicele 1 până la 4 (exclusiv)</span>
+print(numere[1:4]) <span>==> (50, 60, 70)</span>
+<span># Obține totul de la început până la indecele 3 (exclusiv)</span>
+print(numere[:3]) <span>==> (40, 50, 60)</span>
+<span># Obține totul de la indexul 4 până la sfârșit</span>
+print(numere[4:]) <span>==> (80, 90)</span>
+<span># Obține fiecare al doilea element din întregul tuplu</span>
+print(numere[::2]) <span>==> (40, 60, 80)</span>
+<span># Extrage ultimele trei elemente</span>
+print(numere[-3:]) <span>==> (70, 80, 90)</span>
+<span># Inversează întregul tuplu folosind un pas negativ</span>
+print(numere[::-1]) <span>==> (90, 80, 70, 60, 50, 40)</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="TS">Schimbarea elementelor unui tuplu - Tuple Element Swapping</h2>
+
+            <div class="grid-container">
+<pre><code><span># Abordarea Pythonică (despachetarea tuplurilor)</span>
+x = 5
+y = 10
+
+<span># Inversează valorile</span>
+x, y = y, x
+
+print("x:", x) <span>==> x: 10</span>
+print("y:", y) <span>==> y: 5</span>
+</code></pre>
+
+<pre><code>x = 14
+y = 41
+
+print("Înainte de schimb:")
+print(f"x = {x}, y = {y}")  <span>==> x = 14, y = 41</span>
+ 
+(x, y) = (y, x)
+print("După schimb:")
+print(f"x = {x}, y = {y}")  <span>==> x = 41, y = 14</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+<pre><code><span># Utilizarea unei variabile temporare</span>
+a = 200
+b = 400
+
+<span>#Schimbă valorile folosind o a treia variabilă</span>
+tranzit = a
+a = b
+print(a)  <span>==> 400</span>
+b = tranzit
+print(b)  <span>==> 200</span>
+</code></pre>
+
+<pre><code><span># Schimbarea valorilor mai multor variabile simultan</span>
+a = 1
+b = 2
+c = 3
+
+<span># Rotește valorile: a preia val lui b, b preia val lui c, c preia val lui a</span>
+a, b, c = b, c, a
+
+print(a, b, c)  <span>==> 2 3 1</span>
+</code></pre>
+            </div>
+
+<pre><code><span># Operații aritmetice (doar pentru numere)</span>
+x = 7.5
+y = 10
+
+<span># Schimb prin metode matematice</span>
+x = x + y 
+print(x)  <span>==> 17.5</span>
+y = x - y 
+print(y)  <span>==> 7.5</span>
+x = x - y 
+print(x)  <span>==> 10.0</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="RV">Returnare a mai mult de o valoare (funcție) - Returning more than one value (function)</h2>
+
+            <div class="grid-container">
+                <p>Funcțiile pot returna o singură valoare. Totuși, putem folosi un tuplu în care să includem oricâte
+                    valori avem nevoie, iar apoi să returnăm obiectul de tip tuplu drept valoare de retur a funcției.
+                </p>
+
+                <p>Functions can only return a single value. However, we can use a tuple and put as many values as we
+                    need inside it, then return the tuple object as the function’s return value.</p>
+            </div>
+
+
+<pre><code>def sumă_putere(x, y, z):
+    s = x + y + z
+    p = s ** 3
+    return(s, p)
+
+(S, P) = sumă_putere(3, 8, 5)
+print("Sumă = ", S)   <span>==> Sumă =  16</span>
+print('Putere = ', P) <span>==> Putere =  4096</span>
+</code></pre>
+
+<pre><code><span># returnează valoarea minimă și pe cea maximă dintr-un obiect iterabil</span>
+def găsește_extremele(iterabil):
+    date = tuple(iterabil)
+    if len(date) == 0:
+        raise ValueError("Iterabilul de intrare nu trebuie să fie gol")
+    return min(date), max(date)
+
+extremele = găsește_extremele([3, 4, 2, 6, 7, 1, 9])
+print(extremele)  <span>==> (1, 9)</span>
+print(type(extremele)) <span>==> &lt;class 'tuple'></span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="AT">Tupluri în argumentele funcțiilor - Tuples in function arguments</h2>
+
+            <div class="grid-container">
+<pre><code><span># prefixează tuplul cu *</span>
+def salut(nume, vârstă, oraș):
+    print(f"Bună, {nume}, ai {vârstă} ani și ești din {oraș}")
+
+<span># Tuplul care conține datele</span>
+utilizator = ("Gina", 86, "Severin")
+
+<span># Despachetează tuplul în apelul funcției</span>
+salut(*utilizator)
+<span>==> Bună, Gina, ai 86 de ani și ești din Severin</span>
+</code></pre>
+
+<pre><code>def calculează(înălțime, lungime, lățime):
+    return lungime * lățime * înălțime
+
+dimensiuni_bază = (5, 10)
+
+<span># Transmite înălțimea în mod obișnuit, extrage lățimea și lungimea din tuplu</span>
+total_volum = calculează(2.5, *dimensiuni_bază)
+
+print(total_volum) <span>==> Volumul: 125.0 metri cubi</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+<pre><code><span># Operatorul * împachetează argumentele într-un tuplu</span>
+
+<span># Împachetarea în definiția funcțiilor</span>
+def lista_sporturi(*sporturi):
+    print(f"Tipul de date: {type(sporturi)}") 
+
+    print(f"Prefer: {sporturi}") 
+
+lista_sporturi("cititul", "tenisul", "gimnastica") 
+
+<span>==> Tipul de date: &lt;class 'tuple'></span>
+<span>==> Prefer: ('cititul', 'tenisul', 'gimnastica')</span>
+</code></pre>
+
+<pre><code>def înmulțește(*args):
+    print(f"Tipul de date: {type(args)}") <span>==> Tipul de date: &lt;class 'tuple'></span>
+    print(f"Conținut tuplu: {args}") <span>==> Conținut tuplu: (2, 3, 4, 5)</span>
+    
+    rezultat = 1 
+    for num in args:
+        rezultat *= num
+    return rezultat
+
+<span># Apelarea funcției</span>
+print(înmulțește(2, 3, 4, 5))  <span>==> Produsul: 120</span>
+</code></pre>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="CT">Copii ale unui tuplu - Copies of a Tuple</h2>
+
+            <p><a href="https://docs.python.org/3/library/copy.html" target="_blank" rel="noopener">copy — Shallow and
+                    deep copy operations</a></p>
+
+            <div class="grid-container">
+                <p>În cazul obiectelor mutabile imbricate (cum ar fi liste în interiorul unui tuplu) sau atunci când
+                    este necesar în mod explicit un obiect separat, puteți crea copii folosind metodele detaliate mai
+                    jos.</p>
+
+                <p>In case of nested mutable objects (like lists inside a tuple) or explicitly require a separate
+                    object, you can create copies using the methods detailed below.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Copierea superficială a tuplurilor plate</dt>
+                    <dd>Încercările de a efectua o copiere superficială vor returna pur și simplu o referință către
+                        tuplul original, pentru a economisi memorie.</dd>
+                </dl>
+
+                <dl>
+                    <dt>The Shallow Copying Flat Tuples</dt>
+                    <dd>Attempts to perform a shallow copy will simply return a reference to the original tuple to
+                        conserve memory.</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+<pre><code>tuplu_original = (1, 2, 3)
+
+# Attempts to create a shallow copy
+copia1 = tuple(tuplu_original)
+copia2 = tuplu_original[:]
+
+<span># Ambele variabile indică exact aceeași adresă de memorie</span>
+print(id(copia1)) <span>==> 2300703132672</span>
+print(id(copia2)) <span>==> 2300703132672</span>
+print(tuplu_original is copia1) <span>==> True</span>
+print(tuplu_original is copia2) <span>==> True</span>
+</code></pre>
+
+<pre><code>tuplu_original = (1, 2, [4, "a", True], 3, {6, "b"})
+
+<span># Attempts to create a shallow copy</span>
+copia1 = tuple(tuplu_original)
+copia2 = tuplu_original[:]
+
+<span># Ambele variabile indică exact aceeași adresă de memorie</span>
+print(id(copia1)) <span>==> 1564350164368</span>
+print(id(copia2)) <span>==> 1564350164368</span>
+print(tuplu_original is copia1) <span>==> True</span>
+print(tuplu_original is copia2) <span>==> True</span>
+</code></pre>
+            </div>
+
+<pre><code>from copy import copy
+persoană_info = ("Linda", 84, ["Muzică", "Dans", "Computer"])
+
+persoană_profil = copy(persoană_info)
+print(id(persoană_info) == id(persoană_profil)) <span>==> True</span>
+print(id(persoană_info[0]) == id(persoană_profil[0])) <span>==> True</span>
+print(id(persoană_info[1]) == id(persoană_profil[1])) <span>==> True</span>
+print(id(persoană_info[2]) == id(persoană_profil[2])) <span>==> True</span>
+</code></pre>
+
+<pre><code>persoană_profil[2][2] = "Computer science"
+print(persoană_profil)
+<span>==> ('Linda', 84, ['Muzică', 'Dans', 'Computer science'])</span>
+print(persoană_info)
+<span>==> ('Linda', 84, ['Muzică', 'Dans', 'Computer science'])</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Ambele variabile conțin referințe către același obiect de tip tuplu și către aceleași elemente. Prin
+                    urmare, funcția "copy()" nu schimbă cu nimic situația.</p>
+
+                <p>Both variables hold references to the same tuple object and the same items. So, the "copy()" function
+                    doesn't make any difference.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Copiere completă (utilizând modulul copy)</dt>
+                    <dd>Folosește această metodă dacă tuplul tău conține obiecte mutabile (precum listele). O copie
+                        profundă creează un tuplu nou și inserează recursiv copii ale obiectelor din tuplul original,
+                        asigurându-se astfel că modificările aduse unei liste imbricate nu afectează tuplul original.
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>Deep Copy (Using the copy module)</dt>
+                    <dd>Use this if your tuple contains mutable objects (like lists). A deep copy constructs a new tuple
+                        and recursively inserts copies of the objects found in the original, ensuring changes to a
+                        nested list do not affect the original tuple.</dd>
+                </dl>
+            </div>
+
+<pre><code>from copy import deepcopy
+persoană_info = ("Linda", 84, ["Muzică", "Dans", "Computer"])
+
+persoană_profil = deepcopy(persoană_info) 
+print(id(persoană_info) == id(persoană_profil)) <span>==> False</span>
+print(id(persoană_info[0]) == id(persoană_profil[0])) <span>==> True</span>
+print(id(persoană_info[1]) == id(persoană_profil[1])) <span>==> True</span>
+print(id(persoană_info[2]) == id(persoană_profil[2])) <span>==> False</span>
+</code></pre>
+
+            <p>Modifică al treilea element din listă - Change the third element in the list.</p>
+
+<pre><code>persoană_profil[2][2] = "Computer science"
+print(persoană_profil)
+<span>==> ('Linda', 84, ['Muzică', 'Dans', 'Computer science'])</span>
+print(persoană_info)
+<span>==> ('Linda', 84, ['Muzică', 'Dans', 'Computer'])</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Modificările aduse obiectului mutabil din persoană_profil nu afectează datele originale din
+                    persoană_info. Dacă tuplul copiat în profunzime conține obiecte mutabile, Python creează o copie a
+                    acestor obiecte, astfel încât modificările aduse acestora în copie să nu afecteze datele originale.
+                </p>
+
+                <p>Changes to the mutable object in persoană_profil don't affect the original data in persoană_info. If
+                    the deep-copied tuple contains mutable objects, Python creates a copy of these objects so that
+                    mutations to them in the copy won't affect the original data.</p>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="TC">Concatenarea tuplurilor - Concatenating Tuples</h2>
+
+            <div class="grid-container">
+                <p>Pentru a concatena două sau mai multe tupluri în Python, se utilizează operatorul +, care le unește
+                    și creează un nou obiect de tip tuplu. Această operație lasă tuplurile originale neschimbate.</p>
+
+                <p>To concatenate two or more tuples in Python, the + operator is used; it joins them and creates a new
+                    tuple object. This operation leaves the original tuples unchanged.</p>
+            </div>
+
+<pre><code>persoană_info = ("Linda", 84) 
+calități_info = ("elemente fundamentale", ("Muzica", "Dansul", "Gătitul"))
+profil = persoană_info + calități_info
+print(profil)
+<span>==> ('Linda', 84, 'elemente fundamentale', ('Muzica', 'Dansul', 'Gătitul'))</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Operatorul de concatenare cu atribuire acționează asupra unui tuplu existent. Acesta preia un al
+                    doilea tuplu și creează unul nou, care conține elementele din cele două tupluri originale.</p>
+
+                <p>The augmented concatenation operator works on an existing tuple. It takes a second tuple and creates
+                    a new one containing the items from the two original tuples.</p>
+            </div>
+
+<pre><code>profil = ("Vasile", 80) 
+print(f"Inițial ID: {id(profil)}") <span>==> Inițial ID: 2671264327488</span>
+profil += ("aptitudini", ("naiul", "țambalul", "fluierul"))
+print(f"ID după augumentare: {id(profil)}")
+<span>==> ID după augumentare: 2671263947472</span>
+
+print(profil)
+<span>==> ('Vasile', 80, 'aptitudini', ('naiul', 'țambalul', 'fluierul'))</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Atunci când concatenezi un tuplu cu un singur element, nu uita virgula de la final (element,). Atunci
+                    când concatenezi un tuplu cu o listă, vei obține o excepție.</p>
+
+                <p>When concatenate a tuple with a single element do not forget a trailing comma (element,). When you
+                    concatenate a tuple with a list, you'll get an exception.</p>
+            </div>
+
+<pre><code>tuplu = (1, 2, 3)
+listă = [4, 5, 6]
+un_element = 7
+
+try:
+    <span># Prima verificare</span>
+    rezultat1 = tuplu + listă
+except TypeError as e:
+    print(f"Interceptat eroarea: {e}")
+<span>==> Interceptat eroarea: can only concatenate tuple (not "list") to tuple</span>
+    
+    <span># Convertește lista într-un tuplu, apoi concatenează</span>
+    rezultat1 =tuplu + tuple(listă)
+    print(f"Concatenare reușită: {rezultat1}")
+<span>==> Concatenare reușită: (1, 2, 3, 4, 5, 6)</span>
+    
+try:
+    <span># A doua verificare</span>
+    rezultat2 = rezultat1 + un_element
+except TypeError as e:
+    print(f"Interceptat eroarea: {e}")
+<span>==> Interceptat eroarea: can only concatenate tuple (not "int") to tuple</span>
+    
+    <span># Convertește numărul întreg într-un tuplu, apoi concatenează</span>
+    rezultat2 = rezultat1 + (un_element,)
+    print(f"Concatenare finală: {rezultat2}")
+<span>==> Concatenare finală: (1, 2, 3, 4, 5, 6, 7)</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Deoarece poți concatena un tuplu doar cu un alt tuplu, corectează eventualele erori și realizează
+                    concatenarea.</p>
+
+                <p>Since you can only concatenate a tuple with another tuple, fix any error and concatenate.</p>
+            </div>
+
+<pre><code>tuplu = (1, 2, 3)
+listă = [4, 5, 6]
+un_element = 7
+
+rezultat = tuplu + tuple(listă) + (un_element,)
+print(rezultat) <span>==> (1, 2, 3, 4, 5, 6, 7)</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="RE">Repetarea elementelor unui tuplu - Repeating the elements of a Tuple</h2>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Repetarea întregii secvențe (operatorul *)</dt>
+                    <dd>Dacă doriți să duplicați întreaga secvență a tuplului, una după alta, utilizați operatorul de
+                        multiplicare (*).</dd>
+                </dl>
+
+                <dl>
+                    <dt> Repeat the Entire Sequence (* Operator)</dt>
+                    <dd>If you want to duplicate the whole sequence of the tuple back-to-back, use the multiplication
+                        (*) operator.
+                    <dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+<pre><code>numere = (1, 2, 3)
+
+print(numere * 3) <span>==> (1, 2, 3, 1, 2, 3, 1, 2, 3)</span>
+
+print(3 * numere) <span>==> (1, 2, 3, 1, 2, 3, 1, 2, 3)</span>
+</code></pre>
+
+<pre><code>numere = (1, 2, 3)
+print(id(numere)) <span>==> 2040032257600</span>
+
+numere *= 3
+print(numere) <span>==> (1, 2, 3, 1, 2, 3, 1, 2, 3)</span>
+print(id(numere)) <span>==> 2040048352832</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Repetarea fiecărui element în mod individual</dt>
+                    <dd>Utilizarea unei expresii de generare a listei imbricate în cadrul constructorului tuple() pentru
+                        a repeta secvențial fiecare element în parte sau funcțiile repeat și chain din modulul itertools
+                        al limbajului Python.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Repeat Each Element Individually</dt>
+                    <dd>Nested list comprehension inside the tuple() constructor, repeat each individual item
+                        sequentially or repeat and chain functions from Python's built-in itertools module.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>original = (1, 2, 3)
+n = 3
+
+<span># Repetă fiecare element de 3 ori, în ordine.</span>
+rezultat = tuple(num for num in original for _ in range(n))
+
+print(rezultat) <span>==> (1, 1, 1, 2, 2, 2, 3, 3, 3)</span>
+</code></pre>
+
+<pre><code>from itertools import chain, repeat
+original = (1, 2, 3)
+n = 3
+
+<span># Repetarea elementelor folosind itertools</span>
+rezultat = tuple(chain.from_iterable(repeat(num, n) for num in original))
+
+print(rezultat) <span>==> (1, 1, 1, 2, 2, 2, 3, 3, 3)</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="RT">Inversarea unui tuplu - Reversing a Tuple</h2>
+
+            <div class="grid-container">
+                <p>Inversează un tuplu folosind funcția reversed(): reversed() returnează un iterator. Pentru a obține
+                    un tuplu nou, trebuie să incluzi rezultatul în constructorul tuple().</p>
+
+                <p>Reverse a tuple using the reversed() function: reversed() returns an iterator. To get a new tuple
+                    must wrap the result inside the tuple() constructor.</p>
+            </div>
+
+<pre><code>lunile_anului = "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"
+
+print(reversed(lunile_anului))  <span>==> &lt;reversed object at 0x000001F829489D20></span>
+print(tuple(reversed(lunile_anului)))
+<span>==> ('Decembrie', 'Noiembrie', 'Octombrie', 'Septembrie', 'August', 'Iulie', 'Iunie', 'Mai', 'Aprilie', 'Martie', 'Februarie', 'Ianuarie')</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Dacă trebuie doar să procesezi datele și nu ai nevoie de o variabilă nouă, poți pur și simplu să
+                    parcurgi iteratorul.</p>
+
+                <p>If you only need to process the data and not needed to heave a new variable, you can only loop over
+                    the iterator.</p>
+            </div>
+
+<pre><code>lunile_anului = "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"
+for luna in reversed(lunile_anului):
+    print(luna, end=", ")
+<span>==> Decembrie, Noiembrie, Octombrie, Septembrie, August, Iulie, Iunie, Mai, Aprilie, Martie, Februarie, Ianuarie,</span>
+</code></pre>
+
+            <p>Inversarea unui tuplu folosind operatorul de feliere - Reversing a Tuple With the Slicing Operator</p>
+
+<pre><code>lunile_anului = "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"
+lunile_inversate = lunile_anului[::-1]
+
+print(lunile_inversate)
+<span>==> ('Decembrie', 'Noiembrie', 'Octombrie', 'Septembrie', 'August', 'Iulie', 'Iunie', 'Mai', 'Aprilie', 'Martie', 'Februarie', 'Ianuarie')</span>
+print(id(lunile_anului) == id(lunile_inversate))<span>==> False</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Operația de feliere [::-1] creează o copie a tuplului original, cu elementele în ordine inversă.</p>
+
+                <p>Slicing [::-1] creates a copy of the original tuple with the items in reverse order.</p>
+            </div>
+
+            <p>Inversează tuplurile imbricate dintr-o listă - Reverse nested tuples inside a list.</p>
+
+            <p>1. Inversează elementele din interiorul fiecărui tuplu individual - Reverse the elements inside each
+                individual tuple.</p>
+
+<pre><code>listă_tuple = [(1, 2), (3, 4), (5, 6)]
+
+<span># Parcurge lista și inversează elementele fiecărui tuplu</span>
+tupluri_inversate = [tuplu[::-1] for tuplu in listă_tuple]
+print(tupluri_inversate) <span>==> [(2, 1), (4, 3), (6, 5)]</span>
+</code></pre>
+
+            <p>2. Inversează ordinea listei, dar păstrează tuplurile neschimbate. - Reverse the list order but keep the
+                tuples unchanged.</p>
+
+<pre><code>listă_tuple = [(1, 2), (3, 4), (5, 6)]
+
+<span># Inversează doar ordinea listei exterioare</span>
+tupluri_inversate = listă_tuple [::-1]
+print(tupluri_inversate) <span>==> [(5, 6), (3, 4), (1, 2)]</span>
+</code></pre>
+
+            <p>3. Inversează atât ordinea listei, cât și conținutul tuplului - Reverse both the list order and the tuple
+                contents.</p>
+
+<pre><code>listă_tuple = [(1, 2), (3, 4), (5, 6)]
+
+<span># Inversează ordinea listei exterioare și parcurge lista pentru a inversa fiecare tuplu intern</span>
+total_inversate = [tuplu[::-1] for tuplu in listă_tuple[::-1]]
+print(total_inversate) <span>==> [(6, 5), (4, 3), (2, 1)]</span>
+</code></pre>
+
+            <p>4. Utilizarea funcției reversed() - Using the reversed() function.</p>
+
+<pre><code>listă_tuple = [(1, 2), (3, 4), (5, 6)]
+
+<span># Parcurge lista și inversează elementele fiecărui tuplu</span>
+tupluri_inversate = [tuple(reversed(tuplu)) for tuplu in listă_tuple]
+print(tupluri_inversate) <span>==> [(2, 1), (4, 3), (6, 5)]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Deoarece structurile de date reale pot conține tupluri adânc imbricate, buclele statice sau
+                    construcțiile de tip list comprehension fixe ar eșua dacă un tuplu s-ar afla la o adâncime prea
+                    mare. O funcție recursivă verifică fiecare element: dacă întâlnește un tuplu, intră în interiorul
+                    acestuia și îl inversează; dacă întâlnește un tip de date de bază (precum un întreg sau un șir de
+                    caractere), îl lasă neschimbat.</p>
+
+                <p>Since real data structures can have deeply nested tuples, static loops or fixed list comprehensions
+                    will break if a tuple is buried too deep. A recursive function checks each item: if it finds a
+                    tuple, it dives in and reverses it; if it finds a basic data type (like an integer or string), it
+                    leaves it alone.</p>
+            </div>
+
+<pre><code>def invers_imbricat(date):
+    <span># Dacă elementul este un tuplu, inversează conținutul și procesează recursiv fiecare sub-element.</span>
+    if isinstance(date, tuple):
+        return tuple(invers_imbricat(elm) for elm in reversed(date))
+    
+    <span># Dacă elementul este o listă, procesează recursiv fiecare element, dar păstrează structura listei.</span>
+    elif isinstance(date, list):
+        return [invers_imbricat(elm) for elm in date]
+    
+    <span># Dacă este un element de bază (int, string etc.), îl returnează ca atare.</span>
+    return date
+
+<span># Tupluri imbricate într-o listă.</span>
+listă_imbricată = [(1, (2, "trei")), (("patru", 5), (6, (7, 8)))]
+
+rezultat = invers_imbricat(listă_imbricată)
+print(rezultat) <span>==> [(('trei', 2), 1), (((8, 7), 6), (5, 'patru'))]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="ST">Sortarea unui tuplu - Sorting a Tuple</h2>
+
+            <p><a href="https://docs.python.org/3/howto/sorting.html" target="_blank" rel="noopener">Sorting
+                    Techniques</a></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Funcția sorted()</dt>
+                    <dd>Tuplurile din Python sunt imutabile și nu pot fi modificate pe loc (in-place). Funcția sorted()
+                        aranjează elementele și returnează o listă sortată nouă, care poate fi convertită înapoi într-un
+                        tuplu.</dd>
+                </dl>
+
+                <dl>
+                    <dt>sorted() Function</dt>
+                    <dd>Python tuples are immutable and cannot be modified in-place. The sorted() function arranges the
+                        elements and returns a new sorted list, which can be converted back into a tuple.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>tuplu = (2, 4, 5, 1, 3)
+
+tuplu_sortat = sorted(tuplu)
+print(tuplu_sortat)        <span>==> [1, 2, 3, 4, 5]</span>
+print(tuple(tuplu_sortat)) <span>==> (1, 2, 3, 4, 5)</span>
+</code></pre>
+
+<pre><code>tuplu = (2, 4, 5, 1, 3)
+
+tuplu_descendent = tuple(sorted(tuplu, reverse=True))
+print(tuplu_descendent) <span>==> (5, 4, 3, 2, 1)</span>
+</code></pre>
+
+            <p>Sortarea unei liste de tupluri - Sorting a List of Tuples.</p>
+
+<pre><code><span># Lexicografic</span>
+fructe_cantități = [(3, 'gutui'), (1, 'mere'), (2, 'pere')]
+print(sorted(fructe_cantități))
+<span>==> [(1, 'mere'), (2, 'pere'), (3, 'gutui')]</span>
+</code></pre>
+
+<pre><code><span># După indicele unui element specific</span>
+fructe_cantități = [(3, 'gutui'), (1, 'mere'), (2, 'pere')]
+sortat_după_fruct = sorted(fructe_cantități, key=lambda fruct: fruct[1])
+print(sortat_după_fruct)
+<span>==> [(3, 'gutui'), (1, 'mere'), (2, 'pere')]</span>
+</code></pre>
+
+<pre><code><span># Sortare cu itemgetter - pentru set mare de date</span>
+from operator import itemgetter
+
+fructe_cantități = [(3, 'gutui'), (1, 'mere'), (2, 'pere')]
+# Sortează după indexul 1
+sortat_rapid = sorted(fructe_cantități, key=itemgetter(1))
+print(sortat_rapid)
+<span>==> [(3, 'gutui'), (1, 'mere'), (2, 'pere')]</span> 
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="LV">Parcurgerea fiecărei valori dintr-un tuplu - Looping over each value in a tuple</h2>
+
+            <div class="grid-container">
+                <p>Pentru a utiliza o buclă for în vederea parcurgerii unui tuplu în Python, poți transmite tuplul
+                    direct în structura buclei. Aceasta este abordarea cea mai eficientă și specifică limbajului Python.
+                </p>
+
+                <p>To use a for loop to iterate over a tuple in Python, you can pass the tuple directly into the loop
+                    structure. This is the most efficient and Pythonic approach.</p>
+            </div>
+
+            <div class="grid-container">
+<pre><code>fructe = ("măr", "cireașă", "banană")
+<span># Iterație directă (cea mai frecventă)</span>
+for fruct in fructe:
+    print(fruct, end=", ")
+<span>==> măr, cireașă, banană,</span>
+</code></pre>
+
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+<span># Iterarea după intervalul de indici (range() și len())</span>
+for i in range(len(fructe)):
+    print(fructe[i], end=", ")
+<span>==> măr, cireașă, banană,</span>
+</code></pre>
+            </div>
+
+<pre><code>fructe = ("măr", "cireașă", "banană")
+<span># Iterare cu indexare (enumerate())</span>
+for indice, fruct in enumerate(fructe):
+    print(f"Indice {indice}: {fruct}")
+<span>==> Indice 0: măr</span>
+<span>==> Indice 1: cireașă</span>
+<span>==> Indice 2: banană</span>
+</code></pre>
+
+
+            <div class="grid-container">
+<pre><code>venituri_lunare = (
+    ("Ianuarie", 5500), ("Februarie", 4000), ("Martie", 4400), 
+    ("Aprilie",5600 ), ("Mai", 7800), ("Iunie", 6700), 
+    ("Iulie", 6000), ("August",7700 ), ("Septembrie", 6700), 
+    ("Octombrie", 6600), ("Noiembrie", 6000), ("Decembrie", 5200),
+)
+
+venit_trimestrial = 0
+
+for indice, (luna, venit) in enumerate(venituri_lunare, start=1):
+    print(f"{luna: >10}: {venit}")
+    venit_trimestrial += venit
+    if indice % 3 == 0:
+        print("-" * 20)
+        print(f"{'Venit trimestrial': >10}: {venit_trimestrial}", end="\n\n")
+        venit_trimestrial = 0
+</code></pre>
+
+<pre><code>  Ianuarie: 5500
+ Februarie: 4000
+    Martie: 4400
+--------------------
+Venit trimestrial: 13900
+
+   Aprilie: 5600
+       Mai: 7800
+     Iunie: 6700
+--------------------
+Venit trimestrial: 20100
+
+     Iulie: 6000
+    August: 7700
+Septembrie: 6700
+--------------------
+Venit trimestrial: 20400
+
+ Octombrie: 6600
+ Noiembrie: 6000
+ Decembrie: 5200
+--------------------
+Venit trimestrial: 17800
+</code></pre>
+            </div>
+
+<pre><code>venituri_lunare = (
+    ("Ianuarie", 5500), ("Februarie", 4000), ("Martie", 4400), 
+    ("Aprilie",5600 ), ("Mai", 7800), ("Iunie", 6700), 
+    ("Iulie", 6000), ("August",7700 ), ("Septembrie", 6700), 
+    ("Octombrie", 6600), ("Noiembrie", 6000), ("Decembrie", 5200),
+)
+
+venit_total = 0
+for tuplu in venituri_lunare:
+    venit_total += tuplu[1]
+    
+print(venit_total) <span>==> 72200</span>
+</code></pre>
+
+            <div class="grid-container">
+<pre><code><span># comprehensions</span>
+șir_numere = ("4", "8", "5", "1", "7")
+
+print(tuple([int(număr) for număr in șir_numere]))
+<span>==> (4, 8, 5, 1, 7)</span>
+</code></pre>
+
+<pre><code><span># Expresie generator</span>
+șir_numere = ("4", "8", "5", "1", "7")
+
+print(int(număr) for număr in șir_numere)
+<span>==> &lt;generator object &lt;genexpr> at 0x00000176E91065E0></span>
+print(tuple(int(număr) for număr in șir_numere))
+<span>==> (4, 8, 5, 1, 7)</span>
+</code></pre>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+            <h2 id="LT">Lungimea și compararea tuplurilor - Length and Comparing Tuples</h2>
+
+            <p><a href="https://www.w3schools.com/python/gloss_python_tuple_length.asp" target="_blank"
+                    rel="noopener">Python Tuple Length</a></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Funcția încorporată len()</dt>
+                    <dd>Această funcție numără toate elementele dintr-un tuplu.</dd>
+                </dl>
+
+                <dl>
+                    <dt>The built-in len() function</dt>
+                    <dd>This function counts all the elements in a tuple.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>fructe = ("mere", "banane", "cireșe")
+print(len(fructe)) <span>==> 3</span>
+
+tuplu_gol = ()
+print(len(tuplu_gol)) <span>==> 0</span>
+</code></pre>
+
+<pre><code><span># Tuplul imbricat este considerat un singur element</span>
+tuplu_imbricat = (1, 2, (3, 4))  
+print(len(tuplu_imbricat)) <span>==> 3</span> 
+<span># Pentru a afla lungimea tuplului interior, folosește-i indicele</span>
+print(len(tuplu_imbricat[2])) <span>==> 2</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>În Python, tuplurile sunt comparate lexicografic (element cu element, de la stânga la dreapta).
+                    Python începe cu primul element ale fiecărui tuplu. Dacă acestea diferă, evaluare determină
+                    rezultatul final al comparației. Dacă sunt egale, se trece secvențial la al doilea element și
+                    continuă astfel până când se găsește o diferență sau se ajunge la sfârșitul tuplurilor. Folosește
+                    operatori de comparare standard, precum ==, !=, &lt;, &lt;=, >, >=.</p>
+
+                <p>In Python, tuples are compared lexicographically (element by element, from left to right). Python
+                    starts with the first element of each tuple. If they differ, the evaluation determines the final
+                    result of the comparison. If they are equal, it proceeds sequentially to the second element and
+                    continues in this manner until a difference is found or the end of the tuples is reached. Use
+                    standard comparison operators like ==, !=, &lt;, &lt;=, >, >=.</p>
+            </div>
+
+<pre><code><span># Egalitatea necesită elemente și lungimi identice</span>
+print((1, 2) == (1, 2))        <span>True</span>
+print((1, 2) == (1, 2, 3))     <span>False</span>
+
+<span># Comparațiile ordonate se evaluează de la stânga la dreapta</span>
+print((1, 11, 111) &lt; (2, 1, 2)) <span>True (decis imediat, deoarece 1 &lt; 2)</span>
+print((3, 5) > (3, 4, 7))       <span>True (decis la indexul 1, deoarece 5 > 3)</span>
+</code></pre>
+
+<pre><code>tuplu1 = (1, 6, 3)
+tuplu2 = (2, 5, 4)
+
+<span># Verifică dacă fiecare indice din tuplu1 este mai mic decât tuplu2</span>
+îndeplinește_condiția = all(x &lt; y for x, y in zip(tuplu1, tuplu2)) 
+print(îndeplinește_condiția) <span>False (deoarece 5 nu este mai mic decât 4)</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Consistența tipurilor de date: Elementele aflate pe aceeași poziție (la același indice) trebuie să
+                    fie compatibile pentru a putea fi comparate. Încercarea de a evalua (1, 2) &lt; ("măr", 2) generează
+                    o eroare de tip (TypeError). Siguranță strictă a tipurilor: Un tuplu nu este niciodată egal cu o
+                    listă, chiar dacă acestea conțin elemente identice; expresia (1, 2) == [1, 2] va avea întotdeauna
+                    valoarea False.</p>
+
+                <p>Data Type Consistency: Elements at the same index position must be compatible for comparison.
+                    Attempting (1, 2) &lt; ("apple", 2) throws a TypeError. Strict Type Safety: A tuple is never equal
+                    to a list, even if they hold identical elements. (1, 2) == [1, 2] will always evaluate to False</p>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="FI">Găsește și numără elementele dintr-un tuplu - Find and count items in a Tuple</h2>
+
+            <p><a href="https://www.w3schools.com/python/python_tuples_access.asp" target="_blank" rel="noopener">Python
+                    - Access Tuple Items</a></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>in or not in</dt>
+                    <dd>Foarte des, operatorii "in" sau "not in" sunt utilizați pentru a determina dacă un element
+                        există sau nu într-un tuplu. Rezultatul este întotdeauna "True" sau "False". Verificarea
+                        apartenenței vă permite să stabiliți dacă un obiect este "membru" al unei câmp de valori.</dd>
+                </dl>
+
+                <dl>
+                    <dt>in or not in</dt>
+                    <dd>Very often "in" or "not in" operators are used to determine if an item exist or not exist in a
+                        tuple. The result any time is "True" or "False". A membership allows you to determine whether an
+                        object is a "member" of a "field" of values.</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+<pre><code>fructe = ("mere", "banane", "cireșe")
+print("mere" in fructe)      <span>==> True</span>
+
+print("prune" in fructe)     <span>==> False</span>
+
+print("cireșe" in fructe)    <span>==> True</span>
+
+print("prune" not in fructe) <span>==> True</span>
+</code></pre>
+
+<pre><code>fructe = ("mere", "banane", "cireșe")
+<span># Verifică dacă un element lipsește</span>
+if "prune" not in fructe:
+    print("Da, prune nu se află în tuplu!")
+else:
+    print("Prune se află în tuplu!")
+
+<span>==> Da, prune nu se află în tuplu!</span>
+</code></pre>
+            </div>
+
+            <p>Filtrarea mai multor elemente - Filtering Multiple Items</p>
+
+<pre><code><span># Tuplul în care se efectuează căutarea</span>
+tuplu = (1, 2, 3, 4, 5)
+
+<span># Elemente pe care dorim să le urmărim</span>
+căutare_elemente = [2, 5, 9]
+
+<span># Găsește elementele care se află în tuplu</span>
+găsite = [element for element in căutare_elemente if element in tuplu]
+print(f"Elemente găsite: {găsite}") <span>==> Elemente găsite: [2, 5]</span>
+
+<span># Găsește elementele care nu se află în tuplu</span>
+lipsesc = [element for element in căutare_elemente if element not in tuplu]
+print(f"Elemente lipsă: {lipsesc}") <span>==> Elemente lipsă: [9]</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <p>Pentru a căuta o anumită valoare ascunsă adânc în interiorul unor tupluri și liste imbricate, poți
+                    utiliza o funcție de căutare recursivă.</p>
+
+                <p>To search for a specific value hidden deep inside nested tuples and lists, you can use a recursive
+                    search function.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Căutare simplă (returnează True sau False)</dt>
+                    <dd>Această funcție parcurge toate nivelurile. Se oprește și returnează True în momentul în care
+                        găsește valoarea căutată.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Simple Search (Returns True or False)</dt>
+                    <dd>This function dives through all layers. It stops and returns True the moment it finds the target
+                        value.</dd>
+                </dl>
+            </div>
+
+<pre><code>def conținut_adânc(date, valoare):
+    <span># Dacă este un tuplu sau o listă, caută recursiv în interiorul fiecărui element.</span>
+    if isinstance(date, (tuple, list)):
+        return any(conținut_adânc(elment, valoare) for elment in date)
+    
+    <span># Cazul de bază: compară valoarea directă.</span>
+    return date == valoare
+
+<span># Exemplu de structură de date.</span>
+date_imbricate = [(1, (2, 3)), ((4, 44), (6, (7, 8)))]
+
+print(conținut_adânc(date_imbricate, 44)) <span>==> True</span>
+print(conținut_adânc(date_imbricate, 45)) <span>==> False</span>
+</code></pre>
+
+
+            <p>Găsește locația exactă (returnează calea indicelui) - Find the Exact Location (Returns the Index Path).
+            </p>
+
+<pre><code>def găsește_locaţia(date, valoare, locaţia_curentă=None):
+    if locaţia_curentă is None:
+        locaţia_curentă = []
+        
+    <span># Dacă este găsită, returnează calea parcursă până aici.</span>
+    if date == valoare:
+        return locaţia_curentă
+
+    <span># Dacă este o colecție, parcurge-o folosind indici.</span>
+    if isinstance(date, (tuple, list)):
+        for indice, element in enumerate(date):
+            <span># Caută pe această ramură.</span>
+            rezultat = găsește_locaţia(element, valoare, locaţia_curentă + [indice])
+            if rezultat is not None:
+                return rezultat
+                
+    return None
+
+date_imbricate = [(1, 2), ((3, 4), 44)]
+date_adânc_imbricate = [(1, 3), (5, 6, 7), [(2, 4), (4, (8, 9, 44))]]
+
+locaţia1 = găsește_locaţia(date_imbricate, 44)
+print(locaţia1) <span>==> [1, 1]</span>
+locaţia2 = găsește_locaţia(date_adânc_imbricate, 44)
+print(locaţia2) <span>==> [2, 1, 1, 2]</span>
+</code></pre>
+
+            <p>Numără aparițiile (returnează un număr) - Count Occurrences (Returns a Number)</p>
+
+<pre><code>def numără(date, valoare):
+    if isinstance(date, (tuple, list)):
+        return sum(numără(element, valoare) for element in date)
+    
+    return 1 if date == valoare else 0
+
+date_imbricate = [(2, (2, 3)), ((4, 2), (7, (6, 2)))]
+
+print(numără(date_imbricate, 2)) <span>==> 4</span>
+</code></pre>
+
+
+<pre><code><span># Metoda .count()</span>
+fructe = ("măr", "cireașă", "prună", "măr", "măr", "cireașă")
+print(fructe.count("măr"))     <span>==> 3</span>
+print(fructe.count("cireașă")) <span>==> 2</span>
+print(fructe.count("prună"))   <span>==> 1</span>
+</code></pre>
+
+<pre><code><span># Metoda .index() găsește prima apariție a unui element</span>
+fructe = ("gutuie", "cireașă", "prună", "măr", "cireașă", "măr")
+print(fructe.index("măr")) <span>==> 3</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="DB">Diferența dintre tupluri și liste în Python - Difference Between Tuples and Lists in Python</h2>
+
+            <table class="outer-hidden">
+                <caption>Tuplu vs. Listă: Comparație</caption>
+                <tr>
+                    <th>Caracteristic</th>
+                    <th>Tuple (())</th>
+                    <th>List ([])</th>
+                </tr>
+                <tr>
+                    <td>Mutabilitate</td>
+                    <td>Imutabil (nu se poate modifica)</td>
+                    <td>Mutabil (se poate modifica)</td>
+                </tr>
+                <tr>
+                    <td>Performanță</td>
+                    <td>Mai rapid și consumă mai puțină memorie</td>
+                    <td>Mai lent și consumă mai multă memorie</td>
+                </tr>
+                <tr>
+                    <td>Metode</td>
+                    <td>Doar 2 (count(), index())</td>
+                    <td>Mai multe (append(), pop(), sort() etc.)</td>
+                </tr>
+                <tr>
+                    <td>Utilizare</td>
+                    <td>Structuri fixe (precum coordonatele x, y)</td>
+                    <td>Colecții dinamice care se modifică</td>
+                </tr>
+                <tr>
+                    <td>Chei de dicționar</td>
+                    <td>Da, deoarece suportă hashing</td>
+                    <td>Nu, va genera o eroare</td>
+                </tr>
+            </table>
+
+            <div class="grid-container">
+                <p>După ce codul a fost creat și dorești să te asiguri că nu va fi suprascris sau corupt accidental
+                    ulterior în cadrul programului, ar trebui să-l stochezi într-un tuplu în loc de o listă.</p>
+
+                <p>Once code has been created and you want to ensure it won't be overwritten or accidentally corrupted
+                    later in the program, you should store it in a tuple instead of a list.</p>
+            </div>
+
+            <div class="grid-container">
+                <p>Python alocă memorie suplimentară listelor pentru a face loc unor operațiuni viitoare, precum
+                    adăugarea de date. Pentru tupluri se alocă exact dimensiunea necesară.</p>
+
+                <p>Python allocates extra memory to lists to make room for future operations like appending data. Tuples
+                    are allocated the exact size required.</p>
+            </div>
+
+<pre><code>import sys
+
+listă = ["cer", "nour", 123, [321, 11.11], 0.2121]
+tuplu = ("cer", "nour", 123, (321, 11.11), 0.2121)
+print(f"Mărimea listei: {sys.getsizeof(listă)} bytes")   <span>==> Mărimea listei: 96 bytes</span>
+print(f"Mărimea tuplului: {sys.getsizeof(tuplu)} bytes") <span>==> Mărimea tuplului: 80 bytes</span>
+</code></pre>
+
+            <div class="grid-container">
+                <div>
+                    <p>Listele includ mai multe metode. Tuplurile au acces doar la count() și index() din cauza
+                        caracterului lor imuabil.</p>
+                    <p>Tuplurile pot fi folosite drept chei într-un dicționar. Listele vor genera o eroare de tip
+                        (TypeError), deoarece sunt mutabile și nu pot fi supuse operației de hashing în condiții de
+                        siguranță.</p>
+                </div>
+
+                <div>
+                    <p>Lists include more methods. Tuples only have access to count() and index() because their
+                        immutable status.</p>
+                    <p>Tuples can be used as keys in a dictionary. Lists will throw a TypeError because they are mutable
+                        and cannot be safely hashed.</p>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <p>Tuplurile se creează mult mai rapid decât listele. Deoarece tuplurile sunt imutabile, Python
+                    optimizează instanțierea acestora direct în bytecode.</p>
+
+                <p>Tuples are significantly faster to create than lists. Because tuples are immutable, Python optimizes
+                    their instantiation directly in the bytecode.</p>
+            </div>
+
+<pre><code>import timeit
+
+listă_timp = timeit.timeit(stmt="[1, 2, 3, 4, 5]", number=10_000_000)
+tuplu_timp = timeit.timeit(stmt="(1, 2, 3, 4, 5)", number=10_000_000)
+
+print(f"Timpul de creare a listei: {listă_timp:.4f} secunde")
+<span>==> Timpul de creare a listei: 0.8925 secunde</span>
+print(f"Timpul de creare a tuplului: {tuplu_timp:.4f} secunde")
+<span>==> Timpul de creare a tuplului: 0.1797 secunde</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Tuplurile pot oferi un ușor avantaj în ceea ce privește viteza de iterare și de căutare, deoarece
+                    adresele lor de memorie sunt fixe și secvențiale, deși diferența este minimă în cazul colecțiilor de
+                    mici dimensiuni.</p>
+
+                <p>Tuples can offer a slight edge in iteration and lookup speeds because their memory addresses are
+                    fixed and sequential, though the difference is minimal for small collections.</p>
+            </div>
+
+<pre><code>import timeit
+
+<span># Configurarea unor structuri de mari dimensiuni</span>
+crează_lista = "data = list(range(1000))"
+crează_tuplu = "data = tuple(range(1000))"
+
+<span># Măsoară timpul necesar pentru a accesa un element din mijloc de 10 milioane de ori.</span>
+căutare_în_listă = timeit.timeit(stmt="x = data[500]", setup = crează_lista, number=10_000_000)
+căutare_în_tuplu = timeit.timeit(stmt="x = data[500]", setup = crează_tuplu, number=10_000_000)
+
+print(f"Timp de căutare în listă: {căutare_în_listă:.4f} secunde")
+<span>==> Timpul de căutare în listă: 0.3862 secunde</span>
+print(f"Timp de căutare în tuplu: {căutare_în_tuplu:.4f} secunde")
+<span>==> Timpul de căutare în tuplu: 0.3544 secunde</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="DW">Decizia de a utiliza tupluri - Deciding Whether to Use Tuples</h2>
+
+            <div class="grid-container">
+                <p>Cu date care trebuie să rămână constante, precum coordonatele geografice (latitudine, longitudine),
+                    valorile de culoare RGB sau setările de conectare la baza de date.</p>
+
+                <p>With data that must remain constant, such as geographic coordinates (latitude, longitude), RGB color
+                    values, or database connection settings.</p>
+            </div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a></address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+    <script src="JS/treileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

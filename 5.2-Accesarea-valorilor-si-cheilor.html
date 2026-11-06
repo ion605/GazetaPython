@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 5.2 Dictionar-Chei-Valori</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaD.svg" alt="D" class="logo">
+          <h1>5.0 Tipuri dicționare - Dictionary Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>5.2 Accesarea valorilor și cheilor - Accessing values and keys</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#VK">Accesarea valorilor și cheilor</a>
+              <ul>
+                <li><a href="#VKA">Obține valoarea folosind paranteze [cheie]</a></li>
+                <li><a href="#VKB">Obține cheile din dicționar</a></li>
+                <li><a href="#VKC">Obţine cheile în diferite condiții</a></li>
+                <li><a href="#VKD">Metoda .get(key, default=None)</a></li>
+                <li><a href="#VKE">Obţine valorile cu .values()</a></li>
+                <li><a href="#VKF">Iterarea prin elemente cu .items()</a></li>
+                <li><a href="#VKG">Calcule cu chei și valori</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter you will study:</li>
+            <li><a href="#VK">Accessing values and keys</a>
+              <ul>
+                <li><a href="#VKA">Get the value using brackets [key]</a></li>
+                <li><a href="#VKB">Get keys in dictionary</a></li>
+                <li><a href="#VKC">Get keys under different conditions</a></li>
+                <li><a href="#VKD">.get(key, default=None) Method</a></li>
+                <li><a href="#VKE">Get values with .values()</a></li>
+                <li><a href="#VKF">Iterating through items with .items()</a></li>
+                <li><a href="#VKG">Calculations with keys and values</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <h2 id="VK">Accesarea valorilor și cheilor - Accessing values and keys</h2>
+
+      <p><a href="https://www.w3schools.com/python/python_dictionaries_access.asp" target="_blank" rel="noopener">Python
+          - Access Dictionary Items</a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>Accesarea valorilor dicționarului în Python într-un Jupyter Notebook implică aceleași metode ca în orice
+            alt mediu Python. Dicționarele stochează datele în perechi cheie-valoare, iar accesați valorile prin
+            referirea la cheile asociate.</p>
+          <p>În Python, poți accesa cheile și valorile dintr-un dicționar folosind paranteze pătrate, metoda .get() sau
+            metodele integrate precum .keys(), .values() și .items().</p>
+        </div>
+
+        <div>
+          <p>Accessing dictionary values in Python within a Jupyter Notebook involves the same methods as in any other
+            Python environment. Dictionaries store data in key-value pairs, and you access the values by referencing
+            their associated keys.</p>
+          <p>In Python, you can access keys and values in a dictionary using square brackets, the .get() method, or
+            built-in methods like .keys(), .values(), and .items()</p>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="VKA">Obține valoarea folosind paranteze [cheie] - Get the value using brackets [key]</h2>
+
+      <div class="grid-container">
+        <p>Aceasta este cea mai comună și directă metodă. Plasați cheia între paranteze pătrate după variabila
+          dicționarului.</p>
+
+        <p>This is the most common and direct method. You place the key within square brackets after the dictionary
+          variable.</p>
+      </div>
+
+
+<pre><code>persoană = {"nume": "Cristina", "vârstă": 50, "oraş": "Turnu Severin"}
+
+print(persoană["nume"])  <span>==&gt; Cristina</span>
+print(f'{persoană["nume"]} are vârsta de {persoană["vârstă"]} de ani şi locuieste in oraşul {persoană["oraş"]}')
+<span>==&gt; Cristina are vârsta de 50 de ani şi locuieste in oraşul Turnu Severin</span>
+</code></pre>
+
+      <p>Cum să previi erorile de tip KeyError - How to Prevent KeyError Failures</p>
+
+<pre><code><span># Operatorul "in"</span>
+persoană = {"nume": "Cristina", "oraş": "Turnu Severin"}
+if "vârstă" in persoană:
+    print(persoană["vârstă"])
+else:
+    print("Vârsta nu este menţionată")
+<span>==&gt; Vârsta nu este menţionată</span>
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, un dicționar poate conține o listă și/sau un alt dicționar ca parte a valorilor sale. Acest
+            lucru permite crearea unor structuri de date complexe și ierarhice.</p>
+          <p>Accesarea elementelor dintr-un dicționar Python imbricat implică o secvență de căutări de chei.
+            Dicționarele sunt accesate prin cheile lor. Când lucrați cu dicționare imbricate, aceste căutări de chei
+            sunt înlănțuite.</p>
+          <p>Accesarea elementelor din listele imbricate în Python implică utilizarea mai multor seturi de paranteze
+            pătrate, fiecare set de paranteze corespunzând unui nivel de imbricare. Python folosește indexarea cu bază
+            zero, ceea ce înseamnă că primul element se află la indexul 0, al doilea la indexul 1 și așa mai departe.
+          </p>
+        </div>
+
+        <div>
+          <p>In Python, a dictionary can contain a list and/or another dictionary as part of its values. This allows for
+            the creation of complex and hierarchical data structures.</p>
+          <p>Accessing items in a nested Python dictionary involves a sequence of key lookups. Dictionaries are accessed
+            by their keys. When dealing with nested dictionaries, you chain these key lookups together.</p>
+          <p>Accessing items in nested lists in Python involves using multiple sets of square brackets, with each set of
+            brackets corresponding to a level of nesting. Python uses zero-based indexing, meaning the first element is
+            at index 0, the second at index 1, and so on.</p>
+        </div>
+      </div>
+
+<pre><code>dict_cu_listă = {"nume": "Alexa", "scorul": [90, 85, 92], "oraş": "Dearborn"}
+print(f'Al doilea scor al Alexei este: {dict_cu_listă["scorul"][1]}%')
+
+<span>==&gt; Al doilea scor al Alexei este: 85%</span>
+</code></pre>
+
+
+<pre><code>date_familie = {
+    "nume": "Popescu", "prenume": "Cristina", "vârstă": 57, "oraş": "Severin", 
+    "soț": "Constantin",
+    "ocupaţie": "programator",
+    "copii": ["Virgil", "Tatiana", "Sever"],
+    "scoruri": [{"virgil": [90, 85, 90]}, {"tatiana": [80, 85, 90]}, {"sever": [85, 80, 90]}],
+    "animale": {"câine": "Rex", "pisică": "Mona"}
+}
+
+print(f'{date_familie["nume"]} {date_familie["prenume"]} are {len(date_familie["copii"])} copii')
+<span>==&gt; Popescu Cristina are 3 copii</span>
+
+print(f'Lista cu puctaje a lui {date_familie["copii"][0]} este {date_familie["scoruri"][0]["virgil"]}')
+<span>==&gt; Lista cu puctaje a lui Virgil este [90, 85, 90]</span>
+
+print(f'{date_familie["prenume"]} are un câine pe nume {date_familie["animale"]["câine"]}')
+<span>==&gt; Cristina are un câine pe nume Rex</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="VKB">Obține cheile din dicționar - Get keys in dictionary</h2>
+
+      <p><a href="https://www.w3schools.com/python/ref_dictionary_keys.asp" target="_blank" rel="noopener">Python
+          Dictionary keys() Method</a></p>
+
+      <div class="grid-container">
+        <p>Pentru a obține toate cheile dintr-un dicționar Python, se utilizează în mod obișnuit metoda keys(). Această
+          metodă returnează un obiect de vizualizare a dicționarului care afișează o vizualizare dinamică a cheilor
+          dicționarului.</p>
+
+        <p>To obtain all keys from a Python dictionary, the keys() method is commonly used. This method returns a
+          dictionary view object that displays a dynamic view of the dictionary's keys.</p>
+      </div>
+
+<pre><code>date_familie = {
+    "nume": "Popescu", "prenume": "Cristi", "vârstă": 57, "oraş": "Severin", 
+    "soț": "Constantin",
+    "ocupaţie": "programator",
+    "copii": ["Virgil", "Tatiana", "Sever"],
+    "scoruri": [{"virgil": [90, 85, 90]}, {"tatiana": [80, 85, 90]}, {"sever": [85, 80, 90]}],
+    "animale": {"câine": "Rex", "pisică": "Mona"}
+}
+
+<span># returnează un obiect dict_keys</span>
+vizualizarea_cheilor = date_familie.keys()
+print(vizualizarea_cheilor)
+<span>==&gt; dict_keys(['nume', 'prenume', 'vârstă', 'oraş', 'soț', 'ocupaţie', 'copii', 'scoruri', 'animale'])</span>
+
+<span># Conversia vizualizării keys() într-o listă</span>
+vizualizarea_cheilor = list(date_familie.keys())
+print(vizualizarea_cheilor)
+<span>==&gt; ['nume', 'prenume', 'vârstă', 'oraş', 'soț', 'ocupaţie', 'copii', 'scoruri', 'animale']</span>
+
+<span># Iterație directă (implicit peste chei)</span>
+for cheie in date_familie:
+    print(cheie, end=", ")
+<span>==&gt; nume, prenume, vârstă, oraş, soț, ocupaţie, copii, scoruri, animale, </span>
+
+<span># Iterație explicit peste chei</span>
+for cheie in date_familie.keys():
+    print(cheie, end=", ")
+<span>==&gt; Rezultat la fel ca la implicit</span>
+   
+<span># despachetare (*) (pentru cazuri de utilizare specifice)</span>
+chei_despachetate = [*date_familie]
+print(chei_despachetate)
+<span>==&gt; ['nume', 'prenume', 'vârstă', 'oraş', 'soț', 'ocupaţie', 'copii', 'scoruri', 'animale']</span>	
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="VKC">Obţine cheile în diferite condiții - Get keys under different conditions</h2>
+
+      <p>Filtrează cheile în funcție de valorile asociate acestora - Filter keys based on the values associated with
+        them</p>
+
+<pre><code>nume = {"Cristina": 40, "Andrei": 50, "Mihai": 75, "Vasile": 67, "Alexandru": 39, "Elena": 41, "Ioana": 19}
+
+<span># Obține chei unde valoarea este mai mică de 50</span>
+chei_valoare_mai_mică_de_50 = [cheie for cheie, valoare in nume.items() if valoare &lt; 50]
+print(f"Chei unde valoarea este mai mică de 50 {chei_valoare_mai_mică_de_50}")
+<span>==&gt; Chei unde valoarea este mai mică de 50 ['Cristina', 'Alexandru', 'Elena', 'Ioana']</span>
+
+<span># Obține chei unde valoarea este un număr par</span>
+chei_pare_valoare = [cheie for cheie, valoare in nume.items() if not valoare % 2]
+print(f"Chei cu valori pare {chei_pare_valoare}")
+<span>==&gt; Chei cu valori pare ['Cristina', 'Andrei']</span>
+</code></pre>
+
+      <p>Filtrează cheile în funcție de proprietățile cheilor în sine - Filter keys based on properties of the keys
+        themselves.</p>
+
+<pre><code>nume = {"Cristina": 40, "Cornel": 50, "Mihai": 75, "Vasile": 67, "Alexandru": 39, "Elena": 41, "Corina": 19}
+dict_mixt = {"imagine.jpg": "conţine_binary", "file.csv": "date_constante", "file.txt": "conţine_txt", "imagine.gif": "conţine_rgb"}
+
+<span># Obține chei unde numărul de caractere este mai mare de 6</span>
+chei_mai_mari_de_6_caract = [cheie for cheie, _ in nume.items() if len(cheie) > 6]
+print(f"Nume mai mari decât 6 caractere: {chei_mai_mari_de_6_caract}")
+<span>==&gt; Nume mai mari decât 6 caractere: ['Cristina', 'Alexandru']</span>
+
+<span># Obține chei unde numărul de caractere este mai mare sau egal cu 6</span>
+chei_mai_mari = [cheie for cheie in nume.keys() if len(cheie) >= 6]
+print(f"Nume mai mari decât 6 caractere: {chei_mai_mari}")
+<span>==&gt; Nume mai mari sau egal cu 6 caractere: ['Cristina', 'Cornel', 'Vasile', 'Alexandru', 'Corina']</span>
+
+<span># Obține chei care încep cu litera C</span>
+start_cu_C = [cheie for cheie in nume.keys() if cheie.startswith("C")]
+print(f"Nume care incep cu litera C: {start_cu_C}")
+<span>==&gt; Nume care incep cu litera C: ['Cristina', 'Cornel', 'Corina']</span>
+
+<span># Obține chei care se termină cu .txt</span>
+chei_txt = [cheie for cheie in dict_mixt.keys() if cheie.endswith(".txt")]
+print(f"Chei care se terimina cu .txt {chei_txt}")
+<span>==&gt; Chei care se terimina cu .txt ['file.txt']</span>
+
+<span># Obține chei care încep cu imagine</span>
+chei_imagine = [cheie for cheie in dict_mixt.keys() if cheie.startswith("imagine")]
+print(f"Chei care încep cu imagine {chei_imagine}")
+<span>==&gt; Chei care încep cu imagine ['imagine.jpg', 'imagine.gif']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>cheie for cheie, _ in nume.items()</b> - În Python, caracterul de subliniere (_) este, în acest context,
+          un nume de variabilă substituent utilizat pentru a ignora o valoare de care nu aveți nevoie.</p>
+
+        <p><b>key for key, _ in name.items()</b> - In Python, the underscore (_) in this context is a placeholder
+          variable name used to ignore a value you do not need.</p>
+      </div>
+
+
+<pre><code><span># Obține chei unde cheia începe cu util și statutul este activ</span>
+angajați = {'utilizator_Cornel': {'statut': 'activ', 'vârstă': 30},
+            'utilizator_Cristi': {'statut': 'inactiv', 'vârstă': 25},
+            'administrator_Corina': {'statut': 'activ', 'vârstă': 40}}
+
+utilizatori_activi = [
+    cheie for cheie, valoare in angajați.items() if cheie.startswith('util') and valoare['statut'] == 'activ'
+]
+print(f"Utilizatori activi: {utilizatori_activi}")
+<span>==&gt; Utilizatori activi: ['utilizator_Cornel']</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="VKD">Metoda .get(key, default=None) - .get(key, default=None) Method</h2>
+
+      <p><a href="https://www.w3schools.com/python/ref_dictionary_get.asp" target="_blank" rel="noopener">Python
+          Dictionary get() Method</a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>Metoda dict.get(key, default=None) din Python este utilizată pentru a recupera valoarea asociată unei chei
+            specificate dintr-un dicționar. Aceasta oferă o alternativă mai sigură accesului direct la cheie folosind
+            paranteze pătrate (dictionary[key]), deoarece gestionează cazurile în care cheia ar putea să nu existe în
+            dicționar fără a genera KeyError.</p>
+
+          <dl>
+            <dt>Recuperarea valorii:</dt>
+            <dd>Dacă cheia există în dicționar, dict.get() returnează valoarea corespunzătoare.</dd>
+            <dt>Dacă cheia nu este găsită în dicționar:</dt>
+            <dd>Dacă o valoare implicită este furnizată ca al doilea argument, dict.get() returnează acea valoare
+              implicită în loc să genereze o eroare KeyError.
+            <dd>
+            <dd>Dacă nu este furnizată nicio valoare implicită (de exemplu, se utilizează sau se omite default=None),
+              dict.get() returnează None.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>The dict.get(key, default=None) method in Python is used to retrieve the value associated with a specified
+            key from a dictionary. It offers a safer alternative to direct key access using square brackets
+            (dictionary[key]) because it handles cases where the key might not exist in the dictionary without raising a
+            KeyError.</p>
+
+          <dl>
+            <dt>Retrieving the value:</dt>
+            <dd>If the key exists in the dictionary, dict.get() returns the corresponding value.</dd>
+            <dt>If the key is not found in the dictionary:</dt>
+            <dd>If a default value is provided as the second argument, dict.get() returns that default value instead of
+              raising a KeyError.</dd>
+            <dd>If no default value is provided (i.e., default=None is used or omitted), dict.get() returns None.</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code>fructe = {"măr": 50, "pară": 30, "cireșă": 35, "caisă": 25, "smochină": 15}
+print(f'Sunt: {fructe.get("măr")} de mere in listă')
+<span>==&gt; Sunt: 50 de mere in listă</span>
+
+print(f'Gutuie in listă, rezultatul este: {fructe.get("gutuie")}')
+<span>==&gt; Gutuie in listă, rezultatul este: None</span>
+
+<span># furnizați o valoare implicită</span>
+print(f'Valoare implicită pentru gutuie: {fructe.get("gutuie", "vom avea in toamnă")}')
+<span>==&gt; Valoare implicită pentru gutuie: vom avea in toamnă</span>
+</code></pre>
+
+
+<pre><code>dict_cu_listă = {"nume": "Virginia", "vârstă": 21, "greutatea": None, "scorul": [90, 85, 92], "oraş": "Herculane"}
+
+<span># Cheia există, returnează valoarea</span>
+print(f'{dict_cu_listă.get("nume")} are vârsta de: {dict_cu_listă.get("vârstă")} de ani')
+<span>==&gt; Virginia are vârsta de: 21 de ani</span>
+
+<span># Cheia nu există, returnează None (comportament implicit)</span>
+print(f'{dict_cu_listă.get("nume")} are ocupaţia {dict_cu_listă.get("ocupaţie")}')
+<span>==&gt; Virginia are ocupaţia None</span>
+
+<span># Cheia nu există, returnează valoarea implicită furnizată</span>
+print(f'Ţara este {dict_cu_listă.get("țară", "necunoscută")}')
+<span>==&gt; Ţara este necunoscută</span>
+
+<span># Cheia există, dar valoarea este None</span>
+valoare_greutate = dict_cu_listă.get(dict_cu_listă.get("greutatea"))
+print(f"În listă greutatea are valoarea: {valoare_greutate}")
+<span>==&gt; În listă greutatea are valoarea: None</span>
+
+rezultat_greutate = f'Greutatea lui {dict_cu_listă.get("nume")} este: {valoare_greutate}'
+print(rezultat_greutate)
+<span>==&gt; Greutatea lui Virginia este: None</span>
+</code></pre>
+
+      <p>Dicționare imbricate - Nested dictionaries</p>
+
+<pre><code>inventar = {
+"fructe": {"mere": 50, "pere": 30, "cireșe": 35, "caise": 25, "smochine": 15},
+"lactate": {"brânză": 15, "lapte": 20," iaurt": 25}
+}
+
+<span># Extrage cantitatea de mere</span>
+cantitate_mere = inventar.get("fructe", {}).get("mere")
+print(f"În inventar sunt: {cantitate_mere} de {list(inventar['fructe'].keys())[0]}")
+<span>==&gt; În inventar sunt: 50 de mere</span>
+
+<span># Extrage cantitatea de lapte</span>
+cutii_cu_lapte = inventar.get("lactate", {}).get("lapte")
+print(f"În inventar sunt: {cutii_cu_lapte} de cutii cu {list(inventar['lactate'].keys())[1]}")
+<span>==&gt; În inventar sunt: 20 de cutii cu lapte</span>
+
+<span># Extrage cantitatea inexistentă, implicit 0</span>
+cutii_cu_sana = inventar.get("lactate", {}).get("sana", 0)
+print(f"În inventar cutii cu sana: {cutii_cu_sana}")
+<span>==&gt; În inventar cutii cu sana: 0</span>
+</code></pre>
+
+      <p>Extrage dintr-un dicționar inexistent - Extract from a non-existent dictionary.</p>
+
+<pre><code>inventar = {
+"fructe": {"mere": 50, "pere": 30, "cireșe": 35, "caise": 25, "smochine": 15},
+"lactate": {"brânză": 15, "lapte": 20," iaurt": 25}
+}
+
+morcovi_cantitate = inventar.get("legume", {}).get("morcovi", 0)
+print(f"Morcovi în legume : {morcovi_cantitate}")
+
+<span>==&gt; Morcovi în legume : 0</span>
+</code></pre>
+
+      <div class="grid-container">
+        <ul>
+          <li>Cum funcționează codul pas cu pas:
+          <li>inventar.get("legume", {}): Metoda .get() caută cheia "legume" în dicționarul principal. Deoarece această
+            cheie nu există, Python returnează valoarea implicită specificată ca al doilea argument, adică un dicționar
+            gol {}.</li>
+          <li>.get("morcovi", 0): Se aplică o nouă metodă .get() pe dicționarul gol obținut la pasul anterior. Caută
+            cheia "morcovi" în {}, nu o găsește, și returnează valoarea implicită 0.</li>
+
+          <li>Această metodă de înlănțuire (chaining) cu .get() este o practică excelentă în Python pentru a evita
+            erorile de tip KeyError atunci când navighezi prin structuri de date imbricate (nested dictionaries).</li>
+        </ul>
+
+        <ul>
+          <li>How the code works step-by-step:
+          <li>inventory.get("vegetable", {}): The .get() method looks for the key "vegetable" in the main dictionary.
+            Since this key does not exist, Python returns the default value specified as the second argument—an empty
+            dictionary {}.</li>
+          <li>.get("carrots", 0): A new .get() method is applied to the empty dictionary obtained in the previous step.
+            It looks for the key "carrots" in {}, does not find it, and returns the default value 0.</li>
+
+          <li>This method of chaining .get() calls is an excellent practice in Python for avoiding KeyError exceptions
+            when navigating nested data structures (nested dictionaries).</li>
+        </ul>
+      </div>
+
+      <p>Listă de dicționare List of dictionaries</p>
+
+<pre><code>date_lipsă = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Lugoj"}
+] 
+lipsă_oraş = [d.get("oraş") for d in date_lipsă]
+print(lipsă_oraş) <span>==&gt; ['Turnu Severin', None, 'Lugoj']</span>
+
+<span># furnizați o valoare implicită ca al doilea argument</span>
+lipsă_oraş_implicit = [d.get("oraş", "necunoscut") for d in date_lipsă]
+print(lipsă_oraş_implicit) <span>==&gt; ['Turnu Severin', 'necunoscut', 'Lugoj']</span>
+
+<span># exclude elemente fără cheia specificată</span>
+ignoră_lipsă_oraş = [d.get("oraş") for d in date_lipsă if d.get("oraş")]
+print(ignoră_lipsă_oraş) <span>==&gt; ['Turnu Severin', 'Lugoj']</span>
+
+<span># exclude elemente fără cheia specificată cu operatorul := Walrus</span>
+walrus_ignoră_lipsă_oraş = [valoare for d in date_lipsă if (valoare := d.get("oraş"))]
+print(walrus_ignoră_lipsă_oraş) <span>==&gt; ['Turnu Severin', 'Lugoj']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Operatorul walrus (:=) din Python este o expresie care atribuie o valoare unei variabile în cadrul unei
+          expresii mai complexe.</p>
+
+        <p>The walrus operator (:=) in Python is an assignment expression that assigns a value to a variable inside a
+          larger expression.</p>
+      </div>
+
+      <div class="grid-container">
+  <pre><code>n = len(a_list)
+if n > 10:
+    print(n)
+</code></pre>
+
+  <pre><code>if (n := len(a_list)) > 10:
+    print(n)
+</code></pre>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="VKE">Obţine valorile cu .values() - Get values with .values()</h2>
+
+      <p><a href="https://www.w3schools.com/python/ref_dictionary_values.asp" target="_blank" rel="noopener">Python
+          Dictionary values() Method</a></p>
+
+      <p><a href="https://www.w3schools.com/python/python_dictionaries_loop.asp" target="_blank" rel="noopener">Python -
+          Loop Dictionaries</a></p>
+
+      <div class="grid-container">
+        <p>Metoda values() din Python returnează un obiect de tip view care conține toate valorile prezente într-un
+          dicționar. Acest obiect se actualizează automat și dinamic dacă dicționarul suferă modificări.</p>
+
+        <p>The values() method in Python returns a view object containing all the values present in a dictionary. This
+          view object stays dynamically updated automatically if the dictionary changes.</p>
+      </div>
+
+<pre><code>persoană = {
+    "nume": "Menta", "prenume": "Cristina", "vârstă": 77, "oraş": "Severin", 
+    "soț": "Nelu", 
+    "copii": ["Virgil", "Tatiana", "Sever"],
+    "animale": {"câine": "Rex", "pisică": "Mona"}
+}
+
+vizualizare_toate_valorile = persoană.values()
+print(vizualizare_toate_valorile)
+<span>==&gt; dict_values(['Menta', 'Cristina', 77, 'Severin', 'Nelu', ['Virgil', 'Tatiana', 'Sever'], {'câine': 'Rex', 'pisică': 'Mona'}])</span>
+
+<span># Conversia obiectului de vizualizare într-o listă</span>
+toate_valorile_listă = list(persoană.values())
+print(toate_valorile_listă)
+<span>==&gt; ['Menta', 'Cristina', 77, 'Severin', 'Nelu', ['Virgil', 'Tatiana', 'Sever'], {'câine': 'Rex', 'pisică': 'Mona'}]</span>
+
+<span># Utilizarea unei liste de înțelegere (alternativă)</span>
+toate_valorile_comprehension = [valoare for valoare in persoană.values()]
+print(toate_valorile_comprehension)
+<span>==&gt; ['Menta', 'Cristina', 77, 'Severin', 'Nelu', ['Virgil', 'Tatiana', 'Sever'], {'câine': 'Rex', 'pisică': 'Mona'}]</span>
+</code></pre>
+
+      <div class="grid-container">
+  <pre><code>fructe_preț = {'caisă': 2.40, 'cireșă': 2.12, 'măr': 1.69, 'pară': 1.5, 'smochină': 1.7}
+prețuri_mici = []
+        
+for preț in fructe_preț.values():
+    if preț &lt;=2:
+        prețuri_mici.append(preț)
+print(prețuri_mici)
+<span>==&gt; [1.69, 1.5, 1.7]</span>
+</code></pre>
+
+  <pre><code>fructe_preț = {'caisă': 2.40, 'cireșă': 2.12, 'măr': 1.69, 'pară': 1.5, 'smochină': 1.7}
+
+preț_modificat = {}
+for fruct, preț in fructe_preț.items():
+    if preț >= 2:
+        preț_modificat[fruct] = round(preț - 0.45, 2)
+print(preț_modificat)
+<span>==&gt; {'caisă': 1.95, 'cireșă': 1.67}</span>
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Explicație:</dt>
+          <dd>fructe_preț.items(): Iterează atât peste cheile (fruct), cât și peste valorile (pret) din dicționarul
+            fructe_preț.</dd>
+          <dd>dacă preț >= 2: Verifică dacă prețul original al fructului este 2 sau mai mare.</dd>
+          <dd>preț_modificat[fruct] = round(preț - 0.45, 2): Dacă condiția este îndeplinită, adaugă o nouă pereche
+            cheie-valoare la dicționarul preț_modificat. Cheia este numele fructului (fruct), iar valoarea este prețul
+            original minus 0.45.</dd>
+        </dl>
+
+        <dl>
+          <dt>Explanation:</dt>
+          <dd>fruits_price.items(): Iterates over both the keys (fruit) and values (price) of the fruits_price
+            dictionary.</dd>
+          <dd>if price >= 2: Checks if the fruit's original price is 2 or more.</dd>
+          <dd>price_modified[fruit] = round(price - 0.45, 2): If the condition is met, it adds a new key-value pair to
+            the price_modified dictionary. The key is the fruit's name (fruit), and the value is the original price
+            minus 0.45.</dd>
+        </dl>
+      </div>
+
+<pre><code>fructe = ["măr", "Pară", "cireșă", "Caisă", "smochină", "prună", "piersică", "Strugure"]
+<span># Crearea unui dicționar în care cheile sunt primele caractere, iar valorile sunt liste de cuvinte</span>
+dicţionar_grupat = {}
+for fruct in fructe:
+    primul_caracter  = fruct[0].lower()
+    if primul_caracter not in dicţionar_grupat:
+        dicţionar_grupat[primul_caracter] = []
+    dicţionar_grupat[primul_caracter].append(fruct)
+
+<span># Extract the values (lists of words) from the dictionary</span>
+grupuri_listă = [v for v in dicţionar_grupat.values()]
+
+print(grupuri_listă)
+<span>==&gt; [['măr'], ['Pară', 'prună', 'piersică'], ['cireșă', 'Caisă'], ['smochină', 'Strugure']]</span>
+
+print(dicţionar_grupat)
+<span>==&gt; {'m': ['măr'], 'p': ['Pară', 'prună', 'piersică'], 'c': ['cireșă', 'Caisă'], 's': ['smochină', 'Strugure']}</span>
+</code></pre>
+
+      <p>Crearea de grupuri pe baza unor condiții - Creating groups based on conditions.</p>
+
+<pre><code>fructe = ["măr", "Pară", "cireșă", "Caisă", "smochină", "prună", "piersică", "Strugure"]
+<span># Crearea unui dicționar în care cheile sunt primele caractere, iar valorile sunt liste de cuvinte</span>
+dicţionar_grupat = {}
+for fruct in fructe:
+    primul_caracter  = fruct[0].lower()
+    if primul_caracter not in dicţionar_grupat:
+        dicţionar_grupat[primul_caracter] = []
+    dicţionar_grupat[primul_caracter].append(fruct)
+
+<span># Extrageți valorile (listele de cuvinte) din dicționar</span>
+grupuri_listă = [v for v in dicţionar_grupat.values()]
+
+print(grupuri_listă)
+<span>==&gt; [['măr'], ['Pară', 'prună', 'piersică'], ['cireșă', 'Caisă'], ['smochină', 'Strugure']]</span>
+
+print(dicţionar_grupat)
+<span>==&gt; {'m': ['măr'], 'p': ['Pară', 'prună', 'piersică'], 'c': ['cireșă', 'Caisă'], 's': ['smochină', 'Strugure']}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="VKF">Iterarea prin elemente cu .items() - Iterating through items with .items()</h2>
+
+      <p><a href="https://www.w3schools.com/python/ref_dictionary_items.asp" target="_blank" rel="noopener">Python
+          Dictionary items() Method</a></p>
+
+      <p><a href="https://www.w3schools.com/python/python_dictionaries_loop.asp" target="_blank" rel="noopener">Python -
+          Loop Dictionaries</a></p>
+
+
+      <div class="grid-container">
+        <p>În Python, utilizezi metoda .items() pentru a parcurge simultan atât cheile, cât și valorile unui dicționar.
+          Metoda dict.items() returnează un obiect de tip view care afișează o listă de perechi (tupluri) cheie-valoare
+          ale dicționarului. Fiecare tuplu conține o cheie și valoarea corespunzătoare acesteia. Poți despacheta direct
+          aceste tupluri cheie-valoare în variabile separate, în cadrul buclei for.</p>
+
+        <p>In Python, you use the .items() method to iterate through both the keys and values of a dictionary
+          simultaneouslly. The dict.items() method returns a view object that displays a list of a dictionary's
+          key-value tuple pairs. Each tuple contains a key and its corresponding value. You can directly unpack these
+          key-value tuples into separate variables within the for loop.</p>
+      </div>
+
+<pre><code>persoană = {"nume": "Cristina", "vârstă": 50, "oraş": "Severin"}
+for cheie, valoare in persoană.items():
+    print(f"{cheie}: {valoare}")
+
+<span>==&gt; nume: Cristina
+    vârstă: 50
+    oraş: Severin</span>
+</code></pre>
+
+      <div class="grid-container">
+        <ul>
+          <li>persoană.items() generează un iterabil de tipul ("nume", "Cristina"), ("vârstă", 50), ("oraș", "Severin").
+          </li>
+          <li>Sintaxa pentru cheie, valoare in ... descompune fiecare tuplu în variabilele cheie și valoare pentru
+            fiecare iterație.</li>
+          <li>Această abordare este cea mai comună și mai Pythonică modalitate de a accesa simultan atât cheile, cât și
+            valorile unui dicționar în timpul iterației.</li>
+        </ul>
+
+        <ul>
+          <li>person.items() generates an iterable of ("name", "Cristina"), ("age", 50), ("city", "Severin").</li>
+          <li>The for key, value in ... syntax unpacks each tuple into the key and value variables for each iteration.
+          </li>
+          <li>This approach is the most common and Pythonic way to access both the keys and values of a dictionary
+            simultaneously during iteration.</li>
+        </ul>
+      </div>
+
+      <div class="grid-container">
+
+  <pre><code>persoană = {"nume": "Cristina", "vârstă": 50, "oraş": "Severin"}
+for tuplu in persoană.items():
+    print(tuplu)
+    print(type(tuplu))
+    print(tuplu[0])
+    print(tuplu[1])
+    print('---------')
+</code></pre>
+
+  <pre><code>('nume', 'Cristina')
+&lt;class 'tuple'>
+nume
+Cristina
+---------
+('vârstă', 50)
+&lt;class 'tuple'>
+vârstă
+50
+---------
+('oraş', 'Severin')
+&lt;class 'tuple'>
+oraş
+Severin
+---------
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <p>Metoda items() returnează dict_items, care poate fi convertit într-o listă folosind list().</p>
+
+        <p>The items() method returns dict_items, which can be converted to a list using list().</p>
+      </div>
+
+<pre><code>persoană = {"nume": "Cristina", "vârstă": 50, "oraş": "Severin"}
+print(persoană.items())
+<span>==&gt; dict_items([('nume', 'Cristina'), ('vârstă', 50), ('oraş', 'Severin')])</span>
+print(type(persoană.items()))
+<span>==&gt; &lt;class 'dict_items'></span>
+
+print(list(persoană.items()))
+<span>==&gt; [('nume', 'Cristina'), ('vârstă', 50), ('oraş', 'Severin')]</span>
+print(type(list(persoană.items())))
+<span>==&gt; &lt;class 'list'></span>
+print(type(list(persoană.items())[0]))
+<span>==&gt; &lt;class 'tuple'></span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Iterarea prin mai multe dicționare: Puteți itera printr-o listă de dicționare și efectua operațiuni pe
+          fiecare dicționar în parte.</p>
+
+        <p>Iterating through multiple dictionaries: You can iterate through a list of dictionaries and perform
+          operations on each individual dictionary.</p>
+      </div>
+
+      <div class="grid-container">
+  <pre><code>dicţionare_în_listă = [{"Cristina": 40}, {"Andrei": 50}, {"Mihai": 75}, {"Vasile": 67}, {"Alexandru": 39}, {"Elena": 41}, {"Ioana": 19}]
+for dicţionar in dicţionare_în_listă:
+    for cheie, valoare in dicţionar.items():
+        print(f"{cheie}: are {valoare} de ani")
+</code></pre>
+
+  <pre><code>Cristina: are 40 de ani
+Andrei: are 50 de ani
+Mihai: are 75 de ani
+Vasile: are 67 de ani
+Alexandru: are 39 de ani
+Elena: are 41 de ani
+Ioana: are 19 de ani
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <p>Utilizarea itertools.chain pentru dicționare imbricate: Acest lucru este util pentru aplatizarea și iterația
+          prin elementele din dicționarele imbricate.</p>
+
+        <p>Using itertools.chain for nested dictionaries: This is useful for flattening and iterating through items in
+          nested dictionaries.</p>
+      </div>
+
+
+<pre><code>from itertools import chain
+inventar = {"fructe": {"măr": 50, "pară": 30, "cireșă": 35, "caisă": 25, "smochină": 15}}
+for fruct, valoare in chain(inventar.items()):
+        print(f"{fruct}: {valoare}")
+<span>==&gt; fructe: {'măr': 50, 'pară': 30, 'cireșă': 35, 'caisă': 25, 'smochină': 15}</span>
+</code></pre>
+
+      <div class="grid-container">
+  <pre><code>from itertools import chain
+inventar = {"fructe": {"măr": 50, "pară": 30, "cireșă": 35, "caisă": 25, "smochină": 15}}
+for fruct, valoare in chain(inventar.items()):
+    for cheie, cheie_val in chain(valoare.items()):
+        print(f"{cheie}: {cheie_val}")
+</code></pre>
+
+  <pre><code>măr: 50
+pară: 30
+cireșă: 35
+caisă: 25
+smochină: 15
+</code></pre>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="VKG">Calcule cu chei și valori - Calculations with keys and values</h2>
+
+      <p><a href="" target="_blank" rel="noopener"></a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, calculele cu chei și valori din dicționare sunt de obicei efectuate prin accesarea componentelor
+            relevante și aplicarea operațiilor.</p>
+          <p>Atunci când efectuezi calcule folosind chei și valori în Python, abordarea ta va depinde de faptul dacă
+            dorești să combini mai multe valori într-o singură valoare, cum ar fi o sumă, o medie, un minim sau un
+            maxim. sau să transformi datele într-un dicționar nou.</p>
+        </div>
+
+        <div>
+          <p>In Python, calculations with keys and values in dictionaries are typically performed by accessing the
+            relevant components and applying operations.</p>
+          <p>When performing calculations with keys and values in Python, your approach will depend on whether you want
+            to combining multiple values into a single value, such as a sum, average, minimum, or maximum. or transform
+            the data into a new dictionary.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+  <pre><code>prețuri = {"caisă": 2.40, "cireșă": 2.12, "măr": 1.69, "pară": 1.50, "smochină": 1.70}
+
+<span># Calculează suma tuturor valorilor</span>
+total_cost = sum(prețuri.values()) 
+print("$", round(total_cost, 2)) <span>==&gt; $ 9.41</span>
+
+<span># Găsește valorile maximă și minimă</span>
+preț_max = max(prețuri.values())
+print("$", round(preț_max, 2)) <span>==&gt; $ 2.4</span>
+
+preț_min = min(prețuri.values())
+print("$", round(preț_min,2)) <span>==&gt; $ 1.5</span>
+</code></pre>
+
+  <pre><code>prețuri = {"caisă": 2.40, "cireșă": 2.12, "măr": 1.69, "pară": 1.50, "smochină": 1.70}
+
+<span># Găsește cel mai ieftin fruct (returnează cheia)</span>
+ce_mai_ieftin = min(prețuri, key=prețuri.get)
+print(f"Cel mai ieftin fruct: {ce_mai_ieftin}")
+<span>==&gt; Cel mai ieftin fruct: pară</span>
+
+<span># Găsește cel mai scump fruct</span>
+cel_mai_scump = max(prețuri, key=prețuri.get)
+print(f"Cel mai scump fruct: {cel_mai_scump}")
+<span>==&gt; Cel mai scump fruct: caisă</span>
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <p>De ce key=prețuri.get</p>
+          <p>În Python, key=prețuri.get transmite metoda încorporată .get() a dicționarului pentru a indica funcțiilor
+            precum max() sau min() cum să evalueze elementele; astfel, în loc să compare cheile dicționarului în ordine
+            alfabetică, le compară pe baza valorilor corespunzătoare acestora.</p>
+          <p>Python parcurge cheile: "caisă", "cireșă", "măr", "pară", "smochină"</p>
+          <ul>
+            <li>Python aplică funcția cheie fiecărei chei:</li>
+            <li>prețuri.get("caisă") returnează 2.40</li>
+            <li>prețuri.get(cireșă") returnează 2.12</li>
+            <li>prețuri.get("măr") returnează 1.69</li>
+            <li>prețuri.get("pară") returnează 1.5</li>
+            <li>prețuri.get("smochină") returnează 1.7</li>
+          </ul>
+
+          <p>Python compară rezultatele: observă că 2,40 este cea mai mare valoare. Python returnează cheia originală
+            asociată acelei valori maxime: "caisă".</p>
+          <p>Utilizarea prețuri.get este pur și simplu o formă scurtă integrată, mai elegantă, pentru a afla valoarea
+            fiecărei chei.
+        </div>
+
+        <div>
+          <p>Why key=prices.get</p>
+          <p>In Python, key=prices.get passes the dictionary's built-in .get() method as a guide to tell functions like
+            max() or min() how to evaluate the items.Instead of comparing the dictionary keys alphabetically, it
+            compares them by their corresponding values.</p>
+          <p>Python loops through the keys: "apricot", "cherry", "apple", "pear", "fig"</p>
+          <ul>
+            <li>Python applies the key function to each key:</li>
+            <li>prices.get("apricot") returns 2.40</li>
+            <li>prices.get("cherry") returns 2.12</li>
+            <li>prices.get("apple") returns 1.69</li>
+            <li>prices.get("pear") returns 1.5</li>
+            <li>prices.get("fig") returns 1.7</li>
+          </ul>
+          <p>Python compares the results: It sees that 2.40 is the highest number.Python returns the original key
+            associated with that highest number: "apricot".</p>
+          <p>Using prices.get is just a cleaner, built-in shortcut for looking up the value of each key.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <p>Dacă key=prețuri.get pare puțin confuz din cauza lipsei parantezelor funcției, acesta este echivalent cu
+          utilizarea unei funcții lambda (anonime):</p>
+
+        <p>If key=prices.get looks a bit confusing because the function parentheses are missing, it is identical to
+          using a lambda (anonymous) function:</p>
+      </div>
+
+<pre><code>prețuri = {'caisă': 2.40, 'cireșă': 2.12, 'măr': 1.69, 'pară': 1.50, 'smochină': 1.70}
+
+<span># Acest lucru face exact același lucru:</span>
+cel_mai_ieftin = min(prețuri, key=lambda preț: prețuri[preț])
+print(f"Cel mai ieftin fruct: {cel_mai_ieftin}") <span>==&gt; Cel mai ieftin fruct: pară</span>
+
+cel_mai_scump = max(prețuri, key=lambda preț: prețuri[preț])
+print(f"Cel mai scump fruct: {cel_mai_scump}") <span>==&gt; Cel mai scump fruct: caisă</span>
+</code></pre>
+
+<pre><code>fructe_cantitate = {"măr": 50, "pară": 30, "cireșă": 35, "caisă": 25, "smochină": 15}
+fructe_preț = {"caisă": 2.40, "cireșă": 2.12, "măr": 1.69, "pară": 1.50, "smochină": 1.70}
+
+total_preț = 0.00
+for preț in fructe_preț.values():
+    total_preț += preț
+print("$", round(total_preț, 2)) <span>==&gt; $ 9.41</span>
+
+print(f"$ {round(sum(fructe_preț.values()), 2)}") <span>==&gt; $ 9.41</span>
+</code></pre>
+
+<pre><code>fructe_cantitate = {"măr": 50, "pară": 30, "cireșă": 35, "caisă": 25, "smochină": 15}
+fructe_preț = {"caisă": 2.40, "cireșă": 2.12, "măr": 1.69, "pară": 1.50, "smochină": 1.70}
+
+total = []
+for cheie1, valoare1 in fructe_cantitate.items():
+    for cheie2, valoare2 in fructe_preț.items():
+        if cheie1 == cheie2:
+            total.append(valoare1 * valoare2)
+print(total) <span>==&gt; [84.5, 45.0, 74.2, 60.0, 25.5]</span>
+</code></pre>
+
+<pre><code><span># folosind list comprehension</span>
+fructe_cantitate = {"măr": 50, "pară": 30, "cireșă": 35, "caisă": 25, "smochină": 15}
+fructe_preț = {"caisă": 2.40, "cireșă": 2.12, "măr": 1.69, "pară": 1.50, "smochină": 1.70}
+total = [fructe_cantitate[fruct] * fructe_preț[fruct] for fruct in fructe_cantitate if fruct in fructe_preț]
+print(total) <span>==&gt; [84.5, 45.0, 74.2, 60.0, 25.5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Combină cele două dicționare într-unul singur folosind un dictionary comprehension în Python. Noul dicționar
+          va conține fructele drept chei, iar ca valori va avea un alt dicționar sau un tuplu cu cantitatea și prețul
+          corespunzător.</p>
+
+        <p>Combine the two dictionaries into a single one using a dictionary comprehension in Python. The new dictionary
+          will have the fruits as keys, and the values ​​will be either another dictionary or a tuple containing the
+          corresponding quantity and price.</p>
+      </div>
+
+<pre><code>fructe_cantitate = {"măr": 50, "pară": 30, "cireșă": 35, "caisă": 25, "smochină": 15} 
+fructe_preț = {"caisă": 2.40, "cireșă": 2.12, "măr": 1.69, "pară": 1.50, "smochină": 1.70}
+
+<span># Combinarea dicționarelor sub formă de sub-dicționar {cantitate, preț}</span>
+fructe_combinate = {
+    fruct: {"cantitate": fructe_cantitate[fruct], "preț": fructe_preț[fruct]}
+    for fruct in fructe_cantitate
+}
+
+print(fructe_combinate)
+<span>==&gt; {'măr': {'cantitate': 50, 'preț': 1.69}, 'pară': {'cantitate': 30, 'preț': 1.5}, 'cireșă': {'cantitate': 35, 'preț': 2.12}, 'caisă': {'cantitate': 25, 'preț': 2.4}, 'smochină': {'cantitate': 15, 'preț': 1.7}}</span>
+</code></pre>
+
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

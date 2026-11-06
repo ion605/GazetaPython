@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="CSS/main-style.css">
+
+<!--<link rel="stylesheet" href="CSS/main-style-supliment.css">-->
+
+<link rel="icon" type="img/png" href="images/logo-title.png">
+<title>Gazeta Python 7.2 Bytearray</title>
+</head>
+
+<body>
+
+<div id="sus" class="main-1-1 navigare">
+<header>
+<div class="header-menu">
+<img src="images/logo-menu.svg" alt="Gazeta Python">
+<nav>
+  <ul>
+    <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+    <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+    <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+    <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+  </ul>
+</nav>
+</div>
+
+<div class="first-empty-1-1"></div>
+
+<div class="titlu-1-0">
+  <div class="grid-cell">
+    <img src="images/literaS.svg" alt="S" class="logo">
+    <h1>7.0 Tipuri de Secvențe binare - Binary Sequence Types</h1>
+  </div>
+</div>
+
+<div class="second-empty-1-1"></div>
+
+<div class="subtitlu-1-1">
+  <div class="grid-cell">
+    <h2>7.2 Obiectul bytearray (mutabil) - bytearray</h2>
+  </div>
+</div>
+
+<div class="third-empty-1-1"></div>
+
+<div class="ro-en-1-1 container-links ro-en">
+<div>
+  <ul>
+    <li>În acest capitol veți studia:</li>
+    <li><a href="#BA">Obiecte bytearray</a></li>
+    <li><a href="#CB">Crearea unui bytearray</a></li>
+    <li><a href="#BM">Metode bytearray</a></li>
+    <li><a href="#MB">Manipularea obiectelor de tip bytearray</a></li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li>In this chapter, you will study:</li>
+    <li><a href="#BA">bytearray Objects</a></li>
+    <li><a href="#CB">Creating a bytearray</a></li>
+    <li><a href="#BM">bytearray Methods</a></li>
+    <li><a href="#MB">Manipulating bytearray Objects</a></li>
+  </ul>
+</div>
+</div>
+</header>
+<div class="forth-empty-1-1"></div>
+
+<div class="contents-1-1">
+
+<p><a href="https://www.w3schools.com/python/ref_func_bytearray.asp" target="_blank">Python bytearray() Function</a></p>
+
+<p><a href="https://realpython.com/python-bytearray/" target="_blank">Python's Bytearray</a></p>
+
+
+
+<p>Sintaxă bytearray(x, encoding, error)</p>
+<p>Sintaxă bytearray([source[, encoding[, errors]]])</p>
+
+<h2 id="BA">Obiecte bytearray - bytearray Objects</h2>
+
+<div class="grid-container">
+<p>Un obiect de tip bytearray în Python este o secvență mutabilă de numere întregi fără semn pe 8 biți (valori cuprinse între 0 și 255). Acesta reprezintă o versiune dinamică și modificabilă a unui obiect standard de tip bytes.</p>
+
+<p>A bytearray object in Python is a mutable sequence of 8-bit unsigned integers (values ranging from 0 to 255). It it as a dynamic, editable of a standard bytes object.</p>
+</div>
+
+<table class="outer-hidden">
+<caption>Compararea tipurilor bytes și bytearray</caption>
+<tr><th>Caracteristică</th><th>bytes</th><th>bytearray</th></tr>
+<tr><th>Mutabilitate</th><td>Imutabil (nu poate fi modificat după creare)</td><td>Mutabil (permite modificări pe loc și redimensionare)</td></tr>
+<tr><th>Literal de sintaxă</th><td>Suportat (de ex., b'salut')</td><td>Nu există un literal specific; trebuie utilizat constructorul</td></tr>
+<tr><th>Metode de modificare</th><td>Niciuna (generează TypeError la atribuirea unei valori unui element)</td><td>append(), extend(), insert(), pop() etc.</td></tr>
+<tr><th>Cazuri principale de utilizare</th><td>Constante binare fixe, chei de dicționar, codificări de text</td><td>Modificări dinamice ale fluxurilor I/O, buffere de rețea</td></tr>
+</table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="CB">Crearea unui bytearray - Creating a bytearray</h2>
+
+
+<div class="grid-container">
+<dl>
+<dt>Instanțierea unui bytearray:</dt>
+  <dd>Puteți inițializa un bytearray folosind diverse tipuri de surse, prin intermediul <a href="https://docs.python.org/3/builtins/functions.html#func-bytearray" target="_blank">constructorului încorporat</a>.</dd>
+</dl>
+
+<dl>
+<dt>Instantiating a bytearray:</dt>
+  <dd>You can initialize a bytearray using a variety of source types through the <a href="https://docs.python.org/3/builtins/functions.html#func-bytearray" target="_blank">built-in constructor</a>.</dd>
+</dl>
+</div>
+
+<pre><code><span># Fără argumente</span>
+gol = bytearray()
+print(gol)           <span>==&gt; bytearray(b'')</span>
+
+<span># Obiect de tip bytes</span>
+octeti_imuabili = b"Soare"
+copie_mutabila = bytearray(octeti_imuabili)
+print(copie_mutabila) <span>==&gt; bytearray(b'Soare')</span>
+
+<span># Pe baza unei dimensiuni (umplut cu octeți nuli)</span>
+numar = bytearray(5) 
+print(numar)         <span>==&gt; bytearray(b'\x00\x00\x00\x00\x00')</span>
+
+<span># Pe baza unei liste de numere întregi (trebuie să fie între 0 și 255)</span>
+numere = bytearray([65, 66, 67])  <span>==&gt; bytearray(b'ABC')</span> 
+print(numere)
+
+<span># Pe baza unui șir de caractere (necesită specificarea codificării caracterelor)</span>
+caractere = bytearray("Salut", "utf-8")
+print(caractere)   <span>==&gt; bytearray(b'Salut')</span>
+
+<span># Pe baza unui șir hexazecimal</span>
+sir_hex = bytearray.fromhex("53 61 6c 75 74")
+print(sir_hex)     <span>==&gt; bytearray(b'Salut')</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="BM">Metode bytearray - bytearray Methods</h2>
+
+
+<div class="grid-container">
+<p>Deoarece bytearray în Python este o secvență mutabilă de numere întregi cuprinse între 0 și 255, acesta suportă metode specifice listelor și șirurilor de caractere.</p>
+
+<p>Since a bytearray in Python is a mutable sequence of integers ranging from 0 to 255, it supports methods specific to lists and strings.</p>
+</div>
+
+<table class="outer-hidden">
+<caption>Mutabilitate și modificare pe loc (metode de tip listă)</caption>
+<tr><th>Metodă</th><th>Sintaxă și descriere</th><th>Exemplu</th></tr>
+<tr><th>.append()</th><td>esantion.append(int) — Adaugă un singur octet (0-255) la sfârșit.</td><td>esantion.append(65)</td></tr>
+<tr><th>.extend()</th><td>esantion.extend(iterable) — Adaugă o secvență iterabilă de octeți la sfârșit.</td><td>esantion.extend([66, 67])</td></tr>
+<tr><th>.insert()</th><td>esantion.insert(index, int) — Inserează un octet la un indice specificat.</td><td>esantion.insert(0, 90)</td></tr>
+<tr><th>.pop()</th><td>esantion.pop([index]) — Elimină și returnează octetul de la indicele specificat (implicit: ultimul).</td><td>ultimul_octet = esantion.pop()</td></tr>
+<tr><th>.remove()</th><td>esantion.remove(int) — Elimină prima apariție a octetului specificat.</td><td>esantion.remove(65)</td></tr>
+<tr><th>.reverse()</th><td>esantion.reverse() — Inversează ordinea octeților (modifică obiectul original).</td><td>esantion.reverse()</td></tr>
+<tr><th>.clear()</th><td>esantion.clear() — Elimină toate elementele, lăsând un obiect bytearray gol.</td><td>esantion.clear()</td></tr>
+</table>
+
+<p>bytearray.append()</p>
+
+<div class="grid-container">
+<pre><code><span># Eroare</span>
+data = bytearray()
+
+try:
+    data.append(300)
+except ValueError as e:
+    print(f"Eroare așteptată: {e}")
+<span>==&gt; Eroare așteptată: byte must be in range(0, 256)</span>
+</code></pre>
+
+
+<pre><code><span># Confuzie legată de reprezentarea vizuală</span>
+
+data = bytearray()
+data.append(1)
+print(data)     <span>==&gt; bytearray(b'\x01')</span>
+
+data.append(65)
+print(data)     <span>==&gt; bytearray(b'\x01A')</span>
+</code></pre>
+</div>
+
+<div class="grid-container">
+<ul>
+  <li>\x01 este reprezentarea hexazecimală a primului octet (1).</li>
+  <li>'A' este reprezentarea ASCII a celui de-al doilea octet (65).</li>
+</ul>
+
+<ul>
+  <li>\x01 is the hex representation of the first byte (1).</li>
+  <li>'A' is the ASCII representation of the second byte (65).</li>
+</ul>
+</div>
+
+<pre><code>esantion = bytearray(b"salut")
+
+<span># Modifică un singur indice (folosind valori întregi de octeți)</span>
+esantion[0] = 83
+
+<span># Adaugă un nou octet la sfârșit</span>
+esantion.append(33)  <span># 33 este ASCII pentru '!'</span>
+print(esantion) <span>==&gt; bytearray(b'Salut!')</span>
+
+<span># Modificări la feliere</span>
+esantion[1:5] = b"alve"
+print(esantion) <span>==&gt; bytearray(b'Salve!')</span>
+
+<span># Convertește înapoi într-un șir de octeți imutabil, dacă este necesar</span>
+imuabil = bytes(esantion) 
+print(imuabil)  <span>==&gt; b'Salve!'</span>
+</code></pre>
+
+<table class="outer-hidden">
+<caption>Tabel de referință ASCII pentru "S" și "s"</caption>
+<tr><th>Caracter</th><th>Valoare zecimală</th><th>Valoare hexazecimală</th><th>Valoare binară</th></tr>
+<tr><td>S (majusculă)</td><td>83</td><td>53</td><td>01010011</td></tr>
+<tr><td>s (minusculă)</td><td>115</td><td>73</td><td>01110011</td></tr>
+</table>
+
+<p>bytearray.expend()</p>
+
+<pre><code><span># Inițializează un bytearray mutabil</span>
+data = bytearray(b"Salut")
+
+<span># Utilizați .extend() pentru a adăuga mai mulți octeți dintr-un obiect iterabil (de exemplu, un obiect de tip bytes)</span>
+data.extend(b" Lume")
+print(data)          <span>==&gt; bytearray(b'Salut Lume')</span> 
+
+<span># Folosește .append() pentru a adăuga un singur octet (un număr întreg între 0 și 255)</span>
+data.append(33)  # 33 este ASCII code pentru '!'
+print(data)          <span>==&gt; bytearray(b'Salut Lume!')</span>
+</code></pre>
+
+<p>bytearray.insert()</p>
+
+<pre><code><span># Inserează un octet</span>
+data = bytearray(b"Salut Lume")
+print(f"Lungime inițială {len(data)}") <span>==&gt; Lungime inițială 10</span>
+
+<span># Introduce un spațiu (ASCII 32) la indexul 5</span>
+data.insert(5, 32)
+
+print(data, "/", f"Lungime finală: {len(data)}")
+<span>==&gt; bytearray(b'Salut  Lume') / Lungime finală: 11</span>
+</code></pre>
+
+<pre><code><span># codul generează o eroare de tip TypeError</span>
+try:
+    data = bytearray(b"Salut")
+    data.insert(5, b" Lume")
+except TypeError as e:
+    print(f"A fost interceptată o eroare așteptată: {e}")
+<span>==&gt; A fost interceptată o eroare așteptată: 'bytes' object cannot be interpreted as an integer</span>
+</code></pre>
+
+<div class="grid-container">
+<pre><code><span># Inserare de octeți multipli (slicing)</span>
+data = bytearray(b"Salut lume")
+
+<span># Inserează mai mulți octeți la indexul 6, vizând un slice gol</span>
+data[6:6] = b"minunata "
+
+print(data) <span>==&gt; bytearray(b'Salut minunata lume')</span>
+</code></pre>
+
+<pre><code><span># Inserare de octeți multipli (slicing)</span>
+data = bytearray(b"Salut lume")
+<span># Indicele la care dorim să inserăm date</span>
+indice = 5  
+<span># Inserează b" minunata" la indicele 5</span>
+data[indice : indice] = b" minunata"
+
+print(data) <span>==&gt; bytearray(b'Salut minunata lume')</span>
+</code></pre>
+</div>
+
+<p>bytearray.pop(index=-1)</p>
+
+<div class="grid-container">
+<pre><code><span># Comportament implicit</span>
+litere = bytearray(b"XYZ")
+
+<span># Eliminarea ultimului element</span>
+ultimul_octet = litere.pop()
+
+print(f"{ultimul_octet} valoarea ASCII pentru litera {chr(ultimul_octet)}")
+<span>==&gt; 90 valoarea ASCII pentru litera Z</span>
+
+print(litere) <span>==&gt; bytearray(b'XY')</span>
+</code></pre>
+
+<pre><code><span># Eliminarea unui element de la un anumit indice</span>
+software = bytearray(b"Unigraphics nx")
+
+<span># Pop the first element (index 0)</span>
+primul_octet = software.pop(0)
+
+print(f"{primul_octet} valoarea ASCII pentru litera {chr(primul_octet)}")
+<span>==&gt; 85 valoarea ASCII pentru litera U</span>
+
+print(software)<span>==&gt; bytearray(b'nigraphics nx')</span>
+</code></pre>
+</div>
+
+<p>bytearray.remove(value)</p>
+
+<pre><code><span># Utilizare de bază (folosind valori întregi)</span>
+numere = bytearray([10, 20, 30, 20, 40])
+
+<span># Elimină prima apariție a lui 20</span>
+numere.remove(20)
+
+print(f"{numere} -> {list(numere)}")
+<span>==&gt; bytearray(b'\n\x1e\x14(') -> [10, 30, 20, 40]</span>
+
+print(b'\n' == b'\x0a') <span>==&gt; True</span>
+</code></pre>
+
+<div class="grid-container">
+<p>În sistemul hexazecimal, 0a este egal cu numărul 10 în sistemul zecimal.
+În standardul de caractere ASCII, numărul 10 reprezintă un caracter de tip Newline / Line Feed (salt la linie nouă), care, în cod, este scris universal sub forma \n.</p>
+
+<p>In the hexadecimal system, 0a equals the number 10 in decimal.
+In the ASCII character standard, the number 10 represents a Newline / Line Feed character, which is universally written as \n in code.</p>
+</div>
+
+<pre><code><span># Șiruri de caractere</span>
+text_fruct = bytearray(b"Gutuii")
+
+<span># Elimină primul "i" minuscul</span>
+text_fruct.remove(ord('i'))
+
+print(text_fruct) <span>==&gt; bytearray(b'Gutui')</span>
+</code></pre>
+
+<div class="grid-container">
+<dl>
+<dt>Gestionarea sigură a erorilor</dt>
+  <dd>Deoarece remove() provoacă o eroare dacă elementul nu există, plasează apelul într-un bloc try/except sau verifică mai întâi dacă elementul este prezent:</dd>
+</dl>
+
+<dl>
+<dt>Handling Errors Safely</dt>
+  <dd>Because remove() crashes if the element isn't there, wrap it in a try/except block or check for existence first:</dd>
+</dl>
+</div>
+
+<pre><code><span># 122 este codul ASCII pentru litera "z"</span>
+litere = bytearray(b"XYZ")
+
+<span># Verificare prealabilă</span>
+if 122 in litere:
+    litere.remove(122)
+
+<span># try/except</span>
+try:
+    litere.remove(122)
+except ValueError:
+    print("Valoarea octetului nu a fost găsită!")
+<span>==&gt; Valoarea octetului nu a fost găsită!</span>
+</code></pre>
+
+<div class="grid-container">
+<p>Pentru a elimina mai multe apariții ale unei valori de tip octet dintr-un bytearray, poți alege între a modifica matricea pe loc sau a crea o copie nouă. Metoda încorporată .remove() elimină doar câte o apariție pe rând, așadar este necesară o strategie diferită, în funcție de obiectivul urmărit.</p>
+
+<p>To remove multiple instances of a byte value from a bytearray, you can choose between changing the array in place or creating a clean copy. The built-in .remove() method only handles one at a time, so you need a different strategy depending on your goal.</p>
+</div>
+
+<pre><code><span># Comprehensiunea listelor (returnează un nou bytearray)</span>
+date = bytearray(b"A-B-C-D")
+octet_de_eliminat = ord('-')  # Valoare: 45
+
+<span># Păstrează fiecare octet care nu este țintă</span>
+date_filtrate = bytearray(b for b in date if b != octet_de_eliminat)
+
+print(date_filtrate) <span>==&gt; bytearray(b'ABCD')</span>
+</code></pre>
+
+<pre><code><span># Buclă while (modifică elementul original)</span>
+date = bytearray(b"A-B-C-D")
+octet_de_eliminat = ord('-')
+
+while True:
+    try:
+        date.remove(octet_de_eliminat)
+    except ValueError:
+        break  <span># Se declanșează atunci când toate instanțele au dispărut</span>
+
+print(date) <span>==&gt; bytearray(b'ABCD')</span>
+</code></pre>
+
+<p>bytearray.reverse()</p>
+
+<pre><code><span># Creează un bytearray mutabil</span>
+data = bytearray(b"Salut")
+print(f"data ID iniţial: {id(data)}") <span>==&gt; data ID iniţial: 1747511401648</span>
+
+<span># Inversează-l la locul lui</span>
+data.reverse()
+
+print(data, "/", id(data) <span>==&gt; bytearray(b'tulaS') / 1747511401648</span>
+</code></pre>
+
+<div class="grid-container">
+<p>O greșeală frecventă este încercarea de a atribui rezultatul metodei .reverse() unei variabile noi. Acest lucru va avea ca rezultat None.</p>
+
+<p>A common mistake is trying to assign the result of .reverse() to a new variable. This will result in None.</p>
+</div>
+
+<pre><code>data = bytearray(b"123")
+result = data.reverse()
+
+print(result) <span>==&gt; None</span>
+</code></pre>
+
+
+<p>bytearray.clear()</p>
+
+<pre><code><span># Crearea unui bytearray cu date inițiale</span>
+date = bytearray(b"Salut lume")
+print(f"Înainte de golire: {date} (Lungime: {len(date)})") 
+
+<span># Golirea obiectului bytearray</span>
+date.clear()
+print(f"După golire: {date} (Lungime: {len(date)})")
+
+<span>==&gt; Înainte de golire: bytearray(b'Salut lume') (Lungime: 10)</span>
+<span>==&gt; După golire: bytearray(b'') (Lungime: 0)</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="MB">Manipularea obiectelor de tip bytearray - Manipulating bytearray Objects</h2>
+
+<h3>Conversii și constructori alternativi - Conversions and Alternative Constructors</h3>
+
+<pre><code><span># bytearray.fromhex(string)</span>
+esantion = bytearray.fromhex('41 42 43')
+print(esantion) <span>==&gt; bytearray(b'ABC')</span>
+
+<span># .hex([sep[, bytes_per_sep]])</span>
+print(esantion.hex(), "/", type(esantion.hex()))
+<span>==&gt; 414243 / &lt;class 'str'&gt;</span>
+
+print(int(esantion.hex()), "/", type(int(esantion.hex())))
+<span>==&gt; 414243 / &lt;class 'int'&gt;</span>
+
+<span># .decode(encoding='utf-8', errors='strict')</span>
+print(esantion.decode('utf-8'), "/", type(esantion.decode('utf-8')))
+<span>==&gt; ABC / &lt;class 'str'&gt;</span>
+</code></pre>
+
+<h3>Căutare, numărare și informații - Searching, Counting and Information</h3>
+
+<div class="grid-container">
+<ul>
+<li>.count(sub[, start[, end]]): Returnează numărul total de apariții (care nu se suprapun) ale unui octet sau ale unei secvențe.</li>
+  <li>.find(sub[, start[, end]]): Returnează cel mai mic indice la care se găsește subsecvența sub (returnează -1 dacă nu este găsită).</li>
+  <li>.index(sub[, start[, end]]): Similar cu .find(), dar generează o eroare de tip ValueError dacă subsecvența lipsește.</li>
+  <li>.startswith(prefix[, start[, end]]): Returnează True dacă datele încep cu prefixul de octeți specificat.</li>
+  <li>.endswith(suffix[, start[, end]]): Returnează True dacă datele se termină cu sufixul de octeți specificat.</li>
+</ul>
+
+<ul>
+  <li>.count(sub[, start[, end]]): Returns the total non-overlapping occurrences of a byte or slice.</li>
+  <li>.find(sub[, start[, end]]): Returns the lowest index where the subsequence sub is found (returns -1 if not found).</li>
+  <li>.index(sub[, start[, end]]): Like .find(), but raises a ValueError if the subsequence is missing.</li>
+  <li>.startswith(prefix[, start[, end]]): Returns True if the data begins with the specified byte prefix.</li>
+  <li>.endswith(suffix[, start[, end]]): Returns True if the data ends with the specified byte suffix.</li>
+</ul>
+</div>
+
+<p>bytearray.count(sub[, start[, end]])</p>
+
+<pre><code><span># Numără aparițiile octetului "a" (ASCII 97) sau ale octeților b"ba"</span>
+nume = bytearray(b"alibaba")
+
+print(nume.count(b"a"))       <span>==&gt; 3</span>
+print(nume.count(b"a", 0, 5)) <span>==&gt; 2   s-a căutat în cadrul secvenței b[0:5]</span>
+
+
+print(b.count(nume"ba"))       <span>==&gt; 2</span>
+print(b.count(nume"ba", 1, 5)) <span>==&gt; 1   s-a căutat în cadrul secvenței b[1:5]</span>
+</code></pre>
+
+<p>Transmiterea unui șir de caractere (cel mai frecvent) - Passing a String (Most Common)</p>
+
+<pre><code><span># Un bytearray care reprezintă datele jurnalului</span>
+datele_jurnalului = bytearray(b"eroare: disk full. eroare: connection timeout.")
+
+<span># Greșit: Se transmite direct un literal de tip șir de caractere</span>
+try:
+    eroare_count =datele_jurnalului.count("eroare")
+except TypeError as e:
+    print(f"Eroare detectată: {e}")
+
+<span># Reparare: Adăugați un prefix 'b' pentru a-l transforma într-un literal de octeți sau utilizați .encode()</span>
+corect_count = datele_jurnalului.count(b"eroare")
+print(f"S-au găsit: {corect_count} erori")
+
+<span>==&gt; Eroare detectată: argument should be integer or bytes-like object, not 'str'</span>
+<span>==&gt; S-au găsit: 2 erori</span>
+</code></pre>
+
+<p>Transmiterea unei liste ca model - Passing a list as pattern</p>
+
+<pre><code><span># Un bytearray care reprezintă citiri de la senzori</span>
+flux_senzori = bytearray([0x10, 0x20, 0x30, 0x10, 0x20])
+
+<span># Incorect: Încercarea de a transmite o listă ca model (pattern) pentru a găsi secvențe potrivite</span>
+try:
+    model_incorect = flux_senzori.count([0x10, 0x20])
+except TypeError as e:
+    print(f"Eroare detectată: {e}")
+else:
+    print(model_incorect)
+
+<span># Corecție: Încapsularea listei într-un obiect de tip bytes sau bytearray</span>
+model_corect = flux_senzori.count(bytearray([0x10, 0x20]))
+print(f"Numărul de apariții ale modelului corect: {model_corect}")
+
+<span>==&gt; Eroare detectată: argument should be integer or bytes-like object, not 'list'</span>
+<span>==&gt; Numărul de apariții ale modelului corect: 2</span>
+</code></pre>
+
+<p>bytearray.find(sub[, start[, end]])</p>
+
+<pre><code><span># Crearea unui obiect bytearray de probă</span>
+date_model = bytearray(b"salut lume, salut python")
+
+<span># Găsirea unei subsecvențe (returnează cel mai mic indice)</span>
+print(f'Primul "salut" sa găsit la indicele: {date_model.find(b"salut")}')
+<span>==&gt; Primul "salut" sa găsit la indicele: 0</span> 
+
+<span># Căutarea cu un indice de început (start)</span>
+print(f'Al doilea "salut" se află la indicele: {date_model.find(b"salut", 5)}')
+<span>==&gt; Al doilea "salut" se află la indicele: 12</span>
+
+<span># Restrângerea căutării folosind limitele de început (start) și sfârșit (end)</span>
+print(f'În afara limitelor: {date_model.find(b"lume", 0, 9)}')
+<span>==&gt; În afara limitelor: -1</span>
+
+<span># Căutarea unui singur octet folosind un număr întreg (0-255)</span>
+<span># p în ASCII este 112</span>
+print(f"Litera p este la indicele: {date_model.find(112)}")
+<span>==&gt; Litera p este la indicele: 18</span>
+</code></pre>
+
+<p>bytearray.startswith(prefix[, start[, end]])</p>
+
+<pre><code><span># Utilizați metoda .encode() (Recomandat)</span>
+data_model = bytearray("👍 salut, python".encode("utf-8"))
+
+print(data_model.startswith("👍".encode("utf-8"))) <span>==&gt; True</span>
+print(data_model.startswith(b"salut"))            <span>==&gt; False</span>
+</code></pre>
+
+<pre><code><span># Utilizați secvențe escape hexazecimale</span>
+<span># \xf0\x9f\x91\x8d is the UTF-8 byte sequence for 👍</span>
+data_model = bytearray(b"\xf0\x9f\x91\x8d salut, python")
+
+print(data_model.startswith(b"\xf0\x9f\x91\x8d")) <span>==&gt; True</span>
+print(data_model.startswith(b"salut"))           <span>==&gt; False</span>
+</code></pre>
+
+<pre><code><span># Verificarea existenței mai multor prefixe</span>
+<span># Verificați dacă pachetul începe cu STX (0x02) sau ACK (0x06)</span>
+pachet = bytearray(b"\x02Salut Python\x03")
+
+print(pachet.startswith((b"\x02", b"\x06"))) <span>==&gt; True</span>
+</code></pre>
+
+
+<p>bytearray.endswith(suffix[, start[, end]])</p>
+
+<pre><code><span># Utilizați metoda .encode() (Recomandat)</span>
+data_model = bytearray("salut, python 👍".encode("utf-8"))
+
+print(data_model.endswith("👍".encode("utf-8"))) <span>==&gt; True</span>
+print(data_model.endswith(b"salut"))            <span>==&gt; False</span>
+</code></pre>
+
+
+<pre><code><span># Utilizați secvențe escape hexazecimale</span>
+<span># \xf0\x9f\x91\x8d is the UTF-8 byte sequence for 👍</span>
+data_model = bytearray(b"salut, python \xf0\x9f\x91\x8d")
+
+print(data_model.endswith(b"\xf0\x9f\x91\x8d")) <span>==&gt; True</span>
+print(data_model.endswith(b"salut"))           <span>==&gt; False</span>
+</code></pre>
+
+<pre><code><span># Verificarea existenței mai multor prefixe</span>
+<span># Verificați dacă pachetul se termină cu ETX (0x03) sau ACK (0x06)</span>
+pachet = bytearray(b"\x02Salut Python\x03")
+
+print(pachet.endswith((b"\x03", b"\x06"))) <span>==&gt; True</span>
+</code></pre>
+
+
+<h3>Transformări ale textului (Returnează o copie nouă) - Text Transformations (Returns a New Copy)</h3>
+
+<div class="grid-container">
+<ul>
+  <li>.replace(old, new[, count]): Înlocuiește aparițiile unei secvențe de octeți cu o alta.</li>
+  <li>.split(sep=None, maxsplit=-1): Împarte tabloul binar într-o listă de obiecte bytearray mai mici, folosind un delimitator.</li>
+  <li>.join(iterable): Unește elementele unui obiect iterabil — format din entități de tip bytes — folosind obiectul bytearray curent drept separator.</li>
+  <li>.lower() / .upper(): Convertește caracterele ASCII din fluxul binar în litere mici sau litere mari.</li>
+</ul>
+
+<ul>
+  <li>.replace(old, new[, count]): Replaces occurrences of a byte sequence with another.</li>
+  <li>.split(sep=None, maxsplit=-1): Splits the binary array into a list of smaller bytearray objects using a delimiter.</li>
+  <li>.join(iterable): Joins an iterable of bytes-like objects together using the current bytearray as the separator.</li>
+  <li>.lower() / .upper(): Converts ASCII characters inside the binary stream to lowercase or uppercase.</li>
+</ul>
+</div>
+
+<p>bytearray.replace(old, new[, count])</p>
+
+<pre><code><span># replace()-potrivirile trebuie să fie de tip octeți</span>
+text = bytearray(b"Salut, lume! Python este atractiv si distractiv")
+
+<span># Înlocuirea unei sub-secvențe (atât elementul "vechi", cât și cel "nou" trebuie să fie de tip bytearray)</span>
+text_actualizat = text.replace(b"lume", b"Univers")
+print(text_actualizat)  <span>==&gt; bytearray(b'Salut, Univers! Python este atractiv si distractiv')</span>
+</code></pre>
+
+<pre><code><span># Limitarea numărului de înlocuiri folosind parametrul [,count]</span>
+fructe = bytearray(b"gutuie, gutuie, gutuie")
+print(fructe)  <span>==&gt; bytearray(b'gutuie, gutuie, gutuie')</span>
+
+limitat_doi = fructe.replace(b"gutuie", b"pepene", 2)
+print(limitat_doi) <span>==&gt; bytearray(b'pepene, pepene, gutuie')</span>
+
+limitat_unu_doi = fructe.replace(b"gutuie", b"strugure", 1).replace(b"gutuie", b"pepene")
+print(limitat_unu_doi) <span>==&gt; bytearray(b'strugure, pepene, pepene')</span>
+
+unu_doi_limitat = fructe.replace(b"gutuie", b"pepene",1).replace(b"gutuie", b"strugure")
+print(unu_doi_limitat) <span>==&gt; bytearray(b'pepene, strugure, strugure')</span>
+
+limitat_doi_unu = fructe.replace(b"gutuie", b"strugure", 2).replace(b"gutuie", b"pepene")
+print(limitat_doi_unu) <span>==&gt; bytearray(b'strugure, strugure, pepene')</span>
+
+limitat_unu_unu = fructe.replace(b"gutuie", b"strugure", 1).replace(b"gutuie", b"pepene", 1)
+print(limitat_unu_unu) <span>==&gt; bytearray(b'strugure, pepene, gutuie')</span>
+</code></pre>
+
+<p>bytearray.split(sep=None, maxsplit=-1)</p>
+
+<pre><code><span># sep=None (Implicit)</span>
+date = bytearray(b"  Python   Bytearray   Split  ")
+<span># Împarte prin gruparea tuturor spațiilor albe consecutive</span>
+print(date.split()) <span>==&gt; [bytearray(b'Python'), bytearray(b'Bytearray'), bytearray(b'Split')]</span>
+
+<span># sep este specificat (de ex., b",")</span>
+litere = bytearray(b"A,,B,C")
+<span># Se divide exact la fiecare virgulă</span>
+print(litere.split(b",")) <span>==&gt; [bytearray(b'A'), bytearray(b''), bytearray(b'B'), bytearray(b'C')]</span> 
+
+<span># Limitarea segmentărilor cu maxsplit</span>
+articole = bytearray(b"item1:item2:item3:item4")
+<span># Împarte de cel mult 2 ori</span>
+print(articole.split(b":", maxsplit=2)) <span>==&gt; [bytearray(b'item1'), bytearray(b'item2'), bytearray(b'item3:item4')]</span>
+</code></pre>
+
+<p>bytearray.join(iterable)</p>
+
+<pre><code><span># Delimitator</span>
+sep = bytearray(b' ')
+
+<span># Obiect iterabil care conține obiecte de tip bytes și bytearray</span>
+texte = [b'Python', bytearray(b'este'), b'foarte folosit']
+
+rezultat_texte = sep.join(texte)
+print(rezultat_texte , "/", type(rezultat_texte))
+<span>==&gt; bytearray(b'Python este foarte folosit') / &lt;class 'bytearray'&gt;</span> 
+</code></pre>
+
+<pre><code><span># Fără separator</span>
+octeti = [b'\x01\x02', b'\x03\x04', b'\x05']
+
+rezultat_octeti = bytearray().join(octeti)
+
+print(rezultat_octeti, "/", type(rezultat_octeti))
+<span>==&gt; bytearray(b'\x01\x02\x03\x04\x05') / &lt;class 'bytearray'&gt;</span>
+</code></pre>
+
+<p>bytearray.lower() and bytearray.upper()</p>
+
+
+<pre><code><span># Conversia la litere mici (returnează o copie nouă)</span>
+text = bytearray(b"PYTHON 123! @")
+
+convertite_la_minuscule = text.lower()
+
+print(convertite_la_minuscule) <span>==&gt; bytearray(b'python 123! @')</span>
+print(text)                    <span>==&gt; bytearray(b'PYTHON 123! @')</span>
+</code></pre>
+
+<pre><code><span># Conversia la litere mari (returnează o copie nouă)</span>
+date = bytearray(b"Salut lume")
+
+convertite_la_majuscule = date.upper()
+
+print(convertite_la_majuscule) <span>==&gt; bytearray(b'SALUT LUME')</span>
+print(date)                    <span>==&gt; bytearray(b'Salut lume')</span>
+</code></pre>
+
+<div class="grid-container">
+<dl>
+<dt>Atenție la datele binare</dt>
+  <dd>Dacă un bytearray conține date binare arbitrare (cum ar fi imagini sau pachete de rețea), în loc de șiruri de caractere ASCII, utilizarea metodelor .lower() sau .upper() poate duce la alterarea neintenționată a datelor. De exemplu, valoarea de octet 0x41 (65 în sistemul zecimal) reprezintă caracterul ASCII "A". Dacă apelați .lower(), acest octet va fi modificat în 0x61 (97 în sistemul zecimal, adică "a"), chiar dacă, inițial, acesta avea rolul de contor binar sau de identificator.</dd>
+</dl>
+
+<dl>
+<dt>Binary Data Caution</dt>
+  <dd>If your bytearray contains actual arbitrary binary data (like images or network packets) rather than ASCII text strings, running .lower() or .upper() can unintentionally corrupt your data. For example, the byte value 0x41 (decimal 65) represents the ASCII character "A". If you call .lower(), that byte will be altered to 0x61 (decimal 97, which is "a", even if it was originally meant to be a binary counter or identifier.</dd>
+</dl>
+</div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+  <div class="footer footer-link">
+    <footer>
+      &copy; <span id="year-picior"></span> Gazeta Python.
+      <address><a href="https://gazetapython.wordpress.com/" target="_blank">www.gazetapython.com</a></address>
+    </footer>
+  </div>
+</div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+<script src="JS/treileaGreeting.js"></script>
+<script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

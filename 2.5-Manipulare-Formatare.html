@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 2.5 String Manipulation and Formatting</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaT.svg" alt="T" class="logo">
+          <h1>2.0 Tipuri Text-Text Type</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>2.5 Manipularea și formatare șirurilor - String Manipulation and Formatting</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 ro-en">
+        <ul>
+          <li>În acest capitol veți studia:</li>
+          <li><a href="#SP">.strip(), .lstrip(),.rstrip()</a></li>
+          <li><a href="#RP">.removeprefix(), .removesuffix()</a></li>
+          <li><a href="#RE">.replace()</a></li>
+          <li><a href="#CR">.center()</a></li>
+          <li><a href="#LR">.ljust(), .rjust()</a></li>
+          <li><a href="#ZF">.zfill()</a></li>
+          <li><a href="#ET">.expandtabs()</a></li>
+          <li><a href="#PT">% operator</a></li>
+          <li><a href="#MF">.format() method</a></li>
+          <li><a href="#AK">.format(*args, **kwargs)</a></li>
+          <li><a href="#FM">.format_map(mapping)</a></li>
+          <li><a href="#FS">F-strings</a></li>
+          <li><a href="#FT">format() function</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <p><a href="https://docs.python.org/3/library/string.html" target="_blank" rel="noopener">string — Common string
+          operations</a>
+      </p>
+
+      <h2 id="SP">.strip([chars]), .lstrip([chars]),.rstrip([chars])</h2>
+
+      <p>Sintaxă: şir.strip([chars])</p>
+
+      <div class="grid-container">
+        <div>
+          <p><b>strip():</b> elimină spațiile albe (sau caracterele specificate) de la început și de la sfârșit dintr-un
+            șir de caractere.</p>
+          <dl>
+            <dt>Parametri:</dt>
+            <dd>chars (opțional): Un șir care specifică setul de caractere care trebuie eliminate de la începutul și
+              sfârșitul șirului. Dacă chars este omis, strip() elimină toate spațiile albe de la început și de la
+              sfârșit (spații, tabulatori, linii noi).</dd>
+            <dt>Comportament:</dt>
+            <dd>Fără chars: Elimină toate spațiile albe de la început și de la sfârșit.</dd>
+            <dd>Cu chars: Elimină orice caracter prezent în șirul chars de la începutul și de la sfârșit al șirului
+              țintă. Ordinea caracterelor din chars nu contează; este tratat ca un set de caractere care trebuie
+              eliminate. Eliminarea continuă până când se întâlnește un caracter care nu este găsit în chars.</dd>
+            <dt>Returnează:</dt>
+            <dd>Un șir nou din care au fost eliminate caracterele specificate. Șirul original rămâne neschimbat.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p><b>strip():</b> removes leading and trailing whitespace (or specified characters) from a string.</p>
+          <dl>
+            <dt>Parameters:</dt>
+            <dd>chars (optional): A string specifying the set of characters to be removed from the beginning and end of
+              the string. If chars is omitted, strip() removes all leading and trailing whitespace characters (spaces,
+              tabs, newlines).</dd>
+            <dt>Behavior:</dt>
+            <dd>Without chars: Removes all leading and trailing whitespace characters.</dd>
+            <dd>With chars: Removes any character present in the chars string from the beginning and end of the target
+              string. The order of characters in chars does not matter; it's treated as a set of characters to be
+              removed. The stripping continues until a character not found in chars is encountered.</dd>
+            <dt>Returns:</dt>
+            <dd>A new string with the specified characters removed. The original string remains unchanged.</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code><span># Eliminarea spațiilor albe (comportament implicit)</span>
+șir = "  Salut, lumea lui Python!  "
+șir_curățat = șir.strip()
+print(șir_curățat) <span>==> Salut, lumea lui Python!</span>
+
+text = "Salut, lume! \n"
+text_curățat = text.strip()
+print(text_curățat) <span>==> Salut, lume!</span>
+
+<span># Elimină orice combinație de 'x', 'y' sau 'z'  şi '-'</span>
+text2 = "xy-zSalutLume-yzx"
+stripped_text2 = text2.strip('xyz-')
+print(stripped_text2) <span>==> SalutLume</span>
+
+<span># Elimină asteriscurile de la început/sfârșit</span>
+text3 = "***Python***"
+stripped_text3 = text3.strip('*') 
+print(stripped_text3) <span>==> Python</span>
+
+<span># Eliminarea anumitor caractere:</span>
+nume_fișier = "___compoziţie.txt..."
+fișier_curățat = nume_fișier.strip("_.")
+print(fișier_curățat) <span>==> compoziţie.txt</span>
+
+corectează = "?&lt;--Text corectat.-->?"
+text_corectat_v1 = corectează.strip("?&lt;--").strip("-->?")
+text_corectat_v2 = corectează.strip("?&lt;->")
+print(text_corectat_v1) <span>==> Text corectat.</span>
+print(text_corectat_v2) <span>==> Text corectat.</span>
+</code></pre>
+
+<pre><code>text_multe_linii = """\n\t   Acest text este un șir dezordonat cu mai multe linii.
+
+            \t     """
+print(text_multe_linii)
+<span># elimină toate caracterele inutile</span>
+text_ordonat = text_multe_linii.strip()
+înlocuire = {"dezordonat": "ordonat", "cu mai multe linii": "pe o linie"}
+for vechi, nou in înlocuire.items():
+    text_ordonat = text_ordonat.replace(vechi, nou)
+
+print(f"Text ordonat: {text_ordonat}")
+<span>==> 
+	   Acest text este un șir dezordonat cu mai multe linii.</span>
+
+            	     
+<span>Text ordonat: Acest text este un șir ordonat pe o linie.</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>strip() Combinații</dt>
+          <dd>Metoda strip() din Python poate fi combinată eficient cu alte metode șir de caractere pentru a efectua
+            manipulări și curățări de text mai complexe. Acest lucru se realizează adesea prin înlănțuirea apelurilor de
+            metode, deoarece <em>fiecare metodă șir de caractere returnează de obicei un nou obiect șir de
+              caractere</em>, permițând apelarea unei alte metode pe baza acelui rezultat.</dd>
+        </dl>
+
+        <dl>
+          <dt>strip() Combinations</dt>
+          <dd>strip() method in Python can be effectively combined with other string methods to perform more complex
+            text manipulation and cleaning. This is often achieved by chaining method calls, as <em>each string method
+              typically returns a new string object</em>, allowing another method to be called on that result.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>strip().lower() sau strip().upper() pentru standardizare:</dt>
+          <dd>Această secvență este utilă pentru curățarea spațiilor albe de la început/sfârșit și apoi convertirea
+            șirului de caractere într-o majuscule/minuscule consistentă pentru comparații sau stocare.</dd>
+        </dl>
+
+        <dl>
+          <dt>strip().lower() or strip().upper() for case standardization:</dt>
+          <dd>This sequence is useful for cleaning leading/trailing whitespace and then converting the string to a
+            consistent case for comparisons or storage.</dd>
+        </dl>
+      </div>
+
+<pre><code>intrare_utilizator = " Salut, lume!"
+curățat_și_minuscule = intrare_utilizator.strip().lower()
+print(curățat_și_minuscule)  <span>==> salut, lume!</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>strip().replace() pentru înlocuirea caracterelor interne după eliminare:</dt>
+          <dd>Mai întâi, eliminați caracterele nedorite de la capete, apoi înlocuiți caracterele sau subșirurile
+            specifice din șir.</dd>
+        </dl>
+
+        <dl>
+          <dt>strip().replace() for removing internal characters after stripping:</dt>
+          <dd>First, remove unwanted characters from the ends, then replace specific characters or substrings within the
+            string.</dd>
+        </dl>
+      </div>
+
+<pre><code>şir_bani = " $1,234.56 "
+şir_curățat = şir_bani.strip().replace(",", "")
+print(şir_curățat) <span>==> $1234.56</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>strip().split() pentru analizarea textului într-o listă de cuvinte sau elemente:</dt>
+          <dd>Aceasta este utilizată în mod obișnuit pentru a curăța o linie de text prin eliminarea spațiilor albe de
+            la început/sfârșit înainte de a o împărți în componente individuale.</dd>
+        </dl>
+
+        <dl>
+          <dt>strip().split() for parsing text into a list of words or elements:</dt>
+          <dd>This is commonly used to clean up a line of text by removing leading/trailing whitespace before splitting
+            it into individual components.</dd>
+        </dl>
+      </div>
+
+
+<pre><code>propoziție = "   Care sunt câteva tehnici avansate de manipulare a șirurilor de caractere în Python?   "
+cuvinte = propoziție.strip().split()
+print(cuvinte) <span>==> ['Care', 'sunt', 'câteva', 'tehnici', 'avansate', 'de', 'manipulare', 'a', 'șirurilor', 'de', 'caractere', 'în', 'Python?']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>strip().startswith() sau strip().endswith() pentru verificări condiționale:</dt>
+          <dd>Elimină spațiile albe înainte de a verifica dacă un șir începe sau se termină cu un anumit subșir.</dd>
+        </dl>
+
+        <dl>
+          <dt>strip().startswith() or strip().endswith() for conditional checks:</dt>
+          <dd>Remove whitespace before checking if a string begins or ends with a specific substring.</dd>
+        </dl>
+      </div>
+
+
+<pre><code>text = " Salut, lume!"
+text_curățat = text.strip() <span># Elimină spațiile albe de la început/sfârșit</span>
+print(text_curățat.startswith("Salut")) <span># Verifică dacă șirul curățat începe cu "Salut" ==> True</span>
+
+nume_fișier = " document.html "
+if nume_fișier.strip().endswith(".html"):
+    print("Este un fișier html.") <span>==> Este un fișier html.</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>strip().isdigit() sau strip().isalpha() pentru validarea tipului:</dt>
+          <dd>Curățați intrarea și apoi verificați dacă aceasta constă exclusiv din cifre sau caractere alfabetice.</dd>
+        </dl>
+
+        <dl>
+          <dt>strip().isdigit() or strip().isalpha() for type validation:</dt>
+          <dd>Clean the input and then verify if it consists solely of digits or alphabetic characters.</dd>
+        </dl>
+      </div>
+
+<pre><code>șir_gol = "  "
+print(f"{șir_gol}.strip().isdigit(): {șir_gol.strip().isdigit()}") <span>==> .strip().isdigit(): False</span>
+print(f"{șir_gol}.strip().isalpha(): {șir_gol.strip().isalpha()}") <span>==> .strip().isalpha(): False</span>
+
+șir_de_caractere_id = " 12345 "
+if șir_de_caractere_id.strip().isdigit():
+    print("ID valid.") <span>==> ID valid.</span>
+
+șir_alfabetic = " SalutLume "
+print(f"{șir_alfabetic}.isalpha(): {șir_alfabetic.isalpha()}")                 <span>==> SalutLume.isalpha(): False</span>
+print(f"{șir_alfabetic}.strip().isalpha(): {șir_alfabetic.strip().isalpha()}") <span>==> SalutLume.strip().isalpha(): True</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>Aceste exemple demonstrează cum <b>înlănțuirea metodei strip()</b> cu alte metode de tip șir de caractere
+        permite curățarea și manipularea eficientă și concisă a datelor în Python.</p>
+      <p>These examples demonstrate how <b>chaining strip()</b> with other string methods enables efficient and concise
+        data cleaning and manipulation in Python.</p>
+    </div>
+
+      <p>Sintaxă: şir.lstrip(characters)</p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>lstrip()</dt>
+          <dd>Elimină spațiile albe de la început.</dd>
+          <dd>
+            <dl>
+              <dt>parametrul caractere:</dt>
+              <dd>Opțional.</dd>
+              <dd>Un șir de caractere care conține setul de caractere care trebuie eliminate.</dd>
+              <dd>Dacă este omis sau nu există, lstrip() elimină toate spațiile albe de la începutul șirului (spații,
+                tabs, linii noi, întoarceri etc.).</dd>
+            </dl>
+          </dd>
+          <dd>Comportament: Elimină iterativ caracterele de la începutul șirului, atâta timp cât acestea se găsesc în
+            setul de caractere. Se oprește când întâlnește un caracter care nu este prezent în setul de caractere.</dd>
+        </dl>
+
+        <dl>
+          <dt>lstrip()</dt>
+          <dd>Removes leading whitespace characters.</dd>
+          <dd>
+            <dl>
+              <dt>characters parameter:</dt>
+              <dd>Optional.</dd>
+              <dd>A string containing the set of characters to be removed.</dd>
+              <dd>If omitted or None, lstrip() removes all leading whitespace characters (spaces, tabs, newlines,
+                carriage returns, etc.)</dd>
+            </dl>
+          </dd>
+          <dd>Behavior: It iteratively removes characters from the beginning of the string as long as they are found
+            within the characters set. It stops when it encounters a character not present in the characters set.</dd>
+        </dl>
+      </div>
+
+<pre><code>șir = "  Salut, lume Python!  "
+print(șir.lstrip())                       <span>==> Salut, lume Python!</span>  
+
+șirul_meu = "  salut lume  "
+șirul_meu = șirul_meu.lstrip()
+print(șirul_meu)                          <span>==> salut lume</span>
+
+alt_șir = "&lt;---Python--->"
+eliminare_începutul = alt_șir.lstrip('&lt;-')
+print(eliminare_începutul)                 <span>==> Python---></span>
+</code></pre>
+
+      <p>Sintaxă: şir.rstrip(caractere)</p>
+
+      <div class="grid-container">
+        <dl>
+          <dt><strong>rstrip()</strong></dt>
+          <dd>Elimină caracterele finale dintr-un șir de caractere.</dd>
+          <dd>
+            <dl>
+              <dt>parametrul caractere:</dt>
+              <dd>Opțional.</dd>
+              <dd>Un șir de caractere care conține setul de caractere care trebuie eliminate.</dd>
+              <dd>Dacă este omis sau nu există, rstrip() elimină toate spațiile albe de la final.</dd>
+            </dl>
+          </dd>
+          <dd>Comportament: Similar cu lstrip(), dar operează de la capătul din dreapta al șirului, eliminând
+            caracterele atâta timp cât acestea se găsesc în setul de caractere.</dd>
+        </dl>
+
+        <dl>
+          <dt>rstrip()</dt>
+          <dd>Removes trailing characters from a string.</dd>
+          <dd>
+            <dl>
+              <dt>characters parameter:</dt>
+              <dd>Optional.</dd>
+              <dd>A string containing the set of characters to be removed.</dd>
+              <dd>If omitted or None, rstrip() removes all trailing whitespace characters.</dd>
+            </dl>
+          </dd>
+          <dd>Similar to lstrip(), but it operates from the right end of the string, removing characters as long as they
+            are found within the characters set.</dd>
+        </dl>
+      </div>
+
+<pre><code>șir = "  Salut, lume Python!  "
+print(șir.rstrip())                      <span>==> Salut, lume Python!</span>
+
+șirul_meu = "  salut lume  "
+șirul_meu = șirul_meu.rstrip()
+print(șirul_meu)                         <span>==> salut lume</span>
+
+alt_șir = "&lt;---Python--->"
+eliminare_sfârşit = alt_șir.rstrip('->')
+print(eliminare_sfârşit)                 <span>==> &lt;---Python</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Puncte cheie:</dt>
+          <dd>Atât lstrip(), cât și rstrip() returnează un șir nou; nu modifică șirul original la locul lui.</dd>
+          <dd>Argumentul caractere specifică un set de caractere, nu un prefix sau un sufix specific. Orice caracter din
+            acel set găsit la capătul respectiv va fi eliminat.</dd>
+          <dd>Pentru eliminarea atât a caracterelor de la început, cât și a celor de la sfârșit, se poate utiliza metoda
+            strip().</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Points:</dt>
+          <dd>Both lstrip() and rstrip() return a new string; they do not modify the original string in place.</dd>
+          <dd>The characters argument specifies a set of characters, not a specific prefix or suffix. Any character from
+            that set found at the respective end will be removed.</dd>
+          <dd>For removing both leading and trailing characters, the strip() method can be used.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="RP">.removeprefix(prefix, /), .removesuffix(suffix, /)</h2>
+
+      <div class="grid-container">
+        <dl>
+          <dt>removeprefix(prefix)</dt>
+          <dd>Python 3.9 a introdus metodele removeprefix() și removessuffix() pentru a elimina în mod convenabil un
+            prefix sau sufix specific dintr-un șir de caractere.</dd>
+          <dd>Această metodă returnează un nou șir de caractere cu prefixul specificat eliminat dacă șirul începe cu
+            acel prefix. Dacă șirul nu începe cu prefixul, șirul original este returnat neschimbat.</dd>
+        </dl>
+
+        <dl>
+          <dt>removeprefix(prefix)</dt>
+          <dd>Python 3.9 introduced the removeprefix() and removesuffix() string methods for conveniently removing a
+            specific prefix or suffix from a string.</dd>
+          <dd>This method returns a new string with the specified prefix removed if the string starts with that prefix.
+            If the string does not start with the prefix, the original string is returned unchanged.</dd>
+        </dl>
+      </div>
+
+<pre><code>cale = "/home/utilizator/documente/fișier.txt"
+cale_curățată = cale.removeprefix("/home/utilizator/")
+print(cale_curățată)    <span>==> documente/fișier.txt</span>
+
+url = "https://exemplu.com/pagină"
+url_curățat = url.removeprefix("https://")
+print(url_curățat)      <span>==> exemplu.com/pagină</span>
+
+șir_no_prefix = "salut lume"
+rezultat = șir_no_prefix.removeprefix("salut")
+print(rezultat)         <span>==> lume</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>removesuffix(suffix)</dt>
+          <dd>Această metodă returnează un nou șir de caractere cu sufixul specificat eliminat dacă șirul se termină cu
+            acel sufix. Dacă șirul nu se termină cu sufixul, șirul original este returnat neschimbat.</dd>
+        </dl>
+
+        <dl>
+          <dt>removesuffix(suffix)</dt>
+          <dd>This method returns a new string with the specified suffix removed if the string ends with that suffix. If
+            the string does not end with the suffix, the original string is returned unchanged. </dd>
+        </dl>
+      </div>
+
+<pre><code>nume_fișier = "raport.pdf"
+nume_doar = nume_fișier.removesuffix(".pdf")
+print(nume_doar)                                 <span>==> raport</span>
+
+șir_versiune = "produs-v1.2.3"
+nume_bază = șir_versiune.removesuffix("-v1.2.3")
+print(nume_bază)                                 <span>==> produs</span>
+
+șir_no_suffix = "măr"
+rezultat = șir_no_suffix.removesuffix("plăcintă")
+print(rezultat)                                   <span>==> măr</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Puncte cheie:</dt>
+          <dd>Ambele metode returnează un șir nou; nu modifică șirul original la locul lui.</dd>
+          <dd>Sunt sensibile la majuscule/minuscule.</dd>
+          <dd>Dacă prefixul sau sufixul nu este găsit, șirul original este returnat fără erori.</dd>
+          <dd>Aceste metode oferă o alternativă mai explicită și mai ușor de citit la utilizarea secvențierii șirurilor
+            sau a expresiilor regulate pentru eliminarea simplă a prefixelor/sufixelor.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Points:</dt>
+          <dd>Both methods return a new string; they do not modify the original string in place.</dd>
+          <dd>They are case-sensitive.</dd>
+          <dd>If the prefix or suffix is not found, the original string is returned without error.</dd>
+          <dd>These methods offer a more explicit and readable alternative to using string slicing or regular
+            expressions for simple prefix/suffix removal.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="RE">.replace(old, new [, count])</h2>
+
+      <p>Sintaxă: şir.replace(old, new[, count])</p>
+
+      <p><a href="https://www.w3schools.com/python/ref_string_replace.asp" target="_blank" rel="noopener">Python String
+          replace()
+          Method</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Parametri:</dt>
+          <dd>old: Subșirul care trebuie înlocuit. Acesta este un parametru obligatoriu.</dd>
+          <dd>new: Subșirul cu care se înlocuiește old. Acesta este un parametru obligatoriu.</dd>
+          <dd>count: (opțional): Un număr întreg care specifică numărul maxim de apariții ale lui old. Dacă este omis,
+            toate aparițiile lui old sunt înlocuite.</dd>
+          <dt>Valoare returnată:</dt>
+          <dd>Metoda replace() returnează un șir nou cu înlocuirile efectuate. Șirul original rămâne neschimbat deoarece
+            șirurile din Python sunt imuabile. Dacă este dat argumentul opțional count, se înlocuiesc doar primele
+            apariții găsite.</dd>
+        </dl>
+
+        <dl>
+          <dt>Parameters:</dt>
+          <dd>old: The substring to be replaced. This is a required parameter.</dd>
+          <dd>new: The substring to replace old with. This is a required parameter.</dd>
+          <dd>count: (optional): An integer specifying the maximum number of occurrences to replace. If omitted, all
+            occurrences of old are replaced. </dd>
+          <dt>Return Value:</dt>
+          <dd>The replace() method returns a new string with the replacements made. The original string remains
+            unchanged because strings in Python are immutable. If the optional argument count is given, only the first
+            count occurrences are replaced.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># înlocuiți un singur cuvânt</span>
+șir = "Salut, lumea lui Python!"
+print(șir.replace("Python", "Programare"))                   <span>==> Salut, lumea lui Programare!</span>
+
+<span># Înlocuiește un grup de cuvinte</span>
+text_pisică = "Aneta are un câine și o pisică neagră care sare repede peste câinele tolănit."
+text_epure = text_pisică.replace("o pisică neagră", "un epure negru")
+print(text_epure)      <span>==> Aneta are un câine și un epure negru care sare repede peste câinele tolănit.</span>
+
+<span># înlocuiește doar prima apariție</span>
+fructe = "Îmi plac merele, merele sunt sănătoase."
+fructe_nou = fructe.replace("merele", "perele", 1)
+print(fructe_nou)                                             <span>==> Îmi plac perele, merele sunt sănătoase.</span>
+
+<span># înlocuiește mai multe apariții ale aceluiași cuvânt</span>
+text_fructe = "Îmi plac merele, merele sunt sănătoase."
+text_fructe_nou = text_fructe.replace("merele", "perele")
+print(text_fructe_nou)                                         <span>==> Îmi plac perele, perele sunt sănătoase.</span>
+
+<span># Înlocuiește un număr specific de apariții</span>
+text_123 = "unu doi unu trei unu"
+text_nou_123 = text_123.replace("unu", "X", 2)
+print(text_nou_123)                                             <span>==> X doi X trei unu</span>
+
+<span># Nu s-au găsit apariții</span>
+text = "măr banană cireșă"
+text_nou_fără_modificare = text.replace("struguri", "portocală")
+print(f"Text fără modificare: {text_nou_fără_modificare}")      <span>==> Text fără modificare: măr banană cireșă</span>
+</code></pre>
+
+      <p>Utilizarea <b>expresiilor regulate</b> cu modulul "re." - Using<b> Regular Expressions</b> with the "re" module.</p>
+
+<pre><code>import re
+
+<span># Înlocuiește un cuvânt întreg folosind limite de cuvinte (\b)</span>
+la_mare = "Este minunat la mare. Este frumos, nu?."
+la_mare_nou = re.sub(r"\bEste\b", "Va fi", la_mare) <span># \b potrivește limitele de cuvinte</span>
+print(la_mare_nou)  <span>==> Va fi minunat la mare. Va fi frumos, nu?.</span>
+
+<span># Înlocuiește mai multe cuvinte folosind un dicționar și o funcție de apel invers</span>
+def înlocuiți_mai_multe_cuvinte(text, înlocuitori):
+    model = re.compile(r"\b(" + "|".join(re.escape(cuvânt) for cuvânt in înlocuitori.keys()) + r")\b")
+    def înlocuitor(potrivire):
+        return înlocuitori[potrivire.group(0)]
+    return model.sub(înlocuitor, text)
+
+urare = "Salut lume, acesta este un test."
+înlocuitor = {"Salut": "Vă salut", "lume": "pe toți"}
+urare_nouă = înlocuiți_mai_multe_cuvinte(urare, înlocuitor)
+print(urare_nouă)  <span>==> Vă salut pe toți, acesta este un test.</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="CR">.center(width[, fillchar])</h2>
+
+      <p>Sintaxă: şir.center(width[, fillchar])</p>
+
+      <p><a href="https://www.w3schools.com/python/ref_string_center.asp" target="_blank" rel="noopener">Python String
+          center()
+          Method</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Parametri:</dt>
+          <dd>lățime: Un număr întreg care reprezintă lungimea totală dorită a noului șir. Șirul original va fi centrat
+            în această lungime. Acest parametru este obligatoriu.</dd>
+          <dd>fillchar: (Opțional) Un singur caracter de utilizat pentru umplere. Dacă este omis, se vor folosi
+            caractere spație ASCII pentru umplere.</dd>
+          <dt>Cum funcționează:</dt>
+          <dd>Metoda center() calculează cantitatea de padding necesară pentru a atinge lățimea specificată.</dd>
+          <dd>Apoi distribuie acest padding cât mai uniform posibil pe ambele părți, stânga și dreapta, ale șirului
+            original.</dd>
+          <dd>Dacă lățimea este mai mică sau egală cu lungimea șirului original, șirul original este returnat
+            neschimbat.</dd>
+          <dt>Valoare returnată:</dt>
+          <dd>Metoda returnează un nou șir care este șirul original centrat în lățimea specificată, cu umplerea aplicată
+            așa cum este descris. Șirul original rămâne neschimbat.</dd>
+        </dl>
+
+        <dl>
+          <dt>Parameters:</dt>
+          <dd>width: An integer representing the total desired length of the new string. The original string will be
+            centered within this length. This parameter is mandatory.</dd>
+          <dd>fillchar: (Optional) A single character to use for padding. If omitted, ASCII space characters will be
+            used for padding. </dd>
+          <dt>How it works:</dt>
+          <dd>The center() method calculates the amount of padding needed to reach the specified width.</dd>
+          <dd>It then distributes this padding as evenly as possible on both the left and right sides of the original
+            string.</dd>
+          <dd>If the width is less than or equal to the length of the original string, the original string is returned
+            unchanged. </dd>
+          <dt>Return Value:</dt>
+          <dd>The method returns a new string that is the original string centered within the specified width, with
+            padding applied as described. The original string remains unchanged.</dd>
+        </dl>
+      </div>
+
+<pre><code>şir = "Salut"
+
+<span># Centrare cu umplere implicită pentru spațiu</span>
+spații_de_șir_centrate = şir.center(15)
+print(f"Centrat cu spații: '{spații_de_șir_centrate}'")    <span>==> Centrat cu spații: '     Salut     '</span>
+
+<span># Centrare cu un caracter de umplere personalizat</span>
+șir_centrat_asterisks = şir.center(15, '*')
+print(f"Centrat cu asteriscuri: '{șir_centrat_asterisks}'") <span>==> Centrat cu asteriscuri: '*****Salut*****'</span>
+
+<span># Dacă lățimea este mai mică sau egală cu lungimea șirului, se returnează șirul original</span>
+șir_de_lățime_scurtă = şir.center(3)
+print(f"Lățime scurtă: '{șir_de_lățime_scurtă}'")            <span>==> Lățime scurtă: 'Salut'</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="LR">.ljust(width[, fillchar]), .rjust(width[, fillchar])</h2>
+
+      <p>Sintaxă: şir.ljust(width[, fillchar])</p>
+
+      <p><a href="https://www.w3schools.com/python/ref_string_ljust.asp" target="_blank" rel="noopener">Python String
+          ljust()
+          Method</a></p>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>metoda ljust() pentru șiruri de caractere:</dt>
+          <dt>Parametri:</dt>
+          <dd>width: Parametru obligatoriu, specifică lățimea totală dorită a șirului rezultat. Dacă lungimea șirului
+            original este mai mică decât lățimea, se adaugă caractere de umplere pentru a ajunge la această lățime. Dacă
+            lungimea șirului original este mai mare sau egală cu lățimea, șirul original este returnat neschimbat.</dd>
+          <dd>fillchar: Parametru opțional, specifică caracterul care va fi utilizat pentru umplere. Dacă este omis,
+            fillchar-ul implicit este un spațiu (' '). Fillchar-ul trebuie să fie un singur caracter; furnizarea a mai
+            multor caractere va duce la o eroare TypeError.</dd>
+          <dt>Valoare returnată:</dt>
+          <dd>Metoda ljust() returnează un șir nou care este aliniat la stânga în cadrul lățimii specificate, cu partea
+            dreaptă umplută cu fillchar, dacă este necesar.</dd>
+        </dl>
+
+        <dl>
+          <dt>string method ljust(width, fillchar):</dt>
+          <dt>Parameters:</dt>
+          <dd>width: This required parameter specifies the total desired width of the resulting string. If the original
+            string's length is less than width, padding characters are added to reach this width. If the original
+            string's length is greater than or equal to width, the original string is returned unchanged.</dd>
+          <dd>fillchar: This optional parameter specifies the character to use for padding. If omitted, the default
+            fillchar is a space character (' '). The fillchar must be a single character; providing more than one
+            character will result in a TypeError. </dd>
+          <dt>Return Value:</dt>
+          <dd>The ljust() method returns a new string that is left-justified within the specified width, with the right
+            side padded by the fillchar if necessary.</dd>
+        </dl>
+      </div>
+
+<pre><code>cuvânt = "salut"
+
+<span># Ajustare la stânga cu umplere implicită a spațiului</span>
+resultat1 = cuvânt.ljust(10)
+print(f"'{resultat1}'")          <span>==> 'salut     '</span>
+
+<span># Ajustare la stânga cu caracter de umplere personalizat</span>
+resultat2 = cuvânt.ljust(8, '*')
+print(f"'{resultat2}'")          <span>==> 'salut***'</span>
+
+<span># Șir original returnat dacă lățimea este mai mică sau egală cu lungimea șirului</span>
+resultat3 = cuvânt.ljust(4)
+print(f"'{resultat3}'")          <span>==> 'salut'</span>
+</code></pre>
+
+      <p>Sintaxă: şir.rjust(width[, fillchar])</p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>metoda rjust() pentru șiruri de caractere:</dt>
+          <dt>Parametri:</dt>
+          <dd>width: Parametru obligatoriu, specifică lățimea totală dorită a șirului rezultat. Dacă lungimea șirului
+            original este mai mică decât lățimea, se adaugă caractere de umplere pentru a ajunge la această lățime. Dacă
+            lungimea șirului original este mai mare sau egală cu lățimea, șirul original este returnat neschimbat.</dd>
+          <dd>fillchar: Parametru opțional, specifică caracterul care va fi utilizat pentru umplere. Dacă este omis,
+            fillchar-ul implicit este un spațiu (' '). Fillchar-ul trebuie să fie un singur caracter; furnizarea a mai
+            multor caractere va duce la o eroare TypeError.</dd>
+          <dt>Valoare returnată:</dt>
+          <dd>Metoda rjust() returnează un șir nou care este aliniat la dreapta în cadrul lățimii specificate, cu partea
+            stângă umplută cu fillchar, dacă este necesar.</dd>
+        </dl>
+
+        <dl>
+          <dt>string method rjust(width, fillchar):</dt>
+          <dt>Parameters:</dt>
+          <dd>width: This required parameter specifies the total desired width of the resulting string. If the original
+            string's length is less than width, padding characters are added to reach this width. If the original
+            string's length is greater than or equal to width, the original string is returned unchanged.</dd>
+          <dd>fillchar: This optional parameter specifies the character to use for padding. If omitted, the default
+            fillchar is a space character (' '). The fillchar must be a single character; providing more than one
+            character will result in a TypeError. </dd>
+          <dt>Return Value:</dt>
+          <dd>The rjust() method returns a new string that is right-justified within the specified width, with the left
+            side padded by the fillchar if necessary.</dd>
+        </dl>
+      </div>
+
+<pre><code>text = "Python"
+
+<span># Ajustare la dreapta cu fillchar implicit (spațiu)</span>
+resultat_1 = text.rjust(10)
+print(f"{resultat_1}")           <span>==> '    Python'</span>
+
+<span># Ajustare la dreapta cu un fillchar specificat ('*')</span>
+resultat_2 = text.rjust(12, '*')
+print(f"'{resultat_2}'")         <span>==> '******Python'</span>
+<span># Dacă lățimea este mai mică sau egală cu lungimea șirului de caractere</span>
+resultat_3 = text.rjust(4)
+print(f"'{resultat_3}'")         <span>==> 'Python'</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="ZF">.zfill(width)</h2>
+
+      <p>Sintaxă: şir.zfill(width)</p>
+
+      <p><a href="https://www.w3schools.com/python/ref_string_zfill.asp" target="_blank" rel="noopener">Python String
+          zfill()
+          Method</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Metoda .zfill(width) pentru șiruri de caractere:</dt>
+          <dd>Este utilizată pentru a completa un șir de caractere cu zerouri la început până când acesta atinge o
+            lățime specificată.</dd>
+          <dt>Parametri:</dt>
+          <dd>lățime: Un număr întreg care reprezintă lungimea totală dorită a șirului rezultat.</dd>
+          <dt>Cum funcționează:</dt>
+          <dd>Dacă lungimea curentă a șirului este mai mică decât lățimea, metoda adaugă zero caractere înaintea șirului
+            până când lungimea sa totală este egală cu lățimea.</dd>
+          <dd>Dacă șirul conține deja un semn inițial (+ sau -), zerourile sunt adăugate după caracterul semn,
+            păstrându-i poziția.</dd>
+          <dd>Dacă lungimea curentă a șirului este mai mare sau egală cu lățimea, șirul original este returnat
+            neschimbat.</dd>
+          <dd>Metoda nu modifică șirul original; returnează un șir nou cu aplicarea umplerii cu zerouri.</dd>
+        </dl>
+
+        <dl>
+          <dt>string method .zfill(width):</dt>
+          <dd>Is used to pad a string with leading zeros until it reaches a specified width.</dd>
+          <dt>Parameters:</dt>
+          <dd>width: An integer representing the desired total length of the resulting string.</dd>
+          <dt>How it works:</dt>
+          <dd>If the current length of the string is less than width, the method prepends zero characters to the left of
+            the string until its total length equals width.</dd>
+          <dd>If the string already contains a leading sign (+ or -), the zeros are added after the sign character,
+            preserving its position.</dd>
+          <dd>If the current length of the string is greater than or equal to width, the original string is returned
+            unchanged.</dd>
+          <dd>The method does not modify the original string; it returns a new string with the zero-padding applied.
+          </dd>
+        </dl>
+      </div>
+
+<pre><code><span># Utilizare de bază</span>
+text_număr = "48"
+text_umplut_număr = text_număr.zfill(5)
+print(f"'{text_număr}'.zfill(5) -> '{text_umplut_număr}'") <span>==> '48'.zfill(5) -> '00048'</span>
+
+text_şir = "salut"
+text_umplut_şir = text_şir.zfill(8)
+print(f"'{text_şir}'.zfill(8) -> '{text_umplut_şir}'") <span>==> 'salut'.zfill(8) -> '000salut'</span>
+
+
+<span># Gestionarea</span>
+text_număr_pozitiv = "+123"
+text_umplut_număr_pozitiv = text_număr_pozitiv.zfill(6)
+print(f"'{text_număr_pozitiv}'.zfill(6) -> '{text_umplut_număr_pozitiv}'") <span>==> '+123'.zfill(6) -> '+00123'</span>
+
+text_număr_negativ = "-789"
+text_umplut_număr_negativ = text_număr_negativ.zfill(6)
+print(f"'{text_număr_negativ}'.zfill(6) -> '{text_umplut_număr_negativ}'") <span>==> '-789'.zfill(6) -> '-00789'</span>
+ 
+
+<span># Șir de caractere deja suficient de lung</span>
+text_lung = "Salut Python"
+text_lung_umplut = text_lung.zfill(5)
+print(f"'{text_lung}'.zfill(5) -> '{text_lung_umplut}'")  <span>==> 'Salut Python'.zfill(5) -> 'Salut Python'</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="ET">.expandtabs(tabsize)</h2>
+
+      <p>Sintaxă: şir.expandtabs(tabsize)</p>
+
+      <p><a href="https://www.w3schools.com/python/ref_string_expandtabs.asp" target="_blank" rel="noopener">Python
+          String expandtabs()
+          Method</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>.expandtabs():</dt>
+          <dd>Este o metodă de tip șir de caractere utilizată pentru a înlocui caracterele tabulatoare (\t) dintr-un șir
+            de caractere cu un număr specificat de spații. Jupyter Notebook folosește adesea implicit 4 spații pentru
+            indentare atunci când se apasă tasta Tab.</dd>
+          <dt>Parametri:</dt>
+          <dd>tabsize (opțional): Un număr întreg care specifică numărul de spații la care trebuie extins fiecare
+            caracter de tabulare. Dacă este omisă, dimensiunea implicită a tabulației este 4.</dd>
+          <dt>Cum funcționează:</dt>
+          <dd>Metoda expandtabs() iterează prin șir.</dd>
+          <dd>Când întâlnește un caracter de tabulare (\t), calculează numărul de spații necesare pentru a ajunge la
+            următorul "tab stop".</dd>
+          <dd>Tab stop-urile sunt determinate de multipli ai dimensiunii tabulației. De exemplu, dacă tabsize este 4,
+            tabulațiile se află la coloanele 4, 8, 12, 16 și așa mai departe.</dd>
+          <dd>Metoda inserează suficiente spații pentru a alinia textul de după tabulare la următorul tabulator.</dd>
+          <dd>Returnează un șir nou cu tabulatorii extinși; șirul original rămâne neschimbat.</dd>
+          <dd>Numărul coloanei este resetat la zero după fiecare caracter de linie nouă (\n) întâlnit în șir.</dd>
+        </dl>
+
+        <dl>
+          <dt>.expandtabs():</dt>
+          <dd>Is a string method used to replace tab characters (\t) in a string with a specified number of spaces.
+            Jupyter Notebook often defaults to 4 spaces for indentation when pressing Tab.</dd>
+          <dt>Parameters:</dt>
+          <dd>tabsize (optional): An integer specifying the number of spaces each tab character should be expanded to.
+            If omitted, the default tabsize is 4.</dd>
+          <dt>How it works:</dt>
+          <dd>The expandtabs() method iterates through the string.</dd>
+          <dd>When it encounters a tab character (\t), it calculates the number of spaces needed to reach the next "tab
+            stop."</dd>
+          <dd>Tab stops are determined by multiples of the tabsize. For example, if tabsize is 4, tab stops are at
+            columns 4, 8, 12, 16, and so on.</dd>
+          <dd>The method inserts enough spaces to align the text after the tab to the next tab stop.</dd>
+          <dd>It returns a new string with the tabs expanded; the original string remains unchanged.</dd>
+          <dd>The column number is reset to zero after each newline character (\n) encountered in the string.</dd>
+        </dl>
+      </div>
+
+<pre><code>text = "Nume:\tIon Dindel\nVârstă:\t30"
+
+text_extins_implicit = text.expandtabs()
+print(f"Dimensiune implicită (4):\n{text_extins_implicit}")
+<span>==> Dimensiune implicită (4):
+    Nume:   Ion Dindel
+    Vârstă: 30</span>
+
+text_extins_personalizat = text.expandtabs(tabsize=16)
+print(f"\nDimensiune personalizată (16):\n{text_extins_personalizat}\n")
+<span>==> Dimensiune personalizată (16):
+    Nume:           Ion Dindel
+    Vârstă:         30</span>
+
+print(f'Nume:	Ion Dindel (4 spații create cu Tab) dimensiune: {len("Nume:	Ion Dindel")}')
+print(f'Nume:    Ion Dindel (4 spații create cu spacebar) dimensiune: {len("Nume:    Ion Dindel")}')
+<span>==> Nume:	Ion Dindel (4 spații create cu Tab) dimensiune: 16
+    Nume:    Ion Dindel (4 spații create cu spacebar) dimensiune: 19</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Considerații generale:</dt>
+          <dd>Recomandare PEP 8: Ghidul official Python pentru stil (style), <a href="https://peps.python.org/pep-0008/"
+              target="_blank" rel="noopener">PEP 8</a>, recomandă utilizarea a 4 spații per nivel de indentare.</dd>
+          <dd>Tab-uri vs. Spații: Deși sintaxa Python permite ambele, PEP 8 preferă cu tărie spațiile pentru indentare.
+            Python 3 nu permite combinarea tabulațiilor și spațiilor pentru indentare în cadrul aceluiași bloc.</dd>
+        </dl>
+
+        <dl>
+          <dt>General Considerations:</dt>
+          <dd>PEP 8 Recommendation: Python's official style guide, <a href="https://peps.python.org/pep-0008/"
+              target="_blank" rel="noopener">PEP 8</a>, recommends using 4 spaces per indentation level.</dd>
+          <dd>Tabs vs. Spaces: While Python syntax allows both, PEP 8 strongly prefers spaces for indentation. Python 3
+            disallows mixing tabs and spaces for indentation within the same block. </dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="PT">% operator Formatting (Strings)</h2>
+
+      <div class="grid-container">
+        <dl>
+          <dt>% operator</dt>
+          <dd>În Python, atunci când este utilizat cu șiruri de caractere, funcționează ca un operator de formatare a
+            șirurilor de caractere. Acesta permite substituirea valorilor într-un șir de caractere folosind
+            specificatori de format.</dd>
+          <dd>Operatorul % (modulo) din Python vă permite să formatați șiruri de caractere în stil printf prin
+            interpolarea valorilor în substituenți predefiniți dintr-un șablon de șir de caractere.</dd>
+          <dd>Codul Python favorizează șirurile f, înțelegerea operatorului % rămânând esențială pentru lucrul cu baze
+            de cod.</dd>
+          <dd>Partea stângă a operatorului conține șablonul de șir cu specificatori de format care încep cu %. Partea
+            dreaptă conține o singură valoare sau un tuplu de valori multiple.</dd>
+        </dl>
+
+        <dl>
+          <dt>% operator</dt>
+          <dd>In Python, when used with strings, functions as a string formatting operator. It allows for the
+            substitution of values into a string using format specifiers.</dd>
+          <dd>The % (modulo) operator in Python allows you to perform printf-style string formatting by interpolating
+            values into predefined placeholders within a string template.</dd>
+          <dd>Python code favors f-strings, understanding the % operator remains essential for working with codebases.
+          </dd>
+          <dd>The left side of the operator contains the string template with format specifiers starting with %. The
+            right side contains a single value or a tuple of multiple values.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt><strong>Cum se utilizează operatorul % pentru formatarea șirurilor de caractere:</strong></dt>
+          <dd>
+            <dl>
+              <dt>Format String: Definiți un șir de caractere care conține unul sau mai mulți specificatori de format.
+                Specificatorii comuni includ:</dt>
+              <dd>%s: Pentru șiruri de caractere.</dd>
+              <dd>%d: Pentru numere întregi.</dd>
+              <dd>%f sau %g: Pentru numere cu virgulă mobilă.</dd>
+              <dd>%.&lt;precision&gt;f: Pentru numere cu virgulă mobilă cu un număr specificat de zecimale (de exemplu,
+                %.2f pentru două zecimale).</dd>
+            </dl>
+          </dd>
+          <dd>Valori: Furnizați valorile care vor fi inserate în șirul de caractere. Aceste valori ar trebui prezentate
+            ca un tuplu dacă există mai multe valori sau ca o singură valoare dacă există una singură.</dd>
+          <dd>Aplicarea operatorului: Plasați operatorul % între șirul de caractere și valori.</dd>
+        </dl>
+
+        <dl>
+          <dt>How to use the % operator for string formatting:</dt>
+          <dd>
+            <dl>
+              <dt>Format String: Define a string containing one or more format specifiers. Common specifiers include:
+              </dt>
+              <dd>%s: For strings.</dd>
+              <dd>%d: For integers.</dd>
+              <dd>%f or %g: For floating-point numbers.</dd>
+              <dd>%.&lt;precision&gt;f: For floating-point numbers with a specified number of decimal places (e.g., %.2f
+                for two decimal </dd>
+            </dl>
+          </dd>
+          <dd>Values: Provide the values to be inserted into the format string. These values should be presented as a
+            tuple if there are multiple values, or as a single value if there is only one.</dd>
+          <dd>Applying the operator: Place the % operator between the format string and the values.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Înlocuirea unui șir de caractere.</span>
+nume = "Anca"
+mesaj = "Bună, %s!" % nume
+print(mesaj)       <span>==> Bună, Anca!</span>
+
+<span># Înlocuirea unui număr întreg.</span>
+număr = 5
+mesaj_număr = "Există %d elemente." % număr
+print(mesaj_număr)  <span>==> Există 5 elemente.</span> 
+
+<span># Înlocuirea unui număr cu zecimale cu precizie.</span>
+preţ = 19.998
+mesaj_preţ = "Acest preţ este $%.2f." % preţ
+print(mesaj_preţ)   <span>==> Preţul este $20.00.</span>
+
+<span># Înlocuirea mai multor valori.</span>
+articol = "cărți"
+cantitate = 3
+carte_cantitate = "Ai cumpărat %d %s." % (cantitate, articol)
+print(carte_cantitate) <span>==> Ai cumpărat 3 cărți.</span>
+
+persoane = 2
+fructe = "mere"
+cantitate = 3
+rezultat = "Am %d %s și trebuie sa le împart la %d persoane" % (cantitate, fructe, persoane)
+print(rezultat)     <span>==> Am 3 mere și trebuie sa le împart la 2 persoane</span>
+</code></pre>
+
+<pre><code>cheltuit = 250.00
+disponibil = 450.00
+
+șablon = """
+Raport balanță:
+Disponibil: $%(credit).2f
+Cheltuit: $%(debit).2f
+_______________________   
+Balanță: $%(balanță).2f"""
+
+print(șablon % {"credit": disponibil, "debit": cheltuit, "balanță": disponibil - cheltuit})
+<span>==> Raport balanță:
+    Disponibil: $450.00
+    Cheltuit: $250.00
+    __________________
+    Balanță: $200.00</span>
+</code></pre>
+
+<pre><code><span># Precizie număr cu virgulă mobilă: Rotunjește la 2 zecimale</span>
+print("Pi: %.2f" % 3.14159)  <span>==> "Pi: 3.14"</span>
+<span># Umplutură la stânga: Setează o lățime minimă de 5 caractere, aliniată la dreapta în mod implicit</span>
+print("Score: %5d" % 42) <span>==> "Score:     42"</span> 
+<span># Aliniere la stânga: Folosirea semnului minus (-) mută umplerea la dreapta</span>
+print("Score: %-5dx" % 42) <span>==> "Score: 42      x"</span> 
+<span># Umplerea cu zerouri: Umple numărul cu zerouri la începutul numărului până la specificația de lățime</span>
+print("ID: %06d" % 321) <span>==> "ID: 000321"</span>
+
+<span># Ordinea în dicționar nu contează</span>
+user_profile = {"username": "Dev_User", "id": 6521}
+print("User %(username)s has an ID of %(id)06d." % user_profile) <span>==> "User Dev_User has an ID of 006521."</span> 
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>Notă:</b> Deși operatorul % este încă funcțional, metoda str.format() și șirurile f (literale de șir
+          formatate) sunt în general considerate metodele mai moderne și preferate de formatare a șirurilor în Python
+          datorită lizibilității și flexibilității lor.</p>
+
+        <p><b>Note:</b> While the % operator is still functional, the str.format() method and f-strings (formatted
+          string literals) are generally considered the more modern and preferred ways of string formatting in Python
+          due to their readability and flexibility.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="MF">.format() method</h2>
+
+      <p><a href="https://www.w3schools.com/python/ref_string_format.asp" target="_blank" rel="noopener">Python String
+          format()
+          Method</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Metoda .format()</dt>
+          <dd>Este o modalitate puternică și flexibilă de a crea șiruri de caractere formatate. Metoda str.format() din
+            Python inserează valori dinamice în substituenți predefiniți <b>{}</b> din cadrul unui șablon de text.
+            Aceasta returnează un șir nou formatat, fără a modifica textul original și oferă un control mai bun, precum
+            și o lizibilitate sporită, comparativ cu metodele mai vechi, cum ar fi operatorul modulo (%).</dd>
+          <dt>Cum funcționează:</dt>
+          <dd>Substituenți: Definiți substituenții într-un șir folosind acolade {}. Aceste acolade indică unde vor fi
+            inserate valorile.</dd>
+          <dd>Apelarea format(): Apelați metoda .format() pe șirul care conține substituenții.</dd>
+          <dd>Argumente: Transmiteți valorile sau variabilele care vor fi inserate în substituenți ca argumente către
+            metoda .format().</dd>
+        </dl>
+
+        <dl>
+          <dt>.format() method:</dt>
+          <dd>Is a powerful and flexible way to create formatted strings. The Python str.format() method inserts dynamic
+            values into predefined placeholders <b>{}</b> within a string template. It returns a newly formatted string
+            without modifying the original text. It offers more control and readability compared to older methods like
+            the modulo operator (%).</dd>
+          <dt>How it works:</dt>
+          <dd>Placeholders: You define placeholders within a string using curly braces {}. These curly braces indicate
+            where values will be inserted.</dd>
+          <dd>Calling format(): You call the .format() method on the string containing the placeholders.</dd>
+          <dd>Arguments: You pass the values or variables to be inserted into the placeholders as arguments to the
+            .format() method.</dd>
+        </dl>
+      </div>
+
+    <div class="grid-container">
+      <p><b>Argumente poziționale:</b> Valorile sunt inserate în substituenți în ordinea în care sunt furnizate ca
+        argumente către format().</p>
+      <p><strong>Positional arguments:</strong> Values are inserted into placeholders in the order they are provided as
+        arguments to format().</p>
+    </div>
+
+<pre><code><span># Create string and number variables</span>
+oraş1 = "Turnu Severin"
+oraş2 = "Craiova"
+oraş3 = "București"
+
+kilometri = 365
+# Folosește metoda .format() pentru a insera valori
+distanţă_km = "Distanţa dinte {} și {} via {} este de {} km.".format(oraş1, oraş3, oraş2, kilometri) 
+print(distanţă_km) <span>==> Distanţa dinte Turnu Severin și București via Craiova este de 365 km.</span>
+
+print("Salut, {}! Ai {} de ani.".format("Alina", 25)) <span>==> Salut, Alina! Ai 25 de ani.</span>
+
+nume = "Bianca Teodora"
+print("Bine ai venit acasă {}.".format(nume)  <span>==> Bine ai venit acasă Bianca Teodora.</span> 
+</code></pre>
+
+    <div class="grid-container">
+      <p><b>Argumente indexate:</b> Puteți specifica indicele unui argument între acolade pentru a controla ce valoare
+        intră în ce substituent.<br>
+      <p><b>Indexed arguments:</b> You can specify the index of an argument within the curly braces to control which
+        value goes into which placeholder.</p>
+    </div>
+
+<pre><code>"{1} {0}".format("Lume", "Salut") <span>==> 'Salut Lume'</span>
+
+"{2} dă viață site-ului web în timp ce {0} construiește structura paginii, iar {1} se ocupă de stil".format("HTML", "CSS", "JavaScript")
+<span>==> JavaScript dă viață site-ului web în timp ce HTML construiește structura paginii, iar CSS se ocupă de stil.</span>
+
+"{1} este mai bun decât {0}.".format("JavaScript", "Python")
+<span>==> "Python este mai bun decât JavaScript."</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p><b>Argumente pentru cuvinte cheie:</b> Puteți utiliza argumente denumite între acolade și le puteți transmite
+        ca argumente pentru cuvinte cheie către format().</p>
+      <p><b>Keyword arguments:</b> You can use named arguments within the curly braces and pass them as keyword arguments
+        to format().</p>
+    </div>
+
+
+<pre><code>"Nume: {nume}, Vârsta: {vârstă}".format(nume="Aneta", vârstă=44) <span>==> 'Nume: Aneta, Vârsta: 44'</span>
+</code></pre>
+
+      <p><b>Opțiuni avansate de formatare</b></p>
+      <p>Puteți regla fin alinierea textului, spațierea și numerele adăugând două puncte <b>:</b> urmate de un indicator
+        de modificare specific în interiorul parantezelor.</p>
+
+      <table class="outer-hidden">
+        <tr>
+          <th>Specificator de format</th>
+          <th>Scop</th>
+          <th>Exemplu de cod</th>
+          <th>Rezultat:</th>
+        </tr>
+        <tr>
+          <td>.2f</td>
+          <td>Truncate/round float to 2 decimals</td>
+          <td>"{:.2f}".format(3.14159)</td>
+          <td>'3.14'</td>
+        </tr>
+        <tr>
+          <td>:,</td>
+          <td>Add commas as a thousands separator</td>
+          <td>"{:,}".format(1000000)</td>
+          <td>'1,000,000'</td>
+        </tr>
+        <tr>
+          <td>:&lt;N</td>
+          <td>Left-align text within N spaces</td>
+          <td>"{:&lt;10}!".format("Hi")</td>
+          <td>'Hi !'</td>
+        </tr>
+        <tr>
+          <td>:>N</td>
+          <td>Right-align text within N spaces</td>
+          <td>"{:>10}".format("Hi")</td>
+          <td>' Hi':</td>
+        </tr>
+        <tr>
+          <td>^N</td>
+          <td>Center-align text within N spaces</td>
+          <td>"{:^10}".format("Hi")</td>
+          <td>' Hi '</td>
+        </tr>
+        <tr>
+          <td>:b</td>
+          <td>Convert integer to binary format</td>
+          <td>"{:b}".format(10)</td>
+          <td>'1010'</td>
+        </tr>
+      </table>
+
+<pre><code>"Valoare: {:>10.2f}".format(123.456) <span>==> 'Valoare:     123.46'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Acolade de evadare:</dt>
+          <dd>Pentru a include acolade literale în șir, trebuie să le dublați: {{ și }}.</dd>
+          <dt>Beneficii:</dt>
+          <dd>Lizibilitate: Utilizarea substituenților face structura șirului clară.</dd>
+          <dd>Flexibilitate: Permite diverse modalități de a specifica unde se plasează valorile.</dd>
+          <dd>Control asupra formatării: Oferă opțiuni extinse pentru personalizarea rezultatului diferitelor tipuri de
+            date.</dd>
+        </dl>
+
+        <dl>
+          <dt>Escaping braces:</dt>
+          <dd>To include literal curly braces in your string, you must double them: {{ and }}.</dd>
+          <dt>Benefits:</dt>
+          <dd>Readability: The use of placeholders makes the string's structure clear.</dd>
+          <dd>Flexibility: Allows for various ways to specify which values go where.</dd>
+          <dd>Control over formatting: Provides extensive options for customizing the output of different data types.
+          </dd>
+        </dl>
+      </div>
+
+<pre><code>cheltueli = 250.325
+disponibil = 450
+
+șablon = """
+Raport balanță
+Disponibil: ${credit:.2f}
+Cheltuit: ${debit:.2f}
+___________________________
+Balanță: {{${balanță:.2f}}}"""
+
+print(șablon.format(credit=disponibil, debit=cheltueli, balanță=disponibil - cheltuit))
+<span>==> Raport balanță
+    Disponibil: $450.00
+    Cheltuit: $250.32
+__________________
+Balanță: {$199.68}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="AK">.format(*args, **kwargs)</h2>
+
+      <p><a href="https://www.w3schools.com/python/python_args_kwargs.asp" target="_blank" rel="noopener">Python *args
+          and **kwargs</a>
+      </p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Metoda</dt>
+          <dd>Este o modalitate versatilă de a formata șiruri de caractere prin inserarea de valori în substituenți
+            dintr-un șir de caractere șablon.</dd>
+          <dt>Șir de caractere șablon:</dt>
+          <dd>Creați un șir de caractere care conține substituenți, notați cu acolade {}. Aceste substituenți indică
+            unde ar trebui inserate valorile.</dd>
+          <dd>Metoda formatează șiruri de caractere prin completarea dinamică a substituenților ({}) folosind un număr
+            flexibil de argumente poziționale (*args) și argumente de cuvinte cheie (**kwargs).</dd>
+          <dt>Valoare returnată:</dt>
+          <dd>Metoda format() returnează un șir nou, cu substituenții înlocuiți de valorile formatate.
+            În esență, şir.format(*args, **kwargs) oferă un mecanism puternic și flexibil pentru construirea dinamică a
+            șirurilor de caractere prin combinarea unui șablon cu un număr variabil de argumente poziționale și de
+            cuvinte cheie.</dd>
+        </dl>
+
+        <dl>
+          <dt>Method</dt>
+          <dd>Is a versatile way to format strings by inserting values into placeholders within a template string.</dd>
+          <dt>Template string:</dt>
+          <dd>You create a string containing placeholders, denoted by curly braces {}. These placeholders indicate where
+            values should be inserted.</dd>
+          <dd>method formats strings by dynamically filling placeholders ({}) using a flexible number of positional
+            arguments (*args) and keyword arguments (**kwargs).</dd>
+          <dt>Return Value:</dt>
+          <dd>The format() method returns a new string with the placeholders replaced by the formatted values.
+            In essence, str.format(*args, **kwargs) provides a powerful and flexible mechanism for dynamically
+            constructing strings by combining a template with a variable number of positional and keyword arguments.
+          </dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <p><b>*args (Argumente Poziționale):</b> Sintaxa *args vă permite să transmiteți un număr variabil de argumente
+          fără cuvinte cheie metodei format(). Aceste argumente sunt tratate ca un tuplu în cadrul funcției și sunt de
+          obicei folosite pentru a completa substituenții în funcție de ordinea sau indexul lor.</p>
+
+        <p><b>*args (Positional Arguments):</b> The *args syntax allows you to pass a variable number of non-keyworded
+          arguments to the format() method. These arguments are treated as a tuple within the function and are typically
+          used to fill placeholders based on their order or index.</p>
+      </div>
+
+<pre><code>print("Numerele sunt {} și {}".format(10, 20))   <span># Completează substituenții în ordine   ==> 10 și 20</span>
+print("Numerele sunt {1} și {0}".format(10, 20)) <span># Completează substituenții după indice ==> 20 și 10</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>**kwargs (argumente cheie):</b> Sintaxa **kwargs vă permite să transmiteți un număr variabil de argumente
+          cu cuvinte cheie. Aceste argumente sunt tratate ca un dicționar în cadrul funcției și sunt folosite pentru a
+          completa substituenții după nume.</p>
+
+        <p><b>**kwargs (Keyword Arguments):</b> The **kwargs syntax allows you to pass a variable number of keyworded
+          arguments. These arguments are treated as a dictionary within the function and are used to fill placeholders
+          by name.</p>
+      </div>
+
+
+<pre><code>"Numele este {nume} și vârsta este {vârstă}".format(nume="Anca", vârstă=30) <span>==> 'Numele este Anca și vârsta este 30'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>Opțiuni substituenți:</b> În cadrul acoladelor, puteți specifica și opțiuni de formatare, cum ar fi
+          lățimea câmpului, alinierea și precizia, utilizând un mini-limbaj similar cu șirurile f.</p>
+
+        <p><b>Placeholder Options:</b> Within the curly braces, you can also specify formatting options like field
+          width, alignment, and precision using a mini-language similar to f-strings.</p>
+      </div>
+
+<pre><code>"Valoare: {:>10.2f}".format(432.456)  <span># Aliniere la dreapta, precizie 2 zecimale ==> 'Valoare:     432.46'</span>
+</code></pre>
+
+<pre><code><span># Definiți argumentele poziționale și de cuvinte cheie</span>
+pozițional_args = ["Regina", "Petre"]
+cuvântcheie_args = {"eveniment": "Real Python miting", "ziua": "miercuri"}
+
+<span># Creați șirul de caractere șablon</span>
+șablon1 = "Salut {0}, salut {1}, {eveniment} este {ziua}."
+
+# Folosiți metoda de formatare cu argumente despachetate
+șir_formatat1 = șablon1.format(*pozițional_args, **cuvântcheie_args)
+print(șir_formatat)      <span>==> Salut Regina, salut Petre, Real Python miting este miercuri.</span>
+</code></pre>
+
+<pre><code><span># Definiți un șir de caractere de formatare cu substituenți poziționali și denumiți</span>
+șablon2 = "Felicitări, {}! Astăzi ai {} ani și îi sărbătorești în {oraş} la skii."
+
+<span># Argumente poziționale într-un tuplu</span>
+pozițional_tuplu = ("Sheila", 65)
+
+<span># Argumente de cuvinte cheie într-un dicționar</span>
+cuvânt_cheie = {"oraş": "Clinton"}
+
+<span># Despachetați și formatați șirul de caractere</span>
+șir_formatat2 = șablon2.format(*pozițional_tuplu, **cuvânt_cheie)
+print(șir_formatat2)      <span>==> Felicitări, Sheila! Astăzi ai 65 ani și îi sărbătorești în Clinton la skii.</span>
+</code></pre>
+
+      <dl>
+        <dt>În acest exemplu:</dt>
+        <dd>șablon2 este un șir de caractere cu substituenți: {} pentru argumente poziționale și {oraş} pentru un
+          argument cuvânt cheie denumit.</dd>
+        <dd>positional_tuplu conține valori care vor fi despachetate și transmise ca argumente poziționale către
+          format().</dd>
+        <dd>cuvântcheie este un dicționar care conține perechi cheie-valoare care vor fi despachetate și transmise ca
+          argumente cuvânt cheie către format().</dd>
+        <dd>șablon2.format(*pozițional_tuplu, **cuvântcheie) despachetează tuplul pozițional_tuplu în argumente
+          individuale pentru substituenții {} și despachetează dicționarul cuvântcheie în argumente cuvânt cheie pentru
+          substituentul {oraş}.</dd>
+        <dd>Rezultatul este un șir de caractere complet formatat în care substituenții sunt înlocuiți cu valorile
+          furnizate.</dd>
+      </dl>
+
+      <dl>
+        <dt>In this example:</dt>
+        <dd>template2 is a string with placeholders: {} for positional arguments and {city} for a named keyword
+          argument.</dd>
+        <dd>positional_data is a tuple containing values that will be unpacked and passed as positional arguments to
+          format().</dd>
+        <dd>keyword_data is a dictionary containing key-value pairs that will be unpacked and passed as keyword
+          arguments to format().</dd>
+        <dd>template2.format(*positional_data, **keyword_data) unpacks the positional_data tuple into individual
+          arguments for the {} placeholders and unpacks the keyword_data dictionary into keyword arguments for the
+          {city} placeholder.</dd>
+        <dd>The result is a fully formatted string where the placeholders are replaced by the provided values.</dd>
+      </dl>
+
+<pre><code>oraş_ţară = ["Turnu Severin", "România"]
+detalii = {"populație": "110 mii", "stare: mare"}
+
+mesaj = "Oraş: {0}, Ţară: {1}, Populație: {populație}.".format(*oraş_ţară, **detalii)
+print(mesaj)  <span>==> Oraş: Turnu Severin, Ţară: România, Populație: 110 mii.</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="FM">.format_map(mapping)</h2>
+
+      <p>Sintaxă: şir.format_map(mapping)</p>
+
+      <p><a href="https://www.w3schools.com/python/ref_string_format_map.asp" target="_blank" rel="noopener">Python
+          String format_map()
+          Method</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>.format_map(mapping)</dt>
+          <dd>Este utilizată pentru formatarea șirurilor de caractere, similară cu şir.format(), dar ia ca argument un
+            singur obiect de mapare (cum ar fi un dicționar). Această metodă înlocuiește substituenții dintr-un șir de
+            caractere cu valorile corespunzătoare din maparea furnizată.</dd>
+          <dd>formatează un șir de caractere prin înlocuirea substituenților numiți cu valori direct dintr-un dicționar
+            sau din orice obiect de mapare.</dd>
+          <dt>Parametri:</dt>
+          <dd>șir de caractere: Șirul de caractere cu substituenți (de exemplu, {nume}).</dd>
+          <dd>mapare: Un obiect de mapare (de exemplu, un dicționar) care conține perechi cheie-valoare. Cheile din
+            această mapare corespund numelor utilizate în substituenții din șir, iar valorile sunt cele care vor înlocui
+            acești substituenți.</dd>
+          <dt>Valoare returnată:</dt>
+          <dd>Metoda format_map() returnează un șir nou, formatat, în care substituenții sunt înlocuiți cu valorile
+            corespunzătoare din mapare. Nu modifică șirul original.</dd>
+        </dl>
+
+        <dl>
+          <dt>.format_map(mapping)</dt>
+          <dd>Is used for string formatting, similar to string.format(), but it specifically takes a single mapping
+            object (like a dictionary) as its argument. This method replaces placeholders within a string with
+            corresponding values from the provided mapping.</dd>
+          <dd>formats a string by substituting named placeholders with values directly from a dictionary or any mapping
+            object.</dd>
+          <dt>Parameters:</dt>
+          <dd>string: The string with placeholders (e.g., {name}).</dd>
+          <dd>mapping: A mapping object (e.g., a dictionary) containing key-value pairs. The keys in this mapping
+            correspond to the names used in the placeholders within the string, and the values are what will replace
+            those placeholders. </dd>
+          <dt>Return Value:</dt>
+          <dd>The format_map() method returns a new, formatted string with the placeholders replaced by their
+            corresponding values from the mapping. It does not modify the original string. </dd>
+        </dl>
+      </div>
+
+<pre><code>date_persoană = {"nume": "Aneta", "vârstă": 30}
+șir_formatat = "Nume: {nume}, Vârsta {vârstă}".format_map(date_persoană)
+print(șir_formatat)   <span>==> Nume: Aneta, Vârsta 30</span>
+</code></pre>
+
+      <dl>
+        <dt>Diferența cheie față de şir.format():</dt>
+        <dd>Deși şir.format() poate accepta și argumente de tip cuvânt cheie care sunt despachetate dintr-un dicționar
+          folosind operatorul ** (de exemplu, şir.format(**dicționarul_meu)), şir.format_map() preia direct obiectul de
+          mapare. Acest lucru poate fi util în special atunci când se lucrează cu subclase de dicționar personalizate
+          care ar putea avea un comportament special, cum ar fi gestionarea cheilor lipsă printr-o metodă __missing__.
+        </dd>
+      </dl>
+
+      <dl>
+        <dt>Key Difference from string.format():</dt>
+        <dd>While str.format() can also accept keyword arguments that are unpacked from a dictionary using the **
+          operator (e.g., string.format(**my_dict)), str.format_map() directly takes the mapping object. This can be
+          particularly useful when working with custom dictionary subclasses that might have special behavior, such as
+          handling missing keys through a __missing__ method.</dd>
+      </dl>
+
+      <div class="grid-container">
+        <dl>
+          <dt>şir.format(**mapping)</dt>
+          <dd>Evită crearea unui dicționar temporar: Când utilizați **mapping, Python despachetează mai întâi perechile
+            cheie-valoare într-un dicționar nou înainte de a-l transmite metodei format(). format_map() utilizează
+            direct obiectul de mapare, ceea ce poate fi puțin mai eficient pentru dicționarele foarte mari.</dd>
+          <dd>Acceptă clase speciale de mapare: format_map() funcționează direct cu tipuri de mapare personalizate, cum
+            ar fi subclasele dict care implementează un comportament special. Un caz de utilizare comun este gestionarea
+            cheilor lipsă fără a genera o eroare KeyError prin definirea unei metode __missing__().</dd>
+        </dl>
+
+        <dl>
+          <dt>str.format(**mapping)</dt>
+          <dd>Avoids creating a temporary dictionary: When you use **mapping, Python first unpacks the key-value pairs
+            into a new dictionary before passing it to the format() method. format_map() uses the mapping object
+            directly, which can be slightly more efficient for very large dictionaries.</dd>
+          <dd>Supports special mapping classes: format_map() works directly with custom mapping types, like dict
+            subclasses that implement special behavior. A common use case is handling missing keys without raising a
+            KeyError by defining a __missing__() method.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># formatare de bază</span>
+persoană = {"nume": "Ion", "vârstă": 77}
+salut = "Bună ziua, numele meu este {nume} și am {vârstă} ani."
+șir_formatat = salut.format_map(persoană)
+print(șir_formatat)   <span>==> Bună ziua, numele meu este Ion și am 77 ani.</span>
+
+<span># formatare cu o clasă de mapare personalizată</span>
+<span># cazurile în care o cheie substituentă lipsește din date.</span>
+class PersonalizareDict(dict):
+    def __missing__(self, cheie):
+        return f"Lipsă - {cheie}"
+    
+obiect_electronic = PersonalizareDict({"produs": "prăjitor de pâine"})
+detalii_comandă = "Comandă: {produs}, Preț: {preț}."
+
+<span># Cheia "preț" lipsește din obiect_electronic, dar nu este generată nicio eroare KeyError.</span>
+șir_formatat2 = detalii_comandă.format_map(obiect_electronic)
+print(șir_formatat2)  <span>==> Comandă: prăjitor de pâine, Preț: Lipsă - preț.</span>
+
+<span># chei imbricate</span>
+<span># format_map() poate gestiona și chei imbricate prin referirea lor în interiorul acoladelor.</span>
+programator = {"detalii": {"nume": "Florescu", "vârstă": 55}}
+șir_informații = "Nume: {detalii[nume]}, Vârsta: {detalii[vârstă]}."
+
+șir_formatat3 = șir_informații.format_map(programator)
+print(șir_formatat3)  <span>==> Nume: Florescu, Vârsta: 55.</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="FS">F-strings</h2>
+
+      <p><a href="https://peps.python.org/pep-0498/" target="_blank" rel="noopener">PEP 498 – Literal String
+          Interpolation</a></p>
+
+      <p><a href="https://realpython.com/python-f-strings/" target="_blank" rel="noopener">Python's F-String for String
+          Interpolation
+          and Formatting</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>f-strings</dt>
+          <dd>Introduse în Python 3.6 literalii de șiruri formate, sau șiruri f, oferă o modalitate concisă și ușor de
+            citit de a încorpora expresii în interiorul literalilor de șir în Python. Aceștia sunt identificați
+            printr-un prefix f sau F înainte de ghilimelele de deschidere ale șirului.</dd>
+          <dd>O metodă modernă și ușor de citit care utilizează prefixul f. Expresiile din interiorul acoladelor ({})
+            sunt evaluate la momentul execuției.</dd>
+          <dd>În Python, nu poți concatena direct un șir de caractere și un număr folosind operatorul +, deoarece acest
+            lucru va genera o eroare TypeError. Mai întâi trebuie să convertiți explicit numărul într-un șir de
+            caractere folosind o metodă precum str(), f-strings sau metoda .format().</dd>
+          <dd>Pentru potriviri de modele mai avansate și căutări fără sensibilitate la majuscule/minuscule, modulul "re"
+            din Python oferă capabilități puternice de expresii regulate.</dd>
+        </dl>
+
+        <dl>
+          <dt>f-strings</dt>
+          <dd>Formatted string literals, or f-strings, introduced in Python 3.6 provide a concise and readable way to
+            embed expressions inside string literals in Python. They are identified by an f or F prefix before the
+            opening quotation mark of the string.</dd>
+          <dd>A modern and highly readable method using a f prefix. Expressions inside curly braces ({}) are evaluated
+            at runtime.</dd>
+          <dd>In Python, you cannot directly concatenate a string and a number using the + operator, as this will raise
+            a TypeError. You must first explicitly convert the number to a string using a method like str(), f-strings,
+            or the .format() method.</dd>
+          <dd>or more advanced pattern matching and case-insensitive searches, Python's "re" module provides powerful
+            regular expression capabilities.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Înlocuirea variabilelor de bază:</span>
+nume = "Ion"
+vârstă = 77
+print(f"Numele meu este {nume} și am {vârstă} ani.") <span>==> Numele meu este Ion și am 77 ani.</span>
+
+<span># Încorporarea expresiilor:</span>
+numărul1 = 10
+numărul2 = 20
+rezultat = f"Suma numerelor {numărul1} şi {numărul2} este {numărul1+numărul2}"
+rezultat2 = f"{numărul1} + {numărul2} = {numărul1+numărul2}"
+print(rezultat)   <span>==> Suma numerelor 10 şi 20 este 30</span>
+print(rezultat2)  <span>==> 10 + 20 = 30</span>
+
+<span># Formatare cu specificatori:</span>
+<span># .2f specifică faptul că prețul trebuie formatat ca număr cu virgulă și două zecimale.</span>
+preț = 12.34567
+preț_formatat = f"Prețul este ${preț:.2f}."
+print(preț_formatat) <span>==> Prețul este $12.35.</span>
+
+<span># Depanarea (Corectarea, Remedierea) cu specificatorul =:
+print("Specificatorul '=' afișează atât expresia, cât și valoarea sa evaluată, ceea ce poate fi util pentru depanare.")</span>
+x = 15
+y = 5
+print(f"Valoarea lui x este {x=}")        <span>==> Valoarea lui x este x=15</span>
+print(f"Produsul lui x și y este {x*y=}") <span>==> Produsul lui x și y este x*y=75</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="FT">format() function</h2>
+
+      <div class="grid-container">
+        <dl>
+          <dt><a href="https://realpython.com/ref/builtin-functions/format/" target="_blank" rel="noopener">Funcția format()</a></dt>
+          <dd>Funcția format() încorporată în Python oferă o modalitate versatilă de a formata valorile în reprezentări
+            de tip șir de caractere. Aceasta primește două argumente principale: valoare și un format_spec opțional.
+          </dd>
+        </dl>
+
+        <dl>
+          <dt><a href="https://realpython.com/ref/builtin-functions/format/" target="_blank" rel="noopener">format() function</a></dt>
+          <dd>The built-in format() function in Python provides a versatile way to format values into string
+            representations. It takes two main arguments: value and an optional format_spec.</dd>
+        </dl>
+      </div>
+
+      <p>Formatare de bază - Basic Formatting</p>
+
+<pre><code><span># Conversia unui număr întreg în reprezentarea sa binară</span>
+valoare_binară = format(10, 'b')
+print(f"Binar: {valoare_binară} / {type(valoare_binară)}")  <span>==> Binar: 1010 / &lt;class 'str'&gt;</span>
+
+<span># Conversia unui număr la două zecimale</span>
+valoare_fixă1 = format(3.14159, '.2f')
+valoare_fixă2 = format(25, '.2f')
+print(f"Doua zecimale: {valoare_fixă1} / {type(valoare_fixă1)}")  <span>==> Doua zecimale: 3.14 / &lt;class 'str'&gt;</span>
+print(f"Doua zecimale: {valoare_fixă2} / {type(valoare_fixă2)}")  <span>==> Doua zecimale: 25.00 / &lt;class 'str'&gt;</span>
+</code></pre>
+
+      <p>Formatarea numerelor cu separatori - Number Formatting with Separators</p>
+
+<pre><code><span># Adăugați o virgulă ca separator de mii</span>
+virgulă_separate = format(1234567, ',d')   
+print(f"Mii separate: {virgulă_separate}") <span>==> Mii separate: 1,234,567</span>
+
+<span># Folosiți o subliniere ca separator de mii</span>
+sub_separat = format(9876543, '_d')
+print(f"Suliniere separată: {sub_separat}") <span>==> Suliniere separată: 9_876_543</span>
+</code></pre>
+
+      <p>Aliniere și umplere - Alignment and Padding</p>
+
+<pre><code><span># Aliniere la dreapta a unui șir cu o lățime de 10 caractere</span>
+aliniat_dreapta = format("salut", '>10')
+print(f"Aliniere la dreapta: '{aliniat_dreapta}'")  <span>==> Aliniere la dreapta: '     salut'</span>
+
+<span># Aliniere la centru a unui șir cu o lățime de 15 caractere, completat cu asterix</span>
+centru_aliniat = format("lume", '*^15')
+print(f"Aliniere la centru: '{centru_aliniat}'")  <span>==> Aliniere la centru: '*****lume******'</span>
+</code></pre>
+
+      <p>Controlul semnelor - Sign Control:</p>
+
+<pre><code><span># Afișează un semn plus pentru numerele pozitive</span>
+semn_positiv = format(7, '+d')
+print(f"Semn pozitiv: {semn_positiv}")   <span>==> Semn pozitiv: +7</span>
+
+<span># Afișează un spațiu pentru numerele pozitive</span>
+spațiu_pentru_pozitiv = format(11, ' d')
+print(f"Spațiu pentru numere pozitive: '{spațiu_pentru_pozitiv}'") <span>==> Spațiu pentru numere pozitive: ' 11'</span>
+</code></pre>
+
+      <p>Formatarea caracterelor - Character Formatting:</p>
+
+<pre><code><span># Convertește un număr întreg în caracterul Unicode corespunzător</span>
+valoare_caracter = format(65, 'c')
+print(f"Caracter: {valoare_caracter}")  <span>==> Caracter: A</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Explicația format_spec:</dt>
+          <dd>Șirul format_spec (de exemplu, 'b', '.2f', ',d', '>10') oferă instrucțiuni detaliate despre cum se
+            formatează valoarea. Acesta poate include:</dd>
+          <dd>Aliniere: &lt;, >, ^ (stânga, dreapta, centru)</dd>
+          <dd>Semn: +, -, ` ` (plus, minus, spațiu)</dd>
+          <dd>Umplere: Un caracter de utilizat pentru umplere (de exemplu, *)</dd>
+          <dd>Lățime: Lățimea minimă a câmpului</dd>
+          <dd>Precizie: Pentru numerele cu virgulă mobilă, numărul de zecimale (de exemplu, .2f)</dd>
+          <dd>Tip: Tipul de conversie (de exemplu, d pentru zecimal, b pentru binar, f pentru virgulă fixă, c pentru
+            caracter)</dd>
+          <dd>Combinând acești specificatori, puteți obține o gamă largă de rezultate de formatare cu funcția format().
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>Explanation of format_spec:</dt>
+          <dd>The format_spec string (e.g., 'b', '.2f', ',d', '>10') provides detailed instructions on how to format the
+            value. It can include:</dd>
+          <dd>Alignment: &lt;, >, ^ (left, right, center)</dd>
+          <dd>Sign: +, -, ` ` (plus, minus, space)</dd>
+          <dd>Padding: A character to use for padding (e.g., *)</dd>
+          <dd>Width: The minimum field width</dd>
+          <dd>Precision: For floating-point numbers, the number of decimal places (e.g., .2f)</dd>
+          <dd>Type: The type of conversion (e.g., d for decimal, b for binary, f for fixed-point, c for character)</dd>
+          <dd>By combining these specifiers, you can achieve a wide range of formatting results with the format()
+            function.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Utilizarea format() cu clase personalizate.</dt>
+          <dd>Pentru o clasă personalizată, puteți implementa o metodă __format__ pentru a defini comportamentul
+            acesteia în formatare.</dd>
+        </dl>
+
+        <dl>
+          <dt>Using format() with custom classes.</dt>
+          <dd>For a custom class, you can implement a __format__ method to define its formatting behavior.</dd>
+        </dl>
+      </div>
+
+<pre><code>import datetime
+
+class AnulLunaZiua:
+    def __init__(self, anul, luna, ziua):
+        self.data = datetime.date(anul, luna, ziua)
+
+    def __format__(self, format_spec):
+        return self.data.strftime(format_spec)
+
+azi = AnulLunaZiua(2026, 06, 30)
+data_formatata = format(azi, '%B %d, %Y')
+print(data_formatata)  <span>==> June 30, 2026</span> 
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Când se utilizează format()</dt>
+          <dd>Deși metoda şir.format() și șirurile f sunt în general mai comune pentru formatarea de bază a șirurilor,
+            funcția format() încorporată este utilă în următoarele situații:</dd>
+          <dd>Crearea unei clase personalizate: Puteți defini metoda __format__ pentru formatarea personalizată, care va
+            fi utilizată automat atât de format(), cât și de șirurile f.</dd>
+          <dd>Specificatori de format dinamici: format_spec poate fi o variabilă, care vă permite să setați dinamic
+            formatarea la momentul execuției.</dd>
+          <dd>Formatare specializată: Când trebuie să aplicați un format unei singure valori fără a o încorpora într-un
+            șablon de șir mai mare.</dd>
+        </dl>
+
+        <dl>
+          <dt>When to use format()</dt>
+          <dd>While the str.format() method and f-strings are generally more common for basic string formatting, the
+            built-in format() function is useful in these situations:</dd>
+          <dd>Creating a custom class: You can define the __format__ method for custom formatting, which will be used
+            automatically by both format() and f-strings.</dd>
+          <dd>Dynamic format specifiers: The format_spec can be a variable, which allows you to dynamically set the
+            formatting at runtime.</dd>
+          <dd>Specialized formatting: When you need to apply a format to a single value without embedding it into a
+            larger string template.</dd>
+        </dl>
+      </div>
+
+      <h2>Format Specification Mini-Language</h2>
+      <p>Puteți transmite parametri personalizați în spații substituibile după două puncte (:) pentru a controla strict
+        umplerea, alinierea și tipurile. Aceste reguli se aplică atât funcției str.format(), cât și funcției
+        independente format().</p>
+
+      <table class="outer-hidden">
+        <tr>
+          <th>Format Code</th>
+          <th>Behavior</th>
+          <th>Example</th>
+          <th>Result</th>
+        </tr>
+        <tr>
+          <td>.Nf</td>
+          <td>Formats floats to N decimal places</td>
+          <td>format(3.14159, ".2f")</td>
+          <td>'3.14'</td>
+        </tr>
+        <tr>
+          <td>,</td>
+          <td>Adds commas as thousands separators</td>
+          <td>format(1000000, ",")</td>
+          <td>'1,000,000'</td>
+        </tr>
+        <tr>
+          <td>%</td>
+          <td>Multiplies by 100 and appends percentage sign</td>
+          <td>format(0.25, "%")</td>
+          <td>'25.000000%'</td>
+        </tr>
+        <tr>
+          <td>b / x</td>
+          <td>Converts numbers to Binary or Hexadecimal</td>
+          <td>format(10, "b")</td>
+          <td>'1010'</td>
+        </tr>
+        <tr>
+          <td>^N</td>
+          <td>Centers value within N character spaces</td>
+          <td>"{}".format("Hi").center(6) or "{:^6}".format("Hi")</td>
+          <td>' Hi '</td>
+        </tr>
+        <tr>
+          <td>>N</td>
+          <td>Right-aligns text within N spaces</td>
+          <td>format("Test", ">8")</td>
+          <td>' Test'</td>
+        </tr>
+      </table>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

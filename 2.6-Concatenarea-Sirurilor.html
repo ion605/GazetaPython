@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 2.6 Strings concatenation</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaT.svg" alt="T" class="logo">
+          <h1>2.0 Tipuri Text-Text Type</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>2.6 Concatenarea șirurilor-Strings concatenation</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 ro-en">
+        <ul>
+          <li>În acest capitol veți studia:</li>
+          <li><a href="#PL">+ Operator</a></li>
+          <li><a href="#MN">Metoda .join()</a></li>
+          <li><a href="#IO">Şiruri cu StringIO</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <div class="grid-container">
+        <dl>
+          <dt>Concatenare:</dt>
+          <dd>Implică combinarea a două sau mai multe secvențe de același tip într-o singură secvență nouă.</dd>
+          <dd>Python concatenează automat șirurile de caractere adiacente, chiar dacă acestea sunt separate prin spații
+            albe sau linii noi. Această metodă este adesea folosită pentru scrierea șirurilor lungi pe mai multe linii,
+            pentru o mai bună lizibilitate.</dd>
+          <dd>Cea mai bună metodă de utilizat depinde de numărul de șiruri de caractere și de necesitatea formatării
+            acestora, precum și de preferințele personale privind lizibilitatea și eficiența.</dd>
+        </dl>
+
+        <dl>
+          <dt>Concatenation:</dt>
+          <dd>Involves combining two or more sequences of the same type into a single new sequence.</dd>
+          <dd>Python automatically concatenates adjacent string literals, even if they are separated by whitespace or
+            newlines. This is often used for writing long strings across multiple lines for readability.</dd>
+          <dd>The best method to use depends on the number of strings and whether you need to format them and also
+            personal preference for readability and efficiency.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <p>Concatenarea șirurilor de caractere în Python poate fi realizată prin mai multe metode distincte, operatorul
+          +, șirurile f și metoda .join() fiind cele mai comune. Deoarece șirurile Python sunt imuabile, alegerea
+          metodei potrivite depinde direct de cazul de utilizare specific și de nevoile de performanță.</p>
+
+        <p>String concatenation in Python can be achieved through several distinct methods, with the + operator,
+          f-strings, and the .join() method being the most common. Because Python strings are immutable, choosing the
+          right method depends directly on your specific use case and performance needs.</p>
+      </div>
+
+      <h2>Metode comparate</h2>
+
+      <table class="outer-hidden">
+        <tr>
+          <th>Metodă</th>
+          <th>Bun pentru</th>
+          <th>Lizibilitate</th>
+          <th>Performanță</th>
+        </tr>
+        <tr>
+          <td>+ Operator</td>
+          <td>Adăugare rapidă a 2-3 variabile</td>
+          <td>Ridicată</td>
+          <td>Rapid pentru puține elemente, lent în bucle</td>
+        </tr>
+        <tr>
+          <td>f-Strings</td>
+          <td> Amestecarea variabilelor de diferite tipuri în text</td>
+          <td> Excelent</td>
+          <td> Foarte rapid</td>
+        </tr>
+        <tr>
+          <td>.join()</td>
+          <td> Îmbinarea listelor sau a grupurilor mari de șiruri de caractere</td>
+          <td> Moderat </td>
+          <td>Cel mai rapid pentru iterabile și bucle</td>
+        </tr>
+      </table>
+
+<pre><code><span># O bară oblică inversată la sfârșitul unei linii fizice</span>
+şir_lung1 = "concatenare operatorul + pentru a uni șiruri de caractere. "\
+             "repetiție operatorul * pentru a repeta un șir de caractere. "\
+             "len() returnează numărul de caractere. "\
+             "conversie de majuscule/minuscule .lower(), .upper(), .title(), capitalize(). "\
+             ".find() returnează indexul unui subșir sau -1 dacă nu este găsit."
+print(şir_lung1)
+<span>==> concatenare operatorul + pentru a uni șiruri de caractere. repetiție operatorul * pentru a repeta un șir de caractere. len() returnează numărul de caractere. conversie de majuscule/minuscule .lower(), .upper(), .title(), capitalize(). .find() returnează indexul unui subșir sau -1 dacă nu este găsit.</span>
+</code></pre>
+
+<pre><code><span># introduceți un șir lung pe mai multe linii între paranteze.</span>
+şir_lung2 = (
+    ".replace() returnează un șir nou cu toate aparițiile unui subșir înlocuit. "
+    ".split() creează o listă de subșiruri pe baza unui separator. "
+    ".join() concatenează o listă de șiruri de caractere într-un singur șir. "
+    ".strip(), .lstrip() sau .rstrip() pentru a elimina spațiile albe."
+)
+print(şir_lung2)
+<span>==> .replace() returnează un șir nou cu toate aparițiile unui subșir înlocuit. .split() creează o listă de subșiruri pe baza unui separator. .join() concatenează o listă de șiruri de caractere într-un singur șir. .strip(), .lstrip() sau .rstrip() pentru a elimina spațiile albe.</span>
+</code></pre>
+
+<pre><code><span># ghilimele duble și apostrofuri în același șir de caractere</span>
+urare = (
+    "'neața' dom'le profesor "    <span># Șir de caractere cu apostrofuri</span>
+    '"zice elevul in grabă"'      <span># Șir de caractere cu ghilimele duble</span>
+)         
+print(urare)  <span>==> 'neața' dom'le profesor "zice elevul in grabă"</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="PL">Operatorul (+) - (+) Operator</h2>
+
+      <p><a href="https://www.w3schools.com/python/gloss_python_string_concatenation.asp" target="_blank"
+          rel="noopener">Python String
+          Concatenation</a></p>
+
+      <p><a href="https://realpython.com/python-string-concatenation/" target="_blank" rel="noopener">Efficient String
+          Concatenation in
+          Python</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Concatenarea pentru tipurile de secvențe:
+          <dt>
+          <dd>Atunci când este utilizat cu secvențe de același tip, operatorul + le concatenează, creând o nouă secvență
+            care conține elemente din ambii operanzi.</dd>
+          <dd>Nu puteți concatena direct un șir de caractere cu un număr întreg sau cu un număr cu virgulă. Trebuie mai
+            întâi să convertiți numărul folosind str().</dd>
+          <dd>Evitați utilizarea expresiei + sau += în interiorul buclelor. Deoarece șirurile de caractere sunt
+            imuabile, Python creează un șir complet nou în memorie pentru fiecare adunare, ceea ce încetinește
+            considerabil codul.</dd>
+        </dl>
+
+        <dl>
+          <dt>Concatenation for Sequence Types:</dt>
+          <dd>When used with sequences of the same type, the + operator concatenates them, creating a new sequence
+            containing elements from both operands.</dd>
+          <dd>You cannot directly concatenate a string with an integer or float. You must convert the number using str()
+            first.</dd>
+          <dd>Avoid using + or += inside loops. Because strings are immutable, Python creates a brand-new string in
+            memory for every single addition, which slows down your code heavily.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Concatenare șiruri de caractere</span>
+șir1 = "Salut"
+șir2 = " Lume"
+șir_combinat = șir1 + șir2
+print(șir_combinat)        <span>==> Salut Lume</span>
+
+<span># Concatenează cu operatorul '+' și adaugă un spațiu</span>
+salut = "Salut"
+nume = "Lume"
+salut_full = salut + ", " + nume + "!"
+print(salut_full)          <span>==> Salut, Lume!</span>
+
+<span># operator de concatenare variație augmentată</span>
+fișier = "document"
+fișier += ".html"
+print(fișier)              <span>==> document.html</span>
+
+<span># O variabilă care conține un șir de caractere</span>
+fruct = "smochin"
+<span># O variabilă care conține un număr întreg</span>
+număr_întreg = 3
+
+<span># Convertește numărul într-un șir de caractere înainte de concatenare</span>
+propoziție = "Am " + str(număr_întreg) + " " + fruct + "e."
+print(propoziție)           <span>==> Am 3 smochine.</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="MN">Metoda .join() - .join() Method</h2>
+
+      <p>Sintaxă = separator.join()</p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Metoda join()
+          <dt>
+          <dd>Este o metodă de tip șir de caractere utilizată pentru a concatena elementele unui iterabil într-un singur
+            șir de caractere. Necesită un șir de caractere ca separator și un iterabil care conține elemente de tip șir
+            de caractere. Această metodă este deosebit de eficientă atunci când se concatenează un număr mare de șiruri
+            de caractere, mai ales dacă acestea sunt stocate într-un iterabil, cum ar fi o listă.</dd>
+          <dd>Alocă memorie pentru șirul final exact o singură dată, ceea ce îl face incredibil de rapid pentru
+            operațiuni la scară largă.</dd>
+        </dl>
+
+        <dl>
+          <dt>join() method
+          <dt>
+          <dd>Is a string method used to concatenate elements of an iterable into a single string. It requires a string
+            as a separator and an iterable containing string elements. This method is particularly efficient when
+            concatenating a large number of strings, especially if they are stored in an iterable like a list.</dd>
+          <dd>It allocates memory for the final string exactly once, making it incredibly fast for large-scale
+            operations.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Dintr-o listă de șiruri de caractere</span>
+cuvinte1 = ['Un', '"calculator"', 'obișnuit', 'costă', 'între', '500', 'și', '1000', 'lei.']
+
+<span># Concatenează elementele listei cu un separator de spațiu</span>
+propoziție_cu_spațiu = " ".join(cuvinte1)
+print(propoziție_cu_spațiu)              <span>==> Un "calculator" obișnuit costă între 500 și 1000 lei.</span>
+
+<span># Concatenează cu un separator gol</span>
+propoziție_fără_spațiu = ''.join(cuvinte1)
+print(propoziție_fără_spațiu)             <span>==> Un"calculator"obișnuitcostăîntre500și1000lei.</span>
+</code></pre>
+
+<pre><code><span># Unirea unei liste de șiruri de caractere cu un spațiu</span>
+cuvinte = ['Studierea', 'limbajului', 'Python', 'este', 'un', 'mare', 'beneficiu', 'pentru', 'programatori!']
+separator = ' '
+propoziție = separator.join(cuvinte)
+print(propoziție) <span>==> Studierea limbajului Python este un mare beneficiu pentru programatori!</span>
+
+<span># Unirea unei liste cu virgulă și spațiu:</span>
+fructe = ['măr', 'banană', 'cireașă']
+separator = ', '
+șir_fructe_unite = separator.join(fructe)
+print(șir_fructe_unite)  <span>==> măr, banană, cireașă</span>
+
+<span># Unirea unui tuplu cu liniuță:</span>
+culori = ('red', 'green', 'blue')
+șir_culori_unite = '-'.join(culori)
+print(șir_culori_unite) <span>==> red-green-blue</span>
+
+<span># Când join() un dicționar, cheile se alătură în mod implicit</span>
+dicţionar = {'nume': 'Ionel', 'vârstă': 67}
+key_dicţionar = ' '.join(dicţionar)
+print(key_dicţionar) <span>==> nume vârstă</span>
+
+<span># Modificați lista de cuvinte, de exemplu, inversați-le</span>
+fructe_inversate = fructe[::-1]
+print(f'Fructe inversate: {fructe_inversate}') <span>==> Fructe inversate: ['cireașă', 'banană', 'măr']</span>
+propoziție_fructe_inversate = ' '.join(fructe_inversate)
+print(propoziție_fructe_inversate) <span>==>  cireașă banană măr</span>
+</code></pre>
+
+
+      <p>Extrage și concatenează valorile dicționarului într-un singur șir</p>
+
+      <p><b>Valorile dicționarului șiruri de caractere</b></p>
+
+<pre><code>fructe = {"fruct1": "Măr", "fruct2": "Banană", "fruct3": "Cireșă"}
+
+<span># Extrage și unește valori cu virgulă și spațiu</span>
+rezultat = ", ".join(fructe.values())
+print(rezultat)   <span>==> Măr, Banană, Cireșă</span>
+</code></pre>
+
+      <p><b>Valorile dicționarului sunt numere întregi sau tipuri mixte</b></p>
+
+      <div class="grid-container">
+        <p>Dacă dicționarul conține numere întregi, numere cu virgulă mobilă sau tipuri de date mixte, transmiterea
+          directă a funcției dicționar.values() va genera o eroare <b>TypeError</b>. Trebuie să convertiți valorile în
+          șiruri de caractere folosind o expresie generatoare:</p>
+
+        <p>If the dictionary contains integers, floating-point numbers, or mixed data types, passing the
+          dicționar.values() function directly will throw a <b>TypeError</b>. You must convert the values ​​to strings
+          using a generator expression:</p>
+      </div>
+
+<pre><code>valori_numere = {"a": 10, "b": 20, "c": 30}
+
+<span># Convertește fiecare valoare într-un șir de caractere la unirea elementelor</span>
+result = "-".join(str(valoare) for valoare in valori_numere.values())
+print(result)  <span>==> 10-20-30</span>
+</code></pre>
+
+      <p><b>Extrageți atât cheia, cât și valoarea</b></p>
+
+<pre><code>student-rol = {"nume": "Alina", "rol": "Elev"}
+
+<span># Unirea cheilor și valorilor formatate ca cheie=valoare</span>
+rezultat = ", ".join(f"{k}={v}" for k, v in student-rol.items())
+
+print(rezultat)  <span>==> nume=Alina, rol=Elev</span>
+</code></pre>
+
+<pre><code><span># Concatenarea numerelor dintr-o listă</span>
+<span># O listă de numere întregi</span>
+numere_întregi = [13, 17, 33, 11, 15]
+<span># Convertește fiecare număr într-un șir de caractere și unește-le cu o cratimă</span>
+rezultat = "-".join([str(număr) for număr in numere_întregi])
+print(rezultat)  <span>==> 13-17-33-11-15</span>
+</code></pre>
+
+
+      <p>Combinații - Combinations</p>
+
+<pre><code>base_url = "https://example.com/"
+subpaths = ["blog", "2026", "06", "join-string"]
+
+full_url = base_url + "/".join(subpaths)
+print(full_url)  <span>==> https://example.com/blog/2025/06/join-string</span>
+</code></pre>
+
+<pre><code><span># separatoare cu mai multe caractere</span>
+fructe = ["măr", "pară", "cireșă", "caisă"]
+separator1 = " | "
+separator2 = " --- "
+
+print(len(separator1))                 <span>==> 3</span>
+join_fructe1 = separator1.join(fructe)
+print(join_fructe1)                    <span>==> măr | pară | cireșă | caisă</span>
+
+print(len(separator2))                 <span>==> 5</span>
+join_fructe2 = separator2.join(fructe)
+print(join_fructe2)                    <span>==> măr --- pară --- cireșă --- caisă</span>
+</code></pre>
+
+<pre><code><span># divizarea unui singur șir de caractere</span>
+litere = ",".join("Salut Lume")
+print(litere)                          <span>==> S,a,l,u,t, ,L,u,m,e</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Metoda join() din Python este o modalitate puternică și eficientă de a crea un șir de jurnal de evenimente
+          dintr-o secvență de șiruri de caractere. Funcționează prin concatenarea elementelor unui iterabil (cum ar fi o
+          listă) într-un singur șir de caractere, utilizând un separator specificat între fiecare element.
+        </p>
+
+        <p>The join() method in Python is a powerful and efficient way to create an event log string from a sequence of
+          strings. It works by concatenating the elements of an iterable (like a list) into a single string, using a
+          specified separator between each element.</p>
+      </div>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Cum se utilizează join() pentru a crea un șir de jurnal de evenimente:</dt>
+          <dd>Definiți separatorul: Determinați caracterul sau șirul de caractere pe care doriți să îl utilizați pentru
+            a separa diferitele părți ale intrării în jurnal. Acesta poate fi un spațiu, o virgulă, o bară verticală (|)
+            sau orice alt delimitator dorit.</dd>
+          <dd>Pregătiți componentele jurnalului: Creați un iterabil (de exemplu, o listă sau un tuplu) care conține
+            șirurile individuale care vor alcătui intrarea în jurnal. Acestea pot include timestamp-uri, niveluri de
+            jurnal, descrieri de evenimente și orice date relevante. Asigurați-vă că toate elementele din iterabil sunt
+            șiruri de caractere. Dacă aveți elemente care nu sunt șiruri de caractere (cum ar fi numere), convertiți-le
+            în șiruri de caractere folosind str() sau o înțelegere(comprehension) a listei.</dd>
+          <dd>Apelați join(): Apelați metoda join() pe șirul de caractere separator, transmițând iterabilul
+            componentelor jurnalului ca argument.</dd>
+        </dl>
+
+        <dl>
+          <dt>How to Use join() to Create an Event Log String:</dt>
+          <dd>Define the Separator: Determine the character or string you want to use to separate the different parts of
+            your log entry. This could be a space, a comma, a pipe (|), or any other desired delimiter.</dd>
+          <dd>Prepare the Log Components: Create an iterable (e.g., a list or tuple) containing the individual strings
+            that will make up your log entry. These could include timestamps, log levels, event descriptions, and any
+            relevant data. Ensure all elements in the iterable are strings. If you have non-string elements (like
+            numbers), convert them to strings using str() or a list comprehension.</dd>
+          <dd>Call join(): Call the join() method on the separator string, passing your iterable of log components as
+            the argument.</dd>
+        </dl>
+      </div>
+
+<pre><code>import datetime
+
+<span># Definiți separatorul</span>
+separator = " | "
+
+<span># Pregătiți componentele jurnalului</span>
+timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+conţinutul_jurnalului = "INFO"
+descrierea_evenimentului = "Autentificare utilizator reușită"
+id_utilizator = "utilizator123"
+
+componentele_jurnalului = [timestamp, conţinutul_jurnalului, descrierea_evenimentului, f"ID utilizator: {id_utilizator}"]
+
+<span># Apelați join()</span>
+șir_jurnal_evenimente = separator.join(componentele_jurnalului)
+print(șir_jurnal_evenimente) <span>==> 2026-06-30 14:05:51 | INFO | Autentificare utilizator reușită | ID utilizator: utilizator123</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Unirea diferitelor tipuri de date</dt>
+          <dd>Acest exemplu arată cum să gestionați tipurile de date mixte din listă, convertind mai întâi totul într-un
+            șir de caractere folosind o expresie generatoare în cadrul metodei join().</dd>
+        </dl>
+
+        <dl>
+          <dt>Joining different data types</dt>
+          <dd>This example shows how to handle mixed data types in your list by converting everything to a string first
+            using a generator expression inside the join() method.</dd>
+        </dl>
+      </div>
+
+<pre><code>import datetime
+
+<span># Listă cu tipuri de date mixte (șir de caractere și numere întregi)</span>
+detalii_eveniment = [
+    datetime.datetime.now().strftime("%H:%M:%S"),
+    "EROARE",
+    "Conexiunea a eșuat pe port", 8080 <span># Aceasta trebuie convertită într-un șir de caractere</span>
+]
+
+<span># Folosește o expresie generatoare pentru a converti toate elementele în șiruri de caractere înainte de unire</span>
+șir_de_jurnal = " - ".join(str(obiect) for obiect in detalii_eveniment)
+print(șir_de_jurnal) <span>==> 06:00:03 - EROARE - Conexiunea a eșuat pe port - 8080</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Unirea mai multor intrări în jurnal.</dt>
+          <dd>Pentru un jurnal cu mai multe linii, puteți utiliza din nou join() pentru a combina o listă de șiruri de
+            intrări în jurnal, separate printr-un caracter de linie nouă (\n).</dd>
+        </dl>
+
+        <dl>
+          <dt>Joining multiple log entries</dt>
+          <dd>For a multi-line log, you can use join() again to combine a list of log entry strings, separated by a
+            newline character (\n).</dd>
+        </dl>
+      </div>
+
+<pre><code>intrări_de_jurnal = []
+
+<span># Creați o listă de șiruri separate de intrări în jurnal</span>
+intrări_de_jurnal.append(" | ".join(["2025-11-19 06:12:10", "INFO", "Aplicația a început"]))
+intrări_de_jurnal.append(" | ".join(["2025-11-19 06:13:15", "AVERTIZARE", "Nu este suficientă memorie"]))
+intrări_de_jurnal.append(" | ".join(["2025-11-19 06:13:20", "EROARE", "Procesul a eșuat"]))
+
+<span># join() pentru a combina toate intrările cu linii noi</span>
+jurnal_pe_linii_multiple = "\n".join(intrări_de_jurnal)
+print(jurnal_pe_linii_multiple)
+<span>==> 2025-11-19 06:12:10 | INFO | Aplicația a început
+          2025-11-19 06:13:15 | AVERTIZARE | Nu este suficientă memorie
+          2025-11-19 06:13:20 | EROARE | Procesul a eșuat</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Considerații importante:</dt>
+          <dd>Elementele trebuie să fie șiruri de caractere: Toate elementele din iterabilul transmis către join()
+            trebuie să fie șiruri de caractere. Dacă vreun element nu este un șir de caractere (de exemplu, un număr
+            întreg sau o valoare None), va fi generată o eroare TypeError.</dd>
+          <dd>Returnează un șir nou: Metoda join() nu modifică iterabilul original; aceasta returnează un șir nou.</dd>
+          <dd>Eficiență: join() este în general mai eficientă pentru concatenarea mai multor șiruri de caractere decât
+            utilizarea repetată a operatorului +, în special atunci când se lucrează cu un număr mare de elemente sau în
+            bucle.</dd>
+        </dl>
+
+        <dl>
+          <dt>Important considerations:</dt>
+          <dd>Elements must be strings: All elements within the iterable passed to join() must be strings. If any
+            element is not a string (e.g., an integer or a None value), a TypeError will be raised.</dd>
+          <dd>Returns a new string: The join() method does not modify the original iterable; it returns a new string.
+          </dd>
+          <dd>Efficiency: join() is generally more efficient for concatenating multiple strings than using the +
+            operator repeatedly, especially when dealing with a large number of elements or in loops.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="IO">Şiruri cu StringIO - Strings With StringIO</h2>
+
+      <p><a href="https://docs.python.org/3/library/io.html" target="_blank" rel="noopener">io — Core tools for working
+          with
+          streams</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Clasa io.StringIO</dt>
+          <dd>Oferă un buffer (tampon-amortizor) de text în memorie care se comportă ca un fișier, fiind utilă pentru
+            construirea eficientă a șirurilor de caractere, în special atunci când se lucrează cu un număr mare de
+            concatenări. Această abordare evită crearea a numeroase obiecte șir de caractere intermediare, care pot
+            apărea cu operatorul + din cauza șirurilor de caractere imuabile din Python.</dd>
+          <dd>Îți permite să tratezi un șir de caractere Python obișnuit ca pe un obiect asemănător unui fișier, ceea ce
+            înseamnă că poți apela metode standard de fișiere precum .read(), .write() și .readline() direct pe acesta,
+            fără a scrie nimic pe hard disk.</dd>
+        </dl>
+
+        <dl>
+          <dt>io.StringIO class</dt>
+          <dd>Provides an in-memory text buffer that behaves like a file, making it useful for efficiently building
+            strings, especially when dealing with a large number of concatenations. This approach avoids the creation of
+            numerous intermediate string objects, which can occur with the + operator due to Python's immutable strings.
+          </dd>
+          <dd>It lets you treat a regular Python string as a file-like object, meaning you can call standard file
+            methods like .read(), .write(), and .readline() directly on it without writing anything to your hard drive.
+          </dd>
+        </dl>
+      </div>
+
+<pre><code>from io import StringIO
+
+buffer_amortizor = StringIO()
+</code></pre>
+
+      <div class="grid-container">
+        <p>Aceasta creează un buffer (amortizor) gol în memorie. De asemenea, îl puteți inițializa cu un șir existent,
+          transmițându-l constructorului: amortizor = StringIO("Conținut inițial"). Scrieți șiruri în buffer.<br>
+          Folosește metoda write() pentru a adăuga șiruri de caractere în buffer. Fiecare apel către write() adaugă noul
+          șir de caractere la conținutul existent.</p>
+
+        <p>This creates an empty in-memory buffer. You can also initialize it with an existing string by passing it to
+          the constructor: buffer = StringIO("Initial content"). Write strings to the buffer.<br>
+          Use the write() method to add strings to the buffer. Each call to write() appends the new string to the
+          existing content.</p>
+      </div>
+
+
+<pre><code>buffer_amortizor.write("Bună")
+buffer_amortizor.write(" ")
+buffer_amortizor.write("să vă fie")
+buffer_amortizor.write(" ")
+buffer_amortizor.write("inima.")
+buffer_amortizor.write("")
+</code></pre>
+
+    <div class="grid-container">
+      <dl>
+        <dt>Recuperează șirul concatenat.</dt>
+        <dd>Folosește metoda getvalue() pentru a recupera șirul complet stocat în amortizor.</dd>
+      </dl>
+      <dl>
+        <dt>Retrieve the concatenated string.</dt>
+        <dd>Use the getvalue() method to retrieve the complete string stored in the buffer.</dd>
+      </dl>
+    </div>
+
+<pre><code>șir_final = buffer_amortizor.getvalue()
+print(șir_final)  <span>==> Bună să vă fie inima.</span>
+</code></pre>
+
+<pre><code>from io import StringIO
+def concatenează_cu_șirul_io(listă_șiruri):
+    amortizor = StringIO()
+    for șir in listă_șiruri:
+        amortizor.write(șir)
+    return amortizor.getvalue()
+
+șiruri_de_alăturat = ["Acest", " ", "este", " ", "un", " ", "test", "."]
+rezultat = concatenează_cu_șirul_io(șiruri_de_alăturat)
+print(rezultat)  <span>==> Acest este un test.</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Când se utilizează StringIO pentru concatenare:</dt>
+          <dd>Număr mare de concatenări: Când trebuie să combinați mai multe șiruri de caractere sau să adăugați în mod
+            repetat la un șir de caractere, StringIO poate fi mai eficient decât operațiile repetate +.</dd>
+          <dd>Construirea incrementală a șirurilor de caractere: Dacă construiți un șir de caractere bucată cu bucată
+            într-o buclă sau funcție, StringIO oferă o modalitate mai curată de a gestiona conținutul în creștere al
+            șirurilor de caractere.</dd>
+          <dd>Situații în care șir.join() nu este fezabilă: Deși șir.join() este adesea cea mai eficientă metodă pentru
+            concatenarea unei liste de șiruri de caractere, StringIO poate fi util în scenariile în care șirurile de
+            caractere nu sunt disponibile imediat într-o listă sau când aveți nevoie de o interfață asemănătoare unui
+            fișier pentru scriere.</dd>
+        </dl>
+
+        <dl>
+          <dt>When to use StringIO for concatenation:</dt>
+          <dd> Large numbers of concatenations: When you need to combine many strings or repeatedly append to a string,
+            StringIO can be more efficient than repeated + operations.</dd>
+          <dd>Building strings incrementally: If you are constructing a string piece by piece within a loop or function,
+            StringIO provides a cleaner way to manage the growing string content.</dd>
+          <dd>Situations where str.join() isn't feasible: While str.join() is often the most efficient method for
+            concatenating a list of strings, StringIO can be useful in scenarios where the strings are not readily
+            available in a list or when you need a file-like interface for writing.</dd>
+        </dl>
+      </div>
+
+<pre><code>from io import StringIO
+
+fructe_grup = ["nuci", "căpșuni", "prune", "smochine"]
+propoziție = StringIO()
+print(f"Numărul de caractere al primului element: {propoziție.write(fructe_grup[0])}")
+<span>==> Numărul de caractere al primului element: 4</span>
+
+print("Numărul de caractere a restului de elemente:")
+for fruct in fructe_grup[1:]:
+    print(propoziție.write(" " + fruct), end=", ")
+<span>==> Numărul de caractere a restului de elemente: 8, 6, 9,</span>   
+</code></pre>
+
+      <div class="grid-container">
+        <p>Mai exact, metode precum write() pe un obiect StringIO returnează numărul de caractere (sau octeți) care au
+          fost scriși. Dacă pur și simplu tastați o instrucțiune precum propoziție.write('Salut') într-o sesiune
+          interactivă, interpretorul va afișa automat valoarea returnată de expresia respectivă, care este numărul de
+          caractere al şirului.</p>
+
+        <p>Specifically, methods like write() on a StringIO object return the number of characters (or bytes) that were
+          written. If you simply type a statement like sentence.write('Hello') in an interactive session, the
+          interpreter will automatically print the return value of that expression, which is the number of characters of
+          string.</p>
+      </div>
+
+<pre><code>from io import StringIO
+
+<span># Creează un obiect (instanță) StringIO</span>
+șir = StringIO()
+
+<span># Scrie în obiectul StringIO</span>
+<span># Interpretorul va afișa valoarea returnată (numărul de caractere)</span>
+print(șir.write("Salut, Lume!")) <span>==> 12</span>
+
+<span># Folosește .getvalue() pentru a recupera șirul complet</span>
+<span># Această metodă returnează șirul complet.</span>
+<span># Interpretorul afișează șirul, care este valoarea finală.</span>
+print(șir.getvalue())  <span>==> Salut, Lume!</span>
+
+<span># Citește din obiectul StringIO</span>
+<span># Mută la început</span>
+print(șir.seek(0)) <span>==> 0</span>
+<span># Interpretorul va afișa valoarea returnată (șirul citit)</span>
+print(șir.read())  <span>==> Salut, Lume!</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Numerele nu sunt stocate în obiectul StringIO în sine; acestea sunt doar un produs secundar al modului în
+          care interpretoarele interactive Python afișează rezultatele expresiilor. Dacă ați rula acest cod ca parte a
+          unui script, aceste numere nu ar fi afișate în consolă decât dacă ați utiliza în mod explicit o instrucțiune
+          print() pentru a afișa valorile returnate.</p>
+
+        <p>The numbers are not stored within the StringIO object itself; they are just a byproduct of how interactive
+          Python interpreters display the results of expressions. If you were to run this code as part of a script,
+          these numbers would not be printed to the console unless you explicitly used a print() statement to display
+          the return values.</p>
+      </div>
+
+      <p><b>Extragerea valorilor numerice dintr-un obiect StringIO - Extracting Numerical Values from a StringIO Object.</b></p>
+
+      <div class="grid-container">
+        <p> Dacă aveți un obiect StringIO care conține text și doriți să extrageți numere din acel text, va trebui mai
+          întâi să citiți conținutul obiectului StringIO ca șir de caractere și apoi să procesați șirul respectiv.</p>
+        <p>If you have a StringIO object containing text, and you want to extract numbers from that text, you would
+          first need to read the content of the StringIO object as a string and then process that string.</p>
+      </div>
+
+<pre><code>from io import StringIO
+import re
+
+<span># Creați un obiect StringIO cu text care conține numere</span>
+text = StringIO("Acest șir conține numere precum 123, 4.5 și -6.")
+
+<span># Citiți conținutul ca șir</span>
+conţinut = text.getvalue()
+
+<span># Folosiți expresii regulate pentru a găsi toate numerele (întregi și numere cu virgulă)</span>
+numere = re.findall(r'-?\d+\.?\d*', conţinut)
+print(conţinut)  <span>==> Acest șir conține numere precum 123, 4.5 și -6.</span>
+
+<span># Convertiți-le în tipuri numerice reale, dacă este necesar</span>
+valori_numerice = [float(număr) for număr in numere]
+print(f"Listă {valori_numerice} de numere / {valori_numerice[0]} {type(valori_numerice[0])}")
+<span>==> Listă [123.0, 4.5, -6.0] de numere / 123.0 &lt;class 'float'&gt;</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Atribute numerice ale unui obiect StringIO:</dt>
+          <dd>Obiectele StringIO, fiind obiecte asemănătoare fișierelor, nu au în mod inerent "numere" în același mod în
+            care o listă sau o variabilă numerică. Cu toate acestea, ele gestionează o poziție în cadrul "fișierului"
+            (șirul din memorie). Această poziție este o valoare numerică.</dd>
+          <dd>tell(): Această metodă returnează poziția curentă în cadrul obiectului StringIO. Indică numărul de
+            caractere/octeți de la începutul fluxului.</dd>
+          <dd>getvalue(): Preia întregul conținut curent al șirului de caractere din buffer, indiferent de poziția
+            cursorului.</dd>
+          <dd>write(string): Adaugă sau suprascrie textul la poziția curentă a cursorului.</dd>
+          <dd>seek(0): Resetează poziția cursorului înapoi la începutul fluxului. Acest lucru este necesar dacă
+            inițializați StringIO("data") și doriți să o citiți de la început folosind <b>.read()</b> sau dacă tocmai
+            ați scris date și doriți să le citiți înapoi.</dd>
+          <dd>Dacă doriți să adăugați text la un șir inițializat, mutați mai întâi cursorul la sfârșit.</dd>
+          <dd>close(): Eliberează bufferul de memorie. Odată închis, obiectul nu mai poate fi citit sau scris în el.
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>Numerical Attributes of a StringIO Object:</dt>
+          <dd>StringIO objects, being file-like objects, do not inherently have "numbers" in the same way a list or a
+            numeric variable does. However, they do manage a position within the "file" (the string in memory). This
+            position is a numerical value.</dd>
+          <dd>tell(): This method returns the current position within the StringIO object. It indicates the number of
+            characters/bytes from the beginning of the stream.</dd>
+          <dd>getvalue(): Retrieves the entire current string contents of the buffer regardless of the position cursor.
+          </dd>
+          <dd>write(string): Appends or overwrites text at the current cursor position.</dd>
+          <dd>seek(0): Resets the cursor position back to the beginning of the stream. This is required if you
+            initialize StringIO("data") and want to read it from the start using <b>.read()</b>, or if you just wrote
+            data and want to read it back.</dd>
+          <dd>If you want to append text to an initialized string, move the cursor to the end first.</dd>
+          <dd>close(): Frees the memory buffer. Once closed, the object can no longer be read or written to.</dd>
+        </dl>
+      </div>
+
+<pre><code>from io import StringIO
+
+text_tampon = StringIO("Mâine va fi o zi însorită")
+
+<span># Poziția inițială</span>
+print(f"Poziția inițială: {text_tampon.tell()}")  <span>==> Poziția inițială: 0</span>
+
+<span># Scrieți niște date</span>
+text_tampon.write("Avion")
+print(f"Poziția după scriere: {text_tampon.tell()}")  <span>==> Poziția după scriere: 5</span>
+
+<span># Caută o nouă poziție</span>
+text_tampon.seek(0)
+print(f"Poziție după care începe din nou: {text_tampon.tell()}")  <span>==> Poziție după care începe din nou: 0</span>
+
+<span># Citiți câteva date</span>
+text_tampon.read(3)
+print(f"Poziție după citirea a 3 caractere: {text_tampon.tell()}")  <span>==> Poziție după citirea a 3 caractere: 3</span>
+</code></pre>
+
+<pre><code>from io import StringIO
+
+propoziție = StringIO()
+while True:
+    cuvânt = input("Introduceți un cuvânt (or '.!?' pentru întrerupe acțiunea): ")
+    if cuvânt in ".!?":
+        propoziție.write(cuvânt)
+        break
+    if propoziție.tell() == 0:
+        propoziție.write(cuvânt)
+    else:
+        propoziție.write(" " + cuvânt)
+        
+print("Propozițiile concatenate sunt:", propoziție.getvalue())
+</code></pre>
+
+<pre><code>from io import StringIO
+
+<span># Creează un flux de fișiere în memorie inițializat cu un șir de caractere</span>
+file_stream = StringIO("Linia unu.\nLinia doi.\n")
+
+<span># Citește conținutul exact ca un fișier normal</span>
+print(file_stream.readline().strip())  <span>==> Linia unu.</span>
+
+<span># Scrie date noi în flux</span>
+file_stream.write("Linia trei.\n")
+
+<span># Preia conținutul complet al fluxului în orice moment</span>
+print(file_stream.getvalue())
+<span> ==> Linia unu.</span>
+    <span> Linia doi.</span>
+    <span> Linia trei.</span>
+</code></pre>
+
+<pre><code>stream = StringIO("Iniţial Text")
+stream.seek(0, 2)  <span># Deplasați cursorul la sfârșitul fluxului</span>
+stream.write(" Appended")
+print(stream.getvalue())  <span>==> Iniţial Text Appended</span>
+
+<span># Închide întotdeauna fluxul când ai terminat pentru a elibera memorie</span>
+file_stream.close()
+</code></pre>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

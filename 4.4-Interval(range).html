@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 4.4 Intervale(range)</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+    <div class="header-menu">
+      <img src="images/logo-menu.svg" alt="Gazeta Python">
+      <nav>
+        <ul>
+          <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+          <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+          <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+          <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="first-empty-1-1"></div>
+
+    <div class="titlu-1-0">
+      <div class="grid-cell">
+        <img src="images/literaS.svg" alt="S" class="logo">
+        <h1>4.0 Tipuri secvență - Sequence Types</h1>
+      </div>
+    </div>
+
+    <div class="second-empty-1-1"></div>
+
+    <div class="subtitlu-1-1">
+      <div class="grid-cell">
+        <h2>4.4 Intervale - Range</h2>
+      </div>
+    </div>
+
+    <div class="third-empty-1-1"></div>
+
+    <div class="ro-en-1-1 container-links ro-en">
+      <div>
+      <ul>
+        <li>În acest capitol veți studia:</li>
+        <li><a href="#CR">Cum să construiești intervale</a></li>
+        <li><a href="#ER">Cum sunt create intervalele goale</a></li>
+        <li><a href="#NS">Navighează cu pas negativ</a></li>
+        <li><a href="#RO">Repetă o operație folosind range()</a></li>
+        <li><a href="#PI">Iterație paralelă</a></li>
+        <li><a href="#AI">Accesarea elementelor</a></li>
+        <li><a href="#NE">Numărul de elemente dintr-un interval</a></li>
+      </ul>
+      </div>
+
+      <div>
+      <ul>
+        <li>In this chapter, you will study:</li>
+        <li><a href="#CR">How to Construct Ranges</a></li>
+        <li><a href="#ER">How Empty Ranges are Created</a></li>
+        <li><a href="#NS">Navigate With Negative Step</a></li>
+        <li><a href="#RO">Repeat an operation with range()</a></li>
+        <li><a href="#PI">Parallel Iteration</a></li>
+        <li><a href="#AI">Accessing the items</a></li>
+        <li><a href="#NE">Number of elements in a range</a></li>
+      </ul>
+      </div>
+    </div>
+    </header>
+    <div class="forth-empty-1-1"></div>
+
+
+    <div class="contents-1-1">
+
+<p><a href="https://docs.python.org/3/builtins/stdtypes.html#ranges" target="_blank" rel="noopener">Ranges</a></p>
+
+<p>help(range) ==&gt; Help on class range in module builtins:</p>
+
+<div class="grid-container">
+  <ul>
+    <li>Tipul range reprezintă o secvență imuabilă de numere și este utilizat frecvent pentru a repeta o acțiune de un anumit număr de ori în cadrul instrucțiunilor repetitive de tip for.</li>
+    <li>Argumentele funcție Range trebuie să fie numere întregi.</li>
+    <li>Range nu stochează toate numerele în memorie simultan, ci le calculează la cerere, ceea ce îl face foarte eficient din punctul de vedere al utilizării memoriei, indiferent de dimensiunea intervalului.</li>
+  </ul>
+
+  <ul>
+    <li>The range type represents an immutable sequence of numbers and is commonly used for looping a specific number of times in for loops.</li>
+    <li>The arguments of the Range fuction must be integers.</li>
+    <li>Range does not stor all numbers in memory at once, it computes them lazily, making it very memory-efficient regardless of the size of the range.</li>
+  </ul>
+</div>
+
+<dl>
+<dt>Sintaxa funcției este:</dt>
+<dd>range(stop, /...)</dd>
+<dd> range(start, stop, step, /...)</dd>
+</dl>
+
+<div class="grid-container">
+<p>Sintaxa range(start, stop, step, /...) indică faptul că toți parametrii sunt exclusiv poziționali (fapt semnalat prin simbolul /), ceea ce înseamnă că nu pot fi transmiși ca argumente cu nume (de exemplu, range(start=0, stop=10) va genera o eroare TypeError).</p>
+
+<p>The syntax range(start, stop, step, /...), indicates that all parameters are positional-only (signaled by the / symbol), meaning they cannot be passed as keyword arguments (e.g., range(start=0, stop=10) will raise a TypeError)</p>
+</div>
+
+<table class="outer-hidden">
+<caption>Parametrii</caption>
+<tr><th>Parametru</th><th>Obligatoriu / Opțional</th><th>Descriere</th></tr>
+<tr><td>start</td><td>Opțional</td><td>Numărul întreg inițial al secvenței. Implicit este 0.</td></tr>
+<tr><td>stop</td><td>Obligatoriu</td><td>Numărul întreg la care se încheie secvența. Secvența se oprește înainte de acest număr (exclusiv).</td></tr>
+<tr><td>pas</td><td>Opțional</td><td>Valoarea incrementării (sau descreșterii) dintre fiecare număr. Implicit este 1.</td></tr>
+</table>
+
+<div class="grid-container">
+<p>range() returnează un obiect de tip range special, afișarea directă a acestuia este ceva de genul range(0, 7)</p>
+<p>range() returns a special range object; displaying it directly results in something like range(0, 7).</p>
+</div>
+
+<table class="outer-hidden">
+<caption>Parametrii</caption>
+<tr><th>Sintaxă</th><th>Descriere</th><th>Exemplu</th><th>Rezultat</th></tr>
+<tr><td>range(stop)</td><td>Începe de la 0 (implicit), incrementează cu 1 (implicit) și se oprește înainte de valoarea stop.</td><td>list(range(4))</td><td>[0, 1, 2, 3]</td></tr>
+<tr><td>range(start, stop)</td><td>Începe de la start, incrementează cu 1 și se oprește înainte de stop.</td><td>list(range(3, 7))</td><td>[3, 4, 5, 6]</td></tr>
+<tr><td>range(start, stop, step)</td><td>Începe de la start, incrementează cu step și se oprește înainte de stop.</td><td>list(range(1, 8, 2))</td><td>[1, 3, 5, 7]</td></tr>
+</table>
+
+<div class="grid-container">
+<dl>
+<dt>Reguli și comportamente esențiale</dt>
+  <dd>Valoarea de oprire nu este inclusă niciodată în secvență.
+  <dd>range() acceptă doar numere întregi.
+  <dd>Valoarea pasului nu poate fi 0. Setarea step=0 va genera imediat o eroare de tip ValueError.
+  <dd>Poți număra invers specificând un pas negativ. Valoarea de început trebuie să fie mai mare decât cea de oprire.
+</dl>
+
+<dl>
+<dt>Key Rules & Behaviors</dt>
+  <dd>The stop value is never included in the sequence.</dd>
+  <dd>range() only accepts integers.</dd>
+  <dd>The step value cannot be 0. Setting step=0 will instantly raise a ValueError.</dd>
+  <dd>You can count backward by providing a negative step. The start must be greater than the stop.</dd>
+</dl>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="CR">Cum să construiești intervale - How to Construct Ranges</h2>
+
+<div class="grid-container">
+<div>
+<pre><code><span># apelează range() cu un singur argument</span>
+numere5 =  range(5)  
+print(numere5)       <span>==&gt; range(0, 5)</span>
+print(list(numere5)) <span>==&gt; [0, 1, 2, 3, 4]</span>
+</code></pre>
+
+<pre><code><span># range() cu două argumente</span>
+numere6 = range(1, 7) 
+print(numere6)       <span>==&gt; range(1, 7)</span>
+print(list(numere6)) <span>==&gt; [1, 2, 3, 4, 5, 6]</span>
+</code></pre>
+</div>    
+
+<pre><code><span># Trei argumente: range(start, stop, step)</span>
+
+<span># Numărare ascendentă (numere pare)</span>
+pare = range(2, 10, 2)
+print(list(pare))          <span>==&gt; [2, 4, 6, 8]</span>
+
+<span># Numărătoare inversă (pas negativ)</span>
+invers = range(4, 0, -1)
+print(list(invers))  <span>==&gt; [4, 3, 2, 1]</span>
+</code></pre>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+<h2 id="ER">Cum sunt create intervalele goale - How Empty Ranges are Created</h2>
+
+<table class="outer-hidden">
+<caption>Cele mai frecvente situații în care se creează un interval gol.</caption>
+<tr><th>Exemplu de cod</th><th>Rezultat</th><th>De ce este goală</th></tr>
+<tr><td>range(0)</td><td>[ ]</td><td>Valorile implicite sunt start=0, stop=0.</td></tr>
+<tr><td>range(2, 2)</td><td>[ ]</td><td>start egal cu stop</td></tr>
+<tr><td>range(8, 2)</td><td>[ ]</td><td>Nu se poate număra crescător de la 8 la 2 folosind pasul implicit +1.</td></tr>
+<tr><td>range(2, 10, -1)</td><td>[ ]</td><td>Nu se poate număra invers de la 5 la 10 folosind un pas de -1.</td></tr>
+<tr><td>range(0, 0, 1)</td><td>[ ]</td><td>start=0, stop=0, step=1.</td></tr>
+<tr><td>range(0, 0, 0)</td><td>Eroare</td><td>ValueError: range() arg 3 nu trebuie să fie zero.</td></tr>
+</table>
+
+
+<div class="grid-container">
+<pre><code>step = 2 <span># Schimbă în 0 pentru a testa eroarea</span>
+numere = []
+
+try:
+    for i in range(0, 10, step):
+        numere.append(str(i))
+    
+    <span># Unește elementele cu virgulă și spațiu doar dacă lista nu este goală</span>
+    if numere:
+        print((", ".join(numere)), "/", type(", ".join(numere)))
+        
+except ValueError as e:
+    print(f"A apărut o eroare: {e}")
+<span>==&gt; 0, 2, 4, 6, 8 / &lt;class 'str'&gt;</span>
+</code></pre> 
+ 
+<pre><code>step = 0
+numere = []
+
+try:
+    for i in range(0, 10, step):
+        numere.append(str(i))
+    
+    <span># Unește elementele cu virgulă și spațiu doar dacă lista nu este goală</span>
+    if numere:
+        print((", ".join(numere)), "/", type(", ".join(numere)))  
+        
+except ValueError as e:
+    print(f"A apărut o eroare: {e}")
+<span>==&gt; A apărut o eroare: range() arg 3 must not be zero</span>
+</code></pre>
+</div>
+
+<div class="grid-container">
+  <div>
+  <p>Funcția range(start, stop, step) necesită o valoare diferită de zero pentru step. Dacă furnizați valoarea 0 pentru step, Python nu știe dacă să numere crescător sau descrescător, ceea ce determină generarea unei erori de tip ValueError</p>
+  <p>De obicei, este mai sigur să verificați valoarea pasului înainte de a crea intervalul (range).</p>
+  </div>
+
+  <div>
+  <p>The range(start, stop, step) function requires a non-zero step. If you provide 0 as the step, Python doesn't know whether to count up or down, which causes it to throw a ValueError: range() arg 3 must not be zero.</p>
+  <p>It is usually safer to check the step value before creating the range.</p>
+  </div>
+</div>
+
+<div class="grid-container">
+
+<pre><code>step = 3  # Exemplu de valoare dinamică a pasului
+
+if step == 0:
+    print("Eroare: Pasul nu poate fi zero!")
+else:
+    # Interval de utilizare sigură
+    for i in range(0, 10, step):
+        print(i, end=", ")
+<span>==&gt; 0, 3, 6, 9, </span>
+</code></pre>
+
+
+<pre><code>step = 0  # Exemplu de valoare dinamică a pasului
+
+if step == 0:
+    print("Eroare: Pasul nu poate fi zero!")
+else:
+    # Interval de utilizare sigură
+    for i in range(0, 10, step):
+        print(i, end=", ")
+<span>==&gt; Eroare: Pasul nu poate fi zero!</span>
+</code></pre>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+<h2 id="NS">Navighează cu pas negativ - Navigate With Negative Step</h2>
+
+
+      <div class="grid-container">
+        <div>
+        <p>start trebuie să fie mai mare decât stop: dacă valoarea de start este mai mică sau egală cu cea de stop, Python va returna o secvență goală</p>
+        <p>Valoarea de oprire este exclusivă: secvența se va opri înainte de a atinge valoarea de oprire. Dacă doriți să includeți un anumit număr final, valoarea de oprire trebuie să fie cu un pas dincolo de acel număr.
+        </div>
+
+        <div>
+        <p>start must be greater than stop: If start's value is less than or equal to stop, Python will return an empty sequence.</p>
+        <p>stop is exclusive: The sequence will stop before it reaches the stop value. If you want to include a specific final number, your stop value must be one step beyond that number.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+<pre><code><span># Secvența se oprește la 1 deoarece 0 este exclus</span>
+for i in range(5, 0, -1):
+    print(i, end=", ") <span>==&gt; 5, 4, 3, 2, 1,</span>
+</code></pre>
+
+<pre><code><span># Sărituri peste numere (pas de -2)</span>
+for i in range(10, 0, -2):
+    print(i, end=", ")  <span>==&gt; 10, 8, 6, 4, 2,</span>
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+<pre><code><span># Numărătoare inversă până la 0 (inclusiv 0)</span>
+for i in range(5, -1, -1):
+    print(i, end=", ")    <span>==&gt; 5, 4, 3, 2, 1, 0,</span>
+</code></pre>
+
+<pre><code><span># Alternativă, Utilizarea funcției reversed()</span>
+for i in reversed(range(0, 6)):
+    print(i, end=", ")     <span>==&gt; 5, 4, 3, 2, 1, 0,</span>
+</code></pre>
+      </div>
+
+<pre><code><span># Parcurgerea inversă a indicilor unei liste</span>
+fructe = ["mere", "prune", "gutui"]
+
+<span># Începe de la ultimul indice și oprește-te înainte de -1 (ceea ce include și 0)</span>
+for i in range(len(fructe) - 1, -1, -1):
+    print(f"Indice {i}: {fructe[i]}")
+
+<span>==&gt; Indice 2: gutui
+Indice 1: prune
+Indice 0: mere</span>
+</code></pre>
+
+<table class="outer-hidden">
+<caption>Comparație: Pas pozitiv vs. pas negativ</caption>
+<tr><th>Obiectiv</th><th>Sintaxă</th><th>Secvență generată</th></tr>
+<tr><td>Navigare ascendentă</td><td>list(range(1, 5, 1))</td><td>[1, 2, 3, 4]</td></tr>
+<tr><td>Navigare ascendentă (Greşit)</td><td>list(range(5, 1))</td><td>[ ] (Pasul implicit este +1, ceea ce nu produce niciun rezultat)</td></tr>
+<tr><td>Navigare ascendentă (Corect)</td><td>list(range(5, 1, -1))</td><td>[5, 4, 3, 2]</td></tr>
+</table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+<h2 id="RO">Repetă o operație folosind range() - Repeat an operation with range()</h2>
+
+      <div class="grid-container">
+<pre><code><span># Va repeta codul indentat exact de 2 ori</span>
+
+for _ in range(3):
+    print("Salut, salut, salut")
+    print("Pe curand!")
+</code></pre>
+
+<pre><span># Rezultat</span>
+Salut, salut, salut
+Pe curand!
+Salut, salut, salut
+Pe curand!
+</pre>
+      </div>
+
+<div class="grid-container">
+  <div>
+  <p>Sublinierea (_): Atunci când dorești doar să repeți o operație și nu ai nevoie efectiv să folosești numărul repetiției în interiorul buclei, se recomandă utilizarea _ ca nume al variabilei. Acest lucru îi transmite oricui citește codul tău faptul că variabila contor este ignorată în mod intenționat.</p>
+  <p>Limită exclusivă: Funcția range(n) din Python generează numere începând de la 0 și mergând până la n (fără a-l include pe acesta). Astfel, range(2) generează valorile 0 și 1, ceea ce înseamnă, în total, exact două iterații.</p>
+  </div>
+
+  <div>
+  <p>The Underscore (_): When you just want to repeat an operation and don't actually need to use the repetition number inside your loop, it is recomanded to use _ as your variable name. This tells anyone reading your code that the counter variable is intentionally being ignored.</p>
+  <p>Exclusive Boundary: Python's range(n) generates numbers starting from 0 and goes up to, but does not include, n. So, range(2) generates 0, 1 which still equals exactly 2 total iterations.</p>
+  </div>
+</div>
+
+
+<div class="grid-container">
+<pre><code><span># Când este necesar numărul de iterație</span>
+<span># Buclă de la 0 la 3</span>
+
+for apare in range(4):
+    print(f"A apărut de  {apare} ori")
+</code></pre>
+
+<pre><span># Rezultat</span>
+A apărut de  0 ori
+A apărut de  1 ori
+A apărut de  2 ori
+A apărut de  3 ori
+</pre>
+</div>
+
+<div class="grid-container">
+  <p>Dacă operațiunea ta depinde de cunoașterea repetiției curente, înlocuiește caracterul de subliniere cu un nume de variabilă, precum "i" sau "apariție".</p>
+
+  <p>If your operation relies on knowing which repetition you are currently on, replace the underscore with a variable name like "i" or "appear".</p>
+</div>
+
+
+
+<div class="grid-container">
+<pre><code>for număr in range(1, 5):
+    for produs in range(număr, număr * 8, număr):
+        print(f"{produs: >4d}", end="")
+    print()
+</code></pre>
+
+<pre><span># Rezultate</span>
+   1   2   3   4   5   6   7
+   2   4   6   8  10  12  14
+   3   6   9  12  15  18  21
+   4   8  12  16  20  24  28
+</pre>
+</div>
+
+<div class="grid-container">
+  <div>
+    <dl>
+      <dt>Prima buclă (for număr in range(1, 5):)</dt>
+      <dd>Aceasta buclă exterioară controlează rândurile tabelului.</dd>
+      <dd>Funcția range(1, 5) generează numerele de la 1 până la 4 (limita superioară, 5, este exclusă).</dd>
+      <dd>Prin urmare, codul va rula de 4 ori, având pe rând număr = 1, număr = 2, număr = 3 și număr = 4.</dd>
+
+      <dt>A doua buclă (for produs in range(număr, număr * 8, număr):)</dt>
+      <dd>Aceasta este bucla interioară care generează numerele de pe fiecare rând.</dd>
+      <dd>start = număr: Începe exact cu valoarea rândului curent.</dd>
+      <dd>stop = număr * 8: Se oprește înainte de acest produs (deci se va opri la număr * 7).</dd>
+      <dd>pas = număr: Sare din număr în număr (adică adaugă valoarea lui număr la fiecare pas, generând multiplii acestuia).</dd>
+
+      <dt>Afișarea și formatarea (print(...))</dt>
+      <dd>f"{produs: >4d}" formatează numărul ca întreg (d) și îi rezervă un spațiu fix de 4 caractere, aliniat la dreapta (>4). Acest lucru asigură că numerele se aliniază perfect în coloane, chiar dacă au una sau două cifre.</dd>
+      <dd>end="" oprește comportamentul implicit al funcției print de a trece la un rând nou, forțând numerele din bucla interioară să fie afișate pe aceeași linie.</dd>
+      <dd>print(): Este plasat în bucla exterioară, imediat după ce se termină bucla interioară. Nu are niciun text, având doar rolul de a introduce un linie nouă (Enter) înainte de a trece la următorul rând.</dd>
+    </dl>
+  </div>
+
+  <div>
+    <dl>
+      <dt>First loop (for număr in range(1, 5):)</dt>
+      <dd>This is the outer loop that controls the table rows.</dd>
+      <dd>The range(1, 5) function generates numbers from 1 to 4 (the upper limit, 5, is excluded).</dd>
+      <dd>Consequently, the code will run 4 times, with număr taking the values ​​1, 2, 3, and 4 in turn.</dd>
+
+      <dt>Second loop (for produs in range(număr, număr * 8, număr):)</dt>
+      <dd>This is the inner loop that generates the numbers in each row.</dd>
+      <dd>start = număr: Starts exactly at the value of the current row.</dd>
+      <dd>stop = număr * 8: Stops before this product (so it stops at număr * 7).</dd>
+      <dd>step = număr: Steps by the value of număr (i.e., adds the value of număr at each step, generating its multiples).</dd>
+
+      <dt>Display and formatting (print(...))</dt>
+      <dd>f"{produs: >4d}" formats the number as an integer (d) and reserves a fixed space of 4 characters, right-aligned (>4). This ensures that the numbers align perfectly in columns, even if they have one or two digits.</dd>
+      <dd>end="" stops the print function's default behavior of moving to a new line, forcing the numbers from the inner loop to be displayed on the same line.</dd>
+      <dd>print(): Placed in the outer loop, immediately after the inner loop finishes. It contains no text, serving only to insert a new line (Enter) before moving to the next row.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div>
+    <dl>
+      <dt>Rândul 1 (număr = 1):</dt>
+      <dd>range(1, 8, 1) → Generează numerele de la 1 la 7, din 1 în 1.</dd>
+      <dd>Rezultat:    1   2   3   4   5   6   7</dd>
+      <dt>Rândul 2 (număr = 2):</dt>
+      <dd>range(2, 16, 2) → Generează multiplii lui 2 de la 2 până la 14.</dd>
+      <dd>Rezultat:    2   4   6   8  10  12  14</dd>
+      <dt>Rândul 3 (număr = 3)</dt>
+      <dd>range(3, 24, 3) → Generează multiplii lui 3 de la 3 până la 21.</dd>
+      <dd>Rezultat:    3   6   9  12  15  18  21</dd>
+      <dt>Rândul 4 (număr = 4):</dt>
+      <dd>range(4, 32, 4) → Generează multiplii lui 4 de la 4 până la 28.</dd>
+      <dd>Rezultat:    4   8  12  16  20  24  28</dd>
+    </dl>
+  </div>
+
+  <div>
+    <dl>
+      <dt>Row 1 (number = 1):</dt>
+      <dd>range(1, 8, 1) → Generates numbers from 1 to 7, in steps of 1.</dd>
+      <dd>Result:    1   2   3   4   5   6   7</dd>
+      <dt>Row 2 (number = 2):</dt>
+      <dd>range(2, 16, 2) → Generates multiples of 2 from 2 to 14.</dd>
+      <dd>Result:    2   4   6   8  10  12  14</dd>
+      <dt>Row 3 (number = 3)</dt>
+      <dd>range(3, 24, 3) → Generates multiples of 3 from 3 to 21.</dd>
+      <dd>Result:    3   6   9  12  15  18  21</dd>
+      <dt>Row 4 (number = 4):</dt>
+      <dd>range(4, 32, 4) → Generates multiples of 4 from 4 to 28.</dd>
+      <dd>Result:    4   8  12  16  20  24  28</dd>
+    </dl>
+  </div>
+</div>
+
+
+<div class="grid-container">
+  <div>
+<pre><code>numar_randuri = 6 <span># Schimbă acest număr pentru a avea mai multe sau mai puține rânduri</span>
+
+for numar in range(1, numar_randuri + 1):
+    for produs in range(numar, numar * 8, numar):
+        print(f"{produs: >4d}", end="")
+    print()
+</code></pre>
+  </div>
+  <div>
+<pre>
+<span># Rezultat</span>
+   1   2   3   4   5   6   7
+   2   4   6   8  10  12  14
+   3   6   9  12  15  18  21
+   4   8  12  16  20  24  28
+   5  10  15  20  25  30  35
+   6  12  18  24  30  36  42
+</pre>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div>
+<pre><code>numar_randuri = 4   <span># Controlează numărul de rânduri</span>
+numar_coloane = 10  <span># Schimbă acest număr pentru a avea mai multe sau mai puține coloane</span>
+
+for numar in range(1, numar_randuri + 1):
+    <span># Înmulțim cu (numar_coloane + 1) pentru a include și ultima coloană dorită</span>
+    for produs in range(numar, numar * (numar_coloane + 1), numar):
+        print(f"{produs: >4d}", end="")
+    print()
+</code></pre>
+  </div>
+  <div>
+<pre>
+<span># Rezultat</span>
+   1   2   3   4   5   6   7   8   9  10
+   2   4   6   8  10  12  14  16  18  20
+   3   6   9  12  15  18  21  24  27  30
+   4   8  12  16  20  24  28  32  36  40
+</pre>
+  </div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="PI">Iterație paralelă - Parallel Iteration</h2>
+
+<div class="grid-container">
+<pre><code>țări = ["Norvegia", "Canada", "România", "Burkina Faso"]
+capitale = ["Oslo", "Ottawa", "București", "Ouagadougou"]
+for _ in range(len(țări)):
+    print(f"Capitala țării {țări[_]} este {capitale[_]}")
+</code></pre>
+
+<pre><span># Rezultate</span>
+Capitala țării Norvegia este Oslo
+Capitala țării Canada este Ottawa
+Capitala țării România este București
+Capitala țării Burkina Faso este Ouagadougou
+</pre>
+</div>
+
+<div class="grid-container">
+<p>Pentru a efectua o iterație paralelă asupra mai multor secvențe folosind un indice și funcția range(), poți determina lungimea celei mai scurte secvențe, genera un interval de indici și accesa manual elementele.</p>
+
+<p>To perform parallel iteration across multiple sequences using an index and the range() function, you can determine the length of your shortest sequence, generate a range of indices, and look up elements manually.</p>
+</div>
+
+<pre><code><span># Definește-ți secvențele paralele</span>
+fructe = ["mere", "pere", "gutui", "caise"]
+costuri = [12, 24, 17]  # Listă mai scurtă
+
+<span># Determină lungimea minimă pentru a evita o eroare de tip IndexError.</span>
+lungime_minimă = min(len(fructe), len(costuri))
+
+<span># Parcurge intervalul de indici</span>
+for i in range(lungime_minimă):
+    <span># Accesează elementele simultan folosind indicele.</span>
+    fruct = fructe[i]
+    cost = costuri[i]
+    
+    print(f"{fruct} costă {cost} lei")
+<span>==&gt; mere costă 12 lei
+pere costă 24 lei
+gutui costă 17 lei</span>
+</code></pre>
+
+<div class="grid-container">
+  <dl>
+    <dt>Aspecte importante</dt>
+    <dd>IndexError: Dacă nu utilizezi min(len(A), len(B)), la executarea codului va apărea o eroare IndexError în cazul în care listele nu au aceeași lungime.</dd>
+    <dd>Eficiență: Documentația Python clasifică, în general, gestionarea manuală a indicilor la parcurgerea secvențelor drept un anti-tipar.</dd>
+  </dl>
+
+  <dl>
+    <dt>Important Considerations</dt>
+    <dd>IndexError: If you do not use min(len(A), len(B)), when you run the code the result is IndexError if the lists do not have the same length.</dd>
+    <dd>Efficiency: Python documentation generally classifies manual index tracking as an anti-pattern when reading sequences.</dd>
+  </dl>
+</div>
+
+<div class="grid-container">
+<p>Pentru a itera până la epuizarea celei mai lungi liste folosind un indice și funcția range(), trebuie să utilizezi max(len(...)) în loc de min(). Deoarece listele mai scurte vor rămâne fără elemente înainte ca bucla să se încheie, trebuie, de asemenea, să adaugi o verificare condițională (sau un bloc try/except) pentru a gestiona elementele lipsă și a furniza o valoare implicită de rezervă.</p>
+
+<p>To iterate until the longest list is exhausted using an index and range(), you must use max(len(...)) instead of min(). Because the shorter lists will run out of items before the loop finishes, you must also add a conditional check (or a try/except block) to handle the missing elements and provide a default fallback value.</p>
+</div>
+
+
+<div class="grid-container">
+<div>
+<pre><code>fructe = ["mere", "pere", "gutui", "caise"]
+costuri = [12, 24]
+umple_valoarea = "N/A" <span># Valoarea de rezervă pentru elementele lipsă</span>
+
+<span># Determinați lungimea celei mai lungi liste</span>
+max_lungime = max(len(fructe), len(costuri))
+
+<span># Parcurgeți intervalul maxim</span>
+for i in range(max_lungime):
+    fruct = fructe[i] if i &lt; len(fructe) else umple_valoarea
+    cost = costuri[i] if i &lt; len(costuri) else umple_valoarea
+
+    print(f"{fruct}: {cost}")
+<span>==&gt; mere: 12
+pere: 24
+gutui: N/A
+caise: N/A</span>
+</code></pre>
+</div>
+
+<div>
+<pre><code>fructe = ["mere", "pere", "gutui", "caise"]
+costuri = [12, 24]
+<span># Determinați lungimea celei mai lungi liste</span>
+max_lungime = max(len(fructe), len(costuri))
+
+for i in range(max_lungime):
+    try:
+        fruct = fructe[i]
+    except IndexError:
+        name = "N/A"
+    try:
+        cost = costuri[i]
+    except IndexError:
+        cost = "N/A"
+        
+    print(f"{fruct}: {cost}")
+<span>==&gt; mere: 12
+pere: 24
+gutui: N/A
+caise: N/A</span>
+</code></pre>
+</div>
+</div>
+
+<div class="grid-container">
+  <div>
+    <p>Pentru a adăuga dinamic valori de completare astfel încât listele să aibă aceeași lungime înainte de parcurgere, poți calcula diferența de lungime și extinde listele mai scurte folosind metoda extend() combinată cu multiplicarea listelor.</p>
+    <p>Astfel, te asiguri că fiecare listă ajunge la lungimea celei mai lungi dintre ele, permițându-ți să utilizezi o buclă standard, bazată pe indici, fără a avea nevoie de instrucțiuni condiționale (if) sau blocuri try/except în corpul buclei.
+  </div>
+
+  <div>
+    <p>To dynamically append placeholder values so your lists are the same length before looping, you can calculate the length difference and extend the shorter lists using the extend() method combined with list multiplication.
+    <p>This ensures every list matches the length of the longest one, allowing you to use a clean, standard index loop without any if statements or try/except blocks inside the loop body.
+  </div>
+</div>
+
+<pre><code>fructe = ["mere", "pere", "gutui", "caise"]
+costuri = [12, 24]
+umple_valoarea = "N/A" <span># Valoarea de rezervă pentru elementele lipsă</span>
+
+<span># Găsește lungimea maximă</span>
+max_lungime = max(len(fructe), len(costuri))
+<span># Completează dinamic listele mai scurte pentru a corespunde lungimii maxime</span>
+fructe.extend([umple_valoarea] * (max_lungime - len(fructe)))
+costuri.extend([umple_valoarea] * (max_lungime - len(costuri)))
+
+<span># Buclă de indexare curată și sigură</span>
+for i in range(max_lungime):
+    fruct = fructe[i]
+    cost = costuri[i]
+    
+    print(f"{fruct}: {cost}")
+<span>==&gt; mere: 12
+pere: 24
+gutui: N/A
+caise: N/A</span>
+</code></pre>
+
+<div class="grid-container">
+  <div>
+    <p>[fill_value] * 2 creează o listă de forma ['N/A', 'N/A']. Dacă o listă are deja lungimea maximă, expresia max_length - len(list) are valoarea 0, rezultând o listă goală [ ].</p>
+    <p>Apelarea metodei .extend([ ]) cu o listă goală nu produce niciun efect, fiind astfel complet sigur să o aplici tuturor listelor tale fără a verifica în prealabil care dintre ele este mai scurtă.</p>
+  </div>
+
+  <div>
+    <p>[fill_value] * 2 creates a list of ['N/A', 'N/A']. If a list is already the longest, max_length - len(list) evaluates to 0, producing an empty list [ ].</p>
+    <p>Calling .extend([ ]) with an empty list does absolutely nothing, making it completely safe to run on all of your lists without checking which one is shorter first.</p>
+  </div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+<h2 id="AI">Accesarea elementelor - Accessing the items</h2>
+
+<div class="grid-container">
+  <p>În Python, funcția range() returnează o secvență de numere imuabilă. Deoarece se comportă ca o secvență (similar cu un tuplu sau o listă), aceasta suportă operații comune specifice secvențelor – precum indexarea, felierea, despachetarea și verificarea apartenenței – fără a fi necesară conversia prealabilă într-o listă or tuplu.</p>
+
+  <p>In Python, the range() function returns an immutable sequence of numbers. Because it behaves like a sequence (similar to a tuple or list), it supports common sequence operations like indexing, slicing, unpacking, and membership testing without converting it into a list or tuple first.</p>
+</div>
+
+<table class="outer-hidden">
+<caption>Rezumat al operațiilor range()</caption>
+<tr><th>Operație</th><th>Exemplu de sintaxă</th><th>Ce realizează</th><th>Eficiență / Complexitate</th></tr>
+<tr><td>Indexare</td><td>r[0]</td><td>Accesează un element specific în funcție de poziția sa</td><td>O(1) (Timp constant)</td></tr>
+<tr><td>Feliere (Slicing)</td><td>r[1:5]</td><td>Creează un nou obiect de tip interval (range), sub-segmentat</td><td>O(1) (Timp constant)</td></tr>
+<tr><td>Despachetare</td><td>a, b, c = r</td><td>Extrage elementele în variabile individuale.</td><td>O(n) (Timp liniar)</td></tr>
+<tr><td>Testarea apartenenței</td><td>x in r</td><td>Verifică dacă o valoare există în cadrul secvenței.</td><td>O(1) (Timp constant)</td></tr>
+</table>
+
+<div class="grid-container">
+<div>
+<h3>Indexare -  Indexing</h3>
+
+<pre><code>r = range(2, 20, 3)
+print(tuple(r)) <span># Numai ca vizualizare</span>
+<span>==&gt; (2, 5, 8, 11, 14, 17)</span>
+
+print(r[0])  <span>==&gt; 2</span>
+print(r[4])  <span>==&gt; 14</span>
+print(r[-1]) <span>==&gt; 17</span>
+</code></pre>
+</div>
+
+<div>
+<h3>Feliere - Slicing</h3>
+
+<pre><code>r = range(0, 10)
+sub_interval = r[2:7]
+print(sub_interval)       <span>==&gt; range(2, 7)</span>
+print(list(sub_interval)) <span>==&gt; [2, 3, 4, 5, 6]</span>
+
+interval_in_trepte = r[1:8:2]
+print(list(interval_in_trepte)) <span>==&gt; [1, 3, 5, 7]</span>
+</code></pre>
+</div>
+</div>
+
+
+
+<div class="grid-container">
+<div>
+<h3>Despachetare - Unpacking</h3>
+<pre><code><span># Despachetare exactă (variabilele trebuie să corespundă lungimii intervalului)</span>
+x, y, z = range(3)
+print(x, y, z)        <span>==&gt; 0 1 2</span>
+
+<span># Despachetare extinsă folosind *</span>
+primul, *mijloc, ultimul = range(5)
+
+print(primul)   <span>==&gt; 0</span>
+print(mijloc)   <span>==&gt; [1, 2, 3]</span>
+print(ultimul) <span>==&gt; 4</span>
+</code></pre>
+</div>
+
+<div>
+<h3>Testarea apartenenței - Membership Testing</h3>
+<pre><code>r = range(0, 100, 5)  <span># Multipli ai lui 5 de la 0 la 95</span>
+
+print(25 in r)      <span>==&gt; True</span>
+print(22 in r)      <span>==&gt; False</span>
+print(105 not in r) <span>==&gt; True</span>
+
+year = 2025
+2000 &lt;= year &lt; 2050 and year % 4 == 0 <span>==&gt; False</span>
+
+year = 2026
+2000 &lt;= year &lt; 2050 and year % 2 == 0 <span>==&gt; True</span>
+</code></pre>
+</div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+<h2 id="NE">Numărul de elemente dintr-un interval - Number of elements in a range</h2>
+
+<p>Cea mai eficientă metodă este utilizarea funcției încorporate len().<br>
+The most efficient way is to use the built-in len() function.</p>
+
+<pre><code><span># Formă cu un singur parametru: range(stop) -> începe de la 0, numără până la (dar fără a include) 10</span>
+my_range = range(10)
+print(len(my_range))  <span>==&gt; 10</span>
+
+<span># Formă cu doi parametri: range(start, stop) -> de la 5 la 14</span>
+my_range = range(5, 15)
+print(len(my_range))  <span>==&gt; 10</span>
+
+<span># Formă cu trei parametri: range(start, stop, step)</span>
+my_range = range(5, 15, 2)
+print(len(my_range))  <span>==&gt; 5</span>
+</code></pre>
+
+<div class="grid-container">
+<div>
+<pre><code>import math
+
+start, stop, step = 1, 20, 2
+
+math.ceil((stop - start) / step)
+</code></pre>
+</div>
+
+<div>
+<pre>
+<span># Rezultat</span>
+stop - start: 20 - 1 = 19
+(stop - start) / step: 19 / 2 = 9.5
+math.ceil(9.5): <span># Rotunjește în sus la cel mai mic număr întreg mai mare sau egal cu 9.5, care este 10</span>
+</pre>
+</div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+<h2 id="RE">Reverse a Range</h2>
+
+<div class="grid-container">
+  <p>Cele mai comune două modalități de a inversa un interval în Python sunt utilizarea funcției încorporate reversed() sau aplicarea unui pas negativ în cadrul funcției range().</p>
+
+  <p>The two most common ways to reverse a range in Python are using the built-in reversed() function or applying a negative step within the range() function itself.</p>
+</div>
+
+<div class="grid-container">
+<div>
+<pre><code><span># Utilizarea funcției reversed() (recomandat pentru lizibilitate)</span>
+<span>#pentru a parcurge o buclă inversă</span>
+for i in reversed(range(1, 6)): 
+    print(i, end=", ") <span>==&gt; 5, 4, 3, 2, 1, </span>
+
+<span># Pentru a materializa într-o listă</span>
+listă_inversată = list(reversed(range(1, 6)))
+print(listă_inversată) <span>==&gt;  [5, 4, 3, 2, 1]</span>
+</code></pre>
+</div>
+
+<div>
+<pre><code><span># interval(start, stop, step) -> numără invers de la 5 la 1</span>
+for i in range(5, 0, -1):
+    print(i, end=", ")
+<span>==&gt; 5, 4, 3, 2, 1, </span>
+</code></pre>
+</div>
+</div>
+
+
+<table class="outer-hidden">
+<caption>Comparație directă</caption>
+<tr><th>Caracteristică</th><th>reversed(range(...))</th><th>range(start, stop, -1</th></tr>
+<tr><td>Lizibilitate</td><td>Ridicată; intenția este imediat evidentă.</td><td>Moderată; necesită calcule matematice pentru limite.</td></tr>
+<tr><td>Logică</td><td>Păstrează logica normală (pornire, oprire).</td><td>Inversează definițiile pentru pornire și oprire.</td></tr>
+<tr><td>Memory</td><td>Highly efficient iterator.</td><td>Highly efficient iterable.</td></tr>
+</table>
+
+
+  <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+  <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

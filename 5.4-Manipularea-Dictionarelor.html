@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 5.4 Dictionar-Manipularea</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaD.svg" alt="D" class="logo">
+          <h1>5.0 Tipuri dicționare - Dictionary Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>5.4 Manipularea dicționarelor - Dictionary Manipulations</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#RM">Eliminare element/e dintr-un dicționar</a></li>
+            <li><a href="#DS">Diferență simetrică ^ dicționare</a></li>
+            <li><a href="#KN">Schimbarea numelui unei chei într-un dicționar</a></li>
+            <li><a href="#DV">Modificarea valorilor dicționarului</a></li>
+            <li><a href="#SK">Inversarea cheilor și valorilor într-un dicționar</a></li>
+            <li><a href="#VK">maxim minim pentru valori și chei în dicționare</a></li>
+            <li><a href="#EP">Extindeți și transmiteți un dicționar ca argumente</a></li>
+            <li><a href="#DA">Extindeți un dicționar cu argumente implicite</a></li>
+            <li><a href="#MR">Mai multe argumente de cuvinte cheie ca dicționar</a></li>
+            <li><a href="#SD">Sortare dicționare</a>
+              <ul>
+                <li><a href="#SDA">Sortează o listă de dicționare</a></li>
+                <li><a href="#SDB">Sortarea dicționarului imbricat</a></li>
+                <li><a href="#SDC">Conversia înapoi într-un dicționar</a></li>
+              </ul>
+            </li>
+            <li><a href="#TG">Parcurgerea unui dicționar în ordine inversă</a></li>
+            <li><a href="#TN">Transformarea elementelor unui dicționar: map()</a></li>
+            <li><a href="#FR">Filtrarea elementelor dintr-un dicționar: filter()</a></li>
+            <li><a href="#CN">Iterarea dicționarelor cu ChainMap și chain()</a></li>
+            <li><a href="#CNA">collections.ChainMap</a></li>
+            <li><a href="#CNB">itertools.chain()</a></li>
+            <li><a href="#MP">Măsurarea performanței: itemgetter()</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter you will study:</li>
+            <li><a href="#RM">Remove item/s from a dictionary</a></li>
+            <li><a href="#DS">Symmetric difference ^ dictionaries</a></li>
+            <li><a href="#KN">Change a key name in a dictionary</a></li>
+            <li><a href="#DV">Changing Dictionary Values</a></li>
+            <li><a href="#SK">Swap keys and values in a dictionary</a></li>
+            <li><a href="#VK">max min for values and keys in dictionaries</a></li>
+            <li><a href="#EP">Expand and pass a dictionary as arguments</a></li>
+            <li><a href="#DA">Expend a dictionary with default arguments</a></li>
+            <li><a href="#MR">Multiple keyword arguments as a dictionary</a></li>
+            <li><a href="#SD">Sort dictionaries</a>
+              <ul>
+                <li><a href="#SDA">Sort a list of dictionaries</a></li>
+                <li><a href="#SDB">Sorting the nested dictionary</a></li>
+                <li><a href="#SDC">Converting back to a dictionary</a></li>
+              </ul>
+            </li>
+            <li><a href="#TG">Traversing a Dictionary in Reverse Order</a></li>
+            <li><a href="#TN">Transformation to a Dictionary’s Items: map()</a></li>
+            <li><a href="#FR">Filtering Items in a Dictionary: filter()</a></li>
+            <li><a href="#CN">Iterating dictionaries with ChainMap and chain()</a></li>
+            <li><a href="#CNA">collections.ChainMap</a></li>
+            <li><a href="#CNB">itertools.chain()</a></li>
+            <li><a href="#MP">Measuring Performance: itemgetter()</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+<h2 id="RM">Eliminare element/e dintr-un dicționar - Remove item/s from a dictionary</h2>
+
+      <div class="grid-container">
+        <p>Cele mai comune metode de a elimina elemente dintr-un dicționar Python depind de faptul dacă dorești să
+          gestionezi în siguranță cheile inexistente, să recuperezi valoarea eliminată sau să golești întregul
+          dicționar.</p>
+
+        <p>The most common ways to remove items from a Python dictionary depend on whether you want to safely handle
+          missing keys, retrieve the removed value, or clear the entire dictionary.</p>
+      </div>
+
+      <table class="outer-hidden">
+        <caption>Rezumat al celor mai bune metode</caption>
+        <tr>
+          <th>Metodă</th>
+          <th>Sintaxă</th>
+          <th>Returnează o valoare?</th>
+          <th>Gestionează în siguranță cheile lipsă?</th>
+        </tr>
+        <tr>
+          <td>dict.pop()</td>
+          <td>my_dict.pop(key, default)</td>
+          <td>Da</td>
+          <td>Da (dacă este furnizat un argument implicit)</td>
+        </tr>
+        <tr>
+          <td>Cuvântul-cheie del</td>
+          <td>del my_dict[key]</td>
+          <td>Nu</td>
+          <td>Nu (generează KeyError)</td>
+        </tr>
+        <tr>
+          <td>dict.popitem()</td>
+          <td>my_dict.popitem()</td>
+          <td>Da (sub formă de tuplu)</td>
+          <td>Nu (generează KeyError dacă dicționarul este gol)</td>
+        </tr>
+        <tr>
+          <td>dict.clear()</td>
+          <td>my_dict.clear()</td>
+          <td>No</td>
+          <td>N/A (golește totul)</td>
+        </tr>
+      </table>
+
+      <p>Folosește pop() (recomandat și cel mai sigur) - Use pop() (Recommended & Safest)</p>
+
+      <div class="grid-container">
+        <p>clear(): Această metodă elimină toate elementele dintr-un dicționar, rezultând un dicționar gol. Nu acceptă
+          niciun argument și returnează None.</p>
+
+        <p>clear(): This method removes all items from a dictionary, resulting in an empty dictionary. It does not take
+          any arguments and returns None.</p>
+      </div>
+
+<pre><code>nume = {"Cristina": 40, "Andrei": 50, "Mihai": 75, "Vasile": 67, "Alexandru": 39, "Elena": 41, "Ioana": 19}
+nume.clear()
+print(nume) <span>==&gt; {}</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <p>pop(key, default_value): Această metodă elimină elementul cu cheia specificată și returnează valoarea
+          corespunzătoare. Dacă cheia nu este găsită, generează o eroare KeyError, cu excepția cazului în care este
+          furnizată o valoare implicită, caz în care returnează valoarea implicită.</p>
+
+        <p>pop(key, default_value): This method removes the item with the specified key and returns its corresponding
+          value. If the key is not found, it raises a KeyError unless a default_value is provided, in which case it
+          returns the default_value.</p>
+      </div>
+
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+
+valoare_eliminata = fructe.pop("prune")
+print(valoare_eliminata)  <span>==&gt; 35</span>
+
+<span># Se folosește valoarea_implicită</span>
+valoare_eliminata = fructe.pop("gutuie", 0)
+print(valoare_eliminata)  <span>==&gt; 0</span>
+</code></pre>
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+
+<span># Eliminare a unei chei inexistente, returnează valoarea implicită (None)</span>
+valoare_lipsa = fructe.pop("struguri", None)
+print(f"Încercare de eliminare a unei chei inexistente, rezultat: {valoare_lipsa},\nDictionary: {fructe}")
+<span>==&gt; Încercare de eliminare a unei chei inexistente, rezultat: None,
+Dicționar: {'mere': 50, 'pere': 30, 'prune': 35, 'caise': 25, 'smochine': 15}</span>
+
+<span># Îndepărtați în siguranță fructul caisă; dacă nu este găsit, returnați None</span>
+valoare = fructe.pop("caisă", None)
+print(f"\nValoare eliminată: {valoare}\nDicționar: {fructe}")
+<span>==&gt; Valoare eliminată: None
+Dicționar: {'mere': 50, 'pere': 30, 'prune': 35, 'caise': 25, 'smochine': 15}</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <p>Cuvântul cheie del: Acest cuvânt cheie poate fi folosit pentru a elimina un element prin specificarea cheii
+          sale. Șterge direct perechea cheie-valoare și nu returnează nicio valoare. Încercarea de a accesa o cheie
+          ștearsă va duce la o eroare KeyError.</p>
+
+        <p>del keyword: This keyword can be used to remove an item by specifying its key. It directly deletes the
+          key-value pair and does not return any value. Attempting to access a deleted key will result in a KeyError.
+        </p>
+      </div>
+
+<pre><code><span># Elimină al doilea element din listă</span>
+scor_elevi = {"scoruri": [{"virgil": [88, 76, 92, 100]}, {"tatiana": [88, 76, 92, 85]}, {"sever": [88, 76, 92, 85]}]}
+del scor_elevi["scoruri"][1]
+print(scor_elevi)  <span>==&gt; {'scoruri': [{'virgil': [88, 76, 92, 100]}, {'sever': [88, 76, 92, 85]}]}</span>
+</code></pre>
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+
+<span># Încercare de eliminare a unei chei inexistente</span>
+if "strugure" in fructe:
+    del fructe["strugure"]
+    print(f"'Fructul strugure este eliminit din dicționarul: {fructe}")
+else:
+    print(f"Fructul strugure nu este in dicționarul: {fructe}")
+
+<span># Elimină în siguranță o cheie doar dacă aceasta există</span>
+if "mere" in fructe:
+    del fructe["mere"]
+    print(f"Fructul mere este eliminat din dicționarul: {fructe}")
+else:
+    print(f'Fructul mere nu se găsește în dicționarul: {fructe}.')
+
+<span>==&gt; Fructul strugure nu este in dicționarul: {'mere': 50, 'pere': 30, 'prune': 35, 'caise': 25, 'smochine': 15}</span>
+<span>==&gt; Fructul mere este eliminat din dicționarul: {'pere': 30, 'prune': 35, 'caise': 25, 'smochine': 15}</span>
+</code></pre>
+
+      <p>Pentru a evita RuntimeError, folosiți întotdeauna o copie a dicționarului în iterație - To avoid RuntimeError,
+        always use a copy of your dictionary in the iteration.</p>
+
+
+<pre><code>fructe_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+for fruct in fructe_cost.copy():
+    if fructe_cost[fruct] &gt;=2.00:
+        del fructe_cost[fruct]
+print(fructe_cost) <span>==&gt; {'mere': 1.69, 'pere': 1.5, 'smochine': 1.7}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Notă importantă: Dacă intenția este de a elimina perechi cheie-valoare sau dacă există riscul de a modifica
+          dimensiunea dicționarului în timpul iterației, este esențial să se itereze peste o copie a cheilor sau
+          elementelor dicționarului sau să se construiască un dicționar nou cu modificările dorite. Acest lucru previne
+          eroarea RuntimeError.</p>
+
+        <p>Important Note: If the intention is to remove key-value pairs, or if there's a risk of changing the
+          dictionary's size during iteration, it is crucial to iterate over a copy of the dictionary's keys or items, or
+          to build a new dictionary with the desired changes. This prevents the RuntimeError.</p>
+      </div>
+
+      <div class="grid-container">
+        <p>Ambele metode pop() și del oferă modalități sigure de a elimina elemente dintr-un dicționar, pop() fiind mai
+          concisă pentru cazurile în care ați putea dori, de asemenea, să recuperați valoarea eliminată sau să
+          gestionați cheile lipsă cu o valoare implicită, în timp ce del cu o verificare oferă control explicit asupra
+          procesului de ștergere.</p>
+
+        <p>Both methods pop() and del provide safe ways to remove items from a dictionary, with pop() being more concise
+          for cases where you might also want to retrieve the removed value or handle missing keys with a default, while
+          del with an in check offers explicit control over the deletion process.</p>
+      </div>
+
+
+      <div class="grid-container">
+        <p>popitem(): Această metodă elimină și returnează ultima pereche cheie-valoare inserată sub formă de tuplu. În
+          Python 3.7+, dicționarele păstrează ordinea de inserare. Dacă dicționarul este gol, acesta generează o eroare
+          KeyError.</p>
+
+        <p>popitem(): This method removes and returns the last inserted key-value pair as a tuple. In Python 3.7+,
+          dictionaries preserve insertion order. If the dictionary is empty, it raises a KeyError.</p>
+      </div>
+
+<pre><code>dict_cu_valoare_lista = {"nume": "Alexa", "varsta": 21, "greutatea": None, "localitate": "Herculane", "scorul": [90, 85, 92]}
+elimina_articol = dict_cu_valoare_lista.popitem()
+print(f"Elimină ultimul articol: {elimina_articol} \nrezultat: {dict_cu_valoare_lista}")
+<span>==&gt; Elimină ultimul articol: ('scorul', [90, 85, 92]) 
+rezultat: {'nume': 'Alexa', 'varsta': 21, 'greutatea': None, 'localitate': 'Herculane'}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="DS">Diferență simetrică ^ dicționare - Symmetric difference ^ dictionaries</h2>
+
+      <div class="grid-container">
+        <p>Diferența simetrică a cheilor de dicționar: Pentru a găsi cheile unice pentru fiecare dicționar (prezente
+          într-unul, dar nu în celălalt), puteți utiliza operatorul ^ în vizualizările keys() ale dicționarelor.</p>
+
+        <p>Symmetric Difference of Dictionary Keys: To find the keys that are unique to each dictionary (present in one
+          but not the other), you can use the ^ operator on the keys() views of the dictionaries.</p>
+      </div>
+
+
+<pre><code>dict1 = {"a": 1, "b": 2, "c": 3}
+dict2 = {"c": 4, "d": 5, "e": 6}
+
+<span># Diferența simetrică a cheilor</span>
+chei_unice = dict1.keys() ^ dict2.keys()
+print(chei_unice) <span>==&gt; {'a', 'e', 'd', 'b'}</span>
+
+<span># reconstruiește un nou dicționar care conține aceste chei unice</span>
+dict_nou = {k: (dict1.get(k) if k in dict1 else dict2.get(k)) for k in chei_unice}
+print(dict_nou) <span>==&gt; {'a': 1, 'e': 6, 'd': 5, 'b': 2}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Diferența simetrică a elementelor de dicționar: Pentru a găsi perechile cheie-valoare unice pentru fiecare
+          dicționar (unde atât cheia, cât și valoarea nu sunt prezente în celălalt dicționar), puteți utiliza operatorul
+          ^ în vizualizările items(). Acest lucru necesită ca atât cheile, cât și valorile să fie hashabile.</p>
+
+        <p>Symmetric Difference of Dictionary Items: To find the key-value pairs that are unique to each dictionary
+          (where both the key and value are not present in the other dictionary), you can use the ^ operator on the
+          items() views. This requires that both keys and values are hashable.</p>
+      </div>
+
+<pre><code>dict1 = {"a": 15, "b": 2, "a": 77, "c": 3}
+dict2 = {"c": 3, "d": 5, "b": 6, "d": 44}  <span># "b" are valori diferite în cele două dicționare</span>
+
+<span># Diferența simetrică a elementelor</span>
+elemente_unice = dict1.items() ^ dict2.items()
+print(elemente_unice) <span>==&gt; {('a', 77), ('d', 44), ('b', 2), ('b', 6)}</span>
+
+<span># Conversia în dicționar</span>
+dictionar_nou = dict(elemente_unice)
+print(dictionar_nou) 
+<span>==&gt; {'a': 77, 'd': 44, 'b': 6} sau {'b': 2, 'd': 44, 'a': 77}, ordinea în set este aleatorie!</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="KN">Schimbarea numelui unei chei într-un dicționar - Change a key name in a dictionary</h2>
+
+      <div class="grid-container">
+        <p>Pentru a schimba numele unei chei într-un dicționar în Python, o abordare comună implică utilizarea funcției
+          pop() și atribuirea valorii noii chei.</p>
+
+        <p>To change a key name in a dictionary in Python, a common approach involves using pop() and assigning the
+          value to the new key.</p>
+      </div>
+
+<pre><code>def renumeste_cheia(dictionar, cheie_veche, cheie_noua):
+    """
+    Redenumește o cheie dintr-un dicționar.
+
+    Args:
+        dictionar (dict): Dicționarul de modificat.
+        cheie_veche: Cheia existentă care va fi redenumită.
+        cheie_noua: Numele noii chei.
+    """
+    if cheie_veche in dictionar:
+        dictionar[cheie_noua] = dictionar.pop(cheie_veche)
+    else:
+        print(f"Error: Cheia veche '{cheie_veche}' nu se găsește în dicționar.")
+        
+lactate = {"sana": 15,"lapte": 20,"iaurt": 25}
+renumeste_cheia(lactate, "lapte", "unt")
+print(lactate) <span>==&gt; {'sana': 15, 'iaurt': 25, 'unt': 20}</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <div>
+          <p>renumeste_cheia(): Funcție care primește trei argumente</p>
+          <p>dictionar: Dicționarul a cărui cheie trebuie schimbată.</p>
+          <p>cheie_veche: Numele curent al cheii.</p>
+          <p>cheie_noua: Noul nume dorit pentru cheie.</p>
+          <p>if cheie_veche in dictionar: Această linie verifică dacă cheie_veche există de fapt în dicționar. Aceasta
+            previne o eroare KeyError dacă cheie_veche specificată nu este găsită.</p>
+          <p>dictionar.pop(cheie_veche): Această metodă elimină cheie_veche și valoarea sa corespunzătoare din dicționar
+            și returnează acea valoare.</p>
+          <p>dictionar[cheie_noua] = ...: Valoarea returnată este apoi atribuită cheie_noua din dictionar, redenumind
+            efectiv cheia, păstrându-i în același timp valoarea.</p>
+          <p>else: print(f"Eroare: Cheia veche '{cheie_veche}' nu se găsește în dicționar.")</p>
+          <p>Dacă cheia veche nu este găsită, se afișează un mesaj de eroare informativ.</p>
+        </div>
+
+        <div>
+          <p>rename_key(): Function that takes three arguments</p>
+          <p>dictionary: The dictionary whose key needs to be changed.</p>
+          <p>old_key: The current name of the key.</p>
+          <p>new_key: The desired new name for the key.</p>
+          <p>if old_key in dictionary: This line checks if the old_key actually exists in the dictionary. This prevents
+            a KeyError if the specified old_key is not found.</p>
+          <p>dictionary.pop(old_key): This method removes the old_key and its corresponding value from the dictionary
+            and returns that value.</p>
+          <p>dictionary[new_key] = ...: The returned value is then assigned to the new_key in the dictionary,
+            effectively renaming the key while preserving its value.</p>
+          <p>else: print(f"Error: Old key '{old_key}' not found in the dictionary."):</p>
+          <p>If the old_key is not found, an informative error message is printed.</p>
+        </div>
+      </div>
+
+<pre><code><span># valoare_implicită</span>
+def renumeste_cheia(dictionar, cheie_veche, cheie_noua, valoare_implicita=None):
+    """
+    Redenumește o cheie dintr-un dicționar.
+
+    Args:
+        dicţionar (dict): Dicționarul de modificat.
+        cheie_veche: Cheia existentă care va fi redenumită.
+        cheie_nouă: Numele noii chei.
+        valoare_implicită: Valoarea de atribuit noii chei dacă chei_veche nu există.
+        Implicit, valoarea este None.
+    """
+    if cheie_veche in dictionar:
+        dictionar[cheie_noua] = dictionar.pop(cheie_veche) + " Voinea"
+    else:
+        <span># Dacă cheia veche nu există, setează noua cheie cu o valoare implicită</span>
+        dictionar.setdefault(cheie_noua, valoare_implicita)
+    return dictionar
+        
+persoana = {"nume": "Cristina", "varsta": 50, "oras": "Severin"}
+<span># Schimbă pronumele în nume complet</span>
+renumeste_cheia(persoana, "nume", "nume_complet")
+print(persoana)
+<span>==&gt; {'varsta': 50, 'oras': 'Severin', 'nume_complet': 'Cristina Voinea'}</span>
+
+<span># Încercare de a schimba o cheie inexistentă, adăugând una nouă cu o valoare implicită</span>
+renumeste_cheia(persoana, "locatie", "tara", "Romania")
+print(persoana)
+<span>==&gt; {'varsta': 50, 'oras': 'Severin', 'nume_complet': 'Cristina Voinea', 'tara': 'Romania'}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Metoda setdefault() din dicționarele Python nu este utilizată direct pentru a schimba numele unei chei.
+          Scopul său este de a returna valoarea unei chei dacă aceasta există sau de a insera cheia cu o valoare
+          implicită specificată dacă aceasta nu există și apoi de a returna acea valoare implicită.</p>
+
+        <p>The setdefault() method in Python dictionaries is not directly used to change a key name. Its purpose is to
+          return the value of a key if it exists, or to insert the key with a specified default value if it does not
+          exist, and then return that default value.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="DV">Modificarea valorilor dicționarului - Changing Dictionary Values</h2>
+
+      <div class="grid-container">
+        <p>Modificarea dimensiunii unui dicționar (adăugarea sau eliminarea perechilor cheie-valoare) în timpul iterării
+          directe peste acesta poate duce la o eroare RuntimeError: dictionary changed size during iteration. Cu toate
+          acestea, modificarea valorilor asociate cheilor existente este, în general, sigură și se face frecvent.</p>
+
+        <p>Modifying the size of a dictionary (adding or removing key-value pairs) while iterating directly over it can
+          lead to a RuntimeError: dictionary changed size during iteration. However, modifying the values associated
+          with existing keys is generally safe and commonly done.</p>
+      </div>
+
+      <div class="grid-container">
+        <p>Cea mai simplă și mai frecventă metodă de a modifica o valoare este prin referirea cheii între paranteze
+          pătrate ([]) și atribuirea unei noi valori. Dacă cheia există deja, valoarea acesteia este suprascrisă.</p>
+
+        <p>The easiest and most common way to change a value is by referencing its key inside square brackets ([]) and
+          assigning a new value. If the key already exists, its value is overwritten.</p>
+      </div>
+
+<pre><code><span># Atribuire directă (cheie unică)</span>
+fructe_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+<span># Schimbați valoarea articolului "mere"</span>
+fructe_cost["mere"] = round(fructe_cost["mere"] * 1.3, 2)
+print(fructe_cost) <span>==&gt; {'caise': 2.4, 'prune': 2.12, 'mere': 2.2, 'pere': 1.5, 'smochine': 1.7}</span>
+</code></pre>
+
+<pre><code><span># Modificați valoarile mai mici de 2</span>
+fructe_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+<span># Parcurgem dicționarul și modificăm valorile &lt; 2</span>
+for cheie, valoare in fructe_cost.items():
+    if valoare &lt; 2:
+        <span># Puneți aici noua valoare dorită</span>
+        fructe_cost[cheie] = round(fructe_cost[cheie] * 1.5, 2) 
+
+print(fructe_cost) <span>==&gt; {'caise': 2.4, 'prune': 2.12, 'mere': 2.54, 'pere': 2.25, 'smochine': 2.55}</span>
+</code></pre>
+
+<pre><code><span># Utilizarea operatorului de actualizare |= (Python 3.9+)</span>
+fructe_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+fructe_cost |= {k: (round(fructe_cost[k] * 1.5, 2) if v &lt; 2 else v) for k, v in fructe_cost.items()}
+print(fructe_cost) <span>==&gt; {'caise': 2.4, 'prune': 2.12, 'mere': 2.54, 'pere': 2.25, 'smochine': 2.55}</span>
+</code></pre>
+
+
+<pre><code><span># Iterarea peste chei și modificarea dicționarului original</span>
+fructe_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+for fruct in fructe_cost:
+    <span># Modifică valoarea asociată cheii curente</span>
+    fructe_cost[fruct] *= 2
+print(fructe_cost) <span>==&gt; {'caise': 4.8, 'prune': 4.24, 'mere': 3.38, 'pere': 3.0, 'smochine': 3.4}</span>
+
+for fruct, cost in fructe_cost.items():
+    fructe_cost[fruct] = round(cost * 0.85, 2)
+print(fructe_cost) <span>==&gt; {'caise': 4.08, 'prune': 3.6, 'mere': 2.87, 'pere': 2.55, 'smochine': 2.89}</span>
+
+for fruct, cost in fructe_cost.items():
+    if cost == fructe_cost["caise"]:
+        <span># Schimbă valoarea dacă aceasta corespunde unei condiții</span>
+        fructe_cost[fruct] = 2.65
+print(fructe_cost) <span>==&gt; {'caise': 2.65, 'prune': 3.6, 'mere': 2.87, 'pere': 2.55, 'smochine': 2.89}</span>
+</code></pre>
+
+<pre><code><span># Crearea unui dicționar nou (Dictionary Comprehension)</span>
+fructe_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+fructe_cost_actualizat = {k: (round(fructe_cost[k] * 1.5, 2) if v &lt; 2 else v) for k, v in fructe_cost.items()}
+
+print(fructe_cost_actualizat) <span>==&gt; {'caise': 2.4, 'prune': 2.12, 'mere': 2.54, 'pere': 2.25, 'smochine': 2.55}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="SK">Inversarea cheilor și valorilor într-un dicționar - Swap keys and values in a dictionary</h2>
+
+      <div class="grid-container">
+        <p>Utilizarea înțelegerii (comprehension) dicționarului: Aceasta este adesea cea mai concisă și pitonică
+          modalitate de a realiza schimbarea.</p>
+
+        <p>Using Dictionary Comprehension: This is often the most concise and Pythonic way to achieve the swap.</p>
+      </div>
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+inversat_chei_valori = {valoare: cheie for cheie, valoare in fructe.items()}
+
+print(inversat_chei_valori) <span>==&gt; {50: 'mere', 30: 'pere', 35: 'prune', 25: 'caise', 15: 'smochine'}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Utilizarea unei bucle: Această metodă implică iterarea dicționarului original și construirea unuia nou cu
+          perechile schimbate.</p>
+
+        <p>Using a Loop: This method involves iterating through the original dictionary and building a new one with the
+          swapped pairs.</p>
+      </div>
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+inversat_chei_valori = {}
+for cheie, valoare in fructe.items():
+    inversat_chei_valori[valoare] = cheie
+
+print(inversat_chei_valori) <span>==&gt; {50: 'mere', 30: 'pere', 35: 'prune', 25: 'caise', 15: 'smochine'}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Definirea unei funcții care primește un dicționar ca intrare și returnează un nou dicționar cu cheile și
+          valorile schimbate. Acest lucru poate fi realizat eficient folosind o înțelegere a dicționarului.</p>
+
+        <p>Defining a function that takes a dictionary as input and returns a new dictionary with keys and values
+          ​​swapped. This can be achieved efficiently using a dictionary comprehension.</p>
+      </div>
+
+
+<pre><code>def inversare_valori_chei(dictionar_original):
+    """
+    Schimbă cheile și valorile unui dicționar.
+
+    Args:
+        dicționar_original: Dicționarul ale cărui chei și valori urmează să fie interschimbate.
+
+    Retururi:
+        Un nou dicționar cu chei și valori schimbate.
+    """
+    dictionar_inversat  = {valoare: cheie for cheie, valoare in dictionar_original.items()}
+    return dictionar_inversat
+
+fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+fructe_culoare = {"mere": "verde", "pere": "galben", "caise": "portocaliu", "prune": "indigo", "smochine": "maro"}
+
+dictionar_nou_fructe = inversare_valori_chei(fructe)
+dictionar_nou_culori = inversare_valori_chei(fructe_culoare)
+
+print(dicţionar_nou_fructe) <span>==&gt; {50: 'mere', 30: 'pere', 35: 'prune', 25: 'caise', 15: 'smochine'}</span>
+print(dicţionar_nou_culori) <span>==&gt; {'verde': 'mere', 'galben': 'pere', 'portocaliu': 'caise', 'indigo': 'prune', 'maro': 'smochine'}</span>
+</code></pre>
+
+
+<pre><code><span># Combinații zip, tuple, dict</span>
+fructe_culoare = {"mere": "verde", "pere": "galben", "caise": "portocaliu", "prune": "indigo", "smochine": "maro"}
+
+print(fructe_culoare.values(), fructe_culoare.keys())
+print(zip(fructe_culoare.values(), fructe_culoare.keys()))
+print(tuple(zip(fructe_culoare.values(), fructe_culoare.keys())))
+print(dict(zip(fructe_culoare.values(), fructe_culoare.keys())))
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+dict_values(['verde', 'galben', 'portocaliu', 'indigo', 'maro']) dict_keys(['mere', 'pere', 'caise', 'prune', 'smochine'])
+&lt;zip object at 0x00000205818F8880&gt;
+(('verde', 'mere'), ('galben', 'pere'), ('portocaliu', 'caise'), ('indigo', 'prune'), ('maro', 'smochine'))
+{'verde': 'mere', 'galben': 'pere', 'portocaliu': 'caise', 'indigo': 'prune', 'maro': 'smochine'}
+</code></pre>
+
+<pre><code><span># Combinații zip, tuple, dict</span>
+fructe_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+
+print(fructe_cantitate.values(), fructe_cantitate.keys())
+print(zip(fructe_cantitate.values(), fructe_cantitate.keys()))
+print(tuple(zip(fructe_cantitate.values(), fructe_cantitate.keys())))
+print(dict(zip(fructe_cantitate.values(), fructe_cantitate.keys())))
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+dict_values([50, 30, 35, 25, 15]) dict_keys(['mere', 'pere', 'prune', 'caise', 'smochine'])
+&lt;zip object at 0x00000205818FCC40&gt;
+((50, 'mere'), (30, 'pere'), (35, 'prune'), (25, 'caise'), (15, 'smochine'))
+{50: 'mere', 30: 'pere', 35: 'prune', 25: 'caise', 15: 'smochine'}
+</code></pre>
+
+<pre><code><span># Combinații map, dict</span>
+fructe_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+
+print(fructe_cantitate.values(), fructe_cantitate.keys())
+print(map(reversed, fructe_cantitate.items()))
+print(dict(map(reversed, fructe_cantitate.items())))
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+dict_values([50, 30, 35, 25, 15]) dict_keys(['mere', 'pere', 'prune', 'caise', 'smochine'])
+&lt;map object at 0x00000227D610F670&gt;
+{50: 'mere', 30: 'pere', 35: 'prune', 25: 'caise', 15: 'smochine'}
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>Dacă dicționarul original are valori duplicate, doar ultima cheie asociată cu acea valoare va fi păstrată
+            în noul dicționar. De exemplu, dacă se schimbă {"mere": 50, "caise": 50}, rezultatul va fi {50: "caise"}
+            deoarece caise este ultima cheie mapată la 50.</p>
+          <p>Valorile din dicționarul original trebuie să fie hashabile pentru a deveni chei în noul dicționar. Aceasta
+            înseamnă că nu pot fi tipuri mutabile, cum ar fi listele sau alte dicționare. Dacă aveți valori nehashabile,
+            încercarea de a schimba valorile va duce la o eroare TypeError.</p>
+        </div>
+
+        <div>
+          <p>If your original dictionary has duplicate values, only the last key associated with that value will be
+            retained in the new dictionary. For example, if {"mere": 50, "caise": 50} is swapped, the result will be
+            {50: "caise"} because caise is the last key mapped to 50.</p>
+          <p>The values from the original dictionary must be hashable to become keys in the new dictionary. This means
+            they cannot be mutable types like lists or other dictionaries. If you have unhashable values, attempting to
+            swap will result in a TypeError.</p>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="VK">maxim minim pentru valori și chei în dicționare - max min for values and keys in dictionaries</h2>
+
+      <div class="grid-container">
+        <p>Funcțiile max() și min() încorporate, atunci când sunt aplicate direct unui dicționar, vor returna cheile
+          maxime și respectiv minime. Acest lucru se datorează faptului că dicționarele iterează implicit peste cheile
+          lor.</p>
+
+        <p>The built-in max() and min() functions, when applied directly to a dictionary, will return the maximum and
+          minimum keys, respectively. This is because dictionaries iterate over their keys by default.</p>
+      </div>
+
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+
+<span># Găsirea cheilor maxime/minime</span>
+cheie_max = max(fructe)
+cheie_min = min(fructe)
+print(f"Cheia maximă in fructe: {cheie_max}")
+print(f"Cheia minimă in fructe: {cheie_min}")
+
+<span># Găsirea valorilor maxime/minime</span>
+<span># iterează peste valorile dicționarului</span>
+valoare_max = max(fructe.values())
+valoare_min = min(fructe.values())
+print(f"Valoarea maximă in fructe: {valoare_max}")
+print(f"Valoarea minimă in fructe: {valoare_min}")
+
+<span># Gestionarea mai multor chei cu aceeași valoare maximă/minimă</span>
+valoare_max = max(fructe.values())
+chei_cu_val_max = [cheie for cheie, valoare in fructe.items() if valoare == valoare_max]
+chei_cu_val_min = [cheie for cheie, valoare in fructe.items() if valoare == valoare_min]
+print(f"Fructele cu valoare maximă: {chei_cu_val_max}")
+print(f"Fructele cu valoare minimă: {chei_cu_val_min}")
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+Cheia maximă in fructe: smochine
+Cheia minimă in fructe: caise
+Valoarea maximă in fructe: 50
+Valoarea minimă in fructe: 15
+Fructele cu valoare maximă: ['mere']
+Fructele cu valoare minimă: ['smochine']
+</code></pre>
+
+      <div class="grid-container">
+        <p>Explicație pentru găsirea cheilor maxime/minime. Python folosește valoarea ASCII (sau mai precis, punctul de
+          cod Unicode) a unui caracter pentru a găsi maximul sau minimul unui șir de caractere. În acest caz, cheile
+          dicționarului.</p>
+
+        <p>Explanation for finding maximum/minimum keys. Python uses ASCII (or more precisely, Unicode code point) value
+          of a character to find the maximum or minimun of a string. In this case the keys of dictionary.</p>
+      </div>
+
+      <div class="grid-container">
+  <pre><code>print([ord(caracter) for caracter in "pere"], "pere")
+print([ord(caracter) for caracter in "mere"], "mere")
+print([ord(caracter) for caracter in "prune"], "prune")
+print([ord(caracter) for caracter in "smochine"], "smochine")
+print([ord(caracter) for caracter in "caise"], "caise")
+
+print([ord(caracter) for caracter in "smochine"] &lt; [ord(caracter) for caracter in "prune"])
+</code></pre>
+
+  <pre><code>
+[112, 101, 114, 101] pere
+[109, 101, 114, 101] mere
+[112, 114, 117, 110, 101] prune
+[115, 109, 111, 99, 104, 105, 110, 101] smochine
+
+[99, 97, 105, 115, 101] caise
+
+False
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <p>Preia toate perechile cheie-valoare dintr-un dicționar unde valoarea este egală cu valoarea maximă prezentă
+          în dicționar folosind comprehension.</p>
+
+        <p>Retrieve all key-value pairs from a dictionary where the value is equal to the maximum value present in the
+          dictionary using comprehension.</p>
+      </div>
+
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 50}
+
+print([kv for kv in fructe.items() if kv[1] == max(fructe.values())])   <span>==&gt; [('mere', 50), ('smochine', 50)]</span>
+print([(k, v) for k, v in fructe.items() if v == max(fructe.values())]) <span>==&gt; [('mere', 50), ('smochine', 50)]</span>
+
+print([kv[0] for kv in fructe.items()])  <span>==&gt; ['mere', 'pere', 'prune', 'caise', 'smochine']</span>
+print([kv[0] for kv in fructe.items() if kv[1] == max(fructe.values())]) <span>==&gt; ['mere', 'smochine']</span>
+
+print([k for k, v in fructe.items()])  <span>==&gt; ['mere', 'pere', 'prune', 'caise', 'smochine']</span>
+print([k for k, v in fructe.items() if v == max(fructe.values())]) ['mere', 'smochine']<span>==&gt; </span>
+
+print([kv for kv in fructe.items() if kv[1] == min(fructe.values())])   <span>==&gt; [('caise', 25)]</span>
+print([(k, v) for k, v in fructe.items() if v == min(fructe.values())]) <span>==&gt; [('caise', 25)]</span> 
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>max(fructe.values()):</dt>
+          <dd>Extrage mai întâi toate valorile din dicționarul fructe folosind fructe.values(). Apoi, funcția max() este
+            aplicată acestei colecții de valori pentru a determina cea mai mare valoare individuală din dicționar.</dd>
+          <dt>fructe.items():</dt>
+          <dd>Returnează o vizualizare a perechilor cheie-valoare ale dicționarului ca o listă de tupluri, unde fiecare
+            tuplu conține (cheie, valoare). De exemplu, dacă fructe este {"pere": 30, "mere": 20, "prune": 30},
+            fructe.items() ar genera [('pere', 30), ('mere': 20), ('prune': 30)].</dd>
+          <dt>for kv în fructe.items():</dt>
+          <dd>Aceasta inițiază o buclă care iterează prin fiecare tuplu (cheie, valoare) generat de fructe.items(). În
+            fiecare iterație, tuplul curent (cheie, valoare) este atribuit variabilei kv.</dd>
+          <dt>if kv[1] == max(fructe.values()):</dt>
+          <dd>Partea condițională a înțelegerii (comprehension) listei. Pentru fiecare tuplu kv, se verifică dacă
+            valoarea (kv[1]) este egală cu valoarea maximă găsită în dicționar calculată în max(fructe.values()).</dd>
+          <dt>kv for ...:</dt>
+          <dd>Dacă condiția de mai sus este adevărată, întregul tuplu kv (perechea (cheie, valoare)) este inclus în noua
+            listă construită.</dd>
+          <dd>În esență, această înțelegere (comprehension) a listei filtrează eficient elementele dicționarului,
+            returnând o nouă listă care conține doar acele perechi cheie-valoare care corespund celei mai mari valori
+            din dicționar. Aceasta gestionează cazurile în care mai multe chei ar putea avea aceeași valoare maximă.
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>max(fructe.values()):</dt>
+          <dd>Extracts all the values from the fructe dictionary using fructe.values(). Then, the max() function is
+            applied to this collection of values to determine the single largest value within the dictionary.</dd>
+          <dt>fructe.items():</dt>
+          <dd>Returns a view of the dictionary's key-value pairs as a list of tuples, where each tuple contains (key,
+            value). For example, if fructe is {"pere": 30, "mere": 20, "prune": 30}, fructe.items() would yield
+            [('pere', 30), 'mere' 20), ("prune": 30)].</dd>
+          <dt>for kv in fructe.items():</dt>
+          <dd>This initiates a loop that iterates through each (key, value) tuple generated by fructe.items(). In each
+            iteration, the current (key, value) tuple is assigned to the variable kv.</dd>
+          <dt>if kv[1] == max(fructe.values()):</dt>
+          <dd>The conditional part of the list comprehension. For each kv tuple, it checks if the value (which is kv[1])
+            is equal to the maximum value found in the dictionary calculated in max(fructe.values()).
+          </dd>
+          <dt>kv for ...:</dt>
+          <dd>If the above condition is true, the entire kv tuple (the (key, value) pair) is included in the new list
+            being constructed.</dd>
+          <dd>In essence, this list comprehension efficiently filters the dictionary's items, returning a new list
+            containing only those key-value pairs that correspond to the highest value(s) in the dictionary. This
+            handles cases where multiple keys might share the same maximum value.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># key, lambda</span>
+fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+print(max(fructe.items(), key = lambda x: x[1]))  <span>==&gt; ('mere', 50)</span>
+print(min(fructe.items(), key = lambda x: x[1]))  <span>==&gt; ('smochine', 15)</span>
+</code></pre>
+
+<pre><code><span># key, get</span>
+fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+maxim = max(fructe, key=fructe.get)
+minim = min(fructe, key=fructe.get)
+print(f"Cantitatea maxima: {maxim}") <span>==&gt; Cantitatea maxima: mere</span>
+print(f"Cantitatea minima: {minim}") <span>==&gt; Cantitatea minima: smochine</span>
+</code></pre>
+
+<pre><code><span># Dacă dicționarul ar putea fi gol</span>
+fructe = {}
+<span># Returnează None în loc să se blocheze</span>
+Rezultat = min(fructe, key=fructe.get, default=None)
+print(Rezultat) <span>==&gt; None</span>
+</code></pre>
+
+<pre><code><span># Gestionarea valorilor duplicate</span>
+fructe = {"mere": 15, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+<span># Găsește mai întâi cea mai mică valoare</span>
+val_minim = min(fructe.values()) 
+<span># Obține toate cheile cu val_minim</span>
+toate_cheile = [k for k, v in fructe.items() if v == val_minim]
+print(toate_cheile) <span>==&gt; ['mere', 'smochine']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Dacă valorile din dicționar sunt un amestec de șiruri de caractere și numere întregi (de exemplu, {"a": 1,
+          "b": "two"}), Python va genera o eroare de tip (TypeError), deoarece nu poate compara șiruri de caractere cu
+          numere. Asigură-te că toate valorile din dicționar sunt fie numai numere, fie numai șiruri de caractere.</p>
+
+        <p>If dictionary values are a mix of strings and integers (e.g., {"a": 1, "b": "two"}), Python will throw a
+          TypeError because it cannot compare strings to numbers. Ensure your dictionary values are entirely numbers or
+          entirely strings.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="EP">Extindeți și transmiteți un dicționar ca argumente - Expand and pass a dictionary as arguments</h2>
+
+      <div class="grid-container">
+        <p>În Python, un dicționar poate fi extins, iar perechile sale cheie-valoare pot fi transmise ca argumente
+          cuvânt cheie către o funcție folosind operatorul cu dublu asterisc (**). Acest lucru este util în special
+          atunci când funcția așteaptă argumente specifice denumite care corespund cheilor din dicționar.</p>
+
+        <p>In Python, a dictionary can be expanded and its key-value pairs passed as keyword arguments to a function
+          using the double-asterisk (**) operator. This is particularly useful when the function expects specific named
+          arguments that correspond to the keys in the dictionary.</p>
+      </div>
+
+<pre><code>def functie_persoana(nume, varsta, localitate):
+    print(f"Nume: {nume}, Varsta: {varsta}, Oras: {localitate}")
+
+def alta_functie(**kwargs):
+    for cheie, valoare in kwargs.items():
+        print(f"{cheie}: {valoare}")
+        
+<span># cheile corespund numelor argumentelor așteptate ale funcției</span>
+persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+functie_persoana(**persoana1) <span>==&gt; Nume: Cristina, Varsta: 50, Oras: Severin</span>
+alta_functie(**persoana2)
+<span>==&gt; nume: Cristi
+varsta: 55
+localitate: Severin</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <div>
+          <p>Operatorul **, în timpul unui apel de funcție, descompune dicționarul în argumente de tip cuvânt cheie.</p>
+          <p>Această metodă oferă o modalitate concisă și eficientă de a transmite o colecție de date corelate ca
+            parametri la o funcție, în special atunci când se lucrează cu un număr mare de parametri sau când datele
+            sunt deja organizate într-o structură de dicționar.</p>
+        </div>
+
+        <div>
+          <p>The ** operator, when used during a function call, unpacks the dictionary into keyword arguments.</p>
+          <p>This method provides a concise and efficient way to pass a collection of related data as parameters to a
+            function, especially when dealing with a large number of parameters or when the data is already organized in
+            a dictionary structure.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <p>Potrivire exactă: Cheile din dicționar trebuie să corespundă exact numelor parametrilor funcției. Fără chei
+          suplimentare: Dacă dicționarul conține o cheie care nu corespunde unui parametru al funcției, Python va genera
+          o eroare de tip (TypeError).</p>
+
+        <p>Exact Matches: The keys in your dictionary must match the function's parameter names exactly. No Extra Keys:
+          If your dictionary contains a key that isn't a parameter in the function, Python will raise a TypeError.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="DA">Extindeți un dicționar cu argumente implicite - Expend a dictionary with default arguments</h2>
+
+      <div class="grid-container">
+        <p>Se poate defini o funcție care fie are argumente explicite default, fie utilizează **kwargs pentru a accepta
+          un număr oarecare de argumente (keyword arguments).</p>
+
+        <p>You can define a function that either has explicit default arguments or uses **kwargs to accept an arbitrary
+          number of keyword arguments.</p>
+      </div>
+
+<pre><code>def creaza_profil(nume_utilizator, stare="Activ", rol="utilizator"):
+    <span># statut și rol au valori explicite default</span>
+    print(f"Utilizator: {nume_utilizator} | Statut: {stare} | Rol: {rol}")
+
+<span># apelarea funcției</span>
+creaza_profil("Cristi") <span># moștenește valorile implicite</span>                             
+creaza_profil("Andrei", stare="Inactiv") <span># moștenește rol="utilizator"</span>
+creaza_profil("Bran", rol="Administrator", stare="N/A")
+
+<span>==&gt; Utilizator: Cristi | Statut: Activ | Rol: utilizator</span>
+<span>==&gt; Utilizator: Andrei | Statut: Inactiv | Rol: utilizator</span>
+<span>==&gt; Utilizator: Bran | Statut: N/A | Rol: Administrator</span>
+</code></pre>
+
+<pre><code>def valori_implicite_kwargs(arg1, arg_implicit="valoare_implicita", **kwargs):
+    """
+    arg1: argument pozițional standard, obligatoriu
+    arg_implicit: argument cu valoare implicită, opțional
+    **kwargs: colector de argumente numite (keyword arguments - cheie=valoare)
+    """
+    
+    print(f"arg1: {arg1}")
+    print(f"arg_implicit: {arg_implicit}")
+    print(f"kwargs: {kwargs}")
+    
+implicit_args_dict = {
+    "implicit_arg": "implicit_nou",
+    "cheie_1": "valoare1",
+    "cheie_2": "valoare2"
+}
+
+valori_implicite_kwargs('valoare_obligatorie', **implicit_args_dict)
+<span>==&gt; arg1: valoare_obligatorie</span>
+<span>==&gt; arg_implicit: valoare_implicita</span>
+<span>==&gt; kwargs: {'implicit_arg': 'implicit_nou', 'cheie_1': 'valoare1', 'cheie_2': 'valoare2'}</span>
+</code></pre>
+
+<pre><code>def proceseaza_datele(nume, varsta=30, localitate="Necunoscuta", **info_suplimentare):
+    print(f"Nume: {nume}")
+    print(f"Varsta: {varsta}")
+    print(f"Localitatea: {localitate}")
+    if info_suplimentare:
+        print("Informatii suplimentare:")
+        for cheie, valoare in info_suplimentare.items():
+            print(f"  {cheie}: {valoare}")
+
+<span># Dicționar de informații suplimentare</span>
+date_utilizator1 = {
+    "ocupatia": "inginer",
+    "email": "utilizator1@exemplu.ro"
+}
+
+<span># Dicționar de argumente implicite și informații suplimentare</span>
+date_utilizator2 = {
+    "varsta": 37,
+    "ocupatia": "fizician",
+    "email": "utilizator2@exemplu.ro"
+}
+
+<span># Apelați funcția, extinzând dicționarul</span>
+proceseaza_datele("Simona", **date_utilizator1)
+
+<span># De asemenea, puteți modifica valorile implicite sau puteți adăuga direct argumente noi</span>
+print("\n--- Valori implicite modificate ---")
+proceseaza_datele("Virgil", localitate = "Timisoara", **date_utilizator2)
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+Nume: Simona
+Varsta: 30
+Localitatea: Necunoscuta
+Informatii suplimentare:
+  ocupatia: inginer
+  email: utilizato1r@exemplu.ro
+
+--- Valori implicite modificate ---
+Nume: Virgil
+Varsta: 37
+Localitatea: Timisoara
+Informatii suplimentare:
+  ocupatia: fizician
+  email: utilizator2@exemplu.ro
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="MR">Mai multe argumente de cuvinte cheie ca dicționar - Multiple keyword arguments as a dictionary</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Pentru a primi mai multe argumente de cuvinte cheie ca dicționar într-o funcție Python, sintaxa **kwargs
+            este utilizată în definiția funcției.</p>
+          <p>Atunci când **kwargs (sau orice nume precedat de două asteriscuri, precum **string) este inclus ca
+            parametru în definiția unei funcții, acest lucru înseamnă că funcția poate accepta un număr arbitrar de
+            argumente cu nume.</p>
+          <p>Toate argumentele de tip keyword transmise funcției care nu sunt definite explicit ca parametri denumiți
+            vor fi colectate într-un dicționar. Cheile acestui dicționar vor fi numele argumentelor de tip keyword, iar
+            valorile vor fi valorile lor corespunzătoare.</p>
+        </div>
+
+        <div>
+          <p>To receive multiple keyword arguments as a dictionary in a Python function, the **kwargs syntax is used
+            within the function definition.</p>
+          <p>When **kwargs (or any name preceded by two asterisks, like **string) is included as a parameter in a
+            function definition, it means that the function can accept an arbitrary number of keyword arguments.</p>
+          <p>All keyword arguments passed to the function that are not explicitly defined as named parameters will be
+            collected into a dictionary. The keys of this dictionary will be the names of the keyword arguments, and the
+            values will be their corresponding values.</p>
+        </div>
+      </div>
+
+
+<pre><code>def prelucrarea_datelor(**kwargs):
+    """
+    Procesează datele primite ca argumente de kwargs.
+    """
+    print(f"Date primite: {kwargs}")
+    print(f"Tipul kwargs: {type(kwargs)}")
+
+    if "nume" in kwargs:
+        print(f'Nume: {kwargs["nume"]}')
+    if "varsta" in kwargs:
+        print(f'Vârstă: {kwargs["varsta"]}')
+
+<span># Apelarea funcției cu mai multe argumente keyword</span>
+prelucrarea_datelor(nume="Tatiana", varsta=30, localitate="Craiova")
+
+<span># Apelarea funcției cu argumente keyword  diferite</span>
+prelucrarea_datelor(produs="Laptop", cost=1800, cantitate=2)
+</code></pre>
+
+
+<pre><code><span>Rezultat</span>
+Date primite: {'nume': 'Tatiana', 'varsta': 30, 'localitate': 'Craiova'}
+Tipul kwargs: &lt;class 'dict'&gt;
+Nume: Tatiana
+Vârstă: 30
+Date primite: {'produs': 'Laptop', 'cost': 1800, 'cantitate': 2}
+Tipul kwargs: &lt;class 'dict'&gt;
+</code></pre>
+
+      <div class="grid-container">
+        <p>În acest exemplu, funcția prelucrarea_datelor primește ca argumente keyword nume, varsta și localitate în
+          primul apel, iar produs, cost și cantitate în al doilea apel. Toate aceste argumente sunt introduse automat în
+          dicționarul kwargs din cadrul funcției, permițând accesul la ele prin cheile respective.</p>
+
+        <p>In this example, prelucrarea_datelor receives nume, varsta and loacalitate as keyword arguments in the first
+          call, and produs, cost, and cantitate in the second call. All these arguments are automatically packed into
+          the kwargs dictionary within the function, allowing access to them by their respective keys.</p>
+      </div>
+
+
+<pre><code><span># Lucrul cu kwargs în interiorul funcției</span>
+def bun_venit(**kwargs):
+    <span># Se folosește .get() pentru a oferi o valoare implicită</span>
+    rol = kwargs.get("rol", "oaspete")
+    print(f"Bun venit, utilizator! Rolul tău este: {rol}")
+    
+    <span>Se iterează peste perechile cheie-valoare</span>
+    for cheie, valoare in kwargs.items():
+        print(f"- {cheie}: {valoare}")
+
+bun_venit(nume_utilizator="Vizitator", rol="Oaspete", statut="Inactiv")
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+Bun venit, utilizator! Rolul tău este: Oaspete
+- nume_utilizator: Vizitator
+- rol: Oaspete
+- statut: Inactiv
+</code></pre>
+
+<pre><code><span># Toți parametrii funcției sunt poziționali</span>
+def fructe_standard(mere, pere, prune, caise):
+    <span># Când Python întâlnește {mere}, el caută variabila numită mere în memorie</span>
+    <span>#și o înlocuiește cu valoarea ei reală (de exemplu, 15) și așa mai departe</span>
+    print(f"mere: {mere}, pere: {pere}, prune: {prune}, caise: {caise}")
+
+fructe = {"mere": 15, "pere": 30, "prune": 35, "caise": 25}
+
+<span># Despachetarea dicționarului în argumente cu nume individuale</span>
+fructe_standard(**fructe) <span>==&gt; mere: 15, pere: 30, prune: 35, caise: 25</span>
+</code></pre>
+
+<pre><code><span># Definirea funcției cu un număr dinamic de argumente (folosind **kwargs)</span>
+def afiseaza_fructe(**kwargs):
+    <span># kwargs este acum un dicționar normal care va conține toate fructele transmise</span>
+    for fruct, cantitate in kwargs.items():
+        print(f"{fruct}: {cantitate}")
+
+<span># Dicționar inițial</span>
+fructe_1 = {"mere": 15, "pere": 30, "prune": 35, "caise": 25}
+
+<span># Un alt dicționar, cu fructe diferite</span>
+fructe_2 = {"banane": 6, "portocale": 14, "struguri": 3, "ananas": 3, "gutui": 7}
+
+print("=== Primul set de fructe ===")
+afiseaza_fructe(**fructe_1)
+
+print("\n=== Al doilea set de fructe (dinamic) ===")
+afiseaza_fructe(**fructe_2)
+</code></pre>
+
+<pre><code><span># Rezultate</span>
+=== Primul set de fructe ===
+mere: 15
+pere: 30
+prune: 35
+caise: 25
+
+=== Al doilea set de fructe (dinamic) ===
+portocale: 14
+struguri: 3
+banane: 6
+ananas: 3
+gutui: 7
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="SD">Sortare dicționare - Sort dictionaries</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Conceptul de "sortare" a unui dicționar în Python se referă de obicei la crearea unei noi reprezentări
+            ordonate a conținutului dicționarului, fie pe baza cheilor sale, fie a valorilor sale. Dicționarul original
+            în sine rămâne neschimbat în structura sa internă.</p>
+          <p>Nu se recomandă utilizarea sort() direct într-un dicționar Python, deoarece dicționarele sunt în mod
+            inerent colecții neordonate de perechi cheie-valoare în versiunile anterioare Python 3.7. Deși dicționarele
+            din Python 3.7+ mențin ordinea de inserare, acestea nu sunt concepute pentru sortare în același mod ca
+            listele.</p>
+        </div>
+
+        <div>
+          <p>The concept of "sorting" a dictionary in Python typically refers to creating a new ordered representation
+            of the dictionary's contents, either based on its keys or its values. The original dictionary itself remains
+            unchanged in its internal structure.</p>
+          <p>It is not recommended to use sort() directly on a Python dictionary because dictionaries are inherently
+            unordered collections of key-value pairs in versions prior to Python 3.7. While dictionaries in Python 3.7+
+            maintain insertion order, they are still not designed for sorting in the same way that lists are.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Atunci când se dorește sortarea datelor din dicționar, abordarea recomandată implică următorii pași:</dt>
+          <dd>Recuperarea elementelor: Obținerea elementelor ca o listă de tupluri cheie-valoare folosind metoda
+            .items().</dd>
+          <dd>Sortarea listei: Utilizați funcția sorted() pe această listă de tupluri. Puteți specifica criteriile de
+            sortare (după cheie sau după valoare) folosind argumentul cheie cu o funcție lambda sau
+            operator.itemgetter().</dd>
+          <dd>Construirea unui nou dicționar (opțional): Dacă este necesar un dicționar ordonat, convertiți lista de
+            tupluri ordonate înapoi într-un dicționar folosind constructorul dict(). Aceasta va duce la un nou dicționar
+            în care ordinea elementelor reflectă criteriile de sortare.</dd>
+        </dl>
+
+        <dl>
+          <dt>When sorting is desired for dictionary data, the recommended approach involves the following steps:</dt>
+          <dd>Retrieve items: Obtain the dictionary's items as a list of key-value tuples using the .items() method.
+          </dd>
+          <dd>Sort the list: Use the built-in sorted() function on this list of tuples. You can specify the sorting
+            criteria (by key or by value) using the key argument with a lambda function or operator.itemgetter().</dd>
+          <dd>Construct a new dictionary (optional): If an ordered dictionary is required, convert the sorted list of
+            tuples back into a dictionary using the dict() constructor. This will result in a new dictionary where the
+            order of elements reflects the sorting criteria.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <p>Numărul de "posibilități de sortare" a unui dicționar se referă la diferitele modalități prin care puteți
+            obține o reprezentare ordonată a conținutului său. Aceste posibilități includ:</p>
+          <dl>
+            <dt>Sortarea după chei:</dt>
+            <dd>sorted(dict.keys()) pentru a obține o listă sortată de chei.</dd>
+            <dd>Utilizarea sorted(dict.items()) și apoi convertirea listei sortate rezultate de tupluri cheie-valoare
+              înapoi într-un dicționar folosind dict(). Aceasta sortează implicit pe baza cheilor.</dd>
+            <dt>Sortarea după valori:</dt>
+            <dd>sorted(), dict.items(), key=lambda x: x[1] pentru a sorta perechile cheie-valoare pe baza valorilor lor.
+            </dd>
+            <dt>Sortarea cu criterii personalizate:</dt>
+            <dd>Utilizarea argumentului cheie din sorted() cu o funcție personalizată (de exemplu, o funcție lambda)
+              pentru a defini o logică de sortare mai complexă, cum ar fi sortarea după criterii multiple sau utilizarea
+              unei transformări specifice a cheilor sau valorilor.</dd>
+          </dl>
+          <p>În esență, deși dicționarul în sine nu este sortat direct, numărul de "posibilități" constă în diferitele
+            criterii și metode pe care le puteți utiliza pentru a genera o vizualizare sau o reprezentare sortată a
+            datelor sale.</p>
+        </div>
+
+        <div>
+          <p>Number of "possibilities to sort" a dictionary refers to the various ways you can obtain a sorted
+            representation of its contents. These possibilities include:</p>
+          <dl>
+            <dt>Sorting by Keys:</dt>
+            <dd>Using sorted(dict.keys()) to get a sorted list of keys.</dd>
+            <dd>Using sorted(dict.items()) and then converting the resulting sorted list of key-value tuples back to a
+              dictionary using dict(). This sorts based on keys by default.</dd>
+            <dt>Sorting by Values:</dt>
+            <dd>Using sorted(), dict.items(), key=lambda x: x[1] to sort the key-value pairs based on their values.</dd>
+            <dt>Sorting with Custom Criteria:</dt>
+            <dd>Using the key argument in sorted() with a custom function (e.g., a lambda function) to define more
+              complex sorting logic, such as sorting by multiple criteria or using a specific transformation of the keys
+              or values.</dd>
+          </dl>
+          <p>In essence, while the dictionary itself isn't directly sorted, the number of "possibilities" lies in the
+            different criteria and methods you can employ to generate a sorted view or representation of its data.
+          </p>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="SDA">Sortează o listă de dicționare - Sort a list of dictionaries</h3>
+
+      <div class="grid-container">
+        <p>Pentru a sorta o listă de dicționare în Python, se utilizează în mod obișnuit funcția sorted() și metoda
+          .sort(), adesea în conjuncție cu o funcție lambda sau cu operator.itemgetter().</p>
+
+        <p>To sort a list of dictionaries in Python, the sorted() function and .sort() method are commonly used, often
+          in conjunction with a lambda function or operator.itemgetter().</p>
+      </div>
+
+      <div class="grid-container">
+        <p>sorted() cu o funcție lambda: Această metodă permite sortarea pe baza unei chei specifice din fiecare
+          dicționar.</p>
+
+        <p>sorted() with a lambda function: This method allows sorting based on a specific key within each dictionary.
+        </p>
+      </div>
+
+<pre><code><span># Sortare după o singură cheie (creează o listă nouă)</span>
+prieteni = [
+    {"nume": "Virgil", "varsta": 65, "localitatea": "Turnu Severin"},
+    {"nume": "Tatiana", "varsta": 60, "localitatea": "Herculane"},
+    {"nume": "Sever", "varsta": 70, "localitatea": "Lugoj"}
+]
+
+<span># Sortează după varsta în ordine crescătoare</span>
+sortat_dupa_varsta = sorted(prieteni, key=lambda p: p["varsta"])
+print(f"Sortat după vârstă:\n {sortat_dupa_varsta}")
+
+<span># Sortează după nume în ordine descrescătoare</span>
+sortat_dupa_nume_desc = sorted(prieteni, key=lambda p: p["nume"], reverse=True)
+print(f"\nSortate după nume:\n (descrescător) {sortat_dupa_nume_desc}")
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+Sortat după varsta:
+ [{'nume': 'Tatiana', 'varsta': 60, 'localitatea': 'Herculane'}, {'nume': 'Virgil', 'varsta': 65, 'localitatea': 'Turnu Severin'}, {'nume': 'Sever', 'varsta': 70, 'localitatea': 'Lugoj'}]
+
+Sortate după nume:
+ (descrescător) [{'nume': 'Virgil', 'varsta': 65, 'localitatea': 'Turnu Severin'}, {'nume': 'Tatiana', 'varsta': 60, 'localitatea': 'Herculane'}, {'nume': 'Sever', 'varsta': 70, 'localitatea': 'Lugoj'}]
+</code></pre>
+
+<pre><code><span># Sortare după mai multe criterii</span>
+prieteni = [
+    {"nume": "Virgil", "varsta": 65, "localitatea": "Turnu Severin"},
+    {"nume": "Tatiana", "varsta": 60, "localitatea": "Herculane"},
+    {"nume": "Sever", "varsta": 70, "localitatea": "Lugoj"},
+    {"nume": "Menta", "varsta": 70, "localitatea": "Cerneti"}
+]
+
+<span># Sortează după mai multe chei (de exemplu, localitatea apoi varsta)</span>
+sortat_chei_multiple = sorted(prieteni, key=lambda p: (p["localitatea"], p["varsta"]))
+print(f"Sortat după vârstă:\n {sortat_chei_multiple}")
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+Sortat după localitatea, apoi după varsta:
+ [{'nume': 'Menta', 'varsta': 70, 'localitatea': 'Cerneti'}, {'nume': 'Tatiana', 'varsta': 60, 'localitatea': 'Herculane'}, {'nume': 'Sever', 'varsta': 70, 'localitatea': 'Lugoj'}, {'nume': 'Virgil', 'varsta': 65, 'localitatea': 'Turnu Severin'}]
+</code></pre>
+
+
+      <div class="grid-container">
+        <div>
+          <p>Pentru a sorta o listă de dicționare în Python folosind metoda sort(), trebuie să specificați un argument
+            cheie care să îi spună lui Python cum să extragă o valoare comparabilă din fiecare dicționar pentru sortare.
+          </p>
+          <p>funcția lambda: Aceasta este o modalitate comună și concisă de a defini cheia de sortare. Funcția lambda
+            primește un dicționar ca intrare și returnează valoarea cheii specifice după care doriți să sortați.</p>
+        </div>
+
+        <div>
+          <p>To sort a list of dictionaries in Python using the sort() method, you need to specify a key argument that
+            tells Python how to extract a comparable value from each dictionary for sorting.</p>
+          <p>lambda function: This is a common and concise way to define the sorting key. The lambda function takes a
+            dictionary as input and returns the value of the specific key you want to sort by.</p>
+        </div>
+      </div>
+
+<pre><code><span># Sortare pe loc (modifică lista originală)</span>
+prieteni = [
+    {"nume": "Virgil", "varsta": 65, "localitatea": "Navodari"},
+    {"nume": "Tatiana", "varsta": 60, "localitatea": "Lipova"},
+    {"nume": "Sever", "varsta": 70, "localitatea": "Harsova"}
+]
+
+<span># Sortează după varsta în ordine crescătoare</span>
+prieteni.sort(key=lambda p: p["nume"])
+print(prieteni)
+
+<span># Sortează după nume în ordine descrescătoare</span>
+prieteni.sort(key=lambda p: p["nume"], reverse=True)
+print("\n", prieteni)
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+[{'nume': 'Tatiana', 'varsta': 60, 'localitatea': 'Lipova'}, {'nume': 'Virgil', 'varsta': 65, 'localitatea': 'Navodari'}, {'nume': 'Sever', 'varsta': 70, 'localitatea': 'Harsova'}]
+
+ [{'nume': 'Virgil', 'varsta': 65, 'localitatea': 'Navodari'}, {'nume': 'Tatiana', 'varsta': 60, 'localitatea': 'Lipova'}, {'nume': 'Sever', 'varsta': 70, 'localitatea': 'Harsova'}]
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>prieteni.sort(): Aceasta este metoda de sortare pe loc pentru liste. Modifică direct lista.</p>
+          <p>key=...: Specifică o funcție care va fi apelată pe fiecare element al listei pentru a obține o cheie de
+            comparație.</p>
+          <p>lambda p: p["nume"]: Aceasta creează o funcție anonimă care preia un element (care este un dicționar în
+            acest caz) și returnează valoarea asociată cu nume.</p>
+          <p>reverse=True: This optional argument sorts the list in descending order. By default, reverse is False,
+            resulting in ascending order.</p>
+        </div>
+
+        <div>
+          <p>prieteni.sort(): This is the in-place sorting method for lists. It modifies the list directly.</p>
+          <p>key=...: This argument specifies a function that will be called on each element of the list to get a
+            comparison key.</p>
+          <p>lambda p: p["nume"]: This creates an anonymous function that takes an item (which is a dictionary in this
+            case) and returns the value associated with nume.</p>
+          <p>reverse=True: This optional argument sorts the list in descending order. By default, reverse is False,
+            resulting in ascending order.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <p>operator.itemgetter: Pentru mai multă eficiență și lizibilitate, în special la sortarea după o singură cheie,
+          puteți utiliza itemgetter din modulul operator.</p>
+
+        <p>operator.itemgetter: For more efficiency and readability, especially when sorting by a single key, you can
+          use itemgetter from the operator module.</p>
+      </div>
+
+<pre><code><span># Performanță mai rapidă</span>
+from operator import itemgetter
+
+prieteni = [
+    {"nume": "Virgil", "varsta": 65, "localitate": "Navodari"},
+    {"nume": "Tatiana", "varsta": 60, "localitate": "Lipova"},
+    {"nume": "Sever", "varsta": 70, "localitate": "Ploiesti"}
+]
+
+<span># Sortează după varsta în ordine crescătoare</span>
+prieteni.sort(key=itemgetter("varsta"))
+print(prieteni)
+
+<span># Sortează după nume în ordine descrescătoare</span>
+prieteni.sort(key=itemgetter("nume"), reverse=True)
+print("\n",prieteni)
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+[{'nume': 'Tatiana', 'varsta': 60, 'localitate': 'Lipova'}, {'nume': 'Virgil', 'varsta': 65, 'localitate': 'Navodari'}, {'nume': 'Sever', 'varsta': 70, 'localitate': 'Ploiesti'}]
+
+ [{'nume': 'Virgil', 'varsta': 65, 'localitate': 'Navodari'}, {'nume': 'Tatiana', 'varsta': 60, 'localitate': 'Lipova'}, {'nume': 'Sever', 'varsta': 70, 'localitate': 'Ploiesti'}]
+</code></pre>
+
+
+<pre><code><span># Sortare după mai multe criterii cu itemgetter</span>
+from operator import itemgetter
+
+prieteni = [
+    {"nume": "Virgil", "varsta": 65, "localitate": "Turnu Severin"},
+    {"nume": "Tatiana", "varsta": 60, "localitate": "Herculane"},
+    {"nume": "Sever", "varsta": 70, "localitate": "Lugoj"},
+    {"nume": "Menta", "varsta": 70, "localitate": "Cerneti"}
+]
+
+<span># Sortează după mai multe chei (de exemplu, localitate apoi varsta)</span>
+sortat_chei_multiple = sorted(prieteni, key=itemgetter("localitate", "varsta"))
+print(f"\nSortat după localitate, apoi după varsta:\n {sortat_chei_multiple}")
+</code></pre>
+
+<pre><code><span># Rezultate</span>
+Sortat după localitate, apoi după varsta:
+ [{'nume': 'Menta', 'varsta': 70, 'localitate': 'Cerneti'}, {'nume': 'Tatiana', 'varsta': 60, 'localitate': 'Herculane'}, {'nume': 'Sever', 'varsta': 70, 'localitate': 'Lugoj'}, {'nume': 'Virgil', 'varsta': 65, 'localitate': 'Turnu Severin'}]
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Puncte cheie:</dt>
+          <dd>sorted() vs. list.sort(): Funcția sorted() returnează o nouă listă sortată, lăsând lista originală
+            neschimbată. Metoda list.sort() sortează lista la locul ei și returnează None.</dd>
+          <dd>argument cheie: Specifică o funcție care trebuie apelată pentru fiecare element înainte de a face
+            comparații.</dd>
+          <dd>argument reverse: Setează reverse=True pentru ordine descendentă.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Points:</dt>
+          <dd>sorted() vs. list.sort(): The sorted() function returns a new sorted list, leaving the original list
+            unchanged. The list.sort() method sorts the list in place and returns None.</dd>
+          <dd>key argument: This argument specifies a function to be called on each element prior to making comparisons.
+          </dd>
+          <dd>reverse argument: Set reverse=True for descending order.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="SDB">Sortarea dicționarului imbricat - Sorting the nested dictionary</h3>
+
+      <div class="grid-container">
+        <p>Sortarea unui dicționar imbricat în Python implică de obicei utilizarea funcției sorted() sau a metodei
+          .sort() cu un argument cheie personalizat, adesea o funcție lambda, pentru a specifica criteriile de sortare.
+        </p>
+
+        <p>Sorting a nested dictionary in Python typically involves using the sorted() function or the .sort() method
+          with a custom key argument, often a lambda function, to specify the sorting criteria.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Sortarea după cheile dicționarului extern:</dt>
+          <dd>Pentru a sorta dicționarul extern după cheile sale, puteți utiliza sorted() pe dict.items() imbricate și
+            apoi converti rezultatul înapoi într-un dicționar, dacă doriți.</dd>
+        </dl>
+
+        <dl>
+          <dt>Sorting by Keys of the Outer Dictionary:</dt>
+          <dd>To sort the outer dictionary by its keys, you can use sorted() on nested dict.items() and then convert the
+            result back to a dictionary if desired.</dd>
+        </dl>
+      </div>
+
+
+<pre><code>stoc_fructe = {
+    "smochine": {"cantitate": 35, "cost": 1.7},
+    "caise": {"cantitate": 10, "cost": 2.40},
+    "pere": {"cantitate": 25, "cost": 1.5},
+    "prune": {"cantitate": 15, "cost": 2.12},
+    "mere": {"cantitate": 50, "cost": 1.69},   
+}
+sortat_cheia_exterioara = dict(sorted(stoc_fructe.items()))
+print(f"Sortat după cheia exterioară:\n{sortat_cheia_exterioara}")
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+<span>Sortat după cheia exterioară:</span>
+{'caise': {'cantitate': 10, 'cost': 2.4}, 'mere': {'cantitate': 50, 'cost': 1.69}, 'pere': {'cantitate': 25, 'cost': 1.5}, 'prune': {'cantitate': 15, 'cost': 2.12}, 'smochine': {'cantitate': 35, 'cost': 1.7}}
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Sortarea după valori în dicționarele interne:</dt>
+          <dd>Pentru a sorta dicționarul extern pe baza unei valori specifice din dicționarele sale imbricate, puteți
+            furniza o funcție lambda argumentului cheie al metodei sorted() care extrage acea valoare.</dd>
+        </dl>
+
+        <dl>
+          <dt>Sorting by Values within the Inner Dictionaries:</dt>
+          <dd>To sort the outer dictionary based on a specific value within its nested dictionaries, you can provide a
+            lambda function to the key argument of sorted() that extracts that value.</dd>
+        </dl>
+      </div>
+
+<pre><code>id_fructe = {
+    "id4": {"nume": "pere", "cantitate": 25, "cost": 1.5, "culori": {"galben": 2, "verde": 5}},
+    "id1": {"nume": "caise", "cantitate": 10, "cost": 2.40, "culori": {"roz": 4, "portocaliu": 2}},
+    "id3": {"nume": "mere", "cantitate": 50, "cost": 1.69, "culori": {'verde': 5, 'rosu': 1}},
+    "id5": {"nume": "smochine", "cantitate": 35, "cost": 1.7, "culori": {'neagru': 9, 'maron': 8}},
+    "id2": {"nume": "prune", "cantitate": 15, "cost": 2.12, "culori": {'indigo': 1, "galben": 2}}
+}
+
+<span># Creați un tabel doar pentru afișarea vizualizării</span>
+import pandas as pd
+df = pd.DataFrame(id_fructe)
+df.T
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+ 	nume 	 cantitate cost  culori
+id4 	pere 	 25 	   1.5 	 {'galben': 2, 'verde': 5}
+id1 	caise 	 10 	   2.4 	 {'roz': 4, 'portocaliu': 2}
+id3 	mere 	 50 	   1.69  {'verde': 5, 'rosu': 1}
+id5 	smochine 35 	   1.7 	 {'neagru': 9, 'maron': 8}
+id2 	prune 	 15 	   2.12  {'indigo': 1, 'galben': 2}
+</code></pre>
+
+<pre><code>
+<span># date sortate după cheia dicționarului (id)</span>
+print(sorted(id_fructe.items()))
+
+<span>==&gt; [('id1', {'nume': 'caise', 'cantitate': 10, 'cost': 2.4, 'culori': {'roz': 4, 'portocaliu': 2}}), ('id2', {'nume': 'prune', 'cantitate': 15, 'cost': 2.12, 'culori': {'indigo': 1, 'galben': 2}}), ('id3', {'nume': 'mere', 'cantitate': 50, 'cost': 1.69, 'culori': {'verde': 5, 'rosu': 1}}), ('id4', {'nume': 'pere', 'cantitate': 25, 'cost': 1.5, 'culori': {'galben': 2, 'verde': 5}}), ('id5', {'nume': 'smochine', 'cantitate': 35, 'cost': 1.7, 'culori': {'neagru': 9, 'maron': 8}})]</span>
+</code></pre>
+
+<pre><code><span># Sortat după preț în ordine crescătoare</span>
+sortat_dupa_valoare_interna = dict(sorted(id_fructe.items(), key=lambda fruct: fruct[1]["cost"]))
+print(f"Sortat după preț în ordine crescătoare:\n{sortat_dupa_valoare_interna}")
+
+<span># Sortat după preț în ordine descrescătoare</span>
+sortat_dupa_valoare_interna_descendent = dict(sorted(id_fructe.items(), key=lambda articol: articol[1]["cost"], reverse=True))
+print(f"\nSortat după preț în ordine descrescătoare:\n{sortat_dupa_valoare_interna_descendent}")
+</code></pre>
+
+<pre><code><span># Rezultate</span>
+<span>Sortat după preț în ordine crescătoare:</span>
+{'id4': {'nume': 'pere', 'cantitate': 25, 'cost': 1.5, 'culori': {'galben': 2, 'verde': 5}}, 'id3': {'nume': 'mere', 'cantitate': 50, 'cost': 1.69, 'culori': {'verde': 5, 'rosu': 1}}, 'id5': {'nume': 'smochine', 'cantitate': 35, 'cost': 1.7, 'culori': {'neagru': 9, 'maron': 8}}, 'id2': {'nume': 'prune', 'cantitate': 15, 'cost': 2.12, 'culori': {'indigo': 1, 'galben': 2}}, 'id1': {'nume': 'caise', 'cantitate': 10, 'cost': 2.4, 'culori': {'roz': 4, 'portocaliu': 2}}}
+
+<span>Sortat după preț în ordine descrescătoare:</span>
+{'id1': {'nume': 'caise', 'cantitate': 10, 'cost': 2.4, 'culori': {'roz': 4, 'portocaliu': 2}}, 'id2': {'nume': 'prune', 'cantitate': 15, 'cost': 2.12, 'culori': {'indigo': 1, 'galben': 2}}, 'id5': {'nume': 'smochine', 'cantitate': 35, 'cost': 1.7, 'culori': {'neagru': 9, 'maron': 8}}, 'id3': {'nume': 'mere', 'cantitate': 50, 'cost': 1.69, 'culori': {'verde': 5, 'rosu': 1}}, 'id4': {'nume': 'pere', 'cantitate': 25, 'cost': 1.5, 'culori': {'galben': 2, 'verde': 5}}}
+</code></pre>
+
+
+<pre><code>def culori_relevante(id_fructe):
+    culori = id_fructe[1]["culori"]
+    return culori.get("galben", 0) + culori.get("rosu", 0)
+
+print(sorted(id_fructe.items(), key=culori_relevante, reverse=True))
+</code></pre>
+
+      <div class="grid-container">
+        <ul>
+          <li>Această funcție primește un element din dicționar și calculează un "scor" pentru sortare.</li>
+          <li>id_fructe[1] – Codul accesează al doilea element (indexul 1) din structura primită ca argument. Acesta
+            trebuie să fie un dicționar.</li>
+          <li>["culori"] – Din acel dicționar, se extrage valoarea cheii "culori". Această valoare este, la rândul ei,
+            un alt dicționar care conține culori și numere (de exemplu, cantități).</li>
+          <li>.get("galben", 0) – Metoda .get() caută cheia "galben" în dicționarul de culori. Dacă o găsește,
+            returnează valoarea ei. Dacă nu există, returnează valoarea implicită 0 (astfel se evită o eroare de tipul
+            KeyError).</li>
+          <li>+ culori.get("rosu", 0) – Face exact același lucru pentru cheia "rosu", iar cele două valori sunt adunate
+            și returnate ca rezultat final.</li>
+
+          <li>scorurile calculate pentru fiecare fruct sunt:</li>
+
+          <li>id4 (pere): galben (2) + roșu (0) = 2</li>
+          <li>id2 (prune): galben (2) + roșu (0) = 2</li>
+          <li>id3 (mere): galben (0) + roșu (1) = 1</li>
+          <li>id1 (caise): galben (0) + roșu (0) = 0</li>
+          <li>id5 (smochine): galben (0) + roșu (0) = 0</li>
+          <li>id4 și id2 au ambele scorul 2, așa că își păstrează ordinea inițială din dicționar.</li>
+        </ul>
+
+        <ul>
+          <li>This function takes a dictionary element and calculates a "score" for sorting.</li>
+          <li>id_fructe[1] – The code accesses the second element (index 1) of the structure passed as an argument. This
+            element must be a dictionary.</li>
+          <li>["culori"] – From that dictionary, the value associated with the key "culori" is extracted. This value is
+            itself another dictionary containing colors and numbers (e.g., quantities).</li>
+          <li>.get("galben", 0) – The .get() method looks for the key "galben" in the colors dictionary. If found, it
+            returns the corresponding value. If the key does not exist, it returns the default value of 0 (thereby
+            avoiding a KeyError).</li>
+          <li>+ culori.get("rosu", 0) – Performs the exact same operation for the key "rosu"; the two values ​​are then
+            added together and returned as the final result.</li>
+
+          <li>The scores calculated for each fruit are:</li>
+
+          <li>id4 (pere): galben (2) + roșu (0) = 2</li>
+          <li>id2 (prune): galben (2) + roșu (0) = 2</li>
+          <li>id3 (mere): galben (0) + roșu (1) = 1</li>
+          <li>id1 (caise): galben (0) + roșu (0) = 0</li>
+          <li>id5 (smochine): galben (0) + roșu (0) = 0</li>
+          <li>id4 and id2 both have a score of 2, so they retain their original order from the dictionary.</li>
+        </ul>
+      </div>
+
+<pre><code><span># Rezultat</span>
+[('id4', {'nume': 'pere', 'cantitate': 25, 'cost': 1.5, 'culori': {'galben': 2, 'verde': 5}}), ('id2', {'nume': 'prune', 'cantitate': 15, 'cost': 2.12, 'culori': {'indigo': 1, 'galben': 2}}), ('id3', {'nume': 'mere', 'cantitate': 50, 'cost': 1.69, 'culori': {'verde': 5, 'rosu': 1}}), ('id1', {'nume': 'caise', 'cantitate': 10, 'cost': 2.4, 'culori': {'roz': 4, 'portocaliu': 2}}), ('id5', {'nume': 'smochine', 'cantitate': 35, 'cost': 1.7, 'culori': {'neagru': 9, 'maron': 8}})]
+</code></pre>
+
+
+<pre><code><span># date sortate după key=lambda x: x(....)</span>
+print(sorted(id_fructe.items(), key=lambda fruct: (fruct[1]["culori"].get("galben", 0) + fruct[1].get("roşu", 0)),reverse=True))
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+[('id4', {'nume': 'pere', 'cantitate': 25, 'cost': 1.5, 'culori': {'galben': 2, 'verde': 5}}), ('id2', {'nume': 'prune', 'cantitate': 15, 'cost': 2.12, 'culori': {'indigo': 1, 'galben': 2}}), ('id1', {'nume': 'caise', 'cantitate': 10, 'cost': 2.4, 'culori': {'roz': 4, 'portocaliu': 2}}), ('id3', {'nume': 'mere', 'cantitate': 50, 'cost': 1.69, 'culori': {'verde': 5, 'rosu': 1}}), ('id5', {'nume': 'smochine', 'cantitate': 35, 'cost': 1.7, 'culori': {'neagru': 9, 'maron': 8}})]
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Sortarea dicționarelor imbricate într-o listă:</dt>
+          <dd>Dacă aveți o listă de dicționare imbricate și doriți să sortați lista pe baza unei valori din cadrul
+            dicționarelor imbricate respective, puteți utiliza metoda .sort() a listei sau funcția sorted().</dd>
+        </dl>
+
+        <dl>
+          <dt>Sorting Nested Dictionaries within a List:</dt>
+          <dd>If you have a list of nested dictionaries and want to sort the list based on a value within those nested
+            dictionaries, you can use the .sort() method of the list or the sorted() function.</dd>
+        </dl>
+      </div>
+
+<pre><code>ids = [
+    {"id": 1, "detalii": {"nume": "Doru", "varsta": 70}},
+    {"id": 2, "detalii": {"nume": "Nonu", "varsta": 75}},
+    {"id": 3, "detalii": {"nume": "Ion", "varsta": 65}}
+]
+
+<span># Sortează lista după vârstă în ordine crescătoare</span>
+ids.sort(key=lambda articol: articol["detalii"]["varsta"])
+print(ids)
+<span>==&gt; [{'id': 3, 'detalii': {'nume': 'Ion', 'varsta': 65}}, {'id': 1, 'detalii': {'nume': 'Doru', 'varsta': 70}}, {'id': 2, 'detalii': {'nume': 'Nonu', 'varsta': 75}}]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Note importante:</dt>
+          <dd>Dicționarele din versiunile 3.7+ de Python mențin ordinea de inserare. Cu toate acestea, la sortare,
+            creați practic o nouă secvență ordonată (cum ar fi o listă de tupluri) și apoi o convertiți potențial înapoi
+            într-un dicționar, care va menține apoi acea ordine specifică de inserare.</dd>
+          <dd>Argumentul cheie din sorted() sau .sort() așteaptă o funcție care primește un argument (un element din
+            iterabilul sortat) și returnează o valoare care să fie utilizată pentru comparație. Funcțiile lambda sunt
+            utilizate în mod obișnuit în acest scop datorită conciziei lor.</dd>
+        </dl>
+
+        <dl>
+          <dt>Important Notes:</dt>
+          <dd>Dictionaries in Python versions 3.7+ maintain insertion order. However, when sorting, you are essentially
+            creating a new ordered sequence (like a list of tuples) and then potentially converting it back to a
+            dictionary, which will then maintain that specific insertion order.</dd>
+          <dd>The key argument in sorted() or .sort() expects a function that takes one argument (an element from the
+            iterable being sorted) and returns a value to be used for comparison. lambda functions are commonly used for
+            this purpose due to their conciseness.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="SDC">Conversia înapoi într-un dicționar - Converting back to a dictionary</h3>
+
+      <div class="grid-container">
+        <div>
+          <p>Conversia datelor înapoi într-un dicționar în Python depinde de formatul original al datelor.
+            Comportamentul implicit al funcției sorted() este returnarea unei liste sortată.</p>
+          <p>Începând cu Python 3.7+, dicționarele standard garantează și păstrează ordinea inserării. Atunci când
+            transmiți o listă sortată de tupluri (cheie, valoare) către dict(), dicționarul rezultat rămâne perfect
+            sortat.</p>
+        </div>
+
+        <div>
+          <p>Converting data back into a dictionary in Python depends on the original format of the data. The default
+            behavior of sorted() is that it returns a sorted list.</p>
+          <p>Since Python 3.7+, standard dictionaries guarantee and preserve insertion order. When you pass a sorted
+            list of key-value tuples back into dict(), the final dictionary remains perfectly sorted.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Dintr-o listă de tupluri (perechi cheie-valoare):</dt>
+          <dd>Dacă aveți o listă în care fiecare element este un tuplu care reprezintă o pereche cheie-valoare, puteți
+            utiliza direct constructorul dict().</dd>
+        </dl>
+
+        <dl>
+          <dt>From a List of Tuples (Key-Value Pairs):</dt>
+          <dd>If you have a list where each element is a tuple representing a key-value pair, you can directly use the
+            dict() constructor.</dd>
+        </dl>
+      </div>
+
+<pre><code>persoana = [("nume", "Cristina"), ("varsta", 50), ("localitate", "Severin")]
+persoana_dict = dict(persoana)
+print(persoana_dict) <span>==&gt; {'nume': 'Cristina', 'varsta': 50, 'localitate': 'Severin'}</span>
+</code></pre>
+
+<pre><code><span># Sortare după valori</span>
+fructe = {"mere": 15, "pere": 30, "prune": 35, "caise": 25}
+cantitate_sortat = [('mere', 15), ('caise', 25), ('pere', 30), ('prune', 35)]
+print(dict(cantitate_sortat)) <span>==&gt; {'mere': 15, 'caise': 25, 'pere': 30, 'prune': 35}</span>
+</code></pre>
+
+<pre><code><span># Comprehension (înţelegere)</span>
+fructe = {"mere": 15, "pere": 30, "prune": 35, "caise": 25}
+fructe_sortate = {fruct: cantitate for fruct, cantitate in sorted(fructe.items(), key=lambda pereche: pereche[1])}
+print(fructe_sortate) <span>==&gt; {'mere': 15, 'caise': 25, 'pere': 30, 'prune': 35}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Din două liste separate (chei și valori):</dt>
+          <dd>Având o listă de chei și o altă listă de valori, funcția zip() le combină în perechi, iar rezultatul este
+            apoi transmis funcției dict().</dd>
+        </dl>
+
+        <dl>
+          <dt>From Two Separate Lists (Keys and Values):</dt>
+          <dd>Given a list of keys and another of values, the zip() function pairs them up, and the result is then
+            passed to dict().</dd>
+        </dl>
+      </div>
+
+<pre><code>fructe = ["mere", "pere", "prune", "caise", "smochine"]
+cantitate = [50, 25, 15, 40, 35]
+
+fructe_cantitate = dict(zip(fructe, cantitate))
+print(fructe_cantitate)
+<span>==&gt; {'mere': 50, 'pere': 25, 'prune': 15, 'caise': 40, 'smochine': 35}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Dintr-un șir JSON:</dt>
+          <dd>Dacă datele sunt într-un format de șir JSON, puteți utiliza funcția json.loads() pentru a le analiza
+            într-un dicționar Python.</dd>
+        </dl>
+
+        <dl>
+          <dt>From a JSON String:</dt>
+          <dd>If your data is in a JSON string format, you can use the json.loads() function to parse it into a Python
+            dictionary.</dd>
+        </dl>
+      </div>
+
+<pre><code>import json
+
+json_info = '{"produs": "laptop", "cost": 985, "disponibil": "da"}'
+produs_info = json.loads(json_info)
+print(produs_info, "/", type(produs_info)) 
+<span>==&gt; {'produs': 'laptop', 'cost': 985, 'disponibil': 'da'} / &lt;class 'dict'&gt;</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Dintr-o reprezentare de tip șir de caractere (se recomandă prudență):</dt>
+          <dd>Dacă aveți un șir de caractere care arată ca un dicționar (de exemplu, '{"a": 1, "b": 2}'), puteți utiliza
+            ast.literal_eval() pentru o evaluare sigură sau eval() (utilizați eval() cu extremă precauție, deoarece
+            poate executa cod arbitrar).</dd>
+        </dl>
+
+        <dl>
+          <dt>From a String Representation (Caution Advised):</dt>
+          <dd>If you have a string that looks like a dictionary (e.g., '{"a": 1, "b": 2}'), you can use
+            ast.literal_eval() for safe evaluation, or eval() (use eval() with extreme caution as it can execute
+            arbitrary code).</dd>
+        </dl>
+      </div>
+
+<pre><code>import ast
+
+articol_valoare = '{"articol1": "valoare1", "articol2": "valoare2"}'
+dict_nou = ast.literal_eval(articol_valoare)
+print(dict_nou, "/", type(dict_nou))
+<span>==&gt; {'articol1': 'valoare1', 'articol2': 'valoare2'} / &lt;class 'dict'&gt;</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Iterează peste rezultat cu o buclă for și populează un dicționar la fiecare iterație convertind înapoi
+          într-un dicționar.</p>
+
+        <p>Iterate over the result with a for loop and populate a dictionary on each iteration converting back into a
+          dictionary.</p>
+      </div>
+
+<pre><code>persoane = {"Carol": 3, "Costel": 2, "Cristi": 1, "Corina": 4}
+
+<span># sortate după chei</span>
+print(f"Listă de tupluri {sorted(persoane.items())}")
+
+<span># sortate după cheie=lambda x: x(...)</span>
+persoane_sortate = sorted(persoane.items(), key=lambda persoană: persoană[1])
+print()
+print(f"Listă sortată de tupluri după al doilea element:\n{persoane_sortate}")
+
+<span># conversie înapoi în dicționar</span>
+dict_persoane_sortate = {}
+for cheie, valoare in persoane_sortate:
+    dict_persoane_sortate[cheie] = valoare
+    
+print(f"\nListă sortată de tupluri după al doilea element convertită înapoi în dicționar\n{dict_persoane_sortate}")
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+Listă de tupluri [('Carol', 3), ('Corina', 4), ('Costel', 2), ('Cristi', 1)]
+
+Listă sortată de tupluri după al doilea element:
+[('Cristi', 1), ('Costel', 2), ('Carol', 3), ('Corina', 4)]
+
+Listă sortată de tupluri după al doilea element convertită înapoi în dicționar
+{'Cristi': 1, 'Costel': 2, 'Carol': 3, 'Corina': 4}
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="TG">Parcurgerea unui dicționar în ordine inversă - Traversing a Dictionary in Reverse Order</h2>
+
+      <div class="grid-container">
+        <p>Parcurgerea unui dicționar în ordine inversă în Python se referă de obicei la iterarea prin cheile sau
+          elementele sale în ordine inversă față de ordinea lor de inserare (pentru Python 3.7+ dicționarele mențin
+          ordinea de inserare) sau în ordine inversă celei sortate, dacă se dorește o anumită ordine.</p>
+
+        <p>Traversing a dictionary in reverse order in Python typically refers to iterating through its keys or items in
+          reverse of their insertion order (for Python 3.7+ where dictionaries maintain insertion order) or in reverse
+          of a sorted order if a specific order is desired.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Traversare în ordine inversă față de ordinea de inserare:</dt>
+          <dd>Pentru dicționarele din Python 3.7 și versiunile ulterioare, funcția reversed() poate fi utilizată
+            împreună cu dict.keys(), dict.values() sau dict.items() a itera în ordine inversă față de cea în care au
+            fost adăugate elementele.</dd>
+        </dl>
+
+        <dl>
+          <dt>Traversing in reverse of insertion order:</dt>
+          <dd>For dictionaries in Python 3.7 and later, the reversed() function can be used with dict.keys(),
+            dict.values(), or dict.items() to iterate in reverse of the order in which elements were added.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+  <pre><code>fructe_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+print("Ordinea inversă a cheilor:")
+for fruct in reversed(fructe_cost.keys()):
+    print(fruct, end=", ")
+</code></pre>
+
+  <pre><code>
+<span># Rezultat</span>
+<span>Ordinea inversă a cheilor:</span>
+smochine, pere, mere, prune, caise,
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+  <pre><code>fructe_cost = {"pere": 1.50, "mere": 1.69, "caise": 2.40, "prune": 2.12, "smochine": 1.70}
+
+print("\nOrdinea inversă a fructelor:")
+for cheie, valoare in reversed(fructe_cost.items()):
+    print(f"{cheie} -&gt; {valoare}")
+</code></pre>
+
+  <pre><code>
+<span># Rezultat</span>
+<span># Ordinea inversă a fructelor:</span>
+smochine -&gt; 1.7
+prune -&gt; 2.12
+caise -&gt; 2.4
+mere -&gt; 1.69
+pere -&gt; 1.5
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Parcurgerea în ordine inversă față de o ordine sortată:</dt>
+          <dd>Dacă ordinea inversă dorită se bazează pe un criteriu de sortare specific (de exemplu, ordinea alfabetică
+            inversă a cheilor sau ordinea numerică inversă a valorilor), atunci sortarea este necesară înainte de
+            inversare.</dd>
+        </dl>
+
+        <dl>
+          <dt>Traversing in reverse of a sorted order:</dt>
+          <dd>If the desired reverse order is based on a specific sorting criterion (e.g., reverse alphabetical order of
+            keys or reverse numerical order of values), then sorting is required before reversing.</dd>
+        </dl>
+      </div>
+
+<pre><code>fructe_cost = {"pere": 1.50, "caise": 2.40, "mere": 1.69, "prune": 2.12, "smochine": 1.70}
+
+<span># Ordinea alfabetică inversă a cheilor</span>
+print("Ordinea alfabetică inversă a cheilor")
+for fruct in sorted(fructe_cost.keys(), reverse=True):
+    print(fruct, end=", ")
+
+<span>==&gt; Ordinea alfabetică inversă a cheilor</span>
+<span>==&gt; smochine, prune, pere, mere, caise, </span>
+</code></pre>
+
+      <div class="grid-container">
+  <pre><code>fructe_cost = {"pere": 1.50, "caise": 2.40, "mere": 1.69, "prune": 2.12, "smochine": 1.70}
+<span># Inversează ordinea numerică a valorilor (și apoi după cheie pentru egalități)</span>
+print("\nOrdinea numerică inversă a valorilor:")
+for fruct, valoare in sorted(fructe_cost.items(), key=lambda articol: articol[1], reverse=True):
+    print(f"{fruct}: {valoare}")
+</code></pre>
+
+  <pre><code><span># Rezultat</span>
+Ordinea numerică inversă a valorilor:
+caise: 2.4
+prune: 2.12
+smochine: 1.7
+mere: 1.69
+pere: 1.5
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+  <pre><code>fructe_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+
+print("Ordinea alfabetică inversă a cheilor")
+for fruct in sorted(fructe_cantitate):
+    print(fruct, "-&gt;", fructe_cantitate[fruct])
+</code></pre>
+
+  <pre><code><span># Rezultat</span>
+Ordinea alfabetică inversă a cheilor
+caise -&gt; 25
+mere -&gt; 50
+pere -&gt; 30
+prune -&gt; 35
+smochine -&gt; 15
+</code></pre>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+      <h2 id="TN">Transformarea elementelor unui dicționar: map() - Transformation to a Dictionary's Items: map()</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Pentru a aplica o reducere de preț tuturor produselor dintr-un dicționar folosind map() o funcție helper
+            sau o funcție lambda poate fi utilizată împreună cu map().</p>
+          <p>map() returnează un obiect iterator de tip map; trebuie să-l incluzi în constructorul dict() pentru a-l
+            transforma înapoi într-un dicționar.</p>
+        </div>
+
+        <div>
+          <p>To apply a price discount to all products in a dictionary using map(), a helper function or a lambda
+            function can be used in conjunction with map().</p>
+          <p> map() returns a map iterator object, you have to wrap it in the dict() constructor to turn it back into a
+            dictionary.</p>
+        </div>
+      </div>
+
+<pre><code>fructe_cost = {"pere": 1.50, "caise": 2.40, "mere": 1.69, "prune": 2.12, "smochine": 1.70}
+reducere_procent = 10 <span># reducere 10%</span>
+<span># Calculați factorul de reducere</span>
+factor_reducere = 1 - (reducere_procent / 100)
+
+<span># Folosește map() cu o funcție lambda pentru a aplica reducerea</span>
+<span># Funcția lambda preia un tuplu (key, value) din fruits.items()</span>
+<span># și returnează un nou tuplu (key, discounted_value).</span>
+articole_cu_reducere = map(lambda articol: (articol[0], round(articol[1] * factor_reducere, 2)), fructe_cost.items())
+print(articole_cu_reducere)
+
+<span># Convertește obiectul map înapoi într-un dicționar</span>
+fructe_cu_reducere = dict(articole_cu_reducere)
+print(f"Preturi originale: {fructe_cost}")
+print(f"Preturi după reducere: {fructe_cu_reducere}")
+
+<span>&lt;map object at 0x000001DFC00571F0&gt;</span>
+<span>Preturi originale: {'pere': 1.5, 'caise': 2.4, 'mere': 1.69, 'prune': 2.12, 'smochine': 1.7}</span>
+<span>Preturi după reducere: {'pere': 1.35, 'caise': 2.16, 'mere': 1.52, 'prune': 1.91, 'smochine': 1.53}</span>
+</code></pre>
+
+<pre><code>fructe_cost = {"pere": 1.50, "caise": 2.40, "mere": 1.69, "prune": 2.12, "smochine": 1.70}
+
+def reducere(produs, redus=0.10):
+    return produs[0], round(produs[1] * (1 - redus), 2)
+
+print(map(reducere, fructe_cost.items()))
+print(dict(map(reducere,fructe_cost.items())))
+
+print(dict(map(lambda articol: reducere(articol, 0.15), fructe_cost.items())))
+print(dict(map(lambda articol: reducere(articol, 0.18), fructe_cost.items())))
+
+<span>&lt;map object at 0x0000024D23326BF0&gt;</span>
+<span>{'pere': 1.35, 'caise': 2.16, 'mere': 1.52, 'prune': 1.91, 'smochine': 1.53}</span>
+
+<span>{'pere': 1.27, 'caise': 2.04, 'mere': 1.44, 'prune': 1.8, 'smochine': 1.44}</span>
+<span>{'pere': 1.23, 'caise': 1.97, 'mere': 1.39, 'prune': 1.74, 'smochine': 1.39}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="FR">Filtrarea elementelor dintr-un dicționar: filter() - Filtering Items in a Dictionary: filter()</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Dicționarele nu sunt direct iterabile. Trebuie să convertiți dicționarul într-un iterabil de perechi
+            cheie-valoare, de obicei folosind dictionary.items(), care returnează un obiect de vizualizare cu tupluri
+            (cheie, valoare).</p>
+          <p>Creați o funcție (adesea o funcție lambda pentru concizie) care primește un singur tuplu (cheie, valoare)
+            ca intrare și returnează True dacă elementul ar trebui inclus în dicționarul filtrat și False în caz
+            contrar.</p>
+          <p>Transmiteți funcția de filtrare și iterabilul dictionary.items() către funcția filter(). Aceasta va returna
+            un obiect de filtrare, care este un iterator ce produce doar elementele care îndeplinesc condiția. În final,
+            convertiți obiectul filtru înapoi într-un dicționar folosind constructorul dict().</p>
+        </div>
+
+        <div>
+          <p>Dictionaries are not directly iterable. You need to convert the dictionary into an iterable of key-value
+            pairs, typically using dictionary.items(), which returns a view object of (key, value) tuples.</p>
+          <p>Create a function (often a lambda function for conciseness) that takes a single (key, value) tuple as input
+            and returns True if the item should be included in the filtered dictionary, and False otherwise.</p>
+          <p>Pass the filtering function and the dictionary.items() iterable to the filter() function. This will return
+            a filter object, which is an iterator yielding only the items that satisfy the condition. Finally, convert
+            the filter object back into a dictionary using the dict() constructor.</p>
+        </div>
+      </div>
+
+
+<pre><code>fructe_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+
+<span># Filtrați elementele a căror valoare este mai mare de 30</span>
+filtrat_valoare = dict(filter(lambda tuplu: tuplu[1] &gt; 30, fructe_cantitate.items()))
+print(f"Filtrat după valoare mai mare decât 30: {filtrat_valoare}")
+
+<span># Filtrați elementele în care cheia conține litera r</span>
+filtrat_litera = dict(filter(lambda tuplu: "r" in tuplu[0], fructe_cantitate.items()))
+print(f"Filtrat dupa cheile care conţin litra 'r' {filtrat_litera}")
+
+<span>==&gt; Filtrat după valoare mai mare decât 30: {'mere': 50, 'prune': 35}</span>
+<span>==&gt; Filtrat dupa cheile care conţin litra 'r' {'mere': 50, 'pere': 30, 'prune': 35}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>lambda tuplu: tuplu[1] &gt; 30: Verifică dacă al doilea element al tuplului (cheie, valoare) (valoare) este
+            mai mare decât 30.</p>
+          <p>lambda tuplu: "r" în tuplu[0]: Verifică dacă primul element al tuplului (cheie, valoare) (cheie) conține
+            caracterul "r".</p>
+          <p>Deși filter() este o metodă validă, comprehension a dicționarelor oferă adesea o modalitate mai concisă și
+            mai Pythonică de a obține același rezultat pentru filtrarea dicționarelor.</p>
+        </div>
+
+        <div>
+          <p>lambda item: item[1] &gt; 30: Checks if the second element of the (key, value) tuple (value) is greater
+            than 30.</p>
+          <p>lambda item: "r" in item[0]: Checks if the first element of the (key, value) tuple (key) contains the
+            character "r".</p>
+          <p>While filter() is a valid method, dictionary comprehension often provides a more concise and Pythonic way
+            to achieve the same result for filtering dictionaries.</p>
+        </div>
+      </div>
+
+<pre><code>fructe_cost = {"pere": 1.50, "caise": 2.40, "mere": 1.69, "prune": 2.12, "smochine": 1.70}
+
+def cost_mic(articol, cost=2.0):
+    return articol[1] &lt; cost
+
+print(filter(cost_mic, fructe_cost.items()))
+print(dict(filter(cost_mic, fructe_cost.items())))
+print(dict(filter(lambda fruct: cost_mic(fruct, 2.0), fructe_cost.items())))
+
+<span>==&gt; &lt;filter object at 0x00000249F1AE73A0&gt;</span>
+<span>==&gt; {'pere': 1.5, 'mere': 1.69, 'smochine': 1.7}</span>
+<span>==&gt; {'pere': 1.5, 'mere': 1.69, 'smochine': 1.7}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+      <h2 id="CN">Iterarea dicționarelor cu ChainMap și chain() - Iterating dictionaries with ChainMap and chain()</h2>
+
+      <div class="grid-container">
+        <p>Parcurgerea mai multor dicționare în Python se poate realiza folosind collections.ChainMap sau prin
+          înlănțuirea iteratoarelor cu itertools.chain().</p>
+
+        <p>Iterating through multiple dictionaries in Python can be accomplished using collections.ChainMap or by
+          chaining iterators with itertools.chain().</p>
+      </div>
+
+      <table class="outer-hidden">
+        <caption>Prezentare generală</caption>
+        <tr>
+          <th>Caracteristici</th>
+          <th>collections.ChainMap</th>
+          <th>itertools.chain()</th>
+        </tr>
+        <tr>
+          <td>Scop principal</td>
+          <td>Grupează dicționare într-o singură vizualizare unificată de căutare</td>
+          <td>Înlănțuie secvențial mai multe obiecte iterabile</td>
+        </tr>
+        <tr>
+          <td>Chei duplicate</td>
+          <td>Deduplicate (Se păstrează valoarea din primul dicționar care conține cheia)</td>
+          <td>Păstrate (Se procesează integral fiecare dicționar)</td>
+        </tr>
+        <tr>
+          <td>Comportamentul obiectului</td>
+          <td>Se comportă ca un dicționar veritabil (suportă .keys(), .values(), .items())</td>
+          <td>Acționează ca un iterator brut (epuizează elementele secvențial)</td>
+        </tr>
+        <tr>
+          <td>Memorie / Copiere</td>
+          <td>Nu creează copie; leagă dicționarele existente prin referință</td>
+          <td>Nu creează copie; furnizează elementele "din mers" (on-the-fly)</td>
+        </tr>
+      </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="CNA">collections.ChainMap</h3>
+
+      <p><a href="https://docs.python.org/3/library/collections.html#collections.ChainMap" target="_blank"
+          rel="noopener">class collections.ChainMap(*maps)</a></p>
+
+      <div class="grid-container">
+        <p>ChainMap creează o singură vizualizare actualizabilă din mai multe dicționare existente.</p>
+
+        <p>ChainMap creates a single, updateable view out of multiple existing dictionaries.</p>
+      </div>
+
+      <div class="grid-container">
+        <p>Creați o instanță ChainMap: Instanțiați un obiect ChainMap, transmițând dicționarele ca argumente în ordinea
+          dorită. Ordinea contează pentru căutarea cheilor; ChainMap caută în dicționare de la stânga la dreapta.</p>
+
+        <p>Create a ChainMap instance: Instantiate a ChainMap object, passing the dictionaries as arguments in the
+          desired order. The order matters for key lookup; ChainMap searches the dictionaries from left to right.</p>
+      </div>
+
+<pre><code>from collections import ChainMap
+
+fructe = {"mere": 5, "pere": 3, "caise": 3}
+legume1 = {"morcovi": 3, "cartofi": 10, "ardei": 1}
+legume2 = {"fasole": 4, "morcovi": 4, "spanac": 2}
+
+fructe_legume = ChainMap(fructe, legume1, legume2)
+print(fructe_legume)
+<span>==&gt; ChainMap({'mere': 5, 'pere': 3, 'caise': 3}, {'morcovi': 3, 'cartofi': 10, 'ardei': 1}, {'fasole': 4, 'morcovi': 4, 'spanac': 2})</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <p>Iterarea prin ChainMap: Puteți itera direct peste ChainMap, ceea ce va genera cheile sale, sau puteți utiliza
+          metoda .items() pentru a obține perechi cheie-valoare.</p>
+
+        <p>Iterate through the ChainMap: You can iterate over the ChainMap directly, which will yield its keys, or use
+          the .items() method to get key-value pairs.</p>
+      </div>
+
+
+      <div class="grid-container">
+  <pre><code><span># Iterarea peste chei:</span>
+for chei in fructe_legume:
+    print(f"Cheie -> {chei}, valoare: {fructe_legume[chei]}") 
+</code></pre>
+
+  <pre><code><span># Iterarea peste perechi cheie-valoare folosind .items():</span>
+for cheie, valoare in fructe_legume.items():
+    print(f"Cheie -> {cheie}, Valoare: {valoare}")
+</code></pre>
+      </div>
+
+
+      <div class="grid-container">
+  <pre><code><span># Rezultat</span>
+Cheie -> fasole, valoare: 4
+Cheie -> morcovi, valoare: 3
+Cheie -> spanac, valoare: 2
+Cheie -> cartofi, valoare: 10
+Cheie -> ardei, valoare: 1
+Cheie -> mere, valoare: 5
+Cheie -> pere, valoare: 3
+Cheie -> caise, valoare: 3
+</code></pre>
+
+  <pre><code><span># Rezultat</span>
+Cheie -> fasole, Valoare: 4
+Cheie -> morcovi, Valoare: 3
+Cheie -> spanac, Valoare: 2
+Cheie -> cartofi, Valoare: 10
+Cheie -> ardei, Valoare: 1
+Cheie -> mere, Valoare: 5
+Cheie -> pere, Valoare: 3
+Cheie -> caise, Valoare: 3
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <p>Atunci când există chei duplicate în dicționarele înlănțuite, ChainMap acordă prioritate valorii din
+            dicționarul care apare primul în ordinea de creare a obiectului ChainMap. În exemplul de mai sus,
+            fructe_legume['morcovi'] ar returna valoarea 3 din legume1, nu 4 din legume2.</p>
+          <p>Modificările aduse obiectului ChainMap (de exemplu, adăugarea unei noi chei sau modificarea unei valori)
+            vor afecta doar primul dicționar din lanț. Dacă modifici o cheie existentă, schimbarea se va aplica
+            dicționarului în care acea cheie a fost găsită inițial.</p>
+        </div>
+
+        <div>
+          <p>When duplicate keys exist across the chained dictionaries, ChainMap prioritizes the value from the
+            dictionary appearing earliest in the ChainMap's creation order. In the example above,
+            fructe_legume['morcovi'] would return 3 from legume1, not 4 from legume2.</p>
+          <p>Modifications to the ChainMap (e.g., adding a new key or changing a value) will only affect the first
+            dictionary in the chain. If you modify an existing key, the change will apply to the dictionary where that
+            key was initially found.</p>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h3 id="CNB">itertools.chain()</h3>
+
+      <p><a href="https://docs.python.org/3/library/itertools.html" target="_blank" rel="noopener">itertools — Functions
+          creating iterators for efficient looping</a></p>
+
+
+      <div class="grid-container">
+        <p>Alegeți itertools.chain atunci când efectuați calcule, colectați metrici sau procesați date brute, situații
+          în care nicio dată nu trebuie ascunsă sau eliminată.</p>
+
+        <p>Choose itertools.chain when performing calculations, metrics gathering, or raw processing where no data
+          should be hidden or dropped.</p>
+      </div>
+
+      <div class="grid-container">
+        <p>Funcția itertools.chain() din Python poate fi utilizată pentru a parcurge secvențial mai multe dicționare
+          într-o singură buclă. Acest lucru se realizează prin înlănțuirea iterabilelor returnate de metoda .items() a
+          fiecărui dicționar.</p>
+
+        <p>The itertools.chain() function in Python can be used to iterate through multiple dictionaries sequentially in
+          a single loop. This is achieved by chaining the iterables returned by the .items() method of each dictionary.
+        </p>
+      </div>
+
+
+      <div class="grid-container">
+  <pre><code>from itertools import chain
+
+fructe = {"mere": 5, "pere": 3, "caise": 3}
+legume1 = {"morcovi": 3, "cartofi": 10, "ardei": 1}
+legume2 = {"fasole": 4, "morcovi": 4, "spanac": 2}
+
+for cheie, valoare in chain(fructe.items(), legume1.items(), legume2.items()):
+    print(f"Cheie -> {cheie}, Valoare: {valoare}")
+</code></pre>
+
+  <pre><code>Cheie -> mere, Valoare: 5
+Cheie -> pere, Valoare: 3
+Cheie -> caise, Valoare: 3
+Cheie -> morcovi, Valoare: 3
+Cheie -> cartofi, Valoare: 10
+Cheie -> ardei, Valoare: 1
+Cheie -> fasole, Valoare: 4
+Cheie -> morcovi, Valoare: 4
+Cheie -> spanac, Valoare: 2
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <ul>
+            <li>fructe.items(), legume1.items() și legume2.items() produc fiecare câte un iterabil care conține tupluri
+              (cheie, valoare) pentru dicționarele respective.</li>
+            <li>chain() preia aceste iterabile și le concatenează, creând un singur iterator continuu.</li>
+            <li>Bucla for iterează apoi prin acest iterator combinat, permițându-vă să accesați cheia și valoarea pentru
+              toate intrările din mai multe dicționare în secvență.</li>
+          </ul>
+          <p>Această abordare este utilă în special pentru evitarea buclelor imbricate atunci când se procesează date
+            din mai multe dicționare, ceea ce duce la un cod mai concis și mai ușor de citit. Funcția chain() oferă
+            acces la toate cheile din dicționarele de intrare, chiar și la cele duplicate.</p>
+        </div>
+
+        <div>
+          <ul>
+            <li>fructe.items(), legume1.items(), and legume2.items() each produce an iterable containing (key, value)
+              tuples for their respective dictionaries.</li>
+            <li>chain() takes these iterables and concatenates them, creating a single, continuous iterator.</li>
+            <li>The for loop then iterates through this combined iterator, allowing you to access key and value for all
+              entries across the multiple dictionaries in sequence.</li>
+          </ul>
+          <p>This approach is particularly useful for avoiding nested loops when processing data from several
+            dictionaries, leading to more concise and readable code. chain() function gives access to all the keys from
+            input dictionaries, even the duplicated ones.</p>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+
+
+      <h2 id="MP">Măsurarea performanței: itemgetter() - Measuring Performance: itemgetter()</h2>
+
+      <p><a href="" target="_blank" rel="noopener"></a></p>
+
+
+      <div class="grid-container">
+
+      </div>
+
+      <div class="grid-container">
+  <pre><code>
+
+</code></pre>
+
+  <pre><code>
+
+</code></pre>
+      </div>
+
+<pre><code>
+
+</code></pre>
+
+
+      <span>==&gt; </span>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

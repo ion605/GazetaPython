@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="CSS/main-style.css">
+
+<link rel="icon" type="img/png" href="images/logo-title.png">
+<title>Gazeta Python 5.5 Dictionary itemgetter</title>
+</head>
+
+<body>
+
+<div id="sus" class="main-1-0 navigare">
+<header>
+<div class="header-menu">
+<img src="images/logo-menu.svg" alt="Gazeta Python">
+<nav>
+  <ul>
+    <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+    <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+    <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+    <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+  </ul>
+</nav>
+</div>
+
+<div class="first-empty-1-0"></div>
+
+<div class="titlu-1-0">
+  <div class="grid-cell">
+    <img src="images/literaP.svg" alt="SP" class="logo">
+    <h1>5.5 Acces, sortat, performanță - Access, sorted, Performance</h1>
+  </div>
+</div>
+
+
+<div class="ro-en-1-1 container-links ro-en">
+  <div>
+  <ul>
+    <li>În acest capitol veți studia:</li>
+    <li><a href="#AV">Accesarea valorilor dintr-un dicționar</a></li>
+    <li><a href="#SV">Sortareaa valorilor dintr-un dicționar</a></li>
+    <li><a href="#PM">Performanță</a></li>
+    <li><a href="#"></a></li>
+  </ul>
+  </div>
+
+  <div>
+  <ul>
+    <li>In this chapter you will study:</li>
+    <li><a href="#AV">Accessing Dictionary Values</a></li>
+    <li><a href="#SV">Sorting Dictionary Values</a></li>
+    <li><a href="#PM">Performance</a></li>
+    <li><a href="#"></a></li>
+    </ul>
+  </div>
+</div>
+</header>
+<div class="second-empty-1-0"></div>
+
+<div class="contents-1-0">
+
+<p><a href="https://docs.python.org/3/library/operator.html#operator.itemgetter" target="_blank" rel="noopener">operator.itemgetter(item) - operator.itemgetter(*items)</a></p>
+
+<h2 id="AV">Accesarea valorilor dintr-un dicționar - Accessing Dictionary Values</h2>
+
+<div class="grid-container">
+<p><b>operator.itemgetter</b> construiește un obiect apelabil reutilizabil care extrage valori dintr-un dicționar pe baza cheilor acestora. Această abordare este adesea mai eficientă și mai elegantă decât scrierea unor bucle explicite sau a unor construcții de tip list comprehension", în special atunci când se extrag aceleași chei din mai multe dicționare.</p>
+
+<p><b>operator.itemgetter</b> constructs a reusable callable that fetches values from a dictionary by their keys. This approach is often more efficient and elegant than writing explicit loops or list comprehensions, especially when extracting the same keys from multiple dictionaries.</p>
+</div>
+
+<div class="grid-container">
+<pre><span># Accessing a Single Value</span>
+<code>from operator import itemgetter
+
+membru = {"nume": "Costel", "assoc": "#4", "rol": "Administrator"}
+
+<span># Creați instanțe getter pentru cheile 'nume' si 'rol'</span>
+numele = itemgetter("nume")
+admin = itemgetter("rol")
+
+<span># Apelați-le prin transmiterea dicționarului</span>
+print(f"Numele {admin(membru)}ului: {numele(membru)}")
+<span>==&gt; Numele Administratorului: Costel</span>
+</code></pre>
+
+<pre><code><span># Accesarea simultană a mai multor valori</span>
+from operator import itemgetter
+
+membru = {"nume": "Costel", "assoc": "#4", "rol": "Administrator"}
+
+<span># Creează o funcție de tip getter pentru mai multe chei</span>
+profil = itemgetter("nume", "rol")
+
+
+<span># Apelați-o prin transmiterea dicționarului</span>
+print(f"Numele si rolul: {profil(membru)}")
+<span>==&gt; Numele si rolul: ('Costel', 'Administrator')</span>
+</code></pre>
+</div>
+
+
+<pre><code><span># Extracting Elements Across a List of Dictionaries</span>
+from operator import itemgetter
+
+membri = [
+    {"nume": "Cuta", "rol": "Presedinte"},
+    {"nume": "Pupu", "rol": "Secretar"},
+    {"nume": "Tucu", "rol": "Administrator"},
+]
+
+<span># Extrage toate rolurile într-o singură listă</span>
+get_rol = itemgetter("rol")
+roluri = list(map(get_rol, membri))
+print(roluri) <span>==&gt; ['Presedinte', 'Secretar', 'Administrator']</span>
+</code></pre>
+
+<pre><code><span># Lista de [{elev: [note]}] direct din dicționarul principal</span>
+from operator import itemgetter
+
+scor_elevi = {"scoruri": [{"virgil": [88, 76, 92, 100]}, {"tatiana": [88, 76, 92, 85]}, {"sever": [88, 76, 92, 85]}]}
+
+<span># Creează funcția de extragere pentru cheia "scoruri"</span>
+obtine_scoruri = itemgetter("scoruri")
+
+elevi_note = obtine_scoruri(scor_elevi)
+print(elevi_note) <span>==&gt; [{'virgil': [88, 76, 92, 100]}, {'tatiana': [88, 76, 92, 85]}, {'sever': [88, 76, 92, 85]}]</span>
+</code></pre>
+
+<pre><code><span># Notele unui anumit elev</span>
+from operator import itemgetter
+
+scor_elevi = {"scoruri": [{"virgil": [88, 76, 92, 100]}, {"tatiana": [88, 76, 92, 85]}, {"sever": [88, 76, 92, 85]}]}
+obtine_scoruri = itemgetter("scoruri")
+elevi_note = obtine_scoruri(scor_elevi)
+print(elevi_note) <span>==&gt; [{'virgil': [88, 76, 92, 100]}, {'tatiana': [88, 76, 92, 85]}, {'sever': [88, 76, 92, 85]}]</span>
+
+obtine_virgil = itemgetter("virgil")
+print(obtine_virgil) <span>==&gt; operator.itemgetter('virgil')</span>
+
+note_virgil = obtine_virgil(elevi_note[0])
+print(f"Notele lui Virgil: {note_virgil}") <span>==&gt; Notele lui Virgil: [88, 76, 92, 100]</span>
+</code></pre>
+
+<div class="grid-container">
+<p>Dicționare, dintre care unele ar putea să nu conțină o anumită cheie.</p>
+
+<p>The dictionaries, some of which might not contain a specific key.</p>
+</div>
+
+<pre><code>from operator import itemgetter
+
+<span># Un dicționar cu câmpuri standard, dar căruia îi lipsește cheia "email"</span>
+membru = {"nume": "Costel", "assoc": "#4", "rol": "Administrator"}
+
+<span># Definirea unui itemgetter care caută "utilizator" și "email"</span>
+obtine_info_contact = itemgetter("utilizator", "email")
+
+try:
+    <span># Această operațiune va eșua și va genera o eroare de tip KeyError, deoarece "email" nu există</span>
+    contact_info = obtine_info_contact(membru)
+    print("Succes:", contact_info)
+
+except KeyError as error:
+    <span># Numele cheii lipsă este atașat argumentului erorii</span>
+    print(f"Eroare: Cheia {error} nu există în dicționar.")
+<span>==&gt; Eroare: Cheia 'utilizator' nu există în dicționar.</span>
+</code></pre>
+
+<div class="grid-container">
+<p>Excepția poate fi gestionată direct în cod pentru a furniza valori implicite.</p>
+
+<p>The exception can be handled directly in the code to provide default values.</p>
+</div>
+
+<pre><code>from operator import itemgetter
+
+membrii = [
+    {"nume": "Costel", "assoc": "#4", "rol": "Administrator"},
+    {"nume": "Vecin", "assoc": "#4"},  <span># Lipsește "rol"</span>
+]
+
+obtine_rol = itemgetter("rol")
+
+for membru in membrii:
+    try:
+        rol = obtine_rol(membru)
+    except KeyError:
+        rol = "Musafir"  <span># Valoare implicită de rezervă</span>
+
+    print(f"{membru['nume']}: {rol}")
+<span>==&gt; Costel: Administrator</span>
+<span>==&gt; Vecin: Musafir</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="SV">Sortareaa valorilor dintr-un dicționar - Sorting Dictionary Values</h2>
+
+<pre><code><span># Criteriu: Sortare după media notelor (Descrescător)</span>
+from operator import itemgetter
+
+scor_elevi = {"scoruri": [{"virgil": [88, 76, 82, 80]}, {"tatiana": [82, 70, 75, 85]}, {"sever": [88, 76, 92, 85]}]}
+lista_elevi = scor_elevi["scoruri"]
+
+def dupa_medie(element_lista):
+    <span># element_lista este un dicționar precum {"virgil": [...]}</span>
+    nume = list(element_lista.keys())[0]
+    note = element_lista[nume]
+    return sum(note) / len(note)
+
+<span># Sortăm lista originală</span>
+elevi_sortati = sorted(lista_elevi, key=dupa_medie, reverse=True)
+
+print(elevi_sortati)
+<span>==&gt; [{'sever': [88, 76, 92, 85]}, {'virgil': [88, 76, 82, 80]}, {'tatiana': [82, 70, 75, 85]}]</span>
+</code></pre>
+
+<pre><code><span># O structură mai eficientă</span>
+import operator
+
+elevi_optimizat = [
+    {"nume": "virgil", "medie": 81.5},
+    {"nume": "tatiana", "medie": 78.0},
+    {"nume": "sever","medie": 85.25}
+]
+
+<span># Sortare alfabetică după nume folosind itemgetter</span>
+elevi_alfabetic = sorted(elevi_optimizat, key=operator.itemgetter("nume"))
+print(elevi_alfabetic)
+<span>==&gt; [{'nume': 'sever', 'medie': 85.25}, {'nume': 'tatiana', 'medie': 78.0}, {'nume': 'virgil', 'medie': 81.5}]</span>
+
+# Sortare după medie (descrescător) folosind itemgetter
+elevi_dupa_medie = sorted(elevi_optimizat, key=operator.itemgetter("medie"), reverse=True)
+print(elevi_dupa_medie)
+<span>==&gt; [{'nume': 'sever', 'medie': 85.25}, {'nume': 'virgil', 'medie': 81.5}, {'nume': 'tatiana', 'medie': 78.0}]</span>
+</code></pre>
+
+
+<div class="grid-container">
+<p>Pentru operațiuni complexe de sortare, este adesea mai simplu să folosești o funcție lambda sau să schimbi structura dicționarului într-una mai plată.</p>
+
+<p>For complex sorting operations, it is often simpler to use a lambda function or to change the dictionary structure into a flatter one.</p>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="PM">Performanță - Performance</h2>
+
+<p>Performanța sortării dicționar vs listă - Performance sorting: dictionary vs. list</p>
+
+<pre><code>from timeit import timeit
+dict_articole_dict = {
+    'articol1': {'nume': 'caise', 'cantitate': 10, 'cost': 2.40},
+    'articol4': {'nume': 'gutui', 'cantitate': 15, 'cost': 2.12},
+    'articol3': {'nume': 'mere', 'cantitate': 50, 'cost': 1.69},
+    'articol2': {'nume': 'pere', 'cantitate': 25, 'cost': 1.5},
+}
+
+lista_articole_dict = [
+    {'articol':1, 'nume': 'caise', 'cantitate': 10, 'cost': 2.40},
+    {'articol':4, 'nume': 'gutui', 'cantitate': 15, 'cost': 2.12},
+    {'articol':3, 'nume': 'mere', 'cantitate': 50, 'cost': 1.69},
+    {'articol':2, 'nume': 'pere', 'cantitate': 25, 'cost': 1.5}
+]
+
+sortarea_listei = "sorted(lista_articole_dict, key=lambda item:item['cost'])"
+sortarea_dict = """
+dict(sorted(dict_articole_dict.items(), key=lambda item: item[1]['cost']))
+"""
+sortare_lista_time = timeit(stmt=sortarea_listei, globals=globals())
+sortare_dict_time = timeit(stmt=sortarea_dict, globals=globals())
+
+print(
+    f"""\
+{sortare_lista_time=:.2f} secunde
+{sortare_dict_time=:.2f} secunde
+lista este de {(sortare_dict_time/sortare_lista_time):.2f} mai rapida"""
+)
+<span>==&gt; sortare_lista_time=0.79 secunde</span>
+<span>==&gt; sortare_dict_time=1.51 secunde</span>
+<span>==&gt; lista este de 1.90 mai rapida</span>
+</code></pre>
+
+<p>Performanța căutărilor cu for - Performance of lookups with for</p>
+
+<pre><code><span># compararea sortării dicționar vs listă</span>
+from timeit import timeit
+
+
+dict_articole_dict = {
+    1: {'nume': 'caise', 'cantitate': 10, 'cost': 2.40},
+    4: {'nume': 'gutui', 'cantitate': 15, 'cost': 2.12},
+    3: {'nume': 'mere', 'cantitate': 50, 'cost': 1.69},
+    2: {'nume': 'pere', 'cantitate': 25, 'cost': 1.5},
+}
+
+lista_articole_dict = [
+    {'id':1, 'nume': 'caise', 'cantitate': 10, 'cost': 2.40},
+    {'id':4, 'nume': 'gutui', 'cantitate': 15, 'cost': 2.12},
+    {'id':3, 'nume': 'mere', 'cantitate': 50, 'cost': 1.69},
+    {'id':2, 'nume': 'pere', 'cantitate': 25, 'cost': 1.5}
+]
+
+
+cautari = [3, 2, 4, 1, 2, 2]
+
+configurare_lista = """
+def cheie_din_lista(key):
+    for item in lista_articole_dict:
+        if item["id"] == key:
+            return item
+"""
+
+lista_de_căutare = """
+for key in cautari:
+    cheie_din_lista(key)
+"""
+
+dict_de_căutare = """
+for key in cautari:
+    dict_articole_dict[key]
+"""
+
+timp_lista_cautare = timeit(stmt=lista_de_căutare, setup=configurare_lista, globals=globals())
+timp_dict_cautare = timeit(stmt=dict_de_căutare, globals=globals())
+
+print(
+    f"""\
+{timp_lista_cautare=:.2f} secunde
+{timp_dict_cautare=:.2f} secunde
+dict este de {(timp_lista_cautare / timp_dict_cautare):.2f} ori mai rapid"""
+)
+<span>==&gt; timp_lista_cautare=2.16 secunde</span>
+<span>==&gt; timp_dict_cautare=0.41 secunde</span>
+<span>==&gt; dict este de 5.29 ori mai rapid</span>
+</code></pre>
+
+
+<p>Performanță folosind itemgetter() - Performance using itemgetter()</p>
+
+<div class="grid-container">
+<p>Utilizarea operator.itemgetter() în Python este, în general, mai rapidă și mai elegantă decât folosirea funcțiilor lambda sau a buclelor atunci când se efectuează sortări.</p>
+
+<p>Using operator.itemgetter() in Python is generally faster and more elegant than using lambda functions or loops when performing sorts.</p>
+</div>
+
+
+<pre><code>from operator import itemgetter
+from timeit import timeit
+
+dict_to_order = {1: "rug", 2: "par", 3: "jug", 4: "infiintat", 5: "urs", 6: "albastru",7: "negru", 8: "perna",
+                 9: "trece", 10: "jos13", 11: "nucleul", 12: "biblioteca22", 13: "p2transfer", 14: "sase", 15: "informatii",
+                 16: "opus-ziua", 17: "index", 18: "certificat", 19: "extensii-tipuri", 20: "normalizator", 21: "zare-aurie"
+}
+
+sortat_cu_lambda = "sorted(dict_to_order.items(), key=lambda item: item[1])"
+sortat_cu_itemgetter = "sorted(dict_to_order.items(), key=itemgetter(1))"
+
+sortat_cu_lambda_timp = timeit(stmt=sortat_cu_lambda, globals=globals())
+sortat_cu_itemgetter_timp = timeit(stmt=sortat_cu_itemgetter, globals=globals())
+
+print(f"""\
+{sortat_cu_lambda_timp=:.2f} secunde
+{sortat_cu_itemgetter_timp=:.2f} secunde
+itemgetter is {(sortat_cu_lambda_timp / sortat_cu_itemgetter_timp):.2f} mai rapid""")
+<span>==&gt; sortat_cu_lambda_timp=3.78 secunde</span>
+<span>==&gt; sortat_cu_itemgetter_timp=2.52 secunde</span>
+<span>==&gt; itemgetter is 1.50 mai rapid</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+
+<p><a href="https://realpython.com/sort-python-dictionary/" target="_blank" rel="noopener">Sorting a Python Dictionary Values, Keys, and More</a></p>
+
+
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+  <div class="footer footer-link">
+    <footer>
+      &copy; <span id="year-picior"></span> Gazeta Python.
+      <address><a href="https://gazetapython.wordpress.com/" target="_blank">www.gazetapython.com</a></address>
+    </footer>
+  </div>
+</div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+<script src="JS/treileaGreeting.js"></script>
+<script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

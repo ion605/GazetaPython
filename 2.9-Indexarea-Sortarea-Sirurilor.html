@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/main-style.css">
+
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 2.9 Indexing and Sorting Strings</title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-1 navigare">
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                        <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                        <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                        <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-1"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaT.svg" alt="T" class="logo">
+                    <h1>2.0 Tipuri Text-Text Type</h1>
+                </div>
+            </div>
+
+            <div class="second-empty-1-1"></div>
+
+            <div class="subtitlu-1-1">
+                <div class="grid-cell">
+                    <h2>2.9 Indexarea, felierea, inversarea și sortarea șirurilor - Indexing, Slicing, Reversing and
+                        Sorting Strings</h2>
+                </div>
+            </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+                <ul>
+                    <li>În acest capitol veți studia:</li>
+                    <li><a href="#IS">Indexarea șirurilor</a></li>
+                    <li><a href="#FS">Felierea șirurilor</a></li>
+                    <li><a href="#SI">Inversarea șirurilor</a>
+                        <ul>
+                            <li><a href="#SIA">Inversarea cu un pas negativ</a></li>
+                            <li><a href="#SIB">Funcția reversed()</a></li>
+                            <li><a href="#SIC">reversed() and join()</a></li>
+                            <li><a href="#SID">Inversarea șirurilor într-o buclă for</a></li>
+                            <li><a href="#SIE">Inversarea șirurilor într-o buclă while</a></li>
+                            <li><a href="#SIF">Inversarea șirurilor de caractere cu recursiune</a></li>
+                            <li><a href="#SIG">Şiruri inversate cu functools.reduce()</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#SF">Șir reversibil personalizat(class)</a></li>
+                    <li><a href="#SE">Sortarea șirurilor de caractere în ordine inversă</a></li>
+                </ul>
+                </div>
+
+                <div>
+                <ul>
+                    <li>In this chapter, you will study:</li>
+                    <li><a href="#IS">String indexing</a></li>
+                    <li><a href="#FS">String slicing</a></li>
+                    <li><a href="#SI">Reversing strings</a>
+                        <ul>
+                            <li><a href="#SIA">Reversing using a negative step</a></li>
+                            <li><a href="#SIB">The reversed() function</a></li>
+                            <li><a href="#SIC">reversed() and join()</a></li>
+                            <li><a href="#SID">Reversing strings in a for loop</a></li>
+                            <li><a href="#SIE">Reversing strings in a while loop</a></li>
+                            <li><a href="#SIF">Reversing strings using recursion</a></li>
+                            <li><a href="#SIG">Reversing strings with functools.reduce()</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#SF">Custom reversible string (class)</a></li>
+                    <li><a href="#SE">Sorting strings in reverse order</a></li>
+                </ul>
+            </div>
+          </div>
+        </header>
+
+        <div class="forth-empty-1-1"></div>
+
+        <div class="contents-1-1">
+
+            <div class="grid-container">
+                <p>Indexarea și felierea șirurilor de caractere sunt metode utilizate pentru a accesa caractere
+                    specifice sau părți ale unui șir de caractere în multe limbaje de programare. Indexarea preia un
+                    singur caracter, în timp ce felierea extrage un subșir sau o secvență de caractere.</p>
+
+                <p>String indexing and slicing are methods used to access specific characters or parts of a string in
+                    many programming languages. Indexing retrieves a single character, while slicing extracts a
+                    substring, or a sequence of characters.</p>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="IS">Indexarea șirurilor - Indexing strings</h2>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Indexarea</dt>
+                    <dd>Permite să accesați un caracter individual dintr-un șir de caractere după poziția sa numerică
+                        sau indice.</dd>
+                    <dd>Șirurile de caractere sunt secvențe ordonate, iar fiecărui caracter i se atribuie un indice
+                        numeric.</dd>
+                    <dd>Indexarea pozitivă începe de la 0 pentru primul caracter și crește cu unu pentru fiecare
+                        caracter ulterior.</dd>
+                    <dd>Indexarea negativă numără invers de la sfârșitul șirului de caractere. Indexul -1 se referă la
+                        ultimul caracter, -2 la penultimul și așa mai departe.</dd>
+                    <dd>Sintaxă: Folosiți paranteze pătrate [] cu numărul de indice pentru a preia un caracter:
+                        şirul_meu[indice].</dd>
+                </dl>
+
+                <dl>
+                    <dt>Indexing</dt>
+                    <dd>Allows you to access an individual character in a string by its numerical position, or index.
+                    </dd>
+                    <dd>Strings are ordered sequences, and each character is assigned a numerical index.</dd>
+                    <dd>Positive indexing begins at 0 for the first character and increases by one for each subsequent
+                        character.</dd>
+                    <dd>Negative indexing counts backward from the end of the string. The index -1 refers to the last
+                        character, -2 to the second-to-last, and so on.</dd>
+                    <dd>Syntax: Use square brackets [] with the index number to retrieve a character: my_string[index].
+                    </dd>
+                </dl>
+            </div>
+
+            <p>Sintaxă: șir[indice]</p>
+
+<pre><code><span># Indexare pozitivă</span>
+cuvânt = "Python"
+print(cuvânt[0]) <span>==> P</span>
+print(cuvânt[3]) <span>==> h</span>
+
+<span># Indexare negativă</span>
+print(cuvânt[-1]) <span>==> n</span>
+print(cuvânt[-3]) <span>==> h</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>IndexError:</dt>
+                    <dd>Încercarea de a accesa un index care se află în afara intervalului valid al șirului (de exemplu,
+                        un index mai mare sau egal cu lungimea șirului sau un index negativ mai mic decât lungimea
+                        negativă) va duce la o eroare IndexError.</dd>
+                </dl>
+
+                <dl>
+                    <dt>IndexError:</dt>
+                    <dd>Attempting to access an index that is outside the valid range of the string (e.g., an index
+                        greater than or equal to the string's length, or a negative index smaller than the negative
+                        length) will result in an IndexError.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>cuvânt = "Python"
+print(cuvânt[6])
+<span>==> IndexError: string index out of range</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="FS">Felierea șirurilor - Slicing strings</h2>
+
+
+            <p>Sintaxă: şir[start:end:step]</p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Secționarea</dt>
+                    <dd>Extrage o secvență de caractere dintr-un șir de caractere. Este o modalitate puternică de a
+                        obține subșiruri prin specificarea unui interval de indici.</dd>
+                    <dd>start: Indicele unde începe felia (inclusiv). Dacă este omisă, implicit va fi începutul șirului
+                        de caractere.</dd>
+                    <dd>end: Indicele unde se termină felia (exclusiv). Dacă este omisă, implicit va fi sfârșitul
+                        șirului de caractere.</dd>
+                    <dd>step: Numărul de caractere de omis. Dacă este omisă, implicit va fi 1.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Slicing</dt>
+                    <dd>Extracts a sequence of characters from a string. It is a powerful way to get substrings by
+                        specifying a range of indices</dd>
+                    <dd>start: The index where the slice begins (inclusive). If omitted, it defaults to the start of the
+                        string.</dd>
+                    <dd>end: The index where the slice ends (exclusive). If omitted, it defaults to the end of the
+                        string.</dd>
+                    <dd>step: The number of characters to skip. If omitted, it defaults to 1.</dd>
+                </dl>
+            </div>
+
+<pre><code>șirul = "Salut, Lume!"
+
+<span># Secționare de bază: de la indexul 0 la 4 (exclusiv)</span>
+subșir1 = șirul[0:5]
+
+<span># Secționare de la început la un index specific</span>
+subșir2 = șirul[:5] 
+
+<span># Secționare de la un index specific până la sfârșit</span>
+subșir3 = șirul[7:]
+
+<span># Secționare cu un pas</span>
+subșir4 = șirul[::2]
+
+<span># Utilizarea indicilor negativi (numărând de la sfârșit)</span>
+subșir5 = șirul[-6:-1]
+
+print(subșir1) <span>==> Salut</span>
+print(subșir2) <span>==> Salut</span>
+print(subșir3) <span>==> Lume!</span>
+print(subșir4) <span>==> Slt ue</span>
+print(subșir5) <span>==> Lume</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Puncte cheie:</dt>
+                    <dd>Separarea șirurilor de caractere creează un șir nou; șirul original rămâne neschimbat.</dd>
+                    <dd>Indicele de oprire este întotdeauna exclusiv.</dd>
+                    <dd>Indicii negativi se numără de la sfârșitul șirului de caractere, -1 fiind ultimul caracter.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Key Points:</dt>
+                    <dd>String slicing creates a new string; the original string remains unchanged.</dd>
+                    <dd>The stop index is always exclusive.</dd>
+                    <dd>Negative indices count from the end of the string, with -1 being the last character.</dd>
+                </dl>
+            </div>
+
+
+            <h3>slice()</h3>
+
+            <div class="grid-container">
+                <p>slice() este o funcție încorporată care returnează un obiect felie. Acest obiect reprezintă un set de
+                    indici utilizați pentru a extrage o porțiune (sau "felie") dintr-o secvență, cum ar fi un șir de
+                    caractere, o listă sau un tuplu.</p>
+
+                <p>slice() is a built-in function that returns a slice object. This object represents a set of indices
+                    used to extract a portion (or "slice") of a sequence, such as a string, list, or tuple.</p>
+            </div>
+
+            <p>Sintaxă: slice(start, end, step)</p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Parametri:</dt>
+                    <dd>start (opțional): Indexul de început pentru felie. Dacă este omis, implicit va fi începutul
+                        secvenței (index 0).</dd>
+                    <dd>stop: Indexul de sfârșit pentru felie. Elementul de la acest index nu este inclus în felie.</dd>
+                    <dd>step (opțional): Incrementul dintre fiecare index pentru feliere. Dacă este omis, implicit va fi
+                        1. O valoare negativă a pasului poate fi utilizată pentru felierea inversă.</dd>
+                    <dt>Valoare returnată:</dt>
+                    <dd>Funcția slice() returnează un obiect slice. Acest obiect poate fi apoi utilizat cu notația
+                        paranteză pătrată [] pentru a felia o secvență.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Parameters:</dt>
+                    <dd>start (optional): The starting index for the slice. If omitted, it defaults to the beginning of
+                        the sequence (index 0).</dd>
+                    <dd>stop: The ending index for the slice. The element at this index is not included in the slice.
+                    </dd>
+                    <dd>step (optional): The increment between each index for slicing. If omitted, it defaults to 1. A
+                        negative step value can be used to slice in reverse.</dd>
+                    <dt>Return Value:</dt>
+                    <dd>The slice() function returns a slice object. This object can then be used with the square
+                        bracket [] notation to slice a sequence.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana", "Costel", "Eugenia"]
+
+<span># Creați un obiect slice pentru a obține elemente de la indicele 1 (inclusiv) până la 6 (exclusiv), cu un pas 2</span>
+felie = slice(1, 6, 2)
+<span># Aplică obiectul felie listei</span>
+listă_feliată = nume[felie]
+print(listă_feliată)        ==> ['Andrei', 'Vasile', 'Elena']
+</code></pre>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizare comună</dt>
+                    <dd>Deși felierea directă cu [start:stop:step] este mai frecventă pentru cazuri simple, funcția
+                        slice() este utilă atunci când trebuie să:</dd>
+                    <dd>Stocați o definiție de felie într-o variabilă pentru reutilizare ulterioară.</dd>
+                    <dd>Transmiteți o definiție de felie ca argument pentru o funcție sau metodă.</dd>
+                    <dd>Construiți dinamic obiecte felie pe baza anumitor condiții.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Common Usage</dt>
+                    <dd>While direct slicing with [start:stop:step] is more common for simple cases, the slice()
+                        function is useful when you need to:</dd>
+                    <dd>Store a slice definition in a variable for later reuse.</dd>
+                    <dd>Pass a slice definition as an argument to a function or method.</dd>
+                    <dd>Dynamically construct slice objects based on certain conditions.</dd>
+                </dl>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="SI">Inversarea șirurilor - Reversing Strings</h2>
+
+            <h3 id="SIA">Inversarea cu un pas negativ</h3>
+
+            <p>Aceasta este metoda cea mai concisă și mai frecvent utilizată.<br>
+                This is the most concise and commonly used method.</p>
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana", "Costel", "Eugenia"]
+<span># utilizarea unui obiect felie pentru inversare</span>
+felie_inversă = slice(None, None, -1)
+listă_inversată = nume[felie_inversă]
+print(listă_inversată) <span>==> ['Eugenia', 'Costel', 'Ioana', 'Elena', 'Alexandru', 'Vasile', 'Mihai', 'Andrei', 'Cristina']</span>
+</code></pre>
+
+<pre><code>șir_original = "salut"
+șir_inversat = șir_original[::-1]
+print(șir_inversat)  <span>==> tulas</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Pas cu pas pentru [::-1]</dt>
+                    <dd>Sintaxa generală pentru felierea în Python este string[start:stop:step]. Când utilizați [::-1],
+                        fiecare parte a sintaxei este interpretată după cum urmează:</dd>
+                    <dd>: (Primele două puncte): Aceste două puncte indică începutul feliei. Când indexul de început
+                        este omis, Python folosește implicit începutul secvenței (index 0).</dd>
+                    <dd>: (A doua două puncte): Aceste două puncte indică sfârșitul feliei. Când indexul de oprire este
+                        omis, Python folosește implicit sfârșitul secvenței, incluzând efectiv toate elementele până la
+                        sfârșit.</dd>
+                    <dd>-1 (Valoarea pasului): Valoarea pasului determină direcția și intervalul traversării. Un pas de
+                        -1 îi spune lui Python să se deplaseze înapoi prin secvență, câte un element pe rând.</dd>
+                    <dd>Prin combinarea acestora, [::-1] înseamnă efectiv: "Începeți de la început, mergeți la sfârșit
+                        și luați fiecare element în ordine inversă."</dd>
+                </dl>
+
+                <dl>
+                    <dt>Step-by-Step of [::-1]</dt>
+                    <dd>The general syntax for Python slicing is string[start:stop:step]. When you use [::-1], each part
+                        of the syntax is interpreted as follows: </dd>
+                    <dd>: (First Colon): This colon indicates the start of the slice. When the start index is omitted,
+                        Python defaults to the beginning of the sequence (index 0).</dd>
+                    <dd>: (Second Colon): This colon indicates the end of the slice. When the stop index is omitted,
+                        Python defaults to the end of the sequence, effectively including all elements until the end.
+                    </dd>
+                    <dd>-1 (Step Value): The step value determines the direction and interval of the traversal. A step
+                        of -1 tells Python to move backward through the sequence, one element at a time. </dd>
+                    <dd>By combining these, [::-1] effectively means: "Start at the beginning, go to the end, and take
+                        every element in reverse order."</dd>
+                </dl>
+            </div>
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana", "Costel", "Eugenia"]
+listă_inversată = nume[::-1]
+print(listă_inversată) <span>==> ['Eugenia', 'Costel', 'Ioana', 'Elena', 'Alexandru', 'Vasile', 'Mihai', 'Andrei', 'Cristina']</span>
+</code></pre>
+
+            <p>Pentru tuplu, înlocuiți [] din lista de mai sus cu () și aplicați [::1]<br>
+                For tuple replace [] from above list with () and apply [::1].</p>
+
+<pre><code><span># aplică felierea și inversarea unui subșir.</span>
+șirul_meu = "Python este grozav"
+
+<span># Obține un subșir de la indexul 7 la 10</span>
+subșir = șirul_meu[7:11]
+print(subșir)  <span>==> este</span>
+
+<span># Inversează subșirul</span>
+subșir_inversat = subșir[::-1]
+print(subșir_inversat)  <span>==> etse</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h3 id="SIB">funcția reversed()</h3>
+
+            <div class="grid-container">
+                <p>Funcția încorporată reversed() din Python returnează un obiect iterator inversat, oferind o soluție
+                    eficientă din punctul de vedere al memoriei, care generează elementele în ordine inversă pe măsură
+                    ce este nevoie de ele, fără a crea o copie în memorie. Aceasta nu modifică structura de date
+                    originală. Este, în general, metoda cea mai Pythonică și eficientă.</p>
+
+                <p>The built-in reversed() function in Python returns un obiect iterator inversat, providing a
+                    memory-efficient object that generates reversed items one-by-one as it needed, without making a copy
+                    in memory. It does not alter the original data structure. Is generally the most Pythonic and
+                    efficient method.</p>
+            </div>
+
+<pre><code>şir1 = "salut"
+for caracter in reversed(şir1):
+    print(caracter, end=" ")   <span>==> t u l a s</span> 
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h3 id="SIC">reversed() and join()</h3>
+
+            <div class="grid-container">
+                <p>Funcția reversed() returnează un iterator care produce caractere în ordine inversă, care pot fi apoi
+                    unite înapoi cu .join() într-un șir de caractere.</p>
+
+                <p>The reversed() function returns an iterator that yields characters in reverse order, which can then
+                    be joined back by .join() into a string.</p>
+            </div>
+
+<pre><code>șir_original = "lume"
+șir_invers = "".join(reversed(șir_original))
+print(șir_invers) <span>==> emul</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h3 id="SID">Inversarea șirurilor într-o buclă for - Reversing strings within a for loop</h3>
+
+
+            <p>Utilizarea unei bucle oferă o înțelegere mai explicită a procesului de inversare.<br>
+                Using a loop provides a more explicit understanding of the reversal process.</p>
+
+            <div class="grid-container">
+                <p><b>for loop</b> și concatenare de șiruri de caractere iterează prin fiecare caracter al șirului
+                    original și îl adaugă înaintea unui nou șir rezultat.
+                    Aceasta construiește efectiv șirul inversat caracter cu caracter (în acest caz, literă cu literă).
+                </p>
+
+                <p><b>for loop</b> and string concatenation iterates through each character of the original string and
+                    prepends it to a new result string.
+                    This effectively builds the reversed string character by character (in this case letter by letter).
+                </p>
+            </div>
+
+<pre><code>şir = "Python"
+for i in range(len(şir) - 1, -1, -1):
+    print(şir[i], end=" ") <span>==> n o h t y P</span>
+</code></pre>
+
+
+<pre><code>def șiruri_invers_buclă(text):
+    text_inversat = ""
+    for caracter in text:
+        text_inversat = caracter + text_inversat
+    return text_inversat
+
+<span># utilizare într-o buclă</span>
+șiruri_de_inversat = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru"]
+șiruri_inversate = []
+for șir in șiruri_de_inversat:
+    șiruri_inversate.append(șiruri_invers_buclă(șir))
+print(șiruri_inversate) <span>==> ['anitsirC', 'ierdnA', 'iahiM', 'elisaV', 'urdnaxelA']</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>reversed() și join() în cadrul unei bucle:</dt>
+                    <dd>În Python, funcția reversed(), metoda .join() și buclele for sunt adesea combinate pentru a
+                        manipula, inversa și reconstrui șiruri de caractere sau secvențe.
+                    <dd>Funcția reversed() primește o secvență (cum ar fi un șir de caractere, o listă sau un tuplu) și
+                        returnează un iterator care furnizează caractere în ordine inversă. Metoda "".join()
+                        concatenează apoi eficient aceste caractere într-un șir nou. Acest lucru este în general mai
+                        eficient decât concatenarea repetată a șirurilor, în special pentru șirurile mai lungi, datorită
+                        imutabilității șirurilor în Python.</dd>
+                </dl>
+
+                <dl>
+                    <dt>reversed() and join() within a loop:</dt>
+                    <dd>In Python, reversed(), .join(), and for loops are frequently combined to manipulate, reverse,
+                        and rebuild strings or sequences.</dd>
+                    <dd>The reversed() function takes a sequence (like a string, list, or tuple) and returns an iterator
+                        that provides characters in reverse order. The "".join() method then efficiently concatenates
+                        these characters into a new string. This is generally more efficient than repeated string
+                        concatenation, especially for longer strings, due to Python's string immutability.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>def șiruri_inversate_join(text):
+    return "".join(reversed(text))
+
+<span># utilizare într-o buclă</span>
+șiruri_de_inversat = ["pară", "cireșă", "caisă", "smochină"]
+șiruri_inversate = []
+for șir in șiruri_de_inversat:
+    șiruri_inversate.append(șiruri_inversate_join(șir))
+print(șiruri_inversate) <span>==> ['ărap', 'ășeric', 'ăsiac', 'ănihcoms']</span>
+</code></pre>
+
+            <p>Rezumat</p>
+
+            <table class="outer-hidden">
+                <tr>
+                    <th>Abordare</th>
+                    <th>Lizibilitate</th>
+                    <th>Cel mai bun caz de utilizare</th>
+                </tr>
+                <tr>
+                    <td>Manuală (buclă "for")</td>
+                    <td>Scăzută</td>
+                    <td>Algoritmi ușor de înțeles, dar mai puțin eficienți pentru volume mari de date.</td>
+                </tr>
+                <tr>
+                    <td>for x in reversed(seq):</td>
+                    <td>Ridicată</td>
+                    <td>Parcurgerea inversă a colecțiilor fără a le copia în memorie.</td>
+                </tr>
+                <tr>
+                    <td>"".join(reversed(text))</td>
+                    <td>Ridicată</td>
+                    <td>Inversarea în siguranță și în mod explicit a unui șir complet.</td>
+                </tr>
+            </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h3 id="SIE">Inversarea șirurilor într-o buclă while - Reversing strings in a while loop</h3>
+
+            <div class="grid-container">
+                <p><b>while loop</b> iterează prin șir de caractere de la ultimul caracter la primul, adăugând fiecare
+                    caracter la un șir nou, gol.</p>
+                <p><b>while loop</b> iterate through the string from the last character to the first, appending each
+                    character to a new, empty string.</p>
+            </div>
+
+<pre><code>def șir_inversat_cu_buclă_while(șir):
+    """
+    Inversează un șir dat folosind o buclă while.
+
+    Argumente:
+    șir (str): Șirul care va fi inversat.
+
+    Returnează:
+    str: Șirul inversat.
+    """
+
+    șir_inversat = ""
+    indice = len(șir) - 1 <span># Începe de la ultimul indice</span>
+
+    while indice >= 0:
+        șir_inversat += șir[indice]
+        indice -= 1 <span># Se mută la caracterul anterior</span>
+
+    return șir_inversat
+
+culori =  ['verde', 'galben', 'roșu']
+culoare = 'verde'
+
+culori_inversate = șir_inversat_cu_buclă_while(culori)
+print(f"Culori inversate {culori_inversate}")
+
+culoare_inversată = șir_inversat_cu_buclă_while(culoare)
+print(f"Culoare inversată {culoare_inversată}")
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>șir_inversat = "": Un șir gol este inițializat pentru a stoca caracterele în ordine inversă.
+                    </dd>
+                    <dd>indice = len(șir) - 1: O variabilă indice este setată la ultimul indice al șirului. Deoarece
+                        indexarea șirurilor este bazată pe zero, ultimul indice este - 1.</dd>
+                    <dd>while indice >= 0:: Bucla while continuă atâta timp cât indicele este mai mare sau egal cu 0,
+                        asigurându-se că toate caracterele de la ultimul până la primul sunt procesate.</dd>
+                    <dd>șir_inversat += șir[indice]: În fiecare iterație, caracterul de la indicele curent al șirului
+                        este adăugat la șir_inversat.</dd>
+                    <dd>indice -= 1: Indexul este decrementat cu 1 pentru a trece la caracterul anterior din șir pentru
+                        următoarea iterație.</dd>
+                    <dd>return șir_inversat: Odată ce bucla se termină (când indicele devine mai mic decât 0), este
+                        returnat șirul complet inversat.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>reversed_str = "": An empty string is initialized to store the characters in reverse order.</dd>
+                    <dd>index = len(input_string) - 1: An index variable is set to the last index of the input_string.
+                        Since string indexing is zero-based, the last index is length - 1.</dd>
+                    <dd>while index >= 0:: The while loop continues as long as the index is greater than or equal to 0,
+                        ensuring that all characters from the last to the first are processed.</dd>
+                    <dd>reversed_str += input_string[index]: In each iteration, the character at the current index of
+                        the input_string is appended to reversed_str.</dd>
+                    <dd>index -= 1: The index is decremented by 1 to move to the previous character in the input_string
+                        for the next iteration.</dd>
+                    <dd>return reversed_str: Once the loop finishes (when index becomes less than 0), the fully reversed
+                        string is returned.</dd>
+                </dl>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h3 id="SIF">Inversarea șirurilor cu recursiune - Reversing strings with recursion</h3>
+
+            <div class="grid-container">
+                <div>
+                    <p>Inversarea unui șir de caractere folosind recursivitatea este definită de un caz de bază și un
+                        caz recursiv.</p>
+                    <p>Recursivitatea este proprietatea unui concept, precum o funcție sau o noțiune, de a se defini
+                        prin ea însuși, prin autoapelare sau prin referirea la o instanță mai simplă a aceluiași
+                        concept. Este utilizată în matematică și informatică pentru a rezolva probleme complexe,
+                        descompunându-le în subprobleme identice, care se reduc treptat la cazuri de bază, simple și
+                        nedefinite recursiv.</p>
+                </div>
+
+                <div>
+                    <p>Reversing a string using recursion is defined by a base case and a recursive case.</p>
+                    <p>Recursion is the property of a concept—such as a function or an idea—to define itself through
+                        self-reference or by referring to a simpler instance of the same concept. It is used in
+                        mathematics and computer science to solve complex problems by breaking them down into identical
+                        subproblems that gradually reduce to simple base cases that are not defined recursively.</p>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Caz de bază:</dt>
+                    <dd>Cazul de bază pentru recursivitate este atunci când șirul de intrare este gol sau are lungimea
+                        unu. În aceste cazuri, șirul este deja inversat și nu este necesară nicio acțiune suplimentară.
+                        Funcția returnează pur și simplu șirul așa cum este.</dd>
+                    <dt>Caz recursiv:</dt>
+                    <dd>Când șirul nu este gol sau un singur caracter, funcția efectuează următorii pași:</dd>
+                    <dd>Se apelează recursiv cu un subșir (adică, șir[1:]) care exclude primul caracter al șirului
+                        original.</dd>
+                    <dd>Apoi concatenează primul caracter al șirului original (șir[0]) la sfârșitul rezultatului
+                        returnat de apelul recursiv.</dd>
+                    <dd>Acest proces construiește efectiv șirul inversat prin preluarea repetată a primului caracter și
+                        plasarea acestuia la sfârșitul versiunii inversate a subșirului rămas, până când se atinge cazul
+                        de bază și șirul este complet inversat.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Base Case:</dt>
+                    <dd>The base case for the recursion is when the input string is empty or has a length of one. In
+                        these instances, the string is already reversed, and no further action is required. The function
+                        simply returns the string as is.</dd>
+                    <dt>Recursive Case:</dt>
+                    <dd>When the string is not empty or a single character, the function performs the following steps:
+                    </dd>
+                    <dd>It recursively calls itself with a substring (i.e., string[1:]) that excludes the first
+                        character of the original string.</dd>
+                    <dd>It then concatenates the first character of the original string (string[0]) to the end of the
+                        result returned by the recursive call.</dd>
+                    <dd>This process effectively builds the reversed string by repeatedly taking the first character and
+                        placing it at the end of the reversed version of the remaining substring, until the base case is
+                        reached and the string is fully reversed.</dd>
+                </dl>
+            </div>
+
+<pre><code>def șir_inversat_recursiv(șir):
+<span># dacă șirul este gol sau are un caracter, îl returnează așa cum este</span>
+    if len(șir) &lt;= 1:
+        return(șir)
+    else:
+        <span># Caz recursiv:</span>
+        <span># Apelați funcția cu subșirul de la al doilea caracter încolo</span>
+        <span># Adăugați primul caracter al șirului original la rezultat</span>
+        return șir_inversat_recursiv(șir[1:]) + șir[0]
+    
+<span># Exemplu de utilizare</span>
+culoare = "galben"
+șir_inversat_culoare = șir_inversat_recursiv(culoare)
+print(f"Șir original: {culoare}")  <span>==> Șir original: galben</span>
+print(f"Șir inversat: {șir_inversat_culoare}")  <span>==> Șir inversat: neblag</span>
+
+fruct = "gutuie"
+șir_inversat_fruct = șir_inversat_recursiv(fruct)
+print(f"Șir original: {fruct}")  <span>==> Șir original: gutuie</span>
+print(f"Șir inversat: {șir_inversat_fruct}")  <span>==> Șir inversat: eiutug</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h3 id="SIG">Şiruri inversate cu functools.reduce() - Reverse strings with functools.reduce()</h3>
+
+            <div class="grid-container">
+                <p>Pentru a inversa un șir de caractere folosind functools.reduce(), este necesară o funcție care
+                    primește două argumente (rezultatul acumulat și caracterul curent) și concatenează caracterul curent
+                    cu începutul rezultatului acumulat.</p>
+
+                <p>To reverse a string using functools.reduce(), a function is needed that takes two arguments (the
+                    accumulated result and the current character) and concatenates the current character to the
+                    beginning of the accumulated result.</p>
+            </div>
+
+<pre><code>from functools import reduce
+def șir_inversat_prin_reducere(șir):
+    return reduce(lambda a, b: b + a, șir, "")
+
+șir_inversat_prin_reducere("Salut, lume!") <span>==> '!emul ,tulaS'</span>
+</code></pre>
+
+<pre><code>
+șir_original = "Salut, lume!"
+
+<span># Funcția lambda concatenează caracterul curent (y) cu</span>
+<span># șirul acumulat (x) în ordine inversă.</span>
+șir_inversat = reduce(lambda x, y: y + x, șir_original)
+
+print(f"Șir original: {șir_original}")  <span>==> Șir original: Salut, lume!</span>
+print(f"Șir inversat: {șir_inversat}")  <span>==> Șir inversat: !emul ,tulaS</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație</dt>
+                    <dd>import functools: Această linie importă funcția reduce.</dd>
+                    <dd>reduce(lambda x, y: y + x, original_string):</dd>
+                    <dd>Funcția lambda definește o funcție simplă, în linie, care primește două argumente, x
+                        (acumulator) și y (caracterul curent) și returnează y + x.</dd>
+                    <dd>reduce iterează prin șirul original.</dd>
+                    <dd>Inițial, x (acumulatorul) este primul caracter ('S') și y este al doilea caracter ('a'). Funcția
+                        returnează 'a' + 'S' ==> 'aS'.</dd>
+                    <dd>În pasul următor, x devine 'aS' și y este următorul caracter ('l'). Funcția returnează 'l' +
+                        'aS' ==> 'laS'.</dd>
+                    <dd>Acest proces continuă până când toate caracterele sunt procesate, rezultând șirul complet
+                        inversat.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation</dt>
+                    <dd>import functools: This line imports the reduce function.</dd>
+                    <dd>reduce(lambda x, y: y + x, original_string):</dd>
+                    <dd>The lambda function defines a simple, inline function that takes two arguments, x (accumulator)
+                        and y (current character), and returns y + x.</dd>
+                    <dd>reduce iterates through original string.</dd>
+                    <dd>Initially, x (the accumulator) is the first character ('H') and y is the second character ('e').
+                        The function returns 'e' + 'H' ==> 'eH'.</dd>
+                    <dd>In the next step, x becomes 'eH' and y is the next character ('l'). The function returns 'l' +
+                        'eH' ==> 'leH'.</dd>
+                    <dd>This process continues until all characters are processed, resulting in the fully reversed
+                        string. </dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <p>Pentru mai multe modalități de utilizare a metodei reduce() în Python, consultați <a
+                        href="https://docs.python.org/3/library/functools.html#functools.reduce" target="_blank"
+                        rel="noopener">documentația Python</a>. Rețineți că pentru inversarea standard a șirurilor de
+                    caractere, metoda de feliere (s[::-1]) sau "".join(reversed(s)) este în general considerată mai
+                    idiomatică și mai eficientă.</p>
+
+                <p>For more ways to use reduce() in Python, refer to the <a href="#functools.reduce" target="_blank"
+                        rel="noopener">Python documentation</a>. Note that for standard string reversal, the slicing
+                    method (s[::-1]) or "".join(reversed(s)) is generally considered more idiomatic and efficient.</p>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="SF">Șir reversibil personalizat(class) - Custom Reversible String(class)</h2>
+
+            <div class="grid-container">
+                <p>Crearea unui șir de caractere "reversibil" personalizat în Python implică proiectarea unei clase care
+                    se comportă ca un șir de caractere, dar oferă și o modalitate ușoară de a obține versiunea sa
+                    inversată. Acest lucru se poate realiza prin moștenirea de la clasa str încorporată sau prin crearea
+                    unei clase personalizate care încapsulează un obiect str.</p>
+
+                <p>Creating a custom "reversible" string in Python implies designing a class that behaves like a string
+                    but also provides an easy way to get its reversed version. This can be achieved by inheriting from
+                    the built-in str class or by creating a custom class that wraps a str object.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Moștenire de la str</dt>
+                    <dd>Această metodă este concisă și utilizează funcționalitățile încorporate ale șirurilor de
+                        caractere din Python.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Inheriting from str</dt>
+                    <dd>This method is concise and leverages Python's built-in string functionalities.</dd>
+                </dl>
+            </div>
+
+<pre><code>class ȘirRevers(str):
+    def invers(self):
+        return ȘirRevers(self[::-1])
+
+<span># Creează o instanță a clasei personalizată</span>
+șir = ȘirRevers("salut")
+
+<span># Utilizează metoda personalizată</span>
+print(șir.invers())         <span>==> tulas</span>
+
+<span># Verifică tipul de date</span>
+print(type(șir.invers()))   
+<span>==> &lt;class '__main__.ȘirRevers'&gt;</span>
+
+<span># Se comportă în continuare exact ca un șir de caractere obișnuit</span>
+print(șir.upper())          <span>==> SALUT</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>class ȘirRevers(str):: Definește o nouă clasă ȘirRevers care moștenește din clasa str. Aceasta
+                        înseamnă că obiectele ȘirRevers vor avea automat toate metodele și comportamentele șirurilor
+                        obișnuite.</dd>
+                    <dd>def invers(self):: Definește o nouă metodă invers pentru obiectele ȘirRevers.</dd>
+                    <dd>return ȘirRevers(self[::-1]): În interiorul metodei invers, self[::-1] creează o copie inversată
+                        a șirului folosind feliere. Acest șir inversat este apoi încapsulat înapoi într-un obiect
+                        ȘirRevers și returnat, asigurându-se că rezultatul inversat are disponibilă și metoda invers.
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>class ȘirRevers(str):: Defines a new class ȘirRevers that inherits from the str class. This
+                        means
+                        ȘirRevers objects will automatically have all the methods and behaviors of regular strings.</dd>
+                    <dd>def reverse(self):: Defines a new method reverse for ȘirRevers objects.</dd>
+                    <dd>return ȘirRevers(self[::-1]): Inside the reverse method, self[::-1] creates a reversed copy of
+                        the string using slicing. This reversed string is then wrapped back into a ȘirRevers object and
+                        returned, ensuring that the reversed result also has the reverse method available.</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Încapsularea unui obiect str</dt>
+                    <dd>Această metodă oferă mai mult control asupra reprezentării și comportamentului intern, deși
+                        necesită o implementare mai explicită a metodelor de tip șir de caractere dacă se dorește
+                        funcționalitatea completă a unui obiect str.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Wrapping a str object</dt>
+                    <dd>This method offers more control over the internal representation and behavior, although it
+                        requires more explicit implementation of string-like methods if full str functionality is
+                        desired.</dd>
+                </dl>
+            </div>
+
+<pre><code>class ȘirRevers2:
+    def __init__(self, valoare):
+        if not isinstance(valoare, str):
+            raise TypeError("Valoarea trebuie să fie un șir")
+        self._valoare = valoare
+        
+    def __str__(self):
+        return self._valoare
+    
+    def __repr__(self):
+        return f"ȘirRevers2('{self._valoare}')"
+    
+    def invers(self):
+        return ȘirRevers2(self._valoare[::-1])
+    
+    <span># Dacă este necesar, puteți adăuga și alte metode de tip șir de caractere, de exemplu, __len__, __eq__ etc.</span>
+    def __len__(self):
+        return len(self._valoare)
+
+șir = "lume"
+șir_personalizat = ȘirRevers2(șir)
+print(șir_personalizat)          <span>==> lume</span>
+print(șir_personalizat.invers()) <span>==> emul</span>
+print(len(șir_personalizat))     <span>==> 4</span>
+
+șir2 = 1234
+șir_personalizat2 = ȘirRevers2(șir2)
+<span>==> TypeError: Valoarea trebuie să fie un șir</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>class ȘirRevers2:: Definește o nouă clasă ȘirRevers2.</dd>
+                    <dd>def __init__(self, valoare):: Constructorul preia o valoare și o stochează ca un atribut privat
+                        _value. Include și verificarea tipului.</dd>
+                    <dd>def __str__(self):: Definește modul în care obiectul ar trebui reprezentat ca șir de caractere
+                        (de exemplu, atunci când este afișat).</dd>
+                    <dd>def __repr__(self):: Definește reprezentarea "oficială a obiectului sub formă de șir de
+                        caractere, adesea utilizată pentru corectarea eroriilor.</dd>
+                    <dd>def invers(self):: Creează un nou obiect ȘirRevers2 cu valoarea _valoare inversată.</dd>
+                    <dd>def __len__(self):: Implementează funcția len() pentru obiectele ȘirRevers2.</dd>
+                    <dt>Alegerea unei metode:</dt>
+                    <dd>Pentru cazurile simple în care aveți nevoie în principal de metoda inversă și doriți să
+                        valorificați toate funcționalitățile str existente, moștenirea de la str este o alegerea mai
+                        "Pythonică" și mai eficientă.</dd>
+                    <dd>Dacă aveți nevoie de mai mult control asupra modului în care se comportă șirul de caractere sau
+                        doriți să adăugați mult mai multă logică personalizată dincolo de simpla inversare, încapsularea
+                        unui obiect str oferă o flexibilitate mai mare.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>class ȘirRevers2:: Defines a new class ȘirRevers2.</dd>
+                    <dd>def __init__(self, value):: The constructor takes a value and stores it as a private attribute
+                        _value. It also includes type checking.</dd>
+                    <dd>def __str__(self):: Defines how the object should be represented as a string (e.g., when
+                        printed).</dd>
+                    <dd>def __repr__(self):: Defines the "official" string representation of the object, often used for
+                        debugging.</dd>
+                    <dd>def reverse(self):: Creates a new ȘirRevers2 object with the reversed _value.</dd>
+                    <dd>def __len__(self):: Implements the len() function for ȘirRevers2 objects.</dd>
+                    <dt>Choosing a Method:</dt>
+                    <dd>For simple cases where you primarily need the reverse method and want to leverage all existing
+                        str functionalities, inheriting from str is the more "Pythonic" and efficient choice.</dd>
+                    <dd>If you need more control over how the string behaves, or want to add significantly more custom
+                        logic beyond just reversing, wrapping a str object provides greater flexibility.</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Moștenește din collections.UserString.</dt>
+                    <dd>Această abordare este în general mai bună decât subclasarea clasei str încorporate, deoarece
+                        UserString este conceput pentru a fi subclasat și are un atribut de date mutabil pentru o
+                        manipulare mai ușoară.</dd>
+                    <dd>Clasa personalizată trebuie să implementeze câteva „metode magice” cheie (cele care încep și se
+                        termină cu sublinieri duble) pentru a se asigura că se comportă ca un șir standard. Cele mai
+                        importante sunt __init__ pentru inițializare și __reversed__ pentru iterație inversă.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Inherit from collections.UserString.</dt>
+                    <dd>This approach is generally better than subclassing the built-in str because UserString is
+                        designed to be subclassed and has a mutable data attribute for easier manipulation.</dd>
+                    <dd>The custom class needs to implement a few key "magic methods" (those starting and ending with
+                        double underscores) to ensure it behaves like a standard string. The most important ones are
+                        __init__ for initialization and __reversed__ for reverse iteration.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>from collections import UserString
+
+class ŞirRevesibil(UserString):
+    """O clasă de șiruri personalizată care acceptă inversarea."""
+
+    def __reversed__(self):
+        """
+        Returnează un iterator invers pentru șir.
+        Acest lucru permite funcționarea funcției reversed() încorporată.
+        """
+        return reversed(self.data)
+
+    def reverse(self):
+        """Inversează șirul."""
+        self.data = self.data[::-1]
+        
+    def get_reversed(self):
+        """Returnează o copie nouă, inversată, a șirului."""
+        return self.data[::-1]
+
+
+<span># Creați o instanță a clasei personalizate</span>
+şir = ŞirRevesibil("Salut, lume!")
+print(f"Șir original: {şir}")     <span>==> Șir original: Salut, lume!</span>
+
+<span># Folosește funcția reversed() încorporată</span>
+print("Iterare cu reversed():", end=" ")   
+for caracter in reversed(şir):
+    print(caracter, end="")   <span>==> Iterare cu reversed(): !emul ,tulaS</span>
+print("\n")
+
+<span># Folosește metoda personalizată reverse() pentru a schimba instanța</span>
+şir.reverse()
+print(f"După utilizarea metodei reverse(): {şir}") <span>==> După utilizarea metodei reverse(): !emul ,tulaS</span>
+
+<span># Creează un șir nou, inversat, cu get_reversed()</span>
+şir_nou_inversat = ŞirRevesibil("Python").get_reversed()
+print(f"Noul șir inversat: {şir_nou_inversat}")    <span>==> Noul șir inversat: nohtyP</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Metode magice cheie utilizate</dt>
+                    <dd>__init__(self, seq): Clasa UserString gestionează inițializatorul, care stochează șirul de
+                        intrare în atributul său self.data. Clasa personalizată moștenește automat acest comportament.
+                    </dd>
+                    <dd>__reversed__(self): Această metodă este apelată de funcția reversed() încorporată. O puteți
+                        implementa pentru a defini modul în care obiectul dvs. ar trebui iterat invers. În acest
+                        exemplu, apelează pur și simplu reversed() standard pe șirul intern self.data.</dd>
+                    <dt>Caracteristici suplimentare</dt>
+                    <dd>reverse(self): O metodă care modifică obiectul prin inversarea atributului său data.</dd>
+                    <dd>get_reversed(self): O metodă care returnează un nou obiect str cu conținutul inversat, lăsând
+                        instanța originală neschimbată.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Key magic methods used</dt>
+                    <dd>__init__(self, seq): The UserString class handles the initializer, which stores the input string
+                        in its self.data attribute. Your custom class inherits this behavior automatically.</dd>
+                    <dd>__reversed__(self): This method is called by the built-in reversed() function. You can implement
+                        it to define how your object should be iterated in reverse. In this example, it simply calls the
+                        standard reversed() on the internal self.data string.</dd>
+                    <dt>Additional features</dt>
+                    <dd>reverse(self): A method that modifies the object in-place by reversing its data attribute.</dd>
+                    <dd>get_reversed(self): A method that returns a new str object with the reversed content, leaving
+                        the original instance unchanged.</dd>
+                </dl>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="SE">Sortarea șirurilor în ordine inversă - Sorting strings in reverse order</h2>
+
+            <div class="grid-container">
+                <p>Pentru a sorta un șir de caractere în ordine alfabetică inversă (descrescătoare) în Python, puteți
+                    utiliza funcția sorted() cu argumentul reverse=True și apoi puteți uni caracterele înapoi într-un
+                    șir de caractere.</p>
+
+                <p>To sort a string in reverse alphabetical (descending) order in Python, you can use the sorted()
+                    function with the reverse=True argument and then join the characters back into a string.</p>
+            </div>
+
+<pre><code>șirul = "salut programatorilor"
+
+# Convertește șirul într-o listă de caractere, sortează invers și unește-l înapoi
+șir_sortat_inversat = "".join(sorted(șirul, reverse=True))
+print(șir_sortat_inversat) <span>==> uttsrrrrpooomlligaaa</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dt>sorted(șirul, reverse=True):</dt>
+                    <dd>Funcția sorted() preia un iterabil (cum ar fi un șir de caractere) și returnează o nouă listă
+                        sortată.</dd>
+                    <dd>Când este aplicată unui șir de caractere, tratează fiecare caracter ca un element de sortat.
+                    </dd>
+                    <dd>reverse=True asigură că sortarea se face în ordine descendentă (de exemplu, 'z' înainte de 'a',
+                        'W' înainte de 'A').</dd>
+                    <dt>"".join(...):</dt>
+                    <dd>Metoda join() concatenează elementele unui iterabil (în acest caz, lista de caractere sortate)
+                        într-un singur șir de caractere.</dd>
+                    <dd>"" specifică un șir gol ca separator între elementele unite, creând efectiv un șir continuu din
+                        caracterele sortate.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dt>sorted(my_string, reverse=True):</dt>
+                    <dd>The sorted() function takes an iterable (like a string) and returns a new sorted list.</dd>
+                    <dd>When applied to a string, it treats each character as an element to be sorted.</dd>
+                    <dd>reverse=True ensures the sorting is done in descending order (e.g., 'z' before 'a', 'W' before
+                        'A').</dd>
+                    <dt>"".join(...):</dt>
+                    <dd>The join() method concatenates the elements of an iterable (in this case, the list of sorted
+                        characters) into a single string.</dd>
+                    <dd>"" specifies an empty string as the separator between the joined elements, effectively creating
+                        a continuous string from the sorted characters.</dd>
+                </dl>
+            </div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a>
+                    </address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+    <script src="JS/treileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

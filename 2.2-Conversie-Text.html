@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 2.2 Text-Converse</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaT.svg" alt="T" class="logo">
+          <h1>2.0 Tipuri Text-Text Type</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>2.2 Cazuri Conversie - Case Conversion</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#LU">.lower(), .upper()</a></li>
+            <li><a href="#TC">.title(), .capitalize(), .casefold()</a></li>
+            <li><a href="#SC">swapcase()</a></li>
+            <li><a href="#EC">.encode()</a></li>
+            <li><a href="#CL">Conversia unei liste într-un șir de caractere</a></li>
+            <li><a href="#CD">Conversia unui dicționar într-un șir de caractere</a></li>
+            <li><a href="#CS">Conversia unei liste de dicționare într-un șir de caractere</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter you will study:</li>
+            <li><a href="#LU">.lower(), .upper()</a></li>
+            <li><a href="#TC">.title(), .capitalize(), .casefold()</a></li>
+            <li><a href="#SC">swapcase()</a></li>
+            <li><a href="#EC">.encode()</a></li>
+            <li><a href="#CL">Converting a list to a string</a></li>
+            <li><a href="#CD">Converting a dictionary to a string</a></li>
+            <li><a href="#CS">Converting a list of dictionaries into a string</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+      <div class="grid-container">
+        <div>
+          <p>Python oferă mai multe metode încorporate pentru conversia majusculelor/minusculelor șirurilor de
+            caractere, permițând manipularea lor. Aceste metode returnează un nou șir de caractere cu majusculele și
+            minusculele convertite, deoarece șirurile de caractere sunt imuabile în Python.</p>
+          <p>Notă: Pentru .lower(), .upper(), .title(), .capitalize(), .casefold(), swapcase() şirul de caractere
+            trebuie să înceapă cu un caracter alfabetic.</p>
+        </div>
+        <div>
+          <p>Python offers several built-in string methods for case conversion, allowing strings' manipulation. These
+            methods return a new string with the converted case, as strings are immutable in Python.</p>
+          <p>Note: For .lower(), .upper(), .title(), .capitalize(), .casefold(), swapcase() the string must start with
+            an alphabetical character.</p>
+        </div>
+      </div>
+
+
+      <h2 id="LU">.lower(), .upper()</h2>
+
+      <p>Returnează un șir nou cu toate caracterele convertite în majuscule sau minuscule.<br>
+        Return a new string with all characters converted to lowercase or uppercase.</p>
+
+<pre><code><span># Conversie de minuscule/majuscule</span>
+s = "Salut, lume"
+print(s.lower())  <span>==> salut, lume</span>
+print(s.upper())  <span>==> SALUT, LUME</span>
+
+șirul = " Salut, lumea Python!"
+print(șirul.lower())  <span>==> salut, lumea python!</span>
+print(șirul.upper())  <span>==> SALUT, LUMEA PYTHON!</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Puncte cheie:</dt>
+          <dd>Ambele metode sunt utile pentru standardizarea textului pentru comparații, procesarea datelor sau
+            prezentare.
+            Se aplică direct unui obiect șir de caractere folosind notația punctuală.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Points:</dt>
+          <dd>Both methods are useful for standardizing text for comparisons, data processing, or presentation.
+            They are applied directly to a string object using dot notation.</dd>
+        </dl>
+      </div>
+      <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="TC">.title(), .capitalize(), .casefold()</h2>
+
+      <p><b>.title()</b></p>
+
+      <p>Sintaxă: șir.title()</p>
+
+      <div class="grid-container">
+        <div>
+          <p>Este o metodă de tip șir de caractere care returnează un șir nou în care prima literă a fiecărui cuvânt
+            este scrisă cu literă mare, iar restul literelor sunt convertite în litere mici. Nu modifică șirul original.
+          </p>
+          <dl>
+            <dt><em>Parametri:</em></dt>
+            <dd>Metoda title() nu acceptă niciun parametru.</dd>
+            <dt><em>Valoare returnată:</em></dt>
+            <dd>Returnează un șir nou cu formatarea specificată pentru titlu-majusculă.</dd>
+          </dl>
+          <p>Metoda title() identifică cuvintele din șir tratând caracterele non-alfabetice (inclusiv spații, cratime și
+            apostrofuri) ca separatoare de cuvinte. Apoi scrie cu majusculă primul caracter alfabetic al fiecărui cuvânt
+            identificat și convertește restul caracterelor din acel cuvânt în litere mici.
+          </p>
+        </div>
+
+        <div>
+          <p>Is a string method that returns a new string where the first letter of each word is capitalized and the
+            remaining letters are converted to lowercase. It does not modify the original string.</p>
+          <dl>
+            <dt><em>Parameters:</em>
+            <dt>
+            <dd>The title() method does not take any parameters.</dd>
+            <dt><em>Return Value:</em></dt>
+            <dd>It returns a new string with the specified title-case formatting.</dd>
+          </dl>
+          <p>The title() method identifies words within the string by treating non-alphabetic characters (including
+            spaces, hyphens, and apostrophes) as word separators. It then capitalizes the first alphabetic character of
+            each identified word and converts the rest of the characters in that word to lowercase.</p>
+        </div>
+      </div>
+
+<pre><code>text_şir = "salut lumea lui Python"
+textul_titlu = text_şir.title()
+print(textul_titlu)             <span>==> Salut Lumea Lui Python</span>
+
+<span># Şir cu majuscule si minuscule</span>
+text_şir2 = "aCeSTa Este un TeST"
+titlu_text_şir2 = text_şir2.title()
+print(titlu_text_şir2)          <span>==> Acesta Este Un Test</span>
+
+<span># Șir cu numere și simboluri</span>
+text_şir3 = "python 3.11 este grozav!"
+titlu_text_şir3 = text_şir3.title()
+print(titlu_text_şir3)          <span>==> Python 3.11 Este Grozav!</span>
+
+<span># Cuvinte separate prin caractere non-alfabetice</span>
+text_şir4 = "acesta-es#te 1*test"
+titlu_text_şir4 = text_şir4.title()
+print(titlu_text_şir4)          <span>==> Acesta-Es#Te 1*Test</span>
+</code></pre>
+
+      <p><b>.capitalize()</b></p>
+
+      <p>Sintaxă: șir.capitalize()</p>
+
+      <div class="grid-container">
+        <p>Este o metodă încorporată pentru șiruri de caractere care returnează o copie a șirului de caractere cu primul
+          caracter scris cu literă mare și restul caracterelor convertite în litere mici.</p>
+        <p>Is a built-in string method that returns a copy of the string with its first character capitalized and the
+          rest of the characters converted to lowercase.</p>
+      </div>
+
+<pre><code>text_capit = "salut lume."
+text_cu_majusculă = text_capit.capitalize()
+print(text_cu_majusculă) <span>==> Salut lume.</span>
+
+propoziție_capit = "salut lume! acesta este python."
+propoziție_cu_litere_capitalizate = propoziție_capit.capitalize()
+print(propoziție_cu_litere_capitalizate) <span>==> Salut lume! acesta este python.</span>
+
+alt_șir = "PYTHON ESTE DISTRACTIV!"
+alt_șir_capitalizat = alt_șir.capitalize()
+print(alt_șir_capitalizat) <span>==> Python este distractiv!</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Considerații importante:</dt>
+          <dd>Afectează doar primul caracter: Metoda capitalize() scrie cu majusculă doar primul caracter al întregului
+            șir, nu primul caracter al fiecărui cuvânt dintr-o propoziție. Pentru a scrie cu majusculă prima literă a
+            fiecărui cuvânt, ați utiliza metoda title() sau o abordare personalizată care implică divizarea și reunirea
+            șirului.</dd>
+          <dd>Returnează un șir nou: Metoda capitalize() nu modifică șirul original. În schimb, returnează un șir nou cu
+            majusculă aplicată.</dd>
+          <dd>Gestionează primele caractere non-alfabetice: Dacă primul caracter al șirului nu este o literă (de
+            exemplu, un număr, un simbol sau un spațiu), metoda returnează șirul original fără nicio modificare.</dd>
+          <dd>Primul caracter deja scris cu majusculă: Dacă primul caracter este deja scris cu majusculă, metoda
+            returnează totuși un șir nou, dar acesta va fi identic cu șirul original. Restul caracterelor, însă, vor fi
+            convertite în litere mici dacă erau inițial litere mari.</dd>
+        </dl>
+
+        <dl>
+          <dt>Important Considerations:</dt>
+          <dd>Only affects the first character: The capitalize() method only capitalizes the very first character of the
+            entire string, not the first character of each word within a sentence. For capitalizing the first letter of
+            every word, you would use the title() method or a custom approach involving splitting and rejoining the
+            string.</dd>
+          <dd>Returns a new string: The capitalize() method does not modify the original string in place. Instead, it
+            returns a new string with the capitalization applied.</dd>
+          <dd>Handles non-alphabetic first characters: If the first character of the string is not an alphabet (e.g., a
+            number, symbol, or space), the method returns the original string without any changes.</dd>
+          <dd>Already capitalized first character: If the first character is already uppercase, the method still returns
+            a new string, but it will be identical to the original string. The rest of the characters, however, will
+            still be converted to lowercase if they were originally uppercase.</dd>
+        </dl>
+      </div>
+
+      <p><b>.casefold()</b></p>
+
+      <div class="grid-container">
+        <div>
+          <p>Este o metodă de șir de caractere care returnează o versiune a unui șir de caractere cu
+            majuscule/minuscule. Aceasta înseamnă că, convertește toate caracterele din șir în echivalentul lor cu
+            minuscule, ceea ce reprezintă o formă mai agresivă și mai cuprinzătoare de utilizare a literelor mici în
+            comparație cu metoda standard lower().</p>
+
+          <dl>
+            <dt>Caracteristici:</dt>
+            <dd>Comparații fără sensibilitate la majuscule/minuscule: Scopul său principal este de a facilita comparații
+              fiabile de șiruri de caractere fără sensibilitate la majuscule/minuscule, în special atunci când se
+              lucrează cu diverse caractere Unicode și diferite limbi.</dd>
+            <dd>Respectă Unicode: Gestionează o gamă mai largă de caractere dincolo de ASCII de bază, inclusiv cele cu
+              reguli unice de utilizare a literelor mici în diferite limbi.</dd>
+            <dd>Utilizare agresivă a literelor mici: Scopul său este de a elimina toate distincțiile de
+              majuscule/minuscule, convertind caracterele în echivalentul lor "minuscule" decât lower().</dd>
+            <dd>Returnează un șir nou:Ca majoritatea metodelor de șir de caractere, casefold() nu modifică șirul
+              original, ci returnează un șir nou cu minuscule.</dd>
+            <dd>Fără parametri: Metoda nu acceptă argumente.
+            <dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>Is a string method that returns a case-folded version of a string. This means it converts all characters in
+            the string to their case-folded equivalent, which is a more aggressive and comprehensive form of lowercasing
+            compared to the standard lower() method.</p>
+
+          <dl>
+            <dt><em>Characteristics:</em></dt>
+            <dd>Case-insensitive comparisons: Its primary purpose is to facilitate reliable case-insensitive string
+              comparisons, especially when dealing with various Unicode characters and different languages.</dd>
+            <dd>Unicode-aware: It handles a broader range of characters beyond basic ASCII, including those with unique
+              casing rules in different languages.</dd>
+            <dd>Aggressive lowercasing: It aims to remove all case distinctions, converting more characters to their
+              "lowercase" equivalent than lower().</dd>
+            <dd>Returns a new string: Like most string methods, casefold() does not modify the original string but
+              returns a new string with the case-folded characters.</dd>
+            <dd>No parameters:The method does not take any arguments.</dd>
+          </dl>
+        </div>
+      </div>
+
+
+<pre><code>text_fold1 = "Salut, lume"
+text_fold2 = "SALUT, LUME"
+text_fold3 = "Stradă"
+text_fold4 = "STRADĂ"
+
+print(text_fold1.casefold()) <span>==> salut, lume</span>
+print(text_fold2.casefold()) <span>==> salut, lume</span>
+print(text_fold3.casefold()) <span>==> stradă</span>
+print(text_fold4.casefold()) <span>==> stradă</span>
+
+<span># Comparație folosind casefold()</span>
+if text_fold3.casefold() == text_fold4.casefold():
+    print("Șirurile sunt egale după casefolding.")    <span>==> Șirurile sunt egale după casefolding.</span>
+else:
+    print("Șirurile nu sunt egale după casefolding.")
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="SC">swapcase()</h2>
+
+      <p>Sintaxă: șir.swapcase()</p>
+
+      <div class="grid-container">
+        <div>
+          <p>Este o metodă încorporată pentru șiruri care returnează o copie în care toate caracterele majuscule sunt
+            convertite în minuscule, iar toate caracterele minuscule sunt convertite în majuscule. Caracterele
+            non-alfabetice (numere, simboluri, spații) rămân neschimbate.</p>
+          <dl>
+            <dt>Cum funcționează:</dt>
+            <dd>Iterează prin fiecare caracter din șirul original.</dd>
+            <dd>Dacă un caracter este o literă mare, îl convertește în echivalentul său cu litere mici.</dd>
+            <dd>Dacă un caracter este o literă mică, îl convertește în echivalentul său cu litere mari.</dd>
+            <dd>Dacă un caracter nu este o literă, rămâne așa cum este.</dd>
+            <dd>Apoi returnează un nou șir cu aceste modificări de majuscule/minuscule; șirul original nu este
+              modificat, deoarece șirurile în Python sunt imuabile.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>Is a built-in string method that returns a copy of a string where all uppercase characters are converted to
+            lowercase, and all lowercase characters are converted to uppercase. Non-alphabetic characters (numbers,
+            symbols, spaces) remain unchanged.</p>
+          <dl>
+            <dt>How it works:</dt>
+            <dd>It iterates through each character in the original string.</dd>
+            <dd>If a character is an uppercase letter, it converts it to its lowercase equivalent.</dd>
+            <dd>If a character is a lowercase letter, it converts it to its uppercase equivalent.</dd>
+            <dd>If a character is not a letter, it remains as is.</dd>
+            <dd>It then returns a new string with these case changes; the original string is not modified, as strings in
+              Python are immutable.</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code>text_swap = "SaLUT, lUmE"
+text_case_schimbate = text_swap.swapcase()
+print(text_case_schimbate)                 <span>==> sAlut, LuMe</span>
+
+șir = "Salut, Lume 123!"
+șir_interschimbat = șir.swapcase()
+print(șir_interschimbat)                   <span>==> sALUT, lUME 123!</span>
+
+alt_șir_swap = "pYThoN"
+altul_schimbat = alt_șir_swap.swapcase()
+print(altul_schimbat)                      <span>==> PytHOn</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="EC">.encode()</h2>
+
+      <p>Sintaxă: şir.encode(encoding='utf-8', errors='strict')</p>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, <b>metoda encode()</b> a unui șir de caractere convertește un șir Unicode într-o secvență de
+            octeți folosind o codificare specificată.</p>
+          <p>encoding: Acest parametru opțional specifică codificarea care va fi utilizată. Dacă este omis, UTF-8 este
+            valoarea implicită. Codificările comune includ 'utf-8', 'ascii', 'latin-1', 'utf-16' etc.</p>
+          <p> Argumentul errors din cadrul metodei encode() specifică modul de gestionare a caracterelor care nu pot fi
+            codificate de codificarea aleasă. Argumentul errors controlează comportamentul atunci când un caracter din
+            șir nu poate fi reprezentat în codificarea țintă.</p>
+        </div>
+
+        <div>
+          <p>In Python, the <b>encode() method</b> of a string converts a Unicode string into a sequence of bytes using
+            a specified encoding.</p>
+          <p>encoding: This optional parameter specifies the encoding to be used. If omitted, UTF-8 is the default.
+            Common encodings include 'utf-8', 'ascii', 'latin-1', 'utf-16', etc.</p>
+          <p>The errors argument within the encode() method specifies how to handle characters that cannot be encoded by
+            the chosen encoding. The errors argument controls the behavior when a character in the string cannot be
+            represented in the target encoding.</p>
+        </div>
+      </div>
+
+      <p>Valori de eroare comune în python encode()<br>
+        python encode() Common error values</p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>strict (implicit):</dt>
+          <dd>Aceasta generează o eroare UnicodeEncodeError dacă întâlnește un caracter necodificabil. Aceasta este cea
+            mai sigură opțiune, deoarece vă avertizează imediat asupra unei potențiale pierderi sau coruperi de date.
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>strict (default):</dt>
+          <dd>This raises a UnicodeEncodeError if an unencodable character is encountered. This is the safest option as
+            it immediately alerts you to potential data loss or corruption.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Codificarea unui șir simplu în UTF-8 (implicit)</span>
+text = "Salut, lume!"
+octeți_codificați = text.encode()
+
+print(f"Șir original: {text}")                                  <span>==> Șir original: Salut, lume!</span>
+print(f"Octeți codificați (UTF-8): {octeți_codificați}")        <span>==> Octeți codificați (UTF-8): b'Salut, lume!'</span>
+print(f"Tipul de octeți codificați: {type(octeți_codificați)}") <span>==> Tipul de octeți codificați: &lt;class 'bytes'&gt;</span>
+</code></pre>
+
+<pre><code><span># Codificarea unui șir de caractere cu un caracter special într-o codificare specifică</span>
+şir = "stradă!"
+try:
+    şir_codificat = şir.encode(encoding='latin-1')
+except UnicodeEncodeError as e:
+    print(f"Eroare: {e}")
+
+<span>==> Eroare: 'latin-1' codec can't encode character '\u0103' in position 5: ordinal not in range(256)</span>
+</code></pre>
+
+<pre><code><span># Folosirea parametrului strict'(va genera o eroare UnicodeEncodeError)</span>
+şir = "Salut, lume! 😊"
+try:
+    şir_codificat = şir.encode('ascii', errors='strict')
+except UnicodeEncodeError as e:
+    print(f"Eroare: {e}")
+
+<span>==> Eroare: 'ascii' codec can't encode character '\U0001f60a' in position 13: ordinal not in range(128)</span>
+</code></pre>
+
+    <div class="grid-container">
+      <dl>
+        <dt>ignora</dt>
+        <dd>Caracterele care nu pot fi codificate sunt pur și simplu evitate și omise din secvența de octeți rezultată.
+          Acest lucru poate duce la pierderea de date fără nicio eroare explicită.</dd>
+      </dl>
+      <dl>
+        <dt>ignore</dt>
+        <dd>Characters that cannot be encoded are simply skipped and omitted from the resulting byte sequence. This can
+          lead to data loss without any explicit error.</dd>
+      </dl>
+    </div>
+
+<pre><code>şir = "Salut, lume! 😊"
+şir_codificat_ignor = şir.encode('ascii', errors='ignore')
+print(şir_codificat_ignor)  <span>==> b'Salut, lume! '</span>
+</code></pre>
+
+    <div class="grid-container">
+      <dl>
+        <dt>înlocui</dt>
+        <dd>Caracterele necodificabile sunt înlocuite cu un caracter de înlocuire (de obicei, un semn de întrebare ? sau
+          un provizoriu similar) în codificarea țintă. Aceasta indică faptul că datele au fost pierdute, dar se
+          păstrează lungimea șirului.</dd>
+
+      </dl>
+      <dl>
+        <dt>replace</dt>
+        <dd>Unencodable characters are replaced with a replacement character (usually a question mark ? or a similar
+          placeholder) in the target encoding. This indicates that data was lost but maintains the length of the string.
+        </dd>
+      </dl>
+    </div>
+
+<pre><code><span># Gestionarea erorilor de codificare cu replace</span>
+text_cu_erori = "Acest text conține 2 caractere necodificabile:  😊"
+caractere_înlocuite = text_cu_erori.encode('ascii', errors='replace')
+
+print(f"Șir original: {text_cu_erori}") 
+<span>==> Șir original: Acest text conține 2 caractere necodificabile:  😊</span>
+
+print(f"Octeți codificați (ASCII cu 'replace'): {caractere_înlocuite}") 
+<span>==> Octeți codificați (ASCII cu 'replace'): b'Acest text con?ine 2 caractere necodificabile:  ?'</span>
+</code></pre>
+
+    <div class="grid-container">
+      <dl>
+        <dt>xmlcharrefreplace</dt>
+        <dd>xmlcharrefreplace: Caracterele necodificabile sunt înlocuite cu referințe de caractere XML (de exemplu,
+          &#128516; pentru emoji-ul cu fața zâmbitoare). Acest lucru este util la generarea de ieșiri XML sau HTML.</dd>
+      </dl>
+      <dl>
+        <dt>xmlcharrefreplace</dt>
+        <dd>xmlcharrefreplace: Unencodable characters are replaced by XML character references (e.g., &#128516; for the
+          smiling face emoji). This is useful when generating XML or HTML output.</dd>
+      </dl>
+    </div>
+
+<pre><code>şir = "Salut, lume! 😊"
+şir_codificat_xml = şir.encode('ascii', errors='xmlcharrefreplace')
+print(şir_codificat_xml) <span>==> b'Salut, lume! &amp;#128516;'</span>
+</code></pre>
+
+    <div class="grid-container">
+      <dl>
+        <dt>backslashreplace</dt>
+        <dd>Caracterele necodificabile sunt înlocuite cu secvențele de escape backslash din Python (de exemplu,
+          \U0001f60a pentru emoji-ul cu fața zâmbitoare). Această funcție este adesea folosită pentru repareare sau
+          atunci când aveți nevoie de o reprezentare imprimabilă a caracterului necodificabil.</dd>
+      </dl>
+      <dl>
+        <dt>backslashreplace</dt>
+        <dd>Unencodable characters are replaced by Python's backslash escape sequences (e.g., \U0001f60a for the smiling
+          face emoji). This is often used for debugging or when you need a printable representation of the unencodable
+          character.</dd>
+      </dl>
+    </div>
+
+<pre><code>şir = "Salut, lume! 😊"
+şir_codificat_backslash = şir.encode('ascii', errors='backslashreplace')
+print(şir_codificat_backslash) <span>==> b'Salut, lume! \\U0001f60a'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Alegerea strategiei adecvate de gestionare a erorilor depinde de cerințele specifice ale aplicației dvs. și
+          de modul în care doriți să gestionați datele care nu pot fi reprezentate în codificarea aleasă.</p>
+        <p>Choosing the appropriate errors handling strategy depends on the specific requirements of your application
+          and how you want to manage data that cannot be represented in the chosen encoding.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CL">Conversia unei liste într-un șir de caractere<br>Convert a list to a string</h2>
+
+      <p><a href="https://www.w3schools.com/python/ref_string_join.asp" target="_blank" rel="noopener">Python String
+          join() Method</a>
+      </p>
+
+      <p><a href="https://www.geeksforgeeks.org/python/python-map-function/" target="_blank" rel="noopener">Python map()
+          function</a>
+      </p>
+
+      <p><a
+          href="https://discuss.python.org/t/what-do-you-think-of-joinmapping-a-class-to-join-mappings-with-equal-keys-into-one-mapping/53367"
+          target="_blank" rel="noopener">Think of JoinMapping</a></p>
+
+      <div class="grid-container">
+        <p>Pentru a converti o listă într-un șir de caractere, cele mai comune și eficiente metode sunt
+          <b>str.join()</b> și <b>map()</b>. Aceste metode concatenează elementele unui iterabil (cum ar fi o listă)
+          într-un singur șir de caractere, folosind un șir ca separator aplicat funcției join().
+        </p>
+        <p>To convert a list to a string, the most common and efficient methods are <b>str.join()</b> and <b>map()</b>.
+          This methods concatenates the elements of an iterable (like a list) into a single string, using a string on
+          which join() is called as a separator.</p>
+      </div>
+
+      <p><b>.join()</b> pentru liste de șiruri de caractere:<br>
+        <b>.join()</b> for lists of strings:
+      </p>
+
+<pre><code>fructe = ["mere", "pere", "cireșe", "caise"]
+
+separator = ", "
+șir_fructe = separator.join(fructe)
+print(șir_fructe)  <span>==> mere, pere, cireșe, caise</span>
+
+separator2 = " "
+șir_fructe2 = separator2.join(fructe)
+print(șir_fructe2) <span>==> mere pere cireșe caise</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>.join() pentru liste care conțin elemente care nu sunt șiruri de caractere (de exemplu, numere):</dt>
+          <dd>Dacă lista conține elemente care nu sunt șiruri de caractere (cum ar fi numere întregi sau alte tipuri de
+            date), trebuie să le convertiți în șiruri de caractere înainte de a utiliza join(). Acest lucru se poate
+            face eficient cu o expresie generatoare sau <b>map()</b>.</dd>
+        </dl>
+        <dl>
+          <dt>.join() for lists containing non-string elements (e.g., numbers):</dt>
+          <dd>If your list contains elements that are not strings (like integers or other data types), you need to
+            convert them to strings before using join(). This can be done efficiently with a generator expression or
+            <b>map()</b>.
+          </dd>
+        </dl>
+      </div>
+
+<pre><code>numere = [1, 2, 3, 4, 5]
+separator = "-"
+șir_numere = separator.join(map(str, numere))
+
+print(șir_numere)  <span>==> 1-2-3-4-5</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>Utilizarea unei expresii generatoare: Aceasta este adesea cea mai lizibilă și "Pythonic" abordare pentru
+        listele de tip mixt.</p>
+      <p>Using a generator expression: This is often the most readable and "Pythonic" approach for mixed-type lists.</p>
+    </div>
+
+<pre><code>listă_mixtă = ['Ultimele', 'patru', 'cifre', 'ale', 'numărului', 'de', 'telefon', ':', 7936]
+
+<span># Convertește fiecare element într-un șir de caractere și unește-l cu spații</span>
+rezultat = ' '.join(str(item) for item in listă_mixtă)
+
+print(rezultat)  <span>==> Ultimele patru cifre ale numărului de telefon : 7936</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p><b>Buclare și concatenare:</b> Puteți itera prin listă și construi șirul prin concatenarea elementelor. Acest
+        lucru este mai puțin eficient pentru listele mari.</p>
+      <p><b>Looping and concatenation:</b> You can iterate through the list and build the string by concatenating
+        elements. This is less efficient for large lists.
+      </p>
+    </div>
+
+<pre><code>litere = ["a", "b", "c"]
+șir_rezultat = ""
+for literă in litere:
+    șir_rezultat += literă
+
+print(șir_rezultat) <span>==> abc</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p><b>Conversia str() a întregii liste:</b> Aceasta convertește lista însăși în reprezentarea sa sub formă de șir
+        de caractere, inclusiv parantezele și virgulele.</p>
+      <p><b>str() conversion of the whole list:</b> This converts the list itself into its string representation,
+        including the brackets and commas.</p>
+    </div>
+
+<pre><code>lucruri = ["uşă", "vază", "pocal", "polonic", "rindea"]
+reprezentare_șir = str(lucruri)
+
+print(f"{lucruri} / {type(lucruri)}")  
+<span>==> ['uşă', 'vază', 'pocal', 'polonic', 'rindea'] / &lt;class 'list'&gt;</span>
+
+print(f"{reprezentare_șir} / {type(reprezentare_șir)}") 
+<span>==> ['uşă', 'vază', 'pocal', 'polonic', 'rindea'] / &lt;class 'str'&gt;</span>
+</code></pre>
+
+      <dl>
+        <dt>Ce metodă ar trebui să alegeți?</dt>
+        <dd>Pentru liste de șiruri de caractere: Folosiți sintaxa simplă separator.join(listă_de_șiruri). Este cea mai
+          eficientă și directă abordare.</dd>
+        <dd>Pentru liste cu tipuri mixte: Folosiți separator.join(str(item) for item in listă_mixtă). Este o soluție
+          curată, pe o singură linie, care se ocupă de conversie.</dd>
+        <dd>Pentru o reprezentare simplă: Dacă doriți pur și simplu reprezentarea sub formă de șir a listei în sine,
+          completă cu paranteze și virgule, puteți utiliza funcția str() încorporată, deși aceasta este mai puțin
+          comună.</dd>
+      </dl>
+
+      <dl>
+        <dt>Which method should you choose?</dt>
+        <dd>For lists of strings: Use the simple separator.join(list_of_strings) syntax. It's the most efficient and
+          direct approach.</dd>
+        <dd>For lists with mixed types: Use separator.join(str(item) for item in mixed_list). It's a clean, single-line
+          solution that handles the conversion for you.</dd>
+        <dd>For simple representation: If you simply want the string representation of the list itself, complete with
+          brackets and commas, you can use the built-in str() function, though this is less common.</dd>
+      </dl>
+
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="CD">Conversia unui dicționar într-un șir de caractere<br>
+        Convert a dictionary to a string</h2>
+
+    <div class="grid-container">
+      <p><b>Utilizarea funcției str():</b>
+        Cea mai simplă metodă este utilizarea funcției str() încorporată, care convertește dicționarul în reprezentarea
+        sa standard de tip șir de caractere.</p>
+      <p><b>Using str():</b>
+        The simplest method is to use the built-in str() function, which converts the dictionary into its standard
+        string representation.</p>
+    </div>
+
+<pre><code>dicţionar = {'nume': 'prun', 'grupa': 'pomi fructiferi'}
+dicţionar_ca_șir = str(dicţionar)
+
+print(f"{dicţionar_ca_șir} / {type(dicţionar_ca_șir)}") <span>==> {'nume': 'prun', 'grupa': 'pomi fructiferi'} / &lt;class 'str'&gt;</span>
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, <a href="https://docs.python.org/3/library/json.html" target="_blank" rel="noopener">JSON</a>
+            (JavaScript
+            Object Notation) este un format ușor de schimb de date, gestionat prin intermediul modulului bibliotecii
+            standard json încorporat. Acesta vă permite să analizați răspunsurile API-ului web, să stocați configurații
+            și să convertiți structurile de date Python în șiruri de text simplu pentru transfer în rețea.</p>
+          <p><b>Utilizarea funcției json.dumps():</b>
+            Pentru convertirea unui dicționar într-un șir de caractere formatat <a
+              href="https://realpython.com/python-json/" target="_blank" rel="noopener">JSON</a>, utilă în special
+            atunci când se
+            lucrează cu API-uri sau aplicații web, se preferă utilizarea funcției json.dumps().</p>
+        </div>
+        <div>
+          <p>In Python, <a href="https://docs.python.org/3/library/json.html" target="_blank" rel="noopener">JSON</a>
+            (JavaScript
+            Object Notation) is a lightweight data interchange format handled through the built-in json standard library
+            module. It allows you to parse web API responses, store configurations, and convert Python data structures
+            into plain-text strings for network transfer.</p>
+          <p><b>Using json.dumps():</b>
+            For converting a dictionary into a <a href="https://realpython.com/python-json/" target="_blank"
+              rel="noopener">JSON</a>-formatted string, especially useful when working with APIs or web applications,
+            the json.dumps() function is preferred.</p>
+        </div>
+      </div>
+
+<pre><code>import json
+
+strugure = {'nume': 'Rară Neagră', 'coloare': 'negru', 'locaţie': 'Moldova'}
+șir_json = json.dumps(strugure, ensure_ascii=False)
+
+print(f"{șir_json} / {type(șir_json)}") <span>==> {"nume": "Rară Neagră", "coloare": "negru", "locaţie": "Moldova"} / &lt;class 'str'&gt;</span>
+</code></pre>
+
+      <p>Utilizați parametrul <b>indent</b> pentru o ieșire JSON mai lizibilă:<br>
+        Use the <b>indent</b> parameter for more readable JSON output:</p>
+
+<pre><code>lucrător = {"nume": "Virgil", "ocupaţie": "viticultor", "locaţie": "Dealul Viilor"}
+json_șir_formatat = json.dumps(lucrător, ensure_ascii=False, indent=4)
+
+print(json_șir_formatat)
+print(type(json_șir_formatat))
+
+<span>==> resultat după afișare:</span>
+
+{
+    "nume": "Virgil",
+    "ocupaţie": "viticultor",
+    "locaţie": "Dealul Viilor"
+}
+&lt;class 'str'&gt;
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>Utilizarea repr():</b>
+          Funcția repr() oferă o reprezentare detaliată a dicționarului sub formă de șir de caractere, care poate fi
+          evaluată înapoi într-un dicționar folosind eval() (deși eval() ar trebui utilizată cu precauție din cauza
+          riscurilor de securitate)</p>
+        <p><b>Using repr():</b>
+          The repr() function provides a detailed string representation of the dictionary, which can be evaluated back
+          into a dictionary using eval() (though eval() should be used with caution due to security risks).</p>
+      </div>
+
+<pre><code>stoc_de_fructe = {'caisă': {'cantitate': 10, 'preț': 2.40}}
+print(type(stoc_de_fructe)) <span>==> &lt;class 'dict'&gt;</span>
+
+șir_repr = repr(stoc_de_fructe)
+print(șir_repr)       <span>==> {'caisă': {'cantitate': 10, 'preț': 2.4}}</span>
+print(type(șir_repr)) <span>==> &lt;class 'str'&gt;</span>
+</code></pre>
+
+
+    <div class="grid-container">
+      <p>Formatare personalizată cu metode de tip șir (de exemplu, <b>join()</b> și <b>șiruri f</b>):
+        Pentru un control sporit asupra formatului șirului, puteți parcurge dicționarul și construi șirul folosind
+        metode precum join() sau șiruri f.</p>
+
+      <p>Custom Formatting with String Methods (e.g., <b>join()</b> and <b>f-strings</b>):
+        For more control over the string format, you can iterate through the dictionary and build the string using
+        methods like join() or f-strings.</p>
+    </div>
+
+<pre><code>fruct = {'gutuie': 'galbenă', 'mărime': 'medie'}
+fruct_formatat = ', '.join(f"{cheie}: {valoare}" for cheie, valoare in fruct.items())
+print(fruct_formatat) <span>==> gutuie: galbenă, mărime: medie</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CS">Conversia unei liste de dicționare într-un șir de caractere<br>Convert a list of dictionary to a
+        string</h2>
+
+    <div class="grid-container">
+      <p>Utilizarea funcției <b>json.dumps()</b> pentru șiruri formatate JSON:
+        Această metodă este potrivită atunci când este necesară o reprezentare JSON standard a listei de dicționare.</p>
+      <p>Using <b>json.dumps()</b> for JSON-formatted string:
+        This method is suitable when a standard JSON representation of the list of dictionaries is required.</p>
+    </div>
+
+<pre><code>import json
+
+date_personale = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Craiova"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Hunedoara"}
+ ]
+șir_json = json.dumps(date_personale, ensure_ascii=False)
+print(șir_json)
+print()
+șir_json_indent = json.dumps(date_personale, ensure_ascii=False, indent=4)
+print(șir_json_indent)
+
+<span>==> [{"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"}, {"nume": "Tatiana", "vârstă": 90, "oraş": "Craiova"}, {"nume": "Sever", "vârstă": 70, "oraş": "Hunedoara"}]</span>
+
+[
+    {
+        "nume": "Virgil",
+        "vârstă": 85,
+        "oraş": "Turnu Severin"
+    },
+    {
+        "nume": "Tatiana",
+        "vârstă": 90,
+        "oraş": "Craiova"
+    },
+    {
+        "nume": "Sever",
+        "vârstă": 70,
+        "oraş": "Hunedoara"
+    }
+]
+</code></pre>
+
+    <div class="grid-container">
+      <p>Folosirea <b>str() și join()</b> pentru o reprezentare simplă a șirurilor de caractere:
+        Această abordare convertește fiecare dicționar în reprezentarea sa de șir de caractere folosind str() și apoi
+        unește aceste șiruri de caractere.</p>
+      <p>Using <b>str() and join()</b> for a simple string representation:
+        This approach converts each dictionary to its string representation using str() and then joins these strings.
+      </p>
+    </div>
+
+<pre><code>date_personale = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Craiova"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Hunedoara"}
+]
+reprezentare_șir_virgulă = ", ".join(str(dicţionar) for dicţionar in date_personale)
+print(reprezentare_șir_virgulă, "\n")
+
+reprezentare_șir = "\n".join(str(dicţionar) for dicţionar in date_personale)
+print(reprezentare_șir)
+
+<span>==> {'nume': 'Virgil', 'vârstă': 85, 'oraş': 'Turnu Severin'}, {'nume': 'Tatiana', 'vârstă': 90, 'oraş': 'Craiova'}, {'nume': 'Sever', 'vârstă': 70, 'oraş': 'Hunedoara'} 
+
+{'nume': 'Virgil', 'vârstă': 85, 'oraş': 'Turnu Severin'}
+{'nume': 'Tatiana', 'vârstă': 90, 'oraş': 'Craiova'}
+{'nume': 'Sever', 'vârstă': 70, 'oraş': 'Hunedoara'}</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>Un format personalizat folosind <b>join și f-strings:</b>
+        Această metodă este utilă pentru construirea unui format specific, lizibil de către om.</p>
+      <p>Using a <b>join and f-strings</b> for custom formatting:
+        This method is useful for building a specific, human-readable format.</p>
+    </div>
+
+<pre><code>date_personale = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Craiova"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Hunedoara"}
+]
+șir_formatat = "\n".join(f"Persoana {dicţionar['nume']}: {dicţionar['vârstă']} de ani" for dicţionar in date_personale)
+print(șir_formatat)
+
+<span>==> Persoana Virgil: 85 de ani
+    Persoana Tatiana: 90 de ani
+    Persoana Sever: 70 de ani</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Utilizarea unei bucle și a șirurilor f pentru formatare personalizată:
+          Această metodă oferă mai mult control asupra formatului șirului prin iterarea listei și construirea șirului cu
+          f-șiruri.</p>
+        <p>Using a loop and f-strings for custom formatting:
+          This method offers more control over the string format by iterating through the list and building the string
+          with f-strings.</p>
+      </div>
+
+<pre><code>date_personale = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 75, "oraş": "Craiova"},
+    {"nume": "Sever", "vârstă": 81, "oraş": "Hunedoara"}
+]
+rezultat = ""
+for dicţionar in date_personale:
+    rezultat += f"Nume: {dicţionar['nume']}, Vârsta: {dicţionar['vârstă']}, Oras: {dicţionar['oraş']}\n"
+print(rezultat)
+
+<span>==> Nume: Virgil, Vârsta: 85, Oras: Turnu Severin
+    Nume: Tatiana, Vârsta: 75, Oras: Craiova
+    Nume: Sever, Vârsta: 81, Oras: Hunedoara</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Folosind o <b>înțelegere (comprehension) a listei și join()</b> pentru perechi cheie-valoare specifice:
+          Dacă în șirul final sunt necesare doar perechi cheie-valoare specifice din fiecare dicționar, o înțelegere
+          (comprehension) a listei le poate extrage și formata.</p>
+        <p>Using a <b>list comprehension and join()</b> for specific key-value pairs:
+          If only specific key-value pairs from each dictionary are needed in the final string, a list comprehension can
+          extract and format them.</p>
+      </div>
+
+<pre><code>date_personale = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 75, "oraş": "Craiova"},
+    {"nume": "Sever", "vârstă": 81, "oraş": "Hunedoara"}
+]
+
+șir_nume = ", ".join(dicţionar["nume"] for dicţionar in date_personale)
+print(șir_nume) <span>==> Virgil, Tatiana, Sever</span>
+</code></pre>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>

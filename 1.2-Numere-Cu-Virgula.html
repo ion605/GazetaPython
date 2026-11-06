@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 1.2 Numere-Cu-Virgula</title>
+
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaN.svg" alt="N" class="logo">
+          <h1>1.0 Tipuri numerice - Numeric Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>1.2 Numere cu virgulă ----- Floating numbers</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class="third-empty-1-1"></div>
+
+    <div class="ro-en-1-1 container-links ro-en">
+      <div>
+        <ul>
+          <li>În acest capitol veți studia:</li>
+          <li><a href="#FN">Număr cu virgulă</a></li>
+          <li><a href="#FL">Numerele cu virgulă literale</a></li>
+          <li><a href="#FM">Metodele numerelor cu virgulă</a></li>
+          <li><a href="#DM">Metode ale operatorilor (Metode dunder)</a></li>
+          <li><a href="#FT">Funcția float() încorporată</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <ul>
+          <li>In this chapter you will study:</li>
+          <li><a href="#FN">Floating number(float)</a></li>
+          <li><a href="#FL">Floating literals</a></li>
+          <li><a href="#FM">Float methods</a></li>
+          <li><a href="#DM">Operator methods (Dunder methods)</a></li>
+          <li><a href="#FT">The built-in float() Function</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <h2 id="FN">Număr cu virgulă - Floating number(float)</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Reprezintă numere reale, inclusiv cele cu părți fracționare. Acestea pot fi scrise în formă zecimală
+            standard sau în notație științifică folosind <b>e</b> sau <b>E</b> pentru a indica o putere a lui 10.</p>
+          <p>Numerele cu virgulă mobilă standard din Python sunt de obicei numere cu precizie dublă, oferind o precizie
+            de până la aproximativ 15 zecimale.</p>
+          <p>Compararea directă a numerelor cu virgulă mobilă poate duce uneori la rezultate neașteptate din cauza
+            problemelor de precizie a numerelor cu virgulă mobilă.</p>
+        </div>
+
+        <div>
+          <p>Represent real numbers, including those with fractional parts. They can be written in standard decimal form
+            or in scientific notation using e or E to indicate a power of 10.</p>
+          <p>Standard Python floats are typically double-precision numbers, offering accuracy up to about 15 decimal
+            places.</p><br>
+          <p>Directly comparing floats can sometimes lead to unexpected results due to floating-point precision issues.
+          </p>
+        </div>
+      </div>
+
+      <p>Exemplu: 3.14, -0.5, 2.0, 2,5e2</p>
+      <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="FL">Numerele cu virgulă literale - Floating literals</h2>
+
+    <div class="grid-container">
+      <p>Literalii în virgulă mobilă din Python reprezintă numere reale, care pot avea o parte fracționară. Sunt
+        imuabile și sunt de tipul de date float.</p>
+      <p>Floating-point literals in Python represent real numbers, which are numbers that can have a fractional part.
+        They are immutable and are of the float data type.</p>
+    </div>
+
+<pre><code>print(4.2)
+print(type(4.2))
+print(4.)
+print(type(.4))
+print(.2)
+print(type(.2))
+print(.4e7)
+print(type(.4e7))
+print(4.25e-4)
+print(type(4.25e-4))
+</code></pre>
+
+      <p>Notație zecimală standard - Standard decimal notation</p>
+
+    <div class="grid-container">
+      <p>Aceasta este cea mai comună modalitate de a scrie numere în virgulă mobilă, folosind o virgulă pentru a separa
+        partea întreagă de partea fracționară.<br>
+      <p>This is the most common way to write floating-point numbers, using a decimal point to separate the whole and
+        fractional parts.</p>
+    </div>
+
+<pre><code>x = 3.14159 <span># Un număr cu o parte zecimală</span>
+y = -2.5    <span># Un număr  negativ</span>
+z = .5      <span># Un număr în care partea întreagă este zero</span>
+w = 0.0     <span># Un număr în care partea întreagă şi zecimală sunt zero</span>
+
+print(type(x), type(y), type(z), type(w)) <span>==> &lt;class 'float'&gt; &lt;class 'float'&gt; &lt;class 'float'&gt; &lt;class 'float'&gt;</span>
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>Notație științifică (pentru numere foarte mari sau foarte mici)</p>
+
+          <p>Pentru numere foarte mari sau foarte mici, se folosește adesea notația științifică. Aceasta constă dintr-un
+            număr (mantisa) urmat de 'e' sau 'E' și un exponent întreg. Exponentul indică puterea lui 10 cu care se
+            înmulțește mantisa.</p>
+        </div>
+
+        <div>
+          <p>Scientific notation (for very large or very small numbers)</p>
+
+          <p>For very large or very small numbers, scientific notation is often used. It consists of a number (the
+            mantissa) followed by 'e' or 'E' and an integer exponent. The exponent indicates the power of 10 by which
+            the mantissa is multiplied.</p>
+        </div>
+      </div>
+
+<pre><code>număr_imens = 1,87e45       <span># Reprezintă 1,87 × 10<sup>45</sup></span>
+
+viteza_luminii = 2,998e8    <span># Reprezintă 2,998 × 10<sup>8</sup></span>
+
+număr_foarte_mic = 9,732e-6 <span># Reprezintă 9,732 × 10<sup>-6</sup></span>
+
+număr_mare = 1.23e5         <span># Reprezintă 1.23 * 10<sup>5</sup> (123000.0)</span>
+
+număr_mic = 4.56E-3         <span># Reprezintă 4.56 * 10<sup>-3</sup> (0.00456)</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>Python poate reprezentă, de asemenea, valori numerice speciale care nu se comportă ca numere obișnuite. Acestea
+        le puteți accesa folosind constructorul float() încorporat.</p>
+      <p>Python can also represent special numerical values that do not behave like regular numbers. You access these
+        using the built-in float() constructor.</p>
+    </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Valori speciale în virgulă mobilă:</dt>
+          <dd>
+            <dl>
+              <dt>Infinity (inf): Reprezintă un număr mai mare decât numărul maxim reprezentabil cu virgulă mobilă.</dt>
+              <dd>float('inf') pentru infinit pozitiv</dd>
+              <dd>float('-inf') pentru infinit negativ</dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Nu este un număr (nan): Reprezintă un rezultat numeric nedefinit, cum ar fi 0/0.</dt>
+              <dd>float('nan')</dd>
+            </dl>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>Special floating-point values:</dt>
+          <dd>
+            <dl>
+              <dt>Infinity (inf): Represents a number that is larger than the maximum representable float.</dt>
+              <dd>float('inf') for positive infinity</dd>
+              <dd>float('-inf') for negative infinity</dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Not a Number (nan): Represents an undefined numerical result, such as 0/0.</dt>
+              <dd>float('nan')</dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+
+<pre><code>x = float('nan')
+print(x)         <span>==> nan</span>
+
+<span># math.isnan(): Pentru verificarea valorilor cu un singur număr în virgulă mobilă în biblioteca standard.</span>
+import math
+x = float('nan')
+print(math.isnan(x)) <span>==> True</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Caracteristici:</dt>
+          <dd>Punctul zecimal: Prezența unui punct zecimal distinge un literal cu virgulă mobilă de un literal întreg.
+          </dd>
+          <dd>Semn: Literalii cu virgulă mobilă pot fi pozitivi sau negativi, indicați printr-un semn + sau - precedent
+            (+ este opțional pentru numerele pozitive).</dd>
+          <dd>Magnitudine: Numerele cu virgulă mobilă au o valoare maximă și una minimă, dincolo de care reprezintă inf
+            (infinit) sau -inf (infinit negativ).</dd>
+          <dd>Precizie: Numerele cu virgulă mobilă în Python sunt de obicei implementate folosind numere cu virgulă
+            mobilă cu dublă precizie (64 de biți), oferind un anumit nivel de precizie. Cu toate acestea, este important
+            să fiți conștienți de potențialele inexactități ale virgulei mobile atunci când aveți de-a face cu calcule
+            precise.</dd>
+        </dl>
+
+        <dl>
+          <dt>Characteristics:</dt>
+          <dd>Decimal Point: The presence of a decimal point distinguishes a float literal from an integer literal.</dd>
+          <dd>Sign: Floating-point literals can be positive or negative, indicated by a preceding + or - sign (the + is
+            optional for positive numbers).</dd>
+          <dd>Magnitude: Floats have a maximum and minimum value, beyond which they represent inf (infinity) or -inf
+            (negative infinity).</dd>
+          <dd>Precision: Floating-point numbers in Python are typically implemented using double-precision (64-bit)
+            floating-point numbers, offering a certain level of precision. However, it's important to be aware of
+            potential floating-point inaccuracies when dealing with precise calculations.</dd>
+        </dl>
+      </div>
+
+      <p>Arithmetic operations - Operații aritmetice</p>
+
+<pre><code>print(10 / 5)  <span># Împărțirea obișnuită are ca rezultat întotdeauna un număr cu zecimale</span>
+print(1 + 2.5) <span># Adăugarea unui număr zecimal la un număr întreg are ca rezultat un număr cu zecimale</span>
+</code></pre>
+
+      <p>
+        Underscores for readability (Introduced in <a href="https://www.python.org/downloads/release/python-360/"
+          target="_blank" rel="noopener">Python 3.6</a>)<br>
+        Sublinieri pentru lizibilitate (Introduced in <a href="https://www.python.org/downloads/release/python-360/"
+          target="_blank" rel="noopener">Python 3.6</a>))
+      </p>
+
+<pre><code>populație = 7_800_000_000.0             <span># Sublinieri pentru claritate în numere mari</span>
+
+număr_foarte_specific = 1_234.567_89e10 <span># Folosit în notație științifică</span>
+print(număr_foarte_specific)
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Comportament important:</dt>
+          <dd>Reprezentare inexactă: Numerele cu virgulă mobilă standard în Python au dublă precizie, ceea ce înseamnă
+            că sunt stocate în format binar. Acest lucru poate duce la mici erori de rotunjire pentru unele numere
+            zecimale, cum ar fi 0,1. Drept urmare, math cu virgulă mobilă nu este întotdeauna perfect precisă.</dd>
+          <dd>Alternativă pentru precizie: Pentru aplicații financiare sau de altă natură care necesită reprezentări
+            zecimale exacte, utilizați modulul Decimal din biblioteca standard pentru a evita inexactitățile în virgulă
+            mobilă.</dd>
+        </dl>
+
+        <dl>
+          <dt>Important behavior:</dt>
+          <dd>Inexact representation: Standard floats in Python are double-precision, which means they are stored in
+            binary. This can lead to small rounding errors for some decimal numbers, like 0.1. As a result,
+            floating-point math is not always perfectly precise.</dd>
+          <dd><br></dd>
+          <dd>Alternative for precision: For financial or other applications requiring exact decimal representations,
+            use the Decimal module from the standard library to avoid floating-point inaccuracies.</dd>
+        </dl>
+      </div>
+
+<pre><code>print(0.1 + 0.2) 
+<span>==> 0.30000000000000004 - Probleme de precizie în virgulă mobilă</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Acest lucru poate duce la rezultate neașteptate, în special atunci când se compară numere cu virgulă mobilă
+          pentru egalitate.<br>
+          Metodă de comparare mai bună:<br>
+          În loc să se utilizeze ==, este mai sigur să se verifice dacă numerele cu virgulă mobilă sunt "suficient de
+          apropiate" folosind math.isclose().</p>
+
+        <div>
+          <p>This can cause unexpected results, especially when comparing floats for equality.</p>
+          <p>Better comparison method:<br>
+            Instead of using ==, it's safer to check if floats are "close enough" using math.isclose().</p>
+        </div>
+      </div>
+
+<pre><code>import math
+
+rezultat = 0.1 + 0.2
+print(rezultat == 0.3)             <span># Fals</span>
+print(math.isclose(rezultat, 0.3)) <span># Adevărat</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>Pentru aplicații financiare sau științifice care necesită reprezentare zecimală exactă și rotunjire precisă,
+        luați în considerare utilizarea modulului decimal.</p>
+      <p>For financial or scientific applications that require exact decimal representation and precise rounding,
+        consider using the decimal module.</p>
+    </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Caracteristici:</dt>
+          <dd>Literalii în virgulă mobilă sunt de tipul de date float din Python.</dd>
+          <dd>Tipul float din Python utilizează de obicei numere în virgulă mobilă cu precizie dublă (64 de biți),
+            oferind o gamă largă și o precizie, dar nu o acuratețe perfectă pentru toate numerele zecimale din cauza
+            reprezentării binare.</dd>
+          <dd>De asemenea, puteți converti alte tipuri în numere cu virgulă mobilă folosind funcția float() încorporată,
+            de exemplu, float(5) ar rezulta în 5.0.</dd>
+        </dl>
+
+        <dl>
+          <dt>Characteristics:</dt>
+          <dd>Floating-point literals are of the float data type in Python.</dd>
+          <dd>Python's float type typically uses double-precision (64-bit) floating-point numbers, offering a wide range
+            and precision, but not perfect accuracy for all decimal numbers due to the binary representation.<br></dd>
+          <dd>You can also convert other types to floats using the built-in float() function, for example, float(5)
+            would result in 5.0.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="FM">Metodele numerelor cu virgulă - Float methods</h2>
+
+    <div class="grid-container">
+      <p>Tipul float încorporat în Python oferă mai multe metode pentru manipularea și inspectarea numerelor în virgulă
+        mobilă. Iată câteva dintre metodele cheie:</p>
+      <p>Python's built-in float type provides several methods for manipulating and inspecting floating-point numbers.
+        Here are some of the key methods.</p>
+    </div>
+
+      <h3>float.as_integer_ratio()</h3>
+
+    <div class="grid-container">
+      <p>Această metodă returnează o pereche de numere întregi (numărător, numitor) reprezentând numărul în virgulă
+        mobilă ca o fracție exactă. Numitorul este întotdeauna o putere pozitivă a lui 2.</p>
+      <p>This method returns a pair of integers (numerator, denominator) representing the floating-point number as an
+        exact fraction. The denominator is always a positive power of 2.</p>
+    </div>
+
+<pre><code>număr1 = 0.75                                                        
+numărător1, numitor1 = număr1.as_integer_ratio()                     
+print(f"Numărul {număr1} ca raport întreg: {numărător1}/{numitor1}") 
+<span>==> Numărul 0.75 ca raport întreg: 3/4</span>
+
+număr2 = 0.1
+numărător2, numitor2 = număr2.as_integer_ratio()
+print(f"Numărul {număr2} ca raport: {numărător2}/{numitor2}") 
+<span>==> Numărul 0.1 ca raport: 3602879701896397/36028797018963968</span>
+
+număr3 = 3.14
+numărător3, numitor3 = număr3.as_integer_ratio()
+print(f"Numărul {număr3} ca raport: {numărător3}/{numitor3}") 
+<span>==> Numărul 3.14 ca raport: 7070651414971679/2251799813685248</span>
+</code></pre>
+
+      <h3>float.is_integer()</h3>
+
+    <div class="grid-container">
+      <p>Această metodă returnează True dacă numărul cu float este un număr finit cu valoare integrală (adică nu are
+        parte fracțională) și False în caz contrar.</p>
+      <p>This method returns True if the float is a finite number with an integral value (meaning it has no fractional
+        part), and False otherwise.</p>
+    </div>
+
+<pre><code>x = 3.0
+print(x.is_integer()) <span>==> True</span>
+
+y = 3.5
+print(y.is_integer()) <span>==> False</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>În principal pentru compatibilitatea cu numerele în virgulă mobilă, această metodă returnează întotdeauna True
+        pentru obiectele int.</p>
+      <p>Primarily for compatibility with floating-point numbers, this method always returns True for int objects.</p>
+    </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Scop:</dt>
+          <dd>Verifică dacă un număr în virgulă mobilă are o parte fracțională zero, adică poate fi reprezentat cu
+            precizie ca un număr întreg.</dd>
+          <dt>Valoare returnată:</dt>
+          <dd>Returnează True dacă numărul în virgulă mobilă nu are parte fracțională (de exemplu, 10.0, 0.0, -3.0).
+          </dd>
+          <dd>Returnează False dacă numărul în virgulă mobilă are o parte fracțională diferită de zero (de exemplu,
+            10.5, 3.14).</dd>
+          <dd>Notă importantă: Această metodă nu există pentru obiectele int. Dacă încercați să apelați is_integer() pe
+            un int (de exemplu, 5.is_integer()), va genera o eroare AttributeError deoarece obiectele int sunt în mod
+            inerent numere întregi și nu necesită această verificare.</dd>
+        </dl>
+
+        <dl>
+          <dt>Purpose:</dt>
+          <dd>It checks if a floating-point number has a fractional part of zero, meaning it can be precisely
+            represented as an integer.</dd>
+          <dt>Return Value:</dt>
+          <dd>It returns True if the float has no fractional part (e.g., 10.0, 0.0, -3.0).</dd>
+          <dd>It returns False if the float has a non-zero fractional part (e.g., 10.5, 3.14).</dd>
+          <dd><br></dd>
+          <dd>Important Note: This method does not exist for int objects. If you try to call is_integer() on an int
+            (e.g., 5.is_integer()), it will raise an AttributeError because int objects are inherently integers and do
+            not require this check.</dd>
+        </dl>
+      </div>
+
+<pre><code>număr1 = 10.0
+număr2 = 10.5
+număr3 = 5
+
+print(f"{număr1}.is_integer(): {număr1.is_integer()}") <span>==> 10.0.is_integer(): True</span>
+print(f"{număr2}.is_integer(): {număr2.is_integer()}") <span>==> 10.5.is_integer(): False</span>
+
+try:
+    print(f"{număr3}.is_integer(): {număr3.is_integer()}")
+except AttributeError as e:
+    print(f"Error for {număr3}: {e}")  <span>==> Error for 5: 'int' object has no attribute 'is_integer'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Python nu acceptă direct literali hexazecimali în virgulă mobilă în același mod în care acceptă literali
+          zecimali în virgulă mobilă (de exemplu, 3.14) sau literali întregi hexazecimali (de exemplu, 0xFF).<br>
+          Cu toate acestea, Python oferă o modalitate de a lucra cu reprezentări hexazecimale ale numerelor în virgulă
+          mobilă prin metoda clasei float.fromhex() și metoda instanței float.hex().</p>
+
+        <p>Python does not directly support hexadecimal floating-point literals in the same way it supports decimal
+          floating-point literals (e.g., 3.14) or hexadecimal integer literals (e.g., 0xFF).<br>
+          However, Python provides a way to work with hexadecimal representations of floating-point numbers through the
+          float.fromhex() class method and the float.hex() instance method.</p>
+      </div>
+
+      <h3>float.fromhex()</h3>
+
+      <div class="grid-container">
+        <div>
+        <p>Această metodă returnează o reprezentare a numărului în virgulă mobilă sub formă de șir hexazecimal. Acest
+          lucru poate fi util pentru înțelegerea reprezentării interne a numerelor cu virgulă mobilă.</p>
+
+        <p>Python acceptă crearea de literali hexazecimali în virgulă mobilă, deși acest lucru este mai puțin comun.
+          Aceștia sunt scriși cu prefixul 0x sau 0X, cifre hexazecimale pentru mantisă, un separator p sau P și un
+          exponent întreg zecimal. Exponentul este interpretat ca o putere a lui 2, nu a lui 10.</p>
+        </div>
+
+        <div>
+        <p>This method returns a representation of the floating-point number as a hexadecimal string. This can be useful
+          for understanding the internal representation of floats.<br></p>
+
+        <p>Python supports creating hexadecimal floating-point literals, though this is less common. They are written
+          with a 0x or 0X prefix, hexadecimal digits for the mantissa, a p or P separator, and a decimal integer
+          exponent. The exponent is interpreted as a power of 2, not 10.</p>
+        </div>
+      </div>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Rol într-un număr cu virgulă mobilă.</dt>
+          <dd>Mantisă: Reprezintă cifrele semnificative ale numărului. Numărul de biți alocați mantisei determină
+            precizia numărului.</dd>
+          <dd>Exponent: Reprezintă puterea la care este ridicată baza (de obicei 2) pentru a obține magnitudinea
+            corectă.</dd>
+          <dd>Bit de semn: Un singur bit la început indică dacă numărul este pozitiv sau negativ.</dd>
+        </dl>
+
+        <dl>
+          <dt>Role in a floating-point number.</dt>
+          <dd>Mantissa: Represents the significant digits of the number. The number of bits allocated to the mantissa
+            determines the number's precision.</dd>
+          <dd>Exponent: Represents the power to which the base (usually 2) is raised to get the correct magnitude.</dd>
+          <dd>Sign Bit: A single bit at the beginning indicates whether the number is positive or negative. </dd>
+        </dl>
+      </div>
+
+      <p>valoare = semn * mantissa * baza<sup>exponent</sup></p>
+
+      <div class="grid-container">
+        <p>Mantisa este fie partea zecimală a unui logaritm, fie cifrele semnificative ale unui număr în notație
+          științifică sau virgulă mobilă. De exemplu, în logaritmul 2.749, mantisa este 0.749. În notația științifică
+          2.5 * 10<sup>3</sup>, mantisa este 2.5.</p>
+
+        <p>The mantissa is either the decimal part of a logarithm or the significant figures of a number in scientific
+          or floating point notation. For example, in the logarithm 2.749, the mantissa is 0.749. In scientific notation
+          2.5 * 10<sup>3</sup>, the mantissa is 2.5.</p>
+      </div> 
+
+<pre><code>using_method = float.fromhex('0x1.2p3')    <span># 0x1.2p3 este (1 + 2/16) * 2<sup>3</sup>, sau 1.125 * 8 = 9.0</span>
+print(f"0x1.2p3 ca număr zecimal: {using_method}") <span>==> 0x1.2p3 ca număr zecimal: 9.0</span>
+
+valoare1 = float.fromhex('0x1.8p-12')
+print(f"0x1.8p-12 ca număr zecimal: {valoare1}")   <span>==> 0x1.8p-12 ca număr zecimal: 0.0003662109375</span>
+
+valoare2 = float.fromhex('0x2.05p4')
+print(f"0x2.05p4 ca număr zecimal: {valoare2}")    <span>==> 0x2.05p4 ca număr zecimal: 32.3125</span>
+
+valoare3 = float.fromhex('-0x1p10')
+print(f"-0x1p10 ca număr zecimal: {valoare3}")     <span>==> -0x1p10 ca număr zecimal: -1024.0</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>În esență, deși nu poți scrie direct 0x1.8p-12 ca literal în codul Python și să îl interpretezi ca un număr
+          cu zecimle, poți obține aceeași funcționalitate folosind float.fromhex() pentru a analiza reprezentarea
+          hexazecimală a șirului de caractere.</p>
+
+        <p>In essence, while you cannot directly write 0x1.8p-12 as a literal in Python code and have it interpreted as
+          a float, you can achieve the same functionality by using float.fromhex() to parse the hexadecimal string
+          representation.</p>
+      </div>
+
+      <h3>float.hex()</h3>
+
+      <div class="grid-container">
+      <p>Această metodă convertește un număr standard Python cu virgulă în reprezentarea sa hexazecimală sub formă de
+        șir de caractere.</p>
+      <p>This method converts a standard Python float into its hexadecimal string representation.</p>
+      </div>
+
+
+<pre><code>număr_zecimal1 = 0.375
+reprezentare_hex1 = număr_zecimal1.hex()
+print(f"0.375 în hexazecimal: {reprezentare_hex1}")  <span>==> 0.375 în hexazecimal: 0x1.8000000000000p-2</span>
+
+număr_zecimal2 = 1024.0
+reprezentare_hex2 = număr_zecimal2.hex()
+print(f"1024.0 în hexazecimal: {reprezentare_hex2}") <span>==> 1024.0 în hexazecimal: 0x1.0000000000000p+10</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="DM">Metode ale operatorilor (Metode dunder) - Operator methods (Dunder methods)</h2>
+
+      <div class="grid-container">
+        <p>Pe lângă aceste metode specifice, elementele cu float acceptă și diverse "metode magice" (metode dunder
+          precum __add__, __sub__, __abs__, __mul__, __truediv__, __floordiv__, __mod__, __pow__) care definesc modul în
+          care acestea interacționează cu operatorii și funcțiile încorporate, cum ar fi abs(). De exemplu, abs(x)
+          apelează intern x.__abs__().</p>
+
+        <p>In addition to these specific methods, floats also support various "magic methods" (dunder methods like
+          __add__, __sub__, __abs__, __mul__, __truediv__, __floordiv__, __mod__, __pow__) which define how they
+          interact with operators and built-in functions like abs(). For instance, abs(x) internally calls x.__abs__().
+        </p>
+      </div>
+      <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="FT">Funcția float() încorporată - The built-in float() Function</h2>
+
+      <p>Sintaxă: float(valoare)</p>
+
+      <div class="grid-container">
+        <p>Se folosește pentru a converti un număr sau un șir de caractere care conține o reprezentare numerică într-un
+          număr cu virgulă mobilă. Numerele în virgulă mobilă sunt folosite pentru a reprezenta numere reale, inclusiv
+          pe cele cu părți fracționare (zecimale).</p>
+
+        <p>Is used to convert a number or a string containing a numeric representation into a floating-point number.
+          Floating-point numbers are used to represent real numbers, including those with fractional parts (decimals).
+        </p>
+      </div>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Parametri:</dt>
+          <dd>
+            <dl>
+              <dt>valoare: Valoarea care urmează să fie convertită. Aceasta poate fi:</dt>
+              <dd>Un număr întreg (de exemplu, float(5) returnează 5.0).</dd>
+              <dd>Un alt număr cu virgulă mobilă (de exemplu, float(3.14) returnează 3.14).</dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>Un șir care conține o reprezentare numerică (de exemplu, float("10.5") returnează 10.5).</dt>
+              <dd>Șirurile pot include spații albe la început/sfârșit, care vor fi ignorate.</dd>
+              <dd>Șirurile pot reprezenta numere pozitive sau negative, folosind + sau -.</dd>
+              <dd>Șirurile pot reprezenta valori speciale în virgulă mobilă, cum ar fi „NaN” (Nu este un număr),
+                "Infinit" sau "inf" (fără sensibilitate la majuscule/minuscule) pentru infinit pozitiv sau negativ.</dd>
+            </dl>
+          </dd>
+          <dt>Gestionarea intrărilor nevalide:</dt>
+          <dd>Dacă șirul furnizat nu poate fi convertit într-un număr cu virgulă mobilă valid (de exemplu, "salut"), va
+            fi generată o eroare ValueError.</dd>
+          <dt>Valoare returnată:</dt>
+          <dd>Funcția float() returnează o reprezentare numerică în virgulă mobilă a valorii de intrare. Dacă nu este
+            furnizat niciun argument, returnează 0.0.</dd>
+        </dl>
+
+        <dl>
+          <dt>Parameters:</dt>
+          <dd>
+            <dl>
+              <dt>value: The value to be converted. This can be:</dt>
+              <dd>An integer (e.g., float(5) returns 5.0).</dd>
+              <dd>Another float (e.g., float(3.14) returns 3.14).</dd>
+            </dl>
+          </dd>
+          <dd>
+            <dl>
+              <dt>A string containing a numerical representation (e.g., float("10.5") returns 10.5).</dt>
+              <dd>Strings can include leading/trailing whitespace, which will be ignored.</dd>
+              <dd>Strings can represent positive or negative numbers, using + or -.</dd>
+              <dd>Strings can represent special floating-point values like "NaN" (Not a Number), "Infinity", or "inf"
+                (case-insensitive) for positive or negative infinity.</dd>
+            </dl>
+          </dd>
+          <dt>Handling Invalid Input:</dt>
+          <dd>If the provided string cannot be converted into a valid floating-point number (e.g., "hello"), a
+            ValueError will be raised.</dd>
+          <dt>Return Value:</dt>
+          <dd>The float() function returns a floating-point number representation of the input value. If no argument is
+            provided, it returns 0.0.</dd>
+        </dl>
+      </div>
+
+
+<pre><code><span># Conversia unui număr întreg într-un număr cu virgulă mobilă</span>
+rezultat1 = float(10)
+print(rezultat1) <span>==> 10.0</span>
+
+<span># Conversia unui șir de caractere într-un număr cu virgulă mobilă</span>
+rezultat2 = float("123.45") 
+print(rezultat2) <span>==> 123.45</span>
+
+<span># Conversia unui șir de caractere care reprezintă un număr întreg într-un număr cu virgulă mobilă</span>
+rezultat3 = float("-7")
+print(rezultat3) <span>==> -7.0</span>
+
+
+<span># Valori speciale în virgulă mobilă</span>
+rezultat4 = float("inf"), float("-inf") 
+print(rezultat4) <span>==> (inf, -inf)</span>
+
+rezultat5 = float("-Infinity")
+print(rezultat5) <span>==> -inf</span>
+
+rezultat6 = float("NaN"), float("nan")
+print(rezultat6) <span>==> (nan, nan)</span>
+
+<span># spații_albe</span>
+șir_spații_albe = " -99.5 "
+număr_zecimal = float(șir_spații_albe)
+print(f"{număr_zecimal} din număr cu spații albe") <span>==> -99.5 din număr cu spații albe</span>
+</code></pre>
+
+<pre><code>șir_notație_științifică = "2.5e-3"
+număr_zecimal = float(șir_notație_științifică)
+print(f'{număr_zecimal} rezultat din notația științifică "{șir_notație_științifică}"') <span>==> 0.0025 rezultat din notația științifică "2.5e-3"</span>
+</code></pre>
+
+      <p>Conversia unui șir de caractere gol sau valoare non-numeric.- Potențialele excepții ValueError</p>
+
+      <p>Converting an empty string or non-numeric value. - Potential ValueError exceptions</p>
+
+<pre><code>try:
+    float("")
+except ValueError as e:
+    print(f"Error: {e}")  <span>==> Error: could not convert string to float: ''</span>
+
+try:
+    float("salut")
+except ValueError as e:
+    print(f"Eroare: {e}") <span>==> Eroare: could not convert string to float: 'salut'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Cazuri comune de utilizare:</dt>
+          <dd>Conversie de tip: Conversia datelor din alte tipuri (cum ar fi numere întregi sau șiruri de caractere) în
+            numere cu virgulă mobilă pentru operații numerice care necesită precizie zecimală.</dd>
+          <dd>Gestionarea datelor introduse de utilizator: Conversia datelor introduse de utilizator, adesea primite ca
+            șiruri de caractere, în numere cu virgulă mobile pentru calcule.</dd>
+          <dd>Reprezentarea datelor științifice: Lucrul cu numere care pot necesita notație științifică sau precizie
+            ridicată.</dd>
+        </dl>
+
+        <dl>
+          <dt>Common Use Cases:</dt>
+          <dd>Type Conversion: Converting data from other types (like integers or strings) to floats for numerical
+            operations requiring decimal precision.</dd>
+          <dd><br></dd>
+          <dd>Handling User Input: Converting user input, often received as strings, into numerical floats for
+            calculations.</dd>
+          <dd>Representing Scientific Data: Working with numbers that may require scientific notation or high precision.
+          </dd>
+        </dl>
+      </div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>

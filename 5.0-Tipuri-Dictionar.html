@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 5.0 Dictionar-Tipuri</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-0 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-0"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaD.svg" alt="B" class="logo">
+          <h1>5.0 Tipuri de dicționare - Dictionary Types</h1>
+        </div>
+      </div>
+
+      <div class="ro-en-1-0 container-links ro-en">
+        <ul>
+          <li>În acest capitol veți studia:</li>
+          <li><a href="#SD">Dictionare standard</a></li>
+          <li><a href="#SM">Metodele dictionarului</a></li>
+          <li><a href="5.1-Crearea-dictionarelor.html" target="_blank" rel="noopener">Crearea
+              dictionarelor</a></li>
+          <li><a href="5.2-Accesarea-valorilor-si-cheilor.html" target="_blank" rel="noopener">Accesarea
+              valorilor si
+              cheilor</a></li>
+          <li><a href="5.3-if-cu-dictionare.html" target="_blank" rel="noopener">if cu dictionare</a>
+          <li><a href="5.4-Manipularea-Dictionarelor.html" target="_blank" rel="noopener">Manipularea dicționarelor</a>
+          </li>
+        </ul>
+        <ul>
+          <li>In this chapter you will study:</li>
+          <li><a href="#SD">Standard Dictionary</a></li>
+          <li><a href="#SM">The Dictionary's Methods</a></li>
+          <li><a href="5.1-Crearea-dictionarelor.html" target="_blank" rel="noopener">Creating
+              Dictionaries</a></li>
+          <li><a href="5.2-Accesarea-valorilor-si-cheilor.html" target="_blank" rel="noopener">Accessing
+              Values and
+              Keys</a></li>
+          <li><a href="5.3-if-cu-dictionare.html" target="_blank" rel="noopener">if with Dictionaries</a>
+          <li><a href="5.4-Manipularea-Dictionarelor.html" target="_blank" rel="noopener">Dictionary Manipulations</a>
+          </li>
+        </ul>
+
+      </div>
+    </header>
+    <div class="second-empty-1-0"></div>
+
+    <div class="contents-1-0">
+
+      <h2 id="SD">Dicționar, un tip de date încorporat - Dictionary a built-in data type</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, un dicționar este un tip de date încorporat foarte important și util, care stochează date în
+            perechi cheie-valoare. Este o colecție mutabilă, conținutul său poate fi modificat după creare. Dicționarele
+            sunt, ordonate începând cu Python 3.7+ și nu permit chei duplicate.</p>
+
+          <dl>
+            <dt>Caracteristici cheie ale dicționarelor Python:</dt>
+            <dd>Perechi cheie-valoare: Datele sunt stocate ca o colecție de perechi cheie:valoare.</dd>
+            <dd>Chei unice: Fiecare cheie dintr-un dicționar trebuie să fie unică. Cheile sunt utilizate pentru a accesa
+              valorile corespunzătoare.
+            <dd>
+            <dd>Chei imuabile: Cheile dicționarului trebuie să fie de un tip de date imuabil, cum ar fi șiruri de
+              caractere, numere sau tupluri. Listele și alte tipuri mutabile nu pot fi utilizate ca chei.
+            <dd>
+            <dd>Valori mutabile: Valorile dicționarului pot fi de orice tip de date, inclusiv alte dicționare, liste sau
+              funcții.
+            <dd>
+            <dd>Ordonate (Python 3.7+): Dicționarele mențin ordinea de inserare a elementelor.
+            <dd>
+            <dd>Schimbabile: Puteți adăuga, modifica sau șterge perechi cheie-valoare după ce un dicționar este creat.
+            <dd>
+            <dd>Sintaxă: Dicționarele sunt definite folosind acolade {} cu perechi cheie-valoare separate prin două
+              puncte (:) și perechi individuale separate prin virgule (,).
+            <dd>
+            <dd>Fără indexare:</dd>
+
+            <dd>Spre deosebire de secvențe precum listele sau șirurile de caractere, dicționarele nu acceptă indexarea
+              sau felierea. Datele sunt accesate prin cheia asociată.</dd>
+            <dd>Implementat cu tabele hash:</dd>
+            <dd>Dicționarele sunt de obicei implementate folosind tabele hash, care permit operațiuni rapide de căutare,
+              inserare și ștergere.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>In Python, a dictionary is a very important and useful built-in data type that stores data in key-value
+            pairs. It is a mutable collection, meaning its contents can be changed after creation. Dictionaries are also
+            ordered as of Python 3.7+, and they do not allow duplicate keys.</p>
+          <dl>
+            <dt>Key characteristics of Python dictionaries:</dt>
+            <dd>Key-Value Pairs: Data is stored as a collection of key: value pairs.</dd>
+            <dd>Unique Keys: Each key within a dictionary must be unique. Keys are used to access their corresponding
+              values.</dd>
+            <dd>Immutable Keys: Dictionary keys must be of an immutable data type, such as strings, numbers, or tuples.
+              Lists and other mutable types cannot be used as keys.</dd>
+            <dd>Mutable Values: Dictionary values can be of any data type, including other dictionaries, lists, or
+              functions.</dd>
+            <dd>Ordered (Python 3.7+): Dictionaries maintain the insertion order of items.</dd>
+            <dd>Changeable: You can add, modify, or delete key-value pairs after a dictionary is created.</dd>
+            <dd>Syntax: Dictionaries are defined using curly braces {} with key-value pairs separated by colons (:) and
+              individual pairs separated by commas (,).</dd>
+            <dd>No Indexing:</dd>
+            <dd>Unlike sequences like lists or strings, dictionaries do not support integer-based indexing or slicing.
+              Data is accessed by its associated key.</dd>
+            <dd>Implemented with Hash Tables:</dd>
+            <dd>Dictionaries are typically implemented using hash tables, which enables fast lookup, insertion, and
+              deletion operations.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="grid-container">
+<pre><code>nume_dicționar = {
+"cheie1": "valoare1",
+"cheie2": "valoare2",
+"cheie3": "valoare3"
+}
+</code></pre>
+
+<pre><code>dictionary_name = {
+    "key1": "value1",
+    "key2": "value2",
+    "key3": "value3"
+}
+</code></pre>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="SM">Metodele Dicționarului - The Dictionary's Methods</h2>
+
+      <div class="grid-container">
+        <p>Tipul încorporat dict din Python nu dispune de metode speciale așa cum au clasele definite de utilizator
+          pentru operații precum adunarea. În schimb, utilizează metode standard precum get(), keys(), values() și
+          items() pentru manipularea datelor și suportă accesul bazat pe operatori, de tipul d[key]. Metodele speciale
+          (cunoscute și sub numele de "dunder methods") servesc la definirea comportamentului obiectelor și nu sunt
+          utilizate direct pentru operațiile specifice dicționarelor încorporate, deși __dict__ este un atribut special
+          folosit intern pentru stocarea atributelor unui obiect.</p>
+
+        <p>Python's built-in dict type doesn't have specific special methods in the way a custom class does for
+          operations like addition. Instead, it uses standard methods like get(), keys(), values(), and items() to
+          manipulate data, and also supports operator-based access like d[key]. The special methods (dunder methods),
+          are for defining object behavior and aren't used directly for built-in dictionary operations, though __dict__
+          is a special attribute used internally to store an object's attributes.</p>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <dl>
+            <dt>Metode standard pentru a interacționa cu dicționarele</dt>
+            <dd>clear() Elimină toate elementele din dicționar.</dd>
+            <dd>copy() Returnează o copie a dicționarului</dd>
+            <dd>fromkeys() Returnează un dicționar cu cheile și valoarea specificate.</dd>
+            <dd>get(key, default=None) Returnează valoarea pentru cheia specificată sau default dacă cheia nu este
+              găsită.</dd>
+            <dd>keys() Returnează un obiect de vizualizare a tuturor cheilor din dicționar.</dd>
+            <dd>values() Returnează un obiect de vizualizare a tuturor valorilor din dicționar.</dd>
+            <dd>items() Returnează un obiect de vizualizare a perechilor cheie-valoare (sub formă de tupluri).</dd>
+            <dd>pop(key, default=None) Elimină cheia specificată și returnează valoarea acesteia.</dd>
+            <dd>popitem() Elimină și returnează ultima pereche cheie-valoare inserată ca tuplu.</dd>
+            <dd>update(other) Actualizează dicționarul cu perechi cheie-valoare dintr-un alt dicționar sau dintr-un
+              iterabil de perechi cheie-valoare.</dd>
+            <dd>setdefault(key, default=None) Dacă cheia este în dicționar, aceasta returnează valoarea sa. Altfel,
+              introduce cheia cu valoarea implicită specificată și returnează valoarea implicită.</dd>
+            <dt>Metode speciale (metode Dunder)</dt>
+            <dd>Aceste metode, cu nume precum __init__ și __len__, fac parte din modelul de date Python și sunt apelate
+              implicit de Python pentru a executa anumite operații.</dd>
+            <dd>__init__(self, other) Constructorul, apelat după ce un obiect este creat.</dd>
+            <dd>__len__(self) Permite funcției len() să lucreze cu obiecte personalizate.</dd>
+            <dd>__dict__ Un atribut intern care conține atributele și metodele de scriere ale unei clase sau instanțe,
+              acționând ca un spațiu de nume.</dd>
+          </dl>
+
+          <p>Deși din punct de vedere tehnic puteți apela direct metode speciale, Python intenționează ca acestea să fie
+            apelate implicit prin funcții sau operatori încorporați. Pentru operațiunile de dicționar încorporate, veți
+            utiliza metodele standard enumerate mai sus.</p>
+        </div>
+
+        <div>
+          <dl>
+            <dt>Standard methods for interacting with dictionaries.</dt>
+            <dd>clear() Removes all items from the dictionary.</dd>
+            <dd>copy() Returns a copy of the dictionary.</dd>
+            <dd>fromkeys() Returns a dictionary with the specified keys and value.</dd>
+            <dd>get(key, default=None) Returns the value for the specified key, or default if the key is not found.</dd>
+            <dd>keys() Returns a view object of all the keys in the dictionary.</dd>
+            <dd>values() Returns a view object of all the values in the dictionary.</dd>
+            <dd>items() Returns a view object of key-value pairs (as tuples).</dd>
+            <dd>pop(key, default=None) Removes the specified key and returns its value.</dd>
+            <dd>popitem() Removes and returns the last inserted key-value pair as a tuple.</dd>
+            <dd>update(other) Updates the dictionary with key-value pairs from another dictionary or an iterable of
+              key-value pairs.</dd>
+            <dd>setdefault(key, default=None) If the key is in the dictionary, it returns its value. Otherwise, it
+              inserts the key with the specified default value and returns the default value.</dd>
+            <dt>Special Methods (Dunder Methods)</dt>
+            <dd>These methods, with names like __init__ and __len__, are part of Python's data model and are called
+              implicitly by Python to execute certain operations.</dd>
+            <dd>__init__(self, other) The constructor, called after an object is created.</dd>
+            <dd>__len__(self) Allows the len() function to work with custom objects.</dd>
+            <dd>__dict__ An internal attribute that holds the writable attributes and methods of a class or instance,
+              acting as a namespace.</dd>
+          </dl>
+          <p>While you can technically call special methods directly, Python intends for them to be called implicitly
+            through built-in functions or operators. For built-in dictionary operations, you'll use the standard methods
+            listed above.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>dir({})</dt>
+          <dd>În Python, funcția dir() este un instrument încorporat utilizat pentru introspecția obiectelor, care
+            returnează o listă sortată a atributelor și metodelor valide pentru un anumit obiect sau domeniu de
+            vizibilitate.</dd>
+        </dl>
+
+        <dl>
+          <dt>dir({})</dt>
+          <dd>In Python, the dir() function is a built-in tool used for object introspection that returns a sorted list
+            of valid attributes and methods for a given object or scope.</dd>
+        </dl>
+      </div>
+
+
+
+      <p class="other">Pentru mai multe detalii și exemple, consultați
+        <a href="https://www.w3schools.com/python/python_ref_dictionary.asp" target="_blank"
+          rel="noopener">Python
+          Dictionary
+          Methods</a><br>
+
+      <p class="other">For more details and examples, refer to the official
+        <a href="https://www.w3schools.com/python/python_ref_dictionary.asp" target="_blank"
+          rel="noopener">Python
+          Dictionary
+          Methods</a><br>
+
+      <p class="other">Pentru mai multe detalii și exemple, consultați
+        <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries" target="_blank"
+          rel="noopener">Documentația
+          oficială a tipurilor de dicționare Python</a><br>
+
+      <p class="other">For more details and examples, refer to the official
+        <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries" target="_blank"
+          rel="noopener">Python Dictionary
+          Types documentation</a>
+      </p>
+
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" 
+             rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+  <script src="JS/doileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>

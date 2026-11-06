@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 1.5 Numeric-Conversie</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaN.svg" alt="N" class="logo">
+          <h1>1.0 Tipuri numerice - Numeric Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>1.5 Conversie de tip numeric - Numeric type conversion</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#IT">Conversie implicită</a></li>
+            <li><a href="#ET">Conversie explicită</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter you will study:</li>
+            <li><a href="#IT">Implicit conversion</a></li>
+            <li><a href="#ET">Explicit conversion</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <div class="grid-container">
+        <p>Python acceptă conversia între tipuri numerice, care poate fi făcută fie <b>implicit</b> de către
+          interpretor, fie <b>explicit</b> de către programator.</p>
+        <p>Python supports converting between numeric types, which can be done either <b>implicitly</b> by the
+          interpreter or <b>explicitly</b> by the programmer.</p>
+      </div>
+
+      <h2 id="IT">Conversie implicită (coerciție)-Implicit conversion (coercion)</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Conversia implicită, cunoscută și sub denumirea de tip coerciție, se referă la conversia automată a unui
+            tip de date în altul de către interpretorul Python fără instrucțiuni explicite din partea programatorului.
+            Acest lucru se întâmplă de obicei în situațiile în care este sigur să se facă acest lucru fără pierderi de
+            date sau precizie.</p>
+          <p>Cum funcționează conversia implicită:</p>
+          <p>Python urmează o ierarhie de tipuri de date pentru conversia implicită, promovând în general un tip de date
+            "inferior" la unul "superior" pentru a preveni pierderea datelor. De exemplu, atunci când un număr întreg și
+            un număr cu virgulă mobilă sunt implicate într-o operație aritmetică, numărul întreg este convertit implicit
+            într-un număr cu virgulă mobilă înainte de efectuarea operației, iar rezultatul va fi un număr cu virgulă
+            mobilă.</p>
+        </div>
+        <div>
+          <p>Implicit conversion, also known as type coercion, refers to the automatic conversion of one data type to
+            another by the Python interpreter without explicit instruction from the programmer. This typically occurs in
+            situations where it is safe to do so without loss of data or precision.</p>
+          <p></p>
+          <p>How Implicit Conversion Works:</p>
+          <p>Python follows a hierarchy of data types for implicit conversion, generally promoting a "lower" data type
+            to a "higher" one to prevent data loss. For example, when an integer and a float are involved in an
+            arithmetic operation, the integer is implicitly converted to a float before the operation is performed, and
+            the result will be a float.</p>
+        </div>
+      </div>
+
+<pre><code><span># Operații numerice.</span>
+x1 = 7    <span># int</span>
+y1 = 4.5  <span># float</span> 
+rezultat_adunare = x1 + y1 <span># x este implicit convertit în float</span> 
+print(rezultat_adunare, "/", type(rezultat_adunare)) <span>==> 11.5 / &lt;class 'float'&gt;</span>
+
+x2 = 9  <span># int</span>
+y2 = 4  <span># int</span>
+rezultat_împărțire = x2 / y2
+print(rezultat_împărțire, "/", type(rezultat_împărțire)) <span>==> 2.25 / &lt;class 'float'&gt;</span>
+
+x3 = 8  <span># int</span>
+y3 = 4  <span># int</span>
+rezultat_împărțire2 = x3 / y3
+print(rezultat_împărțire2, "/", type(rezultat_împărțire2)) <span>==> 2.0 / &lt;class 'float'&gt;</span> 
+</code></pre>
+
+    <div class="grid-container">
+      <p>Operații booleene și cu numere întregi: True este tratat ca 1, iar Fals ca 0 în operațiile numerice.</p>
+
+      <p>Boolean and Integer Operations: True is treated as 1 and False as 0 in numeric operations.</p>
+    </div>
+
+<pre><code>este_activ = True
+număr = 10
+total = este_activ + număr
+print(total)
+print(type(total)) <span>==> 11 / &lt;class 'int'&gt;</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><em>Nu se întâmplă conversia implicită:</em><br>
+          Conversia implicită nu are loc atunci când ar duce la pierderea datelor sau când tipurile sunt fundamental
+          incompatibile. De exemplu, Python nu va converti implicit un număr într-un șir de caractere pentru
+          concatenare.</p>
+        <p><em>Implicit Conversion Does Not Happen:</em><br>
+          Implicit conversion does not occur when it would lead to data loss or when the types are fundamentally
+          incompatible. For instance, Python will not implicitly convert a number to a string for concatenation.</p>
+      </div>
+
+<pre><code>text = "Adună cu : "
+număr = 42
+try:
+    adunate = text + număr
+    print(adumate)
+except TypeError:
+    print('Nu se poate concatena "şir" cu "număr"') <span>==> TypeError</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Concluzii:<br>
+          Conversia implicită simplifică codul prin gestionarea automată a ajustărilor de tip în scenarii compatibile.
+          Prioritizează integritatea datelor, convertind la un tip de date „superior” pentru a evita pierderile.
+          Nu se efectuează pentru tipuri incompatibile, unde este necesară o conversie explicită.</p>
+        <p>Conclusions:<br>
+          Implicit conversion simplifies code by automatically handling type adjustments in compatible scenarios.
+          It prioritizes data integrity, converting to a "higher" data type to avoid loss.
+          It is not performed for incompatible types, where explicit conversion is necessary.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="ET">Conversie explicită (transformare de tip) - Explicit conversion (type casting)</h2>
+
+      <div class="grid-container">
+        <p>Conversia explicită de tip, cunoscută și sub denumirea de tipcast, în Python implică convertirea unei valori
+          dintr-un tip de date în altul prin utilizarea explicită a funcțiilor de conversie de tip încorporate. Aceasta
+          se face atunci când trebuie să vă asigurați că o valoare este de un anumit tip pentru o operație sau pentru a
+          preveni un comportament neașteptat.</p>
+        <p>Explicit type conversion, also known as type casting, in Python involves converting a value from one data
+          type to another by explicitly using built-in type conversion functions. This is done when you need to ensure a
+          value is of a specific type for an operation or to prevent unexpected behavior.</p>
+      </div>
+
+<pre><code>int(x): Convertește x într-un număr întreg, trunchiind orice parte zecimală.
+float(x): Convertește x într-un număr cu virgulă.
+boo(x): Convertește x într-o valoare booleană.
+complex(x): Convertește x într-un număr complex cu partea imaginară zero.
+</code></pre>
+
+<pre><code>int(x): Converts x to an integer, truncating any decimal part.
+float(x): Converts x to a float.
+bool(x): Converts x to a boolean value.
+complex(x): Converts x to a complex number with an imaginary part of zero. 
+</code></pre>
+
+
+<pre><code><span># int(): Convertește o valoare într-un număr întreg.</span>
+şir = "123"
+conversie_la_întreg = int(şir) <span># Convertește șirul de caractere "123" în întreg 123</span>
+print(conversie_la_întreg, "/", type(conversie_la_întreg)) <span>==> 123 / &lt;class 'int'&gt;</span>
+număr_zecimal = 3.14
+număr_trunchiat = int(număr_zecimal) <span># Convertește un număr cu virgulă mobilă 3.14 în întreg 3 (trunchiază partea zecimală)</span>
+print(număr_trunchiat, "/", type(număr_trunchiat)) <span>==> 3 / &lt;class 'int'&gt;</span>
+</code></pre>
+
+<pre><code><span># float(): Convertește o valoare într-un număr cu virgulă mobilă.</span>
+şir2 = "3.141593"
+conversie_la_număr_zecimal = float(şir2) <span># Convertește șirul de caractere "3.141593" în float 3.141593</span>
+print(conversie_la_număr_zecimal, "/", type(conversie_la_număr_zecimal)) <span>==> 3.141593 / &lt;class 'float'&gt;</span>
+număr_întreg = 10
+număr_întreg_la_zecimal = float(număr_întreg) <span># Convertește întregul 10 în float 10.0</span>
+print(număr_întreg_la_zecimal, "/", type(număr_întreg_la_zecimal)) <span>==> 10.0 / &lt;class 'float'&gt;</span>
+</code></pre>
+
+<pre><code><span># bool(): Convertește o valoare într-o valoare booleană.</span>
+zero = 0
+boolean1 = bool(0) <span># Convertește întregul 0 în Fals</span>
+print(boolean1, "/", type(boolean1)) <span>==> False / &lt;class 'bool'&gt;</span>
+număr_întreg = 5
+boolean2 = bool(număr_întreg) <span># Convertește întregul întreg 5, diferit de zero, în True</span>
+print(boolean2, "/", type(boolean2)) <span>==> True / &lt;class 'bool'&gt;</span>
+șir_gol = ""
+boolean3 = bool(șir_gol) <span># Convertește șirul gol în Fals</span>
+print(boolean3, "/", type(boolean3)) <span>==> False / &lt;class 'bool'&gt;</span>
+şir = "Vă salut"
+boolean4 = bool(şir) <span># Convertește șirul care nu este gol în True</span>
+print(boolean4, "/", type(boolean4)) <span>==> True / &lt;class 'bool'&gt;</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Puncte cheie:</dt>
+          <dd>Conversia explicită oferă control asupra tipurilor de date, asigurând compatibilitatea operațiilor.</dd>
+          <dd>Pierderea de date poate apărea în timpul conversiilor explicite (de exemplu, conversia unui număr cu float
+            într-un număr întreg trunchiază partea zecimală).</dd>
+          <dd>Este esențial să vă asigurați că valoarea poate fi convertită în mod semnificativ la tipul țintă pentru a
+            evita ValueError sau alte erori. De exemplu, int("Vă salut") ar genera o eroare.</dd>
+        </dl>
+        <dl>
+          <dt>Key Points:</dt>
+          <dd>Explicit casting provides control over data types, ensuring compatibility for operations.</dd>
+          <dd>Data loss can occur during explicit conversions (e.g., converting a float to an int truncates the decimal
+            part).</dd>
+          <dd>It is crucial to ensure the value can be meaningfully converted to the target type to avoid ValueError or
+            other errors. For example, int("hello") would raise an error.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <p>Pentru a combina un șir de caractere și un număr întreg, trebuie să convertiți explicit numărul întreg
+          într-un șir de caractere folosind funcția str() sau să utilizați metode de formatare a șirurilor de caractere.
+        </p>
+        <p>To combine a string and a integer you must explicitly convert the integer to a string using the str()
+          function or use string formatting methods.</p>
+      </div>
+
+<pre><code><span># str() function (recomandat pentru concatenare simplă):</span>
+text = "Vă salut spion faimos făra doi de zero: "
+număr = 7
+result = text + str(număr)
+print(result)
+
+<span># f-strings (Python 3.6+): Aceasta este, în general, metoda cea mai lizibilă</span>
+text = "Vă salut spion faimos făra doi de zero: "
+număr = 7
+result = f"{text}{număr}"
+print(result)
+
+<span># metoda .format():</span>
+text = "Vă salut spion faimos făra doi de zero: "
+număr = 7
+result = "{}{}".format(text, număr)
+print(result)
+Rezultat pentru cele trei variante: Vă salut spion faimos făra doi de zero: 7
+</code></pre>
+
+<pre><code><span># try...except plus str() pentru Gestionarea erorilor</span>
+text = "Vă salut spion faimos făra doi de zero: "
+număr = 7
+try:
+    adunate = text + str(număr)
+    print(adunate)               <span>==> Vă salut spion faimos făra doi de zero: 7</span>
+except TypeError:
+    print('Nu se poate concatena "şir" cu "număr"')
+</code></pre>
+
+      <p><b>Conversia la un număr complex: - Converting to a complex number:</b></p>
+
+    <div class="grid-container">
+      <p>Un singur argument numeric (întreg sau număr cu virgulă): Argumentul devine partea reală, iar partea
+        imaginară este setată la zero.</p>
+      <p>A single numeric argument (integer or float): The argument becomes the real part, and the imaginary part is set
+        to zero.</p>
+    </div>
+
+<pre><code>număr_real = 5
+complex_din_număr_întregi = complex(număr_real)
+print(complex_din_număr_întregi) <span>==> (5+0j)</span>
+
+număr_zecimal = 2.04
+complex_din_număr_zecimal = complex(număr_zecimal)
+print(complex_din_număr_zecimal) <span>==> (2.04+0j)</span>
+</code></pre>
+
+      <p>Două argumente numerice (parte reală și imaginară) - Two numeric arguments (real and imaginary parts).</p>
+
+<pre><code>parte_reală = 3
+parte_imaginară = 5
+număr_complex = complex(parte_reală, parte_imaginară)
+print(număr_complex) <span>==> (3+5j)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><em>Conversia unui număr complex în alte tipuri</em> (cu potențială pierdere de date).
+          Deși puteți converti alte tipuri de numere în numere complexe, conversia unui număr complex într-un tip
+          necomplex implică adesea eliminarea părții imaginare sau convertirea acesteia într-o reprezentare sub formă de
+          șir de caractere.</p>
+        <p><em>Converting from a complex number to other types</em> (with potential data loss)
+          While you can convert other types to complex numbers, converting a complex number to a non-complex type often
+          involves discarding the imaginary part or converting it to a string representation.</p>
+      </div>
+
+
+<pre><code># Către un șir de caractere: Folosiți funcția str().
+număr_complex = 11 + 5j
+complex_ca_șir = str(număr_complex)
+print(complex_ca_șir, "/", type(complex_ca_șir)) ==> (11+5j) / &lt;class 'str'&gt;
+</code></pre>
+
+      <div class="grid-container">
+        <p><em>Către un număr întreg sau un număr cu număr float:</em> Acest lucru nu este, în general, posibil direct
+          folosind int() sau float() pe numărul complex în sine, deoarece ar duce la o eroare TypeError din cauza
+          componentei imaginare. Trebuie să extrageți mai întâi partea reală.</p>
+        <p><em>To an integer or float:</em>This is generally not directly possible using int() or float() on the complex
+          number itself, as it would lead to a TypeError due to the imaginary component. You must extract the real part
+          first.</p>
+      </div>
+
+<pre><code>număr_complex = 11 + 5j
+parte_reală = int(număr_complex.real)
+parte_imaginară = int(număr_complex.imag)
+print(parte_reală) <span>==> 11</span>
+print(parte_imaginară) <span>== 5</span>
+
+parte_reală_ca_zecimală = float(număr_complex.real)
+parte_imaginarăca_zecimală = float(număr_complex.imag)
+print(parte_reală_ca_zecimală) <span>==> 11.0</span>
+print(parte_imaginarăca_zecimală) <span>==> 5.0</span>
+</code></pre>
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>

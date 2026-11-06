@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 2.8 ASCII</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaT.svg" alt="T" class="logo">
+          <h1>2.0 Tipuri Text-Text Type</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>2.8 ASCII (American Standard Code for Information Interchange)</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+        <div class="ro-en-1-1 container-links ro-en">
+        <div>
+        <ul>
+          <li>În acest capitol veți studia:</li>
+          <li><a href="#RD">funcţia ord()</a></li>
+          <li><a href="#HR">funcţia chr()</a></li>
+          <li><a href="#AS">funcţia ascii()</a></li>
+          <li><a href="#MS">metoda string.isascii()</a></li>
+          <li><a href="#AL">șir.ascii_letters</a></li>
+          <li><a href="#ME">metoda encode()</a></li>
+        </ul>
+        </div>
+
+        <div>
+        <ul>
+          <li>In this chapter, you will study:</li>
+          <li><a href="#RD">the ord() function</a></li>
+          <li><a href="#HR">the chr() function</a></li>
+          <li><a href="#AS">the ascii() function</a></li>
+          <li><a href="#MS">the string.isascii() method</a></li>
+          <li><a href="#AL">string.ascii_letters</a></li>
+          <li><a href="#ME">the encode() method</a></li>
+        </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <div class="grid-container">
+        <p>ASCII (American Standard Code for Information Interchange) în Python se referă la interacțiunea cu acest
+          standard de codificare a caracterelor în cadrul limbajului de programare Python. ASCII este un standard de
+          codificare a caracterelor pe 7 biți care reprezintă 128 de caractere, inclusiv litere, cifre, semne de
+          punctuație și caractere de control din limba engleză.</p>
+
+        <p>ASCII (American Standard Code for Information Interchange) in Python refers to the interaction with this
+          character encoding standard within the Python programming language. ASCII is a 7-bit character encoding
+          standard that represents 128 characters, including English letters, digits, punctuation marks, and control
+          characters.</p>
+      </div>
+
+      <h2 id="RD">funcţia ord() - ord() function</h2>
+
+    <div class="grid-container">
+      <p><b>ord()</b> built-in function returnează valoarea întreagă ASCII (sau punctul de cod Unicode) a unui anumit
+        caracter.</p>
+      <p><b>ord()</b> built-in function returns the integer ASCII value (or Unicode code point) of a given character.</p>
+    </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Caracteristici:</dt>
+          <dd>Intrare: Acceptă un șir de caractere de lungime unu, reprezentând un singur caracter.</dd>
+          <dd>Ieșire: Returnează un număr întreg, care este punctul de cod Unicode al caracterului de intrare.</dd>
+          <dd>Scop: Elimină decalajul dintre caractere și reprezentarea lor numerică, util pentru sarcini care implică
+            codificarea caracterelor, manipularea sau înțelegerea valorilor numerice subiacente ale caracterelor.</dd>
+          <dd>Inversa funcției chr(): Funcția ord() este inversa funcției chr(), care preia un punct de cod întreg și
+            returnează caracterul corespunzător.</dd>
+        </dl>
+
+        <dl>
+          <dt>Characteristics:</dt>
+          <dd>Input: It accepts a string of length one, representing a single character.</dd>
+          <dd>Output: It returns an integer, which is the Unicode code point of the input character. </dd>
+          <dd>Purpose: It bridges the gap between characters and their numerical representation, useful for tasks
+            involving character encoding, manipulation, or understanding the underlying numerical values of characters.
+          </dd>
+          <dd>Inverse of chr(): The ord() function is the inverse of the chr() function, which takes an integer code
+            point and returns the corresponding character.</dd>
+        </dl>
+      </div>
+
+
+<pre><code>text = "Salut"
+for literă in text:
+    print(f"Numărul de cod Unicode pentru '{literă}' este: {ord(literă)}")
+<span>==></span> Numărul de cod Unicode pentru 'S' este: 83
+    Numărul de cod Unicode pentru 'a' este: 97
+    Numărul de cod Unicode pentru 'l' este: 108
+    Numărul de cod Unicode pentru 'u' este: 117
+    Numărul de cod Unicode pentru 't' este: 116
+</code></pre>
+
+<pre><code>print(ord('A'))  ==> 65
+print(ord('p'))  ==> 112
+print(ord('~'))  ==> 126
+print(ord('!'))  ==> 33
+print(ord('€'))  ==> 8364  <span># Unicode for Euro sign</span>
+print(ord('\n')) ==> 10    <span># Caracter new line</span>
+</code></pre>
+
+      <p><b>Conversia unui șir întreg</b> într-o listă de valori ASCII - <b>Converting an entire string</b> to a list of ASCII values</p>
+
+<pre><code>şir = "salut"
+listă = [ord(caracter) for caracter in şir]
+print(listă)
+<span>==> [115, 97, 108, 117, 116]</span>
+</code></pre>
+
+      <p>Notă: Dacă furnizați un șir de caractere cu o lungime mai mare decât unu pentru ord(), aceasta va genera o
+        eroare TypeError.<br>
+        Note: If you provide a string with a length greater than one to ord(), it will raise a TypeError.</p>
+
+<pre><code>try:
+    print(ord("AB"))
+except TypeError as e:
+    print(f"Error: {e}")
+<span>==> Error: ord() expected a character, but string of length 2 found</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Aplicații:</dt>
+          <dd>Codarea și decodificarea caracterelor: Utilă pentru convertirea caracterelor în reprezentarea lor numerică
+            pentru procesare, stocare sau transmitere.</dd>
+          <dd>Algoritmi de criptare: Pot fi utilizați în algoritmi care se bazează pe valorile numerice ale
+            caracterelor.</dd>
+          <dd>Validarea datelor: Poate ajuta la validarea caracterelor introduse pe baza valorilor Unicode, verificând dacă punctul de cod al unui caracter se încadrează într-un anumit interval (de exemplu, asigurarea faptului că un caracter este o literă majusculă prin verificarea dacă punctul său de cod este cuprins între 65 și 90).</dd>
+          <dd>Manipularea caracterelor: Efectuarea de operații aritmetice asupra caracterelor folosind valorile lor
+            întregi.</dd>
+        </dl>
+
+        <dl>
+          <dt>Applications:</dt>
+          <dd>Character encoding and decoding: Useful for converting characters to their numerical representation for
+            processing, storage or transmission.</dd>
+          <dd>Encryption algorithms: Can be used in algorithms that rely on numerical values of characters.</dd>
+          <dd>Data validation: Can help in validating character inputs based on their Unicode values, checking if a
+            character's code point falls within a specific range (e.g., ensuring a character is an uppercase letter by
+            checking if its code point is between 65 and 90).</dd>
+          <dd>Character manipulation: Performing arithmetic operations on characters by using their integer values.</dd>
+        </dl>
+      </div>
+
+
+<pre><code>def validare_utilizator(nume_util):
+    if not isinstance(nume_util, str):
+        return f"Numele de utilizator trebuie să fie un șir de caractere: {nume_util}"
+    if not (6 &lt;= len(nume_util) &lt;= 18):
+        return f"Numele utilizatorului trebuie să aibă între 6 și 18 caractere: '{nume_util}'"
+    
+    for caracter in nume_util:
+        <span># Verificați dacă, caracterul este alfanumeric sau o subliniere</span>
+        if not (48 &lt;= ord(caracter) &lt;= 57 or  <span># Cifre (0-9)</span>
+                65 &lt;= ord(caracter) &lt;= 90 or  <span># Litere mari (A-Z)</span>
+                97 &lt;= ord(caracter) &lt;= 122 or <span># Litere mici (a-z)</span>
+                ord(caracter) == 95):               <span># Subliniere (_)</span>
+            return f"Invalid character '{caracter}' în numele utilizatorului: '{nume_util}'"
+    return f"Numele utilizatorului este valid: '{nume_util}'"
+
+<span># Exemple</span>
+validare1 = validare_utilizator("user_name123")
+print(validare1) <span>==> Numele utilizatorului este valid: 'user_name123'</span>
+
+validare2 = validare_utilizator("user!")
+print(validare2) <span>==> Numele utilizatorului trebuie să aibă între 6 și 18 caractere: 'user!'</span>
+
+validare3 = validare_utilizator("nume_user3!")
+print(validare3) <span>==> Invalid character '!' în numele utilizatorului: 'nume_user3!'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Considerații:</dt>
+          <dd>Deși ord() este eficient pentru validarea la nivel de caracter, pentru potrivirea unor modele mai
+            complexe, expresiile regulate (folosind modulul re) oferă adesea o soluție mai concisă și mai puternică. Cu
+            toate acestea, ord() oferă o modalitate fundamentală de a inspecta și valida caractere individuale pe baza
+            reprezentării lor numerice.</dd>
+        </dl>
+
+        <dl>
+          <dt>Considerations:</dt>
+          <dd>While ord() is effective for character-level validation, for more complex pattern matching, regular
+            expressions (using the re module) often provide a more concise and powerful solution. However, ord() offers
+            a fundamental way to inspect and validate individual characters based on their numerical representation.
+          </dd>
+        </dl>
+      </div>
+
+
+      <p>Efectuarea operațiilor aritmetice asupra caracterelor folosind valorile lor întregi.<br>
+        Performing arithmetic operations on characters by using their integer values.</p>
+
+<pre><code>import math
+valoare_caracter_a = ord("A")  <span>==> 65</span>
+valoare_caracter_b = ord("B")  <span>==> 66</span>
+valoare_caracter_d = ord("d")  <span>==> 100</span>
+
+adunare = valoare_caracter_a + valoare_caracter_b  <span>==> 131</span>
+scădere = valoare_caracter_d - valoare_caracter_a  <span>==> 35</span>
+radical = math.sqrt(valoare_caracter_d)            <span>==> 10</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="HR">funcţia chr() - chr() function</h2>
+
+    <div class="grid-container">
+      <p><b>chr()</b> built-in function este inversa funcției ord(). Preia o valoare întreagă ASCII (sau un punct de cod
+        Unicode) și returnează caracterul corespunzător.</p>
+      <p><b>chr()</b> built-in function is the inverse of ord(). It takes an integer ASCII value (or Unicode code point)
+        and returns the corresponding character.</p>
+    </div>
+
+<pre><code>print(chr(65))  <span>==> A</span>
+print(chr(90))  <span>==> Z</span>
+print(chr(112)) <span>==> p</span>
+print(chr(126)) <span>==> ~</span>
+print(chr(33))  <span>==> !</span>
+</code></pre>
+
+      <p>Conversia unei liste de valori ASCII înapoi într-un șir de caractere.<br>
+        Converting a list of ASCII values back to a string.</p>
+
+<pre><code>listă_ascii = [115, 97, 108, 117, 116]
+şir_listă = "".join([chr(valoare) for valoare in listă_ascii])
+print(şir_listă) <span>==> salut</span>
+</code></pre>
+
+
+<pre><code>
+<span># Exemplu folosind ord() și chr() împreună</span>
+caracter = 'B'
+punct_cod = ord(caracter)
+print(f"Punctul de cod Unicode al lui '{caracter}' este: {punct_cod}")
+<span>==> Punctul de cod Unicode al lui 'B' este: 66</span>
+
+caracter_convertit = chr(punct_cod)
+print(f"Se convertește înapoi la caracter: '{caracter_convertit}'")
+<span>==> Se convertește înapoi la caracter: 'B'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Cazuri de utilizare comune</dt>
+          <dd>Validarea datelor: Verificarea dacă un caracter se încadrează într-un interval specific (de exemplu,
+            verificarea dacă un caracter este o literă mare prin verificarea faptului că punctul său de cod este între
+            65 și 90).</dd>
+          <dd>Criptografie simplă: Implementarea cifrurilor de bază, cum ar fi cifrul Caesar, prin deplasarea valorilor
+            numerice ale caracterelor.</dd>
+          <dd>Manipularea caracterelor: Efectuarea de operațiuni asupra valorilor numerice ale caracterelor care ar fi
+            dificil de realizat direct cu șiruri de caractere.</dd>
+        </dl>
+
+        <dl>
+          <dt>Common Use Cases.</dt>
+          <dd>Data Validation: Checking if a character falls within a specific range (e.g., checking if a character is
+            an uppercase letter by verifying its code point is between 65 and 90).</dd>
+          <dd>Simple Cryptography: Implementing basic ciphers like the Caesar cipher by shifting the numerical values of
+            characters.</dd>
+          <dd>Character Manipulation: Performing operations on the numerical values of characters that would be
+            difficult to do directly with strings.</dd>
+        </dl>
+      </div>
+
+
+      <p>Aplicație pentru ord() și chr()<br>
+        Application for ord() and chr()</p>
+
+<pre><code>def cifrarea_textului(text, schimb):
+    text_cifrat = ""
+    <span># Asigurați-vă că schimbarea este în intervalul 0-25</span>
+    schimb %= 26
+    for caracter in text:
+        if 'a' &lt;= caracter &lt;= 'z':
+            <span># Convertește caracterul în numărul său de cod Unicode</span>
+            caracter_cod = ord(caracter)
+            <span># Aplică schimb, înfășurând literele în jurul alfabetului</span>
+            schimbat_cod = ((caracter_cod - ord('a') + schimb)% 26) + ord('a')
+            <span># Convertește noul punct de cod înapoi într-un caracter</span>
+            text_cifrat += chr(schimbat_cod)
+        elif 'A' &lt;= caracter &lt;= 'Z':
+            caracter_cod = ord(caracter)
+            schimbat_cod = ((caracter_cod - ord('A') + schimb)% 26) + ord('A')
+            text_cifrat += chr(schimbat_cod)
+        else:
+            <span># Păstrează caracterele non-alfabetice neschimbate</span>
+            text_cifrat += caracter
+    return text_cifrat
+
+def descifrare(text, schimb):
+    <span># Descifrarea este pur și simplu o cifrare cu o deplasare negativă</span>
+    return cifrarea_textului(text, -schimb)
+
+<span># Exemplu de utilizare</span>
+mesaj = "Am trimis un mesaj cifrat!"
+schimb_valoare = 3
+
+mesaj_cifrat = cifrarea_textului(mesaj, schimb_valoare)
+print(f"Mesaj original: {mesaj}")       <span>==> Mesaj original: Am trimis un mesaj cifrat!</span>
+print(f"Mesaj cifrat: {mesaj_cifrat }") <span>==> Mesaj cifrat: Dp wulplv xq phvdm fliudw!</span>
+
+descifrare_mesaj = descifrare(mesaj_cifrat , schimb_valoare)
+print(f"Mesaj descifrat: {descifrare_mesaj}")  <span>==> Mesaj descifrat: Am trimis un mesaj cifrat!</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Explicația codului:</dt>
+          <dd>ord(char): funcția Python încorporată convertește fiecare caracter într-o valoare întreagă pentru un
+            anumit caracter.</dd>
+          <dd>Operatorul Modulo (% 26): efectul de înfășurare al cifrului. Când o literă deplasată trece de "z" sau "Z",
+            operația modulo asigură că revine la "a" sau "A".</dd>
+          <dd>chr(value): funcția Python încorporată convertește numărul întreg modificat înapoi în caracterul
+            corespunzător, formând ieșirea cifrată.</dd>
+          <dd>Caractere non-alfabetice: Blocul else asigură că numerele, spațiile, semnele de punctuație și alte
+            caractere sunt incluse în textul cifrat fără a fi modificate.</dd>
+          <dd>Decodificarea inversează acest proces prin aplicarea unei deplasări negative.</dd>
+        </dl>
+
+        <dl>
+          <dt>Explanation of the Code</dt>
+          <dd>ord(char): built-in Python function converts each character to integer value for a given character.</dd>
+          <dd>Modulo Operator (% 26): wraparound effect of the cipher. When a shifted letter goes past 'z' or 'Z', the
+            modulo operation ensures it loops back to 'a' or 'A'.</dd>
+          <dd>chr(value): built-in Python function converts the modified integer back into its corresponding character,
+            forming the encrypted output.</dd>
+          <dd>Non-Alphabetic Characters: The else block ensures that numbers, spaces, punctuation, other characters are
+            included in the encrypted text without being modified.</dd>
+          <dd>Decryption reverses this process by applying a negative shift.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="AS">funcţia ascii() - ascii() function</h2>
+
+      <div class="grid-container">
+        <p><b>ascii()</b> built-in function returnează o reprezentare imprimabilă a unui obiect, eliminând caracterele
+          non-ASCII folosind caracterele de escape \x, \u sau \U. Acest lucru este util pentru reprezentarea obiectelor
+          într-un mod compatibil cu ASCII.</p>
+
+        <p><b>ascii()</b> built-in function returns a printable representation of an object, escaping non-ASCII
+          characters using \x, \u, or \U escapes. This is useful for representing objects in a way that is compatible
+          with ASCII.</p>
+      </div>
+
+
+<pre><code>print(ascii("Pythön este interesant")) <span>==> 'Pyth\xf6n este interesant'</span>
+fruct = "măr"
+print(ascii(fruct)) <span>==> 'm\u0103r'</span>
+
+# ascii() pe o listă
+listă = ["Salut", "în", 5, "minute"]
+print(ascii(listă))   <span>==> ['Salut', '\xeen', 5, 'minute']</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2>metoda string.isascii() - str.isascii() method<br></h2>
+
+      <div class="grid-container">
+        <p><b>.isascii()</b> metodă de tip șir de caractere verifică dacă toate caracterele dintr-un șir aparțin setului
+          de caractere ASCII. Returnează True dacă toate caracterele sunt ASCII și False în caz contrar.</p>
+
+        <p><b>.isascii()</b> string method checks if all characters in a string belong to the ASCII character set. It
+          returns True if all characters are ASCII, and False otherwise.</p>
+      </div>
+
+<pre><code>print("salut".isascii()) <span>==> True</span>
+print("Bacău".isascii()) <span>==> False</span>
+</code></pre>
+      <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="AL">șir.ascii_letters - string.ascii_letters</h2>
+
+      <div class="grid-container">
+        <p><b>.ascii_letters</b> constantă din modulul șir de caractere este un șir de caractere care conține toate
+          literele ASCII majuscule și minuscule.</p>
+        <p><b>.ascii_letters</b> constant from the string module is a string containing all uppercase and lowercase
+          ASCII letters.</p>
+      </div>
+
+<pre><code>import string
+print(string.ascii_letters) <span>==> abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Aceste funcții și metode vă permit să lucrați cu valori ASCII, să convertiți între caractere și
+          reprezentările lor numerice, să asigurați compatibilitatea ASCII și să verificați conformitatea ASCII în
+          cadrul programelor dvs. Python.</p>
+
+        <p>These functions and methods allow you to work with ASCII values, convert between characters and their
+          numerical representations, ensure ASCII compatibility, and check for ASCII compliance within your Python
+          programs.</p>
+      </div>
+
+<pre><code>import string
+
+litere_ascii_minuscule = string.ascii_lowercase
+print(litere_ascii_minuscule)  <span>==> abcdefghijklmnopqrstuvwxyz</span>
+
+litere_ascii_majuscule = string.ascii_uppercase
+print(litere_ascii_majuscule)  <span>==> ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="ME">metoda encode() - encode() method</h2>
+
+      <div class="grid-container">
+        <p>Obiectele șir de caractere din Python au o metodă encode() care poate fi utilizată pentru a converti un șir
+          de caractere într-o secvență de octeți folosind o codificare specificată. Pentru a codifica un șir de
+          caractere în ASCII, puteți transmite 'ascii' ca argument.</p>
+
+        <p>String objects in Python have an encode() method that can be used to convert a string into a sequence of
+          bytes using a specified encoding. To encode a string into ASCII, you can pass 'ascii' as the argument.</p>
+      </div>
+
+<pre><code>text = "Salut, lume!"
+ascii_codificat = text.encode('ascii')
+print(ascii_codificat)  <span>==> b'Salut, lume!'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Deși ASCII este o codificare fundamentală, Python și sistemele moderne utilizează în principal Unicode (și
+          implementările sale, cum ar fi UTF-8) pentru un suport mai larg pentru caractere, deoarece ASCII acoperă doar
+          un set limitat de caractere. Cu toate acestea, înțelegerea ASCII și a interacțiunii sale cu Python este
+          esențială pentru lucrul cu sisteme vechi, protocoale de rețea specifice și sarcini de procesare a textului în
+          care este necesară compatibilitatea ASCII.</p>
+
+        <p>While ASCII is a fundamental encoding, Python and modern systems primarily use Unicode (and its
+          implementations like UTF-8) for broader character support, as ASCII only covers a limited set of characters.
+          However, understanding ASCII and its interaction with Python is essential for working with legacy systems,
+          specific network protocols, and text processing tasks where ASCII compatibility is required.</p>
+      </div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>

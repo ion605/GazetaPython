@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="CSS/main-style.css">
+
+<link rel="icon" type="img/png" href="images/logo-title.png">
+<title>Gazeta Python 7.0 Tipuri Binare</title>
+</head>
+
+<body>
+
+<div id="sus" class="main-1-0 navigare">
+<header>
+  <div class="header-menu">
+  <img src="images/logo-menu.svg" alt="Gazeta Python">
+  <nav>
+    <ul>
+      <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+      <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+      <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+      <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+    </ul>
+  </nav>
+  </div>
+
+  <div class="first-empty-1-0"></div>
+
+  <div class="titlu-1-0">
+    <div class="grid-cell">
+      <img src="images/literaB.svg" alt="B" class="logo">
+      <h1>7.0 Tipuri de secvențe binare - Binary Sequence Types</h1>
+    </div>
+  </div>
+
+
+  <div class="ro-en-1-0 container-links ro-en">
+      <div>
+      <ul>
+        <li>În acest capitol veți studia:</li>
+        <li><a href="7.1-bytes.html" target="_blank" rel="noopener">Obiectul de tip bytes (imutable)</a></li>
+        <li><a href="7.2-bytearray.html" target="_blank" rel="noopener">Obiectul bytearray (mutabil)</a></li>
+        <li><a href="7.3-memoryview.html" target="_blank" rel="noopener">Obiectul memoryview (fără copiere)</a></li>
+      </ul>
+      </div>
+      <div>
+      <ul>
+        <li>In this chapter, you will study:</li>
+        <li><a href="#BT">bytes</a></li>
+        <li><a href="#BA">bytearray</a></li>
+        <li><a href="#MV">memoryview</a></li>
+      </ul>
+      </div>
+  </div>
+</header>
+  <div class="second-empty-1-0"></div>
+
+  <div class="contents-1-0">
+    
+<p><a href="https://docs.python.org/3/builtins/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview" target="_blank">Binary Sequence Types — bytes, bytearray, memoryview</a></p>
+
+<table class="outer-hidden">
+<caption>Cele trei tipuri de secvențe binare</caption>
+<tr><th>Tip</th><th>Mutabilitate</th><th>Caz de utilizare principal</th><th>Caracteristică cheie</th></tr>
+<tr><td>bytes</td><td>Imutabil</td><td>Citirea fișierelor (rb), comunicarea în rețea, codificarea/decodificarea textului.</td><td>Poate fi definit folosind literali (b"...").</td></tr>
+<tr><td>bytearray</td><td>Mutabil</td><td>Manipulare dinamică a datelor binare "in-place" (direct în memorie) și stocare în buffer.</td><td>Suportă metode precum .append(), .extend() și atribuiri prin felii (slice assignments).</td></tr>
+<tr><td>memoryview</td><td>depinde de sursă</td><td>Segmentare sigură și de înaltă performanță a seturilor de date masive.</td><td>Utilizează protocolul de buffer pentru a realiza partajarea memoriei fără copierea datelor.</td></tr>
+</table>
+
+
+<table class="outer-hidden">
+<caption>Formate pentru reprezentarea octeților</caption>
+<tr><th>Metodă / Reprezentare</th><th>Exemplu de sintaxă</th><th>Utilizare optimă pentru</th></tr>
+<tr><th>Literal de tip octet (Byte Literal)</th><td>b'Salut'</td><td>Date text ASCII lizibile pentru oameni.</td></tr>
+<tr><th>Secvențe escape hexazecimale</th><td>b'\x53\x61\x6c\x75\x74'</td><td>Date binare brute, când este necesară vizualizarea valorilor hexazecimale exacte.</td></tr>
+<tr><th>Listă de numere întregi</th><td>bytes([83, 97, 108, 117, 116])</td><td>Modificarea, transmiterea (streaming) sau procesarea unor șiruri numerice brute (valori 0–255).</td></tr>
+<tr><th>Șir hexazecimal</th><td>bytes.fromhex('53616c7574')</td><td>Citirea de hash-uri, chei criptografice sau dump-uri de pachete de rețea.</td></tr>
+<tr><th>Codificarea unui șir de caractere</th><td>"Salut".encode('utf-8')</td><td>Conversia textului standard (destinat utilizatorului) în octeți.</td></tr>
+</table>
+
+<div class="grid-container">
+<p>Un dump de pachete de rețea (adesea numit packet dump, packet capture sau PCAP) reprezintă o copie brută și detaliată a traficului de date care circulă printr-o rețea de calculatoare la un moment dat.</p>
+
+<p>A network packet dump (often called a packet dump, packet capture, or PCAP) is a raw, detailed copy of the data traffic flowing through a computer network at a given moment.</p>
+</div>
+
+<div class="grid-container">
+  <div>
+  <dl>
+  <dt>Ce conține, mai exact, un pachet dump?</dt>
+    <dd>Atunci când datele circulă prin internet sau printr-o rețea locală, ele sunt fragmentate în unități mici, numite pachete. O captură (dump) înregistrează aceste pachete și salvează informații esențiale, precum:</dd>
+  </dl>
+
+  <ul>
+    <li>Adresele IP sursă și destinație: cine trimite informațiile și cine le primește.</li>
+    <li>Protocolul utilizat: tipul de trafic (ex., HTTP websites, DNS pentru rezoluția numelor de domeniu, TCP/UDP etc.).</li>
+    <li>Marcajul temporal (timestamp): data și ora exactă (până la nivel de microsecundă) la care a fost interceptat pachetul.</li>
+    <li>Încărcătura utilă (payload): conținutul propriu-zis al mesajului (dacă traficul nu este criptat, pot fi vizibile texte, imagini sau comenzi; dacă este criptat — de exemplu, prin HTTPS — conținutul apare ca un șir de caractere ilizibile).</li>
+  </ul>
+  </div>
+  
+  <div>
+  <dl>
+  <dt>What exactly does a packet dump contain?</dt>
+    <dd>When data travels across the internet or through a local network, it is broken down into small pieces called packets. A dump captures these packets and saves essential information, such as:</dd>
+  </dl>
+
+  <ul>
+    <li>Source and destination IP addresses: Who is sending the information and who is receiving it.</li>
+    <li>Protocol used: The type of traffic (e.g., HTTP for websites, DNS for domain name resolution, TCP/UDP, etc.).</li>
+    <li>Timestamp: The exact date and time (down to the microsecond) when the packet was intercepted.</li>
+    <li>Payload: The actual content of the message (if the traffic is unencrypted, you may see text, images, or commands; if it is encrypted—for example, via HTTPS—the content appears as a string of unreadable characters).</li>
+  </ul>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div>
+  <dl>
+  <dt>La ce sunt folosite?</dt>
+    <dd>Analizarea acestor fișiere este esențială în domeniul IT și al securității cibernetice pentru:</dd>
+  </dl>
+  <ul>
+    <li>Depanarea rețelei: Identificarea cauzelor pentru care o rețea funcționează lent sau pentru care anumite aplicații nu pot comunica între ele.</li>
+    <li>Securitate și investigații digitale (forensics): Detectarea atacurilor cibernetice, a intrușilor sau a scurgerilor de date prin analizarea comportamentului suspect.</li>
+    <li>Dezvoltarea de software: Verificarea modului în care o nouă aplicație transmite date prin rețea.</li>
+  </ul>
+  </div>
+
+  <div>
+  <dl>
+  <dt>What are they used for?</dt>
+    <dd>Analyzing these files is fundamental in IT and cybersecurity for:</dd>
+  </dl>
+  <ul>
+    <li>Network troubleshooting: Identifying the reasons why a network is slow or why certain applications cannot communicate with each other.</li>
+    <li>Security and forensics: Detecting cyberattacks, intruders, or data leaks by analyzing suspicious behavior.</li>
+    <li>Software development: Verifying how a new application transmits data over the network.</li>
+  </ul>
+  </div>
+</div>
+
+
+<h2>Reguli pentru lucrul cu octeți - Rules of Working with Bytes</h2>
+
+<div class="grid-container">
+<dl>
+<dt>Nu amestecați niciodată șiruri de caractere și octeți</dt>
+  <dd>Python tratează tipurile str și bytes ca fiind distincte. Încercarea de a le combina sau de a transmite un șir unei metode specifice pentru octeți va declanșa TypeError.</dd>
+<dt>Indexarea returnează un întreg, felierea returnează octeți</dt>
+  <dd>Atunci când accesați o singură poziție într-un șir, obțineți un caracter. Când accesați o singură poziție într-un obiect de tip bytes, obțineți valoarea întreagă ASCII.</dd>
+<dt>Nu sunt permise "f-bytes"</dt>
+  <dd>Nu puteți formata octeți folosind "f-bytes" (ex., fb"salut {var}"- sintaxă invalidă). În schimb, utilizați operatorul modulo (%) sau efectuați transformarea după decodare.</dd>
+<dt>Conversia între tipuri</dt>
+  <dd>Atunci când este necesar să convertiți octeții într-un șir de caractere lizibil pentru oameni (sau invers), utilizați metodele .encode() și .decode().</dd>
+</dl>
+
+<dl>
+<dt>Never Mix Strings and Bytes</dt>
+  <dd>Python treats str and bytes as completely separate types. Trying to combine them or pass a string into a bytes method will trigger a TypeError</dd>
+<dt>Indexing Returns an Integer, Slicing Returns Bytes</dt>
+  <dd>When you index a single position in a string, you get a character string. When you index a single position in a bytes object, you get the underlying ASCII integer.</dd>
+<dt>No "f-bytes" Allowed</dt>
+  <dd>You cannot format bytes using f-bytes (e.g., fb"hello {var}" is invalid syntax). Instead, use the .modulus (%) operator or translate it after decoding.</dd>
+<dt>Converting Back and Forth</dt>
+  <dd>When you finally need to convert your bytes into a real human-readable string (or vice versa), use .encode() and .decode().<dd>
+</dl>
+</div>
+
+<pre><code><span># Nu amestecați șiruri de caractere și octeți</span>
+try:
+    rezultat = b"salut" + " lume"
+except TypeError as e:
+    print(f"Eroare detectată: {e}") <span>==&gt; Eroare detectată: can't concat str to bytes</span>
+    <span># Opțional: se corectează prin codificarea șirului în octeți</span>
+    rezultat = b"salut" + b" lume"
+    print("Rezultat corectat:", rezultat) <span>==&gt; Rezultat corectat: b'salut lume'</span>
+</code></pre>
+
+<div class="grid-container">
+<pre><code><span># Acest lucru va cauza o eroare:</span>
+try:
+    rezultat = b"salut".replace("s", "S")
+    print(rezultat)
+except TypeError as e:
+    print(f"A fost detectată o eroare așteptată: {e}")
+<span>==&gt; A fost detectată o eroare așteptată: a bytes-like object is required, not 'str'</span>
+</code></pre>
+
+<pre><code><span># Cod corectat</span>
+try:
+    <span># Utilizarea literalilor de tip octet b"l" și b"L"</span> 
+    rezultat = b"salut".replace(b"s", b"S")
+    print(f"Succes: {rezultat}")
+except TypeError as e:
+    print(f"Eroare: {e}")
+<span>==&gt; Succes: b'Salut'</span>
+</code></pre>
+</div>
+
+<pre><code><span># Indexarea returnează un întreg, felierea returnează octeț</span>
+litere = b"abc"
+
+print(litere[0])  <span>==&gt; 97</span>
+print(litere[:1]) <span>==&gt; b'a'</span>
+</code></pre>
+
+
+<pre><code><span># Nu "F-bytes"</span>
+nume = b"Dominic"
+<span># Folosește formatarea cu modulo (%) pentru octeți</span>
+urare = b"Salut %s" % nume
+print(urare)  <span>==&gt; b'Salut Dominic'</span>
+</code></pre>
+
+
+<h2 id="BT"><a href="7.1-bytes.html" target="_blank" rel="noopener">Obiectul de tip bytes (imutable) - The bytes Object (Immutable)</a></h2>
+
+<p><a href="https://realpython.com/python-bytes/" target="_blank">Bytes Objects Real Python</a></p>
+
+<div class="grid-container">
+<p>Un obiect de tip bytes este o secvență de numere întregi. Atunci când accesezi un element dintr-un obiect bytes folosind un indice, Python returnează un număr întreg (valoarea ASCII sau codul octetului).</p>
+
+<p>A bytes object is a sequence of integers. When you access an element from a bytes object using an index, Python returns an integer (the ASCII value or the byte code).</p>
+</div>
+
+<pre><code><span># Utilizarea prefixului literal "b"</span>
+binary_data = b"Salut"
+
+<span># Verificarea tipului și a lungimii</span>
+print(type(binary_data)) <span>==&gt; &lt;class 'bytes'&gt;</span>
+print(binary_data[0])    <span>==&gt; 83</span>
+
+<span># Decodificarea înapoi într-un șir de caractere standard</span>
+text = binary_data.decode("utf-8")
+print(text)   <span>==&gt; Salut</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+<h2 id="BA"><a href="7.2-bytearray.html" target="_blank" rel="noopener">Obiectul bytearray (mutabil) - The bytearray Object (Mutable)</a></h2>
+
+<p><a href="https://realpython.com/python-bytearray/" target="_blank">Python's Bytearray Real Python</a></p>
+
+<div class="grid-container">
+<p>Un obiect de tip bytearray impune restricția 0–255 pentru fiecare element. Acesta este utilizat atunci când trebuie să citești fluxuri binare și să modifici anumite segmente în timp real, fără a crea copii în memorie.</p>
+
+<p>A bytearray object enforces the 0–255 restriction for every element. It is used when you need to read binary streams and modify specific chunks on the fly without making memory copies.</p>
+</div>
+
+<pre><code><span># Creează un bytearray gol de dimensiune 5</span>
+mutabil_bytes = bytearray(5) 
+print(mutabil_bytes) <span>==&gt; bytearray(b'\x00\x00\x00\x00\x00')</span>
+
+<span># Modifică un element pe loc (in-place)</span>
+mutabil_bytes[0] = 255
+mutabil_bytes.append(100) <span>==&gt; bytearray(b'\xff\x00\x00\x00\x00d')</span>
+
+print(mutabil_bytes)
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+<h2 id="MV"><a href="7.3-memoryview.html" target="_blank" rel="noopener">Obiectul memoryview (fără copiere) - The memoryview Object (Zero-Copy)</a></h2>
+
+<p><a href="https://realpython.com/python-memoryview/" target="_blank">Python memoryview Real Python</a></p>
+
+<div class="grid-container">
+<p>O memorieview permite codului Python să acceseze datele interne ale unui obiect care acceptă protocolul buffer (cum ar fi bytes sau bytearray) fără a le copia. Tăierea în felii a unui obiect uriaș de bytes creează o copie nouă în memorie, dar tăierea în felii a unei memorieview creează o nouă referință care indică direct către exact aceeași adresă de memorie.</p>
+
+<p>A memoryview allows Python code to access the internal data of an object that supports the buffer protocol (like bytes or bytearray) without copying it. Slicing a huge bytes object creates a new copy in memory, but slicing a memoryview creates a new reference pointing directly to the exact same memory addres</p>
+</div>
+
+<pre><code>buffer_partajat = bytearray(b"Pachete")
+vizualizare = memoryview(buffer_partajat)
+
+<span># Secționare fără a crea o copie</span>
+sub_view = vizualizare[2:5]
+
+<span># Modificare original prin vizualizării mutabile</span>
+sub_view[0] = ord("c") 
+print(buffer_partajat) <span>==&gt; bytearray(b'Pachete')</span>
+</code></pre>
+
+
+
+
+
+    <p class="other">Pentru mai multe detalii și exemple, consultați
+    <a href="https://docs.python.org/3/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview" target="_blank" rel="noopener">Documentația privind tipurile de secvențe binare din Python</a><br>
+
+    <p class="other">For more details and examples, refer to the official
+    <a href="https://docs.python.org/3/library/stdtypes.html#binary-sequence-types-bytes-bytearray-memoryview" target="_blank" rel="noopener">Python Binary Sequence Types documentation</a></p>
+
+    <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+    <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+  <div class="footer footer-link">
+    <footer>
+    &copy; <span id="year-picior"></span> Gazeta Python.
+    <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a></address>
+    </footer>
+  </div>
+</div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<script src="JS/doileaGreeting.js"></script>
+<script src="JS/update-year.js"></script>
+</body>
+</html>

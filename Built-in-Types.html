@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python-Built-in Types</title>
+</head>
+
+<body>
+
+  <header>
+    <h1 id="sus"><img src="gp-logo.png" alt="GAZETA PYTHON"><br>
+      Built-in Types-Tipuri încorporate</h1>
+  </header>
+
+  <div class="main-1-0">
+    <h2 style="text-align:left">Introducere - Introduction</h2>
+
+    <div class="contents-1-0">
+
+      <p>Iată principalele tipuri de date încorporate în Python - Here are the main built-in data types in Python:</p>
+
+      <div class="grid-container">
+        <ul>
+          <li>Tipuri numerice</li>
+          <li>Tipuri text</li>
+          <li>Tipuri boolean</li>
+          <li>Tipuri secvență</li>
+          <li>Tipuri Dicționar</li>
+          <li>Tipuri Set</li>
+          <li>Tipuri binare</li>
+          <li>None Type</li>
+        </ul>
+
+        <ul>
+          <li>Numeric types</li>
+          <li>Text types</li>
+          <li>Boolean types</li>
+          <li>Sequence types</li>
+          <li>Dictionary types</li>
+          <li>Set types</li>
+          <li>Binary types</li>
+          <li>None Type</li>
+        </ul>
+      </div>
+
+      <div class="grid-container">
+        <p>Python dispune de mai multe tipuri de date integrate, disponibile imediat, fără a necesita instrucțiuni de
+          import. Aceste tipuri sunt clasificate, în linii mari, în: tipuri numerice, secvențe de text, secvențe,
+          mapări, mulțimi, secvențe binare și tipuri de valoare de adevăr.</p>
+
+        <p>Python has several built-in data types available out of the box without requiring any import statements.
+          These types are broadly categorized into numeric, text sequence, sequence, mapping, set, binary sequence, and
+          truth value types.</p>
+      </div>
+
+      <p>Prezentare generală a <a href="https://docs.python.org/3/library/stdtypes.html" target="_blank" rel="noopener">tipurilor
+          încorporate</a> din Python - Overview of Python <a href="https://docs.python.org/3/library/stdtypes.html"
+          target="_blank" rel="noopener">Built-in Types</a></p>
+
+      <table class="outer-hidden">
+        <tr>
+          <th>Categorie</th>
+          <th>Nume tip</th>
+          <th>Mutabilitate</th>
+          <th>Exemple</th>
+        </tr>
+        <tr>
+          <td>Numeric Types</td>
+          <td>int, float, complex</td>
+          <td>Immutable</td>
+          <td>42, 3.14, 2+3j</td>
+        </tr>
+        <tr>
+          <td>Text Sequence</td>
+          <td>str</td>
+          <td>Immutable</td>
+          <td>"Hello"</td>
+        </tr>
+        <tr>
+          <td>Boolean Type</td>
+          <td>bool</td>
+          <td>Immutable</td>
+          <td>True, False</td>
+        </tr>
+        <tr>
+          <td>Sequence Types</td>
+          <td>list, tuple, range</td>
+          <td>list (Mutable), Others (Immutable)</td>
+          <td>[1, 2], (1, 2), range(5)</td>
+        </tr>
+        <tr>
+          <td>Mapping Type</td>
+          <td>dict</td>
+          <td>Mutable</td>
+          <td>{"key": "value"}</td>
+        </tr>
+        <tr>
+          <td>Set Types</td>
+          <td>set, frozensets</td>
+          <td>set (Mutable), frozenset (Immutable)</td>
+          <td>{1, 2}, frozenset([1, 2])</td>
+        </tr>
+        <tr>
+          <td>Binary Sequence</td>
+          <td>bytes, bytearray, memoryviewby</td>
+          <td>tearray (Mutable), Others (Immutable)</td>
+          <td>b"hi", bytearray(5)</td>
+        </tr>
+        <tr>
+          <td>None Type</td>
+          <td>NoneType</td>
+          <td>Immutable</td>
+          <td>None</td>
+        </tr>
+      </table>
+
+
+      <div class="grid-container">
+        <div>
+          <p>Tipurile de date din Python clasifică tipul de valori pe care o variabilă le poate conține, determinând
+            modul în care sunt stocate datele și ce operații pot fi efectuate.</p>
+          <p>În Python, fiecare valoare este un obiect, iar toate obiectele au un tip de date. Tipurile de date sunt
+            clasificate în două grupuri principale în funcție de mutabilitate sau dacă starea lor poate fi modificată
+            după ce sunt create.</p>
+          <p>Python, un limbaj de tipizare dinamică, deduce automat tipul de date al unei variabile pe baza valorii
+            atribuite acesteia.
+            Puteți determina tipul de date al oricărei variabile sau obiect folosind funcția type() încorporată.</p>
+        </div>
+
+        <div>
+          <p>Python's data types categorize the kind of values a variable can hold, determining how data is stored and
+            what operations can be performed.</p>
+          <p>In Python, every value is an object, and all objects have a data type. Data types are categorized into two
+            main groups based on mutability, or whether their state can be changed after they are created.</p>
+          <p>Python, a dynamically typed language, automatically infers the data type of a variable based on the value
+            assigned to it.
+            You can determine the data type of any variable or object using the built-in type() function.</p>
+        </div>
+      </div>
+
+      <p>Funcția <b>type()</b> din Python are două scopuri principale - <b>type()</b> function in Python serves two main
+        purposes.</p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Pentru a obține tipul unui obiect.</dt>
+          <dd>Când este apelată cu un singur argument, type(object), aceasta returnează tipul sau clasa obiectului
+            respectiv.</dd>
+        </dl>
+
+        <dl>
+          <dt>To get the type of an object.</dt>
+          <dd>When called with a single argument, type(object), it returns the type or class of that object.</dd>
+        </dl>
+      </div>
+
+<pre><code><code>animal = "vulpe"
+print(type(animal)) <span>==> &lt;class 'str'&gt;</span>
+</code></code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Pentru a crea o clasă dinamic.</dt>
+          <dd>Apelată cu trei argumente, type(name, bases, dict), permite crearea de noi clase (types) în timpul
+            execuției. Aceasta este o caracteristică mai avansată utilizată în metaprogramare.</dd>
+        </dl>
+
+        <dl>
+          <dt>To create a class dynamically.</dt>
+          <dd>When called with three arguments, type(name, bases, dict), it allows for the creation of new classes
+            (types) at runtime. This is a more advanced feature used in metaprogramming.</dd>
+        </dl>
+      </div>
+
+
+<pre><code><code><span># Creați dinamic o clasă numită "ClasaMea"</span>
+<span># Aceasta moștenește de la "object" și are atributul "valoare"</span>
+ClasaMea = type('ClasaMea', (object,), {'valoare': 100})
+
+<span># Creează o instanță a clasei create dinamic</span>
+obiect = ClasaMea()
+print(obiect.valoare) <span>==> 100</span>
+print(type(obiect))   <span>==> &lt;class '__main__.ClasaMea'&gt;</span>
+</code></code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>type() vs. isinstance() pentru verificarea tipului.</dt>
+          <dd>Deși type() poate verifica tipul unui obiect, isinstance() este adesea preferată, în special în cazul
+            moștenirii. type(obj) == SomeClass necesită o potrivire exactă a clasei, returnând False pentru subclase. În
+            schimb, isinstance(obj, SomeClass) returnează True dacă obj este o instanță a SomeClass sau a oricăreia
+            dintre subclasele sale, aliniindu-se mai bine cu principiile orientate pe obiecte.</dd>
+        </dl>
+
+        <dl>
+          <dt>type() vs. isinstance() for type checking.</dt>
+          <dd>While type() can check an object's type, isinstance() is often preferred, particularly with inheritance.
+            type(obj) == SomeClass requires an exact class match, returning False for subclasses. In contrast,
+            isinstance(obj, SomeClass) returns True if obj is an instance of SomeClass or any of its subclasses,
+            aligning better with object-oriented principles.</dd>
+        </dl>
+      </div>
+
+      <p class="other">For more details and examples, refer to the official
+        <a href="https://docs.python.org/3/library/stdtypes.html" target="_blank" rel="noopener">
+          Built-in Types
+          documentation</a>
+      </p>
+
+      <p class="other">For more details and examples, refer to the official
+        <a href="https://docs.python.org/3/library/datatypes.html" target="_blank" rel="noopener"> Data
+          types
+          documentation</a>
+      </p>
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a>
+        pentru style sheet
+      </p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a>
+        pentru style
+        sheet</p>
+
+    </div>
+    <div class="footer footer-link">
+      <footer>
+        &copy; <span id="year-picior"></span> Gazeta Python.
+        <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+            rel="noopener">www.gazetapython.com</a>
+        </address>
+      </footer>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/primulGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

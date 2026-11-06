@@ -1,0 +1,2276 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 4.1 Liste</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaS.svg" alt="S" class="logo">
+          <h1>4.0 Tipuri secvență - Sequence Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>4.1 Liste - Lists</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 ro-en">
+
+        <div class="grid-container">
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#LT">Ce sunt listele în Python</a>
+              <ul>
+                <li><a href="#LTA">Listele sunt colecții ordonate</a></li>
+                <li><a href="#LTB">Listele sunt mutabile</a></li>
+                <li><a href="#LTC">Listele sunt eterogene</a></li>
+              </ul>
+            </li>
+            <li><a href="#CL">Constructori de Liste în Python</a>
+              <ul>
+                <li><a href="#CLA">square brackets []</a>
+                  <ul>
+                    <li><a href="#LA">Conversia unui iterabil într-o listă []</a></li>
+                  </ul>
+                </li>
+                <li><a href="#CLB">list() constructor</a></li>
+              </ul>
+            </li>
+            <li><a href="#AE">Accesarea elementelor</a>
+              <ul>
+                <li><a href="#AEA">Accesarea elementelor individuale (index)</a></li>
+                <li><a href="#AEB">Accesarea mai multor elemente (slicing)</a></li>
+                <li><a href="#AEC">Iterarea prin elemente</a></li>
+                <li><a href="#AED">Accesarea elementelor cu map()</a></li>
+                <li><a href="#AEF">List Comprehension (indici specifici)</a></li>
+                <li><a href="#AEG">Utilizați NumPy</a></li>
+              </ul>
+            </li>
+            <li><a href="#AG">Adăugarea de elemente la liste</a>
+              <ul>
+                <li><a href="#AGA">Adaugă un element la sfârșitul listei</a></li>
+                <li><a href="#AGB">Inserează un element la un index specificat</a></li>
+                <li><a href="#AGC">Adaugă toate elementele dintr-un iterabil (de exemplu, o altă listă)</a></li>
+                <li><a href="#AGD">Combinarea listelor: operatorul + sau +=</a></li>
+                <li><a href="#AGE">Performanță în timp ce listele cresc în Python</a></li>
+              </ul>
+            </li>
+            <li><a href="#RE">Ștergerea elementelor</a>
+              <ul>
+                <li><a href="#REA">Elimină prima apariție a unei valori specificate</a></li>
+                <li><a href="#REB">Elimină și returnează elementul de la un index specificat</a></li>
+                <li><a href="#REC">Eliminarea elementelor repetate dintr-o listă</a></li>
+                <li><a href="#RED">Șterge elementul la un index specificat</a></li>
+                <li><a href="#REF">Elimină toate elementele din listă</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul>
+            <li>In this chapter, you will study:</li>
+            <li><a href="#LT">What are lists in Python</a>
+              <ul>
+                <li><a href="#LTA">Lists are ordered collections</a></li>
+                <li><a href="#LTB">Lists are mutable</a></li>
+                <li><a href="#LTC">Lists are heterogeneous</a></li>
+              </ul>
+            </li>
+            <li><a href="#CL">Python list constructors</a>
+              <ul>
+                <li><a href="#CLA">square brackets []</a>
+                  <ul>
+                    <li><a href="#LA">Converting an iterable to a list []</a></li>
+                  </ul>
+                </li>
+                <li><a href="#CLB">list() constructor</a></li>
+              </ul>
+            </li>
+            <li><a href="#AE">Accessing elements</a>
+              <ul>
+                <li><a href="#AEA">Accessing Individual Elements (index)</a></li>
+                <li><a href="#AEB">Accessing Multiple Elements (Slicing)</a></li>
+                <li><a href="#AEC">Iterating Through Elements</a></li>
+                <li><a href="#AED">Accessing Elements with map()</a></li>
+                <li><a href="#AEF">List Comprehension (for specific indices)</a></li>
+                <li><a href="#AEG">Use NumPy</a></li>
+              </ul>
+            </li>
+            <li><a href="#AG">Adding elements to lists</a>
+              <ul>
+                <li><a href="#AGA">Adds an item to the end of the list</a></li>
+                <li><a href="#AGB">Inserts an item at a specified index</a></li>
+                <li><a href="#AGC">Appends all items from an iterable (e.g., another list)</a></li>
+                <li><a href="#AGD">Combining Lists: + Operator or +=</a></li>
+                <li><a href="#AGE">Performance While Growing Lists python</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Removing elements</a>
+              <ul>
+                <li><a href="#REA">Removes the first occurrence of a specified value</a></li>
+                <li><a href="#REB">Removes and returns the item at a specified index</a></li>
+                <li><a href="#REC">Removing Repeated Items From a List</a></li>
+                <li><a href="#RED">Removes the item at a specified index</a></li>
+                <li><a href="#REF">Removes all elements from the list</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+
+      <h2 id="LT">Ce sunt listele în Python - What are lists in Python</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, o listă este un tip de date încorporat, utilizat pentru a stoca o colecție ordonată de elemente.
+            Caracteristicile cheie ale listelor Python includ:</p>
+          <dl>
+            <dt>Ordonate:</dt>
+            <dd>Elementele dintr-o listă își mențin ordinea de inserare. Aceasta înseamnă că elementele pot fi accesate
+              după poziția lor, cunoscută sub numele de index, începând de la 0 pentru primul element.</dd>
+            <dt>Mutabile:</dt>
+            <dd>Listele sunt mutabile, ceea ce înseamnă că elementele lor pot fi modificate (adăugate, eliminate sau
+              modificate) după ce lista a fost creată.</dd>
+            <dt>Eterogene:</dt>
+            <dd>Listele pot conține elemente de diferite tipuri de date în cadrul aceleiași liste, cum ar fi numere
+              întregi, șiruri de caractere, valori booleene sau chiar alte liste.</dd>
+            <dt>Definite cu paranteze pătrate:</dt>
+            <dd>Listele sunt create prin includerea unei secvențe de elemente separate prin virgulă între paranteze
+              pătrate [].</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>In Python, a list is a built-in data type used to store an ordered collection of items. Key characteristics
+            of Python lists include: </p>
+          <dl>
+            <dt>Ordered:</dt>
+            <dd>The elements in a list maintain their insertion order. This means elements can be accessed by their
+              position, known as an index, starting from 0 for the first element.</dd>
+            <dt>Mutable:</dt>
+            <dd>Lists are mutable, meaning their elements can be changed (added, removed, or modified) after the list
+              has been created.</dd>
+            <dt>Heterogeneous:</dt>
+            <dd>Lists can contain elements of different data types within the same list, such as integers, strings,
+              booleans, or even other lists.</dd>
+            <dt>Defined with Square Brackets:</dt>
+            <dd>Lists are created by enclosing a comma-separated sequence of elements within square brackets [].</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code><span># O listă goală</span>
+listă_goală = []
+
+<span># O listă de numere întregi</span>
+numere = [1, 2, 3, 4, 5]
+
+<span># O listă de șiruri de caractere</span>
+fructe = ["măr", "pară", "cireșă"]
+
+<span># O listă cu tipuri de date mixte</span>
+listă_mixtă = ["salut", 123, True, [6, 7]]
+</code></pre>
+
+      <div class="grid-container">
+        <p>Listele sunt o structură de date fundamentală și versatilă în Python, utilizată pe scară largă pentru
+          organizarea și manipularea colecțiilor de date. Acestea acceptă diverse operațiuni și metode pentru adăugarea
+          de elemente, eliminarea de elemente, sortare, căutare și multe altele.</p>
+
+        <p>Lists are a fundamental and versatile data structure in Python, widely used for organizing and manipulating
+          collections of data. They support various operations and methods for adding elements, removing elements,
+          sorting, searching, and more.</p>
+      </div>
+
+
+      <h2 id="LTA">Listele sunt colecții ordonate - Lists are ordered collection</h2>
+
+      <div class="grid-container">
+
+        <div>
+          <p>În Python, "ordonat" nu înseamnă că elementele sunt sortate automat.</p>
+          <p>În Python, listele sunt într-adevăr colecții ordonate de elemente. Aceasta înseamnă că elementele dintr-o
+            listă mențin o secvență specifică, iar această ordine este păstrată, cu excepția cazului în care este
+            modificată explicit prin operații precum sortarea sau inversarea ordinelor.</p>
+
+          <p>Caracteristici cheie ale listelor Python legate de natura lor ordonată:</p>
+
+          <dl>
+            <dt>Acces bazat pe index:</dt>
+
+            <dd>Elementele pot fi accesate prin indexul lor numeric, începând de la 0 pentru primul element. De exemplu,
+              my_list[0] se va referi întotdeauna la primul element inserat în my_list.</dd>
+
+            <dt>Ordinea de inserare menținută:</dt>
+
+            <dd>Când elementele sunt adăugate la o listă, acestea sunt plasate într-o poziție specifică, iar acea
+              poziție este menținută în raport cu alte elemente.</dd>
+
+            <dt>Iterația în ordine:</dt>
+
+            <dd>Când se iterează printr-o listă (de exemplu, folosind o buclă for), elementele sunt procesate în ordinea
+              în care apar în listă.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>In Python, "ordered" does not mean the items are automatically sorted.</p>
+          <p>In Python, lists are indeed ordered collections of items. This means that the elements within a list
+            maintain a specific sequence, and this order is preserved unless explicitly changed by operations like
+            sorting or reversing.</p>
+          <p>Key characteristics of Python lists related to their ordered nature:</p>
+
+          <dl>
+            <dt>Index-based access:</dt>
+            <dd>Elements can be accessed by their numerical index, starting from 0 for the first element. For example,
+              my_list[0] will always refer to the first element inserted into my_list.</dd>
+            <dt>Insertion order maintained:</dt>
+            <dd>When items are added to a list, they are placed at a specific position, and that position is maintained
+              relative to other elements.</dd>
+            <dt>Iteration in order:</dt>
+            <dd>When iterating through a list (e.g., using a for loop), the elements are processed in the order they
+              appear in the list.</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă"]
+print(f"Primul fruct din listă este: {fructe[0]}ul") <span>==>Primul fruct din listă este: măr</span>
+fructe.append("gutuie")   
+print(fructe)  <span>==> ['măr', 'pară', 'cireșă', 'gutuie']</span>
+fructe.sort()
+print(fructe)  <span>==> ['cireșă', 'gutuie', 'măr', 'pară']</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="LTB">Listele sunt mutabile - Lists are mutable</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Listele în Python sunt mutabile, indiferent de mediul de execuție. Mutabilitatea înseamnă că elementele pot
+            fi modificate, adăugate sau eliminate dintr-o listă după ce aceasta a fost creată fără a crea o listă nouă
+            and fără a-i altera <a href="https://docs.python.org/3/reference/datamodel.html" target="_blank"
+              rel="noopener">identitatea
+              memoriei</a></p>
+          <p>Deoarece listele sunt mutabile, ele nu pot fi utilizate drept chei în dicționare. Dacă ai nevoie de o
+            versiune imuabilă a unei liste pentru a o folosi drept cheie de dicționar sau element al unei mulțimi, ar
+            trebui să utilizezi în schimb un tuplu imuabil.</p>
+        </div>
+        <div>
+          <p>Lists in Python are mutable, regardless of the execution environment. Mutability means that elements can be
+            changed, added, or removed from a list after it has been created without creating a new list, without
+            altering its <a href="https://docs.python.org/3/reference/datamodel.html" target="_blank"
+              rel="noopener">memory
+              identity</a></p>
+          <p>Because lists are mutable, they cannot be used as keys in dictionaries. If you need an unchangeable version
+            of a list to use as a dictionary key or set element, you should use an immutable tuple instead.</p>
+        </div>
+      </div>
+
+<pre><code><span># Creați o listă inițială</span>
+fructe = ["măr", "pară", "cireșă"]
+print(f"Listă inițială: {fructe}") 
+<span>==> Listă inițială: ['măr', 'pară', 'cireșă']</span>
+print(f"Id listă inițială: {(id(fructe))}") 
+<span>==> Id: 2596058606720</span>
+
+<span># Modificați un element</span>
+fructe[1] = "struguri"
+print(f"După modificare: {fructe}") 
+<span>==> După modificare: ['măr', 'struguri', 'cireșă']</span>
+
+<span># Adăugați un element</span>
+fructe.append("caisă")
+print(f"După adăugare: {fructe}") 
+<span>==> După adăugare: ['măr', 'struguri', 'cireșă', 'caisă']</span>
+
+<span># Eliminați un element</span>
+fructe.remove("măr")
+print(f"După eliminarea unui element: {fructe}") 
+<span>==> După eliminarea unui element: ['struguri', 'cireșă', 'caisă']</span>
+
+<span># Elimină un element de la sfârșitul listei</span>
+print(f"Fructul '{fructe.pop()}' a fost şters din lista de fructe.")
+<span>==> Fructul 'caisă' a fost şters din lista de fructe</span>
+
+print(f"După eliminarea ultimului element: {fructe} din lista de fructe.") 
+<span>==> După eliminarea ultimului element: ['struguri', 'cireșă'] din lista de fructe</span>
+
+print(f"Id listă modificată: {(id(fructe))}") 
+<span>==> Id: 2596058606720</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Mutabilitatea în Jupyter Notebook?</dt>
+
+          <dd>În Jupyter Notebook, celulele pot fi executate individual și în orice ordine. Înțelegerea faptului că
+            listele sunt mutabile este esențială pentru a evita comportamentele neașteptate:
+            <ul>
+              <li>Dacă o listă este modificată într-o celulă, starea modificată a listei va persista și va fi
+                disponibilă în celulele ulterioare.</li>
+              <li>Dacă o listă este atribuită unei alte variabile (de exemplu, lista2 = lista1), ambele variabile se vor
+                referi la același obiect din memorie. Orice modificări efectuate prin intermediul uneia dintre variabile
+                o vor afecta și pe cealaltă.</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>Mutability in Jupyter Notebook</dt>
+
+          <dd>In Jupyter Notebook, cells can be executed individually and in any order. Understanding that lists are
+            mutable is critical to avoid unexpected behavior:
+            <ul>
+              <li>If a list is modified in a cell, the modified state of the list will persist and be available in
+                subsequent cells.</li>
+              <li>If a list is assigned to another variable (e.g., list2 = list1), both variables will refer to the same
+                object in memory. Any changes made through one of the variables will also affect the other. </li>
+            </ul>
+          </dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="LTC">Listele sunt eterogene - Lists are heterogeneous</h2>
+
+      <div class="grid-container">
+        <p>Listele Python sunt într-adevăr eterogene. Aceasta înseamnă că o singură listă Python poate conține elemente
+          de diferite tipuri de date. De exemplu, o listă poate conține simultan numere întregi, șiruri de caractere,
+          numere cu virgulă, numere booleene sau chiar alte structuri de date, cum ar fi dicționare sau alte liste.</p>
+
+        <p>Python lists are indeed heterogeneous. This means that a single Python list can contain elements of different
+          data types. For example, a list can simultaneously hold integers, strings, floats, booleans, or even other
+          data structures like dictionaries or other lists.</p>
+      </div>
+
+<pre><code>listă_heterogenă = [1, "salut", 3.14, True, [5, 6], {"key": "value"}]
+print(listă_heterogenă)  
+<span>==> [1, 'salut', 3.14, True, [5, 6], {'key': 'value'}]</span>
+print(type(listă_heterogenă[0]))  <span>==> &lt;class 'int'></span>
+print(type(listă_heterogenă[1]))  <span>==> &lt;class 'str'></span>
+print(type(listă_heterogenă[3]))  <span>==> &lt;class 'bool'></span>
+print(type(listă_heterogenă[4]))  <span>==> &lt;class 'list'></span>
+print(type(listă_heterogenă[5]))  <span>==> &lt;class 'dict'></span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Această caracteristică oferă o flexibilitate semnificativă în modul în care datele sunt organizate și
+          manipulate în cadrul programelor Python, permițând gruparea diverselor tipuri de date într-o singură colecție.
+        </p>
+
+        <p>This characteristic provides significant flexibility in how data is organized and manipulated within Python
+          programs, allowing for diverse data types to be grouped together in a single collection.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="CL">Constructori de liste în Python - Python list constructors</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Există două modalități recomandate de a crea o listă goală în Python: utilizarea parantezelor pătrate [] și
+            apelarea constructorului clasei încorporate list(). Dezvoltatorii Python utilizează diverse stiluri de
+            sintaxă și modele alternative pentru a construi și inițializa obiecte de tip listă, în funcție de scenariu.
+          </p>
+          <p>Ambele metode obțin același rezultat, adică creează o listă goală. Deși ambele sunt valide, notația între
+            paranteze pătrate [] este în general preferată datorită conciziei și lizibilității sale și este adesea puțin
+            mai performantă pentru crearea de liste goale.</p>
+        </div>
+
+        <div>
+          <p>There are two recommended ways to create an empty list in Python, square brackets [] and built-in list()
+            class constructor. Python developers use several distinct syntax styles and alternative patterns to
+            construct and initialize list objects depending on the scenario.</p>
+          <p>Both methods achieve the same result of creating an empty list. While both are valid, the square bracket
+            notation [] is generally preferred due to its conciseness and readability, and it is also often slightly
+            more performant for creating empty lists.</p>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="CLA">Utilizarea parantezelor pătrate - Using square brackets []</h2>
+
+    <div class="grid-container">
+      <p>Aceasta este cea mai comună și idiomatică modalitate de a crea o listă goală. Este concisă și larg
+        înțeleasă.</p>
+      <p>This is the most common and idiomatic way to create an empty list. It is concise and widely understood.</p>
+    </div>
+
+<pre><code>listă_goală = []
+print(f"Lungimea unei liste goală este totdeauna {len(listă_goală)}")
+<span>==> Lungimea unei liste goală este totdeauna 0</span>
+
+print(f"O listă goală nu are conţinut si rezultatul este: {listă_goală}")
+<span>==> O listă goală nu are conţinut si rezultatul este: []</span>
+</code></pre>
+
+<pre><code>numere = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+listă_nivel_4 = [1, [2, 3], [4, [5, 6, [7, 8]]], 9, [10, [11]]]
+listă_nivel_3 = [[[1, 2], [3, 4]], [[5, 6, [9]], [7, 8]],[[9, 10]], [[11, [12, 13]]]]
+listă_nivel_2 = [[1, 2, 3], [4, 5, 6, 7, 8], 9, [10, 11]]
+matrice = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+listă_heterogenă = [1, "salut", 3.14, True, [5, 6], {"key": "value"}]
+oraşe = ["Severin", "Orşova", "Craiova", "Herculane", "Timişoara"]
+nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana"]
+fructe = ["măr", "pară", "cireșă"]
+culori =  ['verede', 'galbenă', 'roșie']
+inventar = [
+    {"produs": "keyboard", "preț": 50, "cantitate": 4},
+    {"produs": "laptop", "preț": 3500, "cantitate": 2},
+    {"produs": "tabletă", "preț": 500, "cantitate": 6}
+]
+funcții = [print, len, all, range, type, enumerate, max, min, zip]
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="LA" class="bold">Conversia unui iterabil într-o listă [] - Converting an iterable to a list []</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, un iterabil poate fi convertit într-o listă folosind paranteze pătrate [] în câteva moduri.</p>
+          <p><b>List Comprehension:</b> Aceasta este o modalitate concisă și ușor de citit de a crea o listă nouă prin
+            iterarea peste un iterabil existent.</p>
+          <p><b>Despachetare</b> (Operatorul Splat): Operatorul * poate fi utilizat pentru a despacheta un iterabil
+            direct într-o listă nouă între paranteze pătrate.</p>
+        </div>
+
+        <div>
+          <p>In Python, an iterable can be converted to a list using square brackets [] in a few ways.</p>
+          <p><b>List Comprehension:</b> This is a concise and readable way to create a new list by iterating over an
+            existing iterable.</p>
+          <p><b>Unpacking</b> (Splat Operator): The * operator can be used to unpack an iterable directly into a new
+            list within square brackets.</p>
+        </div>
+      </div>
+
+<pre><code>
+interval = range(5)    <span># Un iterabil</span>
+print(type(interval))  <span>==> &lt;class 'range'></span>
+listă_din_interval = [element for element in interval]
+print(listă_din_interval) <span>==> [0, 1, 2, 3, 4]</span>
+
+cuvânt = "salut"     <span># Un iterabil</span>
+print(type(cuvânt))  <span>==> &lt;class 'str'></span>
+listă_din_șir = [literă for literă in cuvânt]
+print(listă_din_șir)  <span>==> ['s', 'a', 'l', 'u', 't']</span>
+
+iterabil_set = {10, 20, 30}  <span># O mulțime, care este iterabilă</span>
+print(type(iterabil_set))    <span>==> &lt;class 'set'></span>
+listă_din_set = [element for element in iterabil_set]
+print(listă_din_set)         <span>==> [10, 20, 30]</span> 
+</code></pre>
+
+      <p>List comprehensions pot include și filtrare condiționată - List comprehensions can also include conditional filtering</p>
+
+<pre><code>
+interval = range(10)  <span># Un iterabil</span>
+numere_pare = [element for element in interval if element % 2 == 0]
+print(numere_pare)    <span>==> [0, 2, 4, 6, 8]</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>Metoda <b>despachetare</b> este în general considerată eficientă pentru convertirea iterabilelor în liste.</p>
+      <p><b>Unpacking</b> method is generally considered efficient for converting iterables to lists.</p>
+    </div>
+
+<pre><code>
+numere_tuple = (1, 2, 3)   <span># Un tuplu, care este un iterabil</span>
+print(type(numere_tuple))  <span>==> &lt;class 'tuple'></span>
+listă_din_tuplu = [*numere_tuple]
+print(listă_din_tuplu)     <span>==> [1, 2, 3]</span>
+
+cuvânt = "salut"       <span># Un iterabil</span>
+print(type(cuvânt))    <span>==> &lt;class 'str'></span>
+listă_din_șir = [*cuvânt] 
+print(listă_din_șir)   <span>==> ['s', 'a', 'l', 'u', 't']</span>
+</code></pre>
+
+
+      <h2 id="CLB">Utilizarea constructorului list() - Using the list() constructor</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Constructorul list() din Python este o funcție încorporată utilizată pentru a crea noi obiecte listă. Poate
+            fi utilizată în două moduri principale:</p>
+          <ul>
+            <li>Crearea unei liste vide: Când este apelată fără argumente, list() returnează o listă vidă.</li>
+            <li>Conversia unui obiect iterabil existent (cum ar fi șiruri de caractere, tupluri, mulțimi sau dicționare)
+              într-un format de listă.</li>
+          </ul>
+
+          <p>Deși nu se folosește direct [] pentru conversia în sine, constructorul list() este cea mai comună și adesea
+            recomandată metodă de a converti orice iterabil într-o listă. Această metodă este adesea combinată cu
+            crearea variabilei listă folosind [].</p>
+        </div>
+
+        <div>
+          <p>The Python list() constructor is a built-in function used to create new list objects. It can be utilized in
+            two primary ways:
+          <p>
+
+          <ul>
+            <li>Creating an empty list: When called without any arguments, list() returns an empty list.</li>
+            <li>Converting an existing iterable (like strings, tuples, sets, or dictionaries) into a list format.</li>
+          </ul>
+
+          <p>While not directly using [] for the conversion itself, the list() constructor is the most common and often
+            recommended way to convert any iterable to a list. This method is often combined with the creation of the
+            list variable using [].</p>
+        </div>
+      </div>
+
+<pre><code>listă_vidă =  list()
+print(f"Lungimea unei liste vidă este totdeauna {len(listă_vidă)}")
+<span>==> Lungimea unei liste vidă este totdeauna 0</span>
+print(f"O listă vidă nu are conţinut si rezultatul este: {listă_vidă}")
+<span>==> O listă vidă nu are conţinut si rezultatul este: []</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Conversia unui iterabil într-o listă</dt>
+          <dd>Când un iterabil (cum ar fi un tuplu, un șir de caractere, o mulțime sau un obiect interval) este transmis
+            ca argument, funcția list() construiește o nouă listă care conține elementele din acel iterabil în aceeași
+            ordine.</dd>
+          <dd>Constructorul list() oferă o modalitate convenabilă de a inițializa liste și de a transforma alte tipuri
+            de date iterabile în obiecte listă.</dd>
+        </dl>
+
+        <dl>
+          <dt>Converting an iterable to a list</dt>
+          <dd>When an iterable (such as a tuple, string, set, or range object) is passed as an argument, list()
+            constructs a new list containing the items from that iterable in the same order.</dd>
+          <dd>The list() constructor provides a convenient way to initialize lists and transform other iterable data
+            types into list objects.</dd>
+        </dl>
+      </div>
+
+<pre><code>interval = range(5)    <span># Un iterabil</span>
+print(type(interval))  <span>==> &lt;class 'range'></span>
+listă_din_interval = list(interval)
+print(listă_din_interval)  <span>==> [0, 1, 2, 3, 4]</span>
+
+numere_tuplu = (1, 2, 3)   <span># Un tuplu, care este un iterabil</span>
+print(type(numere_tuplu))  <span>==> &lt;class 'tuple'></span>
+listă_din_tuplu = list(numere_tuplu)
+print(listă_din_tuplu)     <span>==> [1, 2, 3]</span>
+
+cuvânt = "salut"     <span># Un iterabil</span>
+print(type(cuvânt))  <span>==> &lt;class 'str'></span>   
+listă_din_șir = list(cuvânt)
+print(listă_din_șir)     <span>==> ['s', 'a', 'l', 'u', 't']</span>
+
+iterabil_set = {10, 20, 30}  <span># O mulțime, care este iterabilă</span>
+print(type(iterabil_set))    <span>==> &lt;class 'set'></span>
+listă_din_set = list(iterabil_set)
+print(listă_din_set)     <span>==> [10, 20, 30]</span>
+</code></pre>
+
+<pre><code>list({"cerc", "pătrat", "triunghi", "dreptunghi", "pentagon"})
+<span>==> ['dreptunghi', 'cerc', 'pentagon', 'triunghi', 'pătrat']</span>
+
+list({"nume": "Elena", "vârstă": 40, "oraş": "Severin"}.items())
+<span>==> [('nume', 'Elena'), ('vârstă', 40), ('oraş', 'Severin')]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="AE">Accesarea elementelor - Accessing elements</h2>
+
+      <p><a href="https://www.w3schools.com/python/gloss_python_access_list_items.asp" target="_blank"
+          rel="noopener">Python Access
+          List Items</a></p>
+
+      <div class="grid-container">
+        <p>Python utilizează paranteze pătrate [] pentru indexarea și felierea (slicing) listelor. Indexarea permite
+          accesarea unui singur element pe baza poziției sale, în timp ce felierea extrage o sublistă folosind sintaxa
+          [start:stop:step].</p>
+        <p>Python uses square brackets [] for list indexing and slicing. Indexing retrieves a single item using its
+          position, while slicing extracts a sublist using the [start:stop:step] syntax.</p>
+      </div>
+
+      <table class="outer-hidden">
+        <tr>
+          <th>Operațiune</th>
+          <th>Sintaxă</th>
+          <th>Descriere</th>
+        </tr>
+        <tr>
+          <td>Indexare pozitivă</td>
+          <td>listă[index]</td>
+          <td>Extrage un element, începând de la 0 (de la stânga la dreapta).</td>
+        </tr>
+        <tr>
+          <td>Indexare negativă</td>
+          <td>listă[-index]</td>
+          <td>Extrage un element începând de la -1 (de la dreapta la stânga).</td>
+        </tr>
+        <tr>
+          <td>Slicing de bază</td>
+          <td>listă[start:stop]</td>
+          <td>Extrage elemente începând de la "start" până la "stop" (fără a-l include pe acesta din urmă).</td>
+        </tr>
+        <tr>
+          <td>Extended Slicing</td>
+          <td>listă[start:stop:step]</td>
+          <td>Extrage elemente, sărind peste ele conform valorii intervalului de pas.</td>
+        </tr>
+      </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="AEA">Accesarea elementelor individuale (index) - Accessing Individual Elements (index)</h3>
+
+      <div class="grid-container">
+        <p>Listele Python utilizează indexarea cu bază zero, ceea ce înseamnă că primul element se află la indexul 0, al
+          doilea la indexul 1 și așa mai departe. Indexurile negative pot fi folosite pentru a accesa elementele de la
+          sfârșitul listei, unde -1 reprezintă ultimul element, -2 penultimul etc.</p>
+        <p>Python lists use zero-based indexing, meaning the first element is at index 0, the second at index 1, and so
+          on. Negative indices can be used to access elements from the end of the list, where -1 represents the last
+          element, -2 the second to last, etc.</p>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă", "smochină"]
+
+<span># Accesați primul element</span>
+print(fructe[0])  <span>==> măr</span>
+
+<span># Accesați al treilea element</span>
+print(fructe[2])  <span>==> cireșă</span>
+
+<span># Accesați ultimul element</span>
+print(fructe[-1])  <span>==> smochină</span>
+
+<span># Accesați al doilea element</span>
+print(fructe[-3])  <span>==> pară</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="AEB">Accesarea mai multor elemente (slicing) - Accessing Multiple Elements (Slicing)</h3>
+
+      <div class="grid-container">
+        <div>
+          <p>Secționarea permite extragerea unei subsecțiuni a unei liste folosind formatul [start:end:step].</p>
+          <ul>
+            <li>start: Indexul inițial (inclusiv). Dacă este omis, valoarea implicită este 0.</li>
+            <li>end: Indexul final (exclusiv). Dacă este omis, valoarea implicită este sfârșitul listei.</li>
+            <li>step: Incrementul dintre elemente (opțional). Dacă este omis, valoarea implicită este 1.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p>Slicing allows extraction of a sub-section of a list using the format [start:end:step].</p>
+          <ul>
+            <li>start: The starting index (inclusive). If omitted, defaults to 0.
+            <li>end: The ending index (exclusive). If omitted, defaults to the end of the list.
+            <li>step: The increment between elements (optional). If omitted, defaults to 1.</li>
+          </ul>
+        </div>
+      </div>
+
+<pre><code>numere = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+<span># Obține elemente de la indicele 2 până la (dar fără a include) indicele 5</span>
+print(numere[2:5]) <span>==> [2, 3, 4]</span>
+
+<span># Obține elemente de la început până la indexul 4</span>
+print(numere[:5]) <span>==> [0, 1, 2, 3, 4]</span>
+
+<span># Obține elemente de la indexul 5 până la sfârșit</span>
+print(numere[5:]) [5, 6, 7, 8, 9]<span>==> </span>
+
+<span># Obțineți fiecare alt element (par)</span>
+print(numere[::2])  <span>==> [0, 2, 4, 6, 8]</span>
+
+<span># Obțineți fiecare alt element (impar)</span>
+print(numere[1::2]) <span>==> [1, 3, 5, 7, 9]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>slice() obiecte cu None</dt>
+          <dd>None poate fi utilizat în cadrul felierii de liste, în special la crearea de obiecte felie sau la omiterea
+            unor valori specifice de început, oprire sau pas în notația feliei.</dd>
+          <dd>Puteți utiliza explicit None atunci când creați obiecte slice cu funcția slice() pentru a reprezenta
+            parametrii slice omiși sau impliciți.</dd>
+        </dl>
+
+        <dl>
+          <dt>slice() Objects with None</dt>
+          <dd>None can be used within list slicing, particularly when creating slice objects or when omitting specific
+            start, stop, or step values in the slice notation.</dd>
+          <dd>You can explicitly use None when creating slice objects with the slice() function to represent omitted or
+            default slice parameters.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Sare peste fiecare al doilea</span>
+<span> element și merge până la sfârșit</span>
+litere = ["A", "a", "B", "b", "C", "c", "D", "d"]
+
+litere_mari_1 = litere[0::2]
+print(litere_mari_1)  <span>==> ['A', 'B', 'C', 'D']</span>
+
+litere_mari_2 = litere[slice(0, None, 2)]
+print(litere_mari_2)  <span>==> ['A', 'B', 'C', 'D']</span>
+
+
+<span># Echivalent cu secvență[1:None:2]</span>
+secvență = [10, 20, 30, 40, 50, 60]
+print(secvență[1:None:2])  <span>==> [20, 40, 60]</span>
+
+listă_nouă = slice(1, None, 2)
+numere = [10, 20, 30, 40, 50, 60]
+print(numere[listă_nouă])  <span>==> [20, 40, 60]</span>
+</code></pre>
+
+      <table class="outer-hidden">
+        <caption>Echivalenţă</caption>
+        <tr>
+          <th>Notație tip slice</th>
+          <th>Notație cu paranteze</th>
+          <th>comportament</th>
+        </tr>
+        <tr>
+          <td>slice(None, 5)</td>
+          <td>[:5]</td>
+          <td>Începe de la indicele 0 până la 5</td>
+        </tr>
+        <tr>
+          <td>slice(3, None)</td>
+          <td>[3:]</td>
+          <td>Începe de la indicele 3 și merge până la sfârșitul secvenței</td>
+        </tr>
+        <tr>
+          <td>slice(None, None, 2)</td>
+          <td>[::2]</td>
+          <td>Parcurge întreaga secvență, sărind peste fiecare al doilea element.</td>
+        </tr>
+        <tr>
+          <td>slice(None, None, None)</td>
+          <td>[:] or [::]</td>
+          <td>Creează o copie completă a secvenței.</td>
+        </tr>
+      </table>
+
+      <div class="grid-container">
+        <p>Constructorul slice() – pentru a crea, stoca sau transmite o secțiune (slice) sub formă de variabilă.
+          Deoarece constructorul necesită argumente bazate pe poziție, <b>None</b> servește drept substituent.</p>
+
+        <p>The slice() constructor – creates, stores, or passes a slice as a variable.
+          Since the constructor requires positional arguments, <b>None</b> serves as a placeholder.</p>
+      </div>
+
+<pre><code>def selector_dinamic(sursa, start=None, stop=None):
+    <span># Dacă start sau stop sunt None, se revine în siguranță la valorile implicite</span>
+    felie_personalizată = slice(start, stop)
+    return sursa[felie_personalizată]
+
+numere = [10, 20, 30, 40, 50]
+print(selector_dinamic(numere, stop=3)) <span>==> [10, 20, 30]</span>
+</code></pre>
+
+<pre><code>def segmentator(secvenţă, feliază):
+    """Extrage în siguranță elemente dintr-o secvență folosind un obiect de tip slice."""
+    
+    <span># Calculează indicii pe baza lungimii secvenței</span>
+    start, stop, step = feliază.indices(len(secvenţă))
+    print(start, stop, step) <span>==> 0 8 2</span>
+    
+    <span># Recreează operația de feliere</span>
+    return [secvenţă[i] for i in range(start, stop, step)]
+
+<span># Testarea funcției personalizate</span>
+text = "ANACONDA"
+feliază = slice(None, None, 2) # Selectează fiecare al doilea caracter
+
+print(segmentator(text, feliază))  <span>==> ['A', 'A', 'O', 'D']</span>
+</code></pre>
+
+<pre><code>def separator_pătrate(secvenţă, feliază):
+    """Extrage o secțiune dintr-o secvență și ridică la pătrat elementele rezultate."""
+    
+    start, stop, step = feliază.indices(len(secvenţă))
+    
+    elemente_feliate = [secvenţă[i] for i in range(start, stop, step)]
+    
+    return [element**2 for element in elemente_feliate]
+
+numere = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(separator_pătrate(numere, slice(1, None, 2))) <span>==> [4, 16, 36, 64]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Codul filtrează o secvență pe baza unui segment definit și returnează o listă nouă cu elementele ridicate la
+          pătrat.</p>
+
+        <p>The code filters a sequence based on a defined slice and returns a new list of the squared elements.</p>
+      </div>
+
+      <dl>
+        <dt>Detaliere pas cu pas</dt>
+        <dd>Configurarea datelor și a instrucțiunilor de segmentare:
+          <ul>
+            <li>numere = [1, 2, 3, 4, 5, 6, 7, 8, 9]</li>
+            <li>print(separator_pătrate(numere, slice(1, None, 2)))</li>
+          </ul>
+        </dd>
+        <dd>
+          <ul>
+            <li>Variabila de tip listă numere conține 9 elemente.</li>
+            <li>slice(1, None, 2) definește limitele de feliere:</li>
+            <li>start = 1 (începe de la indicele 1)</li>
+            <li>stop = None (merge până la sfârșitul secvenței)</li>
+            <li>step = 2 (ia fiecare al doilea element)</li>
+          </ul>
+        <dd>
+
+        <dd>Calcularea limitelor absolute de secționare:
+          <ul>
+            <li>start, stop, step = feliază.indices(len(secvenţă))</li>
+            <li>len(secvenţă) calculează lungimea listei, care este 9.</li>
+            <li>feliază.indices(9) utilizează metoda încorporată slice.indices() din Python pentru a calcula limitele
+              întregi pe baza lungimii.</li>
+            <li>start rămâne 1.</li>
+            <li>stop transformă valoarea None în lungimea maximă a secvenței, adică 9.</li>
+            <li>step rămâne 2.</li>
+          </ul>
+        </dd>
+
+        <dd>Extragerea elementelor folosind intervalul calculat:
+          <ul>
+            <li>elemente_feliate = [secvenţă[i] for i in range(start, stop, step)]
+            <li>
+            <li>O buclă for parcurge indicii folosind range(1, 9, 2):</li>
+            <li>Indicele 1: secvenţă[1] extrage valoarea 2</li>
+            <li>Indicele 3: secvenţă[3] extrage valoarea 4</li>
+            <li>Indicele 5: secvenţă[5] extrage valoarea 6</li>
+            <li>Indicele 7: secvenţă[7] extrage valoarea 8</li>
+            <li>Lista nou creată, elemente_feliate, devine [2, 4, 6, 8]</li>
+          </ul>
+        </dd>
+
+        <dd>Aducerea la formă pătrată a elementelor extrase:
+          <ul>
+            <li>return [element**2 for element in elemente_feliate]</li>
+            <li>O expresie de tip list comprehension iterează prin [2, 4, 6, 8] și ridică la pătrat fiecare număr
+              folosind element**2</li>
+            <li>Funcția returnează lista finală: [4, 16, 36, 64]</li>
+          </ul>
+        </dd>
+      </dl>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="AEC">Iterarea prin elemente - Iterating Through Elements</h3>
+
+      <p><a href="https://www.w3schools.com/python/python_lists_loop.asp" target="_blank" rel="noopener">Loop Through a
+          List</a></p>
+    <div class="grid-container">
+      <p>Python oferă câteva metode built-in pentru gestionarea parcurgerii listelor.</p>
+      <p>Python offers several built-in methods to handle list traversal.</p>
+    </div>
+
+      <table class="outer-hidden">
+        <caption></caption>
+        <tr>
+          <th>Metodă</th>
+          <th>Caz de utilizare</th>
+          <th>Modifică lista originală?</th>
+        </tr>
+        <tr>
+          <td>for item in list</td>
+          <td>Citirea simplă a datelor</td>
+          <td>Nu</td>
+        </tr>
+        <tr>
+          <td>enumerate(list)</td>
+          <td>Urmărirea poziției în timpul lecturii</td>
+          <td>Nu</td>
+        </tr>
+        <tr>
+          <td>range(len(list))</td>
+          <td>Suprascrierea pe loc a unor sloturi specifice</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td>while item in list</td>
+          <td>Control al fluxului utilizat pentru a repeta codul</td>
+          <td>Nu</td>
+        </tr>
+        <tr>
+          <td>List Comprehension</td>
+          <td>Generarea de noi liste filtrate și modificate</td>
+          <td>Nu (creates copy)</td>
+        </tr>
+      </table>
+
+    <div class="grid-container">
+      <p>O buclă <b>for</b> este utilizată în mod obișnuit pentru a accesa secvențial fiecare element dintr-o listă.</p>
+      <p>A <b>for</b> loop is commonly used to access each element in a list sequentially.</p>
+    </div>
+
+<pre><code><span># Recomandat doar pentru valori</span>
+fructe = ["măr", "pară", "cireșă"]
+for fruct in fructe:
+    print(fruct, end=" ") <span>==> măr pară cireșă</span>
+</code></pre>
+
+      <p class="bold">bucla for și enumerate() - for loop and enumereate()</p>
+
+<pre><code>fructe = ["măr", "pară", "cireșă"]
+for index, valoare in enumerate(fructe):
+    print(f"Index: {index}, Valoare: {valoare}")
+<span>==> Index: 0, Valoare: măr</span>
+<span>==> Index: 1, Valoare: pară</span>
+<span>==> Index: 2, Valoare: cireșă</span>
+</code></pre>
+
+
+      <p class="bold">buclă for cu range() și len() - for loop with range() and len()</p>
+
+<pre><code>fructe = ["măr", "pară", "cireșă"]
+for i in range(len(fructe)):
+    print(fructe[i], end=" ") <span>==> măr pară cireșă</span>
+</code></pre>
+
+      <p>Cea mai bună opțiune pentru modificarea pe loc - Best for In-Place Modification</p>
+
+<pre><code>numere = [100, 200, 300]
+
+for i in range(len(numbers)):
+    numere[i] += 15  <span># Modifică direct lista originală</span>
+print(numere)  <span>==> [115, 215, 315]</span>
+</code></pre>
+
+      <p class="bold">for - zip() (Iterarea peste mai multe liste)</p>
+
+<pre><code>produse = ["Halva", "Peşte"]
+preţuri = [15, 12]
+
+for produs, preţ  in zip(produse, preţuri):
+    print(f"{produs} costă {preţ} lei")
+<span>==> Halva costă 15 lei</span>
+<span>==> Peşte costă 12 lei</span>
+</code></pre>
+
+      <p class="bold">Bucla while - while Loop</p>
+
+      <div class="grid-container">
+        <div>
+          <p>Pentru a parcurge o listă folosind o buclă <b>while</b> în Python, trebuie să inițializezi un contor de
+            index la 0, să setezi condiția buclei astfel încât valoarea acestuia să fie mai mică decât lungimea listei
+            și să incrementezi manual indexul cu 1 în interiorul buclei.</p>
+          <p>Previno buclele infinite: Include întotdeauna o etapă de incrementare (precum <b>index += 1</b>) dacă
+            folosești un contor.</p>
+          <p>Evită eroarea <b>IndexError</b>: Asigură-te că condiția buclei oprește execuția înainte de a ajunge la
+            <b>len(list)</b>, deoarece indexarea listelor în Python începe de la 0.
+        </div>
+
+        <div>
+          <p>To loop through a list using a <b>while</b> loop in Python, you must initialize an index counter at 0, set
+            the loop condition to be less than the length of the list, and manually increment the index by 1 inside the
+            loop.</p>
+          <p>Prevent Infinite Loops: Always include an increment step (like <b>index += 1</b>) if using a counter.</p>
+          <p>Avoid <b>IndexError</b>: Ensure your loop condition stops before reaching <b>len(list)</b>, since Python
+            list indexing starts at 0.</p>
+        </div>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă"]
+<span># Inițializează contorul de index la 0</span>
+indice = 0
+
+<span># Repetă cât timp indexul este mai mic decât lungimea listei</span>
+while indice &lt; len(fructe):
+    <span># Accesează și afișează elementul de la indexul curent</span>
+    print(fructe[indice], end=" ")
+    
+    <span># Incrementează indexul pentru a evita o buclă infinită</span>
+    indice += 1
+<span>==> măr pară cireșă</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Modalități de a modifica o listă în interiorul unei bucle while</dt>
+          <dd>Modificarea elementelor după index</dd>
+          <dd>Eliminarea în siguranță a elementelor</dd>
+          <dd>Golirea dinamică a unei liste</dd>
+        </dl>
+
+        <dl>
+          <dt>Ways to Modify a List Inside a while Loop</dt>
+          <dd>Modifying Elements by Index</dd>
+          <dd>Safely Removing Items</dd>
+          <dd>Emptying a List Dynamically</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Modifying Elements by Index</span>
+numere = [1, 2, 3, 4]
+i = 0
+
+while i &lt; len(numere):
+    numere[i] *= 5  # Modifică elementul pe loc
+    i += 1
+
+print(numere) <span>==> [5, 10, 15, 20]</span>
+</code></pre>
+
+
+<pre><code><span># Eliminarea în siguranță a elementelor</span>
+numere = [1, 2, 3, 4, 5, 6]
+i = 0
+
+while i &lt; len(numere):
+    if numere[i] % 2 == 0:
+        numere.pop(i)  # Elimină elementul; elementele se deplasează spre stânga
+        # NU incrementa i aici, deoarece următorul element a ajuns pe poziția i
+    else:
+        i += 1  # Treci la următorul indice doar dacă nu a fost eliminat niciun element
+
+print(numere) <span>==> [1, 3, 5]</span>
+</code></pre>
+
+      <p class="bold">Golirea unei liste cu .pop() - Emptying a List with .pop()</p>
+
+<pre><code><span># Definește lista</span>
+magazie = ["lemne", "scule", "vopsea"]
+
+<span># Bucla rulează atâta timp cât lista conține elemente</span>
+while magazie:
+    <span># Elimină și returnează ultimul element din listă</span>
+    element_scos = magazie.pop()
+    print(f"Sa_scos: {element_scos}")
+
+print("Magazia este goală!")
+<span>==> Sa_scos: vopsea</span>
+<span>==> Sa_scos: scule</span>
+<span>==> Sa_scos: lemne</span>
+<span>==> Magazia este goală!</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="AED">Accesarea elementelor cu map() - Accessing Elements with map()</h3>
+
+      <div class="grid-container">
+        <p>Pentru scenarii mai complexe care implică indici sau transformări specifice, se pot utiliza interpretări de
+          tip map().
+          Funcția map() returnează un obiect hartă (un iterator), care poate fi apoi convertit într-o listă (sau alt
+          obiect iterabil) pentru a vizualiza rezultatele.</p>
+
+        <p>For more complex scenarios involving specific indices or transformations, map() can be employed.
+          The map() function returns a map object (an iterator), which can then be converted to a list (or other
+          iterable) to view the results.</p>
+      </div>
+
+<pre><code><span># Creați o listă</span>
+numere = [10, 20, 30, 40]
+
+<span># Definiți o funcție care să adune 5 la fiecare număr</span>
+def adună_cinci(num):
+    return num + 5
+
+<span># Aplică funcția folosind map()</span>
+modificat_cu_map_funcţie = map(adună_cinci, numere)
+
+<span># Convertește obiectul generator într-o listă pentru a afișa rezultatele</span>
+listă_modificată_cu_funcţie = list(modificat_cu_map_funcţie)
+print(listă_modificată_cu_funcţie)  <span>== > [15, 25, 35, 45]</span>
+
+<span># exemplu cu o funcție lambda pentru conversia în șiruri de caractere</span>
+listă_modificată_cu_lambda = map(lambda x: str(x) + "s", numere)
+listă_cu_șiruri = list(listă_modificată_cu_lambda)
+print(listă_cu_șiruri)  <span>== > ['10s', '20s', '30s', '40s']</span>
+</code></pre>
+
+<pre><code>numere = [3, 4, 5, 6, 7, 8, 9]
+
+def pătrate(număr):
+    return număr * număr
+
+<span># Sau folosind o funcție lambda:</span>
+pătrate_lambda = lambda număr: număr * număr
+
+mapped_elemente_funcţie = map(pătrate, numere)
+print(list(mapped_elemente_funcţie)) 
+<span>==> [9, 16, 25, 36, 49, 64, 81]</span>
+
+mapped_elemente_lambda = map(pătrate_lambda, numere)
+print(list(mapped_elemente_lambda))  
+<span>==> [9, 16, 25, 36, 49, 64, 81]</span>
+</code></pre>
+
+
+      <p>Înmulțește elementele din list1 și list2, indice cu indice - Multiplies the elements of list1 and list2 index by index.</p>
+
+<pre><code>lista1 = [1, 2, 3]
+lista2 = [10, 20, 30]
+
+<span># Calculează produsele</span>
+produs_map = map(lambda x, y: x * y, lista1, lista2)
+
+<span># Convertește într-o listă pentru a vizualiza rezultatele</span>
+rezultat = list(produs_map)
+print(rezultat)  <span>==> [10, 40, 90]</span>
+
+lista3 = [-1, 3, -3.5]
+print(list(map(abs, lista3)))
+
+print(list(map(abs, lista3))) <span>==> [1, 3, 3.5]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+      
+<h3 id="AEF">List Comprehension listei (pentru indici specifici)- List Comprehension (for specific indices)</h3>
+
+      <div class="grid-container">
+        <p>Python favorizează în mod clar utilizarea list comprehensions în detrimentul combinației map() + lambda,
+          datorită lizibilității. Poți obține exact același rezultat astfel.</p>
+
+        <p>Python heavily favors list comprehensions over map() + lambda for readability. You can achieve the exact same
+          output like this.</p>
+      </div>
+
+<pre><code>lista1 = [1, 2, 3]
+lista2 = [10, 20, 30]
+
+rezultat = [x * y for x, y in zip(lista1, lista2)]
+print(rezultat)  <span>==> [10, 40, 90]</span>
+
+
+numere = [3, 4, 5, 6, 7, 8, 9]
+
+<span># Accesează elemente la indici specifici folosind o listă de indici</span>
+indici = [0, 2]
+elemente_selectate = [numere[i] for i in indici]
+print(elemente_selectate) <span>==> [3, 5]</span>
+</code></pre>
+
+<pre><code>lista1 = [1, 2, 3]
+lista2 = [10, 20, 30]
+lista3 = [-1, 3, -3.5]
+
+print([abs(x) for x in lista3]) <span>==> [1, 3, 3.5]</span>
+print([x**2 for x in lista3])   <span>==> [1, 9, 12.25]</span>
+print([x * y * z for x, y, z in zip(lista1, lista2, lista3)])
+<span>==> [-10, 120, -315.0]</span>
+</code></pre>
+
+
+      <h3 id="AEG">Utilizați NumPy - Use NumPy</h3>
+
+      <p><a href="https://numpy.org/doc/stable/user/absolute_beginners.html" target="_blank" rel="noopener">NumPy: the
+          absolute basics
+          for beginners</a></p>
+
+      <div class="grid-container">
+        <p>NumPy arrays sunt concepute strict pentru calcule numerice și științifice rapide.</p>
+        <p> NumPy arrays are designed strictly for fast numerical and scientific computing.</p>
+      </div>
+
+      <table class="outer-hidden">
+        <tr>
+          <th>Caracteristică</th>
+          <th>Python List</th>
+          <th>NumPy Array (ndarray)</th>
+        </tr>
+        <tr>
+          <td>Tipuri de date</td>
+          <td>Eterogene (pot combina șiruri de caractere, numere întregi, obiecte)</td>
+          <td>Omogene (toate elementele trebuie să fie de același tip).</td>
+        </tr>
+        <tr>
+          <td>Dispunerea în memorie</td>
+          <td>Necontinuă (pointeri dispersați către obiecte)</td>
+          <td>Bloc contiguu în memorie (compactat dens)</td>
+        </tr>
+        <tr>
+          <td>Performanță</td>
+          <td>Mai lent pentru calcule matematice (necesită bucle și verificarea tipurilor)</td>
+          <td>Extrem de rapid (operații vectorizate prin cod C)</td>
+        </tr>
+        <tr>
+          <td>Redimensionare</td>
+          <td>Foarte dinamică (adăugarea sau eliminarea elementelor este facilă)</td>
+          <td>Dimensiune fixă ​​(adăugarea necesită realizarea unei copii complete)</td>
+        </tr>
+        <tr>
+          <td>Operații matematice</td>
+          <td>Concatenarea tablourilor ([1]+[2] devine [1, 2])</td>
+          <td>Aritmetică element cu element (a + b însumează valorile).</td>
+        </tr>
+      </table>
+
+<pre><code>import numpy as np
+ar_1 = np.array([1, 2, 3])
+ar_2 = np.array([10, 20, 30])
+ar_3 = np.array([0, -3, -1])
+print(np.abs(ar_3))  <span>==> [0 3 1]</span>
+print(ar_3**2)       <span>==> [0 9 1]</span>
+print(ar_1 * ar_2)   <span>==> [0 9 1]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Listele Python nu suportă direct operații matematice aplicate element cu element; trebuie să scrii bucle sau
+          expresii de generare a listelor (list comprehensions). NumPy aplică operații asupra tuturor elementelor în mod
+          nativ, fără a necesita bucle explicite.</p>
+
+        <p>Python lists do not support element-wise math directly. You have to write loops or list comprehensions. NumPy
+          applies operations to all elements natively without explicit loops.</p>
+      </div>
+
+<pre><code>import numpy as np
+
+<span># Using Python Lists</span>
+list_a = [1, 2, 3]
+
+<span># duplicare</span>
+print(list_a * 2) <span>==> [1, 2, 3, 1, 2, 3]</span>
+
+<span># Using NumPy Arrays</span>
+arr_a = np.array([1, 2, 3])
+
+<span># multiplicare</span>
+print(arr_a * 2)  <span>==> [2 4 6]</span>  
+</code></pre>
+
+      <div class="grid-container">
+        <p>Operația de slicing asupra unei liste Python creează o copie complet nouă a datelor. În schimb, slicing-ul
+          unui tablou NumPy creează o vizualizare, ceea ce înseamnă că modificarea secțiunii respective va modifica și
+          tabloul original.</p>
+
+        <p>Slicing a Python list creates a completely new copy of the data. Slicing a NumPy array creates a view,
+          meaning changing the slice will modify the original array.</p>
+      </div>
+
+<pre><code>import numpy as np
+
+<span># Comportamentul vizualizărilor NumPy</span>
+arr = np.array([1, 2, 3, 4])
+felia_mea = arr[:2]
+felia_mea[0] = 99
+print(arr)   <span>==> [99  2  3  4]</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>Conversia unei liste într-un tablou NumPy: Folosește np.array() sau np.asarray()</p>
+      <p>Convert a List to a NumPy Array: Use np.array() or np.asarray()</p>
+    </div>
+
+<pre><code>import numpy as np
+
+numere_listă = [10, 20, 30]
+numere_array = np.array(numere_listă)
+print(type(numere_array))  <span>==> &lt;class 'numpy.ndarray'></span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Pentru a converti un tablou NumPy înapoi într-o listă, folosește întotdeauna metoda <b>.tolist()</b> în locul
+          constructorului <b>list()</b>, deoarece .tolist() convertește corect tablourile multidimensionale în liste
+          Python imbricate.</p>
+
+        <p>Convert a NumPy Array back to a List: Always use the <b>.tolist()</b> method rather than the <b>list()
+          </b>constructor, as .tolist() correctly converts multi-dimensional arrays back into nested Python lists.</p>
+      </div>
+
+<pre><code>înapoi_la_listă = numere_array.tolist()
+print(type(înapoi_la_listă))  <span>==> &lt;class 'list'></span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="AG">Adăugarea de elemente la liste- Adding elements to lists</h2>
+
+      <p><a href="https://www.w3schools.com/python/python_lists_add.asp" target="_blank" rel="noopener">Python - Add
+          List Items</a></p>
+
+      <p><a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Python Data
+          Structures
+          Documentation</a></p>
+
+      <div class="grid-container">
+
+        <p>Pentru a aprofunda practicile standard de manipulare a listelor, puteți consulta documentația oficială <a
+            href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Python Data
+            Structures
+            Documentation</a></p>
+
+        <p>To dive deeper into standard list manipulation practices, you can review the official <a
+            href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Python Data
+            Structures
+            Documentation.</a></p>
+      </div>
+
+
+      <table class="outer-hidden">
+        <caption>Tabel comparativ</caption>
+        <tr>
+          <th>Metodă / Operator</th>
+          <th>Acțiune</th>
+          <th>Modifică lista originală?</th>
+          <th>Exemplu</th>
+        </tr>
+        <tr>
+          <td>append(item)</td>
+          <td>Adaugă un singur element la sfârșit.</td>
+          <td>DA (Pe-loc)</td>
+          <td>listă.append(4)</td>
+        </tr>
+        <tr>
+          <td>insert(index, item)</td>
+          <td>Inserează un singur element la un indice dat.</td>
+          <td>DA (Pe-loc)</td>
+          <td>listă.insert(0, 'start')</td>
+        </tr>
+        <tr>
+          <td>extend(iterable)</td>
+          <td>Adaugă mai multe elemente la sfârșit.</td>
+          <td>DA (Pe-loc)</td>
+          <td> listă.extend([5, 6])</td>
+        </tr>
+        <tr>
+          <td>+ Operator</td>
+          <td>Concatenează două liste.</td>
+          <td>Nu (Creează o listă nouă)</td>
+          <td>listă_nouă = listA + listB</td>
+        </tr>
+      </table>
+
+      <div class="grid-container">
+
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="AGA">Adaugă un element la sfârșitul listei - Adds an item to the end of the list</h3>
+
+      <div class="grid-container">
+        <p>În Python, metoda <b>append()</b> este utilizată pentru a adăuga un singur element la sfârșitul unei liste.
+          Este o metodă a obiectului listă în sine, adică o apelezi direct pe o listă.</p>
+
+        <p>In Python, the <b>append()</b> method is used to add a single item to the end of a list. It is a method of
+          the list object itself, meaning you call it directly on a list.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>listă_nume.append(item)</dt>
+          <dt>Explicație:</dt>
+          <dd>listă_nume: Aceasta se referă la lista specifică pe care doriți să o modificați.</dd>
+          <dd>append(): Aceasta este metoda care efectuează adunarea.</dd>
+          <dd>item: Acesta este elementul singular pe care doriți să îl adăugați la sfârșitul lui listă_nume. Acest
+            element poate fi de orice tip de date (număr întreg, șir de caractere, număr zecimal, o altă listă etc.).
+          </dd>
+          <dd>Listele Python rezervă spațiu suplimentar pentru elemente noi la sfârșitul listei. Un apel către .append()
+            va plasa elemente noi în spațiul disponibil.</dd>
+        </dl>
+
+        <dl>
+          <dt>list_name.append(item)</dt>
+          <dt>Explanation:</dt>
+          <dd>list_name: This refers to the specific list you want to modify.</dd>
+          <dd>append(): This is the method that performs the addition.</dd>
+          <dd>item: This is the single element you wish to add to the end of list_name. This item can be of any data
+            type (integer, string, float, another list, etc.).</dd>
+
+          <dd>Python lists reserve extra space for new items at the end of the list. A call to .append() will place new
+            items in the available space.</dd>
+        </dl>
+      </div>
+
+<pre><code>numere = [1, 2, 3, 4, 5]
+numere.append(6)
+print(numere)  <span>==> [1, 2, 3, 4, 5, 6]</span>
+
+numere = [1, 2, 3, 4, 5]
+listă_imbricată = [1, 2, [3, 4]]
+numere.append(listă_imbricată)
+print(numere)  <span>==> [1, 2, 3, 4, 5, [1, 2, [3, 4]]]</span>
+
+
+fructe = ["pere", "cireșe"]
+fructe.append("caise")
+print(fructe)  <span>==> ['pere', 'cireșe', 'caise']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Puncte cheie:</dt>
+          <dd>append() modifică lista; nu returnează o listă nouă.</dd>
+          <dd>Adaugă elementul ca un singur element, chiar dacă elementul în sine este o listă (rezultând o listă
+            imbricată). Dacă doriți să adăugați elementele unui iterabil (cum ar fi o altă listă) individual, ați
+            utiliza extend() sau concatenarea listelor (+).</dd>
+          <dd>Metoda append() returnează None</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Points:</dt>
+          <dd>append() modifies the list in place; it does not return a new list.</dd>
+          <dd>It adds the item as a single element, even if the item itself is a list (resulting in a nested list). If
+            you want to add the elements of an iterable (like another list) individually, you would use extend() or list
+            concatenation (+).</dd>
+          <dd>Method append() Returns None</dd>
+        </dl>
+      </div>
+
+<pre><code><span> # Rețineți acest comportament al metodei .append()</span>
+x = [1, 2, 3, 4]
+y = x.append(5)
+print(y)  <span>==> None</span>
+print(x)  <span>==> [1, 2, 3, 4, 5]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="AGB">Inserează un element la un index specificat - Inserts an item at a specified index</h3>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, în special într-un mediu Jupyter Notebook sau în orice alt interpretor Python, metoda
+            <b>insert(index, item)</b> este utilizată pentru a adăuga un element la o listă la un index specificat.
+          </p>
+          <dl>
+            <dt>Cum funcționează:</dt>
+            <dt>Sintaxă: listă.insert(index, element)</dt>
+            <dd>Metoda este apelată direct pe un obiect listă: listă.insert(index, element).
+            <dd>index: Poziția un număr întreg în care va fi inserat noul element. Toate elementele existente la și după
+              acest index sunt deplasate la dreapta.</dd>
+            <dd>element: Valoarea elementului care va fi inserat.</dd>
+            <dd>Metoda insert() modifică direct lista; nu returnează o listă nouă.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>In Python, specifically within a Jupyter Notebook environment or any other Python interpreter, the
+            <b>insert(index, item)</b> method is used to add an item to a list at a specified index.
+          </p>
+          <dl>
+            <dt>How it works:</dt>
+            <dt>Syntax: list.insert(index, item)</dt>
+            <dd>The method is called directly on a list object: my_list.insert(index, item).</dd>
+            <dd>index: The integer position where the new item will be inserted. All existing elements at and after this
+              index are shifted to the right.</dd>
+            <dd>item: The value of the element to be inserted.</dd>
+            <dd>The insert() method modifies the list directly; it does not return a new list.</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code><span># Creați o listă</span>
+fructe = ["măr", "pară", "cireșă"]
+
+<span># Introduceți prună la indexul 1 (poziția a doua)</span>
+fructe.insert(1, "prună")
+
+<span># Afișează lista modificată</span>
+print(fructe)  <span>==> ['măr', 'prună', 'pară', 'cireșă']</span>
+
+<span># Introduceți 'struguri' la indexul 0 (începutul listei)</span>
+fructe.insert(0, "caisă'")
+
+<span># Imprimați lista actualizată</span>
+print(fructe)  <span>==> ["caisă'", 'măr', 'prună', 'pară', 'cireșă']</span>
+
+<span># Dacă indexul este mai mare decât lungimea listei,</span>
+<span># elementul va fi adăugat la sfârșit.</span>
+fructe.insert(100, "ceapă")
+print(fructe)  <span>==> ["caisă'", 'măr', 'prună', 'pară', 'cireșă', 'ceapă']</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="AGC">Adaugă toate elementele dintr-un iterabil (de exemplu, o altă listă) - Appends all items from an
+        iterable (e.g., another list)</h3>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Metoda extend(iterable) din Python</dt>
+          <dd>Este o metodă de tip listă utilizată pentru a adăuga toate elementele dintr-un iterabil (cum ar fi o altă
+            listă, un tuplu sau un șir de caractere) la sfârșitul listei curente.</dd>
+          <dd>Caracteristici cheie:
+          <dd>
+          <dd>Adăugă elemente individuale: Spre deosebire de append(), care adaugă un iterabil întreg ca un singur
+            element, extend() iterează prin iterabilul furnizat și adaugă fiecare dintre elementele sale individual la
+            listă.</dd>
+          <dd>Modifică in-place: Metoda extend() modifică direct lista originală; nu returnează o listă nouă.</dd>
+          <dd>Necesită un iterabil: Argumentul transmis către extend() trebuie să fie un obiect iterabil.</dd>
+        </dl>
+
+        <dl>
+          <dt>The extend(iterable) method in Python
+          <dt>
+          <dd>Is a list method used to add all elements from an iterable (such as another list, tuple, or string) to the
+            end of the current list.</dd>
+          <dd>Key characteristics:</dd>
+          <dd>Appends individual elements: Unlike append(), which adds an entire iterable as a single element, extend()
+            iterates through the provided iterable and adds each of its elements individually to the list.</dd>
+          <dd>Modifies in-place: The extend() method modifies the original list directly; it does not return a new list.
+          </dd>
+          <dd>Requires an iterable: The argument passed to extend() must be an iterable object.</dd>
+        </dl>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă"]
+culori =  ['verede', 'galbenă', 'roșie']
+fructe.extend(culori)
+print(fructe)
+<span>==> ['măr', 'pară', 'cireșă', 'verede', 'galbenă', 'roșie']</span>
+
+listă_mixtă = ["salut", 123, True, [6, 7]]
+listă_imbricată = [1, 2, [3, 4]]
+listă_mixtă.extend(listă_imbricată)
+print(listă_mixtă)
+<span>==> ['salut', 123, True, [6, 7], 1, 2, [3, 4]]</span>
+
+fructe = ["măr", "pară", "piersică"]
+<span># adaugă fructe exotice la sfârșitul lisei</span>
+exotic = ["portocală", "mango", "banană"]
+fructe.extend(exotic)
+print(fructe)
+<span>==> ['măr', 'pară', 'piersică', 'portocală', 'mango', 'banană']</span>
+
+fructe = ["măr", "pară", "piersică"]
+<span># adaugă fructe exotice la sfârșitul lisei</span>
+fructe[len(fructe):] = ["portocală", "mango", "banană"]
+print(fructe)
+<span>==> ['măr', 'pară', 'piersică', 'portocală', 'mango', 'banană']</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="AGD">Combinarea listelor: operatorul + sau += - Combining Lists: + Operator or +=</h3>
+
+      <div class="grid-container">
+        <p>Pentru a imbina liste fără a modifica listele originale la locul lor, le puteți concatena folosind operatorul
+          +. Alternativ, operatorul += ca scurtătură pentru extend().</p>
+
+        <p>To combine lists without modifying the original lists in place, you can concatenate them using the +
+          operator.Alternatively, += operator as a shortcut for extend().</p>
+      </div>
+
+<pre><code>lista1 = [1, 2]
+lista2 = [3, 4]
+combinate = lista1 + lista2 
+<span># Creează o listă complet nouă</span>
+print(combinate)  <span>==> [1, 2, 3, 4]</span>
+</code></pre>
+
+<pre><code>lista3 = [5, 6]
+print(f"Original ID pentru lista3: {id(lista3)}")
+<span>==>ID original pentru lista3: 2818247682176</span>
+
+<span># Modifică pe loc (Extensie in-place)</span>
+lista3 += [7, 8] 
+print(lista3)  <span>==>[5, 6, 7, 8]</span>
+
+<span># ID-ul nu se modifică</span>
+print(f"ID pentru lista3: {id(lista3)} după modificare")
+<span>==>ID pentru lista3: 2818247682176 după modificare</span>
+</code></pre>
+
+<pre><code>lista4 = [1, 2]
+lista4 += (3, 4)  <span># Funcționează perfect!</span>
+print(lista4)  <span>==> [1, 2, 3, 4]</span>
+
+lista4 = [1, 2]
+lista4 = lista4 + (3, 4) 
+print(lista4)
+<span>==>TypeError: can only concatenate list (not "tuple") to list</span>
+
+lista4 = [1, 2]
+lista4 = lista4 + [3, 4]  <span># Funcționează perfect!</span>
+print(lista4) <span>==> [1, 2, 3, 4]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Identitatea obiectului (Pe loc vs. obiect nou)<br>
+          Deoarece + creează o listă nouă, referințele către lista originală nu vor reflecta modificările. Deoarece
+          <b>+=</b> modifică lista pe loc, toate variabilele care indică acea listă vor reflecta actualizările.
+        </p>
+
+
+        <p>Object Identity (In-Place vs. New Object)<br>
+          Because + creates a new list, references to the original list will not see the changes. Because <b>+=</b>
+          alters the list in-place, all variables pointing to that list will see the updates.</p>
+      </div>
+
+<pre><code>lista1 = [1, 2, 3]
+print(f"ID original lista1: {id(lista1)}")
+<span>==> ID iniţial lista1: 2041218379584</span>
+lista2 = lista1  <span># Ambele indică același obiect</span>
+print(f"ID iniţial lista2: {id(lista2)}")
+<span>==> ID iniţial lista2: 2041218379584</span>
+
+lista1 = lista1 + [4]
+print(lista1) <span>==> [1, 2, 3, 4]</span>
+print(f"ID lista1: {id(lista1)} dupa modificare.")
+<span>==> ID lista1: 2041218380736 dupa modificare.</span>
+print(lista2) <span>==> [1, 2, 3] Neschimbat, deoarece list1 indică acum un obiect nou!</span> 
+</code></pre>
+
+      <table class="outer-hidden">
+        <caption>Rezumat al diferențelor</caption>
+        <tr>
+          <th>Caracteristici</th>
+          <th>+ Operator</th>
+          <th>+= Operator</th>
+        </tr>
+        <tr>
+          <th>Modificare</th>
+          <td>Creează un nou obiect de tip listă.</td>
+          <td>Modifică obiectul de tip listă original pe loc.</td>
+        </tr>
+        <tr>
+          <th>Underlying Method</th>
+          <td>Calls __add__().</td>
+          <td>Calls __iadd__().</td>
+        </tr>
+        <tr>
+          <th>Metodă echivalentă</th>
+          <td>None(returnează un obiect nou).</td>
+          <td>Funcționează la fel ca list.extend().</td>
+        </tr>
+        <tr>
+          <th>type pentru partea dreaptă</th>
+          <td>Necesită în mod obligatoriu o altă listă.</td>
+          <td>Acceptă orice obiect iterabil (tuples, strings, sets).</td>
+        </tr>
+      </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="AGE">Performanță în timp ce listele cresc în Python - Performance While Growing Lists python</h3>
+
+      <div class="grid-container">
+        <div>
+          <p>Listele Python sunt implementate ca tablouri dinamice, ceea ce înseamnă că alocarea memoriei lor subiacente
+            se poate modifica pe măsură ce elementele sunt adăugate sau eliminate. Această redimensionare dinamică are
+            impact asupra performanței, în special atunci când listele cresc semnificativ.</p>
+          <dl>
+            <dt>Cum afectează creșterea listei performanța:</dt>
+
+            <dt>Alocare inițială:</dt>
+
+            <dd>Când este creată o listă, Python alocă o anumită cantitate de memorie, adesea mai mult decât este
+              necesar imediat, pentru a anticipa adăugările viitoare.</dd>
+
+            <dt>Redimensionare automată:</dt>
+
+            <dd>Când o listă depășește capacitatea alocată curentă, Python efectuează o operațiune de redimensionare.
+              Aceasta implică:
+              <ul>
+                <li>Alocarea unui bloc de memorie nou, mai mare.</li>
+                <li>Copierea tuturor elementelor existente din vechea locație de memorie în cea nouă.</li>
+                <li>Adăugarea noului(elor) element(e).</li>
+              </ul>
+            </dd>
+
+            <dt>Factor de creștere:</dt>
+            <dd>Python folosește un factor de creștere (în jur de 1,125, deși acesta poate varia) pentru a determina
+              noua dimensiune în timpul realocării. Această strategie își propune să minimizeze numărul de operațiuni
+              costisitoare de realocare, evitând în același timp supraalocarea excesivă a memoriei.</dd>
+
+            <dt>Implicații asupra performanței:</dt>
+
+            <dt>Costul redimensionării:</dt>
+            <dd>Copierea elementelor în timpul redimensionării este o operațiune relativ costisitoare, în special pentru
+              listele mari. Redimensionarea frecventă poate duce la degradarea performanței.</dd>
+
+            <dt>O(1) amortizat pentru append():</dt>
+            <dd>Deși operațiunile individuale append() care declanșează o redimensionare pot fi costisitoare,
+              complexitatea medie generală (amortizată) a timpului pentru append() este încă considerată O(1) deoarece
+              costul redimensionării este distribuit pe mai multe adăugări care nu implică redimensionare.</dd>
+
+            <dt>Optimizarea performanței la creșterea listelor:</dt>
+
+            <dt>Prealocare:</dt>
+            <dd>Dacă dimensiunea finală aproximativă a unei liste este cunoscută dinainte, prealocarea acesteia cu o
+              capacitate inițială suficient de mare (de exemplu, listă = [None] * size) poate elimina sau reduce
+              necesitatea redimensionării în timpul atribuirii elementelor.</dd>
+
+            <dt>Înțelegeri ale listelor(List Comprehensions):</dt>
+            <dd>Pentru construirea de liste noi bazate pe iterabile existente, înțelegerile listelor sunt în general mai
+              eficiente decât buclele for cu apeluri append() repetate, deoarece acestea pot optimiza adesea alocarea
+              memoriei.</dd>
+
+            <dt>extend() vs. operatorul +:</dt>
+            <dd>Atunci când se combină liste, extend() este de obicei mai eficientă decât utilizarea operatorului +
+              pentru concatenare, în special cu liste mari, deoarece extend() modifică lista pe loc fără a crea un nou
+              obiect listă.</dd>
+
+            <dt>Generatoare:</dt>
+
+            <dd>Pentru seturi de date foarte mari unde memoria este o problemă, utilizarea generatoarelor poate fi mai
+              eficientă din punct de vedere al memoriei, deoarece acestea generează elemente pe rând, evitând
+              necesitatea stocării întregii liste în memorie.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>Python lists are implemented as dynamic arrays, which means their underlying memory allocation can change
+            as elements are added or removed. This dynamic resizing impacts performance, particularly when lists grow
+            significantly.</p>
+          <dl>
+            <dt>How List Growth Affects Performance:</dt>
+
+            <dt>Initial Allocation:</dt>
+            <dd>When a list is created, Python allocates a certain amount of memory, often more than immediately needed,
+              to anticipate future additions.</dd>
+
+            <dt>Automatic Resizing:</dt>
+
+            <dd>When a list exceeds its current allocated capacity, Python performs a resizing operation. This involves:
+              <ul>
+                <li>Allocating a new, larger block of memory.</li>
+                <li>Copying all existing elements from the old memory location to the new one.</li>
+                <li>Adding the new element(s).</li>
+              </ul>
+            </dd>
+
+            <dt>Growth Factor:</dt>
+
+            <dd>Python uses a growth factor (historically around 1.125, though this can vary) to determine the new size
+              during reallocation. This strategy aims to minimize the number of expensive reallocation operations while
+              avoiding excessive memory over-allocation.</dd>
+
+            <dt>Performance Implications:</dt>
+
+            <dt>Cost of Resizing:</dt>
+            <dd>The copying of elements during resizing is a relatively expensive operation, especially for large lists.
+              Frequent resizing can lead to performance degradation.</dd>
+
+            <dt>Amortized O(1) for append():</dt>
+            <dd>While individual append() operations that trigger a resize can be costly, the overall average
+              (amortized) time complexity for append() is still considered O(1) because the cost of resizing is spread
+              out over many non-resizing appends.</dd>
+
+            <dt>Optimizing Performance When Growing Lists:</dt>
+
+            <dt>Pre-allocation:</dt>
+            <dd>If the approximate final size of a list is known beforehand, pre-allocating it with a sufficiently large
+              initial capacity (e.g., my_list = [None] * size) can eliminate or reduce the need for resizing during
+              element assignment.</dd>
+
+            <dt>List Comprehensions:</dt>
+            <dd>For building new lists based on existing iterables, list comprehensions are generally more efficient
+              than for loops with repeated append() calls, as they can often optimize memory allocation.</dd>
+
+            <dt>extend() vs. + operator:</dt>
+
+            <dd>When combining lists, extend() is typically more efficient than using the + operator for concatenation,
+              especially with large lists, because extend() modifies the list in place without creating a new list
+              object.</dd>
+
+            <dt>Generators:</dt>
+            <dd>For very large datasets where memory is a concern, using generators can be more memory-efficient as they
+              yield elements one at a time, avoiding the need to store the entire list in memory.</dd>
+          </dl>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="RE">Ștergerea elementelor - Removing elements</h2>
+
+      <p><a href="https://www.w3schools.com/python/python_lists_remove.asp" target="_blank" rel="noopener">Python -
+          Remove List
+          Items</a></p>
+
+
+      <div class="grid-container">
+        <p>În Python, elementele pot fi eliminate dintr-o listă folosind mai multe metode, în funcție dacă eliminarea se
+          bazează pe valoare, index sau dacă întreaga listă trebuie golită.</p>
+
+        <p>In Python, elements can be removed from a list using several methods, depending on whether the removal is
+          based on value, index, or if the entire list needs to be cleared.</p>
+      </div>
+
+      <table class="outer-hidden">
+        <caption>Tabel comparativ</caption>
+        <tr>
+          <th>Metodă</th>
+          <th>Elimină</th>
+          <th>Modifică originalul?</th>
+          <th>Returnează valoare?</th>
+          <th>Potrivit pentru</th>
+        </tr>
+        <tr>
+          <td>list.remove(val)</td>
+          <td>Valoare</td>
+          <td>Da</td>
+          <td>No</td>
+          <td>Ștergerea primei apariții a unui element specific.</td>
+        </tr>
+        <tr>
+          <td>list.pop(index)</td>
+          <td>Index</td>
+          <td>Da</td>
+          <td>Da</td>
+          <td>Extragerea și utilizarea unui element în funcție de poziția sa.</td>
+        </tr>
+        <tr>
+          <td>del list[index]</td>
+          <td>Index / Slice</td>
+          <td>Da</td>
+          <td>Nu</td>
+          <td>Ștergerea unor elemente individuale sau a unor intervale, fără a le păstra.</td>
+        </tr>
+        <tr>
+          <td>List Comprehension</td>
+          <td>Condiție</td>
+          <td>Nu (Creează elemente noi)</td>
+          <td>N/A</td>
+          <td>Filtering out multiple items or matching a criteria.</td>
+        </tr>
+        <tr>
+          <td>list.clear()</td>
+          <td>Toate elementele</td>
+          <td>Da</td>
+          <td>Nu</td>
+          <td>Golirea completă a întregii liste.</td>
+        </tr>
+      </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="REA">Elimină prima apariție a unei valori specificate - Removes the first occurrence of a specified
+        value</h3>
+
+      <p><a href="https://www.w3schools.com/python/ref_list_remove.asp" target="_blank" rel="noopener">Python List
+          remove() Method</a>
+      </p>
+
+      <p>Dacă valoarea nu este găsită, generează o eroare ValueError.<br>
+        If the value is not found, it raises a ValueError.</p>
+
+<pre><code>numere = [1, 2, 3, 4, 5, 2]
+numere.remove(2)
+print(numere)  <span>==> [1, 3, 4, 5, 2]</span>
+</code></pre>
+
+<pre><code>listă_mixtă = ["salut", 123, True, [6, 7], 1]
+listă_mixtă.remove(1)  <span># elimină True deoarece are valoarea 1</span>
+
+print(f"True eliminat {listă_mixtă}")
+<span>==> True eliminat ['salut', 123, [6, 7], 1]</span>
+
+<span># elimină elementele de la indicii 1 și 2 (123, [6, 7])</span>
+listă_mixtă[1:3] = []
+<span># = []: Înlocuiește porțiunea selectată cu o listă goală, ceea ce are</span> 
+<span># ca efect practic ștergerea elementelor respective din lista originală.</span>
+print(listă_mixtă) <span>==> ['salut', 1]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="REB">Elimină și returnează elementul de la un index specificat - Removes and returns the item at a
+        specified index</h3>
+
+      <p><a href="https://www.w3schools.com/Python/ref_list_pop.asp" target="_blank" rel="noopener">Python List pop()
+          Method</a></p>
+
+<pre><code>listă_mixtă = ["salut", 123, True, [6, 7], 1]
+element_eliminat = listă_mixtă.pop(3)
+print(element_eliminat)  <span>==> [6, 7]</span>
+
+ultimul_element = listă_mixtă.pop()
+print(f"Ultimul element este: {ultimul_element}")
+<span>==> Ultimul element este: 1</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Comportamente</dt>
+
+          <dd>Modificare pe loc: Metoda modifică direct lista originală. Returnează valoarea: Spre deosebire de del,
+            <b>.pop()</b> returnează valoarea eliminată, permițându-ți să o salvezi într-o variabilă.
+          </dd>
+          <dd>Comportament implicit: Dacă lași parantezele goale (<b>listă.pop())</b>, metoda elimină și returnează
+            automat ultimul element din listă.</dd>
+          <dd>Indexare negativă: Poți utiliza numere negative (de exemplu, <b>listă.pop(-2)</b> elimină penultimul
+            element).</dd>
+          <dd>Erori: Specificarea unui index inexistent va genera o eroare de tip IndexError: pop index out of range.
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>Behaviors</dt>
+
+          <dd>Modifies In-Place: The method directly changes your original list.Returns the Value: Unlike del,
+            <b>.pop()</b> hands you the removed value so you can save it to a variable.
+          </dd>
+          <dd>Default Behavior: If you leave the parentheses empty (<b>list.pop()</b>), it automatically removes and
+            returns the last item in the list.</dd>
+          <dd>Negative Indexing: You can pass negative numbers (e.g., <b>list.pop(-2)</b> removes the second-to-last
+            item).</dd>
+          <dd>Errors: Passing an index that does not exist will trigger an IndexError: pop index out of range</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <p>Pentru a gestiona o eroare de tip "IndexError" atunci când elimini un element dintr-o listă, folosește un
+          bloc <b>try-except</b>. Astfel, previi blocarea programului în cazul în care indicele nu există.</p>
+
+        <p>To handle an "IndexError" when popping from a list, use a <b>try-except</b> block. This stops your program
+          from crashing if the index does not exist.</p>
+      </div>
+
+<pre><code>fructe = ["mere", "pere", "caise"]
+
+index_țintă = 5
+
+try:
+    element = fructe.pop(index_țintă)
+    print(f"Popped: {element}")
+except IndexError:
+    print(f"Error: Index {index_țintă} este în afara intervalului 0 : {len(fructe)}")
+<span>==> Error: Index 5 este în afara intervalului 0 : 3</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="REC">Eliminarea elementelor repetate dintr-o listă - Removing Repeated Items From a List</h3>
+
+      <p><a href="https://www.w3schools.com/python/python_howto_remove_duplicates.asp" target="_blank"
+          rel="noopener">How to Remove
+          Duplicates From a Python List</a></p>
+
+      <p><a href="https://www.w3schools.com/python/ref_dictionary_fromkeys.asp" target="_blank" rel="noopener">Python
+          Dictionary
+          fromkeys() Method</a></p>
+
+      <div class="grid-container">
+        <p>Eliminarea elementelor repetate dintr-o listă se poate realiza prin diverse metode, în funcție de limbajul de
+          programare sau instrumentul utilizat.</p>
+        <p>Removing repeated items from a list can be achieved through various methods, depending on the programming
+          language or tool being used.</p>
+      </div>
+
+      <table class="outer-hidden">
+        <caption>Compararea metodelor</caption>
+        <tr>
+          <th>Metodă</th>
+          <th>Sintaxă</th>
+          <th>Păstrează ordinea?</th>
+          <th>Utilizare optimă</th>
+        </tr>
+        <tr>
+          <td>set()</td>
+          <td>list(set(listă))</td>
+          <td>Nu</td>
+          <td>De-duplicare rapidă.</td>
+        </tr>
+        <tr>
+          <td>dict.fromkeys()</td>
+          <td>list(dict.fromkeys(listă))</td>
+          <td>Da</td>
+          <td>Menținerea ordinii fără suport suplimentar.</td>
+        </tr>
+        <tr>
+          <td>for loop</td>
+          <td>[x for x in listă if x not in unique]</td>
+          <td>Da</td>
+          <td>Reguli personalizate sau elemente care nu pot fi supuse operației de hashing.</td>
+        </tr>
+        <tr>
+          <td>pandas</td>
+          <td>df.drop_duplicates()</td>
+          <td>Da</td>
+          <td>Seturi mari de date și fluxuri de lucru pentru știința datelor.</td>
+        </tr>
+      </table>
+
+      <div class="grid-container">
+        <p>Utilizarea funcției <b>set()</b> transformă lista într-o mulțime, ceea ce elimină instantaneu duplicatele,
+          deoarece mulțimile nu pot conține elemente duplicate.</p>
+
+        <p>Using <b>set()</b> converts your list into a set, which instantly filters out duplicates because sets cannot
+          hold duplicate.</p>
+      </div>
+
+<pre><code>lista_mea = [1, 2, 2, 3, 4, 4, 5]
+listă_unic = list(set(lista_mea))
+print(listă_unic)  <span>==> [1, 2, 3, 4, 5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>dict.fromkeys()</b> valorifică faptul că cheile dicționarului trebuie să fie unice; începând cu Python
+          3.7+, dicționarele păstrează ordinea de inserare.</p>
+
+        <p><b>dict.fromkeys()</b> leverages the fact that dictionary keys must be unique; starting with Python 3.7+,
+          dictionaries preserve insertion order.</p>
+      </div>
+
+<pre><code>litere_duplicat = ["a", "b", "a", "c", "c"]
+listă_unic = list(dict.fromkeys(litere_duplicat))
+print(listă_unic)  <span>==> ['a', 'b', 'c']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>for</b> loop. Iterarea și verificarea existenței: Se poate crea o listă nouă, iar fiecare element din
+          lista originală poate fi adăugat la noua listă numai dacă nu este deja prezent în noua listă. Aceasta menține
+          ordinea originală a elementelor unice.</p>
+
+        <p><b>for</b> loop. Iterating and Checking for Existence: A new list can be created, and each element from the
+          original list can be added to the new list only if it is not already present in the new list. This maintains
+          the original order of unique elements.
+      </div>
+
+<pre><code>duplicate = [1, 2, 2, 3, 4, 4, 5]
+lista_unică = []
+for element in duplicate:
+    if element not in lista_unică:
+        lista_unică.append(element)
+print(lista_unică)  <span>==> [1, 2, 3, 4, 5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>while</b> loop. Iterează lista și elimină direct aparițiile duplicate. În general, este mai puțin
+          eficientă pentru listele mari cu multe duplicate din cauza modificărilor repetate ale listei.</p>
+
+        <p><b>while</b> loop. Iterates through the list and removes duplicate occurrences directly. It is generally less
+          efficient for large lists with many duplicates due to repeated list modifications.</p>
+      </div>
+
+<pre><code>duplicate = [1, 2, 2, 3, 4, 4, 5]
+i = 0
+while i &lt; len(duplicate):
+    if duplicate.count(duplicate[i]) > 1:
+        duplicate.remove(duplicate[i])
+    else:
+        i += 1
+print(duplicate) <span>==> [1, 2, 3, 4, 5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>Parcurgeți datele.</b> Această operațiune creează o listă goală și verifică dacă fiecare element a fost
+          deja adăugat înainte de a-l insera.</p>
+
+        <p><b>Looping</b> through the data. This creates an empty list and checks if each element is already added
+          before inserting.</p>
+      </div>
+
+<pre><code>def obține_articole_unice(listă):
+    rezultat = []
+    for element in listă:
+        if element not in rezultat:
+            rezultat.append(element)
+    return rezultat
+
+listă_duplicate = [1, 2, 2, 3, 4, 4, 5]
+print(obține_articole_unice(listă_duplicate))
+<span>==> [1, 2, 3, 4, 5]</span>
+</code></pre>
+
+<pre><code>import random
+
+def elemente_unice(listă):
+    rezultat = []
+    mulțime = set()
+    for element in listă:
+        if element not in mulțime:
+            rezultat.append(element)
+            mulțime.add(element)
+    return rezultat
+
+numere = [1, 2, 3, 4, 5, 4, 7, 2, 9, 3, 1]
+print(elemente_unice(numere)) <span>==> [1, 2, 3, 4, 5, 7, 9]</span>
+
+random.shuffle(numere)
+
+print(f"Shuffled list: {numere}")
+<span>==> Shuffled list: [4, 1, 2, 7, 5, 4, 9, 3, 2, 3, 1]</span>
+print(elemente_unice(numere))
+<span>==> [4, 1, 2, 7, 5, 9, 3]</span>
+</code></pre>
+
+      <dl>
+        <dt>Acest cod în Python are două scopuri principale:
+        <dt>
+        <dd>eliminarea duplicatelor dintr-o listă (păstrând ordinea apariției)
+          <ul>
+            <li><b>elemente_unice(listă)</b> Această funcție preia o listă și returnează o listă nouă doar cu elementele
+              care apar o singură dată.</li>
+            <li>rezultat = []: Inițializează lista goală ce va conține elementele finale.</li>
+            <li>mulțime = set(): Creează o mulțime goală. În Python, o mulțime (set) este o structură de date extrem de
+              rapidă pentru căutări.</li>
+            <li>for element in listă:: Parcurge fiecare număr din lista primită ca argument.</li>
+            <li>if element not in mulțime:: Verifică dacă numărul curent nu a fost deja adăugat. Această verificare se
+              face aproape instantaneu datorită utilizării mulțimii.</li>
+            <li>rezultat.append(element): Dacă numărul este nou, îl adăugăm în lista rezultat.</li>
+            <li>mulțime.add(element): Adăugăm numărul și în mulțime, pentru a ști data viitoare când îl întâlnim că este
+              deja un duplicat.</li>
+          </ul>
+        </dd>
+        <dd>amestecarea aleatorie a elementelor.
+          <ul>
+            <li>După ce rulezi funcția de mai sus, linia finală intervine asupra listei de numere:</li>
+            <li>random.shuffle(numere): Modifică lista originală amestecând elementele în mod aleatoriu (in-place).</li>
+            <li>Pentru a folosi această metodă, este necesară importarea modulului <b>import random</b>.</li>
+          </ul>
+        </dd>
+      </dl>
+
+      <p>Același lucru folosind o metodă mult mai scurtă (o singură linie de cod)</p>
+
+<pre><code>import random
+
+numere = [1, 2, 3, 4, 5, 4, 7, 2, 9, 3, 1]
+
+<span># Linia unică:</span>
+rezultat = random.sample(list(dict.fromkeys(numere)), k=len(dict.fromkeys(numere)))
+
+print(rezultat) <span>==> [3, 5, 2, 4, 1, 9, 7]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="RED">Șterge elementul la un index specificat - Removes the item at a specified index</h3>
+
+      <div class="grid-container">
+        <p><b>del listă[index]:</b> poate fi folosit pentru a elimina elemente după indexul lor sau pentru a elimina o
+          porțiune de elemente. Nu returnează elementul (elementele) eliminat(e).</p>
+        <p><b>del list[index]:</b> can be used to remove elements by their index or to remove a slice of elements. It
+          does not return the removed element(s).</p>
+      </div>
+
+<pre><code>numere = [1, 2, 3, 4, 5]
+del numere[2] <span># Elimină elementul de la indexul 2 (valoarea 3)</span>
+print(numere) <span>==> [1, 2, 4, 5]</span>
+
+numere2 = [4, 5, 6, 7, 8]
+del numere2[1:3] <span># Elimină elementle de la indexul 1 şi 2 (valoarile 5 şi 6)</span>
+print(numere2)  <span>==> [4, 7, 8]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Dacă nu specifici un indice sau o felie (slice), <b>del</b> elimină complet numele variabilei din sesiune.
+          Încercarea de a accesa lista ulterior va genera o eroare de tip NameError.</p>
+
+        <p>If you do not specify an index or slice, <b>del</b> completely removes the variable name from your session.
+          Trying to call the list afterward will result in a NameError.</p>
+      </div>
+
+<pre><code>numere3 = [100, 200, 300]
+del numere3
+print(numere3)  # Acest lucru va genera o eroare de tip NameError: name 'numere3' is not defined
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="REF">Elimină toate elementele din listă - Removes all elements from the list</h3>
+
+      <p><a href="https://www.w3schools.com/python/ref_list_clear.asp" target="_blank" rel="noopener">Python List
+          clear() Method</a>
+      </p>
+
+      <div class="grid-container">
+        <p>Metoda <b>listă.clear()</b> din Python elimină toate elementele dintr-o listă, transformând-o efectiv într-o
+          listă goală [].</p>
+
+        <p>The <b>list.clear()</b> method in Python removes all elements from a list, effectively turning it into an
+          empty list [].</p>
+      </div>
+
+<pre><code>listă_mixtă = ["salut", 123, True, [6, 7]]
+listă_mixtă.clear()
+print(listă_mixtă)  <span>==> []</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Diferențe cheie: list.clear() vs. listă = []</dt>
+          <dd>Deși ambele variante au ca rezultat o listă goală, ele gestionează memoria și variabilele în moduri
+            diferite:</dd>
+          <dd>list.clear(): Șterge conținutul obiectului de tip listă existent; orice altă variabilă care indică spre
+            această listă o va vedea, de asemenea, ca fiind goală.</dd>
+          <dd>list = []: Creează un obiect de tip listă complet nou și gol, atribuindu-l numelui variabilei; celelalte
+            variabile care fac referire la lista originală rămân neschimbate.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Differences: list.clear() vs list = []</dt>
+          <dd>While both result in an empty list, they handle memory and variables differently:</dd>
+          <dd>list.clear(): Erases the contents of the existing list object. Any other variables pointing to this same
+            list will also see it as empty.</dd>
+          <dd>list = []: Creates a completely new, empty list object and assigns it to the variable name. Other
+            variables referencing the original list will remain unchanged.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Utilizarea metodei .clear() modifică toate referințele.</span>
+original = [1, 2, 3]
+pseudonim = original
+original.clear()
+
+print(original)   <span>==> []</span>
+print(pseudonim)  <span>==> [] (Afectat, deoarece indică același obiect)</span>
+
+<span># Reatribuirea către [] întrerupe referința.</span>
+original = [4, 5, 6]
+pseudonim = original
+original = []
+
+print(original)   <span>==> []</span>
+print(pseudonim)  <span>==> [4, 5, 6] (Neafectat)</span>
+</code></pre>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

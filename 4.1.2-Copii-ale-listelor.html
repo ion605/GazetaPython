@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 4.1.2 Copii ale listelor</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaS.svg" alt="S" class="logo">
+          <h1>4.0 Tipuri secvență - Sequence Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>4.1.2 Crearea de copii ale unei liste - Creating Copies of a List</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#FD">Funcția id() în Python</a></li>
+            <li><a href="#AL">Aliasuri ale unei liste</a></li>
+            <li><a href="#CL">Crearea de copii ale unei liste</a></li>
+            <li><a href="#CS">Copie superficială a listei</a>
+              <ul>
+                <li><a href="#CSA">Secționarea listei ([:])</a></li>
+                <li><a href="#CSB">Constructorul list()</a></li>
+                <li><a href="#CSC">Metoda copy()</a></li>
+                <li><a href="#CSD">Funcția copy.copy()</a></li>
+              </ul>
+            </li>
+            <li><a href="#DC">Copii detaliate ale unei liste</a></li>
+            <li><a href="#SD">Copierea superficială vs. copierea profundă</a></li>
+            <li><a href="#CR">Concatenarea și repetiția listelor</a>
+              <ul>
+                <li><a href="#CRA">Concatenarea listelor</a></li>
+                <li><a href="#CRB">Liste repetitive</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter, you will study:</li>
+            <li><a href="#FD">The id() function in Python</a></li>
+            <li><a href="#AL">Aliases of a List</a></li>
+            <li><a href="#CL">Creating Copies of a List</a></li>
+            <li><a href="#CS">Shallow copy list</a>
+              <ul>
+                <li><a href="#CSA">List Slicing ([:])</a></li>
+                <li><a href="#CSB">list() Constructor</a></li>
+                <li><a href="#CSC">copy() Method</a></li>
+                <li><a href="#CSB">copy.copy() Function</a></li>
+              </ul>
+            </li>
+            <li><a href="#DC">Deep Copies of a List</a></li>
+            <li><a href="#SD">Shallow vs Deep Copying</a></li>
+            <li><a href="#CR">Concatenating and Repeating Lists</a>
+              <ul>
+                <li><a href="#CRA">Concatenating Lists</a></li>
+                <li><a href="#CRB">Repeating Lists</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <h2 id="FD">Funcția id() în Python - The id() function in Python</h2>
+
+      <p><a href="https://www.w3schools.com/python/ref_func_id.asp" target="_blank" rel="noopener">Python id()
+          Function</a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>Funcția id() din Python este o funcție încorporată care returnează "identitatea" unui obiect. Această
+            identitate este un număr întreg care este garantat a fi unic și constant pentru obiectul respectiv pe durata
+            de viață a acestuia.</p>
+          <dl>
+            <dt>Caracteristici cheie ale funcției id()</dt>
+            <dd>Identitate unică: Fiecare obiect din memorie are o identitate, iar id() returnează acest
+              identificator unic.</dd>
+            <dd>Constantă pe durata de viață: id()-ul unui obiect rămâne același atâta timp cât obiectul există în
+              memorie.</dd>
+            <dd>Adresă de memorie (CPython): În implementarea CPython (cea mai comună implementare Python), valoarea
+              id() corespunde de obicei adresei de memorie a obiectului.</dd>
+            <dd>Privind durata de viață: Este posibil ca două obiecte distincte cu durate de viață care nu
+              se suprapun să aibă aceeași valoare id(), deoarece adresele de memorie pot fi realocate odată ce un obiect
+              nu mai este utilizat.</dd>
+            <dd>Verificarea identității: id() determină dacă două variabile se referă la
+              exact același obiect din memorie, mai degrabă decât să aibă doar aceeași valoare.</dd>
+            <dd>Ca o optimizare, Python stochează automat în cache numerele întregi din intervalul -5 până la 256 la
+              pornire. Orice variabilă inițializată în acest interval indică exact același obiect partajat din memorie.
+            </dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>The id() function in Python is a built-in function that returns the "identity" of an object. This identity
+            is an integer that is guaranteed to be unique and constant for that specific object during its lifetime.</p>
+          <dl>
+            <dt>Key characteristics of id()</dt>
+            <dd>Unique Identity: Each object in memory has a distinct identity, and id() returns this unique identifier.
+            </dd>
+            <dd>Constant During Lifetime: The id() of an object remains the same as long as the object exists in memory.
+            </dd>
+            <dd>Memory Address (CPython): In the CPython implementation (the most common Python implementation), the
+              id() value typically corresponds to the object's memory address.</dd>
+            <dd>Lifetime Considerations: It is possible for two distinct objects with non-overlapping lifetimes to have
+              the same id() value, as memory addresses can be reallocated once an object is no longer in use.</dd>
+            <dd>Checking Object Identity: id() is useful for determining if two variables refer to the exact same object
+              in memory, rather than just having the same value.</dd>
+            <dd>As an optimization, Python automatically caches integers from -5 to 256 at startup. Any variable
+              initialized within this range points to the exact same shared object in memory.</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+<pre><code>a = 10
+b = 10
+print(f"id(a): {id(a)}") <span>==> id(a): 140725442810952</span>
+print(f"id(b): {id(b)}") <span>==> id(b): 140725442810952</span>
+
+print(a == b)  <span>==> True</span>
+print(a is b)  <span>==> True</span>
+print(id(a) == id(b))  <span>==> True</span>
+</code></pre>
+
+<pre><code>numere_1 = [1, 2, 3, 4, 5]
+numere_2 = [1, 2, 3, 4, 5]
+print(f"id(numere_1): {id(numere_1)}") <span>==> id(numere_1): 2682903487168</span>
+print(f"id(numere_2): {id(numere_2)}") <span>==> id(numere_2): 2682903487680</span>
+
+print(numere_1 == numere_2)  <span>==> True</span>
+print(numere_1 is numere_2)  <span>==> False</span>
+print(id(numere_1) == id(numere_2)) <span>==> False</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>În acest exemplu, id(a) și id(b) vor fi probabil identice, deoarece Python optimizează adesea obiecte mici,
+          imuabile, cum ar fi numerele întregi, prin faptul că mai multe variabile se referă la același obiect. Cu toate
+          acestea, id(numere_1) și id(numere_2) vor fi diferite, deoarece listele sunt obiecte mutabile și, chiar dacă
+          conțin aceleași elemente, sunt obiecte distincte în memorie.</p>
+
+        <p>In this example, id(a) and id(b) will likely be the same because Python often optimizes small, immutable
+          objects like integers by having multiple variables refer to the same object. However, id(numere_1) and
+          id(numere_2) will be different because lists are mutable objects, and even if they contain the same elements,
+          they are distinct objects in memory.</p>
+      </div>
+
+      <h2 id="AL">Aliasuri ale unei liste - Aliases of a List</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, aliasul unei liste are loc atunci când două sau mai multe variabile se referă la același
+            obiect listă din memorie. Aceasta înseamnă că, în loc să creați o copie separată a listei, creați un alt
+            nume (alias) care indică lista identică.</p>
+
+          <p>Cum se întâmplă aliasingul: Aliasingul apare de obicei atunci când atribuiți o variabilă de listă alteia.
+            Operatorul de atribuire (=) nu creează copii ale obiectelor în Python. În schimb, creează legături între
+            variabilă și obiectul implicat în atribuire.</p>
+        </div>
+
+        <div>
+          <p>In Python, aliasing of a list occurs when two or more variables refer to the same list object in memory.
+            This means that instead of creating a separate copy of the list, you are creating another name (alias) that
+            points to the identical list.</p>
+
+          <p>How Aliasing Happens: Aliasing typically arises when you assign one list variable to another. The
+            assignment operator (=) does not create copies of objects in Python. Instead create bindings between the
+            variable and the object involved in the assignment.</p>
+        </div>
+      </div>
+
+<pre><code>numere = [1, 2, 3]
+listă_alias = numere   # listă_alias este acum un alias al listei 'numere'
+print(f"ID-ul listei 'numere' este: {id(numere)}")
+<span>==> ID-ul listei 'numere' este: 2624342837184</span>
+print(f"ID-ul listei 'alias' este: {id(listă_alias)}")
+<span>==> ID-ul listei 'alias' este: 2624342837184</span>
+
+print(id(listă_alias) == id(numere)) <span>==> True</span>
+print(listă_alias is numere) <span>==> True</span>
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>În acest scenariu, lista numere și listă_alias indică ambele către același obiect listă din memorie.</p>
+          <p>Consecințele aliasingului: Deoarece ambele variabile se referă la același obiect, orice modificare
+            efectuată prin intermediul unui alias va fi reflectată la accesarea listei prin intermediul celuilalt alias.
+            Acest lucru este deosebit de important în cazul obiectelor mutabile, cum ar fi listele.</p>
+        </div>
+
+        <div>
+          <p>In this scenario, original_list and aliased_list both point to the same list object in memory.</p>
+          <p>Consequences of Aliasing: Because both variables refer to the same object, any modification made through
+            one alias will be reflected when accessing the list through the other alias. This is particularly important
+            with mutable objects like lists.</p>
+        </div>
+      </div>
+
+<pre><code>numere = [1, 2, 3]
+listă_alias = numere
+listă_alias.append(4)
+
+print(f"Lista originală 'numere' dupa modicarea listei alias : {numere}")
+<span>==> Lista originală 'numere' dupa modicarea listei alias : [1, 2, 3, 4]</span>
+print(f"Lista 'alias' după modificare : {listă_alias}")
+<span>==> Lista 'alias' după modificare : [1, 2, 3, 4]</span>
+print(id(numere) == id(listă_alias)) <span>==> True</span>
+</code></pre>
+
+<pre><code>listă_eterogenă = [1, "salut", 3.14, True, [5, 6], {"key": "value"}]
+alias_eterogen = listă_eterogenă
+alias_eterogen[1] = "ne vedem mâine"
+alias_eterogen[4].append(7)
+print(f"Listă eterogenă {listă_eterogenă}")
+<span>==> Listă eterogenă [1, 'ne vedem mâine', 3.14, True, [5, 6, 7], {'key': 'value'}]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>Orice se face asupra listei de alias se reflectă în lista care la creat. Atunci de ce avem nevoie de o
+            listă alias?</p>
+
+          <p>Conceptul de "aliasing al listelor" se referă la o situație în care mai multe variabile indică spre același
+            listă din memorie. Nu este o caracteristică pe care "trebuie" să o creați explicit, ci este o consecință a
+            modului în care Python gestionează referințele la obiecte și atribuirile cum ar fi listele.</p>
+
+          <p>Iată de ce este crucial să înțelegeți și să gestionați aliasingul:</p>
+
+          <dl>
+            <dt>Stare partajată și efecte secundare:</dt>
+            <dd>Când atribuiți o variabilă listă alteia (de exemplu, lista_b = lista_a), ambele variabile indică aceeași
+              listă din memorie. Orice modificare făcută prin lista_a va fi reflectată și atunci când este accesată prin
+              lista_b și invers. Această stare partajată poate duce la efecte secundare neașteptate dacă nu sunteți
+              conștient de ea, în special atunci când transmiteți liste către funcții sau le modificați în diferite
+              părți ale codului.</dd>
+
+            <dt>Eficiență:</dt>
+            <dd>Aliasing-ul poate fi eficient în ceea ce privește utilizarea memoriei, deoarece evită crearea unor copii
+              duplicat ale unor structuri de date mari atunci când sunt suficiente referințe multiple către aceleași
+              date.</dd>
+
+            <dt>Proiectare intenționată:</dt>
+            <dd>În unele cazuri, aliasingul intenționat este un instrument puternic pentru proiectarea structurilor de
+              date sau a algoritmilor. De exemplu, într-o reprezentare a tablei de joc, puteți crea aliasuri pentru
+              anumite grupuri de celule (ca rânduri, coloane sau diagonale) pentru a verifica cu ușurință
+              condițiile de câștig fără a duplica datele.</dd>
+          </dl>
+
+          <p>Când "trebuie" luat în considerare aliasingul (sau evitat).</p>
+
+          <dl>
+            <dt>Lizibilitate a indiciilor de tip:</dt>
+            <dd>Deși nu se referă direct la aliasul de liste, aliasul de tip (typing.TypeAlias sau pur și
+              simplu atribuind un indiciu de tip unei variabile) este utilizat pentru a crea indicii de tip mai
+              lizibile și ușor de gestionat pentru structuri de liste complexe (de exemplu, MyDataList =
+              list[dict[str, int]]). Este vorba despre îmbunătățirea clarității codului, nu despre referințe la obiecte
+              partajate.</dd>
+
+            <dt>Prevenirea modificărilor neintenționate:</dt>
+            <dd>A modifica o listă fără a afecta alte variabile care ar putea face referire la original,
+              trebuie să creați explicit o copie a listei (de exemplu, folosind lista_b = lista_a[:], lista_b =
+              list(lista_a) sau <a href="https://docs.python.org/3/library/copy.html" target="_blank"
+                rel="noopener">copy.deepcopy()</a> pentru liste imbricate). Aceasta se referă la evitarea
+              aliasingului atunci când starea partajată este nedorită.</dd>
+
+            <dt>Optimizarea utilizării memoriei:</dt>
+            <dd>Când aveți liste foarte mari și nevoie de mai multe referințe la aceleași date,
+              aliasingul poate fi o alegere conștientă pentru a economisi memorie.</dd>
+          </dl>
+
+          <p>În esență, nu "trebuie" să creați aliasuri pentru liste; acestea se întâmplă automat atunci când atribuiți
+            o
+            variabilă de listă alteia. Înțelegând comportamentul și implicațiile sale asupra
+            mutabilității și stării partajate este fundamentală pentru scrierea unui cod Python corect și previzibil.
+          </p>
+        </div>
+
+        <div>
+          <p>Anything is done to alias list is reflected to list which created it. Then why do we need alias list.
+          </p>
+
+          <p>The concept of "aliasing lists" refers to a situation where multiple variables refer to the
+            same list object in memory. This is not a feature you "need" to explicitly create, but rather a
+            consequence of how Python handles object references and assignments with mutable data types like lists.
+          </p>
+
+          <p>Here's why understanding and managing aliasing is crucial:</p>
+
+          <dl>
+            <dt>Shared State and Side Effects:</dt>
+            <dd>When you assign one list variable to another (e.g., list_b = list_a), both variables point to the
+              same list in memory. Any modification made through list_a will also be reflected when accessed through
+              list_b, and vice-versa. This shared state can lead to unexpected side effects if you're not aware of
+              it, especially when passing lists to functions or modifying them within different parts of your code.
+            </dd>
+
+            <dt>Efficiency:</dt>
+            <dd>Aliasing can be efficient in terms of memory usage, as it avoids creating duplicate copies of large
+              data structures when multiple references to the same data are sufficient.</dd>
+
+            <dt>Intentional Design:</dt>
+            <dd>In some cases, intentional aliasing is a powerful tool for designing data structures or algorithms.
+              For example, in a game board representation, you might alias certain groups of cells (like rows,
+              columns, or diagonals) to easily check for winning conditions without duplicating data.</dd>
+          </dl>
+
+          <p>When you might "need" to consider aliasing (or avoid it).</p>
+
+          <dl>
+            <dt>Type Hinting Readability:</dt>
+            <dd>While not directly about list aliasing, type aliases (using typing.TypeAlias or simply assigning a
+              type hint to a variable) are used to create more readable and manageable type hints for complex list
+              structures (e.g., MyDataList = list[dict[str, int]]). This is about improving code clarity, not about
+              shared object references.</dd>
+
+            <dt>Preventing Unintended Modifications:</dt>
+            <dd>If you want to modify a list without affecting other variables that might be referencing the
+              original, you need to explicitly create a copy of the list (e.g., using list_b = list_a[:], list_b =
+              list(list_a), or <a href="https://docs.python.org/3/library/copy.html" target="_blank"
+                rel="noopener">copy.deepcopy()</a> for nested lists). This is about avoiding aliasing
+              when shared state is undesirable.</dd>
+
+            <dt>Optimizing Memory Usage:</dt>
+            <dd>When dealing with very large lists and you only need multiple references to the same data, aliasing
+              can be a conscious choice to save memory.</dd>
+          </dl>
+
+          <p>In essence, you don't "need" to create aliases for lists; they happen automatically when you assign one
+            list variable to another. However, understanding this behavior and its implications for mutability and
+            shared state is fundamental to writing correct and predictable Python code.</p>
+        </div>
+
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="CL">Crearea de copii ale unei liste - Creating Copies of a List</h2>
+
+      <p><a href="https://www.w3schools.com/python/python_lists_copy.asp" target="_blank" rel="noopener">Python - Copy
+          Lists</a></p>
+
+      <div class="grid-container">
+        <p>În Python, crearea unei copii a unei liste se poate realiza prin mai multe metode, în funcție de necesitatea
+          unei copii superficiale sau profunde.</p>
+
+        <p>In Python, creating a copy of a list can be achieved through several methods, depending on whether a shallow
+          copy or a deep copy is required.</p>
+      </div>
+
+      <table class="outer-hidden">
+        <caption>Tabel comparativ</caption>
+        <tr>
+          <th>Metodă de copiere</th>
+          <th>Tip</th>
+          <th>Ideal pentru</th>
+          <th>Modifică originalul dacă elementele imbricate se schimbă?</th>
+        </tr>
+        <tr>
+          <td>listă_veche.copy()</td>
+          <td>Shallow (Superficial)</td>
+          <td>Liste plate, ușor de citit</td>
+          <td>Da</td>
+        </tr>
+        <tr>
+          <td>listă_veche[:]</td>
+          <td>Shallow (Superficial)</td>
+          <td>Scenariu de înaltă performanță</td>
+          <td>Da</td>
+        </tr>
+        <tr>
+          <td>listă(listă_veche)</td>
+          <td>Shallow (Superficial)</td>
+          <td>Alternarea iterabilelor</td>
+          <td>Da</td>
+        </tr>
+        <tr>
+          <td>copy.deepcopy (listă_veche)</td>
+          <td>Deep (Adânc)</td>
+          <td>Liste multidimensionale / Matrice</td>
+          <td>Nu</td>
+        </tr>
+      </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="CS">Copie superficială a listei - Shallow copy list</h2>
+
+      <p><a href="" target="_blank" rel="noopener"></a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>O copie superficială a unei liste în Python creează un nou obiect listă, dar nu copiază recursiv elementele
+            din listă. În schimb, copiază referințele la elementele originale.</p>
+
+          <dl>
+            <dt>Aceasta înseamnă:</dt>
+
+            <dd>Pentru elementele imuabile (ca numere întregi, șiruri de caractere sau tupluri), modificările aduse
+              elementelor listei originale nu vor afecta copia superficială și invers, deoarece aceste elemente sunt
+              copiate după valoare.</dd>
+
+            <dd>Pentru elementele mutabile (cum ar fi listele imbricate sau dicționarele), atât lista originală, cât și
+              copia superficială vor conține referințe la aceleași obiecte mutabile. Prin urmare, modificarea unui
+              element mutabil dintr-o listă va afecta și cealaltă listă, deoarece acestea indică același obiect
+              subiacent din memorie.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>A shallow copy of a list in Python creates a new list object, but it does not recursively copy the elements
+            within the list. Instead, it copies the references to the original elements.</p>
+          <dl>
+            <dt>This means:</dt>
+
+            <dd>For immutable elements (like integers, strings, or tuples), changes to the original list's elements will
+              not affect the shallow copy, and vice-versa, because these elements are copied by value.</dd>
+
+            <dd>For mutable elements (like nested lists or dictionaries), both the original list and the shallow copy
+              will contain references to the same mutable objects. Therefore, modifying a mutable element within one
+              list will also affect the other list, as they are pointing to the same underlying object in memory.</dd>
+          </dl>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="CSA">Secționarea listei ([:]) - List Slicing ([:])</h3>
+
+      <div class="grid-container">
+
+        <p>În Python, notația [:] reprezintă operațiunea de secționare (slicing) a unei liste. Aceasta se folosește cel
+          mai adesea pentru a crea o copie exactă a listei originale sau pentru a selecta anumite submulțimi de elemente
+          dintr-o secvență.</p>
+
+        <p>In Python, the [:] notation represents the list slicing operation. It is most often used to create an exact
+          copy of the original list or to select specific subsets of elements from a sequence..</p>
+      </div>
+
+<pre><code>listă_mixtă = ["salut", 123, True, [6, 7]]
+copie_superficială = listă_mixtă[:]
+
+print(f"ID-ul celui de-al patrulea element in listă_mixtă: {id(listă_mixtă[3])}")
+<span>==> ID-ul celui de-al patrulea element in listă_mixtă: 1749219199104</span>
+print(f"ID-ul celui de-al patrulea element in copie_superficială: {id(copie_superficială[3])}")
+<span>==> ID-ul celui de-al patrulea element in copie_superficială: 1749219199104</span>
+
+print(f"ID-ul listei care generează copia supreficială: {id(listă_mixtă)}")
+<span>==> ID-ul listei care generează copia supreficială: 1749219199744</span>
+print(f"ID-ul copiei superficiale: {id(copie_superficială)}")
+<span>==> ID-ul copiei superficiale: 1749219198400</span>
+
+print(f"Copie superficială: {copie_superficială}")
+<span>==> Copie superficială: ['salut', 123, True, [6, 7]]</span>
+print(f"Cele două liste conţin aceleaşi elemente: {copie_superficială == listă_mixtă}")
+<span>==> Cele două liste conţin aceleaşi elemente: True</span>
+print(f"Copia este lista originală: {copie_superficială is listă_mixtă}")
+<span>==> Copia este lista originală: False</span>
+
+<span># Modifică un element imbricat imuabile</span>
+copie_superficială[0] = "ne vedem mai târziu"
+
+<span># Modifică un element imbricat mutabil</span>
+copie_superficială[-1].append(8)
+copie_superficială[-1][0] = 1
+
+print(f"Copia superficială după modificarea listei [6, 7]: {copie_superficială}")
+<span>==> Copia superficială după modificarea listei [6, 7]: ['ne vedem mai târziu', 123, True, [1, 7, 8]]</span>
+print(f"Lista originală după modificarea copiei: {listă_mixtă}")
+<span>==> Lista originală după modificarea copiei: ['salut', 123, True, [1, 7, 8]]</span>
+print(f"După modificare cele două liste conţin aceleaşi elemente: {copie_superficială == listă_mixtă}")
+<span>==> După modificare cele două liste conţin aceleaşi elemente: False</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="CSB">Constructorul list() - list() Constructor</h3>
+
+      <p>Transmiterea listei originale către constructorul list() creează o nouă listă din elementele sale.<br>
+        Passing the original list to the list() constructor creates a new list from its elements.</p>
+
+<pre><code>listă_mixtă = ["salut", 123, True, [6, 7]]
+copie_superficială_2 = list(listă_mixtă)
+
+print(f"ID-ul listei care generează copia supreficială: {id(listă_mixtă)}")
+<span>==> ID-ul listei care generează copia supreficială: 2294522034048</span>
+print(f"ID-ul copiei superficiale: {id(copie_superficială_2)}")
+<span>==> ID-ul copiei superficiale: 2294521751936</span>
+print(f"Copie superficială: {copie_superficială_2}")
+<span>==> Copie superficială: ['salut', 123, True, [6, 7]]</span>
+print(f"Cele două liste conţin aceleaşi elemente: {copie_superficială_2 == listă_mixtă}")
+<span>==> Cele două liste conţin aceleaşi elemente: True</span>
+print(f"Copia este lista originală: {copie_superficială_2 is listă_mixtă}")
+<span>==> Copia este lista originală: False</span>
+
+<span># Modifică un element imbricat imuabile</span>
+copie_superficială_2[0] = "ne vedem mai târziu"
+<span># Modifică un element imbricat mutabil</span>
+copie_superficială_2[-1].append(8)
+copie_superficială_2[3][0] = 1
+
+print(f"Copia superficială după modificarea listei [6, 7]: {copie_superficială_2}")
+<span>==> Copia superficială după modificarea listei [6, 7]: ['ne vedem mai târziu', 123, True, [1, 7, 8]]</span>
+print(f"Lista originală după modificarea copiei: {listă_mixtă}")
+<span>==> Lista originală după modificarea copiei: ['salut', 123, True, [1, 7, 8]]</span>
+print(f"După modificare cele două liste conţin aceleaşi elemente: {copie_superficială_2 == listă_mixtă}")
+<span>==> După modificare cele două liste conţin aceleaşi elemente: False</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="CSC">Metoda copy() - copy() Method</h3>
+
+      <div class="grid-container">
+        <p>În Python, copy() se referă, de obicei, la metoda disponibilă pentru anumite structuri de date mutabile –
+          precum listele și mulțimile – care creează o copie superficială a obiectului.</p>
+
+        <p>In Python, copy() typically refers to the method available on certain mutable data structures, like lists and
+          sets, that creates a shallow copy of the object.</p>
+      </div>
+
+<pre><code>listă_mixtă = ["salut", 123, True, [6, 7]]
+copie_superficială_3 = listă_mixtă.copy()
+
+print(f"ID-ul listei care generează copia supreficială: {id(listă_mixtă)}")
+<span>==> ID-ul listei care generează copia supreficială: 3033343508800</span>
+print(f"ID-ul copiei superficiale: {id(copie_superficială_3)}")
+<span>==> ID-ul copiei superficiale: 3033343508032</span>
+print(f"Copie superficială: {copie_superficială_3}")
+<span>==> Copie superficială: ['salut', 123, True, [6, 7]]</span>
+print(f"Cele două liste conţin aceleaşi elemente: {copie_superficială_3 == listă_mixtă}")
+<span>==> Cele două liste conţin aceleaşi elemente: True</span>
+print(f"Copia este lista originală: {copie_superficială_3 is listă_mixtă}")
+<span>==> Copia este lista originală: False</span>
+
+<span># Modifică un element imbricat imuabile</span>
+copie_superficială_3[0] = "ne vedem mai târziu"
+<span># Modifică un element imbricat mutabil</span>
+copie_superficială_3[-1].append(8)
+copie_superficială_3[3][0] = 1
+print(f"Copia superficială după modificarea listei [6, 7]: {copie_superficială_3}")
+<span>==> Copia superficială după modificarea listei [6, 7]: ['ne vedem mai târziu', 123, True, [1, 7, 8]]</span>
+print(f"Lista originală după modificarea copiei: {listă_mixtă}")
+<span>==> Lista originală după modificarea copiei: ['salut', 123, True, [1, 7, 8]]</span>
+print(f"După modificare cele două liste conţin aceleaşi elemente: {copie_superficială_3 == listă_mixtă}")
+<span>==> După modificare cele două liste conţin aceleaşi elemente: False</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>După cum s-a demonstrat, copy() creează un obiect nou, modificările aduse elementelor de nivel superior ale
+          copiei nu afectează obiectul original. Dacă obiectul original conține obiecte imbricate mutabile (o altă
+          listă), copy() copiază doar referințele către acele obiecte imbricate. Prin urmare, modificările aduse
+          obiectelor imbricate – fie prin intermediul originalului, fie prin cel al copiei – se vor reflecta în ambele.
+        </p>
+
+        <p>As demonstrated, copy() creates a new object, so changes to the top-level elements of the copy do not affect
+          the original. However, if the original object contains mutable nested objects (like another list), copy() only
+          copies the references to those nested objects. Therefore, changes to the nested objects through either the
+          original or the copy will be reflected in both.</p>
+      </div>
+
+
+      <div class="grid-container">
+        <div>
+          <p>Felierea listelor ([:]), constructorul list() și metoda copy() din Python creează o copie identică a unei
+            liste existente. De ce avem nevoie de toate cele trei metode?</p>
+
+          <dl>
+            <dt>Polimorfism și flexibilitate a intrărilor</dt>
+            <dd>Cele trei metode au cerințe complet diferite în ceea ce privește tipurile de date pe care le pot
+              accepta:</dd>
+
+            <dt>Original</dt>
+            <dd>[:]: În versiunile timpurii ale limbajului Python, slicing era singura modalitate de a clona o secvență.
+              Aceasta este o cale directă de bază pentru accesarea prin indici.</dd>
+            <dd>Pentru liste de dimensiuni mici și medii, [:] este, de obicei, cea mai rapidă metodă de a duplica o
+              listă.</dd>
+
+            <dt>Constructor: Conversia tipului</dt>
+            <dd>list(): Scopul principal al constructorului list() este conversia de tip, nu doar copierea.</dd>
+            <dd>Dincolo de liste: Poate prelua orice obiect iterabil (cum ar fi tupluri, mulțimi, șiruri de caractere
+              sau obiecte generator) și îl poate converti într-o listă nouă..</dd>
+
+            <dt>Duck Typing și uniformitate</dt>
+            <dd>.copy(): A fost adăugată mult mai târziu și introdusă pentru ca și colecțiile mutabile (dicționarele și
+              mulțimile) să beneficieze de o interfață standard și ușor de citit. Slicing) [:] nu funcționează în cazul
+              dicționarelor sau al mulțimilor.</dd>
+            <dd>Intenție explicită: listă_nouă = listă_veche.copy() îi indică imediat dezvoltatorului că se creează o
+              copie.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>List Slicing ([:]), list() Constructor and copy() Method in python create the same copy for an existing
+            list. Why we need all of three methodes?</p>
+
+          <dl>
+            <dt>Polymorphism and Input Flexibility</dt>
+            <dd>The three methods have entirely different requirements for what types of data they can accept:</dd>
+
+            <dt>The Original</dt>
+            <dd>[:]: In early versions of Python, slicing was the only way to clone a sequence. It is a direct feature
+              of Python's basic subscript syntax</dd>
+            <dd>For small-to-medium lists, [:] is typically the fastest way to duplicate a list:</dd>
+
+            <dt>Constructor: Type Conversion</dt>
+            <dd>list(): The primary purpose of the list() constructor is type conversion, not just copying</dd>
+            <dd>Beyond Lists: It can take any iterable (like tuples, sets, strings, or generator objects) and convert it
+              into a new list.</dd>
+
+            <dt>Duck Typing & Uniformity</dt>
+            <dd>.copy(): This method was added to lists much later. It was introduced so that mutable collections could
+              share a standard, readable interface. You can call .copy() on a list, a dict, or a set uniformly. Slicing
+              [:] does not work on dictionaries or sets.</dd>
+            <dd>Explicit Intent: Reading new_list = old_list.copy() tells the developer instantly that the code is
+              creating a copy.</dd>
+          </dl>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="CSD">Funcția copy.copy() - copy.copy() Function</h3>
+
+      <p><a href="https://docs.python.org/3/library/copy.html" target="_blank" rel="noopener">copy — Shallow and deep
+          copy operations</a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>copy.copy() din modulul built-in copy al lui Python creează o copie superficială a unui obiect. Funcția
+            construiește un nou obiect de tip colecție și îl populează cu referințe către obiectele componente
+            (sub-obiectele) din colecția originală, în loc să multiplice efectiv acele obiecte componente.</p>
+          <ul>
+            <li class="bold">Sintaxă: copy.copy(x)</li>
+            <li>Scop: Creează un nou obiect exterior, dar partajează referințele interne pentru elementele imbricate.
+            </li>
+            <li>Alternativă: Pentru colecții simple, precum listele, se comportă identic cu apelarea list.copy().</li>
+          </ul>
+          <p>Comportamentul structurilor plate versus cele imbricate: Impactul unei copii superficiale depinde în
+            întregime de faptul dacă structura de date conține elemente mutabile imbricate (cum ar fi o listă în
+            interiorul altei liste).</p>
+          <ul>
+            <li class="bold">Structuri plane (elemente independente):</li>
+            <li>Dacă un obiect conține doar elemente imutabile (precum numere sau șiruri de caractere), modificarea
+              structurii de nivel superior a copiei nu va afecta obiectul original.</li>
+            <li class="bold">Structuri imbricate (referințe partajate):</li>
+            <li>Dacă un obiect conține structuri mutabile imbricate, atât obiectul original, cât și cel copiat vor face
+              referire la același obiect intern în memorie. Modificarea unui element din interiorul acelui container
+              intern va afecta ambele liste.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p>The copy.copy() function in Python's built-in copy module creates a shallow copy of an object. This means
+            it constructs a new collection object and populates it with references to the child objects found in the
+            original, rather than duplicating those child objects themselves.</p>
+          <ul>
+            <li class="bold">Syntax: copy.copy(x)</li>
+            <li>Purpose: Creates a new outer object but shares internal references for nested elements.</li>
+            <li>Alternative: For simple collections like lists, it behaves identically to calling list.copy()</li>
+          </ul>
+          <p>Behavior with Flat vs. Nested Structures: The impact of a shallow copy depends entirely on whether your
+            data structure contains nested mutable elements (like a list inside another list).</p>
+          <ul>
+            <li class="bold">Flat Structures (Independent Elements):</li>
+            <li>If an object only contains immutable items (like numbers or strings), modifying the top-level structure
+              of the copy will not affect the original.</li>
+            <li class="bold">Nested Structures (Shared References):</li>
+            <li>If an object contains nested mutable structures, both the original and the copied object will point to
+              the same inner object in memory. Modifying an item inside that inner container will affect both lists.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+<pre><code>import copy
+listă_mixtă = ["salut", 123, True, [6, 7]]
+copie_superficială_4 = copy.copy(listă_mixtă)
+
+print(f"ID-ul listei care generează copia supreficială: {id(listă_mixtă)}")
+<span>==> ID-ul listei care generează copia supreficială: 2668187665152</span>
+print(f"ID-ul copiei superficiale: {id(copie_superficială_4)}")
+<span>==> ID-ul copiei superficiale: 2668187665920</span>
+print(f"Copie superficială: {copie_superficială_4}")
+<span>==> Copie superficială: ['salut', 123, True, [6, 7]]</span>
+print(f"Cele două liste conţin aceleaşi elemente: {copie_superficială_4 == listă_mixtă}")
+<span>==> Cele două liste conţin aceleaşi elemente: True</span>
+print(f"Copia este lista originală: {copie_superficială_4 is listă_mixtă}")
+<span>==> Copia este lista originală: False</span>
+
+<span># Modifică un element imbricat imuabile</span>
+copie_superficială_4[0] = "ne vedem mai târziu"
+<span># Modifică un element imbricat mutabil</span>
+copie_superficială_4[-1].append(8)
+copie_superficială_4[3][0] = 1
+print(f"Copia superficială după modificarea listei [6, 7]: {copie_superficială_4}")
+<span>==> Copia superficială după modificarea listei [6, 7]: ['ne vedem mai târziu', 123, True, [1, 7, 8]]</span>
+print(f"Lista originală după modificarea copiei: {listă_mixtă}")
+<span>==> Lista originală după modificarea copiei: ['salut', 123, True, [1, 7, 8]]</span>
+print(f"După modificare cele două liste conţin aceleaşi elemente: {copie_superficială_4 == listă_mixtă}")
+<span>==> După modificare cele două liste conţin aceleaşi elemente: False</span>
+</code></pre>
+
+<pre><code>from copy import copy
+
+<span># Listă de dicționare</span>
+inventar = [
+{"fructe": {"măr": 50,"pară": 30,"cireșă": 35}},
+{"lactate": {"brânză": 15,"lapte": 20,"iaurt": 25}}
+]
+print(f"Tipul inventar: {type(inventar)}")
+<span>==> Tipul inventar: &lt;class 'list'></span>
+print(f"Tipul primului element din inventar: {type(inventar[0])}")
+<span>==> Tipul primului element din inventar: &lt;class 'dict'></span>
+
+copie_inventar = copy(inventar)
+print(f"Tipul copie inventar: {type(copie_inventar)}")
+<span>==> Tipul copie inventar: &lt;class 'list'></span>
+print(f"Tipul elementului doi din copie inventar: {type(copie_inventar[1])}")
+<span>==> Tipul elementului doi din copie inventar: &lt;class 'dict'></span>
+print(f"Copia inventarului:\n{copie_inventar}")
+<span>==> Copia inventarului:
+[
+{'fructe': {'măr': 50, 'pară': 30, 'cireșă': 35}},
+{'lactate': {'brânză': 15, 'lapte': 20, 'iaurt': 25}}
+]</span>
+
+print(copie_inventar == inventar)  <span>==> True</span>
+print(copie_inventar is inventar)  <span>==> False</span>
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>Când creezi o copie superficială a unui obiect, doar obiectul părinte este clonat ca entitate distinctă, în
+            timp ce descendenții săi rămân aceiași obiecte, partajate între copii prin referințe duplicate. Cu alte
+            cuvinte, o copie superficială are o adâncime de doar un nivel.</p>
+
+          <p class="bold">Când să folosești copy.copy()</p>
+          <p>Pentru o copie rapidă și eficientă din punctul de vedere al memoriei, iar elementele sunt complet imutabile
+            (șirurile de caractere, numerele întregi sau tuplurile), or când dorești în mod intenționat ca schimbările
+            interioare să se sincronizeze.</p>
+
+          <p class="bold">Personalizarea copierii superficiale</p>
+          <p>Pentru a controla modul în care obiectele din clase personalizate gestionează copiile superficiale, poți
+            implementa metoda __copy__() direct în definiția clasei.</p>
+        </div>
+
+        <div>
+          <p>When you make a shallow copy of an object, only the parent object is cloned as a distinct entity, while its
+            descendants remain the same objects, shared between copies through duplicated references. In other words, a
+            shallow copy is only one level deep.</p>
+
+          <p class="bold">When to use copy.copy()</p>
+          <p>Use copy.copy() when you want a fast, memory-efficient copy and your elements are purely immutable (like
+            strings, integers, or tuples), or when you intentionally want inner changes to sync.</p>
+
+          <p class="bold">Customizing Shallow Copies</p>
+          <p>If you want to control how custom class objects handle shallow copies, you can implement the special
+            __copy__() dunder method directly within your class definition.</p>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="DC">Copii detaliate ale unei liste - Deep Copies of a List</h2>
+
+      <p><a href="https://docs.python.org/3/library/copy.html" target="_blank" rel="noopener">copy — Shallow and deep
+          copy operations</a></p>
+
+      <div class="grid-container">
+        <p>O copie profundă a unei liste în Python creează un duplicat complet independent al listei originale, inclusiv
+          toate elementele imbricate și obiectele mutabile. Aceasta înseamnă că orice modificări aduse listei copiate
+          profund, chiar și subelementelor sale imbricate, nu vor afecta lista originală. Pentru a crea o copie profundă
+          în Python, se utilizează funcția deepcopy() din modulul de copiere încorporat.</p>
+
+        <p>A deep copy of a list in Python creates a completely independent duplicate of the original list, including
+          all nested elements and mutable objects. This means that any changes made to the deep-copied list, even to its
+          nested sub-elements, will not affect the original list. To create a deep copy in Python, the deepcopy()
+          function from the built-in copy module is used.</p>
+      </div>
+
+<pre><code>import copy
+
+listă_mixtă = ["salut", 123, True, [6, 7]]
+listă_copiată_în_detaliu = copy.deepcopy(listă_mixtă)
+
+print(f"ID-ul listei care generează copia profundă: {id(listă_mixtă)}")
+<span>==> ID-ul listei care generează copia profundă: 2529997480064</span>
+print(f"ID-ul copie profundă: {id(listă_copiată_în_detaliu)}")
+<span>==> ID-ul copie profundă: 2529997059392</span>
+
+<span># Obiectele imutabile nu pot fi schimbate in-place (pe loc)</span>
+print(id(listă_mixtă[0]) == id(listă_copiată_în_detaliu[0])) <span>==> True</span>
+print(id(listă_mixtă[3]) == id(listă_copiată_în_detaliu[3])) <span>==> False</span>
+
+print(f"Copie profundă: {listă_copiată_în_detaliu}")
+<span>==> Copie profundă: ['salut', 123, True, [6, 7]]</span>
+print(f"Cele două liste conţin aceleaşi elemente: {listă_copiată_în_detaliu == listă_mixtă}")
+<span>==> Cele două liste conţin aceleaşi elemente: True</span>
+print(f"Copia este lista originală: {listă_copiată_în_detaliu is listă_mixtă}")
+<span>==> Copia este lista originală: False</span>
+
+<span># Modifică un element imbricat imuabile</span>
+listă_copiată_în_detaliu[0] = "ne vedem mai târziu"
+<span># Modifică un element imbricat mutabil</span>
+listă_copiată_în_detaliu[-1].append(8)
+listă_copiată_în_detaliu[3][0] = 1
+
+print(f"Copia superficială după modificarea listei [6, 7]: {listă_copiată_în_detaliu}")
+<span>==> Copia superficială după modificarea listei [6, 7]: ['ne vedem mai târziu', 123, True, [1, 7, 8]]</span>
+print(f"Lista originală după modificarea copiei: {listă_mixtă}")
+<span>==> Lista originală după modificarea copiei: ['salut', 123, True, [6, 7]]</span>
+print(f"După modificare cele două liste conţin aceleaşi elemente: {listă_copiată_în_detaliu == listă_mixtă}")
+<span>==> După modificare cele două liste conţin aceleaşi elemente: False</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Modificarea funcției listă_copiată_în_detaliu nu modifică funcția listă_mixtă, deoarece deepcopy() asigură o
+          duplicare recursivă a tuturor obiectelor, inclusiv a listelor imbricate, rezultând o independență deplină
+          între original și copie.</p>
+
+        <p>Modifying deep_copied_list does not alter original_list, because deepcopy() ensures a recursive duplication
+          of all objects, including nested lists, resulting in full independence between the original and the copy. </p>
+      </div>
+
+<pre><code>import copy
+
+inventar = [
+{"fructe": {"măr": 50,"pară": 30,"cireșă": 35}},
+{"lactate": {"brânză": 15,"lapte": 20,"iaurt": 25}}
+]
+print(f"Tipul inventar: {type(inventar)}")
+<span>==> Tipul inventar: &lt;class 'list'></span>
+print(f"Tipul primului element din inventar: {type(inventar[0])}")
+<span>==> Tipul primului element din inventar: &lt;class 'dict'></span>
+
+copie_inventar = copy.deepcopy(inventar)
+print(f"Tipul copie inventar: {type(copie_inventar)}")
+<span>==> Tipul copie inventar: &lt;class 'list'></span>
+print(f"Tipul elementului doi din copie inventar: {type(copie_inventar[1])}")
+<span>==> Tipul elementului doi din copie inventar: &lt;class 'dict'></span>
+print(f"Copia inventarului:\n{copie_inventar}")
+<span>==> Copia inventarului:
+[
+{'fructe': {'măr': 50, 'pară': 30, 'cireșă': 35}},
+{'lactate': {'brânză': 15, 'lapte': 20, 'iaurt': 25}}
+]</span>
+print(copie_inventar == inventar) <span>==> True</span>
+print(copie_inventar is inventar) <span>==> False</span>
+</code></pre>
+
+<pre><code><span>Adăugați al treilea dicționar la copia inventarului</span> 
+<span>și modificați o valoare legată de inventarul original.</span>
+copie_inventar.append({"legume": {"morcovi": 11, "ceapă": 7, "ardei": 2}})
+copie_inventar[1]["lactate"]["lapte"] = 200
+print(f"Inventar copie:\n {copie_inventar}")
+<span>==> Inventar copie:
+[
+{'fructe': {'măr': 50, 'pară': 30, 'cireșă': 35}},
+{'lactate': {'brânză': 15, 'lapte': 200, 'iaurt': 25}},
+{'legume': {'morcovi': 11, 'ceapă': 7, 'ardei': 2}}
+]</span>
+print(f"Inventar:\n{inventar}")
+<span>==> Inventar:
+[
+{'fructe': {'măr': 50, 'pară': 30, 'cireșă': 35}},
+{'lactate': {'brânză': 15, 'lapte': 20, 'iaurt': 25}}
+]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="SD">Copierea superficială vs. copierea profundă - Shallow vs Deep Copying</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Alegerea dintre ele depinde de necesitatea ca obiectele originale și cele copiate să fie complet
+            independente sau nu, atunci când se lucrează cu structuri mutabile imbricate.</p>
+          <dl>
+            <dt>Copie superficială:</dt>
+            <dd>O copie superficială creează un nou obiect compus, dar îl populează cu referințe către obiectele găsite
+              în cel original.</dd>
+            <dd>Înseamnă că, deși nivelul superior (exe, o listă) este un obiect nou, orice obiecte imbricate mutabile
+              din cadrul acestuia nu sunt copiate. Atât originalul, cât și copia superficială se vor referi la aceleași
+              obiecte imbricate.</dd>
+            <dd>Modificările aduse unui obiect imbricat mutabil din copia superficială se vor reflecta și în obiectul
+              original, deoarece ambele indică aceleași date subiacente.</dd>
+            <dd>Copiile superficiale sunt mai rapide și utilizează mai puțină memorie, deoarece copiază doar referințe.
+            </dd>
+            <dd> Se realizează folosind copy.copy() sau felierea pentru liste (listă = listă_originală[:]).</dd>
+
+            <dt>Copie profundă:</dt>
+            <dd>deep copy creează un obiect compus complet nou și inserează recursiv copii ale tuturor obiectelor găsite
+              în original, inclusiv toate obiectele mutabile imbricate.</dd>
+            <dd>Aceasta asigură că originalul și copia profundă sunt complet independente. Modificările aduse oricărei
+              părți a copiei profunde, inclusiv structurilor imbricate, nu vor afecta obiectul original.</dd>
+            <dd>Copiile profunde consumă mai multă memorie și pot fi mai lente decât copiile superficiale, în special
+              pentru structurile complexe sau profund imbricate, datorită procesului de copiere recursivă.</dd>
+            <dd>Realizat folosind copy.deepcopy().</dd>
+
+            <dt>Cazuri de utilizare:</dt>
+            <dd>Alegeți copierea superficială (shallow copy) atunci când lucrați cu obiecte imutabile sau când doriți ca
+              modificările aduse obiectelor mutabile imbricate să se reflecte atât în ​​original, cât și în copie.</dd>
+            <dd>Alegeți copierea profundă (deep copy) atunci când aveți nevoie de o izolare completă între original și
+              copie, în special în cazul structurilor de date complexe care conțin elemente mutabile imbricate.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>The choice between them depends on whether the original and copied objects need to be completely
+            independent or not, especially when dealing with nested mutable structures.</p>
+          <dl>
+            <dt>Shallow Copy</dt>
+            <dd>A shallow copy creates a new compound object but populates it with references to the objects found in
+              the original.</dd>
+            <dd>This means that while the top-level container (e.g., a list) is a new object, any mutable nested objects
+              within it are not copied. Instead, both the original and the shallow copy will refer to the same nested
+              objects.</dd>
+            <dd>Changes made to a mutable nested object in the shallow copy will also be reflected in the original
+              object because they both point to the same underlying data.</dd>
+            <dd>Shallow copies are generally faster and use less memory than deep copies, as they only copy references.
+            </dd>
+            <dd>Achieved using copy.copy() or slicing for lists (new_list = original_list[:]). </dd>
+
+            <dt>Deep Copy:</dt>
+            <dd>deep copy creates a completely new compound object and recursively inserts copies of all objects found
+              in the original, including all nested mutable objects.</dd>
+            <dd>This ensures that the original and the deep copy are entirely independent. Changes made to any part of
+              the deep copy, including nested structures, will not affect the original object.</dd>
+            <dd>Deep copies are more memory-intensive and can be slower than shallow copies, especially for complex or
+              deeply nested structures, due to the recursive copying process.</dd>
+            <dd>Achieved using copy.deepcopy().</dd>
+
+            <dt>Use Cases:</dt>
+            <dd>Choose shallow copy when working with immutable objects or when you intend for changes in nested mutable
+              objects to be reflected in both the original and the copy.</dd>
+            <dd>Choose deep copy when you need complete isolation between the original and the copy, especially when
+              dealing with complex data structures containing mutable nested elements.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <table class="outer-hidden">
+        <caption>Comparație</caption>
+        <tr>
+          <th>Caracteristică</th>
+          <th>Copiere superficială(Shallow Copy)</th>
+          <th>Copiere profundă(Deep Copy)</th>
+        </tr>
+        <tr>
+          <th>Listă externă</th>
+          <td>Obiect nou în memorie</td>
+          <td>Obiect nou în memorie</td>
+        </tr>
+        <tr>
+          <th>Cum să creezi copii</th>
+          <td>copy.copy(obj), .copy(), [:]</td>
+          <td>copy.deepcopy(obj)</td>
+        </tr>
+        <tr>
+          <th>Container de nivel superior</th>
+          <td>Creat ca un obiect nou</td>
+          <td>Creat ca un obiect nou</td>
+        </tr>
+        <tr>
+          <th>Obiecte imbricate</th>
+          <td>Partajate (referințele sunt copiate)</td>
+          <td>Clonate (duplicate recursiv)</td>
+        </tr>
+        <tr>
+          <th>Mutații imbricate</th>
+          <td>Afectează atât originalul, cât și copia</td>
+          <td>Izolat; nu afectează originalul</td>
+        </tr>
+        <tr>
+          <th>Performanță</th>
+          <td>Rapidă și eficientă din punctul de vedere al memoriei</td>
+          <td>Mai lentă și cu un consum mai mare de memorie.</td>
+        </tr>
+      </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CR">Concatenarea și repetiția listelor - Concatenating and Repeating Lists</h2>
+
+      <p><a href="" target="_blank" rel="noopener"></a></p>
+
+      <div class="grid-container">
+        <p>În Python, listele pot fi ușor manipulate prin concatenare și repetiție folosind operatori specifici.</p>
+
+        <p>In Python, lists can be easily manipulated through concatenation and repetition using specific operators.</p>
+      </div>
+
+      <table class="outer-hidden">
+        <caption>Comparație sintetică</caption>
+        <tr>
+          <th>Metodă</th>
+          <th>Tip de operație</th>
+          <th>Modifică originalul?</th>
+          <th>Ideală pentru</th>
+        </tr>
+        <tr>
+          <td>list1 + list2</td>
+          <td>Concatenare</td>
+          <td>Nu</td>
+          <td>Îmbinarea rapidă a două liste mici</td>
+        </tr>
+        <tr>
+          <td>[*l1, *l2]</td>
+          <td>Concatenare</td>
+          <td>Nu</td>
+          <td>Îmbinarea mai multor liste în cadrul unui literal</td>
+        </tr>
+        <tr>
+          <td>list1.extend(list2)</td>
+          <td>Concatenare</td>
+          <td>Da</td>
+          <td>Acumulare eficientă din punctul de vedere al memoriei</td>
+        </tr>
+        <tr>
+          <td>list1 * n</td>
+          <td>Repetiţie</td>
+          <td>Nu</td>
+          <td>Inițializarea listelor cu valori primitive</td>
+        </tr>
+      </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h3 id="CRA">Concatenarea listelor - Concatenating Lists</h3>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Operatorul +</dt>
+          <dd>Operatorul + este cea mai simplă și mai frecvent utilizată metodă pentru concatenarea listelor. Acesta
+            creează o listă nouă care conține toate elementele din listele originale în ordinea în care apar. Ordinea
+            elementelor din lista rezultată va urma ordinea listelor din concatenare.</dd>
+        </dl>
+
+        <dl>
+          <dt>The + operator</dt>
+          <dd>The + operator is the most straightforward and commonly used method for concatenating lists. It creates a
+            new list containing all elements from the original lists in the order they appear. The order of elements in
+            the resulting list will follow the order of the lists in the concatenation.</dd>
+        </dl>
+      </div>
+
+<pre><code>numere = [1, 2, 3]
+litere = ["a", "b", "c"]
+listă_combinată = numere + litere
+print(f"Listă combinată: {listă_combinată}")
+<span>==> Listă combinată: [1, 2, 3, 'a', 'b', 'c']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>+= Operator de modificare pe loc</dt>
+          <dd>Operatorul += din Python este un operator de atribuire pe-loc (sau augmentată) care adaugă o valoare unei
+            variabile și atribuie rezultatul aceleiași variabile. Acesta servește drept formă concisă pentru x = x + y.
+          </dd>
+          <dd>Operatorul += modifică direct lista originală, în loc să aloce una nouă în memorie.</dd>
+        </dl>
+
+        <dl>
+          <dt>+= In-place Operator</dt>
+          <dd>The += operator in Python is an in-place / augmented assignment operator that adds a value to a variable
+            and assigns the result back to that same variable. It serves as a concise shorthand for x = x + y</dd>
+          <dd>+= In-place Operator: Modifies the original list directly rather than allocating a new one in memory</dd>
+        </dl>
+      </div>
+
+<pre><code>listă_numere = [1, 2, 3]
+
+<span># Afișează adresa de memorie originală</span>
+print(f"ID-ul înainte de modificare: {id(listă_numere)}")
+<span>==> ID-ul înainte de modificare: 2025887542144</span>
+
+<span># Modifică lista in-place (similar cu .extend())</span>
+listă_numere += [4, 5]
+print(f"Lista originală modificată pe loc: {listă_numere}")
+<span>==> Lista originală modificată pe loc: [1, 2, 3, 4, 5]</span>
+<span># Afișează aceeași adresă de memorie</span>
+print(f"ID-ul după de modificare: {id(listă_numere)}") 
+<span>==> ID-ul după de modificare: 2025887542144</span>
+</code></pre>
+
+<pre><code><span># Obiect mutabil (Ambele variabile se modifică)</span>
+lista_a = [1, 2]
+lista_b = lista_a   <span># Ambele indică spre aceeași listă</span>
+lista_a += [3]      <span># Modifică obiectul subiacent</span>
+print(lista_b)      <span>==> [1, 2, 3] (și list_b este actualizată!)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Avantaje</dt>
+          <dd>Memorie și viteză: Modifică structuri mutabile de mari dimensiuni (precum listele) in-place (pe loc), fără
+            a aloca un nou bloc de memorie pentru un obiect nou.</dd>
+          <dd>Sintaxă clară: Scurtătură concisă și ușor de citit pentru operații de acumulare, evitând necesitatea de a
+            scrie de două ori numele variabilei în cadrul atribuirii.</dd>
+          <dd>Evaluare unică: Evaluează expresia țintă o singură dată, ceea ce este mai sigur și mai rapid decât cea
+            standard.</dd>
+
+          <dt>Dezavantaje</dt>
+          <dd>Efecte secundare legate de referințele partajate:</dd>
+          <dd>Modifică toate variabile care indică spre același obiect mutabil, generând efecte secundare
+            neintenționate.</dd>
+          <dd>Nu este o operație veritabilă in-place pentru tipurile imutabile: Se comportă exact ca o atribuire
+            standard (x = x + y) când este utilizată cu numere întregi, șiruri sau tupluri, creând un obiect complet nou
+            în fundal.</dd>
+          <dd>Particularități privind mutarea tuplurilor: Poate genera o eroare de tip (TypeError) însoțită de o
+            modificare parțială dacă o listă mutabilă este inclusă (imbricată) într-un tuplu imutabil în timpul unei
+            operații +=.</dd>
+        </dl>
+
+        <dl>
+          <dt>Advantages</dt>
+          <dd>Memory and Speed: Modifies large mutable structures (like lists) in place without allocating a fresh block
+            of memory for a new object.</dd>
+          <dd>Clean Syntax: Acts as a short, easy-to-read shortcut for accumulation compared to writing out long
+            assignment names twice.</dd>
+          <dd>Single Evaluation: Evaluates the target expression only one time, which is safer and faster than standard.
+          </dd>
+
+          <dt>Disadvantages</dt>
+          <dd>Shared Reference Side Effects: </dd>
+          <dd>Alters all other variables pointing to the exact same mutable object, leading to unintended side effects.
+          </dd>
+          <dd>Not True In-Place for Immutable Types: Behaves just like standard assignment (x = x + y) when used on
+            integers, strings, or tuples, creating a brand-new object behind the scenes.</dd>
+          <dd>Tuple Mutation Exception Quirks: Can raise a TypeError combined with a partial modification if a mutable
+            list is nested inside an immutable tuple during a += operation.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Operatorul * (despachetare)</dt>
+          <dd>Această metodă implică despachetarea elementelor mai multor liste într-o listă nouă. Este o modalitate
+            concisă de a combina liste, în special atunci când se lucrează cu mai multe liste.</dd>
+          <dd>Operatorul cu un singur asterisc (*) adesea numit operator de despachetare sau splat extrage elemente
+            individuale dintr-o colecție iterabilă, precum o listă. Acesta elimină necesitatea utilizării unor bucle sau
+            a operațiilor de feliere (slicing) pe bază de indici.</dd>
+        </dl>
+
+        <dl>
+          <dt>The * (unpacking) operator</dt>
+          <dd>This method involves unpacking the elements of multiple lists into a new list. It's a concise way to
+            combine lists, especially when dealing with multiple lists.</dd>
+          <dd>The single asterisk * operator (often called the unpacking or splat operator) extracts individual elements
+            out of an iterable collection like a list. It eliminates the need for loops or index slicing.</dd>
+        </dl>
+      </div>
+
+<pre><code>lista1 = [1, 2, 3]
+lista2 = [4, 5, 6]
+lista3 = [7, 8]
+listă_combinată = [*lista1, *lista2, *lista3]
+print(listă_combinată) <span>==> [1, 2, 3, 4, 5, 6, 7, 8]</span>
+</code></pre>
+
+<pre><code><span># Combină o listă cu diferite tipuri iterabile</span>
+listă = [1, 2]
+tuplu = (3, 4)
+interval = range(5, 7)
+
+<span># Despachetarea unor tipuri diferite într-o singură listă plată</span>
+listă_combinată = [*listă, *tuplu, *interval]
+print(listă_combinată) <span>==> [1, 2, 3, 4, 5, 6]</span>
+</code></pre>
+
+      <p><a href="https://www.w3schools.com/python/ref_list_extend.asp" target="_blank" rel="noopener">Python List
+          extend() Method</a></p>
+
+      <p><a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Data
+          Structures</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>metoda extend()</dt>
+          <dd>Această metodă modifică o listă existentă prin adăugarea tuturor elementelor dintr-un alt iterabil (cum ar
+            fi o altă listă) la sfârșitul acesteia. extend() nu creează o listă nouă, ci modifică lista originală la
+            locul ei.</dd>
+          <dd>Greșeală frecventă: Scrierea a = a.extend(b) va suprascrie variabila cu None, (a și b sunt liste).</dd>
+          <dd>Necesită un obiect iterabil: transmiterea unui număr întreg sau cu virgulă generează o eroare TypeError.
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>extend() method</dt>
+          <dd>This method modifies an existing list by appending all elements from another iterable (like another list)
+            to its end. extend() does not create a new list but modifies the original list in-place.</dd>
+          <dd>Common Mistake: Writing a = a.extend(b) will overwrite the variable with None, (a and b are lists).</dd>
+          <dd>Requires an Iterable: Passing an integer or float results in a TypeError.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Extinderea cu o altă listă</span>
+numere = [1, 2, 3]
+litere = ["a", "b", "c"]
+numere.extend(litere)
+print(numere) <span>==> [1, 2, 3, 'a', 'b', 'c']</span>
+</code></pre>
+
+<pre><code><span># Extinderea cu alte iterabile</span>
+numere = [1, 2, 3]
+<span># Tuplu</span>
+numere.extend((4, 5)) 
+<span># Șir (despachetează fiecare caracter)</span>
+numere.extend('AB')   
+
+print(numere) <span>==> [1, 2, 3, 4, 5, 'A', 'B']</span>
+</code></pre>
+
+      <table class="outer-hidden">
+        <caption>extend() vs append()</caption>
+        <tr>
+          <th>Caracteristici</th>
+          <th>extend()</th>
+          <th>append()</th>
+        </tr>
+        <tr>
+          <th>Acțiune</th>
+          <td>Adaugă individual elementele unui obiect iterabil.</td>
+          <td>Adaugă argumentul ca un singur element.</td>
+        </tr>
+        <tr>
+          <th>Lungimea listei</th>
+          <td>Crește cu lungimea obiectului iterabil.</td>
+          <td>Crește exact cu 1.</td>
+        </tr>
+        <tr>
+          <th>Tip de intrare</th>
+          <td>Acceptă doar obiecte iterabile.</td>
+          <td>Acceptă orice tip de date.</td>
+        </tr>
+      </table>
+
+<pre><code><span># append() adaugă lista însăși</span>
+x = [1, 2]
+x.append([3, 4])
+print(x)  <span>==> [1, 2, [3, 4]]</span>
+
+<span># extend() aplatizează datele de intrare</span>
+y = [1, 2]
+y.extend([3, 4])
+print(y)  <span>==> [1, 2, 3, 4]</span>
+</code></pre>
+
+
+      <h3 id="CRB">Liste repetitive - Repeating Lists</h3>
+
+      <div class="grid-container">
+        <p>În Python, repetarea elementelor dintr-o listă sau repetarea unei liste întregi se poate realiza folosind
+          diverse metode, în funcție de rezultatul dorit. Repetă elementele unei liste sau secvențe întregi folosind
+          operatorul de multiplicare *, list comprehensions sau funcții din modulul itertools.</p>
+
+        <p>In Python, repeating elements within a list or repeating an entire list can be achieved using various
+          methods, depending on the desired outcome. Repeat list elements or entire sequences using the multiplication
+          operator *, list comprehensions, or functions from the itertools module.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Repetarea unei liste întregi</dt>
+          <dd>Operatorul pentru înmulțire (*): Aceasta este cea mai simplă și eficientă metodă de a crea o listă nouă
+            prin repetarea listei originale de un număr specificat de ori.</dd>
+        </dl>
+
+        <dl>
+          <dt>Repeating an Entire List</dt>
+          <dd>Multiplication Operator (*): This is the simplest and most efficient way to create a new list by repeating
+            the original list a specified number of times.</dd>
+        </dl>
+      </div>
+
+<pre><code>numere = [1, 2, 3]
+listă_repetată = numere * 3
+print(listă_repetată) <span>==> [1, 2, 3, 1, 2, 3, 1, 2, 3]</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Repetarea fiecărui element dintr-o listă</dt>
+          <dd>Înțelegerea (Comprehension) listei: Aceasta oferă o modalitate concisă și eficientă de a crea o listă nouă
+            în care fiecare element din lista originală este repetat de un număr specificat de ori.</dd>
+        </dl>
+
+        <dl>
+          <dt>Repeating Each Element within a List</dt>
+          <dd>List Comprehension: This provides a concise and efficient way to create a new list where each element from
+            the original list is repeated a specified number of times.</dd>
+        </dl>
+      </div>
+
+<pre><code>numere = [4, 5, 6]
+număr_repetări = 3
+listă_de_elemente_repetate = [număr for număr in numere for _ in range(număr_repetări)]
+print(listă_de_elemente_repetate)  <span>==> [4, 4, 4, 5, 5, 5, 6, 6, 6]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Repetarea și modificarea obiectelor mutabile</dt>
+          <dd>Aveți grijă când utilizați operatorul * asupra unor liste care conțin obiecte mutabile, cum ar fi liste
+            imbricate.</dd>
+        </dl>
+
+        <dl>
+          <dt>Repeating and modifing mutable objects</dt>
+          <dd>Be careful when using the * operator on lists containing mutable objects like nested lists.</dd>
+        </dl>
+      </div>
+
+<pre><code>matrice = [[15] * 2] * 3 
+print(f"Matricea originală: {matrice}")
+<span>==> Matricea originală: [[15, 15], [15, 15], [15, 15]]</span>
+<span># Primul element modificat în fiecare grupă</span>
+matrice[0][0] = 99
+print(f"Matricea după modificare: {matrice}")
+<span>==> Matricea după modificare: [[99, 15], [99, 15], [99, 15]]</span>
+</code></pre>
+
+<pre><code><span># list comprehension pentru a inițializa liste interne distincte</span>
+matrice = [[15] * 2 for _ in range(3)] 
+print(f"Matricea originală: {matrice}")
+<span>==> Matricea originală: [[15, 15], [15, 15], [15, 15]]</span>
+<span># Primul element modificat în prima grupă</span>
+matrice[0][0] = 99
+print(f"Matricea după modificare {matrice}")
+<span>==> Matricea după modificare [[99, 15], [15, 15], [15, 15]]</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Bucle imbricate (bucle for explicite)</dt>
+          <dd>O abordare mai detaliată, dar la fel de eficientă, implică utilizarea buclelor for pentru a adăuga fiecare
+            element de mai multe ori la o listă nouă.</dd>
+          <dd>În Python, o buclă imbricată presupune plasarea unei bucle în interiorul corpului altei bucle. Atunci când
+            se procesează liste repetitive folosind "bucle for explicite", bucla interioară se execută complet la
+            fiecare iterație a buclei exterioare.</dd>
+        </dl>
+
+        <dl>
+          <dt>Nested Loops (Explicit for loops)</dt>
+          <dd>A more verbose, but equally effective, approach involves using nested for loops to append each element
+            multiple times to a new list.</dd>
+          <dd>In Python, a nested loop means placing one loop inside the body of another loop. When handling repeating
+            lists with "explicit for loops", the inner loop will execute completely for every single iteration of the
+            outer loop</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Definește trei liste separate</span>
+sporturi = ["Tenis", "Fotbal"]
+zile = ["Luni", "Marţi"]
+când = ["dimineaţă", "după amiază"]
+
+<span># Bucla exterioară controlează de câte ori se repetă secvența din bucla interioară.</span>
+for sport in sporturi:
+<span># Bucla interioară se execută complet, de la început până la sfârșit,</span> 
+<span>#pentru fiecare element din bucla exterioară.</span>
+    for zi in zile:
+        if sport.startswith("T"):
+            print(f"Sportul: {sport}, Ziua: {zi} - timpul: {când[0]}")
+        else:
+            print(f"Sportul: {sport}, Ziua: {zi} - timpul: {când[1]}")
+
+<span>==> Sportul: Tenis, Ziua: Luni - timpul: dimineaţă</span>
+<span>==> Sportul: Tenis, Ziua: Marţi - timpul: dimineaţă</span>
+<span>==> Sportul: Fotbal, Ziua: Luni - timpul: după amiază</span>
+<span>==> Sportul: Fotbal, Ziua: Marţi - timpul: după amiază</span>
+</code></pre>
+
+<pre><code>listă_nivel_unu = [7, 8]
+număr_repetări = 2
+listă_de_elemente_repetate = []
+for element in listă_nivel_unu:
+    for _ in range(număr_repetări):
+        listă_de_elemente_repetate.append(element)
+print(listă_de_elemente_repetate) <span>==> [7, 7, 8, 8]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>În Python, utilizarea caracterului de subliniere simplă (_) într-o buclă de tipul "for _ in" ... reprezintă o
+          convenție standard de denumire pentru a desemna o variabilă de tip "placeholder" sau una a cărei valoare nu
+          este utilizată (variabilă "de unică folosință"). Aceasta semnalează oricui citește codul (precum și
+          instrumentelor de analiză a codului) că variabila buclei este necesară din punct de vedere sintactic, dar
+          valoarea sa efectivă nu va fi folosită în corpul buclei.
+
+          Din punct de vedere tehnic, "_" este un nume de variabilă absolut valid și obișnuit în Python. Cu toate
+          acestea, dezvoltatorii îl aleg exclusiv pentru a indica faptul că valoarea variabilei nu prezintă interes.</p>
+
+        <p>In Python, the single underscore (_) in a "for _ in" ... loop is a standard naming convention used to
+          indicate a throwaway or placeholder variable. It signals to anyone reading the code (and to code analysis
+          tools) that the loop variable is required by Python's syntax but its actual value will not be used inside the
+          loop body.
+
+          Technically, "_" is a completely valid, normal variable name in Python. However, developers choose it
+          exclusively as a "don't care" marker.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3>itertools.repeat() built-in Python function</h3>
+
+      <p><a href="https://docs.python.org/3/library/itertools.html" target="_blank" rel="noopener">itertools — Functions
+          creating iterators for efficient looping</a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>Pentru scenarii de repetiție mai complexe sau atunci când se lucrează cu iteratoare, aceste funcții din
+            modulul itertools pot fi utile. Creează un iterator care returnează exact același obiect, în mod repetat, la
+            infinit sau de un număr fix de ori.</p>
+          <p>Oferă o eficiență și o viteză remarcabile în ceea ce privește utilizarea memoriei și procesarea datelor,
+            întrucât transmite fluxuri de referințe către un singur obiect, în loc să construiască o listă complet nouă
+            în memorie.</p>
+        </div>
+
+        <div>
+          <p>For more complex repetition scenarios or when working with iterators, these functions from the itertools
+            module can be useful. It creates an iterator yielding the exact same object, repeatedly infinitely or for a
+            fixed number of times.</p>
+          <p>It offers remarkable efficiency and speed in memory usage and data processing, as it streams references to
+            a single object rather than constructing an entirely new list in memory.</p>
+        </div>
+      </div>
+
+<pre><code>import itertools
+
+<span># Creează o listă formată din repetarea unei singure valori.</span>
+listă_repetată = list(itertools.repeat(7, 4))
+print(listă_repetată)  <span>==> [7, 7, 7, 7]</span>
+
+
+<span># Repetă un cuvânt de 3 ori</span>
+cuvinte = list(itertools.repeat("Python", 3))
+print(cuvinte) <span>==> ['Python', 'Python', 'Python']</span>
+
+<span># zip() pentru a adăuga o constantă</span>
+numere_pare = [12, 14, 16]
+<span># Asociază fiecare număr unic cu aceeași stare constantă.</span>
+tupluri = list(zip(numere_pare, itertools.repeat("par")))
+print(tupluri) <span>==>[(12, 'par'), (14, 'par'), (16, 'par')]</span>
+</code></pre>
+
+
+<pre><code>from itertools import repeat
+
+<span># Generează o listă cu 4 șiruri identice</span>
+listă = list(repeat("Fluviu", 4))
+print(listă) <span>==> ['Fluviu', 'Fluviu', 'Fluviu', 'Fluviu']</span>
+</code></pre>
+
+<pre><code>from itertools import repeat
+
+<span># Execuție în blocuri</span>
+rezultat = ["Mergi acolo!" for _ in repeat(None, 3)]
+print(rezultat) <span>==> ['Mergi acolo!', 'Mergi acolo!', 'Mergi acolo!']</span>
+
+<span># Definește șirul de intrare și numărul de repetări.</span>
+text = "Mergi acolo!"
+n = 3
+
+<span># Folosește map și itertools.repeat pentru a duplica șirul,</span> 
+<span>#apoi unește elementele cu spații.</span>
+șir_repetat = [" ".join(map(str, repeat(text, n)))]
+print(șir_repetat) <span>==> [Mergi acolo! Mergi acolo! Mergi acolo!]</span>
+</code></pre>
+
+<pre><code>from itertools import repeat
+
+<span># Definește o listă și numărul de repetări.</span>
+cuvinte = ["salut", "lume", "python"]
+repetiții = 3
+
+<span># Repetă fiecare șir și elimină spațiul final.</span>
+rezultat = list(map(lambda cuvânt: ((cuvânt + " ") * repetiții).strip(), cuvinte))
+
+print(rezultat) <span>==> ['salut salut salut', 'lume lume lume', 'python python python']</span>
+</code></pre>
+
+      <p class="bold">itertools.chain.from_iterable</p>
+
+      <div class="grid-container">
+        <p>Este o metodă eficientă utilizată în Python pentru a aplatiza un singur iterabil imbricat (o listă de liste
+          sau un generator de secvențe) într-un singur iterator plat.</p>
+
+        <p>Is a memory-efficient method in Python used to flatten a single nested iterable (like a list of lists or a
+          generator yielding sequences) into a single flat iterator</p>
+      </div>
+
+<pre><code>import itertools
+a_b = ['a', 'b']
+rptă = 2
+listă = list(
+itertools.chain.from_iterable(itertools.repeat(elm, rptă) for elm in a_b))
+print(listă) <span>==> ['a', 'a', 'b', 'b']</span>
+
+<span># Un singur obiect iterabil care conține liste imbricate</span>
+listă_imbricată = [[1, 2], [3, 4], [5, 6]]
+<span># Aplatizare</span>
+iterator_plat = itertools.chain.from_iterable(listă_imbricată)
+print(iterator_plat) <span>==> &lt;itertools.chain object at 0x00000186E17454E0></span>
+<span># Convertește într-o listă pentru a vedea rezultatul</span>
+print(list(iterator_plat)) <span>==> [1, 2, 3, 4, 5, 6]</span>
+</code></pre>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

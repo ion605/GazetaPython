@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/main-style.css">
+
+
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 4.1.3 Lucru cu liste</title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-1 navigare">
+
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                      <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                      <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                      <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                      <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-1"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaS.svg" alt="S" class="logo">
+                    <h1>4.0 Tipuri secvență - Sequence Types</h1>
+                </div>
+            </div>
+
+            <div class="second-empty-1-1"></div>
+
+            <div class="subtitlu-1-1">
+                <div class="grid-cell">
+                    <h2>4.1.3 Lucrul cu liste - Working with Lists</h2>
+                </div>
+            </div>
+
+            <div class="third-empty-1-1"></div>
+
+            <div class="ro-en-1-1 container-links ro-en">
+                <div>
+                    <ul>
+                        <li>În acest capitol veți studia:</li>
+                        <li><a href="#LM">Crearea de liste multidimensionale</a>
+                            <ul>
+                                <li><a href="#LMA">Inițializare directă</a></li>
+                                <li><a href="#LMB">Creare dinamică folosind bucle</a></li>
+                                <li><a href="#LMC">Înțelegerile listelor</a></li>
+                                <li><a href="#LMD">Append pentru a crea liste dinamice multidimensionale</a></li>
+                                <li><a href="#LME">NumPy (pentru operații numerice)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#AL">Aplatizarea listelor multidimensionale</a>
+                            <ul>
+                                <li><a href="#ALA">Performanță la aplatizarea listelor</a></li>
+                                <li><a href="#ALB">Aplatizarea listelor cu NumPy</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#LB">Împărțirea listelor în bucăți</a></li>
+                        <li><a href="#SC">Utilizarea unei liste ca stivă sau coadă</a></li>
+                        <li><a href="#UL">Decizia privind utilizarea listelor</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <ul>
+                        <li>In this chapter, you will study:</li>
+                        <li><a href="#LM">Creating Multidimensional Lists</a>
+                            <ul>
+                                <li><a href="#LMA">Direct Initialization</a></li>
+                                <li><a href="#LMB">Dynamic Creation with Loops</a></li>
+                                <li><a href="#LMC">List Comprehension</a></li>
+                                <li><a href="#LMD">Appending to Create Dynamic Multidimensional Lists</a></li>
+                                <li><a href="#LME">NumPy (for numerical operations)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#AL">Flattening Multidimensional Lists</a>
+                            <ul>
+                                <li><a href="#ALA">Performance While Flattening Lists</a></li>
+                                <li><a href="#ALB">Flattening Lists With NumPy</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#LB">Splitting Lists Into Chunks</a></li>
+                        <li><a href="#SC">Using a List as a Stack or Queue</a></li>
+                        <li><a href="#UL">Deciding Whether to Use Lists</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="forth-empty-1-1"></div>
+
+        <div class="contents-1-1">
+
+            <div class="grid-container">
+                <p>Parcurgerea unei liste în Python presupune procesarea fiecărui element din listă. Există mai multe
+                    metode în acest sens, fiecare fiind potrivită pentru situații de utilizare diferite: utilizarea unei
+                    bucle "for" (cea mai frecventă).</p>
+
+                <p>Iterating over a list in Python involves processing each element within the list. Several methods
+                    exist for this, each suited for different use cases: Using a for loop (most common).</p>
+            </div>
+
+            <h2 id="LM">Crearea de liste multidimensionale - Creating Multidimensional Lists</h2>
+
+            <div class="grid-container">
+                <p>În Python, listele multidimensionale sunt implementate ca liste de liste (sau liste de liste de liste
+                    și așa mai departe). Acest lucru permite structuri flexibile care pot reprezenta date în dimensiuni
+                    multiple, similar tabelelor sau matricelor din alte limbaje de programare.</p>
+
+                <p>In Python, multidimensional lists are implemented as lists of lists (or lists of lists of lists, and
+                    so on). This allows for flexible structures that can represent data in multiple dimensions, similar
+                    to arrays or matrices in other languages.</p>
+            </div>
+
+            <h3 id="LMA">Inițializare directă - Direct Initialization</h3>
+
+<pre><code><span># Listă 2D (matrice)</span>
+listă_nivel_2d = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+<span># Listă 3D (cub)</span>
+listă_nivel_3d = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+</code></pre>
+
+            <h3 id="LMB">Creare dinamică folosind bucle - Dynamic Creation with Loops</h3>
+
+<pre><code>matrice = []
+rânduri = 3
+coloane = 2
+
+for r in range(rânduri):
+    rând = []
+    for c in range(coloane):
+        rând.append(rânduri * 2)  <span># adaugă o valoare specifică aici</span>
+    matrice.append(rând)
+    
+matrice <span>==> [[6, 6], [6, 6], [6, 6]]</span>
+</code></pre>
+
+<pre><code>matrice = []
+for rând in range(5):
+    matrice.append([])
+    for _ in range(5):
+        matrice[rând].append(len(range(5))) <span># adaugă o valoare aici</span>
+        
+matrice <span>==> 
+[[5, 5, 5, 5, 5],
+ [5, 5, 5, 5, 5],
+ [5, 5, 5, 5, 5],
+ [5, 5, 5, 5, 5],
+ [5, 5, 5, 5, 5]]</span>
+</code></pre>
+
+            <h3 id="LMC">Înțelegerile listelor - List Comprehension</h3>
+
+            <div class="grid-container">
+                <p>Înțelegerile listelor oferă o modalitate concisă și eficientă de a crea liste multidimensionale, în
+                    special atunci când se inițializează cu valori implicite sau pe baza unui model.</p>
+
+                <p>List comprehensions offer a concise and efficient way to create multidimensional lists, especially
+                    when initializing with default values or based on a pattern.</p>
+            </div>
+
+<pre><code><span># Creează o matrice 3x3 inițializată cu zerouri</span>
+[[0 for _ in range(3)] for _ in range(3)] <span>==> [[0, 0, 0], [0, 0, 0], [0, 0, 0]]</span>
+
+<span># Creează o matrice 2x4 cu valori incrementale</span>
+[[i * 4 + j for j in range(4)] for i in range(2)] <span>==> [[0, 1, 2, 3], [4, 5, 6, 7]]</span>
+</code></pre>
+
+            <p>Dimensiuni superioare (3D și dincolo de acesta) - Higher Dimensions (3D and Beyond)</p>
+
+<pre><code><span># O listă 3D de dimensiuni 2x3x4 (2 nivele, 3 rânduri, 4 coloane) completată cu zerouri</span>
+nivele = 2
+rânduri = 3
+coloane = 4
+
+listă_3d = [[[0 for _ in range(coloane)] for _ in range(rânduri)] for _ in range(nivele)]
+
+listă_3d <span>==> 
+[[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]],
+ [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]]</span>
+</code></pre>
+
+
+            <h3 id="LMD">Adăugare pentru a crea liste dinamice multidimensionale - Appending to Create Dynamic
+                Multidimensional Lists</h3>
+
+<pre><code>listă_dinamică_2d = []
+listă_dinamică_2d.append([10, 20])
+listă_dinamică_2d.append([30, 40])
+print(listă_dinamică_2d) <span>==> [[10, 20], [30, 40]]</span>
+</code></pre>
+
+
+            <h3 id="LME">NumPy (pentru operații numerice) - NumPy (for numerical operations)</h3>
+
+            <div class="grid-container">
+                <div>
+                    <p>Pentru calcule numerice care implică tabele multidimensionale mari, biblioteca NumPy este foarte
+                        recomandată. Aceasta oferă obiecte de tip tablou eficiente și o gamă largă de funcții
+                        matematice.</p>
+                    <p>Pentru a crea liste multidimensionale în Python folosind NumPy, convertești liste Python
+                        imbricate într-un obiect numpy.ndarray cu ajutorul funcției np.array(). Deși Python utilizează
+                        liste imbricate, NumPy le optimizează, transformându-le în tablouri multidimensionale omogene și
+                        de înaltă performanță.</p>
+                </div>
+
+                <div>
+                    <p>For numerical computations involving large multidimensional arrays, the NumPy library is highly
+                        recommended. It provides efficient array objects and a wide range of mathematical functions.</p>
+                    <p>To create multidimensional lists in Python using NumPy, you convert nested Python lists into a
+                        numpy.ndarray object using the np.array() function. While Python uses nested lists, NumPy
+                        optimizes these into homogenous, high-performance multidimensional arrays</p>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Din liste Python imbricate</dt>
+                    <dd>transmiterea unei liste de liste (pentru 2D) sau a unei liste de liste de liste (pentru 3D)
+                        către np.array()</dd>
+                </dl>
+
+                <dl>
+                    <dt>From Nested Python Lists</dt>
+                    <dd>passing a list of lists (for 2D) or a list of lists of lists (for 3D) into np.array()</dd>
+                </dl>
+            </div>
+
+<pre><code>import numpy as np
+
+<span># Crearea unui tablou bidimensional (matrice: 2 linii, 2 coloane)</span>
+matrice_2d = np.array([[1, 2], [4, 5]])
+
+<span># Crearea unui tablou 3D (2 nivele, 2 rânduri, 2 coloane)</span>
+matrice_3d = np.array([
+    [[1, 2], [4, 5]],
+    [[6, 7], [8, 9]]
+])
+
+print("2D Array:\n", matrice_2d)
+<span>==> 2D Array:
+ [[1 2]
+ [4 5]]</span>
+print("3D Array Shape:", matrice_3d.shape)
+<span>==> 3D Array Shape: (2, 2, 2)</span>
+</code></pre>
+
+<pre><code>import numpy as np
+
+<span># Creați un tablou 2D folosind NumPy</span>
+numpy_array = np.array([[1, 2], [3, 4]])
+print(numpy_array)
+<span>==> [[1 2]
+ [3 4]]</span>
+
+<span># Creează o matrice 2x3 completată cu numărul 4</span>
+array_patru = np.full((2, 3), 4)
+print(array_patru)
+<span>==> [[4 4 4]
+ [4 4 4]]</span>
+
+<span># Creați tablouri cu valori specifice sau numere aleatorii</span>
+zerouri_array = np.zeros((3, 3))
+print(zerouri_array)
+<span>==> [[0. 0. 0.]
+ [0. 0. 0.]
+ [0. 0. 0.]]</span>
+
+random_array = np.random.rand(2, 2)
+print(random_array)
+<span>==> [[0.59363499 0.60672817]
+ [0.62155895 0.42010772]]</span>
+
+<span># Reconfigurarea formei unui tablou secvențial</span>
+<span># Generează numerele de la 0 la 11 și reorganizează-le într-o matrice 3x4</span>
+reorganizează_array = np.arange(12).reshape(3, 4)
+
+print(reorganizează_array)
+<span>==> [[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]]</span>
+</code></pre>
+
+            <p><a href="https://numpy.org/doc/stable/user/basics.creation.html" target="_blank"
+                    rel="noopener">Documentație privind crearea de tablouri NumPy.</a></p>
+            <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="AL">Aplatizarea listelor multidimensionale - Flattening Multidimensional Lists</h2>
+
+            <div class="grid-container">
+
+                <p>Aplatizarea unei liste imbricate implică convertirea unei liste care conține alte liste într-o
+                    singură listă unidimensională. Acest lucru se poate realiza prin mai multe metode.</p>
+
+                <p>Flattening a nested list in Python involves converting a list containing other lists (sublists) into
+                    a single, one-dimensional list. Several methods can achieve this.</p>
+            </div>
+
+<pre><code><span># Pentru o listă 2D simplă (o listă de liste)</span>
+matrice = [[8, 7, 6], [5, 4], [3, 2, 1]
+
+<span># o expresie de generare a unei liste (comprehension)</span>
+aplatizat = [element for sublistă in matrice for element in sublistă]
+aplatizat.reverse()
+
+print(aplatizat) <span>==> [1, 2, 3, 4, 5, 6, 7, 8]</span>
+</code></pre>
+
+<pre><code><span># generator recursiv cu yield</span>
+def aplatiza(listă):
+    for element in listă:
+        if isinstance(element, list):
+            yield from aplatiza(element)
+        else:
+            yield element
+
+listă_imbricată = [1, [2, 3], [[4, 5], 6], 7]
+aplatizat = list(aplatiza(listă_imbricată))
+
+print(aplatizat) <span>==> [1, 2, 3, 4, 5, 6, 7]</span>
+</code></pre>
+
+<pre><code><span># for loop și extend()</span>
+listă_imbricată = [[1, 2], [3, 4, 5], [6]]
+listă_aplatizată = []
+for sublistă in listă_imbricată:
+    listă_aplatizată.extend(sublistă)
+
+print(listă_aplatizată) <span>==> [1, 2, 3, 4, 5, 6]</span>
+</code></pre>
+
+<pre><code><span># aplatizare și extindere</span>
+def aplatizare_extindere(liste_imbricate):
+    listă_plată = []
+    for rând in liste_imbricate:
+        listă_plată.extend(rând)
+    return listă_plată
+
+matrice = [
+    [9, 3, 8, 3],
+    [4, 5, 2, 8],
+    [6, 4, 3, 1],
+    [1, 0, 4, 5],
+]
+aplatizare_extindere(matrice)
+<span>==> [9, 3, 8, 3, 4, 5, 2, 8, 6, 4, 3, 1, 1, 0, 4, 5]</span>
+</code></pre>
+
+<pre><code><span># aplatizare și concatenare</span>
+def aplatizare_concatenare(liste_imbricate):
+    listă_imbricată = []
+    for rând in liste_imbricate:
+        listă_imbricată += rând
+    return listă_imbricată
+
+matrice = [
+    [9, 3, 8, 3],
+    [4, 5, 2, 8],
+    [6, 4, 3, 1],
+    [1, 0, 4, 5],
+]
+aplatizare_concatenare(matrice)
+<span>==> [9, 3, 8, 3, 4, 5, 2, 8, 6, 4, 3, 1, 1, 0, 4, 5]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Apelul către funcția aplatizare_concatenare returnează același rezultat ca și apelul anterior către
+                    funcția aplatizare_extindere. Ambele funcții sunt echivalente și interschimbabile.
+
+                <p>The call to aplatizare_concatenare returns the same result as your previous aplatizare_extindere.
+                    Both functions are equivalent and interchangeable.
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Aplatizarea unei liste cu funcția reduce()</dt>
+                    <dd>Această funcție aplică o operație cumulativă asupra elementelor dintr-o listă, reducând-o la o
+                        singură valoare. În acest caz, operația este concatenarea listelor, efectuată folosind
+                        operatorul +.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Flattening a List with reduce() function</dt>
+                    <dd>This function applies a cumulative operation to the items in a list, reducing it to a single
+                        value. In this case, the operation is list concatenation, performed using the + operator.</dd>
+                </dl>
+            </div>
+
+<pre><code>from functools import reduce
+
+listă_imbricată = [[1, 2, 3], [4, 5], [6, 7]]
+listă = reduce(lambda x, y: x + y, listă_imbricată)
+
+print(listă) <span>==> [1, 2, 3, 4, 5, 6, 7]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Cum funcționează exemplul:</dt>
+                    <dd>lambda x, y: x + y: Aceasta este o funcție anonimă (lambda) care ia două liste, x (acumulatorul)
+                        și y (elementul curent) și le concatenează.</dd>
+                    <dd>reduce(): Această funcție iterează prin listă_imbricată.</dd>
+                    <dd>Prima iterație, ia primele două elemente: [1, 2, 3] și [4, 5]. Le concatenează pentru a produce
+                        [1, 2, 3, 4, 5].</dd>
+                    <dd>În a doua iterație, ia rezultatul anterior ([1, 2, 3, 4, 5]) și următorul element ([6, 7]). Le
+                        concatenează pentru a produce lista finală [1, 2, 3, 4, 5, 6, 7].</dd>
+                </dl>
+
+                <dl>
+                    <dt>How the example works:</dt>
+                    <dd>lambda x, y: x + y: This is an anonymous function (lambda) that takes two lists, x (the
+                        accumulator) and y (the current element), and concatenates them.</dd>
+                    <dd>reduce(): This function iterates through nested_list.</dd>
+                    <dd>First iteration, it takes the first two elements: [1, 2, 3] and [4, 5]. Concatenates them to
+                        produce [1, 2, 3, 4, 5].</dd>
+                    <dd>In the second iteration, it takes the previous result ([1, 2, 3, 4, 5]) and the next element
+                        ([6, 7]). It concatenates them to produce the final list [1, 2, 3, 4, 5, 6, 7].</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>operator.iconcat pentru performanțe mai bune.</dt>
+                    <dd>Pentru o versiune mai eficientă, în special pentru liste mari, puteți utiliza funcția iconcat
+                        din modulul operator. Aceasta efectuează o concatenare in-place, modificând lista in-place.</dd>
+                </dl>
+
+                <dl>
+                    <dt>operator.iconcat for better performance</dt>
+                    <dd>For a more efficient version, especially for large lists, you can use the iconcat function from
+                        the operator module. This performs an in-place concatenation, which modifies the list in place.
+                    </dd>
+                </dl>
+            </div>
+
+<pre><code>from functools import reduce
+from operator import iconcat
+
+listă_imbricată = [[1, 2, 3], [4, 5], [6, 7]]
+listă = reduce(iconcat, listă_imbricată, [])
+
+print(listă) <span>==> [1, 2, 3, 4, 5, 6, 7]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație</dt>
+                    <dd>operator.iconcat: Funcția care concatenează eficient listele.</dd>
+                    <dd>[]: Al treilea argument al funcției reduce() este un inițializator. În acest caz, o listă goală,
+                        care servește ca punct de plecare pentru operațiunea de reducere.</dd>
+
+                </dl>
+
+                <dl>
+                    <dt>Explanation</dt>
+                    <dd>operator.iconcat: The function that efficiently concatenates the lists.</dd>
+                    <dd>[]: The third argument of the reduce() function is an initializer. In this case, an empty list,
+                        which serves as the starting point for the reduction operation. </dd>
+                </dl>
+            </div>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>itertools.chain()</dt>
+                    <dd>Deși reduce() funcționează, cea mai comună și mai eficientă modalitate de a aplatiza o listă în
+                        Python este utilizarea itertools.chain. Aceasta creează un iterator, care este foarte eficient
+                        din punct de vedere al memoriei.</dd>
+                </dl>
+
+                <dl>
+                    <dt>itertools.chain</dt>
+                    <dd>Although reduce() works, the more common and efficient way to flatten a list in Python is to use
+                        itertools.chain. This creates an iterator, which is very memory-efficient.</dd>
+                </dl>
+            </div>
+
+<pre><code>import itertools
+
+<span># Despachetează lista imbricată</span>
+listă_imbricată = [[1, 2], [3, 4, 5], [6]]
+listă_aplatizată = list(itertools.chain(*listă_imbricată))
+print(listă_aplatizată) <span>==> [1, 2, 3, 4, 5, 6]</span>
+
+<span># .from_iterable</span>
+matrice = [[1, 2], [3, 4]]
+aplatizat = list(itertools.chain.from_iterable(matrice))
+print(aplatizat) <span>==> [1, 2, 3, 4]</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>sum():</dt>
+                    <dd>Această metodă poate fi utilizată pentru liste de liste în care elementele sunt, de asemenea,
+                        liste. Argumentul de început (o listă goală) este obligatoriu.</dd>
+                </dl>
+
+                <dl>
+                    <dt>sum():</dt>
+                    <dd>This method can be used for lists of lists where the elements are also lists. The start argument
+                        (an empty list) is mandatory.</dd>
+                </dl>
+            </div>
+
+<pre><code>listă_imbricată = [[1, 2], [3, 4, 5], [6]]
+listă_aplatizată = sum(listă_imbricată, [])
+print(listă_aplatizată) <span>==> [1, 2, 3, 4, 5, 6]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="ALA">Performanță la aplatizarea listelor - Performance While Flattening Lists</h2>
+
+<pre><code>from functools import reduce
+from itertools import chain
+from operator import add, concat, iconcat
+
+def aplatizare_extindere(liste_imbricate):
+    listă_plată = []
+    for rând in liste_imbricate:
+        listă_plată.extend(rând)
+    return listă_plată
+
+def aplatizare_concatenare(liste_imbricate):
+    listă_plată = []
+    for rând in liste_imbricate:
+        listă_plată += rând
+    return listă_plată
+
+def aplatizare_înțelegere(liste_imbricate):
+    return [element for rând in liste_imbricate for element in rând]
+
+def aplatizare_lanţ(liste_imbricate):
+    return list(chain.from_iterable(liste_imbricate))
+
+def aplatizare_reducere_lambda(liste_imbricate):
+    return list(reduce(lambda x, y: x + y, liste_imbricate, []))
+
+def aplatizare_reducere_adăugare(liste_imbricate):
+    return reduce(add, liste_imbricate, [])
+
+def aplatizare_reducere_concat(liste_imbricate):
+    return reduce(concat, liste_imbricate, [])
+
+def aplatizare_reducere_iconcat(liste_imbricate):
+    return reduce(iconcat, liste_imbricate, [])
+
+def aplatizare_sumă(liste_imbricate):
+    return sum(liste_imbricate, [])
+
+from timeit import timeit
+
+SIZE = 1000
+TO_MS = 1000
+NUM = 10
+FUNCȚII = [
+    "aplatizare_extindere", "aplatizare_concatenare", "aplatizare_înțelegere",
+    "aplatizare_lanţ", "aplatizare_reducere_lambda", "aplatizare_reducere_adăugare",
+    "aplatizare_reducere_concat", "aplatizare_reducere_iconcat", "aplatizare_sumă",
+]
+
+liste_imbricate = [list(range(SIZE))] * SIZE
+
+rezultate = {
+    funcţie: timeit(f"{funcţie}(liste_imbricate)", globals=globals(), number=NUM)
+    for funcţie in FUNCȚII
+}
+
+print(f"Timpul de aplatizare a {SIZE}x{SIZE} liste_imbricate (in milliseconds):\n")
+
+for funcţie, timp in sorted(rezultate.items(), key=lambda rezultat: rezultat[1]):
+    print(f"{funcţie + '()':.&lt;40}{timp * TO_MS / NUM:.>7.2f} ms")
+<span>==> Timpul de aplatizare a 1000x1000 liste_imbricate (in milliseconds):</span>
+<span>==> 
+aplatizare_concatenare()..................31.61 ms
+aplatizare_reducere_iconcat().............33.01 ms
+aplatizare_extindere()....................36.51 ms
+aplatizare_lanţ().........................40.38 ms
+aplatizare_înțelegere()...................55.76 ms
+aplatizare_sumă().......................3333.73 ms
+aplatizare_reducere_concat()............3338.26 ms
+aplatizare_reducere_lambda()............3351.69 ms
+aplatizare_reducere_adăugare()..........3357.71 ms</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>În acest rezultat, puteți observa că există diferențe semnificative între cele mai rapide și cele mai
+                    lente funcții. Dacă rulați scriptul de mai multe ori, veți vedea că funcțiile, concatenare(),
+                    reducere_iconcat() şi extindere() sunt întotdeauna pe primele trei locuri. Acest comportament are
+                    sens deoarece aceste funcții efectuează mutații in-place asupra unui obiect listă existent.
+
+                    Pentru soluții eficiente din punct de vedere al memoriei, se recomandă lanţ()-chain().</p>
+
+                <p>In this output, you can see that there are significant differences between the fastest and slowest
+                    functions. If you run the script several times, then you'll see that the functions concatenation(),
+                    reduce_iconcat() and extend() are always on the first three places. This behavior makes sense
+                    because these functions perform in-place mutation on an existing list object.
+
+                    If you're looking for a memory-efficient solution, then chain() is recommended.</p>
+            </div>
+            <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="NP">Aplatizarea listelor cu NumPy - Flattening Lists With NumPy</h2>
+
+            <p><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flatten.html" target="_blank"
+                    rel="noopener">numpy.ndarray.flatten</a></p>
+
+            <div class="grid-container">
+                <p>NumPy oferă metode eficiente pentru aplatizarea tablourilor multidimensionale, inclusiv a celor
+                    create din liste Python. Pentru a aplatiza o listă Python obișnuită folosind NumPy, convertești
+                    lista într-un numpy.array, aplici metoda numpy.ndarray.flatten, iar apoi o reconvertești într-o
+                    listă Python standard folosind .tolist(). Metoda principală pentru aplatizarea unui tablou NumPy
+                    este flatten().</p>
+
+                <p>NumPy provides efficient methods for flattening multi-dimensional arrays, including those created
+                    from Python lists. To flatten a regular Python list using NumPy, you convert the list into a
+                    numpy.array, apply the numpy.ndarray.flatten method, and then convert it back to a standard Python
+                    list using .tolist(). The primary method for flattening a NumPy array is flatten().</p>
+            </div>
+
+<pre><code>import numpy as np
+
+<span># Creați o listă multidimensională</span>
+liste_imbricate =  [[0, 3, 2, 3],[3, 5, 2, 6],[8, 4, 3, 1]]
+
+<span># Convertiți lista într-un array NumPy</span>
+np_matrice = np.array(liste_imbricate)
+
+<span># Aplatizați array-ul</span>
+matrice_aplatizată = np_matrice.flatten()
+
+print(matrice_aplatizată)  <span>==> [0 3 2 3 3 5 2 6 8 4 3 1]</span>
+print(type(matrice_aplatizată)) <span>==> &lt;class 'numpy.ndarray'></span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Conversia înapoi la o listă Python (opțional)</dt>
+                    <dd>Dacă este necesară o listă Python standard după aplatizare, metoda tolist() poate fi utilizată
+                        pe matricea NumPy aplatizată.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Converting back to a Python List (Optional)</dt>
+                    <dd>If a standard Python list is required after flattening, the tolist() method can be used on the
+                        flattened NumPy array.</dd>
+                </dl>
+            </div>
+
+<pre><code>import numpy as np
+
+<span># Creați o listă multidimensională</span>
+liste_imbricate =  [[0, 3, 2, 3],[3, 5, 2, 6],[8, 4, 3, 1]]
+np_matrice = np.array(liste_imbricate)
+matrice_aplatizată = np_matrice.flatten()
+
+<span># Convertește tabloul NumPy aplatizat înapoi într-o listă Python</span>
+listă_aplatizată = matrice_aplatizată.tolist()
+print(listă_aplatizată)  <span>==> [0, 3, 2, 3, 3, 5, 2, 6, 8, 4, 3, 1]</span>
+print(type(listă_aplatizată)) <span>==> &lt;class 'list'></span>
+</code></pre>
+
+<pre><code>import numpy as np
+
+matrice = np.array([[1, 2], [3, 4]])
+aplatizat = matrice.flatten().tolist()
+print(aplatizat, "-", type(aplatizat)) <span>==> [1, 2, 3, 4] - &lt;class 'list'></span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Considerații pentru flatten():</dt>
+                    <dd>Creează o copie: flatten() returnează o copie nouă a matricei, ceea ce înseamnă că modificările
+                        aduse matricei aplatizate nu vor afecta matricea originală.</dd>
+                    <dd>Parametrul Order: Poate fi utilizat pentru a specifica modul în care elementele sunt citite în
+                        timpul aplatizării (exe. 'C' pentru rândul major, 'F' pentru coloana major).</dd>
+                    <dd>Necesită forme uniforme: Toate sublistele trebuie să aibă exact aceeași lungime. O listă
+                        neregulată, precum [[1, 2], [3]], NumPy va crea un tablou de referințe către obiecte, în loc de
+                        o secvență unidimensională (platǎ).</dd>
+                    <dd>Impune un singur tip de date: NumPy arrays impun un singur tip de date pentru toate elementele.
+                        Dacă lista conține un amestec de numere întregi și un singur șir de caractere (de exemplu, [[1,
+                        2], [3, 'apple']]), NumPy va converti toate numerele în șiruri de caractere.</dd>
+
+                    <dt>Alternative (pentru diferite cazuri de utilizare):</dt>
+                    <dd>np.ravel(): Aplatizează o matrice, dar încearcă să returneze o vizualizare a matricei originale,
+                        dacă este posibil, ceea ce poate fi mai eficient din punct de vedere al memoriei atunci când se
+                        lucrează cu matrice mari.</dd>
+                    <dd>np.concatenate() cu ravel(): Pentru aplatizarea unei liste de matrice NumPy, np.concatenate()
+                        poate fi utilizat pentru a le combina, urmat de ravel() pentru a aplatiza rezultatul.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Considerations for flatten():</dt>
+                    <dd>Creates a Copy: flatten() always returns a new copy of the array, meaning changes to the
+                        flattened array will not affect the original array.</dd>
+                    <dd>Order Parameter: The order parameter can be used to specify how the elements are read during
+                        flattening (e.g., 'C' for row-major, 'F' for column-major).</dd>
+                    <dd>Requires Uniform Shapes: The sublists must all be the exact same length. If you pass an
+                        irregular list like [[1, 2], [3]], NumPy will create an array of object references rather than a
+                        flat 1D sequence.</dd>
+                    <dd>Forces Single Data Types: NumPy arrays force all elements into a single data type. If your list
+                        contains a mix of integers and a single string (e.g., [[1, 2], [3, 'apple']]), NumPy will
+                        convert all the numbers into strings.</dd>
+
+                    <dt>Alternatives (for different use cases):</dt>
+                    <dd>np.ravel(): This function also flattens an array but attempts to return a view of the original
+                        array if possible, which can be more memory-efficient when dealing with large arrays.</dd>
+                    <dd>np.concatenate() with ravel(): For flattening a list of NumPy arrays, np.concatenate() can be
+                        used to combine them, followed by ravel() to flatten the result.</dd>
+                </dl>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="LB">Împărțirea listelor în bucăți - Splitting Lists Into Chunks</h2>
+            <div class="grid-container">
+                <p>Dacă întreaga listă este prea mare pentru a încăpea în memoria calculatorului, folosește generatoare,
+                    itertools.batched (Python 3.12+) sau împarte-o în segmente (chunking).</p>
+
+                <p>If the entire list is too large to fit in the computer's memory use generators, itertools.batched
+                    (Python 3.12+) or chunking it.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Funcția Generator (Recomandată pentru uz general)</dt>
+                    <dd>Această metodă este eficientă și consumă puțină memorie, în special pentru listele mari,
+                        deoarece generează fragmente unul câte unul, în loc să creeze toate fragmentele în memorie
+                        simultan.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Generator Function (Recommended for general use):</dt>
+                    <dd>This method is efficient and memory-friendly, especially for large lists, as it yields chunks
+                        one by one rather than creating all chunks in memory at once.</dd>
+                </dl>
+            </div>
+
+<pre><code>def listă_bucăți(listă, dim_bucății):
+    """Generează bucăți succesive de dimensiunea n din listă."""
+    for i in range(0, len(listă), dim_bucății):
+        yield listă[i: i + dim_bucății]
+
+lista_mea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+bucăți = list(listă_bucăți(lista_mea, 3))
+print(bucăți) <span>==> [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>buclă cu felierea listei:</dt>
+                    <dd>Pentru a împărți o listă Python în porțiuni de dimensiune fixă, o metodă comună și eficientă
+                        implică utilizarea unei bucle cu feliere de liste.</dd>
+                </dl>
+
+                <dl>
+                    <dt>loop with list slicing:</dt>
+                    <dd>To split a Python list into fixed-size chunks, one common and efficient method involves using a
+                        loop with list slicing.</dd>
+                </dl>
+            </div>
+
+<pre><code>def listă_în_bucăți(intrare, dim_bucăți):
+    """
+    Împarte o listă în blocuri de dimensiune fixă.
+
+    Argumente:
+    intrare: Lista care urmează să fie împărțită.
+    dim_bucăți (int): Dimensiunea dorită a fiecărui bloc.
+
+    Returnează:
+    listă: O listă de liste, unde fiecare listă interioară este un bloc.
+    """
+    bucăți = []
+    for i in range(0, len(intrare), dim_bucăți):
+        bucăți.append(intrare[i: i + dim_bucăți])
+    return bucăți
+
+<span># Exemplu de utilizare:</span>
+lista_mea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+dim_fixă_a_blocului = 3
+
+blocuri_rezultate = listă_în_bucăți(lista_mea, dim_fixă_a_blocului)
+print(blocuri_rezultate) <span>==> [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <ul>
+                    <li class="bold">Explicație: - listă_în_bucăți(intrare, dim_bucăți):</li>
+                    <li>Preia două argumente: intrare (lista care va fi segmentată) și dim_bucăți (dimensiunea dorită a
+                        fiecărei subliste).</li>
+                    <li>bucăți = []: inițializează o listă goală pentru a stoca sublistele rezultate.</li>
+                    <li>for i in range(0, len(intrare), dim_bucăți):: Această buclă iterează prin listă cu un pas egal
+                        cu dimensiune_bucăți.</li>
+                    <li>i reprezintă indexul de început al fiecărei bucăți.</li>
+                    <li>bucăți.append(intrare[i: i + dim_bucăți]): În fiecare iterație, o felie din intrare de la i la i
+                        + dim_bucăți este creată și adăugată la lista de bucăți. Aceasta creează efectiv bucățile de
+                        dimensiune fixă.</li>
+                    <li>return bucăți: Funcția returnează lista care conține toate bucățile generate.</li>
+                    <li>Această abordare este simplă și ușor de citit într-un mediu Jupyter Notebook. Ultimul fragment
+                        ar putea fi mai mic decât dim_bucăți dacă lungimea totală a listei nu este perfect divizibilă cu
+                        dimensiune_bucăți.</li>
+                </ul>
+
+                <ul>
+                    <li class="bold">Explanation: - list_into_chunks(input, chunk_size):</li>
+                    <li>Takes two arguments: input (the list to be chunked) and chunk_size (the desired size of each
+                        sub-list).</li>
+                    <li>chunks = []: initializes an empty list to store the resulting sub-lists.</li>
+                    <li>for i in range(0, len(input), chunk_size):: This loop iterates through the input with a step
+                        equal to chunk_size.</li>
+                    <li>i represents the starting index of each chunk.</li>
+                    <li> chunks.append(input[i:i + chunk_size]): In each iteration, a slice of the input from i to i +
+                        chunk_size is created and appended to the chunks list. This effectively creates the fixed-size
+                        chunks.</li>
+                    <li>return chunks: The function returns the list containing all the generated chunks.</li>
+                    <li>This approach is straightforward and easily readable within a Jupyter Notebook environment. The
+                        last chunk might be smaller than chunk_size if the total length of the list is not perfectly
+                        divisible by chunk_size.</li>
+                </ul>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea înțelegerii (comprehension) listelor</dt>
+                    <dd>Aceasta oferă o modalitate concisă de a crea o listă de fragmente pe o singură linie.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Using List Comprehension</dt>
+                    <dd>This provides a concise way to create a list of chunks in a single line</dd>
+                </dl>
+            </div>
+
+<pre><code>lista_mea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+mărimea_bucății = 3
+bucăți = [lista_mea[i: i + mărimea_bucății] for i in range(0, len(lista_mea), mărimea_bucății)]
+print(bucăți)  <span>==> [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <ul>
+                    <li>more_itertools.chunked</li>
+                    <li>Împarte un iterabil Python în liste mai mici, cu o dim. maximă specificată. Este o soluție
+                        eficientă, oferită de terți, pentru procesarea datelor în loturi, în situațiile în care modulul
+                        nativ itertools ar necesita prea mult cod repetitiv.</li>
+                    <li>Instalare</li>
+                    <li>Deoarece more_itertools nu face parte din biblioteca standard Python, trebuie să îl instalezi
+                        folosind pip: : pip install more-itertools.</li>
+                </ul>
+
+                <ul>
+                    <li>more_itertools.chunked</li>
+                    <li>Splits any Python iterable into smaller lists of a specified maximum size. It is an efficient,
+                        third-party solution for batch processing data when the native itertools module requires too
+                        much boilerplate code.</li>
+                    <li>Installation</li>
+                    <li>Because more_itertools is not part of Python's standard library, you must install it via pip:
+                        pip install more-itertools.</li>
+                </ul>
+            </div>
+
+<pre><code>from more_itertools import chunked
+
+numere = [1, 2, 3, 4, 5, 6, 7, 8]
+
+<span># Împărțiți în bucăți de dimensiune maximă 3</span>
+for lot in chunked(numere, 3):
+    print(lot)
+<span>==> 
+[1, 2, 3]
+[4, 5, 6]
+[7, 8]</span>
+</code></pre>
+
+<pre><code>
+from more_itertools import chunked as loturi
+
+try:
+    from itertools import loturi
+except ImportError:
+    from itertools import islice
+
+    def loturi(iterabil, n):
+        if n &lt; 1:
+            raise ValueError('n trebuie să fie cel puțin unu')
+        acest_iterabil = iter(iterabil)
+        while lot := tuple(islice(acest_iterabil, n)):
+            yield lot
+            
+lista_mea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+rezultat = loturi(lista_mea, 3)
+print(list(rezultat)) <span>==> [(1, 2, 3), (4, 5, 6), (7, 8, 9), (10,)]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Notă: În Python, := este operatorul de atribuire în cadrul unei expresii, cunoscut sub numele de
+                    operatorul morsă , deoarece seamănă cu ochii și colții unei morse. Introdus în Python 3.8, acesta
+                    atribuie o valoare unei variabile în interiorul unei expresii mai complexe și returnează aceași
+                    valoare.</p>
+
+                <p>Note: In Python, := is the assignment expression operator, widely known as the walrus operator
+                    because it looks like a walrus's eyes and tusks. Introduced in Python 3.8, it assigns a value to a
+                    variable inside a larger expression and returns that same value.</p>
+            </div>
+
+            <div class="grid-container">
+                <p>Dacă programului tău impune ca fiecare lot să aibă exact aceeași dimensiune, poți transmite
+                    argumentul strict=True. Acest lucru forțează Python să genereze o eroare de tip ValueError dacă
+                    datele nu pot fi împărțite perfect.</p>
+
+                <p>If your program requires every single batch to be exactly the same size, you can pass strict=True.
+                    This forces Python to raise a ValueError if the data cannot be divided perfectly.</p>
+            </div>
+
+<pre><code>from more_itertools import chunked
+
+numere = [1, 2, 3, 4, 5]
+
+try:
+    rezultat = list(chunked(numere, 2, strict=True))
+    print(rezultat)
+except ValueError as e:
+    print(f"A fost interceptată excepția ValueError: {e}")
+<span>==> A fost interceptată excepția ValueError: iterable is not divisible by n.</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>chunked() returnează liste (ceea ce încarcă elementele lotului direct în memorie), în timp ce
+                    more_itertools.ichunked() returnează sub-iteratori. Utilizează ichunked atunci când lucrezi cu
+                    fluxuri de date sau fișiere de dimensiuni uriașe și dorești să minimizezi consumul de memorie RAM.
+                </p>
+
+                <p>chunked() yields lists (which loads the batch items directly into memory), more_itertools.ichunked()
+                    yields sub-iterators. Use ichunked when dealing with massive data streams or files where you want to
+                    minimize RAM usage.</p>
+            </div>
+
+<pre><code>from more_itertools import ichunked
+
+<span># Returnează sub-iteratori în loc de liste</span>
+for iterator_de_loturi in ichunked(range(1000000), 1000):
+    <span># Procesează fiecare element fără a încărca toate cele 1000 de elemente într-o listă deodată</span>
+    for item in iterator_de_loturi:
+        print(item, end=", ")
+</code></pre>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea itertools.batched (Python 3.12+):</dt>
+                    <dd>Pentru versiunile Python 3.12 și mai noi, itertools.batched este cea mai simplă și eficientă
+                        metodă de a împărți un iterabil în blocuri de dimensiuni fixe.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Using itertools.batched (Python 3.12+):</dt>
+                    <dd>For Python versions 3.12 and newer, itertools.batched is the most straightforward and efficient
+                        way to split an iterable into fixed-size chunks.</dd>
+                </dl>
+            </div>
+
+<pre><code>from itertools import batched
+
+lista_mea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+mărimea_bucății = 3
+bucăți = list(batched(lista_mea, mărimea_bucății))
+print(bucăți) <span>==> [(1, 2, 3), (4, 5, 6), (7, 8, 9), (10,)]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>NumPy (pentru liste/matrici numerice):</dt>
+                    <dd>Dacă lucrați cu date numerice și este instalat NumPy, numpy.array_split poate fi utilizat pentru
+                        o divizare eficientă</dd>
+                </dl>
+
+                <dl>
+                    <dt>NumPy (for numerical lists/arrays)</dt>
+                    <dd>If working with numerical data and NumPy is installed, numpy.array_split can be used for
+                        efficient splitting</dd>
+                </dl>
+            </div>
+
+<pre><code>import numpy as np
+
+matrice = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+num_bucăți = 3
+bucăți = np.array_split(matrice, num_bucăți)
+print(bucăți)
+<span>==> [array([1, 2, 3, 4]), array([5, 6, 7]), array([ 8,  9, 10])]</span>
+
+<span># Convertește înapoi într-o listă de liste pentru afișare</span>
+print([list(bucată) for bucată in bucăți])
+<span>==> [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="SC">Utilizarea unei liste ca stivă sau coadă - Using a List as a Stack or Queue</h2>
+            <div class="grid-container">
+                <p>Listele pot fi folosite pentru a simula atât structuri de date de tip stivă, cât și cozi, deși pentru
+                    cozi, clasa collections.deque este în general mai eficientă.</p>
+
+                <p>Lists can be used to simulate both stack and queue data structures, although for queues, the
+                    collections.deque class is generally more efficient.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Listă ca stivă (LIFO - Ultimul intrat, primul ieșit)</dt>
+                    <dd>Push (adăugare element): Folosește metoda append() pentru a adăuga elemente la sfârșitul listei.
+                        Aceasta corespunde împingerii unui element în partea de sus a stivei.</dd>
+                </dl>
+
+                <dl>
+                    <dt>List as a Stack (LIFO - Last In, First Out)</dt>
+                    <dd>Push (add element): Use the append() method to add elements to the end of the list. This
+                        corresponds to pushing an item onto the top of the stack.</dd>
+                </dl>
+            </div>
+
+<pre><code>stivă = []
+stivă.append(10)
+stivă.append(20)
+print(stivă) <span>==> [10, 20]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Pop (eliminare element): Folosește metoda pop() fără argument pentru a elimina și returna ultimul
+                    element adăugat (partea de sus a stivei).</p>
+
+                <p>Pop (remove element): Use the pop() method without an argument to remove and return the last element
+                    added (the top of the stack).</p>
+            </div>
+
+<pre><code>stivă = [10, 20]
+element_extras = stivă.pop() <span># Extrage 20</span>
+<span># Ieșire: 20</span>
+print(element_extras) <span>==> 20</span>
+print(stivă)  <span>==> [10]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea unei liste ca și coadă (FIFO - First In, First Out):</dt>
+                    <dd>Punerea în coadă (adăugarea de elemente): Folosește metoda append() pentru a adăuga elemente la
+                        sfârșitul listei. Aceasta acționează ca partea din spate a cozii.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Using a List as a Queue (FIFO - First In, First Out): </dt>
+                    <dd>Enqueue (add element): Use the append() method to add elements to the end of the list. This acts
+                        as the rear of the queue.</dd>
+                </dl>
+            </div>
+
+<pre><code>queue = []
+queue.append('A') <span># Pune 'A' în coadă</span>
+queue.append('B') <span># Pune 'B' în coadă</span>
+print(queue)  <span>==> ['A', 'B']</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Eliminare element din coadă (eliminare): Se folosește metoda pop(0) pentru a elimina și returna
+                    elementul de la începutul listei (în partea de sus a cozii).</p>
+
+                <p>Dequeue (remove element): Use the pop(0) method to remove and return the element at the beginning of
+                    the list (the front of the queue).</p>
+            </div>
+
+<pre><code>coadă = ['A', 'B']
+
+element_de_scos = coadă.pop(0) <span># Scoate 'A' din coadă</span>
+
+<span># Ieșire: 'A'</span>
+print(element_de_scos) <span>==> A</span>
+print(coadă)  <span>==> ['B']</span>  
+</code></pre>
+
+            <div class="grid-container">
+                <p>Notă privind eficiența: Deși listele pot fi folosite pentru cozi, pop() este ineficient pentru liste
+                    mari, deoarece necesită mutarea tuturor elementelor ulterioare. Pentru implementările de cozi
+                    critice pentru performanță, se recomandă collections.deque.</p>
+
+                <p>Note on efficiency: While lists can be used for queues, pop() is inefficient for large lists as it
+                    requires shifting all subsequent elements. For performance-critical queue implementations,
+                    collections.deque is recommended.</p>
+            </div>
+            <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="UL">Decizia privind utilizarea listelor - Deciding Whether to Use Lists</h2>
+
+            <div class="grid-container">
+                <div>
+                    <p>Decizia de a utiliza o listă în Python se învârte în principal în jurul mutabilității și naturii
+                        ordonate a datelor pe care trebuie să le stocați.</p>
+                    <p>Folosiți o listă atunci când:</p>
+
+                    <p>Aveți nevoie de o colecție mutabilă:
+                        Dacă elementele din colecția dvs. vor trebui adăugate, eliminate sau modificate după creare, o
+                        listă este alegerea potrivită. Exemplele includ gestionarea unei liste de activități, a unei
+                        liste de utilizatori dintr-un sistem sau a unui inventar dinamic.</p>
+
+                    <p>Ordinea contează:
+                        Listele mențin ordinea în care sunt adăugate elementele. Dacă secvența de elemente este
+                        semnificativă, cum ar fi o secvență de operații sau un set de coordonate ordonate, listele sunt
+                        potrivite.</p>
+
+                    <p>Trebuie să stocați date eterogene (adesea folosite pentru date omogene):
+                        Deși listele pot stoca elemente de diferite tipuri de date (exe., numere întregi, șiruri de
+                        caractere, alte liste), acestea sunt frecvent utilizate pentru colecții de același tip.</p>
+
+                    <p>Trebuie să iterați peste colecție:
+                        Listele sunt ușor iterabile, ceea ce le face convenabile pentru parcurgerea elementelor și
+                        efectuarea de operații asupra acestora.</p>
+
+                    <p>Luați în considerare alternative la liste atunci când:</p>
+
+                    <p>Aveți nevoie de o colecție imuabilă:
+                        Dacă datele ar trebui să rămână fixe și neschimbabile după creare, un tuplu este o alegere mai
+                        bună. Tuplurile oferă performanțe mai bune și pot fi utilizate ca chei de dicționar (spre
+                        deosebire de liste).</p>
+
+                    <p>Ordinea nu contează și aveți nevoie de elemente unice:
+                        Dacă aveți nevoie de o colecție de elemente unice în care ordinea nu este importantă, un set
+                        este mai eficient pentru operațiuni precum verificarea apartenenței sau efectuarea algebrei
+                        seturilor (uniune, intersecție etc.).</p>
+
+                    <p>Aveți nevoie de perechi cheie-valoare pentru căutări rapide:
+                        Pentru tablouri în care trebuie să obțineți valori pe baza unei chei specifice, un dicționar
+                        este structura de date ideală.</p>
+
+                    <p>Procesați o secvență mare de elemente unul câte unul:
+                        Pentru eficiența memoriei, atunci când lucrați cu seturi de date mari care sunt procesate
+                        iterativ, un generator poate fi mai potrivit decât crearea unei liste complete în memorie.</p>
+                </div>
+
+                <div>
+                    <p>Deciding whether to use a list in Python primarily revolves around the mutability and ordered
+                        nature of the data you need to store.</p>
+
+                    <p>Use a list when:</p>
+
+                    <p>You need a mutable collection:
+                        If the elements within your collection will need to be added, removed, or modified after
+                        creation, a list is the appropriate choice. Examples include managing a to-do list, a list of
+                        users in a system, or a dynamic inventory.</p>
+
+                    <p>Order matters:
+                        Lists maintain the order in which elements are added. If the sequence of items is significant,
+                        such as a sequence of operations or a set of ordered coordinates, lists are suitable.</p>
+
+                    <p>You need to store heterogeneous data (though often used for homogeneous):
+                        While lists can store items of different data types (e.g., integers, strings, other lists), they
+                        are frequently used for collections of the same type.</p>
+
+                    <p>You need to iterate over the collection:
+                        Lists are easily iterable, making them convenient for looping through elements and performing
+                        operations on them.</p>
+
+                    <p>Consider alternatives to lists when:</p>
+
+                    <p>You need an immutable collection:
+                        If the data should remain fixed and unchangeable after creation, a tuple is a better choice.
+                        Tuples offer better performance and can be used as dictionary keys (unlike lists).</p>
+
+                    <p>Order doesn't matter and you need unique elements:
+                        If you need a collection of unique items where the order is not important, a set is more
+                        efficient for operations like checking for membership or performing set algebra (union,
+                        intersection, etc.).</p>
+
+                    <p>You need key-value pairs for quick lookups:
+                        For associative arrays where you need to retrieve values based on a specific key, a dictionary
+                        is the ideal data structure.</p>
+
+                    <p>You are processing a large sequence of items one by one:
+                        For memory efficiency when dealing with large datasets that are processed iteratively, a
+                        generator can be more suitable than creating a full list in memory.</p>
+                </div>
+            </div>
+
+            <p>Pentru mai multe informații despre listele și structurile de date din Python, consultați <a
+                    href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists" target="_blank"
+                    rel="noopener">official Python documentation</a></p>
+
+            <p>For further learning about Python lists and data structures, refer to the <a
+                    href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists" target="_blank"
+                    rel="noopener">official Python documentation</a></p>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a></address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+    <script src="JS/treileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

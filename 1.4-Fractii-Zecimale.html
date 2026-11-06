@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 1.4 Fractii-Zecimale</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaN.svg" alt="N" class="logo">
+          <h1>1.0 Tipuri numerice - Numeric Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>1.4 Tipuri numerice suplimentare (din biblioteca modulele standard)<br>
+            Additional Numeric Types (from standard library modules)</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#FS">Fracții (fractions.Fraction)</a></li>
+            <li><a href="#FM">Fracții metode și proprietăți</a></li>
+            <li><a href="#DS">Zecimale (decimal.Decimal)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter you will study:</li>
+            <li><a href="#FS">Fractions (fractions.Fraction))</a></li>
+            <li><a href="#FM">Fractions Methods and Properties</a></li>
+            <li><a href="#DS">Decimals (decimal.Decimal)</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+      <div class="grid-container">
+        <p>Pe lângă tipurile numerice încorporate int, float și complex, biblioteca standard Python oferă tipuri
+          numerice suplimentare în cadrul unor module specifice:</p>
+        <p>Beyond the built-in int, float, and complex numeric types, the Python standard library provides additional
+          numeric types within specific modules:</p>
+      </div>
+
+      <h2 id="FS">Fracții (fractions.Fraction) - Fractions (fractions.Fraction)</h2>
+
+      <p><a href="https://docs.python.org/3/library/fractions.html" target="_blank" rel="noopener">fractions — Rational
+          numbers</a></p>
+
+      <p><a href="https://realpython.com/ref/stdlib/fractions/" target="_blank" rel="noopener">fractions-realpython</a>
+      </p>
+
+      <div class="grid-container">
+        <p><b>fractions.Fraction</b> din modulul de fracții din Python oferă o modalitate de a reprezenta și efectua
+          operații aritmetice cu numere raționale, numere care pot fi exprimate ca raportul a două numere întregi
+          (numărător și numitor). Acest lucru permite calcule precise, evitând potențialele inexactități asociate cu
+          numerele în virgulă mobilă.</p>
+        <p><b>fractions.Fraction</b> in Python's fractions module provides a way to represent and perform arithmetic
+          operations with rational numbers, which are numbers that can be expressed as a ratio of two integers
+          (numerator and denominator). This allows for precise calculations, avoiding the potential inaccuracies
+          associated with floating-point numbers.</p>
+      </div>
+
+<pre><code>from fractions import Fraction
+
+<span># Din numere întregi</span>
+fracţia1 = Fraction(3, 4)  <span># Reprezintă 3/4</span>
+fracţia2 = Fraction(5)     <span># Reprezintă 5/1 (implicit numitorul este 1)</span>
+
+<span># Din numere zecimale (cu potențiale probleme de precizie)</span>
+fracţia3 = Fraction(0.75)   <span># Reprezintă 3/4</span>
+fracţia4 = Fraction(0.1)    <span># Poate duce la o fracție mai puțin intuitivă din cauza reprezentării cu număr zecimal</span>
+
+<span># Din şiruri</span>
+fracţia5 = Fraction("1/2")  <span># Reprezintă 1/2</span>
+fracţia6 = Fraction("2.5")  <span># Reprezintă 5/2</span>
+
+<span># Din numere cu virgulă sau zecimale (cu atenție la precizie)</span>
+fracţia7 = Fraction.from_float(0.75) <span># Reprezintă 3/4</span>
+
+print(fracţia4) 
+<span>==> 3602879701896397/36028797018963968</span>
+</code></pre>
+
+      <p>Operații aritmetice - Arithmetic Operations</p>
+      
+    <div class="grid-container">
+      <p>Obiectele fracționale acceptă operații aritmetice standard ca (+, -, *, /) cu alte obiecte fracționale, numere
+        întregi, numere cu virgulă mobilă și obiecte zecimale.</p>
+      <p>Fraction objects support standard arithmetic operations as (+, -, *, /) with other Fraction objects, integers,
+        floats, and Decimal objects.</p>
+    </div>
+
+<pre><code>from fractions import Fraction
+
+adunare = Fraction(1, 3) + Fraction(2, 3)
+înmulțire_intreg = Fraction(2, 5) * 3
+înmulțire_fracții = Fraction(2, 3) * Fraction(1, 3)
+
+print(adunare)           <span>==> 1</span>
+print(înmulțire_intreg)  <span>==> 6/5</span>
+print(înmulțire_fracții) <span>==> 2/9</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="FM">Fracții metode și proprietăți - Fractions Methods and Properties</h2>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Parametrii</dt>
+          <dd>numerator: Un atribut care returnează numărătorul fracției.</dd>
+          <dd>denominator: Un atribut care returnează numitorul fracției.</dd>
+          <dt>Metode</dt>
+          <dd>Fraction(numărător, numitor): Constructorul pentru crearea unei instanțe Fraction din două numere întregi.
+          </dd>
+          <dd>Fraction(număr): Constructorul pentru crearea unei instanțe Fraction dintr-un singur număr (de exemplu,
+            număr mobil, zecimal sau reprezentare de tip șir de caractere, cum ar fi "1/2" sau "0,5").</dd>
+          <dd>limit_denominator, max_denominator: Returnează cea mai apropiată fracție de self cu numitorul cel mult
+            max_denominator.</dd>
+          <dd>is_integer(): nu este atribut al Fraction</dd>
+          <dd>as_integer_ratio(): Returnează un tuplu (numărător, numitor) reprezentând fracția în termenii săi cei mai
+            mici.</dd>
+          <dd>from_float(flt) (metoda clasei): Creează o fracție reprezentând valoarea exactă a unui număr cu float dat.
+          </dd>
+          <dd>from_decimal(dec) (metoda clasei): Creează o fracție reprezentând valoarea exactă a unei zecimale
+            date.Instanță zecimală.</dd>
+        </dl>
+
+        <dl>
+          <dt>Properties</dt>
+          <dd>numerator: An attribute that returns the numerator of the fraction.</dd>
+          <dd>denominator: An attribute that returns the denominator of the fraction.</dd>
+          <dt>Methods</dt>
+          <dd>Fraction(numerator, denominator): The constructor for creating a Fraction instance from two integers.</dd>
+          <dd>Fraction(number): The constructor for creating a Fraction instance from a single number (e.g., float,
+            decimal, or string representation like "1/2" or "0.5").</dd>
+          <dd>limit_denominator, max_denominator: Returns the closest Fraction to self with a denominator at most
+            max_denominator. </dd>
+          <dd>is_integer(): is not attribute of Fraction</dd>
+          <dd>as_integer_ratio(): Returns a tuple (numerator, denominator) representing the fraction in its lowest
+            terms.</dd>
+          <dd>from_float(flt) (class method): Creates a Fraction representing the exact value of a given float.</dd>
+          <dd>from_decimal(dec) (class method): Creates a Fraction representing the exact value of a given
+            decimal.Decimal instance.</dd>
+        </dl>
+      </div>
+
+
+      <p>Crearea și accesarea instanțelor - Creating and Accessing Instances</p>
+
+    <div class="grid-container">
+      <p>Puteți accesa numărătorul și numitorul unei fracții folosind atributele .numerator și .denominator.</p>
+      <p>You can retrieve the numerator and denominator of a Fraction using the .numerator and .denominator attributes.
+      </p>
+    </div>
+
+<pre><code>from fractions import Fraction
+
+fracție = Fraction(2, 8) <span># Simplificare automată la 1/4</span>
+
+print(f"Numărător: {fracție.numerator}") <span>==> Numărător: 1</span>
+print(f"Numitor: {fracție.denominator}") <span>==> Numitor: 4</span>
+
+<span># Crearea instanțelor de fracții</span>
+f1 = Fraction(1, 2)
+f2 = Fraction('3/4')
+f3 = Fraction(0.75)
+f4 = Fraction(4, 2)
+
+print(f"f1: {f1}") <span>==> f1: 1/2</span>
+print(f"f2: {f2}") <span>==> f2: 3/4</span>
+print(f"f3: {f3}") <span>==> f3: 3/4</span>
+print(f"f4: {f4}") <span>==> f4: 2</span>
+
+<span># Accesarea proprietăților</span>
+print(f"Numărătorul lui f1: {f1.numerator}") <span>==> Numărătorul lui f1: 1</span>
+print(f"Numitorul lui f1: {f1.denominator}") <span>==> Numitorul lui f1: 2</span>
+
+<span># Metode</span>
+try:
+    print(f'Este f1 un număr întreg? {f1.is_integer()}')
+except AttributeError:
+<span># Gestionează eroarea dacă obiectul nu are metoda is_integer()</span>
+    if isinstance(f1, int):
+        print(f'Este f1 un număr întreg? True')
+    else:
+        print(f"'Fraction' object has no attribute 'is_integer' (type: {type(f1)}).")
+except Exception as e:
+    <span># Detectează orice alte erori potențiale</span>
+    print(f'A apărut o eroare neașteptată: {e}')
+ <span>==> 'Fraction' object has no attribute 'is_integer' (type: &lt;class 'fractions.Fraction'&gt;).</span>
+
+try:
+    print(f'Este f4 un număr întreg? {f4.is_integer()}')
+except AttributeError:
+<span># Gestionează eroarea dacă obiectul nu are metoda is_integer()</span>
+    if isinstance(f4, int):
+        print(f'Este f4 un număr întreg? True')
+    else:
+        print(f'Nu se poate determina dacă f4 este un număr întreg folosind metoda is_integer() (type: {type(f4)}).')
+except Exception as e:
+    <span># Detectează orice alte erori potențiale</span>
+    print(f'A apărut o eroare neașteptată: {e}')
+<span>==> Nu se poate determina dacă f4 este un număr întreg folosind metoda is_integer() (type: &lt;class 'fractions.Fraction'&gt;).</span>
+
+<span># Operații matematice</span>
+fracție_sumă = f1 + f2
+print(f"f1 + f2: {fracție_sumă}") <span>==> f1 + f2: 5/4</span>
+
+produs_fracție = f1 * f2
+print(f"f1 * f2: {produs_fracție}") <span>==> f1 * f2: 3/8</span>
+</code></pre>
+
+    <div class="grid-container">
+      <p>Conversia fracției în număr zecimal: Folosește funcția float() încorporată pentru a converti o fracție înapoi într-un număr cu virgulă mobilă.</p>
+
+      <p>Converting Fraction to float: Use the built-in float() function to convert a Fraction back into a floating-point number.</p>
+    </div>
+
+<pre><code>from fractions import Fraction
+
+fracție = Fraction(3, 4)
+număr_cu_virgulă = float(fracție)
+
+print(număr_cu_virgulă) <span>==> 0.75</span>
+
+<span># Divizați șirul și efectuați împărțirea.</span>
+șir_fracție = "11/16"
+șir_numărător, șir_numitor = șir_fracție.split('/')
+rezultat_ca_zecimal = int(șir_numărător) / int(șir_numitor)
+
+print(f"'{șir_fracție}' formă zecimală ->: {rezultat_ca_zecimal}") <span>==> '11/16' formă zecimală ->: 0.6875</span>
+</code></pre>
+
+<pre><code><span># Dintr-un șir de caractere</span>
+fracție_şir = "3/4"
+fracție_obiect = Fraction(fracție_şir)
+valoare_zecimală = float(fracție_obiect)
+
+print(f"'{fracție_obiect}' formă zecimală ->: {valoare_zecimală}") <span>==> '3/4' formă zecimală ->: 0.75</span>
+
+<span># Din numărător și numitor</span>
+numărător = 1
+numitor = 5
+fracție_tuplu = Fraction(numărător, numitor)
+zecimal_fracție_tuplu = float(fracție_tuplu)
+
+print(f"'{numărător}/{numitor}' formă zecimală  ->: {zecimal_fracție_tuplu}") <span>==> '1/5' formă zecimală  ->: 0.2</span>
+
+<span># Gestionarea numerelor mixte (necesită divizarea șirului de caractere)</span>
+şir_număr_mixt = "1 1/2"
+componente = şir_număr_mixt.split(" ")
+parte_întreagă = int(componente[0])
+parte_zecimală = componente[1]
+numărător, numitor = map(int, parte_zecimală.split('/'))
+zecimal_mixt = float(parte_întreagă + Fraction(numărător, numitor))
+
+print(f"'{şir_număr_mixt}' formă zecimală ->: {zecimal_mixt}") <span>==> '1 1/2' formă zecimală ->: 1.5</span>
+</code></pre>
+
+      <p>metoda limit_denominator() - limit_denominator() method</p>
+
+      <div class="grid-container">
+        <p>Metoda <b>limit_denominator()</b> din Python, parte a modulului fractions, este utilizată pentru a găsi cea
+          mai apropiată aproximare rațională a unui obiect Fraction dat, cu un numitor mai mic sau egal cu o valoare
+          maximă specificată.</p>
+        <p>The <b>limit_denominator()</b> method in Python, part of the fractions module, is used to find the closest
+          rational approximation of a given Fraction object with a denominator less than or equal to a specified maximum
+          value.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Funcționalitate:</dt>
+          <dd>Acesta primește un argument opțional max_denominator, care implicit este 1.000.000 dacă nu este furnizat.
+          </dd>
+          <dd>Returnează un nou obiect Fraction care este cea mai bună aproximare rațională a fracției originale, unde
+            numitorul noii fracții nu depășește max_denominator.</dd>
+          <dd>
+            <dl>
+              <dt>Această metodă este utilă în special pentru:</dt>
+              <dd>Aproximarea numerelor în virgulă mobilă: Conversia unui număr în virgulă mobilă potențial imprecis
+                într-o fracție mai ușor de citit și mai exactă din punct de vedere matematic.</dd>
+              <dd>Recuperarea numerelor raționale din numere cu virgulă mobilă: Dacă un număr cu virgulă mobilă provine
+                dintr-o fracție simplă, limit denominator() poate adesea reconstrui acea fracție originală.</dd>
+            </dl>
+          </dd>
+        </dl>
+        <dl>
+          <dt>Functionality:</dt>
+          <dd>It takes an optional argument max_denominator, which defaults to 1,000,000 if not provided.</dd>
+          <dd>It returns a new Fraction object that is the best rational approximation of the original fraction, where
+            the denominator of the new fraction does not exceed max_denominator.</dd>
+          <dd>
+            <dl>
+              <dt>This method is particularly useful for:</dt>
+              <dd>Approximating floating-point numbers: Converting a potentially imprecise floating-point number into a
+                more readable and mathematically exact fraction.</dd>
+              <dd>Recovering rational numbers from floats: If a float originated from a simple fraction, limit
+                denominator() can often reconstruct that original fraction.</dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+
+<pre><code>from math import pi
+from fractions import Fraction
+
+<span># Fără numitor_limită, pi este o fracție foarte complexă</span>
+pi_fracție = Fraction(pi)
+print(pi_fracție) <span>==> 884279719003555/281474976710656</span>
+
+<span># Cu numitor limită, puteți găsi o aproximare comună</span>
+pi_simplu = Fraction(pi).limit denominator(1000)
+print(f"Numarul {pi} ca fracție simplificată {pi_simplu}") <span>==> 355/113</span>
+
+pi_zecimal = Fraction(str(pi)) <span># Convertește float în fracție pentru precizie maximă</span>
+pi_apreximativ = pi_zecimal.limit_denominator(1000)
+print(f"Aproximarea lui pi cu limita la numitor 1000: {pi_apreximativ}") <span>==> 355/113</span>
+
+print(f"Cea mai apropiată fracție de 0.3 cu numitor maxim 10: {Fraction.from_float(0.3).limit_denominator(10)}") <span>==> 3/10</span>
+
+<span># Aproximați Pi cu un numitor de cel mult 10</span>
+aprox = Fraction('3.141592653589793').limit_denominator(10)
+print(aprox)  <span># ==> 22/7</span>
+
+<span># Aproximați Pi cu un numitor de cel mult 1000</span>
+approx_closer = 
+Fraction('3.141592653589793').
+limit_denominator(1000)
+print(approx_closer)  <span># ==> 355/113</span>
+
+<span># Recuperarea unei fracții simple dintr-un număr float</span>
+număr_şir = Fraction(str(0.5)) # Reprezentarea lui 0.5 ca fracție
+fracţie_recuperată = număr_şir.limit_denominator()
+print(f"Fracție recuperată din 0.5: {fracţie_recuperată}") <span>==> 1/2</span>
+</code></pre>
+
+
+      <p><b>as_integer_ratio()</b></p>
+
+      <div class="grid-container">
+        <p>Metoda as_integer_ratio() este utilizată pentru a reprezenta un număr în virgulă mobilă sau o instanță
+          Decimală ca o fracție în termenii săi cei mai simpli, constând dintr-un numărător și un numitor.</p>
+        <p>The as_integer_ratio() method is used to represent a floating-point number or a Decimal instance as a
+          fraction in its lowest terms, consisting of a numerator and a denominator.</p>
+      </div>
+
+
+<pre><code>from fractions import Fraction
+
+fracție = Fraction(3, 7)
+numărător, numitor = fracție.as_integer_ratio()
+print(f"Numărător: {numărător}, Numitor: {numitor}") <span>==> Numărător: 3, Numitor: 7</span>
+
+raport = Fraction(15/16).as_integer_ratio()
+print(f"(Numărător, Numitor): {raport}")  <span>==> (Numărător, Numitor): (15, 16)</span>
+
+fracție_negativ = Fraction(-5, 10)
+print(f"(Numărător, Numitor): {fracție_negativ.as_integer_ratio()}") <span>==> (Numărător, Numitor): (-1, 2)</span>
+
+fracție_nesimplificată = Fraction(10, 20)
+print(f"(Numărător, Numitor): {fracție_nesimplificată.as_integer_ratio()}") <span>==> (Numărător, Numitor): (1, 2)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Scop:
+          <dt>
+          <dd>Reprezentare exactă: Permite obținerea unei reprezentări fracționare exacte a numerelor, în special a
+            numărului cu virgulă mobilă, care sunt în mod inerent aproximative.</dd>
+          <dd>Uniformitate: Oferă o interfață API consistentă între diferite tipuri numerice pentru extragerea
+            raportului lor întreg.</dd>
+          <dd>Interoperabilitate: Facilitează operațiunile și conversiile între diferite tipuri numerice, de exemplu, la
+            crearea unei fracții dintr-un număr cu virgulă mobilă sau zecimal.</dd>
+        </dl>
+
+        <dl>
+          <dt>Purpose:
+          <dt>
+          <dd>Exact Representation: It enables obtaining an exact fractional representation of numbers, especially
+            floats, which are inherently approximate.</dd>
+          <dd>Uniformity: It provides a consistent API across different numeric types for extracting their integer
+            ratio.</dd>
+          <dd>Interoperability: It facilitates operations and conversions between different numeric types, for instance,
+            in creating a Fraction from a float or Decimal.</dd>
+        </dl>
+      </div>
+
+
+      <p><b>from_float(flt)</b></p>
+
+      <p>O metodă de clasă pentru a construi o fracție reprezentând valoarea exactă a unui număr cu virgulă.<br>
+        A class method to construct a Fraction representing the exact value of a float.</p>
+
+<pre><code>from fractions import Fraction
+fracție_exactă = Fraction.from_float(0.5) 
+fracția_mea = Fraction.from_float(0.2)
+print(fracție_exactă) <span>==> 1/2</span>
+print(fracția_mea)    <span>==> 3602879701896397/18014398509481984</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Luați în considerare <b>precizia în virgulă mobilă:</b> Este important de reținut că Fraction.from_float()
+          reprezintă valoarea exactă a numărului cu virgulă mobilă așa cum este stocată în memorie. Datorită naturii
+          reprezentării în virgulă mobilă, aceasta poate să nu fie întotdeauna fracția zecimală exactă la care v-ați
+          aștepta intuitiv.</p>
+        <p>Consider <b>floating-point precision:</b> It is important to note that Fraction.from_float() represents the
+          exact value of the float as stored in memory. Due to the nature of floating-point representation, this may not
+          always be the exact decimal fraction you might intuitively expect.</p>
+      </div>
+
+
+<pre><code>fracția_mea = Fraction.from_float(0.3)
+print(fracția_mea)  <span>==> 5404319552844595/18014398509481984</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <p>Dacă trebuie să reprezentați un număr zecimal ca o fracție exact așa cum este scris, se recomandă în general
+          să construiți fracția dintr-un șir de caractere sau direct de la numărător și numitor, mai degrabă decât
+          dintr-un număr cu zecimale.</p>
+        <p>If you need to represent a decimal number as a Fraction exactly as written, it is generally recommended to
+          construct the Fraction from a string or from its numerator and denominator directly, rather than from a float.
+        </p>
+      </div>
+
+<pre><code>from fractions import Fraction
+
+<span># Reprezentare exactă dintr-un șir de caractere</span>
+fracție_exactă_din_șir = Fraction('0.7')
+print(f"Din șir: {fracție_exactă_din_șir}") <span>==> 7/10</span>
+
+<span># Reprezentare exactă din numărător și numitor</span>
+fracție_exactă_din_componente = Fraction(7, 10)
+print(f"Din părți: {fracție_exactă_din_componente}") <span>==> 7/10</span>
+
+<span># Comparație cu from_float</span>
+print(f"Din float: {Fraction.from_float(0.7)}") <span>==> 3152519739159347/4503599627370496</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Aproximare pentru un rezultat ușor de utilizat: Dacă aveți nevoie de o reprezentare fracționară mai ușor de
+          utilizat a unui număr cu zecimale (de exemplu, ceva apropiat de 3/10 pentru 0,3), puteți lua în considerare
+          convertirea mai întâi a numărului într-un șir de caractere și apoi utilizarea constructorului bazat pe șiruri
+          de caractere sau utilizarea metodei limit_denominator().</p>
+        <p>Approximation for User-Friendly Output: If you need a more user-friendly fractional representation of a float
+          (e.g., something close to 3/10 for 0.3), you might consider converting the float to a string first and then
+          using the string-based constructor, or using the limit_denominator() method.</p>
+      </div>
+
+
+
+      <p><b>Rounding</b></p>
+
+      <div class="grid-container">
+        <p>Funcția round() încorporată poate fi utilizată pentru a rotunji un număr cu virgulă mobilă, dar nu poate fi
+          utilizată direct cu un obiect Fraction din modulul de fracții Python. Funcția round() este concepută pentru
+          tipuri numerice precum float și int, nu pentru obiecte personalizate precum Fraction, așa că va trebui mai
+          întâi să convertiți Fraction într-un număr cu virgulă mobilă pentru a o utiliza.</p>
+        <p>Built-in round() function can be used to round a floating-point number, but it cannot be directly used with a
+          Fraction object from Python's fractions module. The round() function is designed for numerical types like
+          float and int, not for custom objects like Fraction, so you would first need to convert the Fraction to a
+          float to use it.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Cum se rotunjește o fracție.</dt>
+          <dd>Convertiți fracția într-un număr cu virgulă mobilă: Folosiți constructorul float() pentru a converti
+            obiectul Fraction într-un număr standard cu virgulă mobilă.</dd>
+          <dd>Folosiți funcția round(): Aplicați funcția round() la numărul cu virgulă mobilă rezultat pentru a-l
+            rotunji la cel mai apropiat număr întreg sau la un număr specificat de zecimale.</dd>
+        </dl>
+        <dl>
+          <dt>How to round a Fraction.</dt>
+          <dd>Convert the Fraction to a float: Use the float() constructor to convert your Fraction object into a
+            standard floating-point number.</dd>
+          <dd>Use the round() function: Apply the round() function to the resulting float to round it to the nearest
+            integer or a specified number of decimal places.</dd>
+        </dl>
+      </div>
+
+<pre><code>from fractions import Fraction
+
+fracție_componente = Fraction(3, 2) <span># Reprezintă 1.5</span>
+număr_zecimal = float(fracție_componente)
+număr_rotunjit = round(număr_zecimal)
+
+print(număr_rotunjit) <span># ==>: 2</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Funcția round() pentru a rotunji o fracție.</dt>
+          <dd>Cu un argument, rotunjește la cel mai apropiat număr întreg.</dd>
+          <dd>Cu un al doilea argument, ndigits, rotunjește la cel mai apropiat multiplu de 1/10**ndigits.</dd>
+        </dl>
+
+        <dl>
+          <dt>round() function to round a Fraction.</dt>
+          <dd>With one argument, it rounds to the nearest integer.</dd>
+          <dd>With a second argument, ndigits, it rounds to the nearest multiple of 1/10**ndigits.</dd>
+        </dl>
+      </div>
+
+
+<pre><code>from fractions import Fraction
+
+fracție_pi = Fraction(22, 7) <span># ~3.142857</span>
+
+<span># Rotunjește la cel mai apropiat număr întreg</span>
+print(round(fracție_pi))      <span>==> 3</span>
+
+<span># Rotunjește la două zecimale</span>
+print(round(fracție_pi, 2))   <span>==> 157/50</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Proprietăți cheie:</dt>
+          <dd>Imutabilitate: Instanțele fracțiilor sunt imuabile; valorile lor nu pot fi modificate după creare.</dd>
+          <dd>Capacitate de hașare: Instanțele fracțiilor sunt capabile de hașare, permițându-le să fie utilizate ca
+            chei în dicționare sau elemente în seturi.</dd>
+          <dd>Simplificare automată: Obiectele fracțiilor se simplifică automat la termenii lor cei mai mici la creare
+            sau după operații.</dd>
+          <dt>Când se utilizează fracția:</dt>
+          <dd>Când este necesară o aritmetică precisă a numerelor raționale, în special în scenarii precum proporții,
+            probabilități sau calcule financiare, unde inexactitățile în virgulă mobilă sunt inacceptabile.</dd>
+          <dd>Când se lucrează cu cantități care sunt exprimate în mod natural ca fracții.</dd>
+          <dt>Beneficii:</dt>
+          <dd>Precizie: Evită inexactitățile în virgulă mobilă, cruciale pentru aplicațiile care necesită reprezentarea
+            exactă a numerelor raționale (de exemplu, calcule financiare).</dd>
+          <dd>Claritate: Reprezintă numerele într-un format fracționar familiar, îmbunătățind lizibilitatea pentru
+            anumite tipuri de calcule.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Properties:</dt>
+          <dd>Immutability: Fraction instances are immutable; their values cannot be changed after creation.</dd>
+          <dd>Hashability: Fraction instances are hashable, allowing them to be used as keys in dictionaries or elements
+            in sets.</dd>
+          <dd>Automatic Simplification: Fraction objects automatically simplify to their lowest terms upon creation or
+            after operations.</dd>
+          <dt>When to Use Fraction:</dt>
+          <dd>When precise rational number arithmetic is required, especially in scenarios like proportions,
+            probabilities, or financial calculations, where floating-point inaccuracies are unacceptable.</dd>
+          <dd>When working with quantities that are naturally expressed as fractions.</dd>
+          <dt>Benefits:</dt>
+          <dd>Precision: Avoids floating-point inaccuracies, crucial for applications requiring exact rational number
+            representation (e.g., financial calculations).</dd>
+          <dd>Clarity: Represents numbers in a familiar fractional format, improving readability for certain types of
+            calculations.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="DS">Zecimale (decimal.Decimal)-Decimals (decimal.Decimal)</h2>
+
+      <p><a href="https://docs.python.org/3/library/decimal.html" target="_blank" rel="noopener">decimal — Decimal
+          fixed-point and
+          floating-point arithmetic</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Crearea obiectelor zecimale.</dt>
+          <dd>Obiectele zecimale sunt de obicei create din șiruri de caractere sau numere întregi pentru a evita
+            potențialele inexactități ale conversiei dintr-un număr cu virgulă mobilă.</dd>
+          <dd>Modulul zecimal din Python oferă suport pentru aritmetica zecimală cu virgulă fixă ​​și cu virgulă mobilă.
+            Este util în special pentru aplicațiile care necesită o reprezentare zecimală exactă, cum ar fi calculele
+            financiare, unde imprecizia inerentă a numerelor binare cu virgulă mobilă (tip float) poate duce la
+            inexactități.</dd>
+          <dd>Principala diferență dintre reprezentările numerice zecimale cu virgulă fixă ​​și cele cu virgulă mobilă
+            constă în modul în care punctul zecimal (baza zecimală) este poziționat și gestionat în timpul calculelor.
+          </dd>
+          <dd>Într-un sistem cu virgulă fixă, punctul zecimal rămâne într-o poziție prestabilită și neschimbabilă.
+            Într-un sistem cu virgulă mobilă, punctul zecimal "plutește" sau se deplasează în mod dinamic, deoarece
+            numerele sunt exprimate folosind o parte semnificativă (mantisă) și un exponent, similar notației
+            științifice.</dd>
+        </dl>
+
+        <dl>
+          <dt>Creating Decimal Objects:</dt>
+          <dd>Decimal objects are typically created from strings or integers to avoid the potential inaccuracies of
+            converting from float.</dd>
+          <dd>The decimal module in Python provides support for decimal fixed-point and floating-point arithmetic. It is
+            particularly useful for applications requiring exact decimal representation, such as financial calculations,
+            where the inherent imprecision of binary floating-point numbers (float type) can lead to inaccuracies.</dd>
+          <dd>The primary difference between decimal fixed-point and floating-point numeric representations is how the
+            radix (decimal) point is positioned and managed during calculations.</dd>
+          <dd>In a fixed-point system, the decimal point stays in a predetermined, unchangeable position. In a
+            floating-point system, the decimal point dynamically "floats" or moves around because numbers are expressed
+            using a significand (mantissa) and an exponent, similar to scientific notation.</dd>
+        </dl>
+      </div>
+
+<pre><code>from decimal import Decimal
+
+<span># Crearea unui obiect Decimal dintr-un șir de caractere pentru o reprezentare precisă</span>
+num1 = Decimal("0.1")
+num2 = Decimal("0.2")
+decimal1 = Decimal("10.123")
+decimal2 = Decimal(7) 
+decimal3 = num1 + num2
+
+print(decimal1) <span>==> 10.123</span>
+print(decimal2) <span>==> 7</span>
+print(decimal3, type(decimal3)) <span>==> 0.3 &lt;class 'decimal.Decimal'&gt;</span>
+
+<span># Numere cu virgulă mobilă standard</span>
+resultat_standard = 0.1 + 0.2
+print(resultat_standard) <span>==> 0.30000000000000004</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Explicație:</dt>
+          <dd>din importul decimal Decimal: Această instrucțiune importă clasa Decimal specific din modulul decimal.
+            Aceasta permite utilizarea directă a Decimal fără a fi nevoie să fie prefixat cu decimal.</dd>
+          <dd>Decimal("0.1"): La crearea de obiecte Decimal, se recomandă inițializarea acestora cu șiruri de caractere
+            pentru a evita inexactitățile inerente în virgulă mobilă care pot apărea atunci când se utilizează direct
+            literali cu virgulă mobilă.</dd>
+          <dd>num1 + num2: Operațiile aritmetice efectuate asupra obiectelor Decimal vor menține regulile de precizie și
+            rotunjire definite de contextul zecimal curent.</dd>
+          <dd>Această abordare asigură calcule zecimale precise, ceea ce este crucial în aplicații precum calculele
+            financiare, unde precizia este primordială.</dd>
+        </dl>
+
+        <dl>
+          <dt>Explanation:</dt>
+          <dd>from decimal import Decimal: This statement imports the Decimal class specifically from the decimal
+            module. This allows direct use of Decimal without needing to prefix it with decimal.</dd>
+          <dd>Decimal("0.1"): When creating Decimal objects, it is recommended to initialize them with strings to avoid
+            the inherent floating-point inaccuracies that can occur when using float literals directly.</dd>
+          <dd>num1 + num2: Arithmetic operations performed on Decimal objects will maintain the precision and rounding
+            rules defined by the current decimal context.</dd>
+          <dd>This approach ensures accurate decimal calculations, which is crucial in applications like financial
+            calculations where precision is paramount.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <p><em>Controlul preciziei.</em></p>
+          <p>Modulul zecimal vă permite să controlați precizia calculelor folosind funcțiile getcontext() și
+            localcontext().</p>
+          <p>Modulul zecimal folosește un "context" pentru a determina precizia și regulile de rotunjire. În mod
+            implicit, precizia este de 28 de cifre, dar o puteți modifica.</p>
+          <p><b>Precizie globală:</b> getcontext().prec setează precizia implicită pentru toate operațiile zecimale
+            ulterioare.</p>
+          <p><b>Precizie locală:</b> localcontext() oferă un manager de context pentru a seta temporar precizia pentru
+            un bloc de cod, fără a afecta setările globale.</p>
+        </div>
+
+        <div>
+          <p><em>Precision Control.</em></p>
+          <p>The decimal module allows you to control the precision of calculations using the getcontext() and
+            localcontext() functions.</p>
+          <p>The decimal module uses a "context" to determine precision and rounding rules. By default, the precision is
+            28 digits, but you can change it.</p>
+          <p><b>Global Precision:</b> getcontext().prec sets the default precision for all subsequent Decimal
+            operations.</p>
+          <p><b>Local Precision:</b> localcontext() provides a context manager to temporarily set precision for a block
+            of code, without affecting global settings.</p>
+        </div>
+      </div>
+
+<pre><code>from decimal import Decimal, getcontext
+
+<span># Vizualizați contextul implicit</span>
+print(f"Precizie implicită: {getcontext().prec}")   <span>==> 28</span>
+
+<span># Setați precizia pentru toate calculele ulterioare</span>
+getcontext().prec = 6                               
+result = Decimal('1') / Decimal('7')
+print(f"Rezultat cu noua precizie: {result}") <span>==> 0.142857</span>
+
+<span># Resetarea preciziei la valoarea implicită</span>
+getcontext().prec = 28
+result = Decimal('1') / Decimal('7')
+print(f"Rezultat cu precizie implicită: {result}")  <span>==> 0.1428571428571428571428571429</span>
+</code></pre>
+
+<pre><code>from decimal import Decimal
+
+<span># Crearea directă a unui Decimal dintr-un float poate introduce erori</span>
+decimal_standard = Decimal(0.1)
+print(f"Decimal(0.1) -> {decimal_standard}") 
+<span>==> 0.100000000000000005551115->1231257827021181583404541015625</span>
+
+<span># Utilizarea from_float() creează o reprezentare exactă</span>
+decimal_din_float = Decimal.from_float(0.1)
+print(f"Decimal.from_float(0.1) -> {decimal_din_float}") 
+<span>==> 0.100000000000000005551115->1231257827021181583404541015625</span>
+
+<span># Din șir de caractere pentru o reprezentare precisă</span>
+decimal_precis = Decimal('0.1')
+print(f"Decimal('0.1') -> {decimal_precis} rezultat precis!") <span>==> 0.1 rezultat precis!</span>
+</code></pre>
+
+<pre><code>from decimal import localcontext
+
+with localcontext(prec=3):
+    rezultat = Decimal(72) / Decimal(7)
+    print(rezultat) <span>==> 10.3</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>rotunjire.</b><br>
+          Modulul zecimal oferă diverse moduri de rotunjire, care pot fi setate în context. De exemplu, ROUND_HALF_EVEN
+          este modul implicit, unde numerele care se termină în 0,5 sunt rotunjite la cea mai apropiată cifră pară.</p>
+        <p><b>rounding.</b><br>
+          The decimal module provides various rounding modes, which can be set in the context. For example,
+          ROUND_HALF_EVEN is the default, where numbers ending in .5 are rounded to the nearest even digit.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Avantaje față de modul float:</dt>
+          <dd>Reprezentare zecimală exactă: Evită problemele de reprezentare binară ale modulului float, care pot duce
+            la erori mici.</dd>
+          <dd>Precizie configurabilă: Permite specificarea numărului de cifre semnificative pentru calcule.</dd>
+          <dd>Strategii de rotunjire definite: Oferă control asupra modului în care sunt rotunjite numerele.</dd>
+          <dt>Cazuri de utilizare comune:</dt>
+          <dd>Aplicații financiare (de exemplu, calcule valutare, contabilitate).</dd>
+          <dd>Situații care necesită aritmetică zecimală exactă.</dd>
+          <dd>Gestionarea datelor introduse de utilizator care necesită o reprezentare zecimală precisă.</dd>
+        </dl>
+
+        <dl>
+          <dt>Advantages over float:</dt>
+          <dd>Exact Decimal Representation: Avoids the binary representation issues of float that can lead to small
+            errors.</dd>
+          <dd>Configurable Precision: Allows specifying the number of significant digits for calculations.</dd>
+          <dd>Defined Rounding Strategies: Offers control over how numbers are rounded.</dd>
+          <dt>Common Use Cases:</dt>
+          <dd>Financial applications (e.g., currency calculations, accounting).</dd>
+          <dd>Situations requiring exact decimal arithmetic.</dd>
+          <dd>Handling user input that needs precise decimal representation.</dd>
+        </dl>
+      </div>
+
+      <p><b>Decimal.as_integer_ratio()</b></p>
+
+    <div class="grid-container">
+      <p><b>as_integer_ratio()</b> oferă o reprezentare exactă sub formă de fracție, ceea ce poate fi util pentru
+        evitarea inexactităților în virgulă mobilă (floating-point).</p>
+      <p><b>as_integer_ratio()</b> provides an exact representation as a fraction, which can be useful for avoiding
+        floating-point inaccuracies.</p>
+    </div>
+
+<pre><code>from decimal import Decimal
+
+d = Decimal('0.1')
+numărător, numitor = d.as_integer_ratio()
+print(f"{d} ca raport întreg: {numărător}/{numitor}") <span>==> 0.1 ca raport întreg: 1/10</span>
+</code></pre>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>

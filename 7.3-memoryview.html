@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="CSS/main-style.css">
+
+<link rel="icon" type="img/png" href="images/logo-title.png">
+<title>Gazeta Python 7.3 Memoryview </title>
+</head>
+
+<body>
+
+<div id="sus" class="main-1-1 navigare">
+<header>
+<div class="header-menu">
+<img src="images/logo-menu.svg" alt="Gazeta Python">
+<nav>
+  <ul>
+    <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+    <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+    <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+    <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+  </ul>
+</nav>
+</div>
+
+<div class="first-empty-1-1"></div>
+
+<div class="titlu-1-0">
+  <div class="grid-cell">
+    <img src="images/literaS.svg" alt="S" class="logo">
+    <h1>7.0 Tipuri de secvențe binare - Binary Sequence Types</h1>
+  </div>
+</div>
+
+<div class="second-empty-1-1"></div>
+
+<div class="subtitlu-1-1">
+  <div class="grid-cell">
+    <h2>7.3 Obiectul memoryview (fără copiere) - memoryview</h2>
+  </div>
+</div>
+
+<div class="third-empty-1-1"></div>
+
+<div class="ro-en-1-1 container-links ro-en">
+<div>
+  <ul>
+    <li>În acest capitol veți studia:</li>
+    <li><a href="#UM">Înțelegerea memoryview</a></li>
+    <li><a href="#CD">Conversia tipurilor de date</a></li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li>In this chapter, you will study:</li>
+    <li><a href="#UM">Understand memoryview</a></li>
+    <li><a href="#CD">Casting Data Types</a></li>  </ul>
+</div>
+</div>
+</header>
+<div class="forth-empty-1-1"></div>
+
+<div class="contents-1-1">
+
+<p><a href="https://docs.python.org/3/builtins/functions.html#func-memoryview" target="_blank">class memoryview(object)Built-in Functions</a></p>
+
+
+<p><a href="https://docs.python.org/3/builtins/stdtypes.html#memoryview" target="_blank">class memoryview(object) Built-in Types</a></p>
+
+<div class="grid-container">
+<p>De ce memoryview() se regăsește în secțiunile Funcții încorporate și Tipuri încorporate</p>
+
+<p>Why memoryview() in Built-in Functions and Built-in Types</p>
+</div>
+
+<div class="grid-container">
+<p>Deși este listat în pagina de documentație dedicată funcțiilor încorporate (Built-in Functions) sub forma memoryview(object), memoryview este, în esență, o clasă și un tip încorporat (Built-in Type), inclus în categoria tipurilor de secvențe binare (Binary Sequence Types).</p>
+
+<p>While it is listed under the Built-in Functions documentation page as memoryview(object), memoryview itself is fundamentally a class and a Built-in Type grouped under Binary Sequence Types.</p>
+</div>
+
+<div class="grid-container">
+<dl>
+<dt>Funcționează ca o funcție de tip "fabrică" (constructor)</dt>
+  <dd>La fel ca multe elemente din lista de "funcții încorporate" (built-in functions) a limbajului Python (precum int(), list(), str() și dict()), memoryview este, din punct de vedere tehnic, un constructor de clasă. Python include acești constructori în categoria funcțiilor încorporate, deoarece interfața lor principală, în activitatea de programare curentă, este o funcție globală care poate fi apelată direct pentru a instanția un obiect.</dd>
+</dl>
+
+<dl>
+<dt>It acts as a factory function (Constructor)</dt>
+  <dd>Like many items on Python's "Built-in Functions" list (such as int(), list(), str(), and dict()), memoryview is technically a class constructor. Python lists these constructors under Built-in Functions because their primary interface in day-to-day coding is a global, directly callable function used to instantiate an object.</dd>
+</dl>
+</div>
+
+<div class="grid-container">
+<dl>
+<dt>Un obiect memoryview nu poate exista de sine stătător</dt>
+  <dd>Spre deosebire de tipurile fundamentale, precum int sau list, care pot fi instanțiate ca obiecte goale (de exemplu, x = list()), memoryview() necesită un obiect existent de care să se atașeze.</dd>
+  <dd>Apelarea memoryview() fără argumente generează o eroare de tip TypeError.</dd>
+  <dd>Acesta funcționează strict ca un instrument utilitar (sau o funcție de tip "wrapper") menit să expună, în mod sigur, protocolul de buffer de nivel C din Python.</dd>
+  <dd>Deoarece comportamentul său este cel al unei funcții de procesare — primește un obiect și returnează o "vizualizare" a acestuia, fără a crea o copie a datelor — se integrează perfect în modelul conceptual al unei funcții predefinite (built-in).</dd>
+</dl>
+
+<dl>
+<dt>A memoryview cannot exist on its own</dt>
+  <dd>Unlike pure types like int or list, which can be instantiated empty (e.g., x = list()), memoryview() requires an existing object to bind to.</dd>
+  <dd>Calling memoryview() without an argument throws a TypeError.</dd>
+  <dd>It functions strictly as a utility tool (or a wrapping function) to safely expose Python's C-level buffer protocol.</dd>
+  <dd>Because its behavior behaves purely like a processing function—taking an object in, and returning a zero-copy "view" of it—it fits perfectly into the conceptual mental model of a built-in function.</dd>
+</dl>
+</div>
+
+<div class="grid-container">
+<dl>
+<dt>Locul în documentație</dt>
+  <dd>Pagina "Funcții încorporate" (Built-in Functions): Documentează sintaxa constructorului memoryview(object) și modul de apelare a acestuia.</dd>
+  <dd>Pagina "Tipuri încorporate" (Built-in Types): Documentează memoryview în secțiunea dedicată tipurilor de secvențe binare (Binary Sequence Types), alături de bytes și bytearray. Această secțiune detaliază metodele și comportamentele specifice ale obiectului memoryview rezultat (precum .cast(), .tobytes() și indexarea prin felii/slice-uri).</dd>
+</dl>
+
+<dl>
+<dt>Where it sits in the documentation</dt>
+  <dd>Built-in Functions page: Documents the constructor syntax memoryview(object) and how to call it.</dd>
+  <dd>Built-in Types page: Documents memoryview under the Binary Sequence Types section alongside bytes and bytearray. This section details the specific methods and behaviors the resulting memoryview object possesses (such as .cast(), .tobytes(), and slice indexing).</dd>
+</dl>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="UM">Înțelegerea memoryview - Understand memoryview</h2>
+
+
+<div class="grid-container">
+  <div>
+    <p>Imaginează-ți o carte masivă și grea. Dacă un prieten îți cere să vadă paginile de la 50 la 100, o secvență tradițională din Python (cum ar fi un șir de octeți) va fotocopia acele 50 de pagini și i le va înmâna. Dacă faci acest lucru de mii de ori, risipești o cantitate uriașă de hârtie, timp și energie.</p>
+    <p>Un obiect de tip "memoryview" este ca un indicator. În loc să copieze ceva, acesta indică pur și simplu direct către paginile 50–100 din cartea originală. Poți vedea datele, le poți citi și — dacă acea carte este un caiet care permite ștergerea și rescrierea (un "bytearray") — poți chiar să rescrii textul.</p>
+  </div>
+
+  <div>
+    <p>Imagine a massive, heavy book. If a friend asks to see pages 50 through 100, a traditional Python sequence (such as a byte string) will photocopy those 50 pages and hand them over. If you do this thousands of times, you end up wasting a huge amount of paper, time, and energy.</p>
+    <p>A "memoryview" object acts like a pointer. Instead of copying anything, it simply points directly to pages 50–100 in the original book. You can view the data, read it, and—if the book happens to be a notebook that allows for erasing and rewriting (a "bytearray")—you can even rewrite the text.</p>
+  </div>
+</div>
+
+<div class="grid-container">
+<dl>
+  <dt>Este un înveliș, nu un container</dt>
+    <dd>Un obiect <code>memoryview</code> nu stochează, în sine, nicio dată. Dacă ștergi obiectul original sau dacă acesta iese din domeniul de vizibilitate (scope), vizualizarea își pierde sursa de date. Este, practic, o fereastră către o zonă de memorie care aparține altcuiva.</dd>
+  <dt>Necesită "protocolul de buffer" (Buffer Protocol)</dt>
+    <dd>Suportate: bytes, bytearray, array.array</dd>
+    <dd>Ne-suportate: list, str, dict, int</dd>
+  <dt>Partajează memoria</dt>
+    <dd>Dacă efectuezi o modificare printr-un memoryview mutabil, obiectul original se modifică instantaneu. Nu se mută și nu se duplică nicio dată.</dd>
+</dl>
+
+<dl>
+  <dt>It is a Wrapper, Not a Container</dt>
+    <dd>A memoryview doesn't actually store any data itself. If you delete the original object or it goes out of scope, the view loses its data source. It is purely a window looking at someone else's memory.</dd>
+  <dt>It Requires the "Buffer Protocol"</dt>
+    <dd>Supported: bytes, bytearray, array.array</dd>
+    <dd>Not Supported: list, str, dict, int</dd>
+  <dt>It Shares Memory</dt>
+    <dd>If you make a change through a mutable memoryview, the original object changes instantly. No data is moved or duplicated.</dd>
+</dl>
+</div>
+
+
+<pre><code><span># Metodă rapidă (memoryview indică spre date)</span>
+date_masive = b"A" * 1000000
+
+<span># Încadrează într-o fereastră de vizualizare</span>
+vizualizare_memorie = memoryview(date_masive)
+
+<span># Aceasta creează o fereastră-pointer de dimensiuni minuscule.</span> 
+<span># Memoria totală utilizată rămâne la ~1,0 Megaocteți. Nu a fost copiat niciun octet!</span>
+felie_eficienta = vizualizare_memorie[500000:]
+print(felie_eficienta) <span>==&gt;&lt;memory at 0x00000225DD7F2080&gt; </span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+<h2 id="CD">Conversia tipurilor de date - Casting Data Types</h2>
+
+
+<div class="grid-container">
+<p>Deoarece memoryview examinează octeții din memoria brută, poate realiza o operațiune incredibilă numită "conversie" (casting). Aceasta permite modificarea modului în care sunt interpretate datele binare, în timp real, fără a schimba structura memoriei subiacente.</p>
+
+<p>Because memoryview looks at raw memory bytes, it can do something incredible called casting. It can change how it interprets the binary data on the fly without changing the underlying memory structure.</p>
+</div>
+
+<pre><code>import array
+
+<span># Create an array of signed integers (occupying 2 or 4 bytes each in memory)</span>
+numere = array.array('i', [1, 2, 3, 4])
+print(numere) <span>==&gt; array('i', [1, 2, 3, 4])</span>
+
+<span># Vizualizarea octeților bruti ai acelor numere întregi</span>
+vizualizare_octeti = memoryview(numere).cast('B')
+print(vizualizare_octeti) <span>==&gt; &lt;memory at 0x000001DD5610CC40&gt;</span>
+
+<span># Câți octeți ocupă, de fapt, în memorie!</span>
+print(len(numere))             <span>==&gt; 4</span>
+print(len(vizualizare_octeti)) <span>==&gt; 16</span>
+</code></pre>
+
+<pre><code>import array
+
+<span># Crearea unui tablou de numere întregi cu semn ('i' ocupă, de obicei, 4 octeți per element)</span>
+date_originale = array.array('i', [1, 2])
+
+<span># Crearea unei vizualizări a memoriei (memoryview) pentru acest tablou</span>
+vizualizare_memorie = memoryview(date_originale)
+
+<span># Conversia vizualizării către octeți fără semn ('B')</span>
+<span># Fiecare număr întreg de 4 octeți va fi reinterpretat ca patru segmente de câte 1 octet</span>
+vizualizar_octeti = vizualizare_memorie.cast('B')
+
+print("Lista originală:", date_originale.tolist()) <span>==&gt; Lista originală: [1, 2]</span>
+<span># Afișează reprezentarea în octeți (Little-Endian)</span>
+print("Reprezentarea pe octeți:", vizualizar_octeti.tolist())
+<span>==&gt; Reprezentarea pe octeți: [1, 0, 0, 0, 2, 0, 0, 0]</span>
+
+<span># Modificarea memoriei subiacente prin intermediul vizualizării convertite</span>
+<span># Modificarea primului octet al celui de-al doilea număr întreg (indexul 4)</span>
+vizualizar_octeti[4] = 99
+
+<span># Modificarea se reflectă instantaneu în tabloul original, fără a fi necesară nicio copiere!</span>
+print("Lista originală modificată:", date_originale.tolist()) <span>==&gt; Lista originală modificată: [1, 99]</span>
+</code></pre>
+
+
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+  <div class="footer footer-link">
+    <footer>
+      &copy; <span id="year-picior"></span> Gazeta Python.
+      <address><a href="https://gazetapython.wordpress.com/" target="_blank">www.gazetapython.com</a></address>
+    </footer>
+  </div>
+</div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+<!--<script src="JS/treileaGreeting.js"></script>-->
+<script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="CSS/main-style.css">
+
+<link rel="icon" type="img/png" href="images/logo-title.png">
+<title>Gazeta Python 6.0 Tipuri Set </title>
+</head>
+
+<body>
+
+<div id="sus" class="main-1-0 navigare">
+<header>
+<div class="header-menu">
+<img src="images/logo-menu.svg" alt="Gazeta Python">
+<nav>
+  <ul>
+    <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+    <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+    <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+    <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+  </ul>
+</nav>
+</div>
+
+<div class="first-empty-1-0"></div>
+
+<div class="titlu-1-0">
+  <div class="grid-cell">
+    <img src="images/literaS.svg" alt="S" class="logo">
+    <h1>6.0 Tipuri Set - Set Types</h1>
+  </div>
+</div>
+
+
+<div class="ro-en-1-1 container-links ro-en">
+<div>
+  <ul>
+    <li>În acest capitol veți studia:</li>
+    <li><a href="#GC">Set – Considerații generale</a></li>
+    <li><a href="#DS">Definirea unei mulțimi</a></li>
+    <li><a href="#AT">Tipuri de date permise</a></li>
+    <li><a href="#SM">Dimensiune și apartenență</a></li>
+    <li><a href="#OS">Operații cu mulțimi</a></li>
+    <li><a href="#AI">Accesează obiectele din set</a></li>
+    <li><a href="#MI">Modifică un element</a></li>
+    <li><a href="#FS">frozenset mulțimi imutabile</a>
+      <ul>
+        <li><a href="#FSA">Using Sets as Dictionary Keys</a></li>
+        <li><a href="#FSB">Mulțimi imbricate</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li>In this chapter you will study:</li>
+    <li><a href="#GC">Set - General Considerations</a></li>
+    <li><a href="#DS">Defining a Set</a></li>
+    <li><a href="#AT">Allowed Data Types</a></li>
+    <li><a href="#SM">Size and Membership</a></li>
+    <li><a href="#OS">Operations with Sets</a></li>
+    <li><a href="#AI">Accesses Set Items</a></li>
+    <li><a href="#MI">Modify an Item</a></li>
+    <li><a href="#FS">frozenset Immutable sets</a>
+      <ul>
+        <li><a href="#FSA">Using Sets as Dictionary Keys</a></li>
+        <li><a href="#FSB">Nested Sets</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+</div>
+</header>
+<div class="second-empty-1-0"></div>
+
+<div class="contents-1-0">
+
+<h2>Set Considerații generale - Set General Considerations</h2>
+
+<p><a href="https://docs.python.org/3/c-api/set.html" target="_blank">Set Objects</a></p>
+
+<p><a href="https://docs.python.org/3/builtins/stdtypes.html#set-types-set-frozenset" target="_blank">Set Types — set, frozenset</a></p>
+
+<p><a href="https://documentation.help/Python-2.5/types-set.html#google_vignette" target="_blank">3.7 Set Types -- set, frozenset</a></p>
+
+<div class="grid-container">
+  <ul>
+    <li>Tipuri de mulțimi (Set Types)</li>
+    <li>utilizate pentru colecții de valori unice, unde ordinea nu contează.</li>
+    <li>set: o colecție mutabilă de elemente unice; utilă pentru eliminarea valorilor duplicate și pentru efectuarea unor operații matematice cu mulțimi, precum reuniunea sau intersecția.</li>
+    <li>frozenset: o versiune imutabilă a unei mulțimi. Deoarece nu poate fi modificată, poate fi utilizată drept cheie într-un dicționar sau ca element al unei alte mulțimi.</li>
+  </ul>
+
+  <ul>
+    <li>Set Types<li>
+    <li>Used for collections of unique values where ordering doesn't matter.</li>
+    <li>set: A mutable collection of unique items; useful for eliminating duplicate values and running mathematical set operations like unions or intersections.</li>
+    <li>frozenset: An immutable version of a set. Because it is unchangeable, it can be used as a dictionary key or an element in another set</li>
+  </ul>
+</div>
+
+<div class="grid-container">
+<p>În matematică, o mulțime este o colecție bine definită de obiecte distincte, numite elemente sau membri. În lumea modernă, teoria mulțimilor constituie limbajul fundamental al logicii, al clasificării datelor și al rezolvării problemelor.</p>
+
+<p>A set in mathematics is a well-defined collection of distinct objects, known as elements or members. In the Modern world , set theory serves as the foundational language of logic, data classification, and problem-solving.</p>
+</div>
+
+<div class="grid-container">
+  <div>
+  <dl>
+    <dt>Concepte și notații fundamentale</dt>
+    <dd>Definiție: O colecție de obiecte distincte, numite elemente sau membri (de exemplu, A = {1, 2, 3, 4, 5}). Literele mari desemnează mulțimi; literele mici desemnează elemente (a &isin; A).</dd>
+    <dd>Modalități de descriere a mulțimilor:</dd>
+    <dd>Metoda enumerării (sau tabelară): Enumerarea explicită a fiecărui element între acolade: V = {a, e, i, o, u}).</dd>
+    <dd>Descrierea unei reguli sau condiții pe care trebuie să o îndeplinească elementele: {x | x este o vocală}.</dd>
+    <dd>Mulțimea universală (U): Colecția tuturor obiectelor posibile luate în considerare într-un anumit context.</dd>
+    <dd>Mulțimea vidă/nulă ({}): Nu conține niciun element.</dd>
+    <dd>Cardinalitatea n(A): Numărul total de elemente distincte dintr-o mulțime finită.</dd>
+  </dl>
+  </div>
+
+
+  <div>
+  <dl>
+    <dt>Core Concepts and Notations</dt>
+    <dd>Definition: A collection of distinct objects, which are called elements or members (e.g., A = {1, 2, 3, 4, 5}). Capital letters denote sets; lowercase letters denote elements (a &isin; A).</dd>
+    <dd>Ways to Describe Sets:</dd>
+    <dd>Roster Method (Tabular): Listing every element explicitly inside curly braces: V = {a, e, i, o, u}).</dd>
+    <dd>Describing a rule or condition that elements must satisfy: {x | x is a vowel}.</dd>
+    <dd>Universal Set (U): The total collection of all possible objects under consideration in a specific context.</dd>
+    <dd>Empty/Null Set ({}: A set containing no elements.</dd>
+    <dd>Cardinality n(A): The total count of unique elements in a finite set.</dd>
+  </dl>
+  </div>
+</div>
+
+
+<div class="grid-container">
+  <div>
+  <dl>
+  <dt>Tipuri de mulțimi<dt>
+    <dd>Mulțime finită: O mulțime cu un număr finit și determinabil de elemente.</dd>
+    <dd>Mulțime infinită: O mulțime cu un număr nelimitat de elemente (cum ar fi mulțimea numerelor naturale N).</dd>
+    <dd>Submulțime (A &sube; B): Fiecare element al mulțimii A aparține și mulțimii B. Numărul total de submulțimi ale unei mulțimi cu n elemente este 2<sup>n</sup>.</dd>
+    <dd>Mulțimi disjuncte: Două mulțimi care nu au niciun element comun (intersecția lor este vidă).</dd>
+  </dl>
+  </div>
+
+  <div>
+  <dl>
+  <dt>Types of Sets<dt>
+    <dd>Finite Set: A set with a countable, exact number of elements.</dd>
+    <dd>Infinite Set: A set with endless elements (such as natural numbers N).</dd>
+    <dd>Subset (A &sube; B): Every element of set A also belongs to set B. The total number of subsets for a set with n elements is 2<sup>n</sup>.</dd>
+    <dd>Disjoint Sets: Two sets that share no common elements (their intersection is empty).</dd>
+  </dl>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div>
+  <dl>
+    <dt>Operații de bază cu mulțimi</dt>
+      <dd>Reuniune (A &cup; B): Combină toate elementele unice din ambele mulțimi, A și B.</dd>
+      <dd>Intersecție (A &cap; B): Păstrează doar elementele comune mulțimilor A și B.</dd>
+      <dd>Complementară (A<sup>c</sup>): Conține toate elementele din mulțimea universală U care nu se află în A.</dd>
+      <dd>Diferență de mulțimi (A - B): Conține elementele prezente în A, dar excluzând elementele din B.</dd>
+      <dd>Produs cartezian (A &times; B): Formează toate perechile ordonate posibile (a, b) în care a &in; A și b &in; B.</dd>
+  </dl>
+  </div>
+
+  <div>
+  <dl>
+    <dt>Basic Set Operations</dt>
+      <dd>Union (A &cup; B): Combines all unique elements from both A and B.</dd>
+      <dd>Intersection (A &cap; B): Retains only the elements shared by both A and B.</dd>
+      <dd>Complement (A<sup>c</sup>)): Contains all elements in the universal set U that are not in A.</dd>
+      <dd>Set Difference (A - B): Contains elements present in A but removed from B.</dd>
+      <dd>Cartesian Product (A &times; B): Forms all possible ordered pairs (a, b) where a &in; A and b &in; B</dd>
+  </dl>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div>
+    <p>Diagramele Venn: Reprezentări geometrice dreptunghiulare și circulare, introduse de John Venn, care ilustrează vizual relațiile, suprapunerile și diferențele dintre mulțimi.</p>
+    <p>Utilitate practică: Teoria mulțimilor și diagramele Venn sunt utilizate în viața cotidiană pentru cereri ale bazelor de date, filtrarea rezultatelor în motoarele de căutare, analiza datelor din sondaje, calculul probabilităților și clasificarea informațiilor categorice.</p>
+  </div>
+
+  <div>
+    <p>Venn Diagrams: Rectangular and circular geometric drawings introduced by John Venn that visually map out relationships, overlaps, and differences between sets.</p>
+    <p>Real-World Utility: Set theory and Venn diagrams are used in modern life for database queries, search engine filtering, survey data analysis, probability, and sorting categorical information.</p>
+  </div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+<h2 id="DS">Definirea unei mulțimi - Defining a Set</h2>
+
+<p><a href="https://www.w3schools.com/python/python_sets.asp" target="_blank">Python Sets</a></p>
+
+<p><a href="https://docs.python.org/3/c-api/set.html" target="_blank">Sets Objects</a></p>
+
+
+<div class="grid-container">
+<p>În Python, poți defini o mulțime folosind acoladele {} sau constructorul set(). O mulțime este o colecție neordonată de elemente unice, ceea ce înseamnă că duplicatele sunt eliminate automat, iar elementele nu au un indice fix.</p>
+
+<p>In Python, you can define a set using curly braces {} or the set() constructor. A set is an unordered collection of unique elements, meaning duplicates are automatically removed and the items do not have a fixed index</p>
+</div>
+
+<div class="grid-container">
+  <div>
+<pre><code><span># Definirea unei mulțimi cu acolade</span>
+fructe = {"mere", "pere", "caise", "mere"}
+print(fructe) <span>==&gt; {'mere', 'caise', 'pere'}</span>
+</code></pre>
+  </div>
+
+  <div>
+<pre><code><span># Utilizarea constructorului set()</span>
+<span># Conversia unei liste într-un set pentru a filtra duplicatele</span>
+listă_numere = [1, 2, 2, 3, 4, 4]
+numere_unice = set(listă_numere)
+print(numere_unice) <span>==&gt; {1, 2, 3, 4}</span>
+</code></pre>
+  </div>
+</div>
+
+<div class="grid-container">
+<p>Pentru a crea o mulțime vidă, trebuie să folosești set(). Utilizarea unor acolade vide {} va crea un dicționar vid.</p>
+
+<p>To create an empty set, you must use set(). Using empty curly braces {} will create an empty dictionary.</p>
+</div>
+
+<pre><code><span># Modul corect de a defini o mulțime vidă</span>
+mulțime_vidă = set()
+print(type(mulțime_vidă))   <span>==&gt; &lt;class 'set'&gt;</span>
+
+<span># Modul incorect (aceasta creează un dicționar vid)</span>
+nu_este_un_set = {}
+print(type(nu_este_un_set)) <span>==&gt; &lt;class 'dict'&gt;</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="AT">Tipuri de date permise - Allowed Data Types</h2>
+
+<div class="grid-container">
+<p>Un set Python nu poate conține absolut orice tip de element; deși un singur set poate stoca o combinație de tipuri de date diferite, acesta poate conține doar elemente imutabile și care permit calcularea unui hash (hashable).</p>
+
+<p>Python set cannot contain absolutely any type of element.  A single set can store a mixture of different data types,  can only contain elements that are immutable and hashable.</p>
+</div>
+
+<div class="grid-container">
+  <div>
+   <dl>
+   <dt>Tipuri de date permise (sunt acceptate tipuri mixte)</dt>
+     <dd>Șiruri de caractere (Strings): "salut", "python"</dd>
+     <dd>Numere: Întregi (1), Numere în virgulă mobilă (3.14), Valori booleene (True/False)</dd>
+     <dd>Tupluri (Tuples): (1, 2, 3) (cu condiția ca elementele din interiorul tuplului să fie, de asemenea, imutabile)
+     <dd>Mulțimi imutabile (Frozensets): O versiune imutabilă a unei mulțimi (set)</dd>
+   </dl>
+  </div>
+
+  <div>
+   <dl>
+   <dt>Allowed Data Types (Mixed Types OK)</dt>
+     <dd>Strings: "hello", "python"</dd>
+     <dd>Numbers: Integers (1), Floats (3.14), Booleans (True/False)</dd>
+     <dd>Tuples: (1, 2, 3) (as long as the elements inside the tuple are also immutable)</dd>
+     <dd>Frozensets: An immutable version of a set</dd>
+   </dl>
+  </div>
+</div>
+
+<pre><code><span># Asta funcționează perfect</span>
+set_mixt = {42, "Python", (1, 2, 3), 3.14}
+print(set_mixt ,"/", type(set_mixt))
+<span>==&gt; {42, 3.14, 'Python', (1, 2, 3)} / &lt;class 'set'&gt;</span>
+</code></pre>
+
+<div class="grid-container">
+  <div>
+   <dl>
+   <dt>Tipuri de date interzise (vor cauza TypeError)</dt>
+     <dd>Liste: [1, 2, 3]</dd>
+     <dd>Dicționare: {"key": "value"}</dd>
+     <dd>Alte mulțimi: {1, 2, 3}</dd>
+   </dl>
+  </div>
+
+  <div>
+   <dl>
+   <dt>Forbidden Data Types (Will cause a TypeError)</dt>
+     <dd>Lists: [1, 2, 3]</dd>
+     <dd>Dictionaries: {"key": "value"}</dd>
+     <dd>Other Sets: {1, 2, 3}</dd>
+   </dl>
+  </div>
+</div>
+
+<div class="grid-container">
+<pre><code>try:
+    <span># Încercarea de a crea o mulțime cu un element de tip listă care nu poate fi supus operației de hashing</span>
+    invalid_set = {[1, 2, 3, 3], "salut"}
+        
+except TypeError as e:
+    <span># Gestionarea erorii de tip unhashable</span>
+    print(f"Eroare detectată: {e}")
+    print("Fix: Convertește lista internă într-un tuplu pentru a o face hashable")
+    
+    <span># Rezolvarea problemei prin utilizarea unui tuplu în loc de o listă</span>
+    valid_set = {(1, 2, 3, 3), "salut"}
+    print("Set valid creat:", valid_set)
+</code></pre>
+
+<pre>
+<span>Rezultat</span>
+Eroare detectată: unhashable type: 'list'
+Fix: Convertește lista internă într-un tuplu pentru a o face hashable
+Set valid creat: {'salut', (1, 2, 3, 3)}
+</pre>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+<h2 id="SM">Dimensiune și apartenență - Size and membership</h2>
+
+
+<div class="grid-container">
+  <div>
+    <p>Pentru a afla numărul de elemente dintr-o mulțime, se utilizează funcția len() şi va număra doar intrările unice.</p>
+    <p>Pentru a verifica dacă un element face parte dintr-o mulțime, se folosesc operatorii de apartenență in și not in.</p>
+    <p>Verificarea apartenenței este extrem de optimizată și se execută cu o complexitate temporală medie de O(1).</p>
+  </div>
+
+  <div>
+    <p>To find the number of elements in a set, use the len() function and will only count unique entries.</p>
+    <p>To check if an element is part of a set, use the in and not in membership operators.</p>
+    <p>Membership testing is highly optimized and runs in O(1) average time complexity.</p>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div>
+<pre><code><span># Inițializează o mulțime</span>
+fructe = {"mere", "pere", "caise", "mere"}
+print(fructe)  <span>==&gt; {'mere', 'pere', 'caise'}</span>
+
+<span># Obțineți dimensiunea (lungimea) setului</span>
+lungime = len(fructe)
+
+print(f"Lungimea mulțimii: {lungime}")
+<span>==&gt; Lungimea mulțimii: 3</span>
+</code></pre>
+  </div>
+
+  <div>
+<pre><code><span># Inițializează o mulțime</span>
+fructe = {"mere", "pere", "caise", "mere"}
+
+<span># Testarea apartenenței</span>
+if "pere" in fructe:
+    print("Pere sunt in set!")
+<span>==&gt; Pere sunt in set!</span>
+if "gutuii" not in fructe:
+    print("Gutui nu sunt in set.")
+<span>==&gt; Gutui nu sunt in set.</span>
+</code></pre>
+  </div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+<h2 id="OS">Operații cu mulțimi - Operations with Sets</h2>
+
+<p><a href="https://www.w3schools.com/python/python_sets.asp" target="_blank">Python Sets</a></p>
+
+<p><a href="https://www.w3schools.com/python/python_frozenset.asp" target="_blank">Python frozenset</a></p>
+
+<p><a href="https://www.w3schools.com/PYTHON/python_ref_set.asp" target="_blank">Python Set Methods</a></p>
+
+
+<table class="outer-hidden">
+<caption>Comparație directă</caption>
+<tr><th>Caracteristici</th><th>set</th><th>forzenset</th></tr>
+<tr><td>Mutabilitate</td><td>Mutabil (permite modificarea elementelor)</td><td>Imutabil (constant)</td></tr>
+<tr><td>Hashable?</td><td>Nu (nu pot fi folosite drept chei de dicționar)</td><td>Da (pot fi folosite drept chei de dicționar)</td></tr>
+<tr><td>Sintaxă literală</td><td>{1, 2, 3} sau {x for x in data}</td><td>Niciuna (trebuie utilizat constructorul)</td></tr>
+<tr><td>Inițializare vidă</td><td>set() (utilizarea {} creează un dicționar)</td><td>frozenset()
+</td></tr>
+</table>
+
+<p><a href="https://www.w3schools.com/python/ref_set_symmetric_difference.asp" target="_blank">Python Set symmetric_difference() Method</a></p>
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+  <dl>
+    <dt>Metode care nu modifică mulțimea (disponibile atât pentru set, cât și pentru frozenset)</dt>
+      <dd>Reuniune (|): Combină elementele mulțimilor. a.union(b)</dd>
+      <dd>Intersecție (&amp;): Elemente prezente în ambele mulțimi. a.intersection(b)</dd>
+      <dd>Diferență (&minus;): Elemente în a, nu și în b. a.difference(b)</dd>
+      <dd>Diferență simetrică (^): Elemente într-o mulțime, dar nu în ambele. a.symmetric_difference(b)</dd>
+  </dl>
+
+
+
+  <dl>
+    <dt>Non-Mutating Methods (Available on both set and frozenset)</dt>
+      <dd>Union (|): Combines elements from both sets. a.union(b)</dd>
+      <dd>Intersection (&amp;): Elements present in both sets. a.intersection(b)</dd>
+      <dd>Difference (&minus;): Elements in a but not in b. a.difference(b)</dd>
+      <dd>Symmetric Difference (^): Elements in either set, but not both. a.symmetric_difference(b)</dd>
+  </dl>
+</div>
+</div>
+
+<div class="grid-container">
+<pre><code><span># Inițializarea seturilor</span>
+set_a = {1, 2, 3, 4}
+set_b = {3, 4, 5, 6}
+set_c = {3, 6, 7, 9}
+
+<span># Uniune (Union) operator</span>
+print(set_a | set_b)             <span>==&gt; {1, 2, 3, 4, 5, 6}</span>            
+
+<span># intersecţie (Intersection) operator</span>
+print(set_a & set_b) <span>==&gt; {3, 4}</span>     
+
+<span># Diferenţă (Difference) operator</span> 
+print(set_a - set_b)             <span>==&gt; {1, 2}</span>              
+
+<span># Diferență simetrică (Symmetric Difference) operator</span>
+print(set_a ^ set_b)             <span>==&gt; {1, 2, 5, 6}</span>
+
+<span># Evaluează de la stânga la dreapta: (set_a ^ set_b) ^ set_c</span>
+print(set_a ^ set_b ^ set_c)   <span>==&gt; {1, 2, 3, 5, 7, 9}</span>
+</code></pre>
+
+<pre><code>a = {1, 2, 3}
+b = {2, 3, 4}
+c = {3, 4, 5}
+
+<span># Uniune (Union) method</span>
+print(a.union(b, c))         <span>==> {1, 2, 3, 4, 5}</span>
+
+<span># intersecţie (Intersection) metodă</span>
+print(a.intersection(b, c))  <span>==> {3}</span>
+
+<span># Diferenţă (Difference) metodă</span>
+print(b.difference(c))       <span>==> {2}</span>
+
+print(a.difference(b, c))    <span>==> {1}</span>
+
+<span># Diferență simetrică (Symmetric Difference)  metodă</span>
+print(a.symmetric_difference(b)) <span>==> {1, 4}</span>
+
+print(c.symmetric_difference(b)) <span>==> {2, 5}</span>
+</code></pre>
+</div>
+
+<p><a href="https://www.w3schools.com/python/ref_set_update.asp" target="_blank">Python Set update() Method</a></p>
+
+<p><a href="https://www.w3schools.com/python/ref_set_intersection_update.asp" target="_blank">Python Set intersection_update() Method</a></p>
+
+<p><a href="https://www.w3schools.com/python/ref_set_difference_update.asp" target="_blank">Python Set difference_update() Method</a></p>
+
+<p><a href="https://www.w3schools.com/python/ref_set_symmetric_difference_update.asp" target="_blank">Python Set symmetric_difference_update() Method</a></p>
+
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+  <dl>
+<dt>Metode de actualizare pe loc</dt>
+      <dd>set_a.update(set_b) (sau set_a |= set_b): Adaugă toate elementele din set_b în set_a.</dd>
+      <dd>set_a.intersection_update(set_b) (sau set_a &amp;= set_b): Păstrează doar elementele prezente în ambele.</dd>
+      <dd>set_a.difference_update(set_b) (sau set_a &minus;= set_b): Elimină toate elementele prezente în set_b.</dd>
+      <dd>set_a.symmetric_difference_update(set_b) (sau set_a ^= set_b): Păstrează elementele prezente în unul sau în celălalt, dar nu în ambele.</dd>
+  </dl>
+
+
+  <dl>
+    <dt>In-Place Update Methods</dt>
+      <dd>set_a.update(set_b) (or set_a |= set_b): Adds all elements from set_b into set_a.</dd>
+      <dd>set_a.intersection_update(set_b) (or set_a &amp;= set_b): Keeps only the elements found in both.</dd>
+      <dd>set_a.difference_update(set_b) (or set_a &minus;= set_b): Removes all elements found in set_b.</dd>
+      <dd>set_a.symmetric_difference_update(set_b) (or set_a ^= set_b): Keeps elements found in one or the other, but not both.</dd>
+  </dl>
+</div>
+</div>
+
+<div class="grid-container">
+<pre><code><span># Adaugă toate elementele din f_2 în f_1</span>
+f_1 = {"pere", "mere"}
+f_2 = ["gutui", "prune", "struguri"]
+
+<span># Adăugați mai multe elemente simultan folosind o listă</span>
+f_1.update(f_2)
+
+print(f_1) <span>==&gt; {'gutui', 'pere', 'mere', 'prune', 'struguri'}</span>
+</code></pre>
+
+<pre><code><span># Adaugă toate elementele din f_2 în f_1</span>
+f_1 = {"pere", "mere"}
+f_2 = {"gutui", "prune", "struguri"}
+
+<span># Adăugați mai multe elemente simultan folosind un set</span>
+f_1 |= f_2
+
+print(f_1) <span>==&gt; {'mere', 'gutui', 'prune', 'struguri', 'pere'}</span>
+</code></pre>
+</div>
+
+<div class="grid-container">
+<pre><code><span># Păstrează doar elementele găsite în ambele</span>
+f_1 = {"pere", "mere"}
+f_2 = ["gutui", "mere", "prune"]
+
+<span>Folosind o listă</span>
+f_1.intersection_update(f_2)
+
+print(f_1)   <span>==&gt; {'mere'}</span>
+</code></pre>
+
+
+<pre><code><span># Păstrează doar elementele găsite în ambele</span>
+f_1 = {"pere", "mere"}
+f_2 = {"gutui", "mere", "prune"}
+
+<span>Folosind un set</span>
+f_1 &= f_2
+
+print(f_1)   <span>==&gt; {'mere'}</span>
+</code></pre>
+</div>
+
+
+<div class="grid-container">
+<pre><code><span># Elimină toate elementele care se regăsesc în f_2</span>
+f_1 = {"pere", "mere"}
+f_2 = ["gutui", "mere", "prune"]
+
+<span># Folosind o listă</span>
+f_1.difference_update(f_2)
+
+print(f_1)    <span>==&gt; {'pere'}</span>
+</code></pre>
+
+
+<pre><code><span># Elimină toate elementele care se regăsesc în f_2</span>
+f_1 = {"pere", "mere"}
+f_2 = {"gutui", "mere", "prune",}
+
+<span># Folosind un set</span>
+f_1 -= f_2
+
+print(f_1)    <span>==&gt; {'pere'}</span>
+</code></pre>
+</div>
+
+
+<div class="grid-container">
+<pre><code><span># Păstrează elementele care se găsesc în unul sau în celălalt, dar nu în ambele</span>
+f_1 = {"pere", "mere"}
+f_2 = ["gutui", "mere", "prune"]
+
+<span># Folosind o listă</span>
+f_1.symmetric_difference_update(f_2)
+
+print(f_1)    <span>==&gt; {'pere', 'prune', 'gutui'}</span>
+</code></pre>
+
+
+<pre><code><span># Păstrează elementele care se găsesc în unul sau în celălalt, dar nu în ambele</span>
+f_1 = {"pere", "mere"}
+f_2 = {"gutui", "mere", "prune",}
+
+<span># Folosind un set</span>
+f_1 ^= f_2
+
+print(f_1)    <span>==&gt; {'pere', 'prune', 'gutui'}</span>
+</code></pre>
+</div>
+
+
+<p><a href="https://www.w3schools.com/python/python_sets_add.asp" target="_blank">Python - Add Set Items</a></p>
+
+<p><a href="https://www.w3schools.com/python/python_sets_remove.asp" target="_blank">Python - Remove, Discard, Pop & Clear Set Items</a></p>
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+  <dl>
+<dt>Metode de modificare (Disponibile doar pentru set)</dt>
+      <dd>add(elem): Adaugă un singur element în set.</dd>
+      <dd>remove(elem) / discard(elem): Elimină un element (remove generează o eroare KeyError dacă elementul lipsește; discard nu generează nicio eroare).</dd>
+      <dd>pop(): Elimină și returnează un element oarecare.</dd>
+      <dd>clear(): Golește complet setul.</dd>
+  </dl>
+
+
+  <dl>
+    <dt>Mutating Methods (Available only on set)</dt>
+      <dd>add(elem): Adds a single item to the set.</dd>
+      <dd>remove(elem) / discard(elem): Removes an item (remove throws a KeyError if missing; discard fails silently).</dd>
+      <dd>pop(): Removes and returns an arbitrary element.</dd>
+      <dd>clear(): Empties the entire set.</dd>
+  </dl>
+</div>
+</div>
+
+
+<div class="grid-container">
+<pre><code><span># Adăugarea unui singur element</span>
+culori = {"alb", "galben", "roz"}
+
+<span># Adaugă un element nou</span>
+culori.add("verde")
+
+print(culori)  <span>==&gt; {'alb', 'galben', 'roz', 'verde'}</span>
+</code></pre>
+
+<pre><code><span># Se adaugă un element duplicat (ignorat)</span>
+numbers = {1, 2, 3}
+
+<span># Încercarea de a adăuga un număr existent</span>
+numbers.add(2)
+
+print(numbers)  <span>==&gt; {1, 2, 3}</span>
+</code></pre>
+</div>
+
+<pre><code><span># Tipuri pe care nu le poți adăuga</span>
+numere = {1, 2}
+<span># Invalid: Adăugarea unei liste (mutabilă/unhashable)</span>
+try:
+    numere.add([5, 6])
+    print("Succes! Setul după adăugarea listei:", numere)
+except TypeError as e:
+    print(f"Eroare așteptată la adăugarea listei: {e}")
+<span>==&gt; Eroare așteptată la adăugarea listei: unhashable type: 'list'</span>
+</code></pre>
+
+<div class="grid-container">
+<pre><code><span># remove(element)</span>
+numere = {1, 2, 3}
+
+numere.remove(2)
+print(numere)   <span>==&gt; {1, 3}</span>
+
+<span># numere.remove(7)  Apare KeyError: 7</span>
+</code></pre>
+
+<pre><code><span># discard(element)</span>
+numere = {1, 2, 3}
+
+numere.discard(2)
+print(numere) <span>==&gt; {1, 3}</span>
+
+numere.discard(7) <span># Nu face nimic</span>
+print(numere) <span>==&gt; {1, 3}</span>
+</code></pre>
+</div>
+
+<div class="grid-container">
+<pre><code><span># pop()</span>
+fructe = {"gutui", "prune", "struguri"}
+
+element_eliminat = fructe.pop()
+
+print(element_eliminat) <span>==&gt; gutui</span>
+</code></pre>
+
+<pre><code><span># clear()</span>
+fructe = {"gutui", "prune", "struguri"}
+
+fructe.clear()
+
+print(fructe) <span>==&gt; set()</span>
+</code></pre>
+</div>
+
+<p><a href="https://www.w3schools.com/python/python_operators_membership.asp" target="_blank">Python Membership Operators</a></p>
+
+<p><a href="https://www.w3schools.com/python/ref_set_issubset.asp" target="_blank">Python Set issubset() Method</a></p>
+
+<p><a href="https://www.w3schools.com/python/ref_set_issuperset.asp" target="_blank">Python Set issuperset() Method</a></p>
+
+<p><a href="https://www.w3schools.com/python/ref_set_isdisjoint.asp" target="_blank">Python Set isdisjoint() Method</a></p>
+
+<div class="bracket-container">
+  <div class="curly-bracket"></div>
+  <div class="paragraphs">
+  <dl>
+  <dt>Comparații și apartenență</dt>
+    <dd>x in set_a: Test de apartenență extrem de eficient, cu complexitate O(1).</dd>
+    <dd>set_a.issubset(set_b) (sau set_a &lt;= set_b): Verifică dacă toate elementele din set_a se află în set_b.</dd>
+    <dd>set_a.issuperset(set_b) (sau set_a &gt;= set_b): Verifică dacă set_a conține toate elementele din set_b.</dd>
+    <dd>set_a.isdisjoint(set_b): Returnează True dacă cele două mulțimi nu au niciun element în comun.</dd>
+    <dd>Submulțime și supermulțime (&lt;=, &gt;=): Verifică dacă o mulțime o include complet pe cealaltă. a.issubset(b)</dd>
+  </dl>
+
+  <dl>
+  <dt>Comparisons and Membership</dt>
+    <dd>x in set_a: Highly efficient O(1) membership test.</dd>
+    <dd>set_a.issubset(set_b) (or set_a &lt;= set_b): Checks if all elements of set_a are in set_b.</dd>
+    <dd>set_a.issuperset(set_b) (or set_a &gt;= set_b): Checks if set_a contains all elements of set_b.</dd>
+    <dd>set_a.isdisjoint(set_b): Returns True if the two sets have zero elements in common.</dd>
+    <dd>Subset & Superset (&lt;=, &gt;=): Checks if one set completely encloses another. a.issubset(b)</dd>
+  </dl>
+  </div>
+</div>
+
+
+<div class="grid-container">
+<pre><code><span>Apartenență</span>
+s = 3
+s1 = {0, 1}
+s2 = {0, 1, 2, 3}
+
+print(s in s2)   <span>==> True</span>
+
+print(s1 in s2) <span>==> False</span>
+</code></pre>
+
+<pre><code><span># isdisjoint</span>
+s1 = {0, 1}
+s2 = {2, 3}
+s3 = {1, 2}
+
+<span># Metodă</span>
+print(s1.isdisjoint(s2)) <span>==&gt; True</span>
+print(s1.isdisjoint(s3)) <span>==&gt; False</span>
+</code></pre>
+</div>
+
+<div class="grid-container">
+<pre><code><span># subset</span>
+s1 = {0, 1}
+s2 = {0, 1, 2, 3}
+
+<span># operator</span>
+print(s1 &lt;= s2)        <span>==&gt; True</span>
+
+<span># Metodă</span>
+print(s1.issubset(s2)) <span>==&gt; True</span>
+</code></pre>
+
+<pre><code><span># superset</span>
+s1 = {0, 1}
+s2 = {0, 1, 2, 3}
+
+<span># operator</span>
+print(s2 &gt;= s1)          <span>==&gt; True</span>
+
+<span># Metodă</span>
+print(s2.issuperset(s1)) <span>==&gt; True</span>
+</code></pre>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="AI">Accesează obiectele din set - Accesses Set Items</h2>
+
+<p><a href="https://www.w3schools.com/python/python_sets_access.asp" target="_blank">Python - Access Set Items</a></p>
+
+<div class="grid-container">
+  <div>
+    <p>În Python, nu poți accesa elementele unei mulțimi folosind un indice sau o cheie, deoarece mulțimile sunt colecții neordonate și fără indici. Încercarea de a utiliza o sintaxă precum my_set[0] va genera o eroare de tip TypeError.</p>
+    <p>În schimb, poți accesa sau verifica elementele dintr-o mulțime folosind bucle, teste de apartenență, iteratori sau conversia tipului de date.</p>
+  </div>
+
+  <div>
+    <p>In Python, you cannot access set items using an index or a key because sets are unordered and unindexed collections. Attempting to use syntax like my_set[0] will raise a TypeError.</p>
+    <p>Instead, you can access or check items within a set using loops, membership tests, iterators, or type conversion.</p>
+  </div>
+</div>
+
+<pre><code>fructe = {"gutui", "prune", "struguri"}
+
+<span># Afișează elementele setului pe același rând, separate prin virgulă</span>
+for fruct in fructe:
+    print(fruct, end=", ")
+
+print() <span># Adăugăm o linie nouă pentru claritate în consolă</span>
+
+<span># Verifică existența unui element în set</span>
+if "prune" in fructe:
+    print("Da, 'prune' este în set!")
+
+else:
+    print("prune nu este în set!")
+<span>==&gt; struguri, gutui, prune, </span>
+<span>==&gt; Da, 'prune' este în set!</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+<h2 id="MI">Modifică un element - Modify an Item</h2>
+
+<div class="grid-container">
+  <div>
+    <p>Python set sunt colecții neordonate de elemente unice, nu poți modifica un element al mulțimii direct.</p>
+    <p>Pentru a modifica un element, trebuie să parcurgi un proces în doi pași: elimini elementul vechi și adaugi elementul nou.</p>
+  </div>
+
+  <div>
+    <p>Python sets are unordered collections of unique items, you cannot modify a set item in place.</p>
+    <p>To modify an item, you must use a two-step process: remove the old item and add the new item.</p>
+  </div>
+</div>
+
+<div class="grid-container">
+<dl>
+  <dt>Modificarea unui element specific</dt>
+    <dd>Dacă cunoști valoarea exactă pe care dorești să o modifici, folosește .discard() pentru a o elimina în siguranță (nu va genera o eroare dacă elementul nu există) și .add() pentru a insera versiunea actualizată.</dd>
+  </dl>
+
+  <dl>
+  <dt>Modify a Specific Item</dt>
+    <dd>If you know the exact value you want to change, use .discard() to safely remove it (it won't throw an error if the item isn't there) and .add() to insert the updated version.</dd>
+  </dl>
+</div>
+
+<pre><code>fructe = {"mere", "pere", "gutui"}
+
+<span># Inlocuieste "pere" cu "struguri"</span>
+if "pere" in fructe:
+    fructe.discard("pere")
+    fructe.add("struguri")
+print(fructe) <span>==&gt; {'struguri', 'mere', 'gutui'}</span>
+</code></pre>
+
+
+
+<div class="grid-container">
+<dl>
+  <dt>Modificarea tuturor elementelor (set comprehension)</dt>
+    <dd>Dacă dorești să aplici o modificare fiecărui element dintr-o mulțime (de exemplu, transformarea tuturor șirurilor de caractere în majuscule), o construcție de tip set comprehension reprezintă cea mai elegantă și rapidă metodă.</dd>
+</dl>
+
+<dl>
+  <dt>Modify All Items (Set Comprehension)</dt>
+    <dd>If you want to apply a change to every item in the set (for example, converting all strings to uppercase), a set comprehension is the cleanest and fastest way.</dd>
+</dl>
+</div>
+
+<pre><code>fructe = {"mere", "pere", "gutui"}
+
+<span># Convertește toate elementele la majuscule</span>
+fructe = {fruct.upper() for fruct in fructe}
+
+print(fructe) <span>==&gt; {'GUTUI', 'PERE', 'MERE'}</span>
+</code></pre>
+
+<div class="grid-container">
+<dl>
+  <dt>Modificare prin conversia într-o listă</dt>
+    <dd>Dacă trebuie să modifici un element aflat într-o anumită poziție logică, poți converti mulțimea într-o listă, poți modifica elementul folosind indicele acestuia și apoi poți converti lista înapoi într-o mulțime.</dd>
+</dl>
+
+<dl>
+  <dt>Modify via List Conversion</dt>
+    <dd>If you need to change an item at a specific logical position, you can convert the set to a list, modify the element using its index, and then convert it back into a set.</dd>
+</dl>
+</div>
+
+<pre><code>fructe = {"mere", "pere", "gutui"}
+
+<span># Convertește, modifică indexul 1, reconvertește</span>
+fructe_lista = list(fructe)
+fructe_lista[1] = "smochine"
+fructe = set(fructe_lista)
+
+print(fructe) <span>==&gt; {'mere', 'smochine', 'gutui'}</span>
+</code></pre>
+
+
+<h2 id="FS">frozenset mulțimi imutabile</h2>
+
+<p><a href="https://www.w3schools.com/python/python_frozenset.asp" target="_blank">Python frozenset</a></p>
+
+<p><a href="" target="_blank"></a></p>
+
+<div class="grid-container">
+<p>frozenset este o versiune încorporată, imuabilă și care permite calcularea unei valori hash a unei mulțimi standard. În timp ce o mulțime standard îți permite să adaugi sau să elimini elemente după bunul plac, un frozenset fixează datele în momentul creării.</p>
+
+<p>frozenset is a built-in, immutable and hashable version of a standard set. While a standard set allows you to add or remove items at will, a frozenset locks the data in place upon creation.</p>
+</div>
+
+<div class="grid-container">
+<p>Un frozenset este o versiune imuabilă a unei mulțimi (set) în Python. Deși împărtășesc caracteristici precum faptul că pot conține doar elemente unice, neordonate, ele diferă în ceea ce privește mutabilitatea și cazurile de utilizare.</p>
+
+<p>A frozenset is an immutable version of a Python set. While they share characteristics like holding only unique, unordered elements, they differ in mutability and use cases.</p>
+</div>
+
+
+<table class="outer-hidden">
+<caption>set vs frozenset</caption>
+<tr><th>Funcționalitate</th><th>set</th><th>frozenset</th></tr>
+<tr><th>Mutabilitate</th><td>Mutabil (poate fi modificat)</td><td>Imutabil (nu poate fi modificat)</td></tr>
+<tr><th>Hashable</th><td>Nu (nu poate fi utilizat ca şi cheie într-un dicționar)</td><td>Da (poate fi utilizat ca şi cheie într-un dicționar)</td></tr>
+<tr><th>Sintaxă literală</th><td>Suportată (de ex., {1, 2, 3})</td><td>Neacceptată (trebuie utilizat frozenset())</td></tr>
+<tr><th>Metode</th><td>add(), remove(), pop() etc.</td><td>Doar operațiuni fără mutații, cum ar fi .union(), .intersection()</td></tr>
+</table>
+
+
+<pre><code><span># Elementele duplicate sunt eliminate automat, la fel ca în cazul mulțimilor standard</span>
+fs = frozenset([1, 2, 3, 1, 3, 4])
+print(fs)       <span>==&gt; frozenset({1, 2, 3, 4})</span>
+print(type(fs)) <span>==&gt; &lt;class 'frozenset'&gt;</span>
+</code></pre>
+
+<p>Încercarea de a modifica un frozenset generează o eroare - Attempting to modify a frozenset generates an error</p>
+
+<pre><code>fs = frozenset([1, 2, 2, 3, 4])
+
+try:
+    fs.add(5)
+except AttributeError as e:
+    print(f"Eroare detectatăt: {e}")
+<span>==&gt; Eroare detectatăt: 'frozenset' object has no attribute 'add'</span>
+</code></pre>
+
+<p>Operații care nu modifică mulțimile - Non Mutating Set Operations</p>
+
+<pre><code>a = frozenset([1, 2, 3])
+b = frozenset([3, 4, 5])
+
+<span># Reuniune (toate elementele unice din ambele)</span>
+print(a | b)      <span>==&gt; frozenset({1, 2, 3, 4, 5})</span>                
+print(a.union(b)) <span>==&gt; frozenset({1, 2, 3, 4, 5})</span>        
+
+<span># Intersecție (elemente prezente în ambele)</span>
+print(a & b)             <span>==&gt; frozenset({3})</span>
+print(a.intersection(b)) <span>==&gt; frozenset({3})</span>
+</code></pre>
+
+<pre><code>a = frozenset([1, 2, 3])
+b = frozenset([3, 4, 5])
+
+<span># Diferență (elemente prezente în a, dar nu și în b)</span>
+print(a - b)           <span>==&gt; frozenset({1, 2})</span>                 
+print(a.difference(b)) <span>==&gt; frozenset({1, 2})</span>
+
+<span># Diferență simetrică (elemente care se află fie în a, fie în b, dar nu în ambele)</span>
+print(a ^ b) <span>==&gt; frozenset({1, 2, 4, 5})</span> 
+print(a.symmetric_difference(b)) <span>==&gt; frozenset({1, 2, 4, 5})</span>
+</code></pre>
+
+<div class="grid-container">
+  <dl>
+  <dt>Cazuri principale de utilizare</dt>
+    <dd>Chei în dicționare: Indiferent de ordinea acestora.</dd>
+    <dd>Mulțimi imbricate: Este posibil doar dacă mulțimile interioare sunt obiecte de tip frozenset.</dd>
+    <dd>Integritatea datelor: Asigurarea faptului că o colecție de constante sau configurații nu poate fi modificată accidental de alte părți ale codului dumneavoastră.</dd>
+  </dl>
+
+  <dl>
+  <dt>Primary Use Cases</dt>
+    <dd>Dictionary Keys: Regardless of their order.</dd>
+    <dd>Nested Sets: Is only possible if the inner sets are frozenset objects.</dd>
+    <dd>Data Integrity: Ensuring that a collection of constants or configurations cannot be accidentally modified by other parts of your code.</dd>
+  </dl>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+<h3 id="FSA">Utilizarea mulțimilor drept chei în dicționar - Using Sets as Dictionary Keys</h3>
+
+<pre><code><span># Combinații din meniu cu un preț</span>
+prețuri_pachet = {
+    frozenset({"şniţel", "cartofi prăjiți"}): 7.00,
+    frozenset({"placintă", "băutură răcoritoare"}): 4.50
+}
+
+print(type(prețuri_pachet)) <span>==&gt; &lt;class 'dict'&gt;</span>
+
+<span># Ordinea nu contează atunci când cauți o combinație!</span>
+print(prețuri_pachet[frozenset({"cartofi prăjiți", "şniţel"})])       <span>==&gt; 7.0</span>
+print(prețuri_pachet[frozenset({"băutură răcoritoare", "placintă"})]) <span>==&gt; 4.5</span>
+</code></pre>
+
+<h3 id="FSB">Mulțimi imbricate - Nested Sets</h3>
+
+
+<pre><code><span># O mulțime de mulțimi</span>
+set_imbricat = {frozenset({1, 2}), frozenset({3, 4})}
+print(set_imbricat) <span>==&gt; {frozenset({3, 4}), frozenset({1, 2})}</span>
+
+set_curat = str(set_imbricat).replace("frozenset(", "").replace(")", "")
+print(type(set_curat)) <span>==> &lt;class 'str'&gt;</span>
+print(set_curat)       <span>==> {{3, 4}, {1, 2}}</span>
+</code></pre>
+
+<p>Aplatizează seturile imbricate - Flatten the nested sets</p>
+
+<pre><code><span># O mulțime de mulțimi</span>
+set_imbricat = {frozenset({1, 2}), frozenset({3, 4})}
+
+set_plat = {item for s in set_imbricat for item in s}
+print(set_plat) <span>==> {1, 2, 3, 4}</span>
+</code></pre>
+
+
+    <p class="other">Pentru mai multe detalii și exemple, consultați
+    <a href="https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset" target="_blank" rel="noopener">Documentația oficială a tipurilor Set Python</a><br>
+
+    <p class="other">For more details and examples, refer to the official
+    <a href="https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset" target="_blank" rel="noopener">Python Set Types documentation</a></p>
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+  <div class="footer footer-link">
+    <footer>
+      &copy; <span id="year-picior"></span> Gazeta Python.
+      <address><a href="https://gazetapython.wordpress.com/" target="_blank">www.gazetapython.com</a></address>
+    </footer>
+  </div>
+</div>
+</div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+<script src="JS/treileaGreeting.js"></script>
+<script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

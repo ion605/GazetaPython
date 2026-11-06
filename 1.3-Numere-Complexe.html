@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 1.3 Numere-Complexe</title>
+
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaN.svg" alt="N" class="logo">
+          <h1>1.0 Tipuri numerice - Numeric Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>1.3 Numere complexe --------------- Complex Numbers</h2>
+        </div>
+      </div>
+    </header>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#CN">Număr complex</a></li>
+            <li><a href="#CL">Numere complexe literale</a></li>
+            <li><a href="#CR">Constructorul complex()</a></li>
+            <li><a href="#CM">Metodele numerelor complexe</a></li>
+            <li><a href="#CF">Funcția complex() încorporată</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter you will study:</li>
+            <li><a href="#CN">Complex Number(complex)</a></li>
+            <li><a href="#CL">Complex number literals</a></li>
+            <li><a href="#CR">Complex() constructor</a></li>
+            <li><a href="#CM">Complex number methods</a></li>
+            <li><a href="#CF">The Built-in complex() function</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+      <h2 id="CN">Număr complex - Complex Number</h2>
+
+
+      <div class="grid-container">
+        <p>Python oferă suport nativ pentru numere complexe, care sunt reprezentate sub forma <b>a + bj</b>, unde
+          <b>a</b> este partea reală, <b>b</b> este partea imaginară, iar j (sau J) unitate imaginară (echivalent cu i
+          în matematică, j = &radic;-1, unde j<sup>2</sup> = -1).
+        </p>
+
+        <p>Python provides native support for complex numbers, which are represented in the form <b>a + bj</b>, where
+          <b>a</b> is the real part, <b>b</b> is the imaginary part, and j (or J) represents the imaginary unit
+          (equivalent to i in mathematics, j = &radic;-1, where j<sup>2</sup> = -1).
+        </p>
+      </div>
+
+      <p>Exemplu: (1 + 2j), (-3 - 4j)</p>
+      <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CL">Numere complexe literale - Complex number literals</h2>
+
+    <div class="grid-container">
+      <p>În Python, literalii numerelor complexe sunt o modalitate directă de a reprezenta numerele complexe, care
+        constau dintr-o parte reală și o parte imaginară.</p>
+      <p>In Python, complex number literals are a direct way to represent complex numbers, which consist of a real part
+        and an imaginary part.</p>
+    </div>
+
+<pre><code>x = 3 + 4j
+x2 = -1 + 2J   <span># Utilizarea majusculei J este, de asemenea, validă</span>
+print(f"Partea reală: {x.real}")      <span># Accesează partea reală</span>
+print(f"Partea Imaginară: {x.imag}")  <span># Accesează partea imaginară</span>
+print(type(x))                        <span>==> &lt;class 'complex'&gt;</span>
+print(f"Partea reală: {x2.real}")     <span># Accesează partea reală</span>
+print(f"Partea Imaginară: {x2.imag}") <span># Accesează partea imaginară</span> 
+print(type(x2))                       <span>==> &lt;class 'complex'&gt;</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Rețineți că nu trebuie să existe spațiu între coeficientul imaginar și j (sau J).<br>
+          Accesarea părților: Odată ce un număr complex este creat, părțile sale reale și imaginare pot fi accesate
+          folosind atributele .real și .imag.</p>
+
+        <p>Note that there should be no space between the imaginary coefficient and the j (or J).<br>
+          Accessing Parts: Once a complex number is created, its real and imaginary parts can be accessed using the
+          .real and .imag attributes.</p>
+      </div>
+
+
+      <p>
+        Tip: Tipul unui literal complex în Python este complex.<br>
+        Type: The type of a complex literal in Python is complex.</p>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="CR">Constructorul complex() - Complex() constructor</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Constructorul complex() din Python este o funcție încorporată folosită pentru a crea numere complexe. Poate
+            fi utilizată în mai multe moduri: cu părți <b>reale</b> și <b>imaginare.</b></p>
+          <p><b>Doar cu partea reală.</b> Dacă este furnizat un singur argument, acesta este tratat ca parte reală, iar
+            partea imaginară este implicit zero.</p>
+          <p><b>Dintr-un șir de caractere.</b> Puteți converti o reprezentare sub formă de șir de caractere a unui număr
+            complex într-un număr complex. Șirul de caractere trebuie să aibă formatul "a+bj" sau "a-bj".</p>
+          <p><b>Fără argumente.</b> Dacă nu sunt furnizate argumente, returnează un număr complex cu părți atât reale,
+            cât și imaginare, egale cu zero (0j).</p>
+        </div>
+
+        <div>
+          <p>The complex() constructor in Python is a built-in function used to create complex numbers. It can be used
+            in several ways: with <b>real</b> and <b>imaginary</b> parts.</p>
+          <p><b>With only the real part.</b> If only one argument is provided, it is treated as the real part, and the
+            imaginary part defaults to zero.</p>
+          <p><b>From a string.</b> You can convert a string representation of a complex number into a complex number.
+            The string must be in the format "a+bj" or "a-bj".</p>
+          <p><b>Without any arguments.</b> If no arguments are provided, it returns a complex number with both real and
+            imaginary parts as zero (0j).</p>
+        </div>
+      </div>
+
+<pre><code>număr7 = complex(4, -7)  <span># Creează un număr complex 4 - 7j</span>
+număr8 = complex(10)     <span># Creează un număr complex 10 + 0j (partea imaginară are implicit valoarea 0)</span>
+număr9 = complex("1+1j") <span># Creează un număr complex dintr-un șir de caractere</span>
+număr10 = complex()      <span># Creează numărul complex 0j</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CM">Metodele numerelor complexe - Complex number methods</h2>
+
+      <div class="grid-container">
+        <p>Tipul complex încorporat în Python oferă diverse metode și atribute pentru lucrul cu numere complexe. În
+          plus, modulul <a href="https://docs.python.org/3/library/cmath.html" target="_blank" rel="noopener">cmath</a>
+          oferă funcții
+          matematice specializate pentru numere complexe.</p>
+
+        <p>Python's built-in complex type provides various methods and attributes for working with complex numbers.
+          Additionally, the <a href="https://docs.python.org/3/library/cmath.html" target="_blank"
+            rel="noopener">cmath</a> module
+          offers specialized mathematical functions for complex numbers.</p>
+      </div>
+
+      <p>Magnitudine (valoare absolută)<br>
+        Magnitude (Absolute Value)</p>
+
+      <p>abs(z):</p>
+
+      <p>Returnează magnitudinea (modulul) numărului complex.<br>
+        Returns the magnitude (modulus) of the complex number.</p>
+
+<pre><code>abs(3 + 2j)   <span># sqrt(3<sup>2</sup> + 2<sup>2</sup>) = sqrt(13) ==> 3.605551275463989</span>
+</code></pre>
+
+      <p>z.conjugate():</p>
+
+      <p>Returnează conjugatul complex al numărului.<br>
+        Returns the complex conjugate of the number.</p>
+
+<pre><code>(3 + 2j).conjugate()   <span>==> (3-2j)</span>
+</code></pre>
+
+      <p>Operații aritmetice - Arithmetic Operations</p>
+
+<pre><code>x1 = 2 + 3j
+x2 = 1 - 4j
+
+print(f"Adunare: {x1} + {x2} = {x1 + x2}")              <span>==> (3-1j)</span>
+print(f"Scădere: {x1} - {x2} = {x1 - x2}")              <span>==> (1+7j)</span>
+print(f"Înmulțire: {x1} * {x2} = {x1 * x2}")            <span>==> (14-5j)</span>
+print(f"Împărțire: {x1} / {x2} = {x1 / x2}")            <span>==> (-0.5882352941176471+0.6470588235294118j)</span>
+print(f"Ridicare la putere: {x1} ** {x2} = {x1 ** x2}") <span>==> (-98.43395342485856+155.17660426903427j)</span>
+</code></pre>
+
+      <p>funcțiile modulului cmath - cmath module functions</p>
+
+      <div class="grid-container">
+        <div>
+          <p>Modulul <b>cmath</b> oferă funcții pentru operații matematice avansate cu numere complexe, inclusiv:</p>
+          <dl>
+            <dt>Conversie polară/dreptunghiulară:</dt>
+            <dd>cmath.polar(z): Returnează coordonatele polare (magnitudine, fază) ale lui z.</dd>
+            <dd>cmath.rect(r, phi): Returnează un număr complex din coordonate polare (magnitudine r, fază phi).</dd>
+            <dt>Fază/Argument:</dt>
+            <dd>cmath.phase(z): Returnează faza (argumentul) lui z.</dd>
+            <dt>Funcții exponențiale și logaritmice:</dt>
+            <dd>cmath.exp(z): Returnează <b>e</b> ridicat la puterea lui z.</dd>
+            <dd>cmath.log(z[, base]): Returnează logaritmul lui z la baza dată (logaritm natural dacă nu este
+              specificată nicio bază).</dd>
+            <dt>Funcții trigonometrice:</dt>
+            <dd>cmath.sin(z), cmath.cos(z), cmath.tan(z)</dd>
+            <dd>Funcții trigonometrice inverse: cmath.asin(z), cmath.acos(z), cmath.atan(z)</dd>
+            <dt>Funcții hiperbolice:</dt>
+            <dd>cmath.sinh(z), cmath.cosh(z), cmath.tanh(z)</dd>
+            <dd>Funcții hiperbolice inverse: cmath.asinh(z), cmath.acosh(z), cmath.atanh(z)</dd>
+            <dt>Rădăcină pătrată:</dt>
+            <dd>cmath.sqrt(z): Returnează rădăcina pătrată a lui z.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>The <b>cmath</b> module provides functions for advanced mathematical operations on complex numbers,
+            including:</p>
+          <dl>
+            <dt>Polar/Rectangular Conversion:</dt>
+            <dd>cmath.polar(z): Returns the polar coordinates (magnitude, phase) of z.</dd>
+            <dd>cmath.rect(r, phi): Returns a complex number from polar coordinates (magnitude r, phase phi).</dd>
+            <dt>Phase/Argument:</dt>
+            <dd>cmath.phase(z): Returns the phase (argument) of z.</dd>
+            <dt>Exponential and Logarithmic Functions:</dt>
+            <dd>cmath.exp(z): Returns <b>e</b> raised to the power of z.</dd>
+            <dd>cmath.log(z[, base]): Returns the logarithm of z to the given base (natural logarithm if no base is
+              specified).</dd>
+            <dt>Trigonometric Functions:</dt>
+            <dd>cmath.sin(z), cmath.cos(z), cmath.tan(z)</dd>
+            <dd>Inverse trigonometric functions: cmath.asin(z), cmath.acos(z), cmath.atan(z)</dd>
+            <dt>Hyperbolic Functions:</dt>
+            <dd>cmath.sinh(z), cmath.cosh(z), cmath.tanh(z)</dd>
+            <dd>Inverse hyperbolic functions: cmath.asinh(z), cmath.acosh(z), cmath.atanh(z)</dd>
+            <dt>Square Root:</dt>
+            <dd>cmath.sqrt(z): Returns the square root of z.</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code>import cmath
+<span># Crearea unui număr complex</span>
+z = complex(3, 4)
+<span># Accesarea atributelor</span>
+print(f"Partea reală a numarului complex {z}: {z.real}")            <span>==> 3.0</span>   
+print(f"Partea imaginară a numarului complex {z}: {z.imag}")        <span>==> 4.0</span>
+
+<span># Magnitudine și conjugat</span>
+print(f"Magnitudinea numarului complex {z}: {abs(z)}")              <span>==> 5.0</span>
+print(f"Conjugatul numarului complex {z}: {z.conjugate()}")         <span>==> (3-4j)</span>
+
+<span># Utilizarea modulului cmath</span>
+coordonate_polare = cmath.polar(z)
+print(f"Coordonate polare (magnitudine, fază): {coordonate_polare}") <span>==> (5.0, 0.9272952180016122)</span>
+fază = cmath.phase(z) # Returnează unghiul de fază în radiani
+print(phase)                                                         <span>==> 0.9272952180016122</span>
+
+valoare_exponenţială = cmath.exp(z)
+print(f"e^z: {valoare_exponenţială}")            <span>==> (-13.128783081462158-15.200784463067954j)</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Considerații importante:</dt>
+          <dd>Fără operatori de comparație: Numerele complexe nu acceptă operatori de comparație precum &lt;, >, &lt;=
+            sau >= deoarece nu există o relație de ordine definită pentru acestea.</dd>
+          <dd>Combinarea math și cmath: Modulul matematic este strict pentru numere reale. Dacă încercați să utilizați o
+            funcție din math cu un număr complex care produce un rezultat complex (de exemplu, math.sqrt(-1)), va fi
+            generată o eroare ValueError. Utilizați întotdeauna modulul cmath pentru operațiile cu numere complexe.</dd>
+        </dl>
+
+        <dl>
+          <dt>Important considerations:</dt>
+          <dd>No comparison operators: Complex numbers do not support comparison operators like &lt;, >, &lt;=, or >=
+            because there is no defined ordering relation for them.</dd>
+          <dd>Mixing math and cmath: The math module is strictly for real numbers. If you attempt to use a function from
+            math with a complex number that produces a complex result (e.g., math.sqrt(-1)), a ValueError will be
+            raised. Always use the cmath module for complex number operations.</dd>
+        </dl>
+      </div>
+      <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CF">Funcția complex() încorporată - The Built-in complex() function</h2>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Funcția acceptă până la două argumente.</dt>
+          <dd>real: Partea reală a numărului complex. Poate fi orice tip numeric (inclusiv un alt număr complex) sau un
+            șir de caractere. Dacă acest argument este omis, implicit va fi 0.</dd>
+          <dd>imag (opțional): Partea imaginară a numărului complex. Trebuie să fie un tip numeric. Dacă este omis,
+            implicit va fi 0.</dd>
+        </dl>
+
+        <dl>
+          <dt>The function accepts up to two arguments.</dt>
+          <dd>real: The real part of the complex number. It can be any numeric type (including another complex number)
+            or a string. If this argument is omitted, it defaults to 0.</dd>
+          <dd>imag (optional): The imaginary part of the complex number. It must be a numeric type. If omitted, it
+            defaults to 0.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <p>Funcția complex() încorporată în Python servește la crearea de numere complexe sau la convertirea altor
+          tipuri de date în numere complexe. Un număr complex este reprezentat sub forma <b>x + iy</b>, unde <b>x</b>
+          este partea reală, <b>y</b> este partea imaginară, iar <b>i</b> (sau j în Python) este unitatea imaginară care
+          satisface i<sup>2</sup> = -1.</p>
+
+        <p>The built-in complex() function in Python serves to create complex numbers or convert other data types into
+          complex numbers. A complex number is represented in the form <b>x + iy</b>, where <b>x</b> is the real part,
+          <b>y</b> is the imaginary part, and <b>i</b> (or j in Python) is the imaginary unit satisfying i<sup>2</sup> =
+          -1.
+        </p>
+      </div>
+
+      <p>Crearea unui număr complex cu părți reale și imaginare.<br>
+        Creating a complex number with real and imaginary parts.</p>
+
+<pre><code>număr_complex = complex(7)
+print(număr_complex)       <span>==> (7+0j)</span>
+</code></pre>
+
+      <p>Conversia unui șir de caractere într-un număr complex.<br>
+        Converting a string to a complex number.</p>
+
+      <div class="grid-container">
+        <p>Funcția complex() poate analiza, de asemenea, o reprezentare de tip șir de caractere a unui număr complex, cu
+          condiția ca aceasta să fie în formatul corect (de exemplu, "2+3j" sau "2-3j"). Șirul de caractere nu trebuie
+          să conțină spații albe în jurul operatorului + sau -.</p>
+
+        <p>The complex() function can also parse a string representation of a complex number, provided it is in the
+          correct format (e.g., "2+3j" or "2-3j"). The string must not contain whitespace around the central + or -
+          operator.</p>
+      </div>
+
+<pre><code>număr_complex = complex("1+2j")
+print(număr_complex)            <span>==> (1+2j)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Caracteristici cheie:</dt>
+          <dd>Returnează un obiect de tip complex.</dd>
+          <dd>Părțile real și imag pot fi accesate folosind atributele .real și .imag ale obiectului număr complex.</dd>
+          <dd>Acceptă operații aritmetice cu alte numere complexe, numere întregi și numere cu virgulă mobilă.</dd>
+          <dd>La conversia dintr-un șir de caractere, partea imaginară este notată cu "j" (de exemplu, 2j).</dd>
+          <dd>Dacă ambele argumente sunt omise (de exemplu, complex()), returnează 0j.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Features:</dt>
+          <dd>Returns an object of the complex type.</dd>
+          <dd>The real and imag parts can be accessed using the .real and .imag attributes of the complex number object.
+          </dd>
+          <dd>Supports arithmetic operations with other complex numbers, integers, and floats.</dd>
+          <dd>When converting from a string, the imaginary part is denoted by 'j' (e.g., 2j).</dd>
+          <dd>If both arguments are omitted (i.e., complex()), it returns 0j.</dd>
+        </dl>
+      </div>
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>

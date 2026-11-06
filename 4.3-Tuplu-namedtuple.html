@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 4.3 NamedTuple</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaS.svg" alt="S" class="logo">
+          <h1>4.0 Tipuri secvență - Sequence Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>4.3 Tuplu namedtuple - Tuple namedtuple</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#NF">Tupluri cu câmpuri denumite</a>
+              <ul>
+                <li><a href="#NFA">Metode și atribute încorporate</a></li>
+                <li><a href="#NFB">Crearea de instanțe namedtuple din iterabile.</a></li>
+                <li><a href="#NFC">Argumente opționale cu namedtuple()</a></li>
+              </ul>
+            </li>
+            <li><a href="#GA">Gruparea numărului de argumente</a></li>
+            <li><a href="#TH">Tupluri cu câmpuri denumite și indicii de tip</a></li>
+            <li><a href="#DC">Clasele de date</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter, you will study:</li>
+            <li><a href="#NF">Tuples With Named Fields</a>
+              <ul>
+                <li><a href="#NFA">Built-in Methods and Attributes</a></li>
+                <li><a href="#NFB">Createing namedtuple Instances From Iterables</a></li>
+                <li><a href="#NFC">Optional Arguments With namedtuple()</a></li>
+              </ul>
+            </li>
+            <li><a href="#GA">Grouping the number of arguments</a></li>
+            <li><a href="#TH">Tuples With Named Fields and Type Hints</a></li>
+            <li><a href="#DC">Data Classes</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+
+
+      <h2 id="NF">Tupluri cu câmpuri denumite - Tuples With Named Fields</h2>
+
+      <div class="grid-container">
+        <p>În Python, tuplurile cu câmpuri denumite se creează folosind collections.namedtuple sau typing.NamedTuple,
+          care permit accesarea elementelor prin atribute descriptive, în loc de indici numerici.</p>
+
+        <p>In Python, tuples with named fields are created using collections.namedtuple or typing.NamedTuple, which
+          allow elements to be accessed via descriptive attributes instead of numeric indices.</p>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <p><b>namedtuple</b> este o funcție-fabrică disponibilă în modulul collections, care creează subclase de
+            tupluri cu câmpuri denumite. O fabrică este un obiect destinat creării altor obiecte. Este o funcție sau o
+            metodă care returnează obiecte.</p>
+          <p>Un nume de câmp este un identificator de tip șir de caractere utilizat pentru a accesa un anumit element
+            după nume, în loc de un indice numeric (fruct.culoare în loc de fruct[1]).</p>
+          <p>Un namedtuple moștenește toate caracteristicile unui tuplu obișnuit — este imuabil, eficient din punctul de
+            vedere al memoriei, iterabil și permite despachetarea — făcând în același timp codul mult mai curat și
+            auto-documentat.</p>
+        </div>
+
+        <div>
+          <p><b>namedtuple</b> is a factory function available in the collections module that creates tuple subclasses
+            with named fields. Factory is an object for creating other objects. It is a function or method that returns
+            objects.</p>
+          <p>A field name is a string identifier used to access a specific element by name instead of a numeric index
+            (fruct.color instead of fruct[1]).</p>
+          <p>A namedtuple inherits all regular tuple features—it is immutable, memory-efficient, iterable, and
+            unpackable—while making your code significantly cleaner and self-documenting</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <p>Pentru a ilustra modul în care funcționează câmpurile cu nume, să presupunem că dorești să stochezi datele
+            unei persoane într-o secvență imuabilă — precum un tuplu. </p>
+          <p>Persoană = namedtuple("Persoană", "nume vârstă educație")</p>
+          <p>În Persoană = namedtuple("Persoană", "nume vârstă educație"), primul Persoană este numele clasei (noul tip
+            de date), iar al doilea Persoană este numele intern al tipului, utilizat de Python pentru afișare și
+            depistare a erorilor.</p>
+          <dl>
+            <dt>Practică bună</dt>
+            <dd>Păstrează ambele nume identice. Modificarea celui de-al doilea șir (de exemplu, în namedtuple("ID",
+              ...)) în timp ce păstrezi variabila Persoană îi va induce în eroare pe cei care îți citesc codul.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>To illustrate how the named fields works, say that you want to store a person data in an immutable
+            sequence—like a tuple.</p>
+          <p>Person = namedtuple("Person", "name age education")</p>
+
+          <p>In Person = namedtuple("Person", "name age education"), the first Person is the class name (the new data
+            type), and the second Person is the internal type name used by Python for printing and debugging.</p>
+          <dl>
+
+            <dt>Best Practice</dt>
+            <dd>Keep both names identical.Changing the second string to something else (like namedtuple("ID", ...) while
+              keeping the variable Person) confuses anyone reading your code.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <p>Argumente obligatorii pentru namedtuple() - Required Arguments to namedtuple()</p>
+
+      <table class="outer-hidden">
+        <caption>Comparație Sumară</caption>
+        <tr>
+          <th>Sintaxă</th>
+          <th>Avantaje</th>
+          <th>Dezavantaje</th>
+          <th>Recomandare
+        </tr>
+        <tr>
+          <td>["x", "y"] (listă)</td>
+          <td>Cea mai sigură și clară variantă, extrem de explicită pentru mai multe câmpuri</td>
+          <td>Necesită ceva mai multă tastare</td>
+          <td>O bună practică pentru codul de producție</td>
+        </tr>
+        <tr>
+          <td>"x y" (spațiu)</td>
+          <td>Scurt, curat, foarte popular în tutoriale</td>
+          <td>Poate masca greșelile de scriere dacă șirurile sunt incorect formate</td>
+          <td>Excelent pentru scripturi rapide</td>
+        </tr>
+        <tr>
+          <td>"x, y" (virgulă)</td>
+          <td>Arată ca o listă de parametri tradițională</td>
+          <td>Virgule redundante</td>
+          <td>De evitat (mai puțin curat).</td>
+        </tr>
+      </table>
+
+
+<pre><code>from collections import namedtuple
+
+<span># O listă de caractere pentru numele câmpurilor</span>
+Punct = namedtuple("Punct", ["x", "y"])
+print(Punct)       <span>==> &lt;class '__main__.Punct'></span>
+print(Punct(0, 1)) <span>==> Punct(x=0, y=1)</span>
+</code></pre>
+
+      <div class="grid-container">
+<pre><code>from collections import namedtuple
+
+<span># Nume de câmpuri separate prin spațiu</span>
+Punct = namedtuple("Punct", "x y")
+print(Punct)       <span>==> &lt;class '__main__.Punct'></span>
+print(Punct(0, 1)) <span>==> Punct(x=0, y=1)</span>
+</code></pre>
+
+<pre><code>from collections import namedtuple
+
+<span># Nume de câmpuri separate prin virgulă</span>
+Punct = namedtuple("Punct", "x, y")
+print(Punct)       <span>==> &lt;class '__main__.Punct'></span>
+print(Punct(0, 1)) <span>==> Punct(x=0, y=1)</span>
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+<pre><code>from collections import namedtuple
+
+<span># O expresie generator pentru numele câmpului</span>
+Punct = namedtuple("Punct", (câmp for câmp in"xy"))
+print(Punct)       <span>==> &lt;class '__main__.Punct'></span>
+print(Punct(0, 1)) <span>==> Punct(x=0, y=1)</span>
+</code></pre>
+
+<pre><code>from collections import namedtuple
+
+<span># O expresie generator pentru numele câmpului</span>
+Punct = namedtuple("Punct", (val for val in"uvxy"))
+print(Punct)              <span>==> &lt;class '__main__.Punct'></span>
+print(Punct(0, 1, 4, 13)) <span>==> Punct(u=0, v=1, x=4, y=13)</span>
+</code></pre>
+      </div>
+
+
+      <p>Utilizarea despachetării dicționarelor - Using dictionary unpacking.</p>
+
+
+<pre><code>from collections import namedtuple
+
+Punct = namedtuple("Punct", "x y")
+<span># Argumente keywords</span>
+print(Punct(x=1, y=0))           <span>==> Punct(x=1, y=0)</span>
+<span># despachetarea dicționarului</span>
+print(Punct(**{"x": 2, "y": 3})) <span>==> Punct(x=2, y=3)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Nu se recomandă utilizarea unui <b>set</b> pentru a specifica numele câmpurilor într-un namedtuple din
+          Python.</p>
+
+        <p>It is not recommended to use <b>set</b> to provide the field names in python namedtuple.</p>
+      </div>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>De ce nu ar trebui folosite seturile</dt>
+          <dd>În cazul tipului set, ordinea elementelor se pierde, iar dispunerea acestora devine imprevizibilă și se
+            modifică aleatoriu, în funcție de valoarea inițială de seed pentru hashing a interpretorului Python.</dd>
+          <dd>Deoarece ordinea câmpurilor este imprevizibilă, instanţierea tuplului folosind argumente poziţionale (de
+            exemplu, presoană("Valdi", 63)) va atribui în mod arbitrar valori unor câmpuri greşite.</dd>
+          <dd>Dacă utilizezi parametrul pentru valori implicite, Python asociază aceste valori câmpurilor din
+            extremitatea dreaptă. O ordine imprevizibilă a setului face imposibilă alinierea sigură a valorilor
+            implicite cu câmpurile cărora le sunt destinate.</dd>
+        </dl>
+
+        <dl>
+          <dt>Why Sets Should Not Be Used</dt>
+          <dd>In the case of the set type, the order of elements is lost, and their arrangement becomes unpredictable
+            and changes randomly, depending on the Python interpreter's initial hashing seed value.</dd>
+          <dd>Since the order of the fields is unpredictable, instantiating the tuple using positional arguments (e.g.,
+            persoană("Valdi", 63)) will arbitrarily assign values ​​to the wrong fields.</dd>
+          <dd>If you use the defaults parameter, Python maps those defaults to the rightmost fields. An unpredictable
+            set order makes it impossible to safely align default values with their intended fields.</dd>
+        </dl>
+      </div>
+
+<pre><code>from collections import namedtuple
+
+try:
+    <span># Definirea unui namedtuple folosind o mulțime set</span>
+    SetulMeu = namedtuple("SetulMeu", {"nume", "vârstă", "oraș"})
+    
+    <span># Verifică dispunerea ordonată efectivă generată de Python</span>
+    print(f"Ordinea câmpurilor rezultată: {SetulMeu._fields}")
+    
+except Exception as e:
+    print(f"A apărut o eroare: {e}")
+<span>==> Ordinea câmpurilor rezultată: ('oraș', 'vârstă', 'nume')</span>
+</code></pre>
+
+      <p>Nu sunt acceptate numele care încep cu un caracter de subliniere (_) - Names starting with an underscore (_)
+        are not accepted.</p>
+
+<pre><code>from collections import namedtuple
+
+try:
+    Punct = namedtuple("Punct", ["x", "_y"])
+except ValueError as e:
+    print(f"Interceptată eroarea așteptată: {e}")
+<span>== Interceptată eroarea așteptată: Field names cannot start with an underscore: '_y'</span>
+</code></pre>
+
+      <p>Motivația utilizării numelor de câmp în locul indicilor - Motivation Using Field Names Instead of Indices.</p>
+
+      <div class="grid-container">
+<pre><code><span># Tuplu conține: lăţime, pentru, preţ şi greutate</span>
+daltă = (16, "lemn", 4.5, 0.1)
+
+try:
+    <span># Verifică dacă variabila îndeplinește condițiile cerute</span>
+    if len(daltă) != 4:
+        print("Verifică numărul parametrilor")
+    elif daltă[0] == 16 and daltă[1] == "lemn" and daltă[2] and daltă[3]:
+        print("Condiții îndeplinite. Dalta este bună!")
+    else:
+        print("Dalta nu este bună")
+except Exception as e:
+    <span># Prinde orice altă eroare neprevăzută</span>
+    print(f"A apărut o eroare neașteptată: {e}")
+
+<span>==> Condiții îndeplinite. Dalta este bună!</span>
+</code></pre>
+
+<pre><code>from collections import namedtuple
+
+<span># Definește structura de tuplu cu nume</span>
+Daltă = namedtuple("Daltă", ("lăţime pentru preţ greutate"))
+
+try:
+    daltă = Daltă(16, "lemn", 4.5, 0.1) 
+    <span># Verifică dacă variabila îndeplinește condițiile cerute</span>
+    if daltă.lăţime == 16 and daltă.pentru == "lemn" and daltă.preţ and daltă.greutate:
+        print("Condiții îndeplinite. Dalta este bună!")
+    else:
+        print("Dalta nu este bună.")
+        
+except TypeError as e:
+    print(f"Eroare depistată!")
+    print(f"Mesaj de eroare: {e}")
+<span>==> Condiții îndeplinite. Dalta este bună!</span>
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <p>Dacă explicația tuplului din cod folosind indexarea este modificată sau eliminată, poate crea confuzie pentru
+          oricine citește sau modifică codul. În cazul tuplurilor denumite, nu există o asemenea de confuzie.</p>
+
+        <p>If the explanation of the tuple is Modified removed from the code using indexing, it can create confusion for
+          anyone reading or modifying the code. With named tuples, there is no such confusion.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="NFA">Metode și atribute încorporate - Built-in Methods and Attributes</h3>
+
+      <div class="grid-container">
+        <p>namedtuple din Python oferă câteva metode și atribute speciale, care au ca prefix un caracter de subliniere
+          pentru a evita conflictele cu numele câmpurilor definite de utilizator.</p>
+
+        <p>Python's namedtuple provides several special methods and attributes that are prefixed with an underscore to
+          avoid name conflicts with user-defined field names.</p>
+      </div>
+
+      <div class="grid-container">
+        <ul>
+          <li>_make(iterable): Creează o nouă instanță a tuplului pornind de la orice secvență sau colecție iterabilă.
+          </li>
+          <li>_asdict(): Convertește instanța tuplului cu nume într-un dicționar (mai exact, un OrderedDict în
+            versiunile mai vechi sau un dicționar conform standardului).</li>
+          <li>_replace(**kwargs): Returnează o nouă instanță a tuplului cu nume, având câmpurile specificate
+            actualizate, respectând totodată natura imuabilă a tuplurilor.</li>
+          <li>_fields: Un tuplu de caractere care listează toate numele câmpurilor în ordinea definirii lor; util pentru
+            introspecție.</li>
+          <li>_field_defaults: Un dicționar care asociază numele câmpurilor ce au valori implicite cu valorile implicite
+            respective.</li>
+        </ul>
+
+        <ul>
+          <li>_make(iterable): Creates a new instance of the named tuple from any iterable sequence or collection.</li>
+          <li>_asdict(): Converts the named tuple instance into a dictionary (specifically an OrderedDict in older
+            versions or standard-compatible dict behavior).</li>
+          <li>_replace(**kwargs): Returns a new instance of the named tuple with specified fields updated, respecting
+            the underlying immutability of tuples.</li>
+          <li>_fields: A tuple of strings listing all the field names in the order they were defined, useful for
+            introspection.</li>
+          <li>_field_defaults: A dictionary mapping field names that have default values to their respective default
+            values.</li>
+        </ul>
+      </div>
+
+<pre><code>from collections import namedtuple
+
+<span># Definește un namedtuple cu o valoare implicită</span>
+Punct = namedtuple("Punct", ["x", "y", "z"], defaults=[14])
+
+<span># _fields and _field_defaults</span>
+print(f"Parametrii originali: {Punct._fields} / type({Punct._fields})")
+<span>==> Parametrii originali: ('x', 'y', 'z') / &lt;class 'tuple'></span>
+
+print(f"Valoare implicită: {Punct._field_defaults} / type({Punct._field_defaults})")
+<span>==> Valoare implicită: {'z': 14} / &lt;class 'dict'></span>
+
+<span># _make()</span>
+punct1 = Punct._make([10, 20, 30])
+print(punct1) <span>==> Punct(x=10, y=20, z=30)</span>
+
+<span># _replace()</span>
+punct2 = punct1._replace(y=99)
+print(punct2) <span>==> Punct(x=10, y=99, z=30)</span>
+
+<span># _asdict()</span>
+print(punct2._asdict()) <span>==> {'x': 10, 'y': 99, 'z': 30}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>namedtuple păstrează compatibilitatea cu versiunile anterioare față de tuplurile standard, adăugând în
+          același timp accesul prin atribute.</p>
+
+        <p>namedtuple maintains backward compatibility with standard tuples while adding attribute access.</p>
+      </div>
+
+
+<pre><code>from collections import namedtuple
+
+<span># Definește structura de tuplu cu nume</span>
+Daltă = namedtuple("Daltă", ["utilizator", "pentru", "preţ", "greutate"])
+
+def obține_date_daltă(utilizator_id):
+    <span># preluarea datelor</span>
+    nume = "Gicu"
+    daltă_pentru = "lemn"
+    daltă_cost = 4.5
+    daltă_greutate = 0.1
+    
+    return Daltă(utilizator=nume, pentru=daltă_pentru, preţ=daltă_cost, greutate=daltă_greutate)
+rezultat = obține_date_daltă("01")
+print(rezultat)
+<span>==> Daltă(utilizator='Gicu', pentru='lemn', preţ=4.5, greutate=0.1)</span>
+</code></pre>
+
+<pre><code><span># citire a valorilor returnate</span>
+
+<span># 1. După numele proprietății (notație cu punct)</span>
+print(rezultat.utilizator) <span>==> Gicu</span>
+print(rezultat.pentru)     <span>==> lemn</span>
+
+<span># 2. Prin despachetare (pozițional)</span>
+utilizator, pentru, preţ, greutate = obține_date_daltă("01")
+print(utilizator) <span>==> Gicu</span>
+print(pentru)     <span>==> lemn</span>
+
+<span># 3. După index</span>
+print(rezultat[0]) <span>==> Gicu</span>
+print(rezultat[1]) <span>==> lemn</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="NFB">Crearea de instanțe nametuple din obiecte iterabile - Creating nametuple instances from iterables
+      </h3>
+
+      <div class="grid-container">
+        <p>Metoda <b>._make()</b> acceptă orice obiect iterabil (ex. o listă, un tuplu sau un generator) cu condiția ca
+          numărul de elemente să corespundă numărului de câmpuri definite în tuplul.</p>
+
+        <p>The <b>._make()</b> method accepts any iterable (ex. list, tuple, or generator) as long as the number of
+          items matches the number of fields defined in the named tuple.</p>
+      </div>
+
+<pre><code>from collections import namedtuple
+
+<span># Definirea clasei namedtuple</span>
+Persoană = namedtuple("Persoană", ["nume", "vârstă", "oraș"])
+
+<span># Crearea unui obiect iterabil</span>
+date_persoană = ["Andrei", 45, "Craiova"]
+
+<span># Crearea instanței namedtuple din obiectul iterabil</span>
+instanță_persoană = Persoană._make(date_persoană)
+
+print(instanță_persoană) <span>==> Persoană(nume='Andrei', vârstă=45, oraș='Craiova')</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <ul>
+          <li>Ordinea contează: elementele din obiectul iterabil trebuie să respecte exact ordinea câmpurilor
+            specificată la definirea namedtuple.
+          <li>
+          <li>Validarea lungimii: dacă obiectul iterabil conține mai puține sau mai multe elemente decât numărul de
+            câmpuri așteptat, Python va genera o eroare de tip TypeError.</li>
+        </ul>
+
+        <ul>
+          <li>Order matters: The elements in your iterable must match the exact field order specified when defining the
+            namedtuple.</li>
+          <li>Length validation: If the iterable has fewer or more items than the expected number of fields, Python will
+            raise a TypeError.</li>
+        </ul>
+      </div>
+
+
+<pre><code>from collections import namedtuple
+
+<span># Definirea clasei namedtuple</span>
+Persoană = namedtuple("Persoană", ["nume", "vârstă", "oraș"])
+date_persoană = ["Andrei", 45, "Craiova"]
+
+try:
+    <span># asigură că putem verifica lungimea în siguranță</span>
+    tuplu_date = tuple(date_persoană)
+    
+    <span># Verifică lungimea obiectului iterabil şi numărului de câmpuri din namedtuple</span>
+    if len(tuplu_date) != len(Persoană._fields):
+        raise ValueError(f"Așteptat {len(Persoană._fields)} elemente rezultate {len(tuplu_date)}")
+
+except ValueError as e:
+    print(f"Eroare la crearea instanței: {e}")
+
+else:
+    <span># Acest bloc se execută doar dacă nu este o eroare în blocul try</span>
+    instanță_persoană = Persoană._make(tuplu_date)
+    print("Instanță creată:", instanță_persoană)
+<span>==> Instanță creată: Persoană(nume='Andrei', vârstă=45, oraș='Craiova')</span>
+</code></pre>
+
+<pre><code>from collections import namedtuple
+
+<span># Definirea clasei namedtuple</span>
+Persoană = namedtuple("Persoană", ["nume", "vârstă", "oraș"])
+date_persoană = ["Andrei", 45]
+
+try:
+    <span># asigură că putem verifica lungimea în siguranță</span>
+    tuplu_date = tuple(date_persoană)
+    
+    <span># Verifică lungimea obiectului iterabil şi numărului de câmpuri din namedtuple</span>
+    if len(tuplu_date) != len(Persoană._fields):
+        raise ValueError(f"Așteptat {len(Persoană._fields)} elemente rezultate {len(tuplu_date)}")
+
+except ValueError as e:
+    print(f"Eroare la crearea instanței: {e}")
+
+else:
+    <span># Acest bloc se execută doar dacă nu este o eroare în blocul try</span>
+    instanță_persoană = Persoană._make(tuplu_date)
+    print("Instanță creată:", instanță_persoană)
+<span>==> Eroare la crearea instanței: Așteptat 3 elemente rezultate 2</span>
+</code></pre>
+
+
+      <div class="grid-container">
+<pre><code>from collections import namedtuple
+
+<span># Definește structura clasei namedtuple</span>
+Punct = namedtuple("Punct", ["x", "y"])
+print(issubclass(Punct, tuple)) <span>==> True</span>
+
+<span># Instanțiază obiectul</span>
+punct = Punct(10, 20)
+
+<span># Accesează datele</span>
+print(punct.x) <span>==> 10</span>
+print(punct.y) <span>==> 20</span> 
+
+<span># Acces prin index</span>
+print(punct[1]) <span>==> 20</span>
+<span># Despachetarea</span>
+x, y = punct      
+print(x) <span>==> 10</span>
+print(y) <span>==> 20</span>
+</code></pre>
+
+
+<pre><code>from collections import namedtuple
+
+<span># Definește structura clasei namedtuple</span>
+Punct = namedtuple("Punct", "x y")
+print(issubclass(Punct, tuple)) <span>==> True</span>
+
+<span># Instanțiază obiectul</span>
+punct = Punct(10, 20)
+
+<span># Accesează datele</span> 
+print(punct.x) <span>==> 10</span>
+print(punct.y) <span>==> 20</span> 
+
+<span># Acces prin index</span>
+print(punct[1]) <span>==> 20</span>
+<span># Despachetarea</span>
+x, y = punct      
+print(x) <span>==> 10</span>
+print(y) <span>==> 20</span>
+</code></pre>
+      </div>
+
+<pre><code>from collections import namedtuple
+
+Mașină = namedtuple("Mașină", "marcă model an preț")
+
+<span># Creează instanțe ale namedtuple</span>
+mașină1 = Mașină(marcă="Dacia", model="Logan", an=2018, preț=16000)
+mașină2 = Mașină("Oltcit", "Club", 1987, 8000)
+
+<span># Accesează valorile folosind notația cu punct</span>
+print(f"Marca mașinii 1: {mașină1.marcă}") <span>==> Marca mașinii 1: Dacia</span>
+print(f"Mașina 2 Model: {mașină2.model}")  <span>==> Mașina 2 Model: Club</span> 
+
+<span># Accesează valorile folosind indexarea tuplurilor</span>
+print(f"Mașina 1 An după index: {mașină1[2]}") <span>==> Mașina 1 An după index: 2018</span>
+
+<span># Despachetează tuplul</span>
+marcă, model, an, preț = mașină2
+print(f"Mașină 2 despachetată: {marcă} {model}") <span>==> Mașină 2 despachetată: Oltcit Club</span>
+
+<span># Namedtuple-urile sunt imutabile</span>
+try:
+    mașină2.preț = 15750
+except AttributeError as e:
+    print(f"Error: {e}")
+<span>==> Error: can't set attribute</span>
+</code></pre>
+
+<pre><code>from collections import namedtuple
+
+Persoană = namedtuple("Persoană", ["nume", "copii"])
+
+<span># Creează o instanță</span>
+ion = Persoană("Ion Barb", ["Marian", "Dana"])
+print(ion)           <span>==> Persoană(nume='Ion Barb', copii=['Marian', 'Dana'])</span>
+print(ion.copii, "/", type(ion.copii)) <span>==> ['Marian', 'Dana'] / &lt;class 'list'></span>
+print(id(ion.copii)) <span>==> 2172498104576</span>
+
+ion.copii.append("Elena")
+print(ion)           <span>==> Persoană(nume='Ion Barb', copii=['Marian', 'Dana', 'Elena'])</span>
+print(id(ion.copii)) <span>==> 2172498104576</span>
+
+tată = ion[0]
+copii = ion[1]
+print(f"{tată} are {len(copii)} copii")
+<span>==> Ion Barb are 3 copii</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <div>
+          <dl>
+            <dt>Lista ["nume", "copii"]</dt>
+            <dd>Definește structura sau șablonul pentru orice obiect de tip Persoană.</dd>
+            <dd>Spune programului că fiecare obiect creat cu acest namedtuple va avea exact două etichete (câmpuri):
+              nume și copii.</dd>
+            <dd>Este o listă de șiruri de caractere care joacă rolul de "nume de coloane" sau "chei".</dd>
+            <dd>Lista ["nume", "copii"] poate fi scrisă și în forma "nume copii" pentru a elimina confuzia.
+          </dl>
+
+          <dl>
+            <dt>Lista ["Marian", "Dana"]
+            <dt>
+            <dd>Reprezintă datele reale stocate în interiorul obiectului ion.</dd>
+            <dd>Este valoarea concretă trimisă către câmpul copii pentru instanța ion.</dd>
+            <dd>Este o listă obișnită cu elemente (numele copiilor), atribuită unei proprietăți specifice.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <dl>
+            <dt>The list ["name", "children"]</dt>
+            <dd>Defines the structure or template for any Person-type object.</dd>
+            <dd>Tells the program that every object created with this namedtuple will have exactly two labels (fields):
+              name and children.</dd>
+            <dd>It is a list of strings that act as "column names" or "keys".</dd>
+            <dd>The list ["name", "children"] can also be written as "name children" to eliminate confusion.</dd>
+          </dl>
+
+          <dl>
+            <dt>List ["Marian", "Dana"]</dt>
+            <dd>Represents the actual data stored within the ion object.</dd>
+            <dd>It is the concrete value passed to the children field for the ion instance.</dd>
+            <dd>It is a standard list of elements (children's names) assigned to a specific property.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <p>Modificarea obiectelor mutabile din cadrul tuplului subiacent nu înseamnă că modifici tuplul în sine. Tuplul
+          va continua să rețină aceleași referințe de memorie (ID).</p>
+
+        <p>Modifying the mutable objects in the underlying tuple does not mean that you're modifying the tuple itself.
+          The tuple will continue holding the same memory references (ID).</p>
+      </div>
+
+      <p>Crearea unei instanțe folosind metoda ._fields() - Creating an instance using ._fields() method.</p>
+
+<pre><code>from collections import namedtuple
+
+Cumnată = namedtuple("Cumnată", ["nume", "greutate"])
+
+<span># Adăugați un element în câmpul (field) Cumnată</span>
+<span># despachetează ._fields</span>
+AceeașiPersoană = namedtuple("AceeașiPersoană", (*Cumnată._fields, "înălțime"))
+
+<span># Creează o instanță</span>
+gina = AceeașiPersoană("Gina", 67, 1.69)
+
+print(f"Gina are înălțimea de {gina.înălțime}")
+<span>==> Gina are înălțimea de 1.69</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Parcurge câmpurile și valorile dintr-o instanță namedtuple dată cu metodele ._field() și ._asdict()</p>
+
+        <p>Iterate over the fields and the values in a given namedtuple instance with methods ._field() and ._asdict().
+        </p>
+      </div>
+
+<pre><code>from collections import namedtuple
+
+Cumnată = namedtuple("Cumnată", ["nume", "vârstă", "greutate", "înălțime"])
+gina = Cumnată("Gina", 65, 67, 1.69)
+for câmp, valoare in zip(gina._fields, gina):
+    print(f"{câmp}: {valoare}")
+<span>==> 
+nume: Gina
+vârstă: 65
+greutate: 67
+înălțime: 1.69</span>
+</code></pre>
+
+<pre><code>from collections import namedtuple
+
+Cumnată = namedtuple("Cumnată", ["nume", "vârstă", "greutate", "înălțime"])
+gina = Cumnată("Gina", 65, 67, 1.69)
+print(gina._asdict().items())
+
+<span>==> dict_items([('nume', 'Gina'), ('vârstă', 65), ('greutate', 67), ('înălțime', 1.69)])</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h3 id="NFC">Argumente opționale cu namedtuple() - Optional Arguments With namedtuple()</h3>
+
+      <div class="grid-container">
+        <p>Funcția collections.namedtuple() acceptă trei argumente de tip keyword: defaults, rename și module.</p>
+
+        <p>The collections.namedtuple() function accepts three keyword arguments: defaults, rename, and module.</p>
+      </div>
+
+      <table class="outer-hidden">
+        <caption>Rezumatul argumentelor opționale</caption>
+        <tr>
+          <th>Argument</th>
+          <th>Tip</th>
+          <th>Implicit</th>
+          <th>Scop</th>
+        </tr>
+        <tr>
+          <td>defaults</td>
+          <td>iterabil sau None</td>
+          <td>None</td>
+          <td>Furnizează valori implicite pentru câmpuri.</td>
+        </tr>
+        <tr>
+          <td>rename</td>
+          <td>bool</td>
+          <td>False</td>
+          <td>Corectează automat numele de câmpuri invalide</td>
+        </tr>
+        <tr>
+          <td>module</td>
+          <td>str</td>
+          <td>None</td>
+          <td>Suprascrie atributul __module__ al clasei</td>
+        </tr>
+      </table>
+
+      <div class="grid-container">
+        <p><b>defaults</b> asociază valori implicite, de la dreapta la stânga. Dacă ai trei câmpuri și furnizezi două
+          valori implicite, ultimele două câmpuri devin opționale, în timp ce primul rămâne obligatoriu.</p>
+
+        <p><b>defaults</b> assigns default values ​​from right to left. If you have three fields and provide two default
+          values, the last two fields become optional, while the first remains mandatory.</p>
+      </div>
+
+      <div class="grid-container">
+<pre><code>from collections import namedtuple
+
+<span># x este obligatoriu, y implicit este 0, iar z implicit este 10</span>
+Punct = namedtuple("Punct", ["x", "y", "z"], defaults=(0, 10))
+
+punct1 = Punct(5) 
+print(punct1)           <span>==> Punct(x=5, y=0, z=10)</span>
+punct2 = Punct(5, 2)    
+print(punct2)           <span>==> Punct(x=5, y=2, z=10)</span>
+punct3 = Punct(5, 2, 3)
+print(punct3)           <span>==> Punct(x=5, y=2, z=3)</span>
+</code></pre>
+
+<pre><code>from typing import NamedTuple
+
+class Miting(NamedTuple):
+    nume: str
+    rol: str = "invitat"
+    sosit: bool = True
+        
+primul_venit = Miting(nume="Vasile")
+print(primul_venit) <span>==> Miting(nume='Vasile', rol='invitat', sosit=True)</span>
+prezentator = Miting(nume="Gigi", rol="moderator")
+print(prezentator) <span>==> Miting(nume='Gigi', rol='moderator', sosit=True)</span>
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <p>Avertisment: Evitați utilizarea obiectelor mutabile, precum listele [] sau dicționarele {}, pentru valorile
+          implicite, deoarece aceeași instanță va fi partajată între toate instanțierile de tip namedtuple.</p>
+        <p>Warning: Avoid using mutable objects like lists [] or dicts {} in defaults, as the same instance will be
+          shared across all namedtuple creations.</p>
+      </div>
+
+      <div class="grid-container">
+        <p><b>rename</b> este extrem de util atunci când se generează namedtuple-uri în mod dinamic din surse de date
+          externe, precum antetele CSV (Comma-Separated Values).</p>
+
+        <p><b>rename</b> is highly useful when generating namedtuples dynamically from external data sources like CSV
+          (Comma-Separated Values) headers.</p>
+      </div>
+
+<pre><code>from collections import namedtuple
+
+<span># break şi def sunt cuvinte-cheie, iar x este duplicat</span>
+Eşantion = namedtuple("Eşantion", ["x", "break", "def", "x"], rename=True)
+
+<span># Câmpurile sunt redenumite automat</span>
+renumit = Eşantion(10, "şir", "logaritm", 20)
+print(renumit) <span>==> Eşantion(x=10, _1='şir', _2='logaritm', _3=20)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>module</b>. În Python, fiecare clasă are un atribut încorporat numit __module__, care reține numele
+          modulului în care a fost definită clasa</p>
+
+        <p><b>module</b>. In Python every class has a built-in attribute called __module__ that tracks the name of the
+          module where the class was defined.</p>
+      </div>
+
+<pre><code>from collections import namedtuple
+
+<span># Definiție standard</span>
+PunctA = namedtuple("PunctA", ["x", "y"])
+print(PunctA.__module__)  <span>==> __main__</span> 
+
+<span># Suprascrierea numelui modulului</span>
+PunctB = namedtuple("PunctB", ["x", "y"], module="pachetul_meu")
+print(PunctB.__module__)  <span>==> pachetul_meu</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="GA">Gruparea numărului de argumente - Grouping the number of arguments</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>Această practică asigură imuabilitatea tipului și îmbunătățește lizibilitatea codului prin transmiterea
+            unui singur obiect, în loc de mai multe variabile individuale.</p>
+          <p>Listele lungi de parametri poziționali sunt greu de citit, și predispuse la erori legate de ordine.</p>
+        </div>
+
+        <div>
+          <p>This practice , ensures type immutability, and improves code readability by passing a single object instead
+            of many individual variables.</p>
+          <p>A long lists of positional parameters are hard to read, and prone to ordering bugs.</p>
+        </div>
+      </div>
+
+<pre><code><span># Este dificil de urmărit ce valoare corespunde cărui parametru</span>
+def creare_daltă(nume, lăţime, pentru, preţ, greutate, email):
+    print(f"Se creează {nume} {pentru}, lăţimea de {lăţime} mm  ({email})")
+
+creare_daltă('"Daltă"', 18, "pentru lemn", 4.7, 100.0, "gicu@example.com")
+<span>==> Se creează "Daltă" pentru lemn, lăţimea de 18 mm  (gicu@example.com)</span>
+
+from collections import namedtuple
+
+<span># Definește configurația parametrilor</span>
+DaltăConfigurație = namedtuple("DaltăConfigurație", ["nume", "lăţime", "pentru", "preţ", "greutate", "email"])
+
+<span># Funcția acceptă exact un singur argument de tip DaltăConfigurație</span>
+def crează_daltă(config: DaltăConfigurație):
+    print(f"Se creează {config.nume} {config.pentru}, lăţimea de {config.lăţime} mm ({config.email})")
+
+<span># Inițializarea datelor ca un obiect de tip namedtuple</span>
+daltă_date = DaltăConfigurație('"Daltă"', 18, "pentru lemn", 4.7, 100, "gicu@example.com")
+
+<span># Apelarea funcției cu un singur argument</span>
+crează_daltă(daltă_date)
+<span>==> Se creează "Daltă" pentru lemn, lăţimea de 18 mm (gicu@example.com)</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="TH">Tupluri cu câmpuri denumite și indicii de tip - Tuples With Named Fields and Type Hints</h2>
+
+      <div class="grid-container">
+        <p>În Python, tuplurile cu câmpuri denumite și indicii de tip (type hints) sunt implementate folosind
+          typing.NamedTuple. Această clasă îmbină eficiența memoriei și imuabilitatea unui tuplu standard cu
+          lizibilitatea unei clase, permițând accesarea câmpurilor după nume, în loc de indici numerici.</p>
+
+        <p>In Python, tuples with named fields and type hints are implemented using typing.NamedTuple. This class
+          combines the memory efficiency and immutability of a standard tuple with the readability of a class, allowing
+          you to access fields by name rather than numeric indexes.</p>
+      </div>
+
+<pre><code>from typing import NamedTuple
+
+class User(NamedTuple):
+    id: int
+    username: str
+    is_active: bool = True  <span># Supports default values</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Iată un cod complet folosind typing.NamedTuple. Această abordare modernă adaugă suport pentru tipizarea
+          datelor (type hinting), menținând în același timp toate funcționalitățile codului original.</p>
+
+        <p>Here is a complete code using typing.NamedTuple. This modern approach adds support for type hinting while
+          retaining all the functionality of the original code.</p>
+      </div>
+
+<pre><code>from typing import NamedTuple
+
+<span># Definirea configurației parametrilor folosind NamedTuple</span>
+class DaltăConfigurație(NamedTuple):
+    nume: str
+    lăţime: int
+    pentru: str
+    preţ: float
+    greutate: float
+    email: str
+
+<span># Funcția acceptă exact un singur argument de tip DaltăConfigurație</span>
+def crează_daltă(config: DaltăConfigurație) -> None:
+    print(f"Se creează {config.nume} {config.pentru}, lăţimea de {config.lăţime} mm ({config.email})")
+
+<span># Inițializarea datelor ca un obiect de tip NamedTuple</span>
+daltă_date = DaltăConfigurație('"Daltă"', 18, "pentru lemn", 4.7, 100.0, "gicu@example.com")
+
+<span># Apelarea funcției cu un singur argument</span>
+crează_daltă(daltă_date)
+<span>==> Se creează "Daltă" pentru lemn, lăţimea de 18 mm (gicu@example.com)</span>
+</code></pre>
+
+<pre><code>from typing import NamedTuple
+
+class Utilizator(NamedTuple):
+    nume_utilizator: str
+    email: str
+    este_activ: bool
+
+<span># Modul de utilizare</span>
+utilizator = Utilizator(nume_utilizator="andi123", email="test@exemplu.com", este_activ=True)
+print(utilizator.nume_utilizator) <span>==> andi123</span>
+</code></pre>
+
+
+<pre><code>from typing import NamedTuple
+
+class MembruGroup(NamedTuple):
+    nume: str
+    vârstă: int
+    abilitate: str = "Chitarist"
+
+<span>#  Creează un interpret folosind setarea implictă: abilitate</span>
+membru1 = MembruGroup("Andrei", 30)
+print(membru1.nume)      <span>==> Andrei</span>
+print(membru1.abilitate) <span>==> Chitarist</span>
+
+<span># Creați un interpret cu un set personalizat: abilitate</span>
+membru2 = MembruGroup("Gigi", 25, "Solist vocal")
+print(membru2.abilitate) <span>==> Solist vocal</span>
+</code></pre>
+
+<pre><code>from typing import NamedTuple
+
+<span># Echivalent cu structura bazată pe clase, dar fără valori implicite</span>
+MembruGroup = NamedTuple("MembruGroup", [("nume", str), ("vârstă", int), ("abilitate", str)])
+
+<span># Creează un interpret</span>
+membru1 = MembruGroup("Andrei", 30, "Chitarist")
+print(membru1.nume)      <span>==> Andrei</span>
+print(membru1.abilitate) <span>==> Chitarist</span>
+
+membru2 = MembruGroup("Gigi", 25, "Solist vocal")
+print(membru2.abilitate) <span>==> Solist vocal</span>
+</code></pre>
+
+
+
+      <div class="grid-container">
+        <ul>
+          <li><b>Caracteristici principale</b>
+          <li>
+          <li>Opțiuni de acces: Câmpurile pot fi accesate folosind notația standard cu punct sau indexarea pozițională
+            clasică.</li>
+          <li>Imuabilitate: La fel ca tuplurile standard, instanțele NamedTuple sunt complet imuabile după creare,
+            prevenind modificarea accidentală a datelor.</li>
+          <li>Analiză statică: Indiciile explicite type hints permit mediilor IDE și instrumentelor de verificare
+            statică a tipurilor, precum mypy, să ofere sugestii de completare automată și să detecteze din timp
+            eroriile.</li>
+          <li>Despachetare: Suportă în continuare despachetarea standard a tuplurilor.</li>
+        </ul>
+
+
+        <ul>
+          <li><b>Key Features</b></li>
+          <li>Access options:Fields can be accessed using standard dot notation or by classic positional indexing.</li>
+          <li>Immutability: Like standard tuples, NamedTuple instances are completely unchangeable after creation,
+            preventing accidental data modification.</li>
+          <li>Static analysis: Explicit type hints allow IDEs and static type checkers like mypy to provide autocomplete
+            suggestions and catch type errors early.</li>
+          <li>Unpacking: They still support standard tuple unpacking.</li>
+        </ul>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="DC">Clasele de date - Data Classes</h2>
+
+      <div class="grid-container">
+        <p>Această abordare este ideală dacă vrei ca obiectele tale să fie mutabile (să le poți modifica valorile
+          ulterior) sau dacă intenționezi să adaugi metode în interiorul clasei.</p>
+
+        <p>This approach is ideal if you want your objects to be mutable (so you can modify their values ​​later) or if
+          you intend to add methods within the class.</p>
+      </div>
+
+<pre><code>from dataclasses import dataclass
+
+<span># Definirea configurației parametrilor folosind dataclass</span>
+@dataclass
+class DaltăConfigurație:
+    nume: str
+    lăţime: int
+    pentru: str
+    preţ: float
+    greutate: int
+    email: str
+
+<span># Funcția acceptă exact un singur argument de tip DaltăConfigurație</span>
+def crează_daltă(config: DaltăConfigurație) -> None:
+    print(f"Se creează {config.nume} {config.pentru}, lăţimea de {config.lăţime} mm ({config.email})")
+
+<span># Inițializarea datelor ca un obiect de tip dataclass</span>
+daltă_date = DaltăConfigurație('"Daltă"', 18, "pentru lemn", 4.7, 100, "gicu@example.com")
+
+<span># Apelarea funcției cu un singur argument</span>
+crează_daltă(daltă_date)
+<span>==> Se creează "Daltă" pentru lemn, lăţimea de 18 mm (gicu@example.com)</span>
+</code></pre>
+
+      <p>clasa complet imutabilă (frozen) - class completely immutable (frozen)</p>
+
+<pre><code>from dataclasses import dataclass
+
+<span># Activarea imutabilității prin parametrul frozen=True</span>
+@dataclass(frozen=True)
+class DaltăConfigurație:
+    nume: str
+    lăţime: int
+    pentru: str
+    preţ: float
+    greutate: int
+    email: str
+
+<span># Funcția acceptă exact un singur argument de tip DaltăConfigurație</span>
+def crează_daltă(config: DaltăConfigurație) -> None:
+    print(f"Se creează {config.nume} {config.pentru}, lăţimea de {config.lăţime} mm ({config.email})")
+
+<span># Inițializarea datelor ca un obiect de tip dataclass frozen</span>
+daltă_date = DaltăConfigurație('"Daltă"', 18, "pentru lemn", 4.7, 100, "gicu@example.com")
+
+<span># Apelarea funcției cu un singur argument</span>
+crează_daltă(daltă_date)
+<span>==> Se creează "Daltă" pentru lemn, lăţimea de 18 mm (gicu@example.com)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Avantajele folosirii frozen=True</dt>
+          <dd>Siguranța datelor: Previne modificarea accidentală a configurației în timpul rulării programului.</dd>
+          <dd>Obiecte "Hashable": Deoarece este imutabil, acest obiect poate fi folosit drept cheie într-un dicționar
+            (dict) sau adăugat într-un set (set).</dd>
+        </dl>
+
+        <dl>
+          <dt>Advantages of using frozen=True</dt>
+          <dd>Data safety: Prevents accidental modification of the configuration while the program is running.</dd>
+          <dd>"Hashable" objects: Since it is immutable, this object can be used as a key in a dictionary (dict) or
+            added to a set (set).</dd>
+        </dl>
+      </div>
+
+      <p>Adăugarea valorilor implicite (default) pentru câmpuri si ordinea lor - Adding default values ​​for fields and
+        their order.</p>
+
+      <div class="grid-container">
+        <p>În Python, regula obligatorie este că câmpurile cu valori implicite trebuie să fie puse întotdeauna la
+          sfârșitul clasei, după cele fără valori implicite. Acest lucru este similar cu parametrii poziționali și cei
+          de tip cuvânt-cheie. Legătura dintre ele constă în modul în care gestionăm informațiile obligatorii față de
+          cele suplimentare.</p>
+
+        <p>In Python, the mandatory rule is that fields with default values ​​must always be placed at the end of the
+          class, after those without default values. This is similar to positional and keyword parameters. The
+          connection between them lies in how we handle mandatory information vs supplementary information.</p>
+      </div>
+
+
+
+<pre><code>from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class DaltăConfigurație:
+    <span># Câmpuri obligatorii (fără valori implicite)</span>
+    nume: str
+    lăţime: int
+    pentru: str
+    
+    <span># Câmpuri opționale (cu valori implicite)</span>
+    preţ: float = 0.0
+    greutate: int = 100
+    email: str = "fică@tâmplar.com"
+
+def crează_daltă(config: DaltăConfigurație) -> None:
+    print(f"Se creează {config.nume} {config.pentru}, lăţimea de {config.lăţime} mm ({config.email})")
+
+<span># Inițializare doar cu parametrii obligatorii (restul se completează automat)</span>
+daltă_date = DaltăConfigurație('"Daltă"', 18, "pentru lemn")
+
+<span># Apelarea funcției</span>
+crează_daltă(daltă_date)
+<span>==> Se creează "Daltă" pentru lemn, lăţimea de 18 mm (fică@tâmplar.com)</span>
+
+<span># Se poate suprascrie oricând o valoare implicită dacă dorești</span>
+daltă_specială = DaltăConfigurație('"Daltă Lată"', 32, "scobire", email="gicu@tâmplar.com")
+crează_daltă(daltă_specială)
+<span>==> Se creează "Daltă Lată" scobire, lăţimea de 32 mm (gicu@tâmplar.com)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Regula de aur – elementele obligatorii apar primele, iar cele opționale, la urmă. Nu poți plasa un parametru
+          pozițional (obligatoriu) după unul cu valoare implicită (opțional) – Pizza: Blatul și sosul sunt obligatorii
+          (elemente de bază) – nu poți avea o pizza fără ele. Ingredientele suplimentare (ciuperci, măsline) sunt
+          opționale – le adaugi doar dacă dorești și în orice ordine alegi.</p>
+
+        <p>The Golden Rule – mandatory elements come first, and optional ones come last. You cannot place a positional
+          (mandatory) parameter after one with a default value (optional) — Piza: The crust and sauce are essential
+          (basic elements)—you can't have a pizza without them. Additional toppings (mushrooms, olives) are optional -
+          you add them only if you wish, and in any order you choose.</p>
+      </div>
+
+      <p>Codul privind modul în care teoria se corelează cu practica. - The code regarding how theory correlates with
+        practice.</p>
+
+<pre><code>from typing import NamedTuple
+
+<span># Câmpurile cu valori implicite (opționale) trebuie să fie ultimele</span>
+class FormularInscriere(NamedTuple):
+    <span># Câmpuri obligatorii (Parametri poziționali în constructor)</span>
+    nume: str
+    cnp: str
+    nota_bac: float
+    
+    <span># Câmpuri opționale (Parametri keyword cu valori implicite)</span>
+    cămin: bool = False
+    telefon_cell: str = "Fără telefon"
+
+print("Doar datele obligatorii")
+<span># Studentul completează doar ce este strict necesar. Restul iau valori default</span>
+student_1 = FormularInscriere("Costel Smadu", "1040304051607", 8.40)
+print(student_1)
+print(f"S-a solicitat cămin? {student_1.cămin}\n")
+
+print("Date obligatorii & Opționale (folosind keyword)")
+<span># Studentul vrea și cazare la cămin</span>
+student_2 = FormularInscriere("Bebe Marinescu", "2034405060728", 7.50, cămin=True)
+print(student_2)
+print(f"Telefon de contact: {student_2.telefon_cell}\n")
+
+print("Schimbarea ordinii câmpurilor opționale")
+<span># folosind numele câmpului (keyword), ordinea nu contează</span>
+student_3 = FormularInscriere(
+    "Elena Margine", 
+    "2040507770801", 
+    8.80, 
+    telefon_cell="0732-101-232", 
+    cămin=True
+)
+print(f"Candidatul {student_3.nume} are telefonul {student_3.telefon_cell}.\n")
+
+print("A apărut o eroare!")
+try:
+    <span># Lipsește un câmp obligatoriu (nota_bac)</span>
+    student_incomplet = FormularInscriere("Mihai Murg", "1050607080881")
+except TypeError as e:
+    print(f"Eroare de validare: {e}")
+</code></pre>
+
+<pre><code>Doar datele obligatorii:
+FormularInscriere(nume='Costel Smadu', cnp='1040304051607', nota_bac=8.4, cămin=False, telefon_cell='Fără telefon')
+S-a solicitat cămin? False
+
+Date obligatorii & Opționale (folosind keyword):
+FormularInscriere(nume='Bebe Marinescu', cnp='2034405060728', nota_bac=7.5, cămin=True, telefon_cell='Fără telefon')
+Telefon de contact: Fără telefon
+
+Schimbarea ordinii câmpurilor opționale
+Candidatul Elena Margine are telefonul 0732-101-232.
+
+A apărut o eroare!
+Eroare de validare: FormularInscriere.__new__() missing 1 required positional argument: 'nota_bac'
+</code></pre>
+
+      <table class="outer-hidden">
+        <caption>Comparație rapidă a opțiunilor de implementare</caption>
+        <tr>
+          <th>Caracteristici</th>
+          <th>typing.NamedTuple</th>
+          <th>.dataclass</th>
+          <th>Tuplu standard cu hints</th>
+        </tr>
+        <tr>
+          <td>Imuabilitate</td>
+          <td>Încorporată (nu poate fi modificată)</td>
+          <td>Mutabil implicit (opțional frozen=True)</td>
+          <td>Încorporată (nu poate fi modificată)</td>
+        </tr>
+        <tr>
+          <td>Metode de acces</td>
+          <td>Nume sau index (user.id sau user[0])</td>
+          <td>Doar nume (user.id)</td>
+          <td>Doar index (user[0])</td>
+        </tr>
+        <tr>
+          <td>Memorie / Viteză</td>
+          <td>Extrem de ușor</td>
+          <td>Consum suplimentar (overhead) ușor mai ridicat</td>
+          <td>Extrem de ușor</td>
+        </tr>
+        <tr>
+          <td>Exemplu de sintaxă</td>
+          <td>class User(NamedTuple)</td>
+          <td>@dataclass class User:</td>
+          <td>user: tuple[int, str]</td>
+        </tr>
+      </table>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

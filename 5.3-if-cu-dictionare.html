@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/main-style.css">
+
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 5.3 Dictionar-if </title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-1 navigare">
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                      <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                      <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                      <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                      <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-1"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaD.svg" alt="D" class="logo">
+                    <h1>5.0 Tipuri dicționare - Dictionary Types</h1>
+                </div>
+            </div>
+
+            <div class="second-empty-1-1"></div>
+
+            <div class="subtitlu-1-1">
+                <div class="grid-cell">
+                    <h2>5.3 if cu dicționare - if with Dictionaries</h2>
+                </div>
+            </div>
+
+            <div class="third-empty-1-1"></div>
+
+            <div class="ro-en-1-1 container-links ro-en">
+                <div>
+                    <ul>
+                        <li>În acest capitol veți studia:</li>
+                        <li><a href="#CD">Condiția if cu dicționare</a>
+                            <ul>
+                                <li><a href="#CDA">Verificarea existenței cheii</a></li>
+                                <li><a href="#CDB">Verificarea existenței cheii metoda get()</a></li>
+                                <li><a href="#CDC">Verificarea existenței valorii</a></li>
+                                <li><a href="#CDE">Verificarea existenței cheie-valoare</a></li>
+                                <li><a href="#CDF">Filtrare un dicționar folosind o condiție if</a></li>
+                                <li><a href="#CDG">Dicționare imbricate</a></li>
+                                <li><a href="#CDH"></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <ul>
+                        <li>In this chapter you will study:</li>
+                        <li><a href="#CD">if condition with Dictionaries</a>
+                            <ul>
+                                <li><a href="#CDA">Checking for Key Existence</a></li>
+                                <li><a href="#CDB">Checking for Key Existence get() method</a></li>
+                                <li><a href="#CDC">Checking for Value Existence</a></li>
+                                <li><a href="#CDE">Checking for the existence of a key-value pair</a></li>
+                                <li><a href="#CDF">Filter a dictionary using an if condition</a></li>
+                                <li><a href="#CDG">Nested dictionaries</a></li>
+                                <li><a href="#CDH"></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="forth-empty-1-1"></div>
+
+        <div class="contents-1-1">
+
+            <h2 id="CD">Condiția if cu dicționare - if condition with Dictionaries</h2>
+
+            <div class="grid-container">
+                <p>În Python, poți folosi condiții pentru a verifica dacă o cheie există, pentru a filtra date sau
+                    pentru a actualiza valori pe baza unor criterii specifice.</p>
+
+                <p>In Python, you can use conditions to check if a key exists, filter data, or update values based on
+                    specific criteria.</p>
+            </div>
+
+
+            <h2 id="CDA">Verificarea existenței cheii - Checking for Key Existence</h2>
+
+            <div class="grid-container">
+                <p>Cea mai comună și mai specifică metodei Python de a verifica dacă o cheie există într-un dicționar
+                    este prin utilizarea operatorului in.
+                    Această abordare verifică în mod explicit prezența cheii înainte de a încerca orice operațiune.</p>
+
+                <p>The most common and Pythonic way to check if a key exists in a dictionary is by using the in
+                    operator.
+                    This approach explicitly checks for the key's presence before attempting any operation.</p>
+            </div>
+
+<pre><code><span># Află dacă cheia există (Verificare recursivă)</span>
+def are_cheie_recursiv(dictionar, cheie):
+    <span># Verifică dacă se află la nivelul curent</span>
+    if cheie in dictionar:
+        return True
+        
+    <span># Caută în profunzime, în eventualele dicționare imbricate</span>
+    for valoare in dictionar.values():
+        <span># Verifică dacă valoarea este un alt dicționar</span>
+        if isinstance(valoare, dict): 
+            if are_cheie_recursiv(valoare, cheie):
+                return True
+    return False
+
+<span># Exemplu</span>:
+dict_imbricat = {"a": 1, "b": {"c": 2, "d": {"cheie": "indict!"}}}
+
+if are_cheie_recursiv(dict_imbricat, "cheie"):
+    print("Cheia există undeva în dicționar!")
+    
+else:
+    print("Cheia nu există în dicționar!")
+<span>==&gt; Cheia există undeva în dicționar!</span>
+</code></pre>
+
+            <div class="grid-container">
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+if "nume" in persoana:
+    print("Cheia 'nume' există în dicționar.")
+else:
+    print("Cheia 'nume' nu există în dicționar.")
+<span>==&gt; Cheia 'nume' există în dicționar.</span>
+</code></pre>
+
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+if "tara" in persoana:
+    print("Cheia 'tara' există în dicționar.")
+else:
+    print("Cheia 'tara' nu există în dicționar.")
+<span>==&gt; Cheia 'tara' nu există în dicționar.</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+if "nume" in list(persoana.keys()):
+    print("Cheia 'nume' există în dicționar.")
+else:
+    print("Cheia 'nume' nu există în dicționar.")
+<span>==&gt; Cheia 'nume' există în dicționar.</span>
+</code></pre>
+
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+if "tara" in list(persoana.keys()):
+    print("Cheia 'tara' există în dicționar.")
+else:
+    print("Cheia 'tara' nu există în dicționar.")
+<span>==&gt; Cheia 'tara' nu există în dicționar.</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+                <p>Gestionarea erorilor în Python folosind blocuri try-except îți permite să previi oprirea bruscă a
+                    programului (crash) atunci când apare o situație neprevăzută, cum ar fi accesarea unei chei care nu
+                    există într-un dicționar (KeyError).</p>
+
+                <p>Handling errors in Python using try-except blocks allows you to prevent the program from crashing
+                    unexpectedly when an unforeseen situation arises, such as accessing a non-existent key in a
+                    dictionary (KeyError).</p>
+            </div>
+
+            <div class="grid-container">
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+try:
+    <span># Încercăm să accesăm o cheie care nu există sau o sintaxă greșită</span>
+    valoare = persoana["tara"] 
+except KeyError:
+    <span># Acest cod se execută doar dacă apare eroarea KeyError în blocul try</span>
+    print("Eroare: Ai încercat să accesezi o cheie care nu există în dicționar!")
+<span>==&gt; Eroare: Ai încercat să accesezi o cheie care nu există în dicționar!</span>
+</code></pre>
+
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+try:
+    cheie = "localitate"
+    rezultat = persoana[cheie]
+except KeyError:
+    print(f"Eroare: Cheia '{cheie}' nu a fost găsită.")
+else:
+    print(f"Succes! Valoarea extrasă este: {rezultat}.")
+finally:
+    print("Verificarea dicționarului s-a încheiat.")
+<span>==&gt; Succes! Valoarea extrasă este: Severin.</span>
+<span>==&gt; Verificarea dicționarului s-a încheiat.</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+                <p>Execută o acțiune asupra unui dicționar numai dacă există o cheie specifică și nu face nimic dacă nu
+                    există.</p>
+
+                <p>Perform an action on a dictionary only if a specific key exists, and do nothing if it does not exist.
+                </p>
+            </div>
+
+
+            <div class="grid-container">
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+fruct_cheie = "prune"
+
+if fruct_cheie in fructe:
+    <span># Efectuați acțiuni aici dacă cheia există</span>
+    print(f"{fruct_cheie} are valoarea: {fructe[fruct_cheie]}")
+else:
+    <span># Nu face nimic dacă cheia nu există</span>
+    pass
+<span>==&gt; prune are valoarea: 35</span>
+</code></pre>
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+fruct_cheie = "gutuie"
+
+if fruct_cheie in fructe:
+    <span># Efectuați acțiuni aici dacă cheia există</span>
+    print(f"{fruct_cheie} are valoarea: {fructe[fruct_cheie]}")
+else:
+    <span># Nu face nimic dacă cheia nu există</span>
+    pass
+</code></pre>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="CDB">Verificarea existenței cheii folosind metoda get() - Checking for Key Existence using the get()
+                method</h2>
+
+            <div class="grid-container">
+                <p>Metoda get() preia valoarea asociată cu o anumită cheie daca există. Dacă cheia nu este găsită,
+                    returnează implicit None (sau o valoare implicită specificată). Aceasta poate fi utilizată pentru a
+                    deduce existența cheii.</p>
+
+                <p>The get() method retrieves the value associated with a specific key, if it exists. If the key is not
+                    found, it returns None by default (or a specified default value). This can be used to determine
+                    whether the key exists.</p>
+            </div>
+
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+if persoana.get("varsta") is not None:
+    print("Cheia 'varsta' există în dictionar.")
+else:
+    print("Cheia 'varsta' nu există în dictionar.")
+    
+if persoana.get("tara") is not None:
+    print("Cheia 'tara' există în dictionar.")
+else:
+    print("Cheia 'tara' nu există în dictionar.") 
+<span>==&gt; Cheia 'varsta' există în dictionar.</span>
+<span>==&gt; Cheia 'tara' nu există în dictionar.</span>
+</code></pre>
+
+            <p>Folosind get() cu o valoare implicită - Using get() with a Default Value</p>
+
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+<span># Obține valoarea pentru nume sau None dacă nu este găsită</span>
+numele = persoana.get("nume")
+<span># Verifică dacă persoană nu este None și nu este un șir gol/valoare falsey</span>
+if numele:  
+    print(f"Numele persoanei este: {numele}")
+
+<span># Obține valoarea pentru  'tara' sau 'Necunoscută' dacă nu este găsită.</span>
+tara_persoanei = persoana.get("tara", "Necunoscuta")
+if tara_persoanei != "Necunoscuta":
+    print(f"Ţara persoanei: {tara_persoanei}")
+else:
+    print("Țara persoanei este necunoscută")
+<span>== &gt; Numele persoanei este: Cristina</span>
+<span>== &gt; Țara persoanei este necunoscută</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <p>Pentru a efectua o acțiune asupra unui dicționar numai dacă există o cheie specifică și pentru a nu
+                    face nimic dacă nu există, se poate utiliza metoda get().</p>
+
+                <p>To perform an action on a dictionary only if a specific key exists, and do nothing if it does not,
+                    the get() method can be utilized.</p>
+            </div>
+
+            <div class="grid-container">
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+fruct_cheie = "caise"
+
+valoare = fructe.get(fruct_cheie)
+
+if valoare is not None:
+    <span># Efectuează acțiuni aici dacă cheia există (valoarea nu este None)</span>
+    print(f"{fruct_cheie} are valoarea: {valoare}")
+else:
+    <span># Nu face nimic dacă cheia nu există (valoare este None)</span>
+    pass
+<span>==&gt; caise are valoarea: 25</span>
+</code></pre>
+
+
+<pre><code>fructe = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 15}
+fruct_cheie = "gutuie"
+
+valoare = fructe.get(fruct_cheie)
+
+if valoare is not None:
+    <span># Efectuează acțiuni aici dacă cheia există (valoarea nu este None)</span>
+    print(f"{fruct_cheie} are valoarea: {valoare}")
+else:
+    <span># Nu face nimic dacă cheia nu există (valoare este None)</span>
+    pass
+</code></pre>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="CDC">Verificarea existenței valorii - Checking for Value Existence</h2>
+
+
+            <div class="grid-container">
+                <p>În Python, condițiile if și in sunt utilizate frecvent cu dicționarele pentru a verifica prezența
+                    valorilor.</p>
+
+                <p>In Python, if and in conditions are frequently used with dictionaries to check for the presence of
+                    values.</p>
+            </div>
+
+<pre><code><span># Verificare simplă a existenței</span>
+persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+<span># Verificarea existenței unei valori</span>
+print(50 in persoana.values()) <span>==&gt; True</span>
+
+<span># Verificarea unei valori care nu există</span>
+print(500 in persoana.values()) <span>==&gt; False</span>
+</code></pre>
+
+            <div class="grid-container">
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+if "Cristina" in persoana.values():
+    print(f"'Cristina' există in dicţionar")
+else:
+    print(f"'Cristina' nu există in dicţionar")
+<span>==&gt; Persoana 'Cristina' există in dicţionar</span>
+</code></pre>
+
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+if "Ioana" in persoana.values():
+    print(f"'Ioana' există in dicţionar")
+else:
+    print(f"'Ioana' nu există in dicţionar")
+<span>==&gt; 'Ioana' nu există in dicţionar</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+                <p>Într-o aplicație reală, este adesea necesar să verifici dacă o anumită condiție sau stare există în
+                    cadrul datelor tale.</p>
+
+                <p>In a real application, you often need to check if a specific condition or status exists across your
+                    data.</p>
+            </div>
+
+<pre><code><span># Aplicație: Scanarea stocului unui magazin pentru alerte</span>
+inventar = {
+    "Caiete": "In stoc",
+    "Creioane": "In stoc",
+    "Cerneala": "Stoc epuizat",
+    "Ghiozdane": "In stoc",
+    "Creioane colorate": "Stoc epuizat"
+}
+<span># Aplicația verifică valorile pentru un anumit statut</span>
+if "Stoc epuizat" in inventar.values():
+    print("⚠️ Alertă: Unele produse sunt epuizate! Vă rugăm să refaceți stocul.")
+else:
+    print("✅ Toate produsele sunt în stoc.")
+    
+<span># Găsește toate cheile pentru care valoarea este "Stoc epuizat"</span>
+articole_epuizate = [cheie for cheie, valoare in inventar.items() if valoare == "Stoc epuizat"]
+print(f"Articole epuizate: {articole_epuizate}")
+<span>==&gt; ⚠️ Alertă: Unele produse sunt epuizate! Vă rugăm să refaceți stocul.</span>
+<span>==&gt; Articole epuizate: ['Cerneala', 'Creioane colorate']</span>
+</code></pre>
+
+            <div class="grid-container">
+<pre><code><span># Logică condițională bazată pe conținutul dicționarului</span>
+setare = {"stare": "noapte", "note": True}
+if setare["stare"] == "noapte":
+    print("Aprinde lumina.")
+elif setare["stare"] == "sa luminat":
+    print("Stinge lumina.")
+else:
+    print("Curentul electric întrerupt.")
+    
+if setare.get("note"):  
+    print("Notificările sunt activate.")
+else:
+    print("Notificările sunt dezactivate.")
+<span>==&gt; Aprinde lumina.</span>
+<span>==&gt; Notificările sunt activate.</span>
+</code></pre>
+
+<pre><code><span># Logică condițională bazată pe conținutul dicționarului</span>
+setare = {"stare": "noapte", "note": True}
+if setare["stare"] == "furtuna":
+    print("Aprinde lumina.")
+elif setare["stare"] == "sa luminat":
+    print("Stinge lumina.")
+else:
+    print("Curentul electric întrerupt.")
+    
+if setare.get("note"==False):  
+    print("Notificările sunt activate.")
+else:
+    print("Notificările sunt dezactivate.")
+<span>==&gt; Curentul electric întrerupt.</span>
+<span>==&gt; Notificările sunt dezactivate.</span>
+</code></pre>
+            </div>
+
+            <p>Folosind get() cu o valoare implicită - Using get() with a Default Value</p>
+
+<pre><code>persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+<span># Obține valoarea pentru nume sau None dacă nu este găsită</span>
+numele = persoana.get("nume")
+<span># Verifică dacă persoană nu este None și nu este un șir gol/valoare falsă</span>
+if numele:  
+    print(f"Numele persoanei este: {numele}")
+
+<span># Obține valoarea pentru  'ţară' sau 'Necunoscută' dacă nu este găsită.</span>
+tara_persoanei = persoana.get("tara", "Necunoscuta")
+if tara_persoanei != "Necunoscuta":
+    print(f"Ţara persoanei: {tara_persoanei}")
+else:
+    print("Țara persoanei este necunoscută")
+<span>==&gt; Numele persoanei este: Cristina</span>
+<span>==&gt; Țara persoanei este necunoscută</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="CDE">Verificarea existenței cheie-valoare - Checking for the existence of a key-value pair</h2>
+
+
+            <div class="grid-container">
+                <p>Pentru a verifica dacă există o anumită pereche cheie-valoare într-un dicționar Python, puteți
+                    utiliza operatorul if cu .items(), .get() or in. Metoda .items() or .get() returnează un obiect de
+                    vizualizare care afișează o listă cu perechile de tupluri cheie-valoare ale unui dicționar. Puteți
+                    apoi utiliza operatorul in pentru a verifica dacă un anumit tuplu (cheie, valoare) este prezent în
+                    această vizualizare.</p>
+
+                <p>To check if a specific key-value pair exists in a Python dictionary, you can use if operator with the
+                    .items(), .get() or in. The .items() or .get() method returns a view object that displays a list of
+                    a dictionary's key-value tuple pairs. You can then use the in operator to check if a specific (key,
+                    value) tuple is present in this view.</p>
+            </div>
+
+            <div class="grid-container">
+<pre><code><span># Utilizarea operatorului in împreună cu .items()</span>
+
+persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+
+if ("nume", "Cristina") in persoana.items():
+    print('Perechea cheie-valore ("nume", "Cristina") există.')
+else:
+    print('Perechea cheie-valore ("nume", "Cristina") nu există.')
+    
+if ("varsta", 30) in persoana.items():
+    print('Perechea cheie-valore ("varsta", 30) există.')
+else:
+    print('Perechea cheie-valore ("varsta", 30) nu există.')
+
+<span>==&gt; Perechea cheie-valore ("nume", "Cristina") există.</span>
+<span>==&gt; Perechea cheie-valore ("varsta", 30) nu există.</span>
+</code></pre>
+
+<pre><code><span># Utilizarea .get() (Verificarea în siguranță)</span>
+
+persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+if persoana.get("nume") == "Cristina":
+    print(f'Perechea cheie-valore ("nume", "Cristina") există.')
+else:
+    print('Perechea cheie-valore ("nume", "Cristina") nu există.')
+    
+if persoana.get("varsta") == 30:
+    print('Perechea cheie-valore ("varsta", 30) există.')
+else:
+    print('Perechea cheie-valore ("varsta", 30) nu există.')
+
+<span>==&gt; Perechea cheie-valore ("nume", "Cristina") există.</span>
+<span>==&gt; Perechea cheie-valore ("varsta", 30) nu există.</span>
+</code></pre>
+            </div>
+
+<pre><code><span># Utilizarea operatorului in (cea mai rapidă metodă pentru logica în mai mulți pași)</span>
+
+persoana = {"nume": "Cristina", "varsta": 50, "localitate": "Severin"}
+if "nume" in persoana and persoana["nume"] == "Cristina":
+    print(f'Perechea cheie-valore ("nume", "Cristina") există.')
+else:
+    print('Perechea cheie-valore ("nume", "Cristina") nu există.')
+    
+if "varsta" in persoana and persoana["varsta"] == 30:
+    print('Perechea cheie-valore ("varsta", 30) există.')
+else:
+    print('Perechea cheie-valore ("varsta", 30) nu există.')
+
+<span>==&gt; Perechea cheie-valore ("nume", "Cristina") există.</span>
+<span>==&gt; Perechea cheie-valore ("varsta", 30) nu există.</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+            <h2 id="CDF">Filtrare un dicționar folosind o condiție if - Filter a dictionary using an if condition</h2>
+
+            <div class="grid-container">
+                <p>Filtrarea unui dicționar pe baza unei condiții creează un dicționar nou, care conține doar elementele
+                    ce îndeplinesc criteriile specifice.</p>
+
+                <p>Filtering a dictionary based on a condition creates a new dictionary containing only the items that
+                    meet the specific criteria.</p>
+            </div>
+
+<pre><code>fruct_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 14}
+fruct_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+<span># Selectează doar fructele cu o cantitate mai mică de 14</span>
+stoc_critic = {fruct:  cantitate for fruct, cantitate in fruct_cantitate.items() if cantitate &lt; 15}
+
+<span># Selectează doar fructele care costă mai puțin de $ 2.00</span>
+cost_critic = {fruct: cost for fruct, cost in fruct_cost.items() if cost &lt; 2}
+
+print(stoc_critic) <span>==&gt; {'smochine': 14}</span>
+print(cost_critic) <span>==&gt; {'mere': 1.69, 'pere': 1.5, 'smochine': 1.7}</span>
+</code></pre>
+
+            <p>Utilizarea unei bucle for - Using a for Loop.</p>
+
+            <div class="grid-container">
+<pre><code>fruct_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+filtru_cost = {}
+
+for cheie, valoare in fruct_cost.items():
+    if 1 &gt; valoare &gt; 2.00:
+        filtru_cost[cheie] = valoare
+print(filtru_cost) <span>==&gt; {'mere': 1.69, 'pere': 1.5, 'smochine': 1.7}</span>
+</code></pre>
+
+<pre><code>fruct_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 14}
+
+filtru_cantitate = {}
+
+for cheie, valoare in fruct_cantitate.items():
+    if 13 &lt; valoare &lt; 30:
+        filtru_cantitate[cheie] = valoare
+print(filtru_cantitate) <span>==&gt; {'caise': 25, 'smochine': 14}</span>
+</code></pre>
+            </div>
+
+            <div class="grid-container">
+<pre><code>fruct_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 14}
+fruct_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+<span># Filtrarea fructelor cu cantitatea mai mare de 15 și prețul mai mare de $ 2.00</span>
+filtrate = []
+for fruct in fruct_cantitate:
+    if fruct_cantitate[fruct] &gt; 15 and fruct_cost[fruct] &gt; 2.00:
+        filtrate.append(fruct)
+
+print("Fructele care îndeplinesc condițiile:", filtrate)
+
+<span>==&gt; Fructele care îndeplinesc condițiile: ['prune', 'caise']</span>
+</code></pre>
+
+<pre><code>fruct_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 14}
+fruct_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+rezultat = {
+    fruct: {"cantitate": fruct_cantitate[fruct], "cost": fruct_cost[fruct]} for fruct in fruct_cantitate
+    if fruct_cantitate[fruct] &gt; 15 and fructe_cost[fruct] &gt; 2.00
+}
+
+print(rezultat)
+
+<span>==&gt; {'prune': {'cantitate': 35, 'cost': 2.12}, 'caise': {'cantitate': 25, 'cost': 2.4}}</span>
+</code></pre>
+            </div>
+
+            <p>Filtrarea după un set de chei - Filtering by a set of keys.</p>
+
+<pre><code>fruct_cantitate = {"mere": 50, "pere": 30, "prune": 35, "caise": 25, "smochine": 14}
+fruct_cost = {"caise": 2.40, "prune": 2.12, "mere": 1.69, "pere": 1.50, "smochine": 1.70}
+
+<span># Filtrează pentru a păstra doar anumit set de fructe</span>
+fructe = {"mere", "caise"}
+print(type(fructe)) <span>==&gt; &lt;class 'set'&gt;</span>
+
+filtru_cost = {k: v for k, v in fruct_cost.items() if k in fructe}
+print(filtru_cost) <span>==&gt; {'caise': 2.4, 'mere': 1.69}</span>
+
+filtru_cantitate = {k: v for k, v in fruct_cantitate.items() if k in fructe}
+print(filtru_cantitate) <span>==&gt; {'mere': 50, 'caise': 25}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="CDG">Dicționare imbricate - Nested dictionaries</h2>
+
+            <div class="grid-container">
+                <div>
+                    <p>Un dicționar imbricat în Python este un dicționar în care valorile asociate unor chei sunt ele
+                        însele alte dicționare. Acest lucru permite stocarea ierarhică a datelor.</p>
+                    <p>Instrucțiunile if pot fi utilizate pentru a accesa sau procesa condiționat date dintr-un
+                        dicționar imbricat. Aceasta poate implica verificarea existenței cheilor, compararea valorilor
+                        sau efectuarea de acțiuni pe baza unor criterii specifice.</p>
+                </div>
+
+                <div>
+                    <p>A nested dictionary in Python is a dictionary where the values associated with some keys are
+                        themselves other dictionaries. This allows for hierarchical data storage.</p>
+                    <p>if statements can be used to conditionally access or process data within a nested dictionary.
+                        This can involve checking for the existence of keys, comparing values, or performing actions
+                        based on specific criteria.</p>
+                </div>
+            </div>
+
+
+<pre><code><span># dicționar imbricat</span>
+student_punctaje = {
+    "id_a01": {"numele": "Angela", "varsta": 19, "punctaj": {"Matematica": 90, "Calculator": 85, "Engleza": 75}
+    },
+    "id_a02": {"numele": "Nicolae", "varsta": 29, "punctaj": {"Matematica": 88, "Calculator": 95, "Engleza": 80}
+    },
+    "id_a03": {"numele": "Cornelia", "varsta": 32, "punctaj": {"Matematica": 75, "Calculator": 65, "Engleza": 62}
+    }
+}
+student_id_de_verificat = "id_a01"
+
+<span># condiția if verifică și procesează datele din dicționarul imbricat</span>
+if student_id_de_verificat in student_punctaje:
+    datele_studentului = student_punctaje[student_id_de_verificat]
+    print(f"\nDatele lui {student_id_de_verificat}:\n{datele_studentului}")
+    print(f"\nDetalii pentru {datele_studentului['numele']}:")
+    print(f"Vârsta: {datele_studentului['varsta']}")
+    print(f"Matematica punctaj: {datele_studentului['punctaj']['Matematica']}")
+
+    <span># O altă condiție if pentru verificarea unui anumite punctaj</span>
+    if datele_studentului['punctaj']['Matematica'] >= 90:
+        print(f"\n{datele_studentului['numele']} a obținut un punctaj excelent la matematică!")
+    else:
+        print(f"{datele_studentului['numele']} puctajul la matematică este sub excelent")
+else:
+    print(f"Studentul cu ID '{student_id_de_verificat}' nu se găsește în înregistrări.")
+
+<span># verifică un ID de student inexistent</span>
+student_id_de_verificat_inexistent = "id_a04"
+if student_id_de_verificat_inexistent in student_punctaje:
+    <span># Acest bloc nu va fi executat</span>
+    pass
+else:
+    print(f"\nStudentul cu ID '{student_id_de_verificat_inexistent}' nu se găsește în înregistrări.")
+</code></pre>
+
+<pre><code><span># Rezultatele codului</span>
+Datele lui id_a01:
+{'numele': 'Angela', 'varsta': 19, 'punctaj': {'Matematica': 90, 'Calculator': 85, 'Engleza': 75}}
+
+Detalii pentru Angela:
+Vârsta: 19
+Matematica punctaj: 90
+
+Angela a obținut un punctaj excelent la matematică!
+
+Studentul cu ID 'id_a04' nu se găsește în înregistrări.
+</code></pre>
+
+
+            <p>Găsește o valoare specifică imbricată - Find a specific nested value.</p>
+
+<pre><code>personal = {
+    "id_001": {"nume": "Virgil","varsta": 54,"departament": "prezentator"},
+    "id_002": {"nume": "Bobinsky","varsta": 39,"departament": "Filmări"},
+    "id_003": {"nume": "Costel","varsta": 29,"departament": "Angajeri"}
+}
+<span># Crează o valriabilă (cheie)</span>
+angajat_id = "id_001"
+if angajat_id in personal:
+    print(f"Angajatul cu {angajat_id} a fost găsit, numle lui este: {personal[angajat_id]['nume']}")
+    
+<span># Căutarea unei chei într-un dicționar imbricat</span>
+if "departament" in personal["id_002"]:
+    print(f"{personal['id_002']['nume']} face parte din departamentul: {personal['id_002']['departament']}")
+
+<span>==&gt; Angajatul cu id_001 a fost găsit, numle lui este: Virgil</span>
+<span>==&gt; Bobinsky face parte din departamentul: Filmări</span>
+</code></pre>
+
+            <p>Comparații de valori condiționate - Conditional Value Comparisons.</p>
+
+<pre><code>personal = {
+    "id_001": {"nume": "Virgil", "varsta": 54, "departament": "prezentator"},
+    "id_002": {"nume": "Bobinsky", "varsta": 39, "departament": "Filmări"},
+    "id_003": {"nume": "Costel", "varsta": 29,"departament": "Angajeri"}
+}
+
+for angajat_id, detalii in personal.items():
+    if detalii["varsta"] > 30:
+        print(f"{detalii['nume']} este mai în vârstă decât 30 de ani.")
+
+    if detalii["departament"] == "Angajeri":
+        print(f"{detalii['nume']} lucrează la departamentul {detalii['departament']}")
+
+<span>==&gt; Virgil este mai în vârstă decât 30 de ani.</span>
+<span>==&gt; Bobinsky este mai în vârstă decât 30 de ani.</span>
+<span>==&gt; Costel lucrează la departamentul de Angajeri</span>
+</code></pre>
+
+<pre><code>personal = {
+    "id_001": {"nume": "Virgil", "varsta_initiala": 54,"departament": "prezentator"},
+    "id_002": {"nume": "Bobinsky", "varsta_initiala": 39,"departament": "Filmări"},
+    "id_003": {"nume": "Costel", "varsta_initiala": 29,"departament": "Angajeri"}
+}
+
+for angajat_id, detalii in personal.items():
+    if "departament" in detalii:
+        if detalii["departament"] == "Filmări":
+            if detalii["varsta_initiala"] &lt; 40:
+                print(f"{detalii['nume']} este un inginer mai mic de 40 ani.")
+
+<span>==&gt; Bobinsky este un inginer mai mic de 40 ani.</span>
+</code></pre>
+
+            <p>Verificarea unei căi imbricate cunoscute - Checking a known nested path.</p>
+
+            <div class="grid-container">
+<pre><code><span># Chei în lanț</span>
+utili = { 
+    "util1": {"profil": {"varsta": 18}}, 
+    "util2": {"profil": {"varsta": 25}}, 
+    "util3": {"profil": {"varsta": 35}}, 
+    "util4": {"profil": {"localitate": "Severin"}} 
+}
+
+try:
+    <span># Python încearcă să acceseze cheile</span>
+    <span># Dacă varsta lipsește sau este None, se declanșează verificarea</span>
+    if utili["util4"]["profil"]["varsta"] is not None:
+        print("Cheia 'varsta' există și are o valoare!")
+    else:
+        print("Vârsta este prezentă, dar valoarea ei este None.")
+except KeyError:
+    <span># Dacă lipsește vreo cheie de pe traseu ("util4", "profil" sau "varsta"),</span> 
+    <span># Python sare direct aici în loc să se blocheze</span>
+    print("Utilizatorul, profilul sau vârsta lipsesc din dicționar.")
+<span>==&gt; Utilizatorul, profilul sau varsta lipsesc din dicționar.</span>
+</code></pre>
+
+<pre><code><span># Înlănțuirea metodelor .get() (Recomandat)</span>
+
+utili = {
+    "util1": {"profil": {"varsta": 18}},
+    "util2": {"profil": {"varsta": 25}},
+    "util3": {"profil": {"varsta": 35}},
+    "util4": {"profil": {"localitate": "Severin"}}
+}
+
+<span># Înlănțuirea metodelor .get() (Recomandat)</span>
+<span># Dicționarul gol {} previne o eroare dacă utilizator1 sau profil nu există</span>
+if utili.get("util4", {}).get("profil", {}).get("varsta") is not None:
+    print("Cheia 'varsta' există și are o valoare!")
+else:
+    print("Utilizatorul, profilul sau varsta lipsesc din dicționar.")
+
+<span>==&gt; Utilizatorul, profilul sau varsta lipsesc din dicționar.</span>
+</code></pre>
+            </div>
+
+            <p>Cel puțin un parametru lipsește - At least one parameter is missing.</p>
+
+<pre><code>utili = {
+    "util1": {"profil": {"varsta": 18}},
+    "util2": {"profil": {"varsta": 25}},
+    "util3": {"profil": {"varsta": 35}},
+    "util4": {"profil": {"localitate": "Severin"}}
+}
+<span># Înlănțuirea metodelor .get() (Recomandat)</span>
+<span># Dicționarul gol {} previne o eroare dacă utilizator1 sau profil nu există</span>
+if utili.get("util4", {}).get("profil", {}).get("varsta") is not None:
+    print("Cheia 'varsta' există și are o valoare!")
+else:
+    print("Utilizatorul, profilul sau varsta lipsesc din dicționar.")
+<span>==&gt; Utilizatorul, profilul sau varsta lipsesc din dicționar.</span>
+</code></pre>
+
+            <p>Care parametru lipsește - Which parameter is missing?</p>
+
+<pre><code>utili = {
+    "util1": {"profil": {"varsta": 18}},
+    "util2": {"profil": {"varsta": 25}},
+    "util3": {"profil": {"varsta": 35}},
+    "util4": {"local": {"localitate": "Severin"}}
+}
+
+if "util4" not in utili:
+    print("Lipsește: util4")
+elif "profil" not in utili["util4"]:
+    print("Lipsește: profil (pentru util4)")
+elif utili["util4"]["profil"].get("varsta") is None:
+    print("Lipsește: vârsta (în profilul utilizatorului1)")
+else:
+    valoare_varsta = utili["util4"]["profil"]["varsta"]
+    print(f"Toate datele există! Vârsta este: {valoare_varsta}")
+<span>==&gt; Lipsește: profil (pentru util4)</span>
+</code></pre>
+
+            <p>Funcție reutilizabilă (Recomandată pentru cod curat) - Reusable function (Recommended for clean code).
+            </p>
+
+<pre><code>utili = {
+    "util1": {"profil": {"varsta": 18}},
+    "util2": {"profil": {"varsta": 25}},
+    "util3": {"profil": {"varsta": 35}},
+    "util4": {"local": {"localitate": "Severin"}}
+}
+
+def verifica_calea(dicţionar, cale_chei):
+    <span># Verifică o cale de chei într-un dicționar imbricat și returnează prima cheie care lipsește</span>
+    curent = dicţionar
+    for cheie in cale_chei:
+        if not isinstance(curent, dict) or cheie not in curent:
+            <span># Returnează False și numele cheii care lipsește</span>
+            return False, cheie
+        curent = curent[cheie]
+    
+    if curent is None:
+        <span># Cheia există, dar valoarea ei este None</span>
+        return False, cale_chei[-1]
+    <span># Succes, returnează valoarea finală</span>
+    return True, curent
+
+<span># Creează o listă cu parametrii necesari:</span>
+cale = ["util4", "profil", "varsta"]
+succes, rezultat = verifica_calea(utili, cale)
+
+if succes:
+    print(f"Succes! Vârsta este {rezultat} ani")
+else:
+    print(f"Date incomplete! Lipsește cheia sau valoarea pentru: '{rezultat}'")
+<span>==&gt; Date incomplete! Lipsește cheia sau valoarea pentru: 'profil'</span>
+</code></pre>
+
+            <p>Validarea vârstei - Age verification.</p>
+
+<pre><code>def verifica_valideaza_varsta(dictionar):
+    <span># Verificăm dacă structura de chei există</span>
+    utilizator = dictionar.get("utilizator1")
+    if utilizator is None:
+        return False, "Lipsește cheia 'utilizator1' sau valoarea este None"
+        
+    profil = utilizator.get("profil")
+    if profil is None:
+        return False, "Lipsește cheia 'profil' în cadrul utilizatorului"
+        
+    if "varsta" not in profil:
+        return False, "Lipsește cheia 'varsta' din profil"
+        
+    varsta = profil.get("varsta")
+    if varsta is None:
+        return False, "Cheia 'varsta' există, dar valoarea ei este None"
+
+    <span># Validarea tipului de date și a valorii</span>
+    if not isinstance(varsta, int):
+        return False, f"Tip de date invalid pentru vârstă! Se aștepta 'int', dar s-a primit '{type(varsta).__name__}'"
+        
+    if varsta &lt;= 0 or varsta &gt; 140:
+        return False, f"Valoare nerealistă pentru vârstă: {varsta} (trebuie să fie între 1 și 140)"
+
+    <span># Dacă totul este în regulă</span>
+    return True, varsta
+
+<span># Exemple de testare</span> 
+
+<span># Date corecte</span>
+date_corecte = {"utilizator1": {"profil": {"varsta": 25}}}
+succes, mesaj = verifica_valideaza_varsta(date_corecte)
+print(f"Test 1 -> Succes: {succes}, Rezultat/Mesaj: {mesaj}")
+<span>==&gt; Test 1 -> Succes: True, Rezultat/Mesaj: 25</span>
+
+<span># Tip de date greșit (String în loc de Int)</span>
+varsta_gresit_tip = {"utilizator1": {"profil": {"varsta": "25"}}}
+succes, mesaj = verifica_valideaza_varsta(varsta_gresit_tip)
+print(f"Test 2 -> Succes: {succes}, Rezultat/Mesaj: {mesaj}")
+<span>==&gt; Test 2 -> Succes: False, Rezultat/Mesaj: Tip de date invalid pentru vârstă! Se aștepta 'int', dar s-a primit 'str'</span>
+
+<span># Valoare nereală</span>
+varsta_gresit_valoare = {"utilizator1": {"profil": {"varsta": -5}}}
+succes, mesaj = verifica_valideaza_varsta(varsta_gresit_valoare)
+print(f"Test 3 -> Succes: {succes}, Rezultat/Mesaj: {mesaj}")
+<span>==&gt; Test 3 -> Succes: False, Rezultat/Mesaj: Valoare nereală pentru vârstă: -5 (trebuie să fie între 1 și 140)</span>
+</code></pre>
+
+            <p>Vârsta maximă admisă - Maximum permitted age.</p>
+
+<pre><code>import json
+
+date_utilizatori = { 
+    "utilizator1": {"profil": {"varsta": "35"}},       
+    "utilizator2": {"profil": {"varsta": 20.9}},       
+    "utilizator3": {"profil": {"varsta": "treizeci"}}, 
+    "utilizator4": {"profil": {"varsta": -5}},         
+    "utilizator5": {"fara_profil": {}},                
+    "utilizator6": {"profil": {"varsta": 33}},
+    "utilizator7": {"profil": {"varsta": 150}}
+}
+
+def elimina_invalid(dictionar_date, varsta_maxima=None):
+    raport = { 
+        "actualizat": [], 
+        "eliminat": {} 
+    }
+    date_valide = {}
+
+    for utilizator, date in dictionar_date.items():
+        <span># Verificăm existența profilului</span>
+        if "profil" not in date:
+            raport["eliminat"][utilizator] = "Lipseste profilul"
+            continue
+            
+        profil = date["profil"]
+        
+        <span># Verificăm existența cheii 'varsta'</span>
+        if "varsta" not in profil:
+            raport["eliminat"][utilizator] = "Lipseste cheia varsta"
+            continue
+            
+        varsta_initial = profil["varsta"]
+        
+        <span># Încercăm conversia și validarea vârstei</span>
+        try:
+            varsta_intreg = int(float(varsta_initial))
+            
+            <span># Fără vârste negative</span>
+            if varsta_intreg &lt; 0:
+                raport["eliminat"][utilizator] = f"Varsta negativa: {varsta_initial}"
+            
+            <span># Regula nouă: Vârsta maximă admisă</span>
+            elif varsta_intreg > varsta_maxima:
+                raport["eliminat"][utilizator] = f"Varsta depaseste limita maxima de {varsta_maxima} ani: {varsta_initial}"
+            
+            else:
+                # Salvăm utilizatorul validat
+                date_valide[utilizator] = {"profil": {"varsta": varsta_intreg}}
+                raport["actualizat"].append(utilizator)
+                
+        except (ValueError, TypeError):
+            raport["eliminat"][utilizator] = f"Valoare invalida pentru varsta: {varsta_initial}"
+
+    return date_valide, raport
+
+<span># Executăm funcția cu limita de 120 de ani</span>
+date_curatate, raport_final = elimina_invalid(date_utilizatori, varsta_maxima=120)
+
+<span># Afișăm rezultatele</span>
+print("--- BAZA DE DATE ACTUALIZATĂ ---")
+print(json.dumps(date_curatate, indent=4))
+
+print("\n--- RAPORT PROCESARE ---")
+print(json.dumps(raport_final, indent=4))
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+--- BAZA DE DATE ACTUALIZATĂ ---
+{
+    "utilizator1": {
+        "profil": {
+            "varsta": 35
+        }
+    },
+    "utilizator2": {
+        "profil": {
+            "varsta": 20
+        }
+    },
+    "utilizator6": {
+        "profil": {
+            "varsta": 33
+        }
+    }
+}
+
+--- RAPORT PROCESARE ---
+{
+    "actualizat": [
+        "utilizator1",
+        "utilizator2",
+        "utilizator6"
+    ],
+    "eliminat": {
+        "utilizator3": "Valoare invalida pentru varsta: treizeci",
+        "utilizator4": "Varsta negativa: -5",
+        "utilizator5": "Lipseste profilul",
+        "utilizator7": "Varsta depaseste limita maxima de 120 ani: 150"
+    }
+}
+</code></pre>
+
+
+            <p>Conversia automată a textului în număr întreg - Automatic conversion of text to an integer.</p>
+
+<pre><code>def verifica_converteste_valideaza(dictionar):
+    <span># Verificarea existenței structurii de chei</span>
+    utilizator = dictionar.get("utilizator1")
+    if utilizator is None:
+        return False, "Lipsește cheia 'utilizator1' sau valoarea este None"
+        
+    profil = utilizator.get("profil")
+    if profil is None:
+        return False, "Lipsește cheia 'profil' în cadrul utilizatorului"
+        
+    if "varsta" not in profil:
+        return False, "Lipsește cheia 'vârstă' din profil"
+        
+    varsta_initial = profil.get("varsta")
+    if varsta_initial is None:
+        return False, "Cheia 'varsta' există, dar valoarea ei este None"
+
+    <span># Încercarea de conversie automată în număr întreg (int)</span>
+    try:
+        <span># int() va funcționa pentru numere (25), float-uri (25.6 -> 25) și string-uri numerice ("25")</span>
+        <span># Folosim float mai întâi pentru a prinde cazuri precum "25.0" care altfel ar da eroare direct la int()</span>
+        varsta = int(float(varsta_initial))
+    except (ValueError, TypeError):
+        return False, f"Conversie eșuată! Valoarea '{varsta_initial}' (tip: {type(varsta_initial).__name__}) nu poate fi transformată în număr întreg."
+
+    <span># Validarea valorii numerice obținute</span>
+    if varsta &lt;= 0 or varsta &gt; 140:
+        return False, f"Valoare nereală pentru vârstă după conversie: {varsta} (trebuie să fie între 1 și 140)"
+
+    <span># Dacă totul este în regulă, returnăm True și valoarea curățată (int)</span>
+    return True, varsta
+
+<span># Exemple de testare pentru conversie</span>
+
+<span># Test 1: String numeric (Va fi convertit cu succes)</span>
+date_string = {"utilizator1": {"profil": {"varsta": "25"}}}
+succes, rezultat = verifica_converteste_valideaza(date_string)
+print(f"Test 1 (String '25') -> Succes: {succes}, Rezultat: {rezultat} (Tip: {type(rezultat).__name__})")
+<span>==&gt; Test 1 (String '25') -> Succes: True, Rezultat: 25 (Tip: int)</span>
+
+<span># Test 2: Float (Va fi convertit prin rotunjire prin tăiere)</span>
+date_float = {"utilizator1": {"profil": {"varsta": 30.7}}}
+succes, rezultat = verifica_converteste_valideaza(date_float)
+print(f"Test 2 (Float 30.7)  -> Succes: {succes}, Rezultat: {rezultat}")
+<span>==&gt; Test 2 (Float 30.7)  -> Succes: True, Rezultat: 30</span>
+
+<span># Test 3: Text invalid (Conversia va eșua controlat)</span>
+date_text_invalid = {"utilizator1": {"profil": {"varsta": "treizeci"}}}
+succes, rezultat = verifica_converteste_valideaza(date_text_invalid)
+print(f"Test 3 (Text invalid) -> Succes: {succes}, Mesaj eroare: {rezultat}")
+<span>==&gt; Test 3 (Text invalid) -> Succes: False, Mesaj eroare: Conversie eșuată! Valoarea 'treizeci' (tip: str) nu poate fi transformată în număr întreg.</span>
+</code></pre>
+
+
+            <p>Funcția pentru a salva valoarea corectată înapoi în dicționar - The function to save the corrected value
+                back to the dictionary.</p>
+
+<pre><code>def verifica_converteste_salveaza(dictionar):
+    <span># Verificarea existenței structurii de chei</span>
+    utilizator = dictionar.get("utilizator1")
+    if utilizator is None:
+        return False, "Lipsește cheia 'utilizator1' sau valoarea este None"
+        
+    profil = utilizator.get("profil")
+    if profil is None:
+        return False, "Lipsește cheia 'profil' în cadrul utilizatorului"
+        
+    if "varsta" not in profil:
+        return False, "Lipsește cheia 'varsta' din profil"
+        
+    varsta_initiala = profil.get("varsta")
+    if varsta_initiala is None:
+        return False, "Cheia 'varsta' există, dar valoarea ei este None"
+
+    <span># Încercarea de conversie automată în număr întreg</span>
+    try:
+        varsta_corectata = int(float(varsta_initiala))
+    except (ValueError, TypeError):
+        return False, f"Conversie eșuată! Valoarea '{varsta_initiala}' nu poate fi transformată în număr întreg."
+
+    <span># Validarea valorii numerice obținute</span>
+    if varsta_corectata &lt;= 0 or varsta_corectata &gt; 140:
+        return False, f"Valoare nerealistă pentru vârstă: {varsta_corectata} (trebuie să fie între 1 și 140)"
+
+    <span># Salvarea modificării: Suprascriem valoarea din dicționarul original</span>
+    profil["varsta"] = varsta_corectata
+
+    return True, "Datele au fost validate și actualizate cu succes!"
+
+<span># Exemplu de utilizare și demonstrație</span>
+
+<span># Dicționarul inițial conține un string ("25")</span>
+date_utilizator = {"utilizator1": {"profil": {"varsta": "25"}}}
+
+print("Înainte de rulare:", date_utilizator)
+<span>==&gt; Înainte de rulare: {'utilizator1': {'profil': {'varsta': '25'}}}</span>
+
+succes, mesaj = verifica_converteste_salveaza(date_utilizator)
+
+print("Rezultat funcție:", mesaj)
+<span>==&gt; Rezultat funcție: Datele au fost validate și actualizate cu succes!</span>
+
+print("După rulare (dicționar modificat):", date_utilizator)
+<span>==&gt; După rulare (dicționar modificat): {'utilizator1': {'profil': {'varsta': 25}}}</span>
+</code></pre>
+
+            <p>Script pentru a procesa o listă întreagă de utilizatori - Script pentru a procesa o listă întreagă de
+                utilizatori.</p>
+
+<pre><code>def proceseaza_toti_utilizatorii(dictionar_date):
+    raport = {
+        <span># Utilizatori corectați cu succes</span>
+        "actualizati": [],
+        <span># Utilizatori cu probleme și motivul erorii</span>
+        "erori": {}         
+    }
+    
+    <span># Trecem prin fiecare utilizator din dicționar (ex: "utilizator1", "utilizator2" etc.)</span>
+    for id_utilizator, date_utilizator in dictionar_date.items():
+        <span># Verificăm dacă structura profilului există</span>
+        if not isinstance(date_utilizator, dict):
+            raport["erori"][id_utilizator] = "Datele utilizatorului nu sunt un dicționar valid."
+            continue
+            
+        profil = date_utilizator.get("profil")
+        if profil is None:
+            raport["erori"][id_utilizator] = "Lipsește cheia 'profil' sau este None."
+            continue
+            
+        if "varsta" not in profil:
+            raport["erori"][id_utilizator] = "Lipsește cheia 'varsta' din profil."
+            continue
+            
+        varsta_initiala = profil.get("varsta")
+        if varsta_initiala is None:
+            raport["erori"][id_utilizator] = "Cheia 'varsta' există, dar are valoarea None."
+            continue
+
+        <span># Încercarea de conversie automată în număr întreg</span>
+        try:
+            varsta_corectata = int(float(varsta_initiala))
+        except (ValueError, TypeError):
+            raport["erori"][id_utilizator] = f"Valoarea '{varsta_initiala}' nu poate fi transformată în număr întreg."
+            continue
+
+        <span># Validarea valorii numerice obținute</span>
+        if varsta_corectata &lt;= 0 or varsta_corectata &gt; 140:
+            raport["erori"][id_utilizator] = f"Vârstă nerealistă: {varsta_corectata} (trebuie să fie între 1 și 140)."
+            continue
+
+        <span># Actualizarea valorii în dicționarul original</span>
+        profil["varsta"] = varsta_corectata
+        raport["actualizati"].append(id_utilizator)
+        
+    return raport
+
+<span># Exemplu de utilizare cu o bază de date extinsă</span> 
+
+date_utilizatori = {
+    "utilizator1": {"profil": {"varsta": "35"}},       <span># Va fi convertit în 35 (int)</span>
+    "utilizator2": {"profil": {"varsta": 20.9}},       <span># Va fi convertit în 20 (int)</span>
+    "utilizator3": {"profil": {"varsta": "treizeci"}}, <span># Eroare de conversie</span>
+    "utilizator4": {"profil": {"varsta": -5}},         <span># Eroare de validare (valoare negativă)</span>
+    "utilizator5": {"fara_profil": {}},                <span># Eroare (lipsește profilul)</span>
+    "utilizator6": {"profil": {"varsta": 33}}          <span># Corect, rămâne neatins</span>
+}
+
+print("--- Înainte de procesare ---")
+print(date_utilizatori)
+
+<span># Rulăm funcția</span>
+rezultat_raport = proceseaza_toti_utilizatorii(date_utilizatori)
+
+print("\n--- După procesare (Dicționarul modificat) ---")
+print(date_utilizatori)
+
+print("\n--- Raportul Rulării ---")
+print(f"Utilizatori actualizați cu succes: {rezultat_raport['actualizati']}")
+print("Erori întâlnite:")
+for ut, eroare in rezultat_raport["erori"].items():
+    print(f"  - {ut}: {eroare}")
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+<span>--- Înainte de procesare ---</span>
+{'utilizator1': {'profil': {'varsta': '35'}}, 'utilizator2': {'profil': {'varsta': 20.9}}, 'utilizator3': {'profil': {'varsta': 'treizeci'}}, 'utilizator4': {'profil': {'varsta': -5}}, 'utilizator5': {'fara_profil': {}}, 'utilizator6': {'profil': {'varsta': 33}}}
+
+<span>--- După procesare (Dicționarul modificat) ---</span>
+{'utilizator1': {'profil': {'varsta': 35}}, 'utilizator2': {'profil': {'varsta': 20}}, 'utilizator3': {'profil': {'varsta': 'treizeci'}}, 'utilizator4': {'profil': {'varsta': -5}}, 'utilizator5': {'fara_profil': {}}, 'utilizator6': {'profil': {'varsta': 33}}}
+
+<span>--- Raportul Rulării ---</span>
+Utilizatori actualizați cu succes: ['utilizator1', 'utilizator2', 'utilizator6']
+Erori întâlnite:
+  - utilizator3: Valoarea 'treizeci' nu poate fi transformată în număr întreg.
+  - utilizator4: Vârstă nerealistă: -5 (trebuie să fie între 1 și 140).
+  - utilizator5: Lipsește cheia 'profil' sau este None.
+</code></pre>
+
+            <p>Funcția să șteargă automat utilizatorii invalizi din dicționar - The function should automatically delete
+                invalid users from the dictionary.</p>
+
+
+<pre><code>def elimina_invalid(dictionar_date):
+    raport = {
+        "actualizat": [],
+        "eliminat": {}  <span># Schimbat din erori în eliminaţi pentru claritate</span>
+    }
+    
+    utilizatori_de_sters = []
+    
+    <span># Parcurgem utilizatorii și identificăm problemele</span>
+    for id_utilizator, date_utilizator in dictionar_date.items():
+        <span># Verificare structură de bază</span>
+        if not isinstance(date_utilizator, dict):
+            raport["eliminat"][id_utilizator] = "Datele nu sunt un dicționar valid."
+            utilizatori_de_sters.append(id_utilizator)
+            continue
+            
+        profil = date_utilizator.get("profil")
+        if profil is None:
+            raport["eliminat"][id_utilizator] = "Lipsește cheia 'profil'."
+            utilizatori_de_sters.append(id_utilizator)
+            continue
+            
+        if "varsta" not in profil:
+            raport["eliminat"][id_utilizator] = "Lipsește cheia 'varsta' din profil."
+            utilizatori_de_sters.append(id_utilizator)
+            continue
+            
+        varsta_initiala = profil.get("varsta")
+        if varsta_initiala is None:
+            raport["eliminat"][id_utilizator] = "Valoarea vârstei este None."
+            utilizatori_de_sters.append(id_utilizator)
+            continue
+
+        <span># Încercare conversie în număr întreg</span>
+        try:
+            varsta_corectata = int(float(varsta_initiala))
+        except (ValueError, TypeError):
+            raport["eliminat"][id_utilizator] = f"Valoarea '{varsta_initiala}' nu este numerică."
+            utilizatori_de_sters.append(id_utilizator)
+            continue
+
+        <span># Validare interval de vârstă</span>
+        if varsta_corectata &lt;= 0 or varsta_corectata &gt; 140:
+            raport["eliminat"][id_utilizator] = f"Vârstă nereală: {varsta_corectata}."
+            utilizatori_de_sters.append(id_utilizator)
+            continue
+
+        <span># Actualizare valoarea în dicționar</span>
+        profil["varsta"] = varsta_corectata
+        raport["actualizat"].append(id_utilizator)
+        
+    <span># Ștergerea efectivă a utilizatorilor invalizi din dicționarul original</span>
+    for id_utilizator in utilizatori_de_sters:
+        del dictionar_date[id_utilizator]
+        
+    return raport
+
+<span># Exemplu de utilizare</span>
+
+date_utilizatori = {
+    "utilizator1": {"profil": {"varsta": "35"}},       <span># Corectat -> devine 35</span>
+    "utilizator2": {"profil": {"varsta": 20.9}},       <span># Corectat -> devine 20</span>
+    "utilizator3": {"profil": {"varsta": "treizeci"}}, <span># Invalid  -> va fi îndepărtat</span>
+    "utilizator4": {"profil": {"varsta": -5}},         <span># Invalid  -> va fi îndepărtat</span>
+    "utilizator5": {"fara_profil": {}},                <span># Invalid  -> va fi îndepărtat</span>
+    "utilizator6": {"profil": {"varsta": 33}}          <span># Corect   -> rămâne 33</span>
+}
+
+print("--- Înainte de curățare numărul de utilizatori ---")
+print(f"Număr total: {len(date_utilizatori)}")
+
+<span># Rulăm funcția de curățare</span>
+raport_final = elimina_invalid(date_utilizatori)
+
+print("\n--- După curățare (Doar cei valabili rămân) ---")
+print(date_utilizatori)
+
+print("\n--- Raport ---")
+print(f"Utilizatori păstrați și actualizați: {raport_final['actualizat']}")
+print(f"Utilizatori șterși din baza de date:")
+for ut, cauza in raport_final["eliminat"].items():
+    print(f"  - {ut}: {cauza}")
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+<span>--- Înainte de curățare: numărul de utilizatori ---</span>
+Total: 6
+
+<span>--- După curățare (Doar cei valabili rămân) ---</span>
+{'utilizator1': {'profil': {'varsta': 35}}, 'utilizator2': {'profil': {'varsta': 20}}, 'utilizator6': {'profil': {'varsta': 33}}}
+
+<span>--- Raport ---</span>
+Utilizatori păstrați și actualizați: ['utilizator1', 'utilizator2', 'utilizator6']
+Utilizatori șterși din baza de date:
+  - utilizator3: Valoarea 'treizeci' nu este numerică.
+  - utilizator4: Vârstă nereală: -5.
+  - utilizator5: Lipsește cheia 'profil'.
+</code></pre>
+
+            <p>Validează, convertește datele și returnează noul dicționar alături de raportul format în JSO - Validates,
+                converts the data, and returns the new dictionary along with the report in JSON format.</p>
+
+
+<pre><code>import json
+
+date_utilizatori = { 
+    "utilizator1": {"profil": {"varsta": "35"}},       <span># Corect -> devine 35</span> 
+    "utilizator2": {"profil": {"varsta": 20.9}},       <span># Corect -> devine 20</span> 
+    "utilizator3": {"profil": {"varsta": "treizeci"}}, <span># Invalid -> va fi îndepărtat</span> 
+    "utilizator4": {"profil": {"varsta": -5}},         <span># Invalid -> va fi îndepărtat</span> 
+    "utilizator5": {"fara_profil": {}},                <span># Invalid -> va fi îndepărtat</span> 
+    "utilizator6": {"profil": {"varsta": 33}}          <span># Corect -> rămâne 33</span> 
+}
+
+def elimina_invalid(dictionar_date):
+    raport = { 
+        "actualizat": [], 
+        "eliminat": {} 
+    }
+    date_valide = {}
+
+    for utilizator, date in dictionar_date.items():
+        <span># Verificăm existența profilului</span>
+        if "profil" not in date:
+            raport["eliminat"][utilizator] = "Lipseste profilul"
+            continue
+            
+        profil = date["profil"]
+        
+        <span># Verificăm existența cheii 'varsta'</span>
+        if "varsta" not in profil:
+            raport["eliminat"][utilizator] = "Lipseste cheia varsta"
+            continue
+            
+        varsta_initial = profil["varsta"]
+        
+        <span># Încercăm conversia și validarea vârstei</span>
+        try:
+            <span># float(varsta_initial) rezolvă atât "35" cât și 20.9.</span> 
+            <span>int() transformă în număr întreg (20.9 -> 20)</span>
+            varsta_intreg = int(float(varsta_initial))
+
+            <span># Limiata superioară nu contează</span>
+            if varsta_intreg &lt; 0:
+                raport["eliminat"][utilizator] = f"Varsta negativa: {varsta_initial}"
+            else:
+                <span># Salvăm utilizatorul validat cu structura corectă</span>
+                date_valide[utilizator] = {"profil": {"varsta": varsta_intreg}}
+                raport["actualizat"].append(utilizator)
+                
+        except (ValueError, TypeError):
+            raport["eliminat"][utilizator] = f"Valoare invalida pentru varsta: {varsta_initial}"
+
+    return date_valide, raport
+
+<span># Executăm funcția</span>
+date_curatite, raport_final = elimina_invalid(date_utilizatori)
+
+<span># Afișăm rezultatele sub formă de JSON strructurat</span>
+print("--- BAZA DE DATE ACTUALIZATĂ ---")
+print(json.dumps(date_curatite, indent=4))
+
+print("\n--- RAPORT PROCESARE ---")
+print(json.dumps(raport_final, indent=4))
+</code></pre>
+
+<pre><code><span>Rezultat</span>
+--- BAZA DE DATE ACTUALIZATĂ ---
+{
+    "utilizator1": {
+        "profil": {
+            "varsta": 35
+        }
+    },
+    "utilizator2": {
+        "profil": {
+            "varsta": 20
+        }
+    },
+    "utilizator6": {
+        "profil": {
+            "varsta": 33
+        }
+    }
+}
+
+--- RAPORT PROCESARE ---
+{
+    "actualizat": [
+        "utilizator1",
+        "utilizator2",
+        "utilizator6"
+    ],
+    "eliminat": {
+        "utilizator3": "Valoare invalida pentru varsta: treizeci",
+        "utilizator4": "Varsta negativa: -5",
+        "utilizator5": "Lipseste profilul"
+    }
+}
+</code></pre>
+
+            <p>Vârsta maximă admisă - Maximum permitted age</p>
+
+<pre><code>import json
+
+date_utilizatori = { 
+    "utilizator1": {"profil": {"varsta": "35"}},       
+    "utilizator2": {"profil": {"varsta": 20.9}},       
+    "utilizator3": {"profil": {"varsta": "treizeci"}}, 
+    "utilizator4": {"profil": {"varsta": -5}},         
+    "utilizator5": {"fara_profil": {}},                
+    "utilizator6": {"profil": {"varsta": 33}},
+    "utilizator7": {"profil": {"varsta": 150}}
+}
+
+def elimina_invalid(dictionar_date, varsta_maxima=None):
+    raport = { 
+        "actualizat": [], 
+        "eliminat": {} 
+    }
+    date_valide = {}
+
+    for utilizator, date in dictionar_date.items():
+        <span># Verificăm existența profilului</span>
+        if "profil" not in date:
+            raport["eliminat"][utilizator] = "Lipseste profilul"
+            continue
+            
+        profil = date["profil"]
+        
+        <span># Verificăm existența cheii 'varsta'</span>
+        if "varsta" not in profil:
+            raport["eliminat"][utilizator] = "Lipseste cheia varsta"
+            continue
+            
+        varsta_initial = profil["varsta"]
+        
+        <span># Încercăm conversia și validarea vârstei</span>
+        try:
+            varsta_intreg = int(float(varsta_initial))
+            
+            <span># Fără vârste negative</span>
+            if varsta_intreg &lt; 0:
+                raport["eliminat"][utilizator] = f"Varsta negativa: {varsta_initial}"
+            
+            <span># Vârsta maximă admisă</span>
+            elif varsta_intreg > varsta_maxima:
+                raport["eliminat"][utilizator] = f"Varsta depaseste limita maxima de {varsta_maxima} ani: {varsta_initial}"
+            
+            else:
+                <span># Salvăm utilizatorul validat</span>
+                date_valide[utilizator] = {"profil": {"varsta": varsta_intreg}}
+                raport["actualizat"].append(utilizator)
+                
+        except (ValueError, TypeError):
+            raport["eliminat"][utilizator] = f"Valoare invalida pentru varsta: {varsta_initial}"
+
+    return date_valide, raport
+
+<span># Executăm funcția cu limita de 140 de ani</span>
+date_curatate, raport_final = elimina_invalid(date_utilizatori, varsta_maxima=140)
+
+<span># Afișăm rezultatele</span>
+print("--- BAZA DE DATE ACTUALIZATĂ ---")
+print(json.dumps(date_curatate, indent=4))
+
+print("\n--- RAPORT PROCESARE ---")
+print(json.dumps(raport_final, indent=4))
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+--- BAZA DE DATE ACTUALIZATĂ ---
+{
+    "utilizator1": {
+        "profil": {
+            "varsta": 35
+        }
+    },
+    "utilizator2": {
+        "profil": {
+            "varsta": 20
+        }
+    },
+    "utilizator6": {
+        "profil": {
+            "varsta": 33
+        }
+    }
+}
+
+--- RAPORT PROCESARE ---
+{
+    "actualizat": [
+        "utilizator1",
+        "utilizator2",
+        "utilizator6"
+    ],
+    "eliminat": {
+        "utilizator3": "Valoare invalida pentru varsta: treizeci",
+        "utilizator4": "Varsta negativa: -5",
+        "utilizator5": "Lipseste profilul",
+        "utilizator7": "Varsta depaseste limita maxima de 140 ani: 150"
+    }
+}
+</code></pre>
+
+            <p>Validare numele utilizatorului (cratimă, lungime) - Username validation (hyphens, lenght).</p>
+
+
+<pre><code>import json
+import re
+
+date_utilizatori = { 
+    "utilizator1": {"profil": {"nume": "Ion Popescu", "varsta": "35"}},       
+    "utilizator2": {"profil": {"nume": "Anca Alexandrescu", "varsta": 20.9}},        
+    "utilizator3": {"profil": {"nume": "Vasile33", "varsta": 30}},            
+    "utilizator4": {"profil": {"nume": "Elena", "varsta": -5}},               
+    "utilizator5": {"fara_profil": {}},                                       
+    "utilizator6": {"profil": {"nume": "Dan Lolea", "varsta": 33}},            
+    "utilizator7": {"profil": {"nume": "Ana-Maria!", "varsta": 25}},          
+    "utilizator8": {"profil": {"nume": "Ana-Maria", "varsta": 28}},
+    "utilizator9": {"profil": {"nume": "Al", "varsta": 40}},                  
+    "utilizator10": {"profil": {"nume": "AB" * 26, "varsta": 22}}               
+}
+
+def elimina_invalid(dictionar_date, varsta_maxima=120, nume_min_len=3, nume_max_len=50):
+    raport = { 
+        "actualizat": [], 
+        "eliminat": {} 
+    }
+    date_valide = {}
+
+    for utilizator, date in dictionar_date.items():
+        <span># Verificăm existența profilului</span>
+        if "profil" not in date:
+            raport["eliminat"][utilizator] = "Lipseste profilul"
+            continue
+            
+        profil = date["profil"]
+        
+        <span># Verificăm existența cheilor 'nume' și 'varsta'</span>
+        if "nume" not in profil:
+            raport["eliminat"][utilizator] = "Lipseste cheia nume"
+            continue
+        if "varsta" not in profil:
+            raport["eliminat"][utilizator] = "Lipseste cheia varsta"
+            continue
+            
+        nume_initial = str(profil["nume"]).strip()  <span># Folosim .strip() pentru a elimina spațiile inutile de la început/sfârșit</span>
+        varsta_initial = profil["varsta"]
+        
+        <span># Validare lungime nume</span>
+        if len(nume_initial) &lt; nume_min_len:
+            raport["eliminat"][utilizator] = f"Nume prea scurt (minimum {nume_min_len} caractere): '{nume_initial}'"
+            continue
+        if len(nume_initial) > nume_max_len:
+            raport["eliminat"][utilizator] = f"Nume prea lung (maximum {nume_max_len} caractere)"
+            continue
+        
+        <span># Validare format nume (doar litere, spații și cratime)</span>
+        if not re.match(r"^[A-Za-zĂÂÎȘȚăâîșț \-]+$", nume_initial):
+            raport["eliminat"][utilizator] = f"Nume invalid (trebuie sa contina doar litere, spatii sau cratime): '{nume_initial}'"
+            continue
+        
+        <span># Încercăm conversia și validarea vârstei</span>
+        try:
+            varsta_intreg = int(float(varsta_initial))
+            
+            if varsta_intreg &lt; 0:
+                raport["eliminat"][utilizator] = f"Varsta negativa: {varsta_initial}"
+            elif varsta_intreg > varsta_maxima:
+                raport["eliminat"][utilizator] = f"Varsta depaseste limita maxima de {varsta_maxima} ani: {varsta_initial}"
+            else:
+                <span># Salvăm utilizatorul validat</span>
+                date_valide[utilizator] = {"profil": {"nume": nume_initial, "varsta": varsta_intreg}}
+                raport["actualizat"].append(utilizator)
+                
+        except (ValueError, TypeError):
+            raport["eliminat"][utilizator] = f"Valoare invalida pentru varsta: {varsta_initial}"
+
+    return date_valide, raport
+
+<span># Executăm funcția cu parametrii de lungime</span>
+date_curatate, raport_final = elimina_invalid(date_utilizatori, nume_min_len=3, nume_max_len=50)
+
+<span># Afișăm rezultatele</span>
+print("--- BAZA DE DATE ACTUALIZATĂ ---")
+print(json.dumps(date_curatate, indent=4, ensure_ascii=False))
+
+print("\n--- RAPORT PROCESARE ---")
+print(json.dumps(raport_final, indent=4, ensure_ascii=False))
+</code></pre>
+
+<pre><code><span># Rezultat</span>
+--- BAZA DE DATE ACTUALIZATĂ ---
+{
+    "utilizator1": {
+        "profil": {
+            "nume": "Ion Popescu",
+            "varsta": 35
+        }
+    },
+    "utilizator2": {
+        "profil": {
+            "nume": "Anca Alexandrescu",
+            "varsta": 20
+        }
+    },
+    "utilizator6": {
+        "profil": {
+            "nume": "Dan Lolea",
+            "varsta": 33
+        }
+    },
+    "utilizator8": {
+        "profil": {
+            "nume": "Ana-Maria",
+            "varsta": 28
+        }
+    }
+}
+
+--- RAPORT PROCESARE ---
+{
+    "actualizat": [
+        "utilizator1",
+        "utilizator2",
+        "utilizator6",
+        "utilizator8"
+    ],
+    "eliminat": {
+        "utilizator3": "Nume invalid (trebuie sa contina doar litere, spatii sau cratime): 'Vasile33'",
+        "utilizator4": "Varsta negativa: -5",
+        "utilizator5": "Lipseste profilul",
+        "utilizator7": "Nume invalid (trebuie sa contina doar litere, spatii sau cratime): 'Ana-Maria!'",
+        "utilizator9": "Nume prea scurt (minimum 3 caractere): 'Al'",
+        "utilizator10": "Nume prea lung (maximum 50 caractere)"
+    }
+}
+</code></pre>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a></address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+    <script src="JS/treileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

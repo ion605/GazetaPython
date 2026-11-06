@@ -1,0 +1,583 @@
+/* === General styles */
+body {
+  /* Typography (Inherited by child elements) */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: .85rem;
+  line-height: 1.125;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Layout & Spacing */
+  margin: 0 0 0 10px;
+  padding: 0;
+  min-height: 100vh;
+
+  /* Visual Background */
+  background-color: #ffffff;
+}
+
+.logo {
+  width: 2.75em;
+  /* Adjust size as needed */
+  height: 2.7em;
+}
+
+h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+p,
+li,
+dl {
+  font-family: Times, "Times New Roman", Georgia, serif;
+  font-size: 1.25rem;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: 10px;
+}
+
+dd dl dt {
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* Removing the Extra Space */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 15px;
+}
+
+.other a {
+  color: blue;
+  padding: 0;
+}
+
+span {
+  font-style: italic;
+  color: blue;
+}
+
+pre {
+  /* Adds horizontal scrollbar if content is too wide */
+  overflow-x: auto;
+  /* Ensures line breaks in the source code are preserved AND allows long lines to wrap */
+  white-space: pre-wrap;
+  /* Arbitrarily breaks words that are too long to fit within the container */
+  overflow-wrap: break-word;
+  color: red;
+  font-size: 1.15em;
+  margin-left: 1.25em;
+
+  /* Add styles for your main content to be visible */
+  background-color: rgba(255, 249, 230, 0.5);
+  width: fit-content;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  /* Ensure content appears above the background */
+  position: relative;
+  z-index: 1;
+}
+
+.txt-brgd-ro {
+  background-color: #006400;
+  color: white;
+}
+
+.txt-brgd-en {
+  background-color: gray;
+  color: white;
+}
+
+
+.bold {
+  font-weight: bold;
+}
+
+caption {
+  font-weight: lighter;
+  font-size: 1.25em;
+}
+
+/* === End General styles */
+
+/* === Bracket styles */
+.bracket-container {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.curly-bracket {
+  width: 15px;
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  border-radius: 8px 0 0 8px;
+  /* Creates the curly effect */
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* === End Bracket styles */
+
+
+/* === Table Data === */
+th,
+td {
+  vertical-align: top;
+  text-align: left;
+}
+
+.outer-hidden {
+  border-collapse: collapse;
+}
+
+.outer-hidden td,
+th {
+  border: 1px solid black;
+  /* Default inner borders */
+  padding: 8px;
+}
+
+/* Hide top border of the first row */
+.outer-hidden tr:first-child th,
+.outer-hidden tr:first-child td {
+  border-top: none;
+}
+
+/* Hide left border of the first cell in each row */
+.outer-hidden tr td:first-child,
+.outer-hidden tr th:first-child {
+  border-left: none;
+}
+
+/* Hide right border of the last cell in each row */
+.outer-hidden tr td:last-child,
+.outer-hidden tr th:last-child {
+  border-right: none;
+}
+
+/* === End Table Data === */
+
+
+/* === Gazeta Python 1.0 === */
+.main-1-0 {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* 2 columns: line 1, line 2 */
+  grid-template-rows: auto 3px auto auto 3px auto auto auto;
+  /* 8 rows: line 1, line 2, line 3, line 4, line 5, line 6, line 7, line 8 line 9*/
+  /*gap: 10px;*/
+  padding: 15px;
+  /* This adds borders to all four sides of the main grid */
+  border: 1.5px dashed blue;
+}
+
+.first-empty-1-0 {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  background: yellow;
+}
+
+.titlu-1-0 {
+  grid-column: 1 / -1;
+  /* Spans all the way across */
+  grid-row: 3 / 4;
+  /* Sits in the row */
+  /*background: tomato;*/
+  margin: 0;
+  /* Removes standard browser heading margins */
+  /*background: fuchsia;*/
+}
+
+.ro-en-1-0 {
+  grid-column: 1 / -1;
+  grid-row: 4 / 5;
+  /*background-color: aqua;*/
+}
+
+.second-empty-1-0 {
+  grid-column: 1 / -1;
+  grid-row: 5 / 6;
+  background-color: orange;
+}
+
+.contents-1-0 {
+  grid-column: 1 / -1;
+  grid-row: 6 / 7;
+  /*background: lightgreen;*/
+}
+
+.documents-1-0 {
+  grid-column: 1 / -1;
+  grid-row: 7 / 8;
+  background: #FFC0CB;
+}
+
+/* === End Gazeta Python 1.0 === */
+
+/* === Gazeta Python 1.1 === */
+.main-1-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 3px auto 3px auto 3px auto 3px auto auto;
+  /* 9 rows: line 1, line 2, line 3, line 4, line 5, line 6, line 7, line 8 line 9 line 10*/
+  padding: 15px;
+  /* This adds borders to all around the container  */
+  border: 1.5px dashed blue;
+}
+
+.first-empty-1-1 {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  /*background: pink;*/
+}
+
+/* --- used titlu-1-0 --- */
+.titlu-1-1 {
+  grid-column: 1 / -1;
+  /* Spans all the way across */
+  grid-row: 3 / 4;
+  /* Sits in the row */
+  margin: 0;
+  /* Removes standard browser heading margins */
+}
+
+.second-empty-1-1 {
+  grid-column: 1 / -1;
+  grid-row: 4 / 5;
+  margin: 0;
+  /*background: paleturquoise;*/
+}
+
+.subtitlu-1-1 {
+  grid-column: 1 / -1;
+  /* Spans all the way across */
+  grid-row: 5 / 6;
+  /* Sits in the row */
+  margin: 0;
+  /* Removes standard browser heading margins */
+  /*background: #E6E6FA;*/
+}
+
+.third-empty-1-1 {
+  grid-column: 1 / -1;
+  grid-row: 6 / 7;
+  /*background: red;*/
+}
+
+.ro-en-1-1 {
+  grid-column: 1 / -1;
+  grid-row: 7 / 8;
+  /*background-color: aqua;*/
+}
+
+.forth-empty-1-1 {
+  grid-column: 1 / -1;
+  grid-row: 8 / 9;
+  background: greenyellow;
+}
+
+.contents-1-1 {
+  grid-column: 1 / -1;
+  grid-row: 9 / 10;
+  background: whitesmoke;
+}
+
+/* === End Gazeta Python 1.1 === */
+
+/* === Grid Styles === */
+.header-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid-cell {
+  display: flex;
+  /* Activates flexbox layout */
+  align-items: center;
+  /* Centers the SVG and H1 vertically */
+  gap: 125px;
+  /* Adds clean spacing between logo and text */
+}
+
+.grid-cell h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+
+/* 2-column layout container */
+.container-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  /* Spacing between columns */
+  padding: 10px;
+  align-items: start;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Creates 2 equal fractions */
+  gap: 20px;
+  /* Easily controls space between columns */
+  margin-top: 0;
+  /* Removes top margin outside container */
+  margin-bottom: 0;
+  /* Removes bottom margin outside container */
+  padding-top: 0;
+  /* Removes top padding inside container */
+  padding-bottom: 0;
+  /* Removes bottom padding inside container */
+}
+
+/* === End Grid Styles === */
+
+/* === Menu Style === */
+
+.menu {
+  /* Transformă lista verticală într-un container flex orizontal. */
+  display: flex;
+
+  /* Elimină stilul și spațierea browserului pentru liste */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* Adaugă spațiu între elementele meniului */
+  gap: 20px;
+
+  /* 4. Fundal și stilizare opționale */
+  background-color: goldenrod;
+  width: fit-content;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.menu a {
+  /* Clean up the links and make them easily clickable */
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 16px;
+  display: block;
+  border: 1px solid wheat;
+  border-radius: 3px;
+  padding: 4px 6px;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Hover effect for menu items */
+.menu a:hover {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+/* === End Menu Style === */
+
+/* === Footer Style === */
+
+.footer {
+  width: 140px;
+  grid-column: 1 / -1;
+  /* Spans all the way across */
+  grid-row: -1 / -2;
+  /* Sits in the botom row */
+}
+
+
+footer {
+  text-align: center;
+  font-size: .5em;
+  padding: .5em;
+  border: 2px solid #333333;
+  border-radius: 5px;
+  color: aquamarine;
+  /* Recommended to keep the border within the box width */
+  box-sizing: border-box;
+  margin: 5px;
+  background-color: #783F27;
+}
+
+/* Targets only the links inside the footer box */
+.footer-link a {
+  /* Changes the color of the link text */
+  color: white;
+  /* Optional: Removes the default standard underline */
+  text-decoration: none;
+}
+
+/* === End Footer Style === */
+
+/* Mobile first: stacked by default */
+.grid-container-mobil {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Tablet & Desktop: side-by-side layout */
+@media (min-width: 768px) {
+  .grid-container-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* === Nav Menu Styles === */
+.navigare nav {
+  font-family: verdana, sans-serif;
+  background-color: #783F27;
+  border: 2px solid red;
+  border-radius: 8px;
+}
+
+.navigare nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+.navigare nav ul li {
+  font-size: .8em;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+.navigare nav ul li a {
+  display: inline-block;
+  border: 2px solid wheat;
+  border-radius: .5em;
+  padding: .5em .3em;
+  margin: .5em;
+  text-decoration: none !important;
+}
+
+.navigare nav ul li a:link,
+.navigare nav ul li a:visited {
+  color: yellow;
+}
+
+.navigare nav ul li a:hover {
+  text-decoration: underline !important;
+  font-weight: bolder;
+  /* Makes the text bold */
+  color: #0000ff;
+  /* Changes the color (e.g., blue) */
+  background-color: gainsboro;
+}
+
+.navigare nav ul li a:focus,
+.navigare nav ul li a:active {
+  color: black;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+/* === End Nav Menu Styles === */
+
+/* === Go To Botton Style === */
+.go-to {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  padding: .25em .25em;
+  width: 4em;
+  border-radius: .75em;
+  color: #3498db;
+  background-color: wheat;
+  border: double;
+
+  /* Smoothly animate both color and background */
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Link Setup */
+.go-to a {
+  text-decoration: none !important;
+  /* Removes the default underline */
+  cursor: pointer;
+  /* Changes cursor to a hand */
+}
+
+/* Unvisited links */
+.go-to a:link {
+  color: blue;
+}
+
+/* Visited links */
+.go-to a:visited {
+  color: blue;
+}
+
+.go-to a:hover,
+.go-to a:focus {
+  font-size: 1.175em;
+  text-decoration: underline;
+  border-radius: .35em;
+  color: white;
+  background-color: green;
+  font-variant-caps: all-small-caps;
+}
+
+/* Link is being clicked */
+.go-to a:active {
+  color: black;
+}
+
+/* === End Go To Botton Style === */
+
+/* === ro-en links === */
+.ro-en ul li a {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  /* Adjust this value to move the line further down */
+}
+
+.ro-en ul li a:link,
+.ro-en ul li a:visited {
+  color: black;
+}
+
+.ro-en ul li a:hover {
+  text-decoration: underline !important;
+  font-weight: bolder;
+  /* Makes the text bold */
+  color: #0000ff;
+  /* Changes the color (e.g., blue) */
+  background-color: gainsboro;
+}
+
+.ro-en ul li a:focus,
+.ro-en ul li a:active {
+  color: black;
+  font-weight: bold;
+  text-decoration: none !important;
+}
+
+/* === end ro-en links ===*/
+
+#year-picior {
+  color: #ffffff
+}

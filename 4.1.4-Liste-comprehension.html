@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 4.1.4 Liste comprehension</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaS.svg" alt="S" class="logo">
+          <h1>4.0 Tipuri secvență - Sequence Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>4.1.4 Listă comprehension - List comprehension</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#LC">Listă comprehension tutorial</a></li>
+            <li><a href="#FG">Filtrarea cu o condiție</a>
+              <ul>
+                <li><a href="#FGA">if</a></li>
+                <li><a href="#FGB">if-else</a></li>
+                <li><a href="#FGC">zip()</a></li>
+                <li><a href="#FGD">enumerate()</a></li>
+                <li><a href="#FGE">len()</a></li>
+              </ul>
+            </li>
+            <li><a href="#NL">Liste imbricate</a></li>
+            <li><a href="#CL">Liste comune din două sau mai multe liste imbricate</a></li>
+            <li><a href="#LR">Listă în ordine inversă</a></li>
+            <li><a href="#CE">Numărarea elementelor</a></li>
+            <li><a href="#AS">Adăugarea sau scăderea elementelor dintr-o listă</a></li>
+            <li><a href="#RE">Repetarea fiecărui element dintr-o listă</a></li>
+            <li><a href="#DS">Elemente duplicate dintr-o listă</a></li>
+            <li><a href="#CM">Crearea de liste multidimensionale</a></li>
+            <li><a href="#FM">Aplatizarea listelor multidimensionale</a></li>
+            <li><a href="#SL">Împărțirea listelor în bucăți</a></li>
+            <li><a href="#UC">Când ar trebui să folosești o înțelegere?</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter, you will study:</li>
+            <li><a href="#LS">List comprehension tutorial</a></li>
+            <li><a href="#FG">Filtering with a Condition</a>
+              <ul>
+                <li><a href="#FGA">if</a></li>
+                <li><a href="#FGB">if-else</a></li>
+                <li><a href="#FGC">zip()</a></li>
+                <li><a href="#FGD">enumerate()</a></li>
+                <li><a href="#FGE">len()</a></li>
+              </ul>
+            </li>
+            <li><a href="#NL">Nested lists</a></li>
+            <li><a href="#CL">Common lists from two or more nested lists</a></li>
+            <li><a href="#LR">List reverse order</a></li>
+            <li><a href="#CE">Counting elements</a></li>
+            <li><a href="#AS">Adding or subtracting elements in a list</a></li>
+            <li><a href="#RE">Repeating Each Element within a List</a></li>
+            <li><a href="#DS">Duplicates Items From a List</a></li>
+            <li><a href="#CM">Creating Multidimensional Lists</a></li>
+            <li><a href="#FM">Flattening Multidimensional Lists</a></li>
+            <li><a href="#SL">Splitting Lists Into Chunks</a></li>
+            <li><a href="#UC">When should you use a comprehension?</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <h2 id="LC">Listă comprehension tutorial - List comprehension tutorial</h2>
+
+      <p><a href="https://www.w3schools.com/python/python_lists_comprehension.asp" target="_blank" rel="noopener">Python
+          - List Comprehension</a></p>
+
+      <p><a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions" target="_blank"
+          rel="noopener">Data Structures 5.1.3. List Comprehensions</a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>Înțelegerile listelor oferă o modalitate compactă și eficientă de a crea liste noi prin iterarea peste cele
+            existente și aplicarea de transformări sau condiții de filtrare.</p>
+          <p>Structură de bază:
+            O listă de înțelegere (comprehension) este inclusă între paranteze pătrate [] și, în general, urmează
+            modelul: [expresie for articol in iterabil if condiție]</p>
+          <p>expresie:
+            Aceasta este operația efectuată asupra fiecărui element pentru noua listă.</p>
+          <p>articol:
+            Variabilă care reprezintă fiecare element din iterabil.</p>
+          <p>iterabil:
+            Secvența (de exemplu, listă, tuplu, șir, interval) din care sunt procesate elementele.</p>
+          <p>if condiție (opțional):
+            O instrucțiune condițională care filtrează elementele. Doar elementele pentru care condiția se evaluează ca
+            True sunt incluse în noua listă.</p>
+        </div>
+
+        <div>
+          <p>List comprehensions offer a compact and efficient way to create new lists by iterating over existing ones
+            and applying transformations or filtering conditions.</p>
+          <p>Basic Structure: A list comprehension is enclosed in square brackets [] and generally follows the pattern:
+            [expression for item in iterable if condition]</p>
+          <p>expression:
+            This is the operation performed on each item to the new list.</p>
+          <p>item:
+            A variable representing each element in the iterable.</p>
+          <p>iterable:
+            The sequence (e.g., list, tuple, string, range) from which elements are processed.</p>
+          <p>if condition (optional): A conditional statement that filters elements. Only items for which the condition
+            evaluates to True are included in the new list.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Beneficii:</dt>
+          <dd>Concizie: Reduce cantitatea de cod necesară în comparație cu buclele for.</dd>
+          <dd>Lizibilitate: Poate face codul mai ușor de înțeles atunci când este utilizat corespunzător.</dd>
+          <dd>Performanță: Adesea mai eficient decât buclele for echivalente pentru construirea listelor.</dd>
+        </dl>
+
+        <dl>
+          <dt>Benefits:</dt>
+          <dd>Conciseness: Reduces the amount of code needed compared to for loops.</dd>
+          <dd>Readability: Can make code more understandable when used appropriately.</dd>
+          <dd>Performance: Often more efficient than equivalent for loops for list construction.</dd>
+        </dl>
+      </div>
+
+<pre><code><span>Pentru a crea o listă de numere de la 0 la 4</span>
+
+numere = [x for x in range(5)]
+print(numere) <span>==> [0, 1, 2, 3, 4]</span>
+</code></pre>
+
+<pre><code><span># Crează o listă nouă cu rezultatul împărțirii rotunjit în jos</span>
+<span>#la cel mai apropiat număr întreg</span>
+print([n // 2 for n in [1,2,3,4,5,6,7,8,9,10]])
+<span>==> [0, 1, 1, 2, 2, 3, 3, 4, 4, 5]</span>
+
+<span># Crează o listă nouă cu numere ridicate la pătrat</span>
+print([număr**2 for număr in range(5)]) <span>==> [0, 1, 4, 9, 16]</span>
+
+<span># Crează o listă în care primul caracter al cuvântului este scris cu majuscule</span>
+print([nume.capitalize() for nume in ['mihai', 'ion', 'vasile']])
+<span>==> ['Mihai', 'Ion', 'Vasile']</span>
+
+<span># Crează o listă nouă cu restul împărțirii la 2</span>
+print([x % 2 for x in range(11)]) <span>==> [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Utilizarea caracterului de subliniere (_) este o convenție Python care indică faptul că poți ignora a doua
+          valoare a perechii.</p>
+
+        <p>The use of the underscore character (_) is a Python convention that indicates that you can ignore the second
+          value of the pair.</p>
+      </div>
+
+<pre><code>perechi = [(1, 'a'), (2, 'b'), (3, 'c')]
+[x for x, _ in perechi] <span>==> [1, 2, 3]</span>
+</code></pre>
+
+
+<pre><code>listă = [0, 1, 2, 3]
+generator_de_pătrate = (x**2 for x in listă)
+print(generator_de_pătrate)
+<span>==> &lt;generator object &lt;genexpr> at 0x0000016983F346C0></span>
+print(list(generator_de_pătrate)) <span>==> [0, 1, 4, 9]</span>
+</code></pre>
+
+<pre><code>numere = [3, 4, 5, 6, 7, 8, 9]
+<span># Accesează elemente folosind o listă de indici</span>
+indici = [0, 2]
+elemente_selectate = [numere[i] for i in indici]
+print(elemente_selectate)  <span>==> [3, 5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Pentru a crea o listă imbricată dintr-o listă de tupluri în Python, puteți utiliza o înțelegere a listei.
+          Fiecare tuplu va deveni o sublistă în lista imbricată finală.
+          Aceasta este cea mai "Pythonic" și concisă modalitate de a efectua conversia.</p>
+
+        <p>To create a nested list from a list of tuples in Python, you can use a list comprehension. Each tuple will
+          become a sub-list in the final nested list.
+          This is the most "Pythonic" and concise way to perform the conversion.</p>
+      </div>
+
+<pre><code>data_pentru_comp = [(10, 'măr', 'verede'), (20, 'pară', 'galbenă'), (30, 'cireșă', 'roșie')]
+
+listă_imbricată = [list(element) for element in data_pentru_comp]
+print(listă_imbricată)
+<span>==> [[10, 'măr', 'verede'], [20, 'pară', 'galbenă'], [30, 'cireșă', 'roșie']]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Funcția bool() poate fi aplicată fiecărui element din listă. În Python, 0 se evaluează ca Fals, iar orice
+          număr întreg diferit de zero (pozitiv sau negativ) se evaluează ca Adevărat.</p>
+
+        <p>The built-in bool() function can be applied to each element in the list. In Python, 0 evaluates to False, and
+          any non-zero integer (positive or negative) evaluates to True.</p>
+      </div>
+
+<pre><code>listă_întregi = [0, 1, 5, -2, 0]
+listă_booleană = [bool(x) for x in listă_întregi]
+print(listă_booleană) <span>==> [False, True, True, True, False]</span>
+
+<span># Conversia la 0 și 1</span>
+listă_întregi = [0, 1, 5, -2, 0]
+listă_booleană = [int(bool(x)) for x in listă_întregi]
+print(listă_booleană) <span>==> [0, 1, 1, 1, 0]</span>
+</code></pre>
+
+<pre><code><span># repetă fiecare număr din listă de trei ori</span>
+numere = [4, 5, 6]
+repetări = 3
+listă_de_numere_repetate = [număr for număr in numere for _ in range(repetări)]
+print(listă_de_numere_repetate) <span>==> [4, 4, 4, 5, 5, 5, 6, 6, 6]</span>
+</code></pre>
+
+<pre><code><span># Creează o matrice 3x3 inițializată cu zerouri</span>
+[[0 for _ in range(3)] for _ in range(3)]
+<span>==> [[0, 0, 0], [0, 0, 0], [0, 0, 0]]</span>
+
+<span># Creează o matrice 2x4 cu valori incrementale</span>
+[[i * 4 + j for j in range(4)] for i in range(2)]
+<span>==> [[0, 1, 2, 3], [4, 5, 6, 7]]</span>
+</code></pre>
+
+<pre><code>listă_imbricată = [[1, 2], [3, 4, 5], [6]]
+listă_aplatizată = [element for sublistă in listă_imbricată for element in sublistă]
+print(listă_aplatizată) <span>==> [1, 2, 3, 4, 5, 6]</span>
+
+lista_mea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+mărimea_bucății = 3
+bucăți = [lista_mea[i: i + mărimea_bucății] for i in range(0, len(lista_mea), mărimea_bucății)]
+print(bucăți) <span>==> [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="FG">Filtrarea cu o condiție - Filtering with a Condition</h2>
+
+
+      <h3 id="FGA">IF</h3>
+
+<pre><code>print([număr for număr in range(11) if x % 2 == 0]) 
+<span>==> [0, 2, 4, 6, 8, 10]</span>
+
+print([număr for număr in range(11) if not x % 2])
+<span>==> [0, 2, 4, 6, 8, 10]</span>
+</code></pre>
+
+<pre><code>listă = [0, 1, 2, 3]
+
+listă_pare = [x for x in listă if x % 2 == 0]
+print(listă_pare) <span>==> [0, 2]</span>
+
+listă_pare = [x for x in listă if x % 2 != 1]
+print(listă_pare) [0, 2]<span>==> [0, 2]</span>
+</code></pre>
+
+<pre><code>numere = [2, 1, 3, 4, 7, 11, 18]
+
+numere_la_pătrat = [num**2 for num in numere]
+print(numere_la_pătrat) <span>==> [4, 1, 9, 16, 49, 121, 324]</span>
+
+numere_impare = [num for num in numere if num % 2 == 1]
+print(numere_impare)    <span>==> [1, 3, 7, 11]</span>
+</code></pre>
+
+<pre><code>numere = [int(x) for x in range(100, 200) if x % 7 == 0 and x % 5 != 0]
+
+print(numere)
+<span>==> [112, 119, 126, 133, 147, 154, 161, 168, 182, 189, 196]</span>
+print(type(numere[0])) <span>==> &lt;class 'int'></span>
+</code></pre>
+
+<pre><code>articole = ["măr", "cămară", "pară", "cireșă", "caisă", "amară"]
+
+articole_filtrate = [articol for articol in articole if "ar" in articol]
+print(f"Articole care conțin 'ar': {articole_filtrate}")
+<span>==> Articole care conțin 'ar': ['cămară', 'pară', 'amară']</span>
+</code></pre>
+
+<pre><code>numere = [10, 25, 30, 45, 50, 15]
+
+<span># Creează o listă nouă cu numere mai mari de 20</span>
+numere_extrase = [număr for număr in numere if număr > 20]
+print(numere_extrase) <span>==> [25, 30, 45, 50]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <ul>
+          <li>Explicație a sintaxei de înțelegere a listei:</li>
+          <li>[număr for număr in numere if număr > 20]</li>
+          <li>număr: Numărul care este procesat în fiecare iterație.</li>
+          <li>for număr in numere: Iterează prin fiecare număr din numere.</li>
+          <li>if număr > 20: Un filtru condițional; numai numerele care îndeplinesc această condiție sunt incluse în
+            noua listă.</li>
+        </ul>
+
+        <ul>
+          <li>Explanation of List Comprehension Syntax:</li>
+          <li>[num for num in original_list if num > 20]</li>
+          <li>num: The element being processed in each iteration.</li>
+          <li>for num in original_list: Iterates through each num in original_list.</li>
+          <li>if num > 20: A conditional filter; only nums that satisfy this condition are included in the new list.
+          </li>
+        </ul>
+      </div>
+
+<pre><code>lista_mea = [1, 2, 2, 3, 4, 4, 5]
+colector = []
+
+<span># Creează o listă nouă fără duplicate</span>
+listă_unice = [x for x in lista_mea if x not in colector and not colector.append(x)]
+print(listă_unice) <span>==> [1, 2, 3, 4, 5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Iterarea și verificarea existenței: Se poate crea o listă nouă, iar fiecare element din lista originală poate
+          fi adăugat la noua listă numai dacă nu este deja prezent în noua listă. Aceasta menține ordinea originală a
+          elementelor unice.</p>
+
+        <p>Iterating and Checking for Existence: A new list can be created, and each element from the original list can
+          be added to the new list only if it is not already present in the new list. This maintains the original order
+          of unique elements.</p>
+      </div>
+      <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="FGB">IF-ELSE</h3>
+
+      <div class="grid-container">
+        <p>Pentru a utiliza o condiţie if else într-o construcţie de tip list comprehension în Python, expresia
+          condiţională trebuie plasată la începutul expresiei, chiar înainte de bucla for.</p>
+
+        <p>To use an if-else condition within a list comprehension in Python, the conditional expression must be placed
+          at the beginning of the expression, right before the for loop.</p>
+      </div>
+
+<pre><code><span># înlocuirea numerele negative cu 0 într-o listă</span>
+prețuri = [1.25, -9.45, 10.22]
+prețuri_ajustate = [preț if preț > 0 else 0 for preț in prețuri]
+print(prețuri_ajustate) <span>==> [1.25, 0, 10.22]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Creați o listă nouă în care numerele pare sunt păstrate așa cum sunt, iar numerele impare sunt înlocuite cu
+          numerele lor negative.</p>
+
+        <p>Create a new list where even numbers are kept as they are, and odd numbers are replaced with their negative.
+        </p>
+      </div>
+
+<pre><code>numere = [1, 2, 3, 4, 5]
+numere_transformate = [număr if număr % 2 == 0 else -număr for număr in numere]
+print(numere_transformate) <span>==> [-1, 2, -3, 4, -5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Puncte cheie:</dt>
+          <dd>Clauza if-else dintr-o înțelegere (comprehension) acționează ca o operație de mapare, determinând valoarea
+            fiecărui element pe baza unei condiții.</dd>
+          <dd>Aceasta diferă de o clauză if plasată după bucla for, care acționează ca un filtru pentru a include sau
+            exclude elemente din înțelegerea rezultată.</dd>
+          <dd>Expresia condițională if-else trebuie plasată înaintea buclei for din cadrul înțelegerii.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Points:</dt>
+          <dd>The if-else clause in a comprehension acts as a mapping operation, determining the value of each element
+            based on a condition.</dd>
+          <dd>This differs from an if clause placed after the for loop, which acts as a filter to include or exclude
+            elements from the resulting comprehension.</dd>
+          <dd>The if-else conditional expression must be placed before the for loop within the comprehension.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Modificarea valorilor pentru unele elemente filtrate</dt>
+          <dd>Creați o listă nouă bazată pe numere. Luați în considerare doar numerele mai mari de 2, apoi etichetați-le
+            "Mare" sau "Mici" în raport cu 4.</dd>
+        </dl>
+
+        <dl>
+          <dt>Changing values for some filtered items</dt>
+          <dd>Create a new list based on numbers. Only consider numbers greater than 2, and then label them "High" or
+            "Low" relative to 4.</dd>
+        </dl>
+      </div>
+
+<pre><code>numere = [1, 2, 3, 4, 5, 6]
+filtrat_transformat = ['Mare' if număr >= 4 else 'Mic' for număr in numere if număr > 2]
+print(filtrat_transformat) <span>==> ['Mic', 'Mare', 'Mare', 'Mare']</span>
+</code></pre>
+
+<pre><code>listă_întregi = [0, 1, 5, -2, 0]
+listă_binară_condițională = [1 if x != 0 else 0 for x in listă_întregi]
+print(listă_binară_condițională) <span>==> [0, 1, 1, 1, 0]</span> 
+</code></pre>
+
+<pre><code>numere = [1, 2, 3, 4, 5]
+<span># Înlocuiește numerele impare cu Impar și numerele pare cu Par</span>
+par_impar = ["Par" if num % 2 == 0 else "Impar" for num in numere]
+
+print(par_impar)  <span>==> ['Impar', 'Par', 'Impar', 'Par', 'Impar']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>În Python, poți folosi logica if-elif-else în cadrul unei liste de înțelegere (comprehension), dar sintaxa
+          este ușor diferită de cea a unui bloc tradițional if-elif-else. În loc de clauze elif separate, înlănțui
+          expresii condiționale folosind instrucțiuni if-else imbricate.</p>
+
+        <p>In Python, you can use if-elif-else logic within a list comprehension, but the syntax is slightly different
+          from a traditional if-elif-else block. Instead of separate elif clauses, you chain conditional expressions
+          using nested if-else statements.</p>
+      </div>
+
+<pre><code>numere = [5, 12, 25, 8, 18, 30]
+
+categorii = [
+"Mic" if număr &lt; 10 else ("Mediu" if 10 &lt;= număr &lt; 20 else "Mare") for număr in numere
+]
+print(categorii) <span>==> ['Mic', 'Mediu', 'Mare', 'Mic', 'Mediu', 'Mare']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Deși imbricarea expresiilor condiționale permite logica if-elif-else, imbricarea excesivă poate reduce
+          lizibilitatea. Pentru logica condițională complexă, luați în considerare definirea unei funcții separate și
+          apelarea acesteia în cadrul listei pentru o mai bună claritate.</p>
+
+        <p>While nesting conditional expressions allows for if-elif-else logic, excessive nesting can reduce
+          readability. For complex conditional logic, consider defining a separate function and calling it within the
+          list comprehension for better clarity.</p>
+      </div>
+
+<pre><code>numere = [1, 2, 3, 4, 5]
+rezultat = ["unu" if număr == 1 else ("doi" if număr == 2 else "alt număr") for număr in numere]
+print(rezultat) <span>==> ['unu', 'doi', 'alt număr', 'alt număr', 'alt număr']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>În această structură, dacă prima condiție if (număr == 1) este False, se evaluează partea else, care conține
+          o altă condiție if-else (Doi if număr == 2 else alt număr). Aceasta creează efectiv ramurile elif și else.
+          Expresia (expresiile) de tip if-else trebuie să apară înaintea clauzei for în înțelegerea (comprehension)
+          listei.</p>
+
+        <p>In this structure, if the first if condition (x == 1) is False, the else part is evaluated, which contains
+          another if-else ("Two" if x == 2 else "Other"). This effectively creates the elif and else branches.
+          The if-else expression(s) must appear before the for clause in the list comprehension.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="FGC">ZIP()</h3>
+
+      <div class="grid-container">
+        <div>
+          <p>Combinarea funcției zip() cu înțelegerile listelor în Python oferă o modalitate concisă și eficientă de a
+            procesa simultan elemente din mai multe iterabile.</p>
+          <dl>
+            <dt>Funcția zip():</dt>
+            <dd>Funcția zip() preia mai multe iterabile (cum ar fi liste, tupluri sau șiruri) ca argumente și returnează
+              un iterator de tupluri. Fiecare tuplu conține elemente corespunzătoare din iterabilele de intrare.
+              Iterația se oprește atunci când cel mai scurt iterabil este epuizat.</dd>
+            <dt>Înțelegerea listelor:</dt>
+            <dd>O înțelegere a listelor oferă o sintaxă compactă pentru crearea listelor. Aceasta constă dintr-o
+              expresie urmată de o clauză for și, opțional, clauze if, toate cuprinse între paranteze pătrate.</dd>
+            <dt>Combinarea acestora:</dt>
+            <dd>Puteți utiliza zip() în cadrul unei înțelegeri a listelor pentru a itera peste elemente din mai multe
+              liste în paralel și a le aplica o expresie.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>Combining zip() with list comprehensions in Python offers a concise and efficient way to process elements
+            from multiple iterables simultaneously.</p>
+          <dl>
+            <dt>zip() function:</dt>
+            <dd>The zip() function takes multiple iterables (like lists, tuples, or strings) as arguments and returns an
+              iterator of tuples. Each tuple contains corresponding elements from the input iterables. The iteration
+              stops when the shortest iterable is exhausted.</dd>
+            <dt>List Comprehension:</dt>
+            <dd>A list comprehension provides a compact syntax for creating lists. It consists of an expression followed
+              by a for clause, and optionally if clauses, all enclosed in square brackets.</dd>
+            <dt>Combining them:</dt>
+            <dd>You can use zip() within a list comprehension to iterate over elements from multiple lists in parallel
+              and apply an expression to them.</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code>listă_nume = ["Cornel", "Zina", "Bobei"]
+listă_scor = [85, 92, 78]
+
+nume_punctaj = [[nume, punctaj] for nume, punctaj in zip(listă_nume, reversed(listă_scor))]
+print(nume_punctaj) <span>==> [['Cornel', 78], ['Zina', 92], ['Bobei', 85]]</span>
+</code></pre>
+
+<pre><code>fructe = ["măr", "pară", "cireșă"]
+culori =  ['verede', 'galbenă', 'roșie']
+
+<span># Creați o listă combinată din fructe și culori</span>
+listă_combinată = [f"{fruct} - {culoare}" for fruct, culoare in zip(fructe, culori)]
+print(listă_combinată) <span>==> ['măr - verede', 'pară - galbenă', 'cireșă - roșie']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Explicație:</dt>
+          <dd>zip(fructe, culori) creează un iterator care produce ('măr', 'verede'), ('pară', 'galbenă'), ('cireșă',
+            'roșie').</dd>
+          <dd>Comprehensiunea listei iterează apoi prin aceste tupluri, descompunând fiecare în fruct și culoare.</dd>
+          <dd>Pentru fiecare pereche (fruct, culoare), expresia f"{fruct} - {culoare}" este evaluată, iar rezultatul
+            este adăugat la listă_combinată.</dd>
+          <dd>Această abordare este foarte ușor de citit și adesea mai eficientă decât buclele for tradiționale atunci
+            când se lucrează cu iterații paralele și crearea de liste.</dd>
+        </dl>
+
+        <dl>
+          <dt>Explanation:</dt>
+          <dd>zip(fructe, culori) creates an iterator that yields ('măr', 'verede'), ('pară', 'galbenă'), ('cireșă',
+            'roșie').</dd>
+          <dd>The list comprehension then iterates through these tuples, unpacking each into fruct and culoare.</dd>
+          <dd>For each (fruct, culoare) pair, the expression f"{fruct} - {culoare}" is evaluated, and the result is
+            added to the combined_list.</dd>
+          <dd>This approach is highly readable and often more efficient than traditional for loops when dealing with
+            parallel iteration and list creation.</dd>
+        </dl>
+      </div>
+
+      <p>Operații matematice asupra mai multor liste - Math Operations on Multiple Lists</p>
+
+<pre><code>lista1 = [1, 2, 3]
+lista2 = [10, 20, 30]
+lista3 = [-1, 3, -3.5]
+
+print([x * y * z for x, y, z in zip(lista1, lista2, lista3)])
+<span>==> [-10, 120, -315.0]</span>
+</code></pre>
+
+<pre><code>prețuri = [10.15, 20, 33]
+reducere = [1, 2.25, 3.75]
+
+<span># Calculează prețul după reducere pentru fiecare articol.</span>
+total = [p - r for p, r in zip(prețuri, reducere)]
+print(total)  <span>==> [9.15, 17.75, 29.25]</span>
+</code></pre>
+
+      <p>Filtrare condițională - Conditional Filtering</p>
+
+<pre><code>fructe = ["mere", "pere", "cireșe"]
+stoc = [15, 0, 8]
+
+<span># Păstrează doar articolele al căror stoc este mai mare de 0</span>
+disponibil = [fruct for fruct, count in zip(fructe, stoc) if count > 0]
+print(disponibil)  <span>==> ['mere', 'cireșe']</span> 
+</code></pre>
+
+      <p>Crearea de liste plate - Creating Flat Lists</p>
+
+<pre><code>lista_a = [5, 3, 1]
+lista_b = [6, 4, 2]
+aplatizat = [num for pereche in zip(list_b, list_a) for num in pereche]
+print(aplatizat)  <span>==> [6, 5, 4, 3, 2, 1]</span>
+print(list(reversed(aplatizat)))  <span>==> [1, 2, 3, 4, 5, 6]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="FGD">ENUMEREATE()</h3>
+
+      <div class="grid-container">
+        <p>List comprehension oferă o modalitate concisă de a crea liste noi pe baza unor obiecte iterabile existente și
+          pot include funcția enumerate() în scopul filtrării. Pentru a utiliza enumerate() în cadrul unei astfel de
+          expresii în Python, plasează funcția enumerate() în segmentul buclei for și despachetează perechile (index,
+          element).</p>
+
+        <p>List comprehensions offer a concise way to create new lists based on existing iterables, and they can
+          incorporate enumerate() for filtering. To use enumerate() inside a Python list comprehension, place the
+          enumerate() function in the for loop segment and unpack (index, item) pairs.</p>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă"]
+<span># Combină indicele și valoarea într-un șir formatat</span>
+rezultat =[f"{i}: {fruct}" for i, fruct in enumerate(fructe)]
+print(rezultat) <span>==> ['0: măr', '1: pară', '2: cireșă']</span>
+</code></pre>
+
+      <p>Filtrează elementele în funcție de valorile și de indicele lor specific.<br>
+        Filter elements based on their values and their specific index.</p>
+
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana"]
+<span># Filtrare pentru elemente cu lungime > 5 la un index par</span>
+nume_filtrat = [(index, numele) for index, numele in enumerate(nume) if len(numele) > 5 and index % 2 == 0]
+print(nume_filtrat)  <span>==> [(0, 'Cristina'), (4, 'Alexandru')]</span>
+</code></pre>
+
+      <p>Indice de pornire personalizat - Custom Starting Index</p>
+
+<pre><code>intrări = ["Introduce Parola", "Introduce ID-ul de utilizator ", "Dă clic pe Continuă"]
+<span># Începe numărătoarea de la 1 în loc de 0.</span>
+numără = [f"Intrare {i}: {intrare}" for i, intrare in enumerate(intrări, start=1)]
+
+print(numără)
+<span>==> ['Intrare 1: Introduce Parola', 'Intrare 2: Introduce ID-ul de utilizator ', 'Intrare 3: Dă clic pe Continuă']</span>
+</code></pre>
+
+      <p>Lucrul cu mai multe liste (zip() + enumerate()) - Working with Multiple Lists (zip() + enumerate())</p>
+
+<pre><code>fructe = ["mere", "pere", "cireșe"]
+cantități = [15, 7, 8]
+
+<span># Despachetarea exterioară separă indicele de tuplul comprimat.</span>
+inventar = [(f"La indexul {i}", cantitate, fruct) for i, (fruct, cantitate) in enumerate(zip(fructe, cantități))]
+print(inventar) <span>==> [('La indexul 0', 15, 'mere'), ('La indexul 1', 7, 'pere'), ('La indexul 2', 8, 'cireșe')]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h3 id="FGE">LEN()</h3>
+
+      <div class="grid-container">
+        <p>Funcția len() poate fi utilizată în cadrul unei expresii de generare a listelor (list comprehension) în
+          Python în două moduri principale: ca expresie de transformare pentru a obține lungimea fiecărui element sau ca
+          filtru condițional, pentru a include doar elementele de o anumită dimensiune.</p>
+
+        <p>len() function can be used inside a Python list comprehension in two main ways: as the transformation
+          expression to get the length of each item, or as a conditional filter to only include items of a certain size.
+        </p>
+      </div>
+
+      <div class="grid-container">
+        <p>Plasează len() la începutul expresiei. Aceasta transformă o listă de secvențe (precum șirurile sau subliste)
+          într-o listă de numere întregi care reprezintă dimensiunile acestora.</p>
+
+        <p>Place len() at the start of the comprehension. This converts a list of sequences (like strings or sublists)
+          into a list of integers representing their sizes.</p>
+      </div>
+
+<pre><code><span># Crează o listă nouă din altă listă</span>
+fructe = ["măr", "pară", "cireșă"]
+listă_nivel_3 = [
+    [[1, 2], [3, 4]], [[5, 6, [9]], [7, 8]], [[9, 10]], [[11, [12, 13]]]
+]
+
+<span># Transformarea elementelor în lungimile acestora</span>
+print([len(fruct) for fruct in fructe])  <span>==> [3, 4, 6]</span>
+print([len(listă) for listă in listă_nivel_3]) <span>==> [2, 2, 1, 1]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Introdu len() în instrucțiunea if la sfârșitul expresiei. Astfel, sunt eliminate elementele care nu
+          îndeplinesc cerințele exacte privind lungimea.</p>
+
+        <p>Place len() in the if statement at the end of the comprehension. This filters out any items that do not meet
+          your exact length requirements.</p>
+      </div>
+
+<pre><code>nume = ["cristina", "Andrei", "Mihai", "vasile", "alexandru", "Elena", "ioana"]
+<span># Creează o listă nouă în care primul caracter din fiecare cuvânt</span> 
+<span>este majusculă și îndeplinește condiția</span>
+nume_lungi = [numele.title() for numele in nume if len(numele) >= 7]
+print(nume_lungi) <span>==> ['Cristina', 'Alexandru']</span>
+</code></pre>
+
+<pre><code>articole =['pădure', 'ușă', 'pat', 'plapumă', 'oglindă', 'poartă']
+<span># Filtrează și transformă simultan</span>
+cuvinte_filtrate = [cuvânt.upper() for cuvânt in articole if len(cuvânt) > 4 and cuvânt.startswith("p")]
+print(cuvinte_filtrate)  <span>==> ['PĂDURE', 'PLAPUMĂ', 'POARTĂ']</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Folosește len() atât la începutul, cât și la sfârșitul expresiei de tip comprehension pentru a extrage și
+          filtra datele într-o singură linie de cod.</p>
+
+        <p>Use len() in both positions at the beginning and the end of the comprehension to extract and filter data in a
+          single line of code.</p>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă", "portocală"]
+<span># Obține lungimile, dar numai pentru cuvintele cu un număr par de caractere</span>
+numere_pare = [len(fruct) for fruct in fructe if len(fruct) % 2 == 0]
+print(numere_pare)  <span>==> [4, 6]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="NL">Liste imbricate - Nested lists</h2>
+
+      <div class="grid-container">
+        <p>Înțelegerile (comprehensions) listelor imbricate în Python oferă o modalitate concisă de a crea liste din
+          alte iterabile, în special atunci când se lucrează cu structuri de date imbricate, cum ar fi liste de liste
+          sau matrici. Acestea sunt, în esență, o formă compactă de bucle for imbricate.</p>
+
+        <p>Nested list comprehensions in Python provide a concise way to create lists from other iterables, especially
+          when dealing with nested data structures like lists of lists or matrices. They are essentially a compact form
+          of nested for loops.</p>
+      </div>
+
+      <div class="grid-container">
+        <div>
+          <p>[expresie for element_exterior in iterabil_exterior for element_intern in iterabil_intern]</p>
+
+          <dl>
+            <dt>Cum funcționează:</dt>
+            <dd>Parcurge iterabil_exterior element cu element.</dd>
+            <dd>Pentru fiecare element din exterior, parcurge în întregime iterabil_intern.</dd>
+            <dd>Aplică expresia fiecărei combinații și stochează rezultatele într-o listă nouă.</dd>
+
+            <dt>Ordinea execuției:</dt>
+            <dd>Se citește de la stânga la dreapta, corespunzător modului în care este scrisă instrucțiunea: for
+              element_exterior in iterabil_exterior apare prima, urmată de for element_intern in iterabil_intern.</dd>
+            <dd>Este echivalent cu scrierea unei bucle for standard pe două niveluri, care utilizează metoda .append()
+              în interiorul primei bucle.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>[expression for outer_item in outer_iterable for inner_item in inner_iterable]</p>
+
+          <dl>
+            <dt>How It Works</dt>
+            <dd>It loops through the outer_iterable one item at a time.</dd>
+            <dd>For every single outer item, it runs through the whole inner_iterable.</dd>
+            <dd>It applies the expression to each combination and puts the results into a new list.</dd>
+
+            <dt>Order of Execution</dt>
+            <dd>Reads from left to right, matching how you write it: for outer_item in outer_iterable comes first,
+              followed by for inner_item in inner_iterable.</dd>
+            <dd>It is the same as writing a standard two-level for loop with an .append() method inside the first loop.
+            </dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code>listă_nivel_2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+numere = [număr for sublistă in listă_nivel_2 for număr in sublistă]
+print(numere) <span>==> [1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+</code></pre>
+
+<pre><code>listă_imbricată = [[1, 2], [3, 4, 5], 6]
+listă_aplatizată = [număr for sublistă in listă_imbricată for număr in (sublistă if isinstance(sublistă, list) else[sublistă])]
+print(listă_aplatizată) <span>==> [1, 2, 3, 4, 5, 6]</span>
+</code></pre>
+
+
+<pre><code>listă_nivel_2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+numere_pare = [număr for sublistă in listă_nivel_2 for număr in sublistă if număr % 2 == 0]
+print(numere_pare)  <span>==> [2, 4, 6, 8]</span>
+</code></pre>
+
+      <p>Crearea unei matrice 3x3 - Creating a matrix 3x3</p>
+
+<pre><code>matrice = [[j for j in range(3)] for i in range(3)]
+print(matrice) <span>==> [[0, 1, 2], [0, 1, 2], [0, 1, 2]]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Cum funcționează</dt>
+          <dd>range(3): Generează numerele 0, 1 și 2.</dd>
+          <dd>Bucla internă [j for j in range(3)]: Creează un singur rând [0, 1, 2].</dd>
+          <dd>Bucla externă for i in range(3): Repetă crearea rândului de 3 ori.</dd>
+        </dl>
+
+        <dl>
+          <dt>How It Works</dt>
+          <dd>range(3): Generates the numbers 0, 1, and 2.</dd>
+          <dd>Inner Loop [j for j in range(3)]: Creates a single row [0, 1, 2].</dd>
+          <dd>Outer Loop for i in range(3): Repeats the row creation 3 times.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <p>Înțelegerile (comprehension) listelor imbricate pot îmbunătăți semnificativ lizibilitatea și concizia codului
+          pentru sarcini specifice care implică iterații imbricate, dar pentru logică foarte complexă, buclele for
+          tradiționale ar putea fi mai explicite.</p>
+
+        <p>Nested list comprehensions can significantly improve code readability and conciseness for specific tasks
+          involving nested iterations, but for very complex logic, traditional for loops might be more explicit.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CL">Liste comune din două sau mai multe liste imbricate - Common lists from two or more nested lists</h2>
+
+
+      <div class="grid-container">
+        <div>
+          <p>Pentru a găsi liste comune din două sau mai multe liste imbricate în Python, cea mai eficientă metodă
+            implică convertirea sublistelor într-un tip imuabil (cum ar fi tuplurile) și apoi utilizarea operațiilor pe
+            mulțimi pentru a găsi intersecția lor. Iată o abordare pas cu pas.</p>
+          <dl>
+            <dt>Convertiți sublistele în tupluri:</dt>
+            <dd>Deoarece listele sunt mutabile și, prin urmare, nu sunt hashabile, ele nu pot fi adăugate direct la
+              mulțimi. Tuplurile, fiind imuabile, sunt hashabile și pot fi utilizate în mulțimi. Puteți utiliza
+              map(tuple, sublist) sau o înțelegere a listelor pentru a converti fiecare sublistă din listele imbricate
+              într-un tuplu.</dd>
+            <dt>Creați mulțimi de tupluri:</dt>
+            <dd>Convertiți fiecare dintre listele imbricate originale (care conțin subliste) într-un set de tupluri.
+              Acest lucru vă permite să utilizați operațiile eficiente pe mulțimi pentru a găsi elemente comune.</dd>
+            <dt>Găsiți intersecția:</dt>
+            <dd>Utilizați operatorul & sau metoda intersection() pentru a găsi elementele comune dintre mulțimile de
+              tupluri. Aceasta va duce la o nouă mulțime care conține doar tuplurile prezente în toate mulțimile
+              originale.</dd>
+            <dt>Conversie înapoi în liste (opțional):</dt>
+            <dd>Dacă aveți nevoie ca elementele comune să fie reprezentate din nou ca liste, puteți converti tuplurile
+              rezultate înapoi în liste folosind o înțelegere a listelor.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>To find common lists from two or more nested lists in Python, the most efficient method involves converting
+            the sub-lists into an immutable type (like tuples) and then using set operations to find their intersection.
+            Here's a step-by-step approach.</p>
+          <dl>
+            <dt>Convert sub-lists to tuples:</dt>
+            <dd>Since lists are mutable and thus not hashable, they cannot be directly added to sets. Tuples, being
+              immutable, are hashable and can be used in sets. You can use map(tuple, sublist) or a list comprehension
+              to convert each sub-list within your nested lists into a tuple.</dd>
+            <dt>Create sets of tuples:</dt>
+            <dd>Convert each of your original nested lists (containing sub-lists) into a set of tuples. This allows you
+              to leverage the efficient set operations for finding common elements.</dd>
+            <dt>Find the intersection:</dt>
+            <dd>Use the & operator or the intersection() method to find the common elements between the sets of tuples.
+              This will result in a new set containing only the tuples that are present in all the original sets.</dd>
+            <dt>Convert back to lists (optional):</dt>
+            <dd>If you need the common elements to be represented as lists again, you can convert the resulting tuples
+              back into lists using a list comprehension.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <p>Cea mai eficientă metodă de a găsi subliste comune identice în orice număr de liste imbricate.</p>
+
+        <p>The most efficient way to find identical common sublists across any number of nested lists.</p>
+      </div>
+
+<pre><code>listă_imbricată1 = [[1, 2], [3, 4], [5, 6], [4, 8]]
+listă_imbricată2 = [[3, 4], [7, 8], [4, 8], [9, 10]]
+listă_imbricată3 = [[4, 8], [3, 4], [11, 12], [13, 14]]
+
+<span># Conversia sublistelor în tupluri și crearea de seturi</span>
+set1 = set(map(tuple, listă_imbricată1))
+set2 = set(map(tuple, listă_imbricată2))
+set3 = set(map(tuple, listă_imbricată3))
+
+<span># Găsiți intersecția tuturor mulțimilor</span>
+listă_imbricată = set1.intersection(set2, set3)
+print(listă_imbricată) <span>==> {(3, 4), (4, 8)}</span>
+
+<span># Convertește tuplurile comune înapoi în liste</span>
+listă_comune = [list(tuplu) for tuplu in listă_imbricată]
+
+print(f"Listele comune: {listă_comune}")
+<span>==> Listele comune: [[3, 4], [4, 8]]</span>
+</code></pre>
+
+<pre><code>lista1 = [[1, 2], [3, 4], [5, 6], [4, 8]]
+lista2 = [[3, 4], [7, 8], [4, 8], [9, 10]]
+lista3 = [[4, 8], [3, 4], [11, 12], [13, 14]]
+
+<span># Convertește listele interne în tupluri, apoi în mulțimi.</span>
+set1 = {tuple(x) for x in lista1}
+set2 = {tuple(x) for x in lista2}
+set3 = {tuple(x) for x in lista3}
+
+<span># Găsește intersecția și convertește-o înapoi în liste.</span>
+tuple_comune = set1.intersection(set2, set3)
+liste_comune = [list(x) for x in tuple_comune]
+
+print(liste_comune) <span>==> [[3, 4], [4, 8]]</span>
+</code></pre>
+
+      <p>O singură linie pentru a converti, intersecta și restaura liste.</p>
+
+<pre><code>liste_imbricate = [
+    [[1, 2], [3, 4], [5, 6], [4, 8], [7, 9]],
+    [[3, 4], [7, 8], [4, 8], [9, 10]],
+    [[4, 8], [3, 4], [11, 12], [13, 14]]
+]
+
+liste_comune = [list(tup) for tup in set.intersection(*[{tuple(x) for x in sub} for sub in liste_imbricate])]
+print(liste_comune) <span>==> [[3, 4], [4, 8]]</span>
+</code></pre>
+
+
+      <p>Seturi pentru căutare rapidă.</p>
+
+<pre><code>lista1 = [[1, 2], [3, 4], [5, 6]]
+lista2 = [[3, 4], [7, 8], [1, 2]]
+
+set2 = {tuple(element) for element in lista2}
+
+<span># Filtrează lista 1, păstrând ordinea originală.</span>
+duplicate = [sublistă for sublistă in lista1 if tuple(sublistă) in set2]
+
+print(duplicate) <span>==> [[1, 2], [3, 4]]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="LR">Listă în ordine inversă - List reverse order</h2>
+
+      <div class="grid-container">
+        <p>Pentru a crea o listă inversată folosind o construcție de tip list comprehension în Python, trebuie să
+          transmiți o secvență sau un iterator inversat componentei for a respectivei construcții.</p>
+
+        <p>To create a reversed list using a list comprehension in Python, you must pass a reversed sequence or iterator
+          into the for component of the comprehension.</p>
+      </div>
+
+      <p>Utilizarea felierei de listă [::-1] - Using List Slicing [::-1]</p>
+
+      <div class="grid-container">
+        <p>Această metodă creează o copie inversată a listei originale, iar apoi înțelegerea listei iterează prin
+          această copie inversată.</p>
+
+        <p>This method creates a reversed copy of the original list, and then the list comprehension iterates through
+          this reversed copy.</p>
+      </div>
+
+<pre><code>listă_originală = [1, 2, 3, 4, 5]
+listă_inversată = [element for element in listă_originală[::-1]]
+print(listă_inversată) <span>==> Lista inversată: [5, 4, 3, 2, 1]</span>
+print(listă_originală) <span>==> Lista originală: [1, 2, 3, 4, 5]</span>
+</code></pre>
+
+      <p>funcția reversed() - reversed() function</p>
+
+      <div class="grid-container">
+        <p>Funcția reversed() returnează un iterator care produce elemente din lista originală în ordine inversă.
+          Înțelegerea listei construiește apoi o nouă listă din acest iterator.</p>
+
+        <p>The reversed() function returns an iterator that yields elements from the original list in reverse order. The
+          list comprehension then builds a new list from this iterator.</p>
+      </div>
+
+<pre><code>listă_originală = [1, 2, 3, 4, 5]
+listă_inversată = [element for element in reversed(listă_originală)]
+print(listă_inversată)  <span>==> [5, 4, 3, 2, 1]</span>
+print(listă_originală)  <span>==> [1, 2, 3, 4, 5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Pentru a inversa atât elementele interne, cât și ordinea exterioară a unei liste de liste în Python, poți
+          utiliza o construcție de tip list comprehension combinată cu funcția reversed().</p>
+
+        <p>To reverse both the inner elements and the outer order of a list of lists in Python, you can use a list
+          comprehension combined with the reversed().</p>
+      </div>
+
+<pre><code>listă_originală = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+<span># Inversarea listei exterioare și a elementelor interioare</span>
+listă_inversată = [list(reversed(interior)) for interior in reversed(listă_originală)]
+print(listă_inversată) <span>==> [[9, 8, 7], [6, 5, 4], [3, 2, 1]]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Ambele metode obțin același rezultat, acela de a crea o nouă listă cu elementele în ordine inversă. Alegerea
+          între ele se reduce adesea la preferințele personale sau la considerații specifice de performanță în aplicații
+          la scară foarte largă.</p>
+
+        <p>Both methods achieve the same result of creating a new list with the elements in reverse order. The choice
+          between them often comes down to personal preference or specific performance considerations in very
+          large-scale applications.</p>
+      </div>
+
+      <p>Utilizarea funcției range() bazată pe indici - Using Index-Based range()</p>
+
+<pre><code>listă_originală = [1, 2, 3, 4, 5]
+<span># Parcurge prin iterație de la ultimul indice în jos până la 0.</span>
+listă_inversată = [listă_originală[i] for i in range(len(listă_originală) - 1, -1, -1)]
+
+print(listă_inversată) <span>==> [5, 4, 3, 2, 1]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CE">Numărarea elementelor - Counting elements</h2>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Numărarea aparițiilor unui anumit element</dt>
+          <dd>Pentru a număra de câte ori apare un anumit element, filtrează lista din cadrul expresiei de generare
+            (comprehension) astfel încât să păstrezi doar acel element, apoi calculează-i lungimea.</dd>
+        </dl>
+
+        <dl>
+          <dt>Counting occurrences of a specific element</dt>
+          <dd>To count how many times a single, specific item appears, filter the list inside the comprehension to keep
+            only that item, and then calculate its length.</dd>
+        </dl>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă", "măr", "caisă", "smochină", "măr"]
+numără_merele = len([fruct for fruct in fructe if fruct=="măr"])
+numără_caisele = len([fruct for fruct in fructe if fruct=="caisă"])
+
+print(f"În lista de fructe {fructe[0]}-ul există de: {numără_merele} ori")
+<span>==> În lista de fructe măr există de: 3 ori</span>
+print(f"În lista de fructe {fructe[4]} există: {numără_caisele} dată")
+<span>==> În lista de fructe caisă există: 1 dată</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Numărarea elementelor care îndeplinesc o condiție</dt>
+          <dd>Puteți utiliza o înțelegere (comprehension) a listei pentru a crea o listă nouă care conține doar
+            elementele care îndeplinesc o anumită condiție, apoi puteți utiliza funcția len() pentru a obține numărul
+            acestor elemente.</dd>
+        </dl>
+
+        <dl>
+          <dt>Count elements that meet a condition</dt>
+          <dd>You can use a list comprehension to create a new list containing only the elements that satisfy a given
+            condition, and then use the len() function to get the count of these elements.</dd>
+        </dl>
+      </div>
+
+<pre><code>listă_originală = [[1, 2], 3, [4, 5, 6], 7, 8, [9], 10]
+numără_sublistele = len([element for element in listă_originală if isinstance(element, list)])
+numără_elemente = len([element for element in listă_originală if not isinstance(element, list)])
+
+print(f"În lista originală există {numără_sublistele} liste")
+<span>==> În lista originală există 3 liste</span>
+print(f"În lista originală există {numără_elemente} elemente care nu sunt liste")
+<span>==> În lista originală există 4 elemente care nu sunt liste</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Numărătoarea fiecărui element unic</dt>
+          <dd>Dacă dorești o listă care să indice numărul de apariții ale fiecărui element unic, corespunzător poziției
+            sale din lista originală, poți combina o construcție de tip list comprehension cu metoda încorporată
+            .count() din Python.</dd>
+        </dl>
+
+        <dl>
+          <dt>Count for Every Unique Element</dt>
+          <dd>If you want a list showing the count for each unique element corresponding to its position in the original
+            list, you can combine a list comprehension with Python's built-in .count() method.</dd>
+        </dl>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă", "măr", "caisă", "smochină", "măr", "cireșă"]
+<span># Creează o listă de numărători corespunzătoare fiecărui element</span>
+listă_numărători = [fructe.count(fruct) for fruct in fructe]
+
+print(listă_numărători) <span>==> [3, 1, 2, 3, 1, 1, 3, 2]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Numărarea cu sum()</dt>
+          <dd>O abordare extrem de specifică limbajului Python utilizează funcția sum() împreună cu o expresie generator
+            (care folosește aceeași sintaxă ca și list comprehension, dar cu paranteze rotunde). Aceasta tratează
+            fiecare element corespunzător ca având valoarea 1 și le însumează.</dd>
+        </dl>
+
+        <dl>
+          <dt>Counting with sum()</dt>
+          <dd>A highly pythonic approach uses sum() with a generator expression (which uses the same syntax layout as
+            list comprehension but with parentheses). It treats every matching item as 1 and adds them up.</dd>
+        </dl>
+      </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă", "caisă", "smochină"]
+<span># Adaugă 1 pentru fiecare număr par găsit.</span>
+lungime_pară = sum(1 for fruct in fructe if len(fruct) % 2 == 0)
+
+print(f"Sunt {lungime_pară} fructe care au lungimea divizibilă la 2")
+<span>==> Sunt 3 fructe care au lungimea divizibilă la 2</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="AS">Adăugarea sau scăderea elementelor dintr-o listă - Adding or subtracting elements in a list</h2>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, înțelegerea listelor este utilizată în principal pentru crearea de liste noi prin transformarea
+            sau filtrarea elementelor dintr-un iterabil existent, nu pentru adăugarea sau eliminarea directă a
+            elementelor dintr-o listă existentă.</p>
+          <p>În funcție de ceea ce doriți să obțineți, puteți modifica elemente individual, puteți combina două liste
+            sau puteți calcula diferențele dintre elemente consecutive.</p>
+        </div>
+
+        <div>
+          <p>List comprehensions in Python are primarily used for creating new lists by transforming or filtering
+            elements from an existing iterable, not for directly adding or removing elements from an existing list in
+            place.</p>
+          <p>Depending on what you want to achieve, you can modify elements individually, combine two lists, or
+            calculate differences between consecutive item.</p>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Adunarea sau scăderea valorilor în cadrul elementelor</dt>
+          <dd>Puteți efectua operații aritmetice asupra elementelor dintr-o listă de înțelegere (comprehension) pentru a
+            crea o listă nouă cu valori modificate.</dd>
+        </dl>
+
+        <dl>
+          <dt>Adding or Subtracting Values within Elements</dt>
+          <dd>You can perform arithmetic operations on elements within a list comprehension to create a new list with
+            modified values.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Adăugarea unei valori fiecărui element</span>
+numere = [1, 2, 3, 4]
+
+listă_nouă_adăugată = [x + 5 for x in numere]
+print(f"Listă nouă cu valoare adăugată {listă_nouă_adăugată}")
+<span>==> Listă nouă cu valoare adăugată [6, 7, 8, 9]</span>
+
+<span># Scăderea unei valori din fiecare element</span>
+numere = [1, 2, 3, 4]
+
+listă_nouă_scăzută = [x - 2 for x in numere]
+print(f"Listă nouă cu valori scăzute {listă_nouă_scăzută}")
+<span>==> Listă nouă cu valori scăzute [-1, 0, 1, 2]</span>
+
+<span># Scăderea pe elemente a două liste</span>
+lista1 = [10, 20, 30]
+lista2 = [3, 7, 9]
+
+scădere_element_cu_element = [x - y for x, y in zip(lista1, lista2)]
+print(f"Scăderea pe elemente: {scădere_element_cu_element}")
+<span>==> Scăderea pe elemente: [7, 13, 21]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Elemente de filtrare (care îndepărtează efectiv)</dt>
+          <dd>Puteți utiliza logica condițională în cadrul unei înțelegeri a listei pentru a include doar elementele
+            care îndeplinesc anumite criterii, practic "eliminând" pe altele din noua listă rezultată.</dd>
+        </dl>
+
+        <dl>
+          <dt>Filtering Elements (Effectively Removing)</dt>
+          <dd>You can use conditional logic within a list comprehension to include only elements that meet a certain
+            criteria, effectively "removing" others from the resulting new list.</dd>
+        </dl>
+      </div>
+
+<pre><code><span># Elemente de filtrare (îndepărtând pe cele care nu îndeplinesc condiția)</span>
+numere = [1, 2, 3, 4, 5, 6]
+
+elimină_numere_mai_mari = [număr for număr in numere if număr &lt; 4]
+print(elimină_numere_mai_mari) <span>==> [1, 2, 3]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Adunare sau scădere condițională (utilizând if-else)</dt>
+          <dd>Pentru a aduna sau scădea valori doar atunci când este îndeplinită o anumită condiție, plasează un bloc
+            if-else chiar înainte de cuvântul cheie for.</dd>
+        </dl>
+
+        <dl>
+          <dt>Conditional Adding or Subtracting (Using if-else)</dt>
+          <dd>To add or subtract values only when a specific condition is met, place an if-else block right before the
+            for keyword.</dd>
+        </dl>
+      </div>
+
+<pre><code>numere = [107, 152, 201, 250]
+
+<span># Adună 5 dacă este par, scade 7 dacă este impar.</span>
+modificat = [x + 5 if x % 2 == 0 else x - 7 for x in numere]
+print(modificat) <span>==> [100, 157, 194, 255]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Scăderea elementelor consecutive</dt>
+          <dd>Pentru a găsi diferența dintre elementele consecutive din aceeași listă, parcurgeți indicii listei.</dd>
+        </dl>
+
+        <dl>
+          <dt>Subtracting Consecutive Elements</dt>
+          <dd>To find the difference between consecutive items within the same list, iterate over the list indices.</dd>
+        </dl>
+      </div>
+
+<pre><code>numere = [11, 4, 25, 13, 8]
+
+<span># Scade elementul curent din următorul element</span>
+diferențe = [numere[i+1] - numere[i] for i in range(len(numere) - 1)]
+print(diferențe) <span>==> [-7, 21, -12, -5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Notă importantă: Comprensiunile de liste creează întotdeauna o listă nouă. Nu modifică lista originală.. Dacă
+          trebuie să adăugați sau să eliminați elemente direct dintr-o listă existentă, ar trebui să utilizați metode
+          precum <a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank"
+            rel="noopener">append(), insert(), extend(), remove() sau pop()</a>.</p>
+
+        <p>Important Note: List comprehensions always create a new list. They do not modify the original list in place.
+          If you need to add or remove elements from an existing list directly, you should use methods like <a
+            href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">append(),
+            insert(), extend(), remove(), or pop()</a></p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="RE">Repetarea fiecărui element dintr-o listă - Repeating Each Element within a List</h2>
+
+      <div class="grid-container">
+        <p>Înțelegerea (comprehension) listei: Aceasta oferă o modalitate concisă și eficientă de a crea o listă nouă în
+          care fiecare element din lista originală este repetat de un număr specificat de ori.</p>
+
+        <p>List comprehension: This provides a concise and efficient way to create a new list where each element from
+          the original list is repeated a specified number of times.</p>
+      </div>
+
+
+<pre><code>numere = [4, 5, 6]
+
+număr_repetări = 3
+listă_de_elemente_repetate = [număr for număr in numere for _ in range(număr_repetări)]
+print(listă_de_elemente_repetate) <span>==> [4, 4, 4, 5, 5, 5, 6, 6, 6]</span>
+
+de_repetat = [[1, 2, 3]]
+
+repetări = 3
+listă_repetată = [i for i in de_repetat for _ in range(repetări)]
+print(listă_repetată) <span>==> [[1, 2, 3], [1, 2, 3], [1, 2, 3]]<span>==> </span></span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="DS">Elemente duplicate dintr-o listă - Duplicates Items From a List</h2>
+
+
+      <div class="grid-container">
+        <p>Pentru a găsi elemente duplicate dintr-o listă folosind o înțelegere a listei în Python, se poate combina
+          înțelegerea listei cu o metodă de urmărire a elementelor găsite. Aceasta implică de obicei utilizarea unui set
+          pentru o căutare eficientă.</p>
+
+        <p>To find duplicate items from a list using a list comprehension in Python, one can combine the list
+          comprehension with a method to track seen elements. This typically involves using a set for efficient lookup.
+        </p>
+      </div>
+
+
+<pre><code><span># Înțelegerea listei pentru identificarea duplicatelor</span>
+numere = [1, 2, 3, 4, 2, 5, 3, 6, 7, 7]
+găsite = set()
+duplicate = []
+
+<span># Iterează prin lista originală</span>
+[duplicate.append(număr) for număr in numere if număr in găsite or găsite.add(număr)]
+print(duplicate) <span>==> [2, 3, 7]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Cum funcționează pas cu pas</dt>
+          <dd>numere = [1, 2, 3, 4, 2, 5, 3, 6, 7, 7] listă originală.</dd>
+          <dd>găsite = set() este o mulțime vidă (goală) care ține evidența numerelor întâlnite deja. Mulțimile permit
+            căutări extrem de rapide.</dd>
+          <dd>duplicate = [] este lista unde se adună numerele care se repetă.</dd>
+          <dd>Ciclul trece prin fiecare număr din numere.</dd>
+
+          <dt>Logica din paranteze</dt>
+          <dd>Partea număr in găsite or găsite.add(număr) face toată treaba:</dd>
+          <dd>Python verifică mai întâi număr in găsite.</dd>
+          <dd>Dacă numărul este deja în set, condiția este adevărată (True).</dd>
+          <dd>Partea a doua (găsite.add) nu se mai execută (deoarece avem un or și prima parte e adevărată).</dd>
+          <dd>Atunci duplicate.append() adaugă numărul în lista de duplicate.</dd>
+          <dd>Dacă numărul nu este în set, prima parte este falsă (False).</dd>
+          <dd>Python trece la a doua parte și execută găsite.add(număr), care adaugă numărul în set pentru viitor.</dd>
+          <dd>Funcția găsite.add() returnează None (considerat fals în Python), deci întregul if devine fals și numărul
+            nu se adaugă la duplicate la prima apariție.</dd>
+        </dl>
+
+        <dl>
+          <dt>How it works step-by-step</dt>
+          <dd>numbers = [1, 2, 3, 4, 2, 5, 3, 6, 7, 7] original list.</dd>
+          <dd>found = set() is an empty set that keeps track of the numbers you have already encountered. Sets allow for
+            extremely fast lookups.</dd>
+          <dd>duplicates = [] is the list where repeating numbers are collected.</dd>
+          <dd>The loop iterates through each number in numbers.</dd>
+
+          <dt>The logic inside the parentheses</dt>
+          <dd>The expression number in found or found.add(number) handles the task:</dd>
+          <dd>Python first checks number in found.</dd>
+          <dd>If the number is already in the set, the condition evaluates to True.</dd>
+          <dd>The second part (found.add) is not executed (because of the or operator and the fact that the first part
+            is true).</dd>
+          <dd>Then, duplicate.append() adds the number to the list of duplicates.</dd>
+          <dd>If the number is not in the set, the first part evaluates to False.</dd>
+          <dd>Python proceeds to the second part and executes găsite.add(number), adding the number to the set for
+            future reference.</dd>
+          <dd>The found.add() function returns None (which is considered False in Python), so the entire if condition
+            evaluates to False, and the number is not added to the duplicates list upon its first appearance.</dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Înțelegerea (comprehension) listei și o listă ajutătoare (păstrează ordinea)</dt>
+          <dd>Iterarea și verificarea existenței: Se poate crea o listă nouă, iar fiecare element din lista originală
+            poate fi adăugat la noua listă numai dacă nu este deja prezent în noua listă. Aceasta menține ordinea
+            originală a elementelor unice.</dd>
+        </dl>
+
+        <dl>
+          <dt>List Comprehension and a Helper List (Preserves order)</dt>
+          <dd>Iterating and Checking for Existence: A new list can be created, and each element from the original list
+            can be added to the new list only if it is not already present in the new list. This maintains the original
+            order of unique elements.</dd>
+        </dl>
+      </div>
+
+<pre><code>lista_mea = [1, 2, 2, 3, 4, 4, 5]
+colector = []
+[x for x in lista_mea if x not in colector and not colector.append(x)]
+print(f"Lista fără duplicate{colector}")
+<span>==> Lista fără duplicate: [1, 2, 3, 4, 5]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>Identificați duplicatele:</b> Acest lucru se poate realiza prin compararea numărului fiecărui element cu
+          1.</p>
+
+        <p><b>Identify Duplicates:</b> This can be achieved by comparing the count of each element to 1.</p>
+      </div>
+
+<pre><code>from collections import Counter
+
+listă_duplicate = [1, 2, 3, 2, 4, 1, 5, 2]
+duplicate = [număr for număr, numără  in Counter(listă_duplicate).items() if numără > 1]
+print(duplicate)  <span>==> [1, 2]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p><b>Găsiți indicii duplicatelor:</b>
+          Odată ce elementele duplicate sunt identificate, parcurgeți lista originală și găsiți toți indicii în care
+          apar aceste elemente duplicate.</p>
+
+        <p><b>Find Indices of Duplicates:</b>
+          Once the duplicate elements are identified, iterate through the original list and find all indices where these
+          duplicate elements appear.</p>
+      </div>
+
+<pre><code>listă_duplicate = [1, 2, 3, 2, 4, 1, 5, 2]
+duplicate_indici = {număr: [indice for indice, _ in enumerate(listă_duplicate) if _ == număr] for număr in listă_duplicate}
+print(duplicate_indici) <span>==> {1: [0, 5], 2: [1, 3, 7], 3: [2], 4: [4], 5: [6]}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>Dicționarul duplicate_indici va stoca fiecare element duplicat ca o cheie, valoarea sa fiind o listă a
+            tuturor indicilor în care elementul respectiv (cheie) apare în lista originală.</p>
+          <ul>
+            <li>listă_duplicate: O listă de numere care poate conține valori repetitive.</li>
+            <li>enumerate(): Parcurge lista și furnizează atât indicele, cât și valoarea (indice și _) pentru fiecare
+              element.</li>
+            <li>if _ == număr: Filtrează indicii doar pentru numărul curent care este verificat.</li>
+            <li>Bucla exterioară for număr in listă_duplicate: Parcurge din nou lista pentru a crea chei pentru fiecare
+              număr unic.</li>
+          </ul>
+        </div>
+
+        <div>
+          <p>The dictionary duplicate_indici will store each duplicate element as a key, with its corresponding value
+            being a list of all indices where that element appears in the original list.</p>
+          <ul>
+            <li>listă_duplicate: A list of numbers that may contain repeating values.</li>
+            <li>enumerate(): Loops through the list and gives both the index and the value (indice and _) for each item.
+            </li>
+            <li>if _ == număr: Filters the indexes only for the current number being checked.</li>
+            <li>Outer loop for număr in listă_duplicate: Goes through the list again to create keys for every unique
+              number.</li>
+          </ul>
+        </div>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CM">Crearea de liste multidimensionale - Creating Multidimensional Lists</h2>
+
+      <div class="grid-container">
+        <p>Listele imbricate comprehension oferă o modalitate concisă și eficientă de a crea liste multidimensionale, în
+          special atunci când se inițializează cu valori implicite sau pe baza unui model. Aceștia plasează o expresie
+          de generare a listei în interiorul alteia pentru a defini dimensiunile sub formă de rânduri și coloane.</p>
+
+        <p>Nested list comprehensions offer a concise and efficient way to create multidimensional lists, especially
+          when initializing with default values or based on a pattern. They place one list comprehension inside another
+          to define dimensions as rows and columns.</p>
+      </div>
+
+<pre><code><span># Creează o matrice 3x3 inițializată cu zerouri</span>
+[[0 for _ in range(3)] for _ in range(3)]  <span>==> 
+[
+  [0, 0, 0], 
+  [0, 0, 0], 
+  [0, 0, 0]
+]</span>
+
+<span># Creează o matrice 2x4 cu valori incrementale</span>
+[[i * 4 + j for j in range(4)] for i in range(2)] <span>==>
+ [
+  [0, 1, 2, 3], 
+  [4, 5, 6, 7]
+]</span>
+</code></pre>
+
+<pre><code><span># Creează o matrice 3x4 în care elementele sunt (indice_rând, indice_coloană)</span>
+grilă = [[(r, c) for c in range(4)] for r in range(3)]
+print(grilă) <span>==> 
+[
+  [(0, 0), (0, 1), (0, 2), (0, 3)], 
+  [(1, 0), (1, 1), (1, 2), (1, 3)], 
+  [(2, 0), (2, 1), (2, 2), (2, 3)]
+]</span>
+
+print(type(grilă))  <span>==> &lt;class 'list'></span>
+print(type(grilă[0][-1])) <span>==> &lt;class 'tuple'></span>
+</code></pre>
+
+<pre><code><span># Transformarea unei liste multidimensionale existente</span>
+prețuri = [[9, 10], [32, 46]]
+
+<span># Aplică taxa de  impozit fiecărui articol în parte</span>
+prețurile_impozitate = [[articol * 1.1 for articol in rând] for rând in prețuri]
+print(prețurile_impozitate) <span>==> 
+[
+  [9.9, 11.0], 
+  [35.2, 50.6]
+]</span>
+</code></pre>
+
+<pre><code><span># Creează un tablou 2x3x4 (2 blocuri, 3 rânduri, 4 coloane)</span>
+array_3d = [[[0 for col in range(4)] for rând in range(3)] for bloc in range(2)]
+print(array_3d) <span>==>
+[
+  [
+    [0, 0, 0, 0], 
+    [0, 0, 0, 0], 
+    [0, 0, 0, 0]
+  ], 
+  [
+    [0, 0, 0, 0], 
+    [0, 0, 0, 0], 
+    [0, 0, 0, 0]
+  ]
+]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="FM">Aplatizarea listelor multidimensionale - Flattening Multidimensional Lists</h2>
+
+      <div class="grid-container">
+        <p>Aplatizarea unei liste multidimensionale folosind înțelegerea listelor în Python implică iterarea prin
+          structura imbricată pentru a extrage toate elementele într-o singură listă unidimensională. Acest lucru se
+          realizează de obicei cu clauze imbricate for în cadrul înțelegerii listelor.</p>
+
+        <p>Flattening a multidimensional list using list comprehension in Python involves iterating through the nested
+          structure to extract all elements into a single, one-dimensional list. This is typically achieved with nested
+          for clauses within the list comprehension.</p>
+      </div>
+
+
+<pre><code><span># Aplatizarea listei bidimensionale</span>
+listă_nivel_2 = [[1, 2, 3], [4, 5, 6, 7, 8], 9, [10, 11]]
+listă_aplatizată = [număr for sublistă in listă_nivel_2 for număr in (sublistă if isinstance(sublistă, list) else [sublistă])]
+print(listă_aplatizată)
+print(listă_aplatizată) <span>==> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</span>
+</code></pre>
+
+
+      <div class="grid-container">
+        <p>Aplatizare profundă (3D și dimensiuni superioare):
+          Dacă lista are trei sau mai multe dimensiuni, poți extinde același tipar prin înlănțuirea unor instrucțiuni
+          for suplimentare.</p>
+
+        <p>Deep Flattening (3D and Higher Dimensions):
+          If your list has three or more dimensions, you can extend the same pattern by chaining additional for
+          statements.</p>
+      </div>
+
+<pre><code>matrice_3d = [[[1, 2], [3]], [[4, 5, 6]], [[7]]]
+
+# Adăugă un nivel suplimentar de buclă pentru datele aflate la cel mai mare nivel de profunzime.
+listă_plată = [elm for sublistă_2d in matrice_3d for sublistă_1d in sublistă_2d for elm in sublistă_1d]
+print(listă_plată)  <span>==> [1, 2, 3, 4, 5, 6, 7]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Cum să reții ordinea buclelor: Cel mai simplu mod de a o reține este să te gândești că buclele sunt scrise
+          exact în aceeași ordine ca în cazul buclelor for imbricate standard, pe mai multe linii.</p>
+
+        <p>How to Remember the Loop Order: The easiest way to remember it is that the loops are written in the exact
+          same order as standard, multi-line nested for loops.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="SL">Împărțirea listelor în bucăți - Splitting Lists Into Chunks</h2>
+
+
+      <div class="grid-container">
+        <p>Împărțirea unei liste în porțiuni folosind comprehension a listelor în Python este o metodă concisă și
+          eficientă. Această abordare creează o listă nouă în care fiecare element este o sublistă reprezentând o
+          porțiune din lista originală.</p>
+
+        <p>Splitting a list into chunks using list comprehension in Python is a concise and efficient method. This
+          approach creates a new list where each element is a sublist representing a chunk of the original list.</p>
+      </div>
+
+
+<pre><code>lista_mea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+mărimea_bucății = 3
+bucăți = [lista_mea[i: i + mărimea_bucății] for i in range(0, len(lista_mea), mărimea_bucății)]
+print(bucăți)  <span>==> 
+[
+  [1, 2, 3], 
+  [4, 5, 6], 
+  [7, 8, 9], 
+  [10]
+]</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>lista_mea[i: i + mărimea_bucății]:</dt>
+          <dd>Acesta este nucleul segmentării. Folosește segmentarea listelor pentru a extrage o porțiune din lista_mea.
+          </dd>
+          <dd>i reprezintă indexul inițial al segmentului curent.</dd>
+          <dd>i + mărimea_bucății reprezintă indexul final (exclusiv) al segmentului curent.</dd>
+
+          <dt>for i in range(0, len(lista_mea), mărimea_bucății):</dt>
+          <dd>Această parte iterează prin lista_mea pentru a determina indexul inițial pentru fiecare segment.</dd>
+          <dd>range(start, stop, step):</dd>
+          <dd>start: Indexul inițial (0 în acest caz, pentru a începe de la primul element).</dd>
+          <dd>stop: Lungimea lista_mea, asigurându-se că toate elementele sunt luate în considerare.</dd>
+          <dd>step: mărimea_bucății, care dictează câte elemente trebuie sărite pentru a găsi începutul următorului
+            segment.</dd>
+        </dl>
+
+        <dl>
+          <dt>lista_mea[i: i + mărimea_bucății]:</dt>
+          <dd>This is the core of the chunking. It uses list slicing to extract a portion of the lista_mea.</dd>
+          <dd>i represents the starting index of the current chunk.</dd>
+          <dd>i + mărimea_bucății represents the ending index (exclusive) of the current chunk.</dd>
+
+          <dt>for i in range(0, len(lista_mea), mărimea_bucății):</dt>
+          <dd>This part iterates through the lista_mea to determine the starting index for each chunk.</dd>
+          <dd>range(start, stop, step):</dd>
+          <dd>start: The starting index (0 in this case, to begin from the first element).</dd>
+          <dd>stop: The length of the lista_mea, ensuring all elements are considered.</dd>
+          <dd>step: The mărimea_bucății, which dictates how many elements to skip to find the start of the next chunk.
+          </dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+      <h2 id="UC">Când ar trebui să folosești o înțelegere? - When should you use a comprehension?</h2>
+
+
+      <div class="grid-container">
+        <dl>
+          <dt>Crearea de noi liste, dicționare sau seturi bazate pe cele existente:</dt>
+          <dd>Comprehensiunile sunt ideale pentru transformarea, filtrarea sau combinarea elementelor dintr-un iterabil
+            pentru a genera o nouă colecție.</dd>
+
+          <dt>Înlocuirea buclelor simple for cu append() sau extend():</dt>
+          <dd>Atunci când logica dintr-o buclă se referă la construirea unei noi colecții bazate pe un iterabil, o
+            comprehensiune oferă adesea o soluție mai compactă și mai elegantă.</dd>
+
+          <dt>Îmbunătățirea lizibilității pentru transformări simple:</dt>
+          <dd>Pentru operațiuni simple, cum ar fi ridicarea la pătrat a numerelor, filtrarea pe baza unei condiții sau
+            maparea valorilor, comprehensiunile pot face codul mai ușor de înțeles.</dd>
+
+          <dt>Optimizarea performanței (în special pentru seturi de date mari cu comprehensiuni generatoare):</dt>
+          <dd>Deși nu este întotdeauna o diferență semnificativă pentru seturile de date mici, comprehensiunile pot fi
+            mai eficiente decât buclele tradiționale în unele cazuri, în special comprehensiunile generatoare care
+            produc valori la cerere, economisind memorie.</dd>
+
+          <dt>Când să luați în considerare alternative (ca buclele for):</dt>
+
+          <dt>Logică complexă sau efecte secundare:</dt>
+          <dd>Dacă operațiunile din cadrul buclei implică mai mulți pași, ramificări semnificative sau efecte secundare
+            (cum ar fi imprimarea, modificarea variabilelor externe sau I/O complexe), o buclă for tradițională ar putea
+            fi mai ușor de citit și de întreținut.</dd>
+
+          <dt>Comprehensiuni profund imbricate:</dt>
+          <dd>Deși este posibil, comprehensiunile excesiv imbricate pot deveni dificil de citit și de înțeles. În astfel
+            de cazuri, descompunerea logicii în pași separați sau utilizarea unei bucle for ar putea fi preferabilă.
+          </dd>
+
+          <dt>Când nu trebuie să creați o nouă colecție:</dt>
+          <dd>Dacă obiectivul dvs. principal este să efectuați acțiuni asupra elementelor fără a le colecta într-o
+            structură nouă, o buclă for este alegerea potrivită.</dd>
+        </dl>
+
+        <dl>
+          <dt>Creating new lists, dictionaries, or sets based on existing ones:</dt>
+          <dd>Comprehensions are ideal for transforming, filtering, or combining elements from an iterable to generate a
+            new collection.</dd>
+
+          <dt>Replacing simple for loops with append() or extend():</dt>
+          <dd>When the logic within a loop is primarily about building a new collection based on an iterable, a
+            comprehension often provides a more compact and elegant solution.</dd>
+
+          <dt>Improving readability for simple transformations:</dt>
+          <dd>For straightforward operations like squaring numbers, filtering based on a condition, or mapping values,
+            comprehensions can make the code more immediately understandable.</dd>
+
+          <dt>Performance optimization (especially for large datasets with generator comprehensions):</dt>
+          <dd>While not always a significant difference for small datasets, comprehensions can be more efficient than
+            traditional loops in some cases, particularly generator comprehensions which yield values on demand, saving
+            memory.</dd>
+
+          <dt>When to consider alternatives (like traditional for loops):</dt>
+
+          <dt>Complex logic or side effects:</dt>
+          <dd>If the operations within the loop involve multiple steps, significant branching, or side effects (like
+            printing, modifying external variables, or complex I/O), a traditional for loop might be more readable and
+            maintainable.</dd>
+
+          <dt>Deeply nested comprehensions:</dt>
+          <dd>While possible, overly nested comprehensions can become difficult to read and understand. In such cases,
+            breaking down the logic into separate steps or using a for loop might be preferable.</dd>
+
+          <dt>When you don't need to create a new collection:</dt>
+          <dd>If your primary goal is to perform actions on elements without collecting them into a new structure, a for
+            loop is the appropriate choice.</dd>
+        </dl>
+      </div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+</body>
+
+</html>

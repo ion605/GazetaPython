@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 5.1 Dicționar-Creare</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaD.svg" alt="D" class="logo">
+          <h1>5.0 Tipuri dicționare - Dictionary Types</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>5.1 Crearea dicționarelor - Creating Dictionaries</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+
+        <div>
+          <ul>
+          <li>În acest capitol veți studia:</li>
+            <li><a href="#CD">Crearea dicționarelor în Python</a>
+              <ul>
+                <li><a href="#CDA">Dicționar literal(acolade {})</a></li>
+                <li><a href="#CDB">Constructorul dict()</a></li>
+                <li><a href="#CDC">Metoda clasei .fromkeys()</a></li>
+                <li><a href="#CDE">Dicționar din diferența simetrică</a></li>
+                <li><a href="#CDF">Adăugare, actualizare, implicit în dicționar</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter you will study:</li>
+            <li><a href="#CD">Creating Dictionaries in Python</a>
+              <ul>
+                <li><a href="#CDA">Dictionary Literals (Curly Braces {})</a></li>
+                <li><a href="#CDB">dict() Constructor</a></li>
+                <li><a href="#CDC">.fromkeys() Class Method</a></li>
+                <li><a href="#CDE">Dictionary from Symmetric Difference</a></li>
+                <li><a href="#CDF">Add, update, default to Dictionary</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <h2 id="CD">Crearea dicționarelor în Python - Creating Dictionaries in Python</h2>
+
+      <p><a href="https://www.w3schools.com/python/python_dictionaries.asp" target="_blank" rel="noopener">Python
+          Dictionaries</a></p>
+
+      <div class="grid-container">
+        <p>Dicționarele sunt utilizate pentru a stoca valori de date sub formă de perechi cheie-valoare. Un dicționar
+          este o colecție ordonată, modificabilă și care nu permite duplicate. În Python 3.6 și versiunile anterioare,
+          dicționarele sunt neordonate.</p>
+
+        <p>Dictionaries are used to store data values in key:value pairs. A dictionary is a collection which is ordered,
+          changeable and do not allow duplicates. In Python 3.6 and earlier, dictionaries are unordered.</p>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CDA">Dicționar literal (acolade {}) - Dictionary Literals (Curly Braces {})</h2>
+
+      <div class="grid-container">
+        <p>Aceasta este cea mai comună și simplă metodă de a crea un dicționar, prin specificarea directă a perechilor
+          cheie-valoare între acolade.</p>
+
+        <p>This is the most common and straightforward way to create a dictionary by directly specifying key-value pairs
+          within curly braces.</p>
+      </div>
+
+<pre><code><span># Dicționar gol</span>
+dict_gol = {}
+
+<span># Dicționar cu perechi cheie-valoare inițiale</span>
+nume = {"Cristina": 60, "Andrei": 50, "Mihai": 75, "Vasile": 67, "Alexandru": 39, "Elena": 41, "Ioana": 19}
+persoană = {"nume": "Cristina", "vârstă": 50, "oraş": "Severin"}
+print(type(persoană )) <span>==&gt; &lt;class 'dict'></span>
+</code></pre>
+
+      <p>Cheile trebuie să fie obiecte hashabile, cum ar fi numere, șiruri de caractere sau tupluri.<br>
+        The keys must be hashable objects like numbers, strings, or tuples.</p>
+
+      <h3>Atribuirea manuală a cheilor unui dicționar - Assigning keys manually to a dictionar</h3>
+
+<pre><code>persoană = {} <span># Inițializează un dicționar gol</span>
+
+persoană["prenumele"] = "Ana"
+persoană["numele"] = "Florescu"
+persoană["vârstă"] = "31"
+persoană["soț"] = "George"
+persoană["copii"] = ["Dominic", "Maria"]
+persoană["animale"] = {"câine": "Rex", "pisică": "Mona"}
+persoană["ocupaţie"] = "programator"
+print(persoană, "/", type(persoană))
+<span>==&gt; {'prenumele': 'Ana', 'numele': 'Florescu', 'vârstă': '31', 'soț': 'George', 'copii': ['Dominic', 'Maria'], 'animale': {'câine': 'Rex', 'pisică': 'Mona'}, 'ocupaţie': 'programator'} / &lt;class 'dict'></span>
+</code></pre>
+
+      <h3>Adăugarea de chei la un dicționar într-o buclă for - Adding keys to a dictionary within a for loop</h3>
+
+      <div class="grid-container">
+        <p>Atribuire directă: Aceasta este cea mai simplă metodă. Puteți atribui direct o valoare unei noi chei în
+          cadrul buclei. Dacă cheia există deja, valoarea acesteia va fi actualizată.</p>
+
+        <p>Direct Assignment: This is the most straightforward method. You can directly assign a value to a new key
+          within the loop. If the key already exists, its value will be updated.</p>
+      </div>
+
+      <div class="grid-container">
+<pre><code>pătrate = {}
+for intreg in range(1, 10):
+    pătrate[intreg] = intreg**2
+    
+print(pătrate)
+<span>==&gt; {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}</span>
+</code></pre>
+
+<pre><code>produs = {}
+for i in range(3):
+    cheie = f"cheie_{i}"
+    valoare = i * 10
+    produs[cheie] = valoare
+print(produs)
+<span>==&gt; {'cheie_0': 0, 'cheie_1': 10, 'cheie_2': 20}</span>
+</code></pre>
+      </div>
+
+      <div class="grid-container">
+        <p>Metoda update(): permite să adăugați mai multe perechi cheie-valoare simultan sau să actualizați cele
+          existente, prin transmiterea unui alt dicționar sau a unui iterabil de perechi cheie-valoare.</p>
+
+        <p>update() Method: allows you to add multiple key-value pairs at once, or update existing ones, by passing
+          another dictionary or an iterable of key-value pairs.</p>
+      </div>
+
+<pre><code>actualizare = {}
+persoană = [("nume", "Cristina"), ("vârstă", 50), ("oraş", "Severin")]
+for cheie, valoare in persoană:
+    actualizare.update({cheie: valoare})
+print(actualizare) <span>==&gt; {'nume': 'Cristina', 'vârstă': 50, 'oraş': 'Severin'}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Metoda setdefault(): Această metodă vă permite să adăugați o cheie cu o valoare implicită numai dacă cheia nu
+          există deja în dicționar. Dacă cheia există, aceasta returnează valoarea sa curentă fără a o modifica.</p>
+
+        <p>setdefault() Method: This method allows you to add a key with a default value only if the key does not
+          already exist in the dictionary. If the key exists, it returns its current value without modifying it.</p>
+      </div>
+
+<pre><code>fructe = {"măr": 50}
+for i in range(3):
+    cheie = f"element_{i}"
+    valoare_implicită = f"valoare_implicită_{i}"
+    fructe.setdefault(cheie, valoare_implicită)  <span># Aceasta nu va schimba cheie_existentă</span>
+fructe.setdefault("măr", 20)
+print(fructe)
+<span>==&gt; {'măr': 50, 'element_0': 'valoare_implicită_0', 'element_1': 'valoare_implicită_1', 'element_2': 'valoare_implicită_2'}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <ul>
+          <li>Explicație:</li>
+          <li>Sintaxă validă pentru dicționar: Perechile cheie-valoare dintr-un dicționar trebuie să fie incluse între
+            acolade {} și separate prin virgule. Cheile de tip șir de caractere, cum ar fi măr, trebuie să fie incluse
+            între ghilimele.</li>
+
+          <li>Sintaxă validă pentru șiruri f: Șirurile f f"element_{i}" și f"valoare_implicită_{i}" formatează corect
+            cheia și valoarea implicită prin încorporarea variabilei de buclă i în șiruri.</li>
+
+          <li>Metoda setdefault(): Metoda setdefault(cheie, valoare_implicită) verifică dacă cheia există în dicționar.
+            Dacă cheia există, nu se întreprinde nicio acțiune. Dacă cheia nu există, inserează cheia cu valoarea
+            implicită specificată.</li>
+
+          <li>Buclare: Bucla for i in range(3) execută corect blocul de cod inclus de trei ori (for i=0, i=1 și i=2),
+            creând și adăugând noi perechi cheie-valoare în dicționarul fructe.</li>
+        </ul>
+
+        <ul>
+          <li>Explanation:</li>
+          <li>Valid dictionary syntax: Key-value pairs in a dictionary must be enclosed in curly braces {} and separated
+            by commas. String keys, such as măr, must be enclosed in quotes.</li>
+
+          <li>Valid f-string syntax: The f-strings f"element_{i}" and f"valoare_implicită_{i}" correctly format the key
+            and default value by embedding the loop variable i into the strings.</li>
+
+          <li>setdefault() method: The setdefault(key, default_value) method checks if key exists in the dictionary. If
+            the key exists, no action is taken. If the key does not exist, it inserts the key with the specified
+            default_value.</li>
+
+          <li>Looping: The for i in range(3) loop correctly executes the enclosed block of code three times (for i=0,
+            i=1, and i=2), creating and adding new key-value pairs to the fructe dictionary.</li>
+        </ul>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+
+      <h2 id="CDB">Constructorul dict() - dict() Constructor</h2>
+
+      <p>Constructorul dict() poate fi utilizat în mai multe moduri.<br>
+        The dict() constructor can be used in several ways.</p>
+
+<pre><code><span># dicționar gol</span>
+dict()
+
+dict(**kwargs)
+
+dict(mapping, **kwargs)
+
+dict(iterable, **kwargs)
+</code></pre>
+
+
+      <p>Dintr-un iterabil de perechi cheie-valoare (de exemplu, o listă de tupluri).<br>
+        From an Iterable of Key-Value Pairs (e.g., a list of tuples).</p>
+
+      <div class="grid-container">
+<pre><code>dicționar_persoane = dict(Cristi = 40, Andrei = 50, Mihai =75, Vasile= 67, Alex = 39, Elena = 41)
+
+print(dicționar_persoane)
+<span>==&gt; {'Cristi': 40, 'Andrei': 50, 'Mihai': 75, 'Vasile': 67, 'Alex': 39, 'Elena': 41}</span>
+</code></pre>
+
+<pre><code>fructe = [("măr", 50), ("pară", 30), ("cireșă", 35), ("caisă", 25), ("smochină", 15)]
+numără_fructe = dict(fructe)
+
+print(numără_fructe)
+<span>==&gt; {'măr': 50, 'pară': 30, 'cireșă': 35, 'caisă': 25, 'smochină': 15}</span>
+</code></pre>
+      </div>
+
+      <p><b>dict() & zip()</b></p>
+
+      <div class="grid-container">
+<pre><code>fructe = ["măr", "pară", "cireșă", "caisă", "smochină"]
+cantități = [50, 25, 15, 40, 35]
+prețuri = [1.69, 1.50, 2.12, 2.00, 1.70]
+
+zipped = zip(fructe, cantități, prețuri)
+print(type(zipped), "/", zipped)
+<span>==&gt; &lt;class 'zip'> / &lt;zip object at 0x00000221C2709B80></span>
+print(list(zipped))
+<span>==&gt; [('măr', 50, 1.69), ('pară', 25, 1.5), ('cireșă', 15, 2.12), ('caisă', 40, 2.0), ('smochină', 35, 1.7)]</span>
+</code></pre>
+
+<pre><code>fructe = ["măr", "pară", "cireșă", "caisă", "smochină"]
+cantități = [50, 25, 15, 40, 35]
+prețuri = [1.69, 1.50, 2.12, 2.00, 1.70]
+
+fructe_cantități = dict(zip(fructe, cantități))
+fructe_prețuri = dict(zip(fructe, prețuri))
+print(fructe_cantități) <span>==&gt; {'măr': 50, 'pară': 25, 'cireșă': 15, 'caisă': 40, 'smochină': 35}</span>
+print(fructe_prețuri)   <span>==&gt; {'măr': 1.69, 'pară': 1.5, 'cireșă': 2.12, 'caisă': 2.0, 'smochină': 1.7}</span>
+</code></pre>
+      </div>
+
+      <p><b>dict(), zip(), map() and lambda</b></p>
+
+      <div class="grid-container">
+        <div>
+          <p>Metoda directă - Direct Method</p>
+
+  <pre><code>numere = [1, 2, 3, 4]
+
+<span># Create a dictionary of {number: square}</span>
+dicționar_nou = dict(map(lambda x: (x, x**2), numere))
+
+print(dicționar_nou)
+<span>==&gt; {1: 1, 2: 4, 3: 9, 4: 16}</span>
+</code></pre>
+        </div>
+
+        <div>
+          <p>Combinare a două liste - Pairing Two Lists</p>
+
+<pre><code>chei = ['a', 'b', 'c']
+valori = [1, 2, 3]
+
+<span># Dublează valorile în timp ce creezi dicționarul</span>
+dicționar_nou = dict(zip(chei, map(lambda x: x * 2, valori)))
+print(dicționar_nou) <span>==&gt; {'a': 2, 'b': 4, 'c': 6}</span>
+</code></pre>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <p>Deși utilizarea funcțiilor lambda funcționează bine, construcțiile de tip dictionary comprehension sunt
+          preferate. Acestea sunt mai rapide și mai ușor de citit.</p>
+
+        <p>Although using lambda functions works well, dictionary comprehensions are preferred. They are faster and
+          easier to read.</p>
+      </div>
+
+
+      <p>Dicţionar Comprehension - Dictionary Comprehension.</p>
+
+      <div class="grid-container">
+        <p>Similar cu înțelegerea listelor (comprehensions), înțelegerea dicționarelor oferă o modalitate concisă de a
+          crea dicționare din iterabile existente, pe baza unei logici specific.</p>
+
+        <p>Similar to list comprehensions, dictionary comprehensions provide a concise way to create dictionaries from
+          existing iterables based on a specific logic.</p>
+      </div>
+
+      <div class="grid-container">
+<pre><code><span># Creați un dicționar din două liste folosind zip()</span>
+chei = ["a", "b", "c"]
+valori = [1, 2, 3]
+dicționar = {cheie: valoare for cheie, valoare in zip(chei, valori)}
+print(dicționar) <span>==&gt; {'a': 1, 'b': 2, 'c': 3}</span>
+</code></pre>
+
+<pre><code><span># Creați un dicționar cu numere la pătrat</span>
+
+pătrate = {x: x**2 for x in range(5)}
+
+print(pătrate) <span>==&gt; {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</span>
+</code></pre>
+      </div>
+
+      <p>Din argumentele Keyword - From Keyword Arguments.</p>
+
+<pre><code>datele = dict(nume="Cristina", profesia="Pensionară")
+print(datele) <span>==&gt; {'nume': 'Cristina', 'profesia': 'Pensionară'}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Caracteristici cheie ale dicționarelor:</dt>
+          <dd>Cheile trebuie să fie unice și imuabile: Tipurile comune de chei includ șiruri de caractere, numere și
+            tupluri. Listele și alte dicționare nu pot fi utilizate ca chei.</dd>
+          <dd>Valorile pot fi de orice tip de date: Valorile pot fi șiruri de caractere, numere, liste, alte dicționare
+            etc.</dd>
+          <dd>Dicționarele sunt mutabile: Puteți adăuga, elimina sau modifica perechi cheie-valoare după creare.</dd>
+          <dd>Dicționarele sunt ordonate (de la Python 3.7+): Ordinea inserării este păstrată.</dd>
+        </dl>
+
+
+        <dl>
+          <dt>Key Characteristics of Dictionaries:</dt>
+          <dd>Keys must be unique and immutable: Common key types include strings, numbers, and tuples. Lists and other
+            dictionaries cannot be used as keys.</dd>
+          <dd>Values can be of any data type: Values can be strings, numbers, lists, other dictionaries, etc.</dd>
+          <dd>Dictionaries are mutable: You can add, remove, or modify key-value pairs after creation.</dd>
+          <dd>Dictionaries are ordered (from Python 3.7+): The order of insertion is preserved.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CDC">Metoda clasei .fromkeys() - .fromkeys() Class Method</h2>
+
+      <p>Sintaxă: dict.fromkeys(iterable, value=None)</p>
+
+      <div class="grid-container">
+        <div>
+          <p>Metoda dict.fromkeys() din Python este utilizată pentru a crea un nou dicționar dintr-un iterabil de chei
+            și o valoare opțională.</p>
+
+          <dl>
+            <dt>Parametri:</dt>
+            <dd>iterabil: Un argument obligatoriu care specifică cheile noului dicționar. Acesta poate fi orice obiect
+              iterabil, cum ar fi o listă, un tuplu, un set sau un șir de caractere.</dd>
+            <dd>valoare: Un argument opțional care specifică valoarea care va fi atribuită tuturor cheilor din noul
+              dicționar. Dacă acest argument nu este furnizat, valoarea implicită atribuită fiecărei chei va fi None.
+            </dd>
+            <dt>Funcționalitate:</dt>
+            <dd>Metoda fromkeys() iterează prin iterabilul furnizat și creează un nou dicționar în care fiecare element
+              din iterabil devine o cheie. Fiecăreia dintre aceste chei i se atribuie apoi valoarea furnizată în al
+              doilea argument. Dacă nu este dată nicio valoare, tuturor cheilor li se atribuie None.</dd>
+          </dl>
+        </div>
+
+        <div>
+          <p>The dict.fromkeys() method in Python is used to create a new dictionary from an iterable of keys and an
+            optional value.</p>
+
+          <dl>
+            <dt>Parameters:
+            <dd>iterable: A required argument that specifies the keys of the new dictionary. This can be any iterable
+              object like a list, tuple, set, or string.</dd>
+            <dd>value: An optional argument that specifies the value to be assigned to all keys in the new dictionary.
+              If this argument is not provided, the default value assigned to each key will be None.</dd>
+            <dt>Functionality:</dt>
+            <dd>The fromkeys() method iterates through the provided iterable and creates a new dictionary where each
+              element from the iterable becomes a key. Each of these keys is then assigned the value provided in the
+              second argument. If no value is given, all keys are assigned None.</dd>
+          </dl>
+        </div>
+      </div>
+
+<pre><code><span># Creați un dicționar cu chei dintr-o listă și o valoare implicită de None</span>
+lista_cheilor = ["măr", "pară", "cireșă", "caisă", "smochină"]
+dicţionar_none = dict.fromkeys(lista_cheilor)
+print(f"Dicţionar cu valori nule: {dicţionar_none}")
+<span>==&gt; Dicţionar cu valori nule: {'măr': None, 'pară': None, 'cireșă': None, 'caisă': None, 'smochină': None}</span>
+
+<span># Creați un dicționar cu chei dintr-un tuplu și o valoare specifică</span>
+chei_culori = ('verede', 'galbenă', 'roșie', 'galbenă', "roz")
+<span># Elimină duplicatele</span>
+dicţionar_culoare = dict.fromkeys(chei_culori, "culoare")
+print(f"Dicţionar cu valori culoare: {dicţionar_culoare}")
+<span>==&gt; Dicţionar cu valori culoare: {'verede': 'culoare', 'galbenă': 'culoare', 'roșie': 'culoare', 'roz': 'culoare'}</span>
+
+<span># Creați un dicționar dintr-un șir de caractere (fiecare caracter devine o cheie)</span>
+șirul_de_dicte = dict.fromkeys("python", 0)
+print(f"Dicţionar cu valori zero: {șirul_de_dicte}")
+<span>==&gt; Dicţionar cu valori zero: {'p': 0, 'y': 0, 't': 0, 'h': 0, 'o': 0, 'n': 0}</span>
+</code></pre>
+
+      <p>Atenție la obiectele mutabile - Attention to Mutable Object</p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Notă importantă privind valorile mutabile.</dt>
+          <dd>Atunci când se utilizează un obiect mutabil (cum ar fi o listă sau un dicționar) ca valoare în fromkeys(),
+            toate cheile din noul dicționar vor face referire la același obiect mutabil. Modificarea acestui obiect
+            printr-o cheie va afecta valoarea asociată cu toate celelalte chei. Pentru a evita acest lucru și a vă
+            asigura că fiecare cheie are propriul obiect mutabil independent, ar trebui utilizată o înțelegere
+            (comprehension) sau o buclă pentru a crea dicționarul.</dd>
+        </dl>
+
+        <dl>
+          <dt>Important Note on Mutable Values.</dt>
+          <dd>When using a mutable object (like a list or dictionary) as the value in fromkeys(), all keys in the new
+            dictionary will reference the same mutable object. Modifying this object through one key will affect the
+            value associated with all other keys. To avoid this and ensure each key has its own independent mutable
+            object, a dictionary comprehension or a loop should be used to create the dictionary.</dd>
+        </dl>
+      </div>
+
+
+<pre><code><span># Crearea unui dicționar cu liste goale pentru gestionarea mai multor chei</span>
+chei = ["dimineață", "după-amiază"]
+programare = dict.fromkeys(chei, [])
+
+<span># Adăugarea unei activități la cheia "după-amiază" modifică ambele chei</span>
+programare["după-amiază"].append("studiu")
+
+print(programare)
+
+<span>==&gt; {'dimineață': ['studiu'], 'după-amiază': ['studiu']}</span>
+</code></pre>
+
+
+<pre><code>chei = ["dimineață", "după-amiază"]
+
+programare = {cheie: [] for cheie in chei}
+
+<span># Modifică numai cheia "după-amiază" </span>
+programare["după-amiază"].append("studiu")
+
+print(programare)
+<span>==&gt; {'dimineață': [], 'după-amiază': ['studiu']}</span>
+</code></pre>
+
+<pre><code>
+chei = ["dimineață", "după-amiază"]
+programare = {}
+
+for cheie in chei:
+    programare[cheie] = []
+
+<span># Adăuga activități la chei în mod independent</span>
+programare["după-amiază"].append("studiu")
+print(programare)
+<span>==&gt; {'dimineață': [], 'după-amiază': ['studiu']}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CDE">Dicționar din Diferența Simetrică - Dictionary from Symmetric Difference</h2>
+
+      <p><a href="https://www.w3schools.com/python/ref_set_symmetric_difference.asp" target="_blank"
+          rel="noopener">Python Set symmetric_difference() Method</a></p>
+
+      <div class="grid-container">
+        <div>
+          <p>În Python, diferența simetrică a două mulțimi este o mulțime nouă ce conține toate elementele prezente în
+            oricare dintre cele două mulțimi, dar nu în ambele. În esență, aceasta elimină intersecția (elementele
+            comune) și păstrează elementele unice din fiecare mulțime.</p>
+
+          <p>Metoda .symmetric_difference() permite ca argumentul să fie orice obiect iterabil (precum o listă, un tuplu
+            sau un dicționar). Python va converti automat acel obiect iterabil într-o mulțime, în fundal, pentru a
+            efectua comparația.</p>
+
+          <p>Așadar, pentru a obține un dicționar nou care să conțină perechile cheie-valoare ale căror chei se află în
+            diferența simetrică a cheilor dicționarelor originale, puteți itera prin chei unice și puteți recupera
+            valorile corespunzătoare din dicționarele originale.</p>
+        </div>
+
+        <div>
+          <p>In Python, the symmetric difference of two sets is a new set containing all elements that are present in
+            either of the sets, but not in both. Essentially, it removes the intersection (common elements) and keeps
+            the unique elements from each set.</p>
+
+          <p>The .symmetric_difference() Method allows the argument to be any iterable (like a list, tuple, or
+            dictionary). Python will automatically convert that iterable into a set behind the scenes to perform the
+            comparison.</p>
+
+          <p>Therefore, to obtain a new dictionary containing the key-value pairs whose keys are in the symmetric
+            difference of the original dictionaries' keys, you can iterate through the unique keys and retrieve the
+            corresponding values from the original dictionaries.</p>
+        </div>
+      </div>
+
+<pre><code>dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict2 = {'c': 4, 'd': 5, 'e': 6}
+
+chei_in_a = set(dict1.keys())
+chei_in_b = set(dict2.keys())
+chei_unice = chei_in_a.symmetric_difference(chei_in_b)
+
+symmetric_diff_dict = {}
+for cheie in chei_unice:
+    if cheie in dict1:
+        symmetric_diff_dict[cheie] = dict1[cheie]
+    elif cheie in dict2:
+        symmetric_diff_dict[cheie] = dict2[cheie]
+
+print(symmetric_diff_dict) <span>==&gt; {'b': 2, 'd': 5, 'e': 6, 'a': 1}</span>
+</code></pre>
+
+      <p>Identifică dicționarul din care inițial provin cheile unice - Find which dictionary the unique keys originally
+        came from.</p>
+
+<pre><code>dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict2 = {'c': 4, 'd': 5, 'e': 6}
+
+<span># Identifică cheile unice pentru fiecare parte</span>
+în_dict1 = dict1.keys() - dict2.keys()
+în_dict2 = dict2.keys() - dict1.keys()
+
+<span># Asociază cheile unice cu etichetele sursă corespunzătoare</span>
+originea_cheilor = {
+    **{k: 'dict1' for k in în_dict1},
+    **{k: 'dict2' for k in în_dict2}
+}
+
+print(originea_cheilor) <span>==&gt; {'b': 'dict1', 'a': 'dict1', 'd': 'dict2', 'e': 'dict2'}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <ul>
+          <li>Condiții pentru următoarele două exemple:</li>
+          <li>Pentru a utiliza .symmetric_difference, una dintre vizualizările cheie trebuie convertită într-o mulțime.
+          </li>
+          <li>Trebuie să convertiți doar primul obiect, metoda acceptă ca argument vizualizarea obișnuită dict_keys a
+            lui dict2.</li>
+        </ul>
+
+        <ul>
+          <li>Conditions for the next two examples:</li>
+          <li>To use .symmetric_difference, one of the key views must be converted into a set.</li>
+          <li>You only need to convert the first object, the method accepts the regular dict_keys view of dict2 as its
+            argument.</li>
+        </ul>
+      </div>
+
+      <p>Compunere condițională de dicționar (pe un singur rând) - Conditional Dict Comprehension (Single Line)</p>
+
+<pre><code>dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict2 = {'c': 4, 'd': 5, 'e': 6}
+set_1 = set(dict1.keys())
+
+<span># Iterarea prin diferența simetrică a cheilor</span>
+originea_cheilor = {k: ('dict1' if k in dict1 else 'dict2') for k in set_1.symmetric_difference(dict2.keys())}
+print(originea_cheilor) <span>==&gt; {'b': 'dict1', 'e': 'dict2', 'a': 'dict1', 'd': 'dict2'}</span>
+</code></pre>
+
+      <p>Păstrarea valorilor originale alături de origine - Preserving Original Values alongside the Origin.</p>
+
+<pre><code>dict1 = {'a': 1, 'b': 2, 'c': 3}
+dict2 = {'c': 4, 'd': 5, 'e': 6}
+set_1 = set(dict1.keys())
+
+<span># Stochează atât valoarea, cât și numele sursei sub formă de tuplu</span>
+cheie_valoare_origine = {
+    k: (dict1[k], 'dict1') if k in dict1 else (dict2[k], 'dict2') 
+    for k in set_1.symmetric_difference(dict2.keys())
+}
+
+print(cheie_valoare_origine)
+<span>==&gt; {'e': (6, 'dict2'), 'd': (5, 'dict2'), 'b': (2, 'dict1'), 'a': (1, 'dict1')}</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+      <h2 id="CDF">Adăugare, actualizare, implicit în dicționar - Add, update, default to Dictionary</h2>
+
+      <div class="grid-container">
+        <p>Utilizarea notației parantezelor pătrate (atribuire): Aceasta este cea mai comună și simplă metodă pentru
+          adăugarea unei singure perechi cheie-valoare. Dacă cheia există deja, valoarea acesteia va fi actualizată; în
+          caz contrar, se adaugă o nouă pereche cheie-valoare.</p>
+
+        <p>
+          Using Square Bracket Notation (Assignment): This is the most common and straightforward method for adding a
+          single key-value pair. If the key already exists, its value will be updated; otherwise, a new key-value pair
+          is added.
+        </p>
+      </div>
+
+<pre><code>persoană = {"nume":"Virgil"}
+
+<span># Adaugă o nouă pereche cheie-valoare</span>
+persoană["vârstă"] = 30
+print(persoană) <span>==&gt; {'nume': 'Virgil', 'vârstă': 30}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Utilizarea metodei update(): Această metodă permite adăugarea mai multor perechi cheie-valoare simultan sau
+          îmbinarea unui alt dicționar cu unul existent.</p>
+
+        <p>Using the update() Method: This method allows adding multiple key-value pairs at once or merging another
+          dictionary into an existing one.</p>
+      </div>
+
+<pre><code>maşină = {"marca": "Dacia"}
+culoare = {"culoare": "roşu"}
+
+<span># Adaugă mai multe articole</span>
+maşină.update({"model": "Duster", "anul": 2006})
+maşină.update(culoare)
+print(maşină) <span>==&gt; {'marca': 'Dacia', 'model': 'Duster', 'anul': 2006, 'culoare': 'roşu'}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>Utilizarea metodei setdefault(): Această metodă adaugă o pereche cheie-valoare numai dacă cheia nu există
+          deja în dicționar. Dacă cheia există, returnează valoarea curentă asociată acelei chei fără a o modifica.</p>
+
+        <p>Using the setdefault() Method: This method adds a key-value pair only if the key does not already exist in
+          the dictionary. If the key exists, it returns the current value associated with that key without modifying it.
+        </p>
+      </div>
+
+<pre><code>oraşe = {"oraş": "Turnu Severin"}
+
+<span># Adaugă dacă populația nu există</span>
+oraşe.setdefault("populație", 79865)
+
+<span># oraș există deja, nicio modificare</span>
+oraşe.setdefault("oraş", "Craiova")
+print(oraşe) <span>==&gt; {'oraş': 'Turnu Severin', 'populație': 79865}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Dicționar despachetare (operator cu asterisc dublu **)</dt>
+          <dd>Această metodă creează un dicționar nou care conține perechile cheie-valoare combinate. Dacă există chei
+            duplicate, valoarea din dicționarul din dreapta, în ordinea de despachetare, va suprascrie valorile
+            anterioare.</dd>
+        </dl>
+
+        <dl>
+          <dt>Dictionary Unpacking (Double Asterisk Operator **)</dt>
+          <dd>This method creates a new dictionary containing the combined key-value pairs. If duplicate keys exist, the
+            value from the rightmost dictionary in the unpacking order will overwrite previous values.</dd>
+        </dl>
+      </div>
+
+<pre><code>dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+dict3 = {'b': 5, 'e': 6}
+
+dicționare_combinate = {**dict1, **dict2, **dict3}
+print(dicționare_combinate) <span>==&gt; {'a': 1, 'b': 5, 'c': 3, 'd': 4, 'e': 6}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Metoda update()</dt>
+          <dd>Metoda update() modifică un dicționar existent prin adăugarea de perechi cheie-valoare dintr-un alt
+            dicționar sau dintr-un iterabil de perechi cheie-valoare. Dacă există chei duplicate, valorile din
+            dicționarul actualizat suprascriu valorile originale.</dd>
+        </dl>
+
+        <dl>
+          <dt>update() Method</dt>
+          <dd>The update() method modifies an existing dictionary by adding key-value pairs from another dictionary or
+            an iterable of key-value pairs. If duplicate keys exist, the values from the updated dictionary overwrite
+            the original values.</dd>
+        </dl>
+      </div>
+
+<pre><code>dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+dict3 = {'b': 5, 'e': 6}
+
+dict1.update(dict2)
+dict1.update(dict3)
+print(dict1)  <span>==&gt; {'a': 1, 'b': 5, 'c': 3, 'd': 4, 'e': 6}</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Operator de îmbinare (|) - Python 3.9+</dt>
+          <dd>Introdus în Python 3.9, operatorul | oferă o modalitate concisă de a îmbina dicționarele, creând un
+            dicționar nou fără a modifica originalele. Similar despachetării, valorile din dreapta le suprascriu pe cele
+            anterioare pentru cheile duplicate.</dd>
+        </dl>
+
+        <dl>
+          <dt>Merge Operator (|) - Python 3.9+</dt>
+          <dd>Introduced in Python 3.9, the | operator provides a concise way to merge dictionaries, creating a new
+            dictionary without modifying the originals. Similar to unpacking, rightmost values overwrite previous ones
+            for duplicate keys.</dd>
+        </dl>
+      </div>
+
+<pre><code>dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+dict3 = {'b': 5, 'e': 6}
+
+merge_dict = dict1 | dict2 | dict3
+print(merge_dict) <span>==&gt; {'a': 1, 'b': 5, 'c': 3, 'd': 4, 'e': 6}</span>  
+</code></pre>
+
+      <div class="grid-container">
+        <div>
+          <p>Operatorul |= din Python, introdus în versiunea 3.9, oferă o modalitate concisă de a îmbina dicționarele in
+            pe loc. Aceasta înseamnă că modifică direct dicționarul din partea stângă a operatorului, în loc să creeze
+            un dicționar nou.</p>
+
+          <p>Cum funcționează: Când utilizați dict1 |= dict2, perechile cheie-valoare din dict2 sunt îmbinate în dict1.
+            Dacă există o cheie în ambele dicționare, valoarea din dict2 (operandul din dreapta) va suprascrie valoarea
+            din dict1. Dacă o cheie există doar în dict2, aceasta va fi adăugată la dict1.</p>
+          <p>Alternativă la update(): Oferă o sintaxă mai compactă pentru aceeași funcționalitate ca dict.update().</p>
+        </div>
+
+        <div>
+          <p>The |= operator in Python, introduced in version 3.9, provides a concise way to merge dictionaries
+            in-place. This means it modifies the dictionary on the left side of the operator directly, rather than
+            creating a new dictionary.</p>
+
+          <p>How it works: When you use dict1 |= dict2, the key-value pairs from dict2 are merged into dict1. If a key
+            exists in both dictionaries, the value from dict2 (the right-hand operand) will overwrite the value in
+            dict1. If a key exists only in dict2, it will be added to dict1.</p>
+
+          <p>Alternative to update(): It provides a more compact syntax for the same functionality as dict.update().</p>
+        </div>
+      </div>
+
+<pre><code>dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+
+dict1 |= dict2
+
+print(dict1) <span>==&gt; {'a': 1, 'b': 3, 'c': 4}</span>
+</code></pre>
+
+      <p><a href="https://docs.python.org/3/library/collections.html#chainmap-objects" target="_blank"
+          rel="noopener">collections — Container datatypes</a></p>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Modulul ChainMap din colecții.</dt>
+          <dd>ChainMap oferă o modalitate de a combina mai multe dicționare într-o singură vizualizare actualizabilă. Nu
+            creează un dicționar nou, ci mai degrabă un lanț în care căutările au loc în ordinea dicționarelor
+            furnizate.</dd>
+          <dd>Modificările (adăugarea, actualizarea sau ștergerea unei chei) vizează întotdeauna doar primul dicționar
+            din lanț.</dd>
+          <dd>Deoarece conține referințe la dicționarele subiacente, orice modificare directă adusă acelor dicționare
+            sursă se reflectă instantaneu în ChainMap.</dd>
+        </dl>
+
+        <dl>
+          <dt>ChainMap from collections Module.</dt>
+          <dd>ChainMap provides a way to combine multiple dictionaries into a single, updatable view. It doesn't create
+            a new dictionary but rather a "chain" where lookups happen in order of the provided dictionaries.</dd>
+          <dd>Mutating operations (adding, updating, or deleting a key) always target only the first dictionary in the
+            chain</dd>
+          <dd>Because it holds references to the underlying dictionaries, any direct change made to those source
+            dictionaries instantly reflects in the ChainMap.</dd>
+        </dl>
+      </div>
+
+
+<pre><code>from collections import ChainMap
+
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+dict3 = {'b': 5, 'e': 6}
+
+<span># Ordinea contează pentru căutări</span>
+îmbinare_chainmap = ChainMap(dict1, dict3, dict2)
+print(îmbinare_chainmap) <span>==&gt; ChainMap({'a': 1, 'b': 2}, {'b': 5, 'e': 6}, {'c': 3, 'd': 4})</span>
+
+<span># Accesează vlaoarea lui b</span>
+print(f"Valoarea lui b este {îmbinare_chainmap['b']}") <span>==> Valoarea lui b este 2</span>
+print(f"Valoarea lui b din îmbinare_chainmap este egală cu valoarea lui b din dict3: {îmbinare_chainmap['b'] == dict3['b']}")
+<span>==&gt; Valoarea lui b din îmbinare_chainmap este egală cu valoarea lui b din dict3: False</span>
+</code></pre>
+
+
+<pre><code>from collections import ChainMap
+
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+dict3 = {'b': 5, 'e': 6}
+
+<span># Ordinea contează pentru căutări</span>
+îmbinare_chainmap = ChainMap(dict3, dict2, dict1)
+print(îmbinare_chainmap) <span>==&gt; ChainMap({'b': 5, 'e': 6}, {'c': 3, 'd': 4}, {'a': 1, 'b': 2})</span>
+
+<span># Accesează valoarea lui b</span>
+print(f"Valoarea lui b este {îmbinare_chainmap['b']}") <span>==> Valoarea lui b este 5</span>
+print(f"Valoarea lui b din îmbinare_chainmap este egală cu valoarea lui b din dict3: {îmbinare_chainmap['b'] == dict3['b']}")
+<span>==&gt; Valoarea lui b din îmbinare_chainmap este egală cu valoarea lui b din dict3: True</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Cazuri de utilizare comune.</dt>
+          <dd>Gestionarea setărilor implicite, a celor specifice mediului de lucru și a celor din linia de comandă,
+            situație în care opțiunile specificate de utilizator prevalează asupra fișierelor de configurare, iar
+            acestea, la rândul lor, prevalează asupra setărilor globale implicite ale aplicației. Gestionarea domeniilor
+            de vizibilitate imbricate (precum variabilele locale față de cele globale), unde operațiunile de căutare
+            verifică mai întâi domeniul interior înainte de a trece la domeniile exterioare</dd>
+        </dl>
+
+        <dl>
+          <dt>Common Use Cases.</dt>
+          <dd>Managing Configuration Contexts: Managing default, environment, and command-line settings where user flags
+            override configuration files, which in turn override global application defaults. Programming Language
+            Interpreters: Maintaining nested scopes (like local vs. global variables) where lookups check the inner
+            scope first before escalating to outer scopes</dd>
+        </dl>
+      </div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/rectangleGPS.svg" type="image/svg+xml">
+    <title>Gazeta Python Ştiri-News</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f7f6; color: #333; }
+        header { background-color: #2c3e50; color: white; padding: 2rem; text-align: center; }
+        nav { margin-top: 1rem; font-size: 1.1rem; }
+        nav a { color: #ecf0f1; text-decoration: none; margin: 0 10px; }
+        nav a:hover { text-decoration: underline; }
+        main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .news-card { background: white; padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .date { color: #7f8c8d; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; }
+        h2 { color: #2c3e50; margin: 0.5rem 0; }
+        footer { text-align: center; padding: 2rem; color: #7f8c8d; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Gazeta Python Ştiri - Python News Gazette</h1>
+        <nav>
+            <a href="index.html" target="_blank" rel="noopener">Cuprins</a> | 
+            <a href="stiri.html" target="_blank" rel="noopener" style="font-weight: bold; color: #3498db;">Stiri</a> | 
+            <a href="despre.html" target="_blank" rel="noopener">Despre</a> | 
+            <a href="donare.html" target="_blank" rel="noopener" style="font-weight: bold; color: #2cb67d;">Donare</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- News Entry 1 -->
+        <div class="news-card">
+            <span class="date">May 2024</span>
+            <h2>Project Gazeta Python Begins</h2>
+            <p>După ani de studiu intensiv al limbajului Python și de însușire a elementelor structurale esențiale pentru crearea paginilor web în HTML, a fost lansat cadrul oficial pentru Gazeta Python. Fișierele sunt găzduite în condiții de siguranță și sunt gata pentru a fi puse la dispoziția cursanților din întreaga lume.</p>
+            <p>After years of intensive Python study and learning the structural essentials of HTML web building, the official framework for Gazeta Python has been launched. The files are securely hosted and ready to share with students worldwide.</p>
+        </div>
+
+        <!-- News Entry 2 -->
+        <div class="news-card">
+            <span class="date">November 2026</span>
+            <h2>Automation & Form Integration Complete!</h2>
+            <p>Au sosit îmbunătățiri majore la Gazeta Python! Am integrat oficial <strong>GitHub Desktop</strong> pentru copii de rezervă securizate și continue în cloud, am adăugat un contor de vizitatori în timp real și am lansat un sistem prin care cursanții ne pot oferi feedback direct, folosind Netlify Forms. Mă puteți contacta în partea de jos a paginii principale!</p>
+            <p>Big upgrades have landed at Gazeta Python! We have officially integrated <strong>GitHub Desktop</strong> for continuous secure cloud backups, deployed a live visitor counter badge, and launched our direct student feedback system powered by Netlify Forms. Reach out to me at the bottom of the home page!</p>
+        </div>
+    </main>
+
+    <footer>
+      &copy; <span id="year-picior"></span> Gazeta Python.
+      <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+      </address>
+    </footer>
+  <script src="JS/primulGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+
+
+</body>
+</html>

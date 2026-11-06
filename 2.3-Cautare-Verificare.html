@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/main-style.css">
+
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 2.3 Searcing and Checking</title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-1 navigare">
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                        <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                        <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                        <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-1"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaT.svg" alt="T" class="logo">
+                    <h1>2.0 Tipuri Text-Text Type</h1>
+                </div>
+            </div>
+
+            <div class="second-empty-1-1"></div>
+
+            <div class="subtitlu-1-1">
+                <div class="grid-cell">
+                    <h2>2.3 Căutare și verificare-Searching and checking</h2>
+                </div>
+            </div>
+
+            <div class="third-empty-1-1"></div>
+
+            <div class="ro-en-1-1 ro-en">
+                <ul>
+                    <li>În acest capitol veți studia:</li>
+                    <li><a href="#EW">.endswith(suffix[, start[, end]])</a></li>
+                    <li><a href="#SW">.startswith(prefix[, start[, end]])</a></li>
+                    <li><a href="#AN">.isalnum()</a></li>
+                    <li><a href="#AL">.isalpha()</a></li>
+                    <li><a href="#AS">.isascii()</a></li>
+                    <li><a href="#DL">.isdecimal()</a></li>
+                    <li><a href="#DT">.isdigit()</a></li>
+                    <li><a href="#DF">.isidentifier()</a></li>
+                    <li><a href="#KW">.iskeyword()</a></li>
+                    <li><a href="#LR">.islower()</a></li>
+                    <li><a href="#UR">.isupper()</a></li>
+                    <li><a href="#NC">.isnumeric()</a></li>
+                    <li><a href="#PE">.isprintable()</a></li>
+                    <li><a href="#SE">.isspace()</a></li>
+                    <li><a href="#TE">.istitle()</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="forth-empty-1-1"></div>
+
+        <div class="contents-1-1">
+
+            <p><a href="https://www.w3schools.com/python/python_ref_string.asp" target="_blank" rel="noopener">Python
+                    String
+                    Methods</a></p>
+
+            <div class="grid-container">
+                <p>Python oferă mai multe metode pentru căutarea în șiruri de caractere. Alegerea metodei depinde de
+                    cerințele specifice ale căutării, cum ar fi dacă trebuie să verificați existența, să găsiți indexul
+                    unui subșir sau să efectuați potriviri de tipare mai complexe.</p>
+                <p>Python provides several methods for searching within strings. The choice of method depends on the
+                    specific requirements of the search, such as whether you need to check for existence, find the index
+                    of a substring, or perform more complex pattern matching.</p>
+            </div>
+
+            <h2 id="EW">.endswith(suffix[, start[, end]])</h2>
+
+            <p>Sintaxă: şir.endswith(suffix[, start[, end]])</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_endswith.asp" target="_blank" rel="noopener">Python
+                    String
+                    endswith() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Verifică dacă șirul de caractere se termină cu sufixul specificat.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>sufix: Acesta este șirul sau un tuplu de șiruri cu care doriți să verificați dacă șirul
+                            original se termină.</dd>
+                        <dd>start (opțional): Un număr întreg care specifică indicele de început de unde începe căutarea
+                            sufixului.</dd>
+                        <dd>end (opțional): Un număr întreg care specifică indicele de sfârșit înaintea căruia se
+                            termină căutarea sufixului.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>
+                            <dl>
+                                <dt>Metoda endswith() returnează o valoare booleană:</dt>
+                                <dd>True dacă șirul (sau un subșir specificat) se termină cu sufixul.</dd>
+                                <dd>False în caz contrar.</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>Checks if the string ends with the specified suffix.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>suffix: This is the string or a tuple of strings that you want to check if the original
+                            string ends with.</dd>
+                        <dd>start (optional): An integer specifying the starting index from where the search for the
+                            suffix begins.</dd>
+                        <dd>end (optional): An integer specifying the ending index before which the search for the
+                            suffix ends.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>
+                            <dl>
+                                <dt>The endswith() method returns a boolean value:</dt>
+                                <dd>True if the string (or a specified substring) ends with the suffix.</dd>
+                                <dd>False otherwise.</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>șir = "Salut, Lume!"
+rezultat_1 = șir.endswith("Lume!")
+rezultat_2 = șir.endswith("lume!") <span># Sensibilitate la majuscule/minuscule</span>
+
+print(f"Se termină cu 'Lume!': {rezultat_1}") <span>==> True</span>
+print(f"Se termină cu 'lume!': {rezultat_2}") <span>==> False</span>
+</code></pre>
+
+<pre><code><span># parametrii de început și de sfârșit</span>
+text = "Python Programare"
+rezultat1 = text.endswith("gram", 7, 14) <span># Verifică "Program"</span>
+rezultat2 = text.endswith("mare", 7) <span># Verifică de la indexul 7 până la sfârșit</span>
+
+print(f"Se termină cu 'gram' în subșirul {text[7: 14]}: {rezultat1}")   <span>==> True</span>
+print(f"Se termină cu 'mare' în subșirul de la indexul 7: {rezultat2}") <span>==> True</span>
+</code></pre>
+
+<pre><code><span># sufixe multiple (tuplu)</span>
+nume_fișier = "imagine.png"
+rezultat = nume_fișier.endswith((".jpg", ".gif", ".png"))
+
+print(f"Se termină cu oricare dintre extensiile de imagine: {rezultat}") <span>==> True</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="SW">.startswith(prefix[, start[, end]])</h2>
+
+            <p>Sintaxă: şir.startswith(prefix[, start[, end]])</p>
+
+
+            <p><a href="https://www.w3schools.com/python/ref_string_startswith.asp" target="_blank"
+                    rel="noopener">Python String
+                    startswith() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Verifică dacă șirul începe cu prefixul specificat.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>prefix: Acesta este șirul sau un tuplu de șiruri cu care se verifică dacă șirul începe. Dacă
+                            este furnizat un tuplu, metoda returnează True dacă șirul începe cu oricare dintre prefixele
+                            din tuplu.</dd>
+                        <dd>start (opțional): Un număr întreg care specifică poziția de început în șir unde ar trebui să
+                            înceapă căutarea prefixului. Implicit este 0 (începutul șirului).</dd>
+                        <dd>end (opțional): Un număr întreg care specifică poziția de sfârșit în șir unde ar trebui să
+                            se termine căutarea prefixului. Implicit este lungimea șirului.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>
+                            <dl>
+                                <dt>Metoda startswith() returnează o valoare booleană:</dt>
+                                <dd>True dacă șirul (sau porțiunea specificată a șirului) începe cu prefixul dat.</dd>
+                                <dd>False în caz contrar.</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>Checks if the string starts with the specified prefix.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>prefix: This is the string or a tuple of strings to check if the string starts with. If a
+                            tuple is provided, the method returns True if the string starts with any of the prefixes in
+                            the tuple.</dd>
+                        <dd>start (optional): An integer specifying the starting position in the string where the search
+                            for the prefix should begin. The default is 0 (the beginning of the string).</dd>
+                        <dd>end (optional): An integer specifying the ending position in the string where the search for
+                            the prefix should end. The default is the length of the string.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>
+                            <dl>
+                                <dt>The startswith() method returns a boolean value:</dt>
+                                <dd>True if the string (or the specified slice of the string) starts with the given
+                                    prefix.</dd>
+                                <dd>False otherwise.</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>șir = "Salut, lume Python!"
+
+<span># Verifică dacă șirul începe cu un singur prefix</span>
+print(șir.startswith("Salut")) <span>==> True</span>
+print(șir.startswith("Salve")) <span>==> False</span> 
+
+<span># Verificați dacă șirul începe cu oricare dintre mai multe prefixe (folosind un tuplu)</span>
+print(șir.startswith(("Salve", "Salut"))) <span>==> True</span>
+
+<span># Check with start and end parameters</span>
+print(șir.startswith("lume", 7, 12))    <span># True (verifică lume în lume)</span>
+print(șir.startswith("lume", 0, 5))     <span># False (verifică Salut în Salut)</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="AN">.isalnum()</h2>
+
+            <p>Sintaxă: şir.isalnum()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isalnum.asp" target="_blank" rel="noopener">Python
+                    String isalnum()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>În Python, <b>isalnum()</b> este o metodă încorporată pentru șiruri de caractere, utilizată
+                        pentru a determina dacă toate caracterele dintr-un șir de caractere sunt alfanumerice.</p>
+                    <dl>
+                        <dt>Funcționalitate:</dt>
+                        <dd>Returnează True dacă toate caracterele din șir sunt fie litere (a-z, A-Z), fie cifre (0-9).
+                        </dd>
+                        <dd>Returnează False dacă șirul de caractere conține caractere non-alfanumerice (de exemplu,
+                            spații, semne de punctuație, simboluri) sau dacă șirul de caractere este gol.</dd>
+                        <dt>Parametri:</dt>
+                        <dd>Metoda isalnum() nu acceptă niciun parametru.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>O valoare booleană: True sau Fals.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>In Python, <b>isalnum()</b> is a built-in string method used to determine if all characters
+                        within a string are alphanumeric.</p>
+                    <dl>
+                        <dt>Functionality:</dt>
+                        <dd>It returns True if all characters in the string are either letters (a-z, A-Z) or digits
+                            (0-9).</dd>
+                        <dd>It returns False if the string contains any non-alphanumeric characters (e.g., spaces,
+                            punctuation, symbols) or if the string is empty.</dd>
+                        <dt>Parameters:</dt>
+                        <dd>The isalnum() method does not accept any parameters.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>A boolean value: True or False.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>print("Python3".isalnum())
+print("Salut Lume".isalnum()) <span># Fals (din cauza spațiului)</span>
+print("12345".isalnum()) 
+print("abc".isalnum())
+print("!@#".isalnum())        <span># Fals (din cauza caracterelor speciale)</span>
+print("".isalnum())           <span># Fals (șir gol)</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="AL">.isalpha()</h2>
+
+            <p>Sintaxă: şir.isalpha()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isalpha.asp" target="_blank" rel="noopener">Python
+                    String isalpha()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <p>Metoda <b>isalpha()</b> din Python este o metodă încorporată pentru șiruri de caractere, utilizată
+                    pentru a verifica dacă toate caracterele dintr-un șir sunt alfabetice. Returnează True dacă toate
+                    caracterele din șir sunt litere (a-z, A-Z și alte caractere alfabetice Unicode) și există cel puțin
+                    un caracter în șir. Returnează False în caz contrar, adică dacă șirul conține caractere
+                    non-alfabetice (cum ar fi numere, simboluri sau spații albe) sau dacă șirul este gol.</p>
+
+                <p>The <b>isalpha()</b> method in Python is a built-in string method used to check if all characters in
+                    a string are alphabetic. It returns True if all characters in the string are letters (a-z, A-Z, and
+                    other Unicode alphabetic characters) and there is at least one character in the string. It returns
+                    False otherwise, meaning if the string contains any non-alphabetic characters (like numbers,
+                    symbols, or whitespace) or if the string is empty.</p>
+            </div>
+
+<pre><code><span># Șir de caractere doar cu caractere alfabetice</span>
+şir1 = "SalutLume"
+print(şir1.isalpha()) <span># Adevărat</span>
+
+<span># Șir de caractere cu numere</span>
+şir2 = "Salut123Lume"
+print(şir2.isalpha()) <span># Fals</span>
+
+<span># Șir de caractere cu spații</span>
+şir3 = "Salut Lume"
+print(şir3.isalpha()) <span># Fals</span>
+
+<span># Șir de caractere cu simboluri</span>
+şir4 = "Salut_Lume!"
+print(şir4.isalpha()) <span># Fals</span>
+
+<span># Șir de caractere gol</span>
+şir5 = ""
+print(şir5.isalpha()) <span># Fals</span>
+
+<span># Șir de caractere cu caractere alfabetice internaționale</span>
+şir6 = "résumé"
+print(şir6.isalpha()) <span># Adevărat</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="AS">.isascii()</h2>
+
+            <p>Sintaxă: şir.isascii()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isascii.asp" target="_blank" rel="noopener">Python
+                    String isascii()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>În Python, <b>isascii()</b> este o metodă de tip șir de caractere care verifică dacă toate
+                        caracterele dintr-un șir sunt caractere ASCII (American Standard Code for Information
+                        Interchange).</p>
+                    <dl>
+                        <dt>Cum funcționează isascii():</dt>
+                        <dd>Metoda isascii() returnează True dacă toate caracterele din șir au o valoare ASCII între 0
+                            și 127 (inclusiv).</dd>
+                        <dd>Dacă șirul conține caractere non-ASCII (caractere cu o valoare ASCII mai mare de 127),
+                            metoda returnează False.</dd>
+                        <dd>Un șir gol returnează, de asemenea, True atunci când este apelată isascii() asupra lui.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>In Python, <b>isascii()</b> is a string method that checks whether all characters in a string are
+                        ASCII(American Standard Code for Information Interchange) characters.</p>
+                    <dl>
+                        <dt>How isascii() works:</dt>
+                        <dd>isascii() method returns True if all characters in the string have an ASCII value between 0
+                            and 127 (inclusive).</dd>
+                        <dd>If the string contains any non-ASCII characters (characters with an ASCII value greater than
+                            127), the method returns False.</dd>
+                        <dd>An empty string also returns True when isascii() is called on it.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># Exemplu de isascii() care returnează True</span>
+şir_1 = "Salut, lume!"
+print(f"'{şir_1}'.isascii(): {şir_1.isascii()}") <span>==> True</span>
+
+<span># Exemplu de isascii() care returnează False din cauza unui caracter non-ASCII</span>
+şir_2 = "Bună, lume!"
+print(f"'{şir_2}'.isascii(): {şir_2.isascii()}") <span>==> False</span>
+
+<span># Exemplu cu un șir gol</span>
+şir_3 = ""
+print(f"'{şir_3}'.isascii(): {şir_3.isascii()}") <span>==> True</span>
+
+<span># Exemplu cu caractere ASCII speciale</span>
+şir_4 = "Linia1\nLinia2\tTabbed"
+print(f"'{şir_4}'.isascii(): {şir_4.isascii()}") <span>==> True</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="DL">.isdecimal()</h2>
+
+            <p>Sintaxă: şir.isdecimal()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isdecimal.asp" target="_blank" rel="noopener">Python
+                    String
+                    isdecimal() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>.isdecimal() method</b> in Python is a string method used to check if all characters in a
+                        given string are decimal characters and if the string contains at least one character. It
+                        returns True if these conditions are met, and False otherwise.</p>
+                    <dl>
+                        <dt>Characteristics:</dt>
+                        <dd>Decimal Characters: It specifically identifies characters that can be used to form numbers
+                            in base 10. This typically refers to the digits 0-9 in various numeral systems (e.g., Arabic
+                            numerals, Bengali numerals) as defined by Unicode.</dd>
+                        <dd>
+                            <dl>
+                                <dt>Exclusions: It returns False if the string contains any non-decimal characters,
+                                    including:</dt>
+                                <dd>Letters (e.g., "abc")</dd>
+                                <dd>Punctuation (e.g., ".", ",", "!")</dd>
+                                <dd>Whitespace (e.g., spaces, tabs)</dd>
+                                <dd>Special characters (e.g., "$", "%")</dd>
+                                <dd>Superscripts or subscripts (e.g., "²", "½")</dd>
+                                <dd>Roman numerals or currency numerals.</dd>
+                            </dl>
+                        </dd>
+                        <dd>Empty Strings: An empty string will return False because it does not contain at least one
+                            character.</dd>
+                        <dd>Unicode Support: It works with Unicode strings, recognizing decimal characters from various
+                            supported numeral systems.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>.isdecimal()</b> din Python este o metodă de tip șir de caractere utilizată pentru a verifica
+                        dacă toate caracterele dintr-un șir dat sunt caractere zecimale și dacă șirul conține cel puțin
+                        un caracter. Returnează True dacă aceste condiții sunt îndeplinite și False în caz contrar.</p>
+                    <dl>
+                        <dt>Caracteristici:</dt>
+                        <dd>Caractere zecimale: Identifică în mod specific caracterele care pot fi utilizate pentru a
+                            forma numere în baza 10. Aceasta se referă de obicei la cifrele 0-9 din diverse sisteme
+                            numerice (de exemplu, cifre arabe, cifre bengaleze), așa cum sunt definite de Unicode.</dd>
+                        <dd>
+                            <dl>
+                                <dt>Excluderi: Returnează False dacă șirul conține caractere nezecimale, inclusiv:</dt>
+                                <dd>Litere (de exemplu, "abc")</dd>
+                                <dd>Punctuație (de exemplu, „.", „,", „!")</dd>
+                                <dd>Spații albe (de exemplu, spații, tabs)</dd>
+                                <dd>Caractere speciale (de exemplu, "$", "%”)</dd>
+                                <dd>Superscripturi sau indici (de exemplu, "²", "½")</dd>
+                                <dd>Cifre romane sau cifre valutare.</dd>
+                            </dl>
+                        </dd>
+                        <dd>Șiruri goale: Un șir gol va returna False deoarece nu conține cel puțin un caracter.</dd>
+                        <dd>Suport Unicode: Funcționează cu șiruri Unicode, recunoscând caracterele zecimale din diverse
+                            sisteme numerice acceptate.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>s1 = "12345"
+print(s1.isdecimal()) <span>==> True</span>
+
+s2 = "123.45"
+print(s2.isdecimal()) <span>==> False</span>
+
+s3 = "abc"
+print(s3.isdecimal()) <span>==> False</span>
+
+s4 = ""
+print(s4.isdecimal()) <span>==> False</span>
+
+s5 = "123 456"
+print(s5.isdecimal()) <span>==> False</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="DT">.isdigit()</h2>
+
+            <p>Sintaxă: şir.isdigit()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isdigit.asp" target="_blank" rel="noopener">Python
+                    String isdigit()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>.isdigit()</b> este o metodă încorporată de tip șir de caractere, utilizată pentru a verifica
+                        dacă toate caracterele dintr-un șir sunt cifre.</p>
+                    <dl>
+                        <dt>Funcționalitate:</dt>
+                        <dd>Returnează True dacă toate caracterele din șir sunt cifre (0-9) și șirul nu este gol.</dd>
+                        <dd>Returnează False dacă șirul conține caractere care nu sunt cifre (de exemplu, litere,
+                            simboluri, spații, puncte zecimale, semne minus) sau dacă șirul este gol.</dd>
+                        <dt>Caracteristici:</dt>
+                        <dd>Recunoașterea cifrelor: Recunoaște în mod specific cifrele zecimale (0-9) și anumite cifre
+                            reprezentate de Unicode, cum ar fi exponenții (de exemplu, '¹', '²').
+                        </dd>
+                        <dd>Returnare booleană: Metoda returnează întotdeauna o valoare booleană (True sau False).</dd>
+                        <dd>Fără parametri: Metoda isdigit() nu acceptă niciun argument.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>.isdigit()</b> is a built-in string method used to check if all characters in a string are
+                        digits.</p>
+                    <dl>
+                        <dt>Functionality:</dt>
+                        <dd>It returns True if all characters within the string are digits (0-9) and the string is not
+                            empty.</dd>
+                        <dd>It returns False if the string contains any non-digit characters (e.g., letters, symbols,
+                            spaces, decimal points, minus signs) or if the string is empty.</dd>
+                        <dt>Characteristics:</dt>
+                        <dd>Digit Recognition: It specifically recognizes decimal digits (0-9) and certain
+                            Unicode-represented digits like superscripts (e.g., '¹', '²').</dd>
+                        <dd>Boolean Return: The method always returns a boolean value (True or False).</dd>
+                        <dd>No Parameters: The isdigit() method does not accept any arguments.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># True deoarece toate caracterele sunt cifre</span>
+șir1 = "12345"
+print(șir1.isdigit())
+
+<span># Fals din cauza literei "a"</span>
+șir2 = "123a45"
+print(șir2.isdigit())
+
+<span># False din cauza spațiului</span>
+șir3 = "123 45"
+print(șir3.isdigit())
+
+<span># False din cauza virgulei zecimale şi negativ</span>
+șir4 = "123,45"
+șir5 = "-12345"
+print(șir4.isdigit())
+print(șir5.isdigit())
+
+<span># False deoarece este un șir gol</span>
+șir6 = ""
+print(șir6.isdigit())
+
+<span># True pentru cifrele Unicode exponent</span>
+șir7 = "¹²³"
+șir8 = "5²"
+print(șir7.isdigit())
+print(șir8.isdigit())
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="DF">.isidentifier()</h2>
+
+            <p>Sintaxă: şir.isidentifier()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isidentifier.asp" target="_blank"
+                    rel="noopener">Python String
+                    isidentifier() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>.isidentifier()</b> din Python este o metodă încorporată pentru șiruri de caractere, utilizată
+                        pentru a determina dacă un anumit șir de caractere este un identificator valid, conform
+                        regulilor limbajului Python.</p>
+                    <dl>
+                        <dt>Cum funcționează isidentifier():</dt>
+                        <dd>Metoda returnează True dacă șirul de caractere îndeplinește criteriile pentru un
+                            identificator Python valid și False în caz contrar.</dd>
+                        <dt>Reguli pentru un identificator Python valid:</dt>
+                        <dd>Caractere: Un identificator valid poate conține doar caractere alfanumerice (a-z, A-Z, 0-9)
+                            și sublinieri (_).</dd>
+                        <dd>Caracter de început: Trebuie să înceapă cu o literă (a-z, A-Z) sau un subliniere (_). Nu
+                            poate începe cu un număr.</dd>
+                        <dd>Cuvinte cheie: Nu poate fi un cuvânt cheie Python (cuvânt rezervat), cum ar fi if, else,
+                            for, while, def, class etc.</dd>
+                        <dd>Caractere speciale: Nu poate conține caractere speciale precum !, @, #, $, % etc.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>.isidentifier()</b> method in Python is a built-in string method used to determine if a given
+                        string is a valid identifier according to Python's language rules.</p>
+                    <dl>
+                        <dt>How isidentifier() works:</dt>
+                        <dd>The method returns True if the string meets the criteria for a valid Python identifier, and
+                            False otherwise.</dd>
+                        <dt>Rules for a valid Python identifier:</dt>
+                        <dd>Characters: A valid identifier can only contain alphanumeric characters (a-z, A-Z, 0-9) and
+                            underscores (_).</dd>
+                        <dd>Starting character: It must start with a letter (a-z, A-Z) or an underscore (_). It cannot
+                            begin with a number.</dd>
+                        <dd>Keywords: It cannot be a Python keyword (reserved word), such as if, else, for, while, def,
+                            class, etc.</dd>
+                        <dd>Special characters: It cannot contain any special characters like !, @, #, $, %, etc.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># Identificatori valizi</span>
+print("variabila_mea".isidentifier()) <span># True</span>
+print("Numere123".isidentifier()) <span># True</span>
+print("_privat".isidentifier()) <span># True</span>
+
+<span># Identificatori invalizi</span>
+print("123nume".isidentifier()) <span># Fals (începe cu un număr)</span>
+print("variabila-mea".isidentifier()) <span># Fals (conține o cratimă)</span>
+print("if".isidentifier()) <span># True (dar este un cuvânt cheie, deci nu este un identificator de *variabilă* valid)</span>
+print("variabila mea".isidentifier()) <span># Fals (conține un spațiu)</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Notă: Deși isidentifier() verifică regulile pentru caractere și caracterele de început, nu verifică
+                    dacă șirul este un cuvânt cheie Python. Pentru a verifica cuvintele cheie, de obicei, utilizați
+                    funcția keyword.iskeyword() din modulul keyword împreună cu isidentifier().</p>
+                <p>Note: While isidentifier() checks the character and starting character rules, it does not check if
+                    the string is a Python keyword. To check for keywords, you would typically use the
+                    keyword.iskeyword() function from the keyword module in conjunction with isidentifier()</p>
+            </div>
+            <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="KW">Funcția keyword.iskeyword() în Python:<br>keyword.iskeyword() function in Python:<br></h2>
+
+            <p><a href="https://docs.python.org/3/library/keyword.html" target="_blank" rel="noopener">keyword — Testing
+                    for Python
+                    keywords</a></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Funcționalitate:</dt>
+                    <dd>Acceptă un singur argument de tip șir de caractere.</dd>
+                    <dd>Returnează True dacă șirul de caractere furnizat este un cuvânt cheie Python (de exemplu, 'if',
+                        'else', 'def', 'True', 'None').</dd>
+                    <dd>Returnează False dacă șirul de caractere furnizat nu este un cuvânt cheie Python.</dd>
+                    <dd>Verificarea este sensibilă la majuscule/minuscule, ceea ce înseamnă că 'None' este un cuvânt
+                        cheie, dar 'none' nu.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Functionality:</dt>
+                    <dd>It accepts a single string argument.</dd>
+                    <dd>It returns True if the provided string is a Python keyword (e.g., 'if', 'else', 'def', 'True',
+                        'None').</dd>
+                    <dd>It returns False if the provided string is not a Python keyword.</dd>
+                    <dd>The check is case-sensitive, meaning 'None' is a keyword, but 'none' is not.</dd>
+                </dl>
+            </div>
+
+<pre><code>import keyword
+
+print(keyword.iskeyword('if'))            <span>==> True</span>
+print(keyword.iskeyword('variabila_mea')) <span>==> False</span>
+print(keyword.iskeyword('None'))          <span>==> True</span>
+print(keyword.iskeyword('none'))          <span>==> False</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="LR">.islower()</h2>
+
+            <p>Sintaxă: șir.islower()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_islower.asp" target="_blank" rel="noopener">Python
+                    String islower()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>.islower()</b> din Python este o metodă încorporată pentru șiruri de caractere,
+                        utilizată pentru a verifica dacă toate caracterele dintr-un șir sunt minuscule. Returnează True
+                        dacă toate caracterele scrise din șir sunt minuscule și există cel puțin un caracter scris cu
+                        minuscule; în caz contrar, returnează False.</p>
+                    <dl>
+                        <dt>Caracteristici:</dt>
+                        <dd>
+                            <dl>
+                                <dt>Verifică doar caracterele scrise cu minuscule.</dt>
+                                <dd>Această metodă examinează în mod specific caracterele alfabetice (a-z, A-Z) pentru a
+                                    le vedea dacă sunt scrise cu minuscule. Ignoră caracterele non-alfabetice, cum ar fi
+                                    numerele, simbolurile, spațiile și semnele de punctuație.</dd>
+                                <dt>Returnează False pentru șiruri goale.</dt>
+                                <dd>Un șir gol nu conține caractere scrise cu minuscule, iar islower() va returna False.
+                                </dd>
+                                <dt>Necesită cel puțin un caracter scris cu minuscule.</dt>
+                                <dd>Dacă un șir conține doar numere, simboluri sau spații, islower() va returna False.
+                                </dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>The <b>.islower()</b> method in Python is a built-in string method used to check if all cased
+                        characters within a string are lowercase. It returns True if all cased characters in the string
+                        are lowercase and there is at least one cased character; otherwise, it returns False.</p>
+                    <dl>
+                        <dt>Characteristics:</dt>
+                        <dd>
+                            <dl>
+                                <dt>Checks cased characters only.</dt>
+                                <dd>This method specifically examines alphabetic characters (a-z, A-Z) for their case.
+                                    It ignores non-alphabetic characters such as numbers, symbols, spaces, and
+                                    punctuation.</dd>
+                                <dt>Returns False for empty strings.</dt>
+                                <dd>An empty string does not contain any cased characters, and islower() will return
+                                    False.</dd>
+                                <dt>Requires at least one cased character.</dt>
+                                <dd>If a string contains only numbers, symbols, or spaces, it will return False.</dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+
+<pre><code><span># True deoarece toate caracterele sunt scrise cu minuscule</span>
+print("salut lume!".islower())
+
+<span># False deoarece 'S' este majusculă</span>
+print("Salut lume!".islower())
+
+<span># True deoarece 'a', 'b', 'c' sunt minuscule, iar numerele/simbolurile sunt ignorate</span>
+print("abc123!".islower())
+
+<span># False deoarece nu există caractere scrise cu minuscule</span>
+print("123!@#".islower())
+
+<span># False deoarece șirul este gol</span>
+print("".islower())
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="UR">.isupper()</h2>
+
+            <p>Sintaxă: șir.isupper()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isupper.asp" target="_blank" rel="noopener">Python
+                    String isupper()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>.isupper()</b> din Python este o metodă încorporată pentru șiruri de caractere,
+                        utilizată pentru a verifica dacă toate caracterele dintr-un șir sunt majuscule.</p>
+                    <dl>
+                        <dt>Caracteristici:</dt>
+                        <dd>
+                            <dl>
+                                <dt>Verifică doar caracterele scrise cu majuscule.</dt>
+                                <dd>Această metodă examinează în mod specific caracterele alfabetice (a-z, A-Z) pentru a
+                                    le vedea dacă sunt scrise cu majuscule. Ignoră caracterele non-alfabetice, cum ar fi
+                                    numerele, simbolurile, spațiile și semnele de punctuație.</dd>
+                                <dt>Returnează False pentru șiruri goale.</dt>
+                                <dd>Un șir gol nu conține caractere scrise cu majuscule, iar .isupper() va returna
+                                    False.</dd>
+                                <dt>Necesită cel puțin un caracter scris cu majuscule.</dt>
+                                <dd>Dacă un șir conține doar numere, simboluri sau spații, .isupper() va returna False.
+                                </dd>
+                            </dl>
+                        </dd>
+                        <dt>Funcționalitate:</dt>
+                        <dd>Returnează True dacă toate caracterele dintr-un șir sunt majuscule și există cel puțin un
+                            caracter scris cu majuscule.</dd>
+                        <dd>Returnează False dacă vreun caracter este minuscul sau dacă șirul nu conține caractere
+                            scrise cu majuscule (de exemplu, un șir gol sau un șir format doar din numere, spații sau
+                            simboluri).</dd>
+                        <dt>Parametri:</dt>
+                        <dd>Metoda isupper() nu acceptă niciun parametru.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>O valoare booleană: True sau False.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>The <b>.isupper()</b> method in Python is a built-in string method used to check if all cased
+                        characters within a string are uppercase.</p>
+                    <dl>
+                        <dt>Characteristics:</dt>
+                        <dd>
+                            <dl>
+                                <dt>Checks cased characters only.</dt>
+                                <dd>This method specifically examines alphabetic characters (a-z, A-Z) for their case.
+                                    It ignores non-alphabetic characters such as numbers, symbols, spaces, and
+                                    punctuation.</dd>
+                                <dt>Returns False for empty strings.</dt>
+                                <dd>An empty string does not contain any cased characters, and .isupper() will return
+                                    False.</dd>
+                                <dt>Requires at least one cased character.</dt>
+                                <dd>If a string contains only numbers, symbols, or spaces, it will return False.</dd>
+                            </dl>
+                        </dd>
+                        <dt>Functionality:</dt>
+                        <dd>It returns True if all cased characters in the string are uppercase and there is at least
+                            one cased character.</dd>
+                        <dd>It returns False if any cased character is lowercase, or if the string contains no cased
+                            characters (e.g., an empty string, or a string consisting only of numbers, spaces, or
+                            symbols).</dd>
+                        <dt>Parameters:</dt>
+                        <dd>The .isupper() method does not accept any parameters.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>A Boolean value: True or False.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># Returnează True deoarece toate caracterele sunt scrise cu majuscule</span>
+print("SALUT".isupper())
+
+<span># Returnează False din cauza literei "a" minusculă</span>
+print("SaLUT".isupper())
+
+<span># Returnează True deoarece 'A' este majusculă, iar numerele/simbolurile sunt ignorate</span>
+print("A123!".isupper())
+
+<span># Returnează False deoarece nu există caractere scrise cu majuscule</span>
+print("123!".isupper())
+
+<span># Returnează False pentru un șir gol</span>
+print("".isupper())
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="NC">.isnumeric()</h2>
+
+            <p>Sintaxă: șir.isnumeric()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isnumeric.asp" target="_blank" rel="noopener">Python
+                    String
+                    isnumeric() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>.isnumeric()</b> din Python este o metodă de tip șir de caractere utilizată pentru a
+                        determina dacă toate caracterele dintr-un șir sunt numerice. Returnează True dacă toate
+                        caracterele din șir sunt numerice și există cel puțin un caracter, iar False în caz contrar.</p>
+                    <dl>
+                        <dt>Caracteristici:</dt>
+                        <dd>Caractere numerice: Recunoaște cifrele (0-9), precum și caracterele care au o valoare
+                            numerică Unicode, cum ar fi fracțiile (de exemplu, '½', '⅓'), exponentele (de exemplu, '²')
+                            și indicii.</dd>
+                        <dd>Valoare returnată booleană: Metoda returnează o valoare booleană: Adevărat sau Fals.</dd>
+                        <dd>Caractere non-numerice: Dacă șirul conține caractere non-numerice, inclusiv spații albe,
+                            litere, semne de punctuație sau simboluri speciale, isnumeric() va returna Fals.</dd>
+                        <dd>Șiruri goale: Pentru un șir gol, isnumeric() returnează Fals deoarece necesită ca cel puțin
+                            un caracter să fie considerat numeric.</dd>
+                        <dt>Cazuri comune de utilizare:</dt>
+                        <dd>Validarea intrărilor: Pentru a se asigura că datele introduse de utilizator pentru operații
+                            numerice constă exclusiv din caractere numerice.</dd>
+                        <dd>Curățarea datelor: Pentru a identifica și filtra intrările non-numerice din seturile de
+                            date.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>.isnumeric()</b> method in Python is a string method used to determine if all characters
+                        within a string are numeric. It returns True if all characters in the string are numeric and
+                        there is at least one character, and False otherwise.</p>
+                    <dl>
+                        <dt>Characteristics:</dt>
+                        <dd>Numeric Characters: It recognizes digits (0-9), as well as characters that have a Unicode
+                            numeric value, such as fractions (e.g., '½', '⅓'), superscripts (e.g., '²'), and subscripts.
+                        </dd>
+                        <dd>Boolean Return Value: The method returns a boolean value: True or False.</dd>
+                        <dd>Non-numeric Characters: If the string contains any non-numeric characters, including
+                            whitespace, letters, punctuation, or special symbols, isnumeric() will return False.</dd>
+                        <dd>Empty Strings: For an empty string, isnumeric() returns False because it requires at least
+                            one character to be considered numeric.</dd>
+                        <dt>Common Use Cases:</dt>
+                        <dd>Input Validation: To ensure that user input intended for numerical operations consists
+                            solely of numeric characters.</dd>
+                        <dd>Data Cleaning: To identify and filter out non-numeric entries in datasets.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># True</span>
+print("123".isnumeric())
+print("½".isnumeric())
+print("²".isnumeric())
+print("12³".isnumeric())
+
+<span># False</span>
+print("123a".isnumeric())
+print("1 2 3".isnumeric())
+print("".isnumeric())
+print("-123".isnumeric())
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="PE">.isprintable()</h2>
+
+            <p>Sintaxă: Șir.isprintable()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isprintable.asp" target="_blank"
+                    rel="noopener">Python String
+                    isprintable() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>.isprintable()</b> din Python este o metodă de tip șir de caractere utilizată pentru a
+                        determina dacă toate caracterele dintr-un șir sunt considerate imprimabile. Returnează True dacă
+                        toate caracterele din șir sunt imprimabile sau dacă șirul este gol și False dacă cel puțin un
+                        caracter este neimprimabil.</p>
+                    <dl>
+                        <dt>Caracteristici:</dt>
+                        <dd>Scop: Verifică prezența caracterelor neimprimabile într-un șir de caractere.</dd>
+                        <dd>Valoare returnată: O valoare booleană (True sau False).</dd>
+                        <dd>Caractere imprimabile: Includ litere, cifre, semne de punctuație și caracterul spațiu (` `).
+                            Aceste caractere ocupă o poziție de imprimare pe ieșire.</dd>
+                        <dd>Caractere neimprimabile: Includ caractere de control și secvențe de escape, cum ar fi
+                            newline (\n), return (\r) și tab (\t). Aceste caractere nu ocupă o poziție de imprimare, ci
+                            controlează formatarea sau alte comportamente.</dd>
+                        <dd>Șiruri goale: Un șir gol ("") este considerat imprimabil, iar isprintable() returnează True
+                            pentru acesta.</dd>
+                        <dd>Parametri: Nu acceptă parametri.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>.isprintable()</b> method in Python is a string method used to determine if all characters
+                        within a string are considered printable. It returns True if all characters in the string are
+                        printable or if the string is empty, and False if at least one character is non-printable.</p>
+                    <dl>
+                        <dt>Characteristics:</dt>
+                        <dd>Purpose: Checks for the presence of non-printable characters in a string.</dd>
+                        <dd>Return Value: A boolean (True or False).</dd>
+                        <dd>Printable Characters: Include letters, digits, punctuation marks, and the space character (`
+                            `). These characters occupy a printing position on the output.</dd>
+                        <dd>Non-Printable Characters: Include control characters and escape sequences such as newline
+                            (\n), carriage return (\r), and tab (\t). These characters do not occupy a printing position
+                            but rather control formatting or other behaviors.</dd>
+                        <dd>Empty Strings: An empty string ("") is considered printable, and isprintable() returns True
+                            for it.</dd>
+                        <dd>Parameters: It takes no parameters.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># Șir de caractere doar cu caractere imprimabile</span>
+s1 = "Salut, lume!"
+print(s1.isprintable())  <span>==> True</span>
+
+<span># Șir de caractere cu un caracter neimprimabil (linie nouă)</span>
+s2 = "Salut\nlume!"
+print(s2.isprintable())  <span>==> False</span>
+
+<span># Șir de caractere gol</span>
+s3 = ""
+print(s3.isprintable())  <span>==> True</span>
+
+<span># Șir de caractere cu un caracter tabulator</span>
+s4 = "Salut\tlume!"
+print(s4.isprintable())  <span>==> False</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="SE">.isspace()</h2>
+
+            <p>Sintaxă: șir.isspace()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_isspace.asp" target="_blank" rel="noopener">Python
+                    String isspace()
+                    Method</a></p>
+
+            <p><a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.isspace.html" target="_blank"
+                    rel="noopener">pandas.Series.str.isspace</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>.isspace()</b> din Python este o metodă încorporată pentru șiruri de caractere, utilizată
+                        pentru a verifica dacă toate caracterele dintr-un șir sunt spații albe.</p>
+                    <dl>
+                        <dt>Funcționalități:</dt>
+                        <dd>Scop: Determină dacă un anumit șir este format în întregime din spații albe</dd>
+                        <dd>
+                            <dl>
+                                <dt>Valoare returnată:</dt>
+                                <dd>Returnează True dacă toate caracterele din șir sunt spații albe și șirul nu este
+                                    gol.</dd>
+                                <dd>Returnează False dacă șirul conține caractere care nu sunt spații albe sau dacă
+                                    șirul este gol.</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl>
+                                <dt>Caractere spații albe: Caracterele spații albe comune includ:</dt>
+                                <dd>Spațiu (` `)</dd>
+                                <dd>Tab orizontal (\t)</dd>
+                                <dd>Linie nouă (\n)</dd>
+                                <dd>Tab vertical (\v)</dd>
+                                <dd>Avansare pagină (\f)</dd>
+                                <dd>Returnare Carriage (\r)</dd>
+                            </dl>
+                        </dd>
+                        <dd>Parametri: Metoda isspace() nu acceptă niciun parametru.</dd>
+                        <dt>Caz de utilizare comun</dt>
+                        <dd>Un caz de utilizare frecvent întâlnit pe platforme precum <a
+                                href="https://stackoverflow.com/questions/26987222/check-whitespace-in-a-python-string"
+                                target="_blank" rel="noopener">Stack Overflow</a> este validarea datelor introduse de
+                            utilizator pentru
+                            a filtra liniile goale sau spațiile trimise accidental.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>.isspace()</b> method in Python is a built-in string method used to check if all characters in
+                        a string are whitespace characters.</p>
+                    <dl>
+                        <dt>Functionality:</dt>
+                        <dd>Purpose: It determines whether a given string consists entirely of whitespace characters.
+                        </dd>
+                        <dd>
+                            <dl>
+                                <dt>Return Value:</dt>
+                                <dd>It returns True if all characters in the string are whitespace characters and the
+                                    string is not empty.</dd>
+                                <dd>It returns False if the string contains any non-whitespace characters or if the
+                                    string is empty.</dd>
+                            </dl>
+                        </dd>
+                        <dd>
+                            <dl>
+                                <dt>Whitespace Characters: Common whitespace characters include:</dt>
+                                <dd>Space (` `)</dd>
+                                <dd>Horizontal tab (\t)</dd>
+                                <dd>Newline (\n)</dd>
+                                <dd>Vertical tab (\v)</dd>
+                                <dd>Form feed (\f)</dd>
+                                <dd>Carriage return (\r)</dd>
+                            </dl>
+                        </dd>
+                        <dd>Parameters: The isspace() method does not take any parameters.</dd>
+                        <dt>Common Use Case</dt>
+                        <dd>A frequent use case found on platforms like <a
+                                href="https://stackoverflow.com/questions/26987222/check-whitespace-in-a-python-string"
+                                target="_blank" rel="noopener">Stack Overflow</a> is validating user input to filter out
+                            empty lines or
+                            accidental space submissions.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>șir1 = " "
+șir2 = " Salut, lume "
+șir3 = "\t\n"
+șir4 = ""
+șir5 = "\t\n\r"
+
+print(f"'{șir1}'.este spațiu: {șir1.isspace()}") <span>==> True</span>
+print(f"'{șir2}'.este spațiu: {șir2.isspace()}") <span>==> False</span>
+print(f"'{șir3}'.este spațiu: {șir3.isspace()}") <span>==> True</span>
+print(f"'{șir4}'.este spațiu: {șir4.isspace()}") <span>==> False</span>
+print(f"'{șir5}'.este spațiu: {șir5.isspace()}") <span>==> True</span>
+</code></pre>
+
+            <div class="grid-container">
+                <div>
+                    <p>În Python, \f este un caracter de escape pentru avansarea paginii. Este un caracter de control
+                        vechi care, în mod tradițional, instruia imprimantele fizice să avanseze hârtia la pagina
+                        următoare. Deși este rar utilizat în aplicațiile moderne, este recunoscut <a
+                            href="https://docs.python.org/3/tutorial/inputoutput.html" target="_blank"
+                            rel="noopener">oficial de
+                            documentația de intrare și ieșire Python</a> ca o secvență de escape standard.</p>
+                    <dl>
+                        <dt>Comportament comun și cazuri de utilizare</dt>
+                        <dd>Afișaj terminal: În mediile terminale moderne, afișarea unui șir cu \f produce de obicei o
+                            linie goală vizuală sau un simbol săgeată/sfârșit de pagină mic, mai degrabă decât un
+                            sfârșit de pagină real.</dd>
+                        <dd>Structura codului sursă: Din punct de vedere istoric, dezvoltatorii au încorporat un
+                            caracter literal de alimentare cu formular în cod pentru a descompune fișierele excepțional
+                            de lungi în pagini curate și lizibile pentru imprimantele de linie.</dd>
+                        <dd>Literali de șir: La fel ca \n (linie nouă) sau \t (tab), Python analizează \f în interiorul
+                            ghilimelelor simple sau duble standard.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>In Python, \f is a form feed escape character. It is a legacy control character that historically
+                        instructed physical printers to advance the paper to the next page.While rarely used in modern
+                        applications, it is officially recognized by the <a
+                            href="https://docs.python.org/3/tutorial/inputoutput.html" target="_blank"
+                            rel="noopener">Python input and
+                            output documentation</a> as a standard escape sequence</p>
+                    <dl>
+                        <dt>Common Behavior and Use Cases</dt>
+                        <dd>Terminal Display: In modern terminal environments, printing a string with \f typically
+                            outputs a visual blank line or a tiny arrow/page-break symbol rather than an actual page
+                            break.</dd>
+                        <dd>Source Code Structure: Historically, developers embedded a literal form feed character in
+                            code to break exceptionally long files into clean, readable pages for line printers.</dd>
+                        <dd>String Literals: Like \n (newline) or \t (tab), Python parses \f inside standard single or
+                            double quotes.</dd>
+                    </dl>
+                </div>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="TE">.istitle()</h2>
+
+            <p>Sintaxă: șir.istitle()</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_istitle.asp" target="_blank" rel="noopener">Python
+                    String istitle()
+                    Method</a></p>
+
+
+            <div class="grid-container">
+                <div>
+                    <p><b>.istitle()</b> returnează True dacă șirul are cel puțin un caracter scris cu majuscule și
+                        respectă regulile de scriere cu majuscule pentru titlu. În caz contrar, returnează False.</p>
+                    <dl>
+                        <dt>Reguli de scriere cu majuscule pentru titlu:</dt>
+                        <dd>Prima literă a fiecărui cuvânt din șir trebuie să fie majusculă.</dd>
+                        <dd>Toate celelalte litere din fiecare cuvânt trebuie să fie minuscule.</dd>
+                        <dd>Caracterele non-alfabetice (cum ar fi numerele, simbolurile și spațiile) sunt ignorate în
+                            această evaluare, dar acestea delimitează în continuare cuvintele.</dd>
+                    </dl>
+                    <p><b>.istitle()</b> nu acceptă niciun parametru. Transmiterea oricărui argument către aceasta va
+                        genera o eroare TypeError.</p>
+                </div>
+
+                <div>
+                    <p><b>.istitle()</b> returns True if the string has at least one cased character and follows the
+                        title case rules. Otherwise, it returns False.</p>
+                    <dl>
+                        <dt>Title Case Rules:</dt>
+                        <dd>The first letter of each word in the string must be an uppercase letter.</dd>
+                        <dd>All other letters within each word must be lowercase letters.</dd>
+                        <dd>Non-alphabetic characters (like numbers, symbols, and spaces) are ignored in this
+                            evaluation, but they still delimit words.</dd>
+                    </dl>
+                    <p><b>.istitle()</b> method does not take any parameters. Passing any argument to it will result in
+                        a TypeError.</p>
+                </div>
+            </div>
+
+<pre><code>print("Salut Lume".istitle()) <span># True</span>
+print("Salut lume".istitle()) <span># Fals (deoarece 'lume' nu este scris cu majuscule)</span>
+print("Python Este Distractiv".istitle()) <span># True</span>
+print("Python este Distractiv".istitle()) <span># Fals (deoarece 'este' nu este scris cu majuscule)</span>
+print("123 Un Titlu".istitle()) <span># True (numerele sunt ignorate la verificarea majusculelor)</span>
+print("UN ALT EXEMPLU".istitle()) <span># Fals (toate majusculele, nu doar prima literă)</span>
+print("".istitle()) <span># Fals (șir gol)</span>
+</code></pre>
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a>
+                    </address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+    <script src="JS/treileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

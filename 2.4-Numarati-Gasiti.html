@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/main-style.css">
+
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 2.4 Count and Find</title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-1 navigare">
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                        <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                        <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                        <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-1"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaT.svg" alt="T" class="logo">
+                    <h1>2.0 Tipuri Text-Text Type</h1>
+                </div>
+            </div>
+
+            <div class="second-empty-1-1"></div>
+
+            <div class="subtitlu-1-1">
+                <div class="grid-cell">
+                    <h2>2.4 Numărați și găsiți-Count and Find</h2>
+                </div>
+            </div>
+
+            <div class="third-empty-1-1"></div>
+
+            <div class="ro-en-1-1 ro-en">
+                <ul>
+                    <li>În acest capitol veți studia:</li>
+                    <li><a href="#LN">len(string)</a></li>
+                    <li><a href="#CT">.count(sub[, start[, end]])</a></li>
+                    <li><a href="#FD">.find(sub[, start[, end]])</a></li>
+                    <li><a href="#NX">.index(sub[, start[, end]])</a></li>
+                    <li><a href="#RD">.rfind(sub[, start[, end]])</a></li>
+                    <li><a href="#RX">.rindex(sub[, start[, end]])</a></li>
+                    <li><a href="#ST">.split(sep=None, maxsplit=-1)</a></li>
+                    <li><a href="#SL">.splitlines([keepends])</a></li>
+                    <li><a href="#PN">.partition(sep)</a></li>
+                    <li><a href="#RN">.rpartition(sep)</a></li>
+                    <li><a href="#MT">.maketrans(x[, y[, z]])</a></li>
+                    <li><a href="#TE">.translate(table)</a></li>
+                    <li><a href="#RE">Găsiți cu Regex</a></li>
+                    <li><a href="#PR">in operator</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="forth-empty-1-1"></div>
+
+        <div class="contents-1-1">
+
+<h2 id="LN">len(string)</h2>
+
+            <p>Syntax: len(string)</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_func_len.asp" target="_blank"
+                    rel="noopener">len(string)</a></p>
+
+            <div class="grid-container">
+                <p><b>Funcția len()</b> din Python este o funcție încorporată care returnează lungimea (numărul de
+                    elemente) unui obiect. Poate fi utilizată cu diverse tipuri de date, inclusiv șiruri de caractere.
+                    Când este aplicată unui șir de caractere, returnează numărul de caractere din acel șir.
+                    Funcția len() este un instrument fundamental pentru lucrul cu secvențe și colecții în Python,
+                    oferind o modalitate simplă de a determina dimensiunea acestora.
+                    Pentru a afla lungimea unui șir de caractere, transmiteți șirul ca argument funcției len().</p>
+
+                <p>The <b>len() function</b> in Python is a built-in function that returns the length (the number of
+                    items) of an object. It can be used with various data types, including strings.
+                    When applied to a string, it returns the number of characters in that string.
+                    The len() function is a fundamental tool for working with sequences and collections in Python,
+                    providing a simple way to determine their size.
+                    To find the length of a string, you pass the string as an argument to the len() function.</p>
+            </div>
+
+<pre><code><span># Utilizare de bază</span>
+<span># Rețineți că spațiul, virgula și semnul exclamării sunt toate considerate caractere în lungime.</span>
+șirul_meu = "Salut, programatorilor!"
+lungime = len(șirul_meu)
+print(f"Utilizare de bază: {lungime} de caractere") <span>==> ... 23 de caractere</span>
+
+<span># Șir gol</span>
+șir_gol = ""
+print(f"Lungimea unui șir gol: {len(șir_gol)}") <span>==> Lungimea unui șir gol: 0</span>
+
+<span># Șir de caractere cu spații la început și sfârșit</span>
+frază = " Salut, programatorilor! "
+print(f"Lungimea unui șir cu spații: {len(frază)}") <span>==> Lungimea unui șir cu spații: 25</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Funcția len() numără toate spațiile albe. Dacă doriți să eliminați spațiile de la început/sfârșit
+                    înainte de numărare, puteți utiliza metoda de șir <b>.strip()</b>:</p>
+                <p>The len() function counts all whitespace characters. If you want to remove leading/trailing spaces
+                    before counting, you can use the <b>.strip()</b> string method:</p>
+            </div>
+
+<pre><code>frază2 = " spații la început și la sfârșit "
+lungime = len(frază2)
+print(f"Lungimea frază2 cu spații la început și la sfârșit: {lungime}") <span>==> ...: 33</span>
+lungime_redusă = len(frază2.strip()) 
+print(f"Lungimea frază2 fară spații la început și la sfârșit: {lungime_redusă}") <span>==> ...: 31</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Puncte cheie:</dt>
+                    <dd>len() funcționează asupra diverselor obiecte de tip container în Python, inclusiv șiruri de
+                        caractere, liste, tupluri și dicționare.</dd>
+                    <dd>Pentru șiruri de caractere, numără fiecare caracter, inclusiv spații, numere și caractere
+                        speciale.</dd>
+                    <dd>Returnează un număr întreg care reprezintă lungimea.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Key Points:</dt>
+                    <dd>len() works on various container-like objects in Python, including strings, lists, tuples, and
+                        dictionaries.</dd>
+                    <dd>For strings, it counts every character, including spaces, numbers, and special characters.</dd>
+                    <dd>It returns an integer representing the length.</dd>
+                </dl>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="CT">.count(sub[, start[, end]])</h2>
+
+            <p>Sintaxă: string.count(substring, start, end)</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_count.asp" target="_blank" rel="noopener">Python
+                    String count()
+                    Method</a></p>
+
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>.count()</b> este utilizată pentru a număra aparițiile unui subșir specificat într-un
+                        șir de caractere.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>subșir: Șirul de caractere care urmează să fie căutat.</dd>
+                        <dd>start(început) (opțional): Indicele de început de la care începe căutarea. Dacă este omis,
+                            implicit va fi 0 (începutul șirului de caractere).</dd>
+                        <dd>end(sfârșit) (opțional): Indicele de sfârșit la care se oprește căutarea. Dacă este omis,
+                            implicit va fi sfârșitul șirului de caractere.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>.count()</b> method is used to count the occurrences of a specified substring within a string.
+                    </p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>substring: The string to search for.</dd>
+                        <dd>start (optional): The starting index from where the search begins. If omitted, it defaults
+                            to 0 (the beginning of the string).</dd>
+                        <dd>end (optional): The ending index where the search stops. If omitted, it defaults to the end
+                            of the string.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>șirul_fructe = "măr pară măr strugure măr"
+subșir_de_numărat = "măr"
+
+<span># Numără aparițiile cuvântului "măr" în întregul șir</span>
+numără_șirul_complet = șirul_fructe.count(subșir_de_numărat)
+print(f"Aparițiile cuvântului '{subșir_de_numărat}' în întregul șir: {numără_șirul_complet}") <span>==> ...: 3</span>
+
+<span># Numără aparițiile cuvântului "măr" într-un interval specific (de la indexul 1 la 18)</span>
+numără_în_interval = șirul_fructe.count(subșir_de_numărat, 1, 18)
+print(f"Aparițiile cuvântului '{subșir_de_numărat}' în intervalul (1, 18): {numără_în_interval}") <span>==> ...: 1</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p><b>Sensibilitate la majuscule/minuscule:</b> Metoda .count() este sensibilă la majuscule/minuscule.
+                    Pentru a efectua o numărătoare fără a ține cont de majuscule/minuscule, convertiți șirul fie în
+                    majuscule, fie în minuscule înainte de a apela count().</p>
+
+                <p><b>Case Sensitivity:</b>: .count() method is case-sensitive. To perform a case-insensitive count,
+                    convert the string to either all uppercase or all lowercase before calling count().</p>
+            </div>
+
+
+<pre><code>șir_cu_majuscule_minuscule = "Măr pară măr strugure măr"
+subșir_de_numărat = "măr"
+
+<span># Sensibil la majuscule și minuscule</span>
+sensibil_la_numărat = șir_cu_maj_min.count(subșir_de_numărat)
+print(f"Numără cuvântul '{subșir_de_numărat}' cu litere mici: {sensibil_la_numărat}") <span>==> ...: 2</span>
+
+<span># Insensibil la majuscule și minuscule</span> 
+insensibil_la_numărat = șir_cu_maj_min.lower().count(subșir_de_numărat)
+print(f"Numără toate aparițiile cuvântului '{subșir_de_numărat}' : {insensibil_la_numărat}") <span>==> ...: 3</span>
+</code></pre>
+
+<pre><code>secretul_meu = """
+Am ascuns ceva pe ascuns ca numai eu să stiu. Unde am ascuns nimeni nu trebuie să stie.
+Să ascund ceva pe ascuns a trebuit să privesc în jur cu atenție ca nimeni să nu mă vadă unde am ascuns. 
+Ce am ascuns este secretul meu. Nu o să spun la nimeni.
+"""
+cuvânt1 = "ascuns"
+numără1 = secretul_meu.count(cuvânt1)
+print(f"Cuvânt '{cuvânt1}' a fost găsit de {numără1} ori") <span>==> ...a fost găsit de 6 ori</span>
+
+cuvânt2 = "să"
+numără2 = secretul_meu.count(cuvânt2)
+print(f"Cuvânt '{cuvânt2}' a fost găsit de {numără2} ori") <span>==> ... a fost găsit de 5 ori</span>
+
+cuvânt3 = "să"
+numără3 = secretul_meu.lower().count(cuvânt3)
+print(f"Cuvânt '{cuvânt3}' a fost găsit de {numără3} ori după secretul_meu.lower()") <span>==> ... a fost găsit de 6 ori după secretul_meu.lower()</span>
+
+cuvânt4 = "Am"
+numără4 = secretul_meu.count(cuvânt4)
+print(f"Cuvânt '{cuvânt4}' a fost găsit de {numără4} ori") <span>==> ... a fost găsit de 1 ori</span>
+
+cuvânt5 = "Am"
+numără5 = secretul_meu.title().count(cuvânt5)
+print(f"Cuvânt '{cuvânt5}' a fost găsit de {numără5} ori după secretul_meu.title()") <span>==> ... a fost găsit de 4 ori după secretul_meu.title()</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="FD">.find(sub[, start[, end]])</h2>
+
+            <p>Sintaxă: string.find(value, start, end)</p>
+
+            <p>Sintaxă: string.find(sub[, start[, end]])</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_find.asp" target="_blank" rel="noopener">Python
+                    String find()
+                    Method</a></p>
+
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>find()</b> din Python este o metodă de tip șir de caractere utilizată pentru a localiza
+                        cel mai mic indice (prima apariție) a unui subșir specific dintr-un șir dat.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>sub: (Obligatoriu) Subșirul care va fi căutat în șir.</dd>
+                        <dd>start: (Opțional) Un număr întreg care reprezintă indicele de început de unde ar trebui să
+                            înceapă căutarea. Dacă este omis, căutarea începe de la începutul șirului (index 0).</dd>
+                        <dd>end: (Opțional) Un număr întreg care reprezintă indicele de sfârșit unde ar trebui să se
+                            oprească căutarea. Dacă este omis, căutarea continuă până la sfârșitul șirului. Intervalul
+                            de căutare este string[start:end].</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>Metoda returnează un număr întreg care reprezintă cel mai mic indice din șirul în care se
+                            găsește subșirul.</dd>
+                        <dd>Dacă subșirul nu este găsit în intervalul specificat (sau în întregul șir dacă start și end
+                            nu sunt furnizate), metoda returnează -1.</dd>
+                    </dl>
+                </div>
+                <div>
+                    <p><b>find()</b> method in Python is a string method used to locate the lowest index (first
+                        occurrence) of a specific substring within a given string.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>sub: (Required) The substring to be searched for within the string.</dd>
+                        <dd>start: (Optional) An integer representing the starting index from where the search should
+                            begin. If omitted, the search starts from the beginning of the string (index 0).</dd>
+                        <dd>end: (Optional) An integer representing the ending index where the search should stop. If
+                            omitted, the search continues to the end of the string. The search range is
+                            string[start:end]. </dd>
+                        <dt>Return Value:</dt>
+                        <dd>The method returns an integer representing the lowest index in the string where the
+                            substring is found.</dd>
+                        <dd>If the substring is not found within the specified range (or the entire string if start and
+                            end are not provided), the method returns -1.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>text = "Salut, bine ai venit în lumea mea." <span># Găsiți prima apariție a grupului de cuvinte "bine ai venit"</span>
+
+indice1 = text.find("bine ai venit")
+print(f"Grupul 'bine ai venit' începe la indicele: {indice1}") <span>==> ... indicele: 7</span>
+
+<span># Găsiți "e" începând de la indexul 5</span>
+indice2 = text.find("e", 5)
+print(f"Indicele lui 'e' după indicele 5 este: {indice2}") <span>==> ... după indicele 5 este: 10</span>
+
+<span># Găsiți "lume" într-un interval specific</span>
+indice3 = text.find("lume", 20, 30)
+print(f"Indicele lui 'lume' între indicele 20 și 30 este: {indice3}") <span>==> ... între indicele 20 și 30 este: 24</span>
+
+<span># Încercați să găsiți un subșir care nu există</span>
+indice4 = text.find("Python")
+print(f"Indicele lui 'Python': {indice4}") <span>==> Indicele lui 'Python': -1</span>
+</code></pre>
+
+
+<pre><code>text2 = "E distractiv să înveți Python!"
+subșir2 = "Python"
+
+indice2 = text2.find(subșir2)
+print(f"Cuvântul {subșir2} începe la indicele: {indice2}") <span>==> ... la indicele: 23</span>
+
+if indice2 > -1:
+    print(f"Cuvântul {subșir2} găsit la indicele: {indice2} în '{text2}'") <span>==>... la indicele: 23 în ...</span>
+else:
+    print(f"{subșir2} nu este găsit în: '{text2}'")
+
+if indice2 != -1:
+    print(f"Cuvântul {subșir2} găsit la indicele: {indice2} în '{text2}'") <span>==>... la indicele: 23 în ...</span>
+else:
+    print(f"{subșir2} nu este găsit în: '{text2}'")
+</code></pre>
+
+<pre><code><span># Argument opțional pentru indicele de început</span>
+text3 = "măr pară măr"
+indice3 = text3.find("măr", 1) <span># Căutare de la indicele 1</span>
+print(f'A doua apariție a fructului "măr" găsită la indicele: {indice3}') <span>==> ... "măr" găsită la indicele: 9</span>
+</code></pre>
+
+
+<pre><code>secretul_tău = """
+Ai ascuns ceva pe ascuns ca numai tu să stii. Unde ai ascuns nimeni nu trebuie să stie.
+Să ascunzi ceva pe ascuns a trebuit să privesti în jur cu atenție ca nimeni  să nu vadă unde ai ascuns. 
+Ce ai ascuns este secretul tău. Nu o să spuni la nimeni.
+"""
+<span># Sensibil la majuscule și minuscule</span> 
+print(f"Textul 'secretul_tău' are: {len(secretul_tău)} de caractere") <span>==> ... : 251 de caractere</span>
+
+găsește = "ai ascuns"
+print(f"Grupul '{găsește}' este de {secretul_tău.count(găsește)} ori în textul 'secretul_tău'") <span>==> ... de 3 ori ...</span>
+
+indice_1 = secretul_tău.find(găsește)
+print(f"Primul grup '{găsește}' a fost găsit la indicele: {indice_1}") <span>==> ... la indicele: 52</span>
+
+indice_2 = secretul_tău.find(găsește, 55, 210)
+print(f"Următorul  grup '{găsește}' a fost găsit la indicele: {indice_2}") <span>==> ... găsit la indicele: 182</span>
+
+indice_3 = secretul_tău.find(găsește, 186)
+print(f"Ultimul grup '{găsește}' începe la indicele: {indice_3}") <span>==> ... începe la indicele: 197</span>
+
+# Insensibil la majuscule și minuscule 
+print(f"Grupul '{găsește}' este de {secretul_tău.lower().count(găsește)} ori în textul 'secretul_tău'") <span>==> ... este de 4 ori ...</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="NX">.index(sub[, start[, end]])</h2>
+
+            <p>Sintaxă: şir.index(sub[, start[, end]]</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_index.asp" target="_blank" rel="noopener">Python
+                    String index()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>index()</b> este similară cu <b>find()</b>, returnând indicele inițial al primei
+                        apariții a unui subșir. Dacă subșirul nu este găsit, index() generează o eroare ValueError în
+                        loc să returneze -1. index() este sensibilă la majuscule/minuscule.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>sub: Subșirul de căutat în șir.</dd>
+                        <dd>start (opțional): Indicele inițial al căutării în șir. Dacă este omis, căutarea începe de la
+                            începutul șirului (indice 0).</dd>
+                        <dd>end (opțional): Indicele final al căutării în șir. Dacă este omis, căutarea continuă până la
+                            sfârșitul șirului.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>Dacă subșirul este găsit, metoda index() returnează cel mai mic indice de unde începe
+                            subșirul.</dd>
+                        <dt>Generează:</dt>
+                        <dd>Dacă subșirul nu este găsit în intervalul specificat, metoda index() generează o eroare
+                            ValueError.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>index()</b> method is similar to <b>find()</b>, returning the starting index of the first
+                        occurrence of a substring. If the substring is not found, index() raises a ValueError instead of
+                        returning -1. index() is case-sensitive.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>sub: The substring to search for within the string.</dd>
+                        <dd>start (optional): The starting index of the search within the string. If omitted, the search
+                            begins from the start of the string (index 0).</dd>
+                        <dd>end (optional): The ending index of the search within the string. If omitted, the search
+                            continues to the end of the string.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>If the substring is found, the index() method returns the lowest index where the substring
+                            begins.</dd>
+                        <dt>Generate:</dt>
+                        <dd>If the substring is not found within the specified range, the index() method raises a
+                            ValueError.</dd>
+                    </dl>
+                </div>
+            </div>
+
+
+<pre><code>text = "În Python programarea este un sport al creierului."
+
+<span># Găsește indicele lui "programarea"</span>
+indice_prog = text.index("programarea")
+print(f"Indicele lui 'programarea': {indice_prog}") <span>==> Indicele lui 'programarea': 10</span>
+
+<span># Găsește indicele lui "este" într-un interval specific</span>
+indice_este = text.index("este", 20, 26) <span># Caută între indicele 20 și 26</span>
+print(f"Cuvântul 'este' începe la indicele: {indice_este}") <span>==> Cuvântul 'este' începe la indicele: 22</span>
+</code></pre>
+
+<pre><code><span># Exemplu de ValueError dacă subșirul nu este găsit</span>
+try:
+    indice_html = text.index("HTML")
+    print(f"Indicele lui 'html': {indice_html}")
+except ValueError as e:
+    print(f"Eroare: {e}") <span>==> Eroare: substring not found</span>
+</code></pre>
+
+<pre><code>text = "A învăța Python este un mare beneficiu pentru programatori!"
+subșir = "Python"
+
+try:
+    indice = text.index(subșir)
+    print(f'"{subșir}" găsit la indicele {indice} din "{text}"') <span>==> ... la indicele 9 din ...</span>
+except ValueError:
+    print(f'"{subșir}" nu a fost găsit în "{text}"')
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="RD">.rfind(sub[, start[, end]])</h2>
+
+            <p>Sintaxă: şir.rfind(sub[, start[, end]])</p>
+
+            <p><a href="https://www.w3schools.com/Python/ref_string_rfind.asp" target="_blank" rel="noopener">Python
+                    String rfind()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda Python pentru șiruri de caractere <b>rfind()</b> este utilizată pentru a găsi cel mai mare
+                        indice (cel mai din dreapta) din șirul în care se găsește subșirul sub.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>sub: (Obligatoriu) Subșirul de căutat în șir.</dd>
+                        <dd>start: (Opțional) Un număr întreg care specifică indicele de început al căutării. Dacă este
+                            furnizat, căutarea va începe de la acest indice. Implicit este 0 (începutul șirului).</dd>
+                        <dd>end: (Opțional) Un număr întreg care specifică indicele de sfârșit al căutării (exclusiv).
+                            Dacă este furnizat, căutarea se va termina la acest indice. Implicit este sfârșitul șirului.
+                        </dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>Returnează un număr întreg care reprezintă cel mai mare indice în care se găsește "sub" în
+                            intervalul specificat.</dd>
+                        <dd>Returnează -1 dacă sub nu este găsit în intervalul specificat.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>rfind()</b> method is used to find the highest (rightmost) index in the string where the
+                        substring sub is found.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>sub: (Required) The substring to search for within the string.</dd>
+                        <dd>start: (Optional) An integer specifying the starting index of the search. If provided, the
+                            search will begin from this index. Defaults to 0 (the beginning of the string).</dd>
+                        <dd>end: (Optional) An integer specifying the ending index of the search (exclusive). If
+                            provided, the search will end at this index. Defaults to the end of the string.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>Returns an integer representing the highest index where "sub" is found within the specified
+                            range.</dd>
+                        <dd>Returns -1 if sub is not found within the specified range.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>șir = "salut lume salut şi la fârşit salut lume din nou"
+subșir = "salut"
+
+<span># Găsește ultima apariție a cuvântului "lume" în întregul șir</span>
+indice1 = șir.rfind(subșir)
+print(f"Ultima apariție a cuvântului '{subșir}' începe la indicele: {indice1}") <span>==> ... începe la indicele: 30</span>
+
+<span># Găsește ultima apariție a cuvântului "salut" într-un interval specific</span>
+indice2 = șir.rfind(subșir, 0, 15) <span># Caută de la indicele 0 până la (dar fără a include) indicele 15</span>
+print(f"Ultima apariție a cuvântului '{subșir}' în 'salut lume salu': {indice2}") <span>==> ... în 'salut lume salut': 0</span>
+
+<span># Găsește un subșir care nu există</span>
+indice_negăsit = șir.rfind("python")
+print(f"Ultima apariție a cuvântului 'python': {indice_negăsit}") <span>==> Ultima apariție a cuvântului 'python': -1</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="RX">.rindex(sub[, start[, end]])</h2>
+
+            <p>Sintaxă: şir.rindex(sub[, start[, end]])</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_rindex.asp" target="_blank" rel="noopener">Python
+                    String rindex()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>rindex()</b> în șirurile Python este utilizată pentru a găsi cel mai mare indice (cel
+                        mai din dreapta) unde se găsește un subșir specificat în cadrul șirului.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>sub (obligatoriu): Subșirul de căutare.</dd>
+                        <dd>start (opțional): Indicele de început pentru căutare. Căutarea va începe de la acest indice.
+                            Implicit, valoarea este 0 dacă nu este furnizat.</dd>
+                        <dd>end (opțional): Indicele de sfârșit pentru căutare. Căutarea se va termina înainte de acest
+                            indice. Implicit, valoarea este sfârșitul șirului dacă nu este furnizat.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>Metoda returnează un număr întreg care reprezintă cel mai mare indice al primului caracter
+                            al ultimei apariții a lui sub în intervalul specificat.</dd>
+                        <dt>Gestionarea erorilor:</dt>
+                        <dd>Dacă subșirul nu este găsit în intervalul specificat, este generată o eroare ValueError.
+                            Acest comportament îl distinge de metoda rfind(), care returnează -1 dacă subșirul nu este
+                            găsit.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>rindex()</b> method in Python strings is used to find the highest index (rightmost) where a
+                        specified substring sub is found within the string.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>sub (required): The substring to search for.</dd>
+                        <dd>start (optional): The starting index for the search. The search will begin from this index.
+                            Defaults to 0 if not provided.</dd>
+                        <dd>end (optional): The ending index for the search. The search will end before this index.
+                            Defaults to the end of the string if not provided.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>The method returns an integer representing the highest index of the first character of the
+                            last occurrence of sub within the specified range.</dd>
+                        <dt>Error Handling:</dt>
+                        <dd>If the substring is not found within the specified range, a ValueError is raised. This
+                            behavior distinguishes it from the rfind() method, which returns -1 if the substring is not
+                            found.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>text = "salut lume salut python"
+
+<span># Găsește ultima apariție a lui "salut"</span>
+indice1 = text.rindex("salut")
+print(f"Ultima apariție a lui 'salut': {indice1}") <span>==> Ultima apariție a lui 'salut': 11</span>
+
+<span># Găsește ultima apariție a lui "u" într-un interval specific</span>
+indice2 = text.rindex("u", 0, 15)
+print(f"Ultima apariție a lui 'u' în 'salut lume salut': {indice2}") <span>==> Ultima apariție a lui 'u' în 'salut lume salut': 14</span>
+
+<span># un subșir inexistent (va genera ValueError)</span>
+try:
+    text.rindex("html")
+except ValueError as e:
+    print(f"Error: {e}")  <span>==> Error: substring not found</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="ST">.split(sep=None, maxsplit=-1)</h2>
+
+            <p>Sintaxă = şir.split(separator, maxsplit)</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_split.asp" target="_blank" rel="noopener">Python
+                    String split()
+                    Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>split()</b>, atunci când este apelată cu sep=None și maxsplit=-1, împarte un șir într-o
+                        listă de subșiruri.</p>
+                    <dl>
+                        <dt>Parametrii</dt>
+                        <dd>sep=None: Acesta este comportamentul implicit. Când sep este None (sau nu este specificat),
+                            șirul este împărțit prin orice spațiu alb (spații, tabulatori, linii noi etc.), iar spațiile
+                            albe consecutive sunt tratate ca un singur separator. În plus, șirurile goale care ar putea
+                            rezulta din spațiile albe la început/sfârșit sau din separatoarele consecutive multiple sunt
+                            eliminate automat din lista rezultată.</dd>
+                        <dd>maxsplit=-1: Acesta este, de asemenea, comportamentul implicit. Când maxsplit este -1 (sau
+                            nu este specificat), nu există o limită a numărului de divizări efectuate. Șirul va fi
+                            împărțit la fiecare apariție a separatorului.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>Metoda split() returnează o listă de șiruri, care sunt subșirurile rezultate din operațiunea
+                            de divizare.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>split()</b> method, when called with sep=None and maxsplit=-1, splits a string into a list of
+                        substrings.</p>
+                    <dl>
+                        <dt>Parameters</dt>
+                        <dd>sep=None: This is the default behavior. When sep is None (or not specified), the string is
+                            split by any whitespace (spaces, tabs, newlines, etc.), and consecutive whitespace
+                            characters are treated as a single separator. Additionally, empty strings that might result
+                            from leading/trailing whitespace or multiple consecutive separators are automatically
+                            removed from the resulting list.</dd>
+                        <dd>maxsplit=-1: This is also the default behavior. When maxsplit is -1 (or not specified),
+                            there is no limit to the number of splits performed. The string will be split at every
+                            occurrence of the separator.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>The split() method returns a list of strings, which are the substrings resulting from the
+                            split operation.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># Împărțirea prin spații albe implicite</span>
+text = "  Salut   lume\nPython este   grozav.  "
+cuvinte = text.split()
+print(cuvinte)         <span>==> ['Salut', 'lume', 'Python', 'este', 'grozav.']</span>
+
+<span># Împărțirea după spații albe (comportament implicit).</span>
+text = "Python este un limbaj versatil"
+rezultat = text.split()
+print(rezultat)         <span>==> ['Python', 'este', 'un', 'limbaj', 'versatil']</span>
+
+<span># Separarea cu un separator specific</span>
+şir_fructe = "măr, pară, cireșă, caisă, smochină, prună, piersică, strugure"
+fructe = şir_fructe.split(", ")
+print(fructe)           <span>==> ['măr', 'pară', 'cireșă', 'caisă', 'smochină', 'prună', 'piersică', 'strugure']</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <p>Note that consecutive delimiters will insert empty strings into the list. A multi-character string
+                    can also be used as a separator. The maxsplit parameter limits the number of splits. For example,
+                    maxsplit=3 will result in at most 4 elements in the list.</p>
+
+                <p>Rețineți că delimitatorii consecutivi vor insera șiruri goale în listă. Un șir cu mai multe caractere
+                    poate fi folosit și ca separator. Parametrul maxsplit limitează numărul de divizări. De exemplu,
+                    maxsplit=3 va duce la cel mult 4 elemente în listă.</p>
+            </div>
+
+<pre><code><span># Împărțirea cu maxsplit.</span>
+cale = "C:/Users/Documents/file.txt"
+trei_părți = cale.split('/', 2) <span># Împărțiți cel mult de două ori</span>
+print(trei_părți)  <span>==> ['C:', 'Users', 'Documents/file.txt']</span>
+
+accesat_intrare = "2025-09-21 INFO Utilizator autentificat de la 125.0.0.01"
+număr_divizări = accesat_intrare.split(' ', maxsplit=4)
+print(număr_divizări)  <span>==> ['2025-09-21', 'INFO', 'Utilizator', 'autentificat', 'de la 125.0.0.01']</span>
+</code></pre>
+
+            <p>maxsplit=0 înseamnă că nu se efectuează divizări.<br>
+                maxsplit=0 means no splits are performed.</p>
+
+<pre><code>șir_separă = "  Salut lume \n Python  "
+rezultat = șir_separă.split(sep=None, maxsplit=-1)
+print(rezultat)  <span>==> ['Salut', 'lume', 'Python']</span>
+</code></pre>
+
+          <div class="grid-container">
+            <p>În acest exemplu, șirul este împărțit prin diversele caractere spațiere, iar lista rezultată conține doar
+                "caracterele-cuvintele" care nu sunt goale.</p>
+             <p>In this example, the string is split by the various whitespace characters, and the resulting list
+                contains only the non-empty "characters-words."</p>
+          </div>
+
+<pre><code><span># înlocuiți delimitatorii înainte de divizarea unui șir de caractere</span>
+<span># metoda șir.replace() pentru a standardiza delimitatorii la un singur caracter,</span>
+<span>#și apoi se folosește str.split() cu caracterul respectiv.</span>
+culori = "verde,galbenă;roșie,roz"
+
+<span># Înlocuiți punct și virgulă cu virgule</span>
+txt_uniform = culori.replace(";", ",")
+
+<span># Împărțiți șirul prin virgule</span>
+culori_virgulă = txt_uniform.split(",")
+print(culori_virgulă)  <span>==> ['verde', 'galbenă', 'roșie', 'roz']</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>culori.replace(";", ","): Această linie înlocuiește toate aparițiile punctului și virgulei (;)
+                        cu o virgulă (,) în șirul de text, creând uniform.</dd>
+                    <dd>txt-uniform.split(","): Această linie împarte apoi șirul txt_uniform într-o listă de subșiruri
+                        folosind virgula (,) ca delimitator.</dd>
+                    <dd>Această abordare asigură că, indiferent de delimitatorul prezent inițial, șirul este împărțit în
+                        mod constant pe baza unui singur delimitator ales. Acest lucru este util în special atunci când
+                        se lucrează cu date care pot avea inconsecvențe în formatare.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>culori.replace(";", ","): This line replaces all occurrences of the semicolon (;) with a comma
+                        (,) in the text string, creating uniform.</dd>
+                    <dd>txt_uniform.split(","): This line then splits the txt_uniform string into a list of substrings
+                        using the comma (,) as the delimiter.</dd>
+                    <dd>This approach ensures that regardless of which delimiter was originally present, the string is
+                        consistently split based on a single chosen delimiter. This is particularly useful when dealing
+                        with data that may have inconsistencies in its formatting.</dd>
+                </dl>
+            </div>
+
+            <p><b>strip()</b> and <b>split()</b></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>strip()</dt>
+                    <dd>Metoda strip() este apelată prima. Scopul său este de a elimina spațiile albe de la început și
+                        de la sfârșit (spații, tabulatori, linii noi) dintr-un șir de caractere. Dacă furnizați un
+                        argument pentru strip(), aceasta va elimina toate aparițiile acelor caractere specificate de la
+                        începutul și sfârșitul șirului de caractere.</dd>
+                </dl>
+
+                <dl>
+                    <dt>strip()</dt>
+                    <dd>The strip() method is called first. Its purpose is to remove leading and trailing whitespace
+                        characters (spaces, tabs, newlines) from a string. If you provide an argument to strip(), it
+                        will remove all occurrences of those specified characters from the beginning and end of the
+                        string.</dd>
+                </dl>
+            </div>
+
+<pre><code>șirul_meu = " Salut, lume! \n"
+șirul_curățat = șirul_meu.strip()
+print(șirul_curățat)   <span>==> Salut, lume!</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>split()</dt>
+                    <dd>După ce strip() a eliminat spațiile albe de la început și de la sfârșit, metoda split() este
+                        apelată asupra șirului rezultat. Metoda split() împarte un șir într-o listă de subșiruri pe baza
+                        unui delimitator. În mod implicit, dacă nu este furnizat niciun argument, split() folosește
+                        orice spațiu alb ca delimitator și gestionează spațiile multiple dintre cuvinte ca un singur
+                        delimitator.</dd>
+                </dl>
+
+                <dl>
+                    <dt>split()</dt>
+                    <dd>After strip() has removed the leading and trailing whitespace, the split() method is called on
+                        the resulting string. The split() method divides a string into a list of substrings based on a
+                        delimiter. By default, if no argument is provided, split() uses any whitespace as a delimiter
+                        and handles multiple spaces between words as a single delimiter.</dd>
+                </dl>
+            </div>
+
+<pre><code>șir_curățat = "Salut lume!"
+listă_split = șir_curățat.split()
+print(listă_split)  <span>==> ['Salut', 'lume!']</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Combinarea strip() și split()</dt>
+                    <dd>Atunci când sunt înlănțuite ca șir.strip().split(), această secvență de operații curăță mai
+                        întâi șirul prin eliminarea oricăror spații albe inutile la început sau la sfârșit, apoi împarte
+                        șirul curățat într-o listă de "cuvinte" sau jetoane individuale, folosind spațiile albe ca
+                        separator.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Combining strip() and split()</dt>
+                    <dd>When chained together as str.strip().split(), this sequence of operations first cleans up the
+                        string by removing any unnecessary leading or trailing whitespace, and then it breaks the
+                        cleaned string into a list of individual "words" or tokens, using whitespace as the separator.
+                    </dd>
+                </dl>
+            </div>
+
+<pre><code>culori = "  verde  galbenă  roșie  roz   "
+procesează_lista = culori.strip().split()
+print(procesează_lista)   <span>==> ['verde', 'galbenă', 'roșie', 'roz']</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Această combinație este frecvent utilizată pentru a analiza datele de intrare unde se așteaptă
+                    cuvinte sau valori separate prin spații, dar trebuie să se țină cont și de eventualele spații
+                    suplimentare de la începutul sau sfârșitul datelor de intrare.</p>
+                <p>This combination is frequently used to parse input where you expect words or values separated by
+                    spaces, but you also need to account for potential extra spaces at the beginning or end of the
+                    input.</p>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="SL">.splitlines([keepends])</h2>
+
+            <p>Sintaxă: şir.splitlines([keepends])</p>
+            <p>Sintaxă: şir.splitlines(keepends=False)</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_splitlines.asp" target="_blank"
+                    rel="noopener">Python String
+                    splitlines() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>şir.splitlines()</b> împarte un șir de caractere într-o listă de linii, întrerupându-se
+                        la diferite limite de linie. Are un parametru boolean opțional, keepends, care determină dacă
+                        caracterele de sfârșit de linie sunt incluse în elementele listei rezultate.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>
+                            <dl>
+                                <dt>keepends (Opțional): O valoare booleană (implicit False).</dt>
+                                <dd>Dacă este True, caracterele de sfârșit de linie (de exemplu, \n, \r\n, \r) sunt
+                                    incluse la sfârșitul liniei corespunzătoare din lista returnată.</dd>
+                                <dd>Dacă este False (implicit), caracterele de sfârșit de linie sunt eliminate.</dd>
+                            </dl>
+                        </dd>
+                        <dt>Valoarea returnată:</dt>
+                        <dd>Metoda returnează o listă de șiruri de caractere, unde fiecare șir reprezintă o linie din
+                            șirul original cu mai multe linii.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>str.splitlines()</b> method divides a string into a list of lines, breaking at various line
+                        boundaries. It has an optional boolean parameter, keepends, which determines whether the line
+                        break characters are included in the resulting list elements.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>
+                            <dl>
+                                <dt>keepends (Optional): A boolean value (defaults to False).</dt>
+                                <dd>If True, the line break characters (e.g., \n, \r\n, \r) are included at the end of
+                                    the corresponding line in the returned list.</dd>
+                                <dd>If False (the default), the line break characters are removed.</dd>
+                            </dl>
+                        </dd>
+                        <dt>Return Value:</dt>
+                        <dd>The method returns a list of strings, where each string represents a line from the original
+                            multi-line string.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># Comportament implicit (keepends=False)</span>
+text1 = "Linia 1\nLinia 2\r\nLinia 3"
+linii1 = text1.splitlines()
+print(f"Rezultat text1: {linii1}") <span>==> Rezultat text1: ['Linia 1', 'Linia 2', 'Linia 3']</span>
+
+<span># keepends=True</span>
+text2 = "Salut\nLume\r\nPython"
+linii2 = text2.splitlines(keepends=True)
+print(f"Rezultat text2: {linii2}") <span>==> Rezultat text2: ['Salut\n', 'Lume\r\n', 'Python']</span>
+
+<span># Șir gol</span>
+text3 = ""
+linii3 = text3.splitlines()
+print(f"Rezultat text3: {linii3}") <span>==> Rezultat text3: []</span>
+
+<span># Șir cu doar sfârșituri de linie</span>
+text4 = "\n\n"
+linii4 = text4.splitlines()
+print(f"Rezultat text4: {linii4}") <span>==> Rezultat text4: ['', '']</span>
+</code></pre>
+
+            <div class="grid-container">
+                <div>
+                    <p>Rețineți că Rezultat text2 pe ultima linie nu se adaugă un sfârșit de linie dacă aceasta nu
+                        exista în șirul original.</p>
+                    <p>Deși similară, splitlines() oferă câteva diferențe cheie de comportament față de str.split('\n'):
+                    </p>
+                    <dl>
+                        <dt>Diferențe cheie față de str.split()</dt>
+                        <dd>Linii noi universale: splitlines() gestionează corect diferitele sfârșituri de linie (\n,
+                            \r, \r\n), ceea ce o face mai robustă pentru procesarea textului pe mai multe platforme.
+                        </dd>
+                        <dd>Sfârșit de linie final: Spre deosebire de split('\n'), splitlines() nu va produce un șir gol
+                            suplimentar în listă dacă șirul original se termină cu un sfârșit de linie.</dd>
+                        <dd>Șir gol: splitlines() returnează o listă goală [] pentru un șir gol "". split('\n')
+                            returnează o listă cu un singur șir gol [''].</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>Note that Rezultat text2 the final line does not have a line break appended if one did not exist
+                        in the original string.</p>
+                    <p>While similar, splitlines() offers a few key behavioral differences from str.split('\n'):</p>
+                    <dl>
+                        <dt>Key differences from str.split()</dt>
+                        <dd>Universal newlines: splitlines() correctly handles different line endings (\n, \r, \r\n),
+                            making it more robust for cross-platform text processing.</dd>
+                        <dd>Trailing line break: Unlike split('\n'), splitlines() will not produce an extra empty string
+                            in the list if the original string ends with a line break.</dd>
+                        <dd>Empty string: splitlines() returns an empty list [] for an empty string "". split('\n')
+                            returns a list with a single empty string [''].</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>text_cu_linie_nouă_finală = "Salut\n"
+
+<span># Se folosește splitlines()</span>
+print(text_cu_linie_nouă_finală.splitlines()) <span>==> ['Salut']</span>
+
+<span># Se folosește split('\n')</span>
+print(text_cu_linie_nouă_finală.split('\n')) <span>==> ['Salut', '']</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="PN">.partition(sep)</h2>
+
+            <p>Sintaxă: şir.partition(separator)</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_partition.asp" target="_blank" rel="noopener">Python
+                    String
+                    partition() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>partition(sep)</b> din Python este o metodă de tip șir de caractere care împarte un șir de
+                        caractere în trei părți pe baza primei apariții a unui separator specificat. Returnează un tuplu
+                        care conține aceste trei părți.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>separator: Un șir care reprezintă subșirul la care se va diviza șirul original. Acest
+                            parametru este obligatoriu.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>
+                            <dl>
+                                <dt>Metoda partition() returnează un tuplu cu trei elemente:</dt>
+                                <dd>Porțiunea din șir înainte de prima apariție a separatorului.</dd>
+                                <dd>Separatorul în sine.</dd>
+                                <dd>Porțiunea din șir după prima apariție a separatorului.</dd>
+                            </dl>
+                        </dd>
+                        <dt>Comportament când separatorul nu este găsit:</dt>
+                        <dd>Dacă separatorul nu este găsit în șir, metoda returnează totuși un tuplu de trei elemente:
+                            Șirul original, Un șir gol ('') și Un alt șir gol ('').</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>partition(sep)</b> method in Python is a string method that divides a string into three parts
+                        based on the first occurrence of a specified separator. It returns a tuple containing these
+                        three parts.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>separator: A string representing the substring at which to split the original string. This
+                            parameter is required.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>
+                            <dl>
+                                <dt>The partition() method returns a tuple with three elements: </dt>
+                                <dd>The portion of the string before the first occurrence of the separator.</dd>
+                                <dd>The separator itself.</dd>
+                                <dd>The portion of the string after the first occurrence of the separator.</dd>
+                            </dl>
+                        </dd>
+                        <dt>Behavior when the separator is not found:</dt>
+                        <dd>If the separator is not found within the string, the method still returns a tuple of three
+                            elements: The Original string, An empty string (''), and Another empty string ('').</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>şir = "gutuie_căpșună_strugure"
+
+<span># Partiționare cu un separator existent</span>
+rezultat1 = şir.partition("_")
+print(rezultat1)  <span>==> ('gutuie', '_', 'căpșună_strugure')</span>
+
+<span># Partiționare cu un separator inexistent</span>
+rezultat2 = şir.partition("-")
+print(rezultat2)  <span>==> ('gutuie_căpșună_strugure', '', '')</span>
+
+print("joi@14@2025".partition("@")) <span>==> ('joi', '@', '14@2025')</span>
+print("joi.14.2025".partition("@")) <span>==> ('joi.14.2025', '', '')</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="RN">.rpartition(sep)</h2>
+
+            <p>Sintaxă: şir.rpartition(separator)</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_rpartition.asp" target="_blank"
+                    rel="noopener">Python String
+                    rpartition() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>str.rpartition(sep)</b> din Python este o metodă de tip șir de caractere utilizată pentru a
+                        împărți un șir de caractere în trei părți pe baza ultimei apariții a unui separator specificat.
+                        Returnează un tuplu format din 3 elemente.</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>separator: Obligatoriu. Șirul de caractere care trebuie căutat ca separator.</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>
+                            <dl>
+                                <dt>Metoda rpartition() returnează un tuplu care conține trei elemente:</dt>
+                                <dd>Partea șirului de caractere dinaintea ultimei apariții a separatorului.</dd>
+                                <dd>Separatorul în sine.</dd>
+                                <dd>Partea șirului de caractere de după ultima apariție a separatorului.</dd>
+                            </dl>
+                        </dd>
+                        <dt>Comportament dacă separatorul nu este găsit:</dt>
+                        <dd>Dacă separatorul nu este găsit în șir, metoda returnează un tuplu care conține două șiruri
+                            goale, urmate de șirul original în sine.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>str.rpartition(sep)</b> method in Python is a string method used to split a string into three
+                        parts based on the last occurrence of a specified separator. It returns a 3-element tuple.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>separator: Required. The string to search for as the separator.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>
+                            <dl>
+                                <dt>The rpartition() method returns a tuple containing three elements:</dt>
+                                <dd>The part of the string before the last occurrence of the separator.</dd>
+                                <dd>The separator itself.</dd>
+                                <dd>The part of the string after the last occurrence of the separator.</dd>
+                            </dl>
+                        </dd>
+                        <dt>Behavior if the separator is not found:</dt>
+                        <dd>If the separator is not found in the string, the method returns a tuple containing two empty
+                            strings, followed by the original string itself.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code><span># Separator găsit</span>
+text = "căpșună-măr-strugure-gutuie"
+rezultat = text.rpartition('-')
+print(rezultat)  <span>==> ('căpșună-măr-strugure', '-', 'gutuie')</span>
+
+<span># Separator negăsit</span>
+text = "Bună ziua lume"
+rezultat = text.rpartition('x')
+print(rezultat)  <span>==> ('', '', 'Bună ziua lume')</span>
+
+<span># Se folosește un separator diferit</span>
+cale_fișier = "C:/Users/Documents/example.txt"
+numefișier, sep, extensie = cale_fișier.rpartition('.')
+print(f"Numefișier: {numefișier}, Extensie: {extensie}") <span>==> Numefișier: C:/Users/Documents/example, Extensie: txt</span>
+
+<span># partiționarea în șiruri se face începând din partea dreaptă a șirului țintă.</span>
+print("joi@14@2025".rpartition("@"))  <span>==> ('joi@14', '@', '2025')</span>
+print("joi.14.2025".rpartition("@"))  <span>==> ('', '', 'joi.14.2025')</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="MT">.maketrans(x[, y[, z]])</h2>
+
+            <p>Syntax: şir.maketrans(x[, y[, z]])</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_maketrans.asp" target="_blank" rel="noopener">Python
+                    String
+                    maketrans() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>str.maketrans()</b> din Python este o metodă statică utilizată pentru a crea un tabel de
+                        traducere, care este apoi utilizat de metoda str.translate() pentru a efectua înlocuiri de
+                        caractere într-un șir de caractere.</p>
+                    <dl>
+                        <dt>Argumente:</dt>
+                        <dd>
+                            <dl>
+                                <dt>x: Acest argument poate fi unul din două lucruri:</dt>
+                                <dd>Un dicționar care mapează numerele ordinale Unicode (întregi) sau șirurile cu un
+                                    singur caracter la traducerile lor (care pot fi numere ordinale Unicode, șiruri cu
+                                    un singur caracter sau Niciunul).</dd>
+                                <dd>Un șir care conține caractere care trebuie înlocuite.</dd>
+                            </dl>
+                        </dd>
+                        <dd>y (opțional): Dacă x este un șir, y trebuie să fie și un șir de lungime egală. Fiecare
+                            caracter din x va fi mapat la caracterul din poziția corespunzătoare din y.</dd>
+                        <dd>z (opțional): Dacă este furnizat, z trebuie să fie un șir. Fiecare caracter din z va fi
+                            mapat la Niciunul în tabelul de traducere, ceea ce înseamnă că aceste caractere vor fi
+                            eliminate din șir atunci când se aplică translate().</dd>
+                        <dt>Valoare returnată:</dt>
+                        <dd>Metoda maketrans() returnează un tabel de traducere, care este un obiect asemănător unui
+                            dicționar care poate fi transmis metodei str.translate().</dd>
+                        <dt>Cum funcționează cu str.translate():</dt>
+                        <dd>Metoda maketrans() creează regulile de mapare, dar nu efectuează traducerea propriu-zisă.
+                            Tabela de traducere pe care o generează este apoi utilizată de metoda str.translate() pentru
+                            a înlocui caracterele dintr-un șir țintă conform acestor reguli.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>str.maketrans()</b> method in Python is a static method used to create a translation table,
+                        which is then used by the str.translate() method to perform character replacements in a string.
+                    </p>
+                    <dl>
+                        <dt>Arguments:</dt>
+                        <dd>
+                            <dl>
+                                <dt>x: This argument can be one of two things:</dt>
+                                <dd>A dictionary mapping Unicode ordinals (integers) or single-character strings to
+                                    their translations (which can be Unicode ordinals, single-character strings, or
+                                    None).</dd>
+                                <dd>A string containing characters to be replaced.</dd>
+                            </dl>
+                        </dd>
+                        <dd>y (optional): If x is a string, y must also be a string of equal length. Each character in x
+                            will be mapped to the character at the corresponding position in y. </dd>
+                        <dd>z (optional): If provided, z must be a string. Each character in z will be mapped to None in
+                            the translation table, meaning these characters will be removed from the string when
+                            translate() is applied.</dd>
+                        <dt>Return Value:</dt>
+                        <dd>The maketrans() method returns a translation table, which is a dictionary-like object that
+                            can be passed to the str.translate() method.</dd>
+                        <dt>How it works with str.translate():</dt>
+                        <dd>The maketrans() method creates the mapping rules, but it does not perform the actual
+                            translation. The translation table it generates is then used by the str.translate() method
+                            to replace characters in a target string according to those rules.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>tabel_de_traducere = str.maketrans({'c': 'C', 'ă': 'Ă'})
+șir_original = "măr căpșună"
+șir_tradus = șir_original.translate(tabel_de_traducere)
+print(șir_tradus)                                        <span>==> mĂr CĂpșunĂ</span>
+
+<span># Folosind șiruri de caractere x și y.</span>
+tabel_de_traducere2 = str.maketrans("aeiouăâî", "12345678")
+șir_original2 = "îți plac căpșunile?"
+șir_tradus2 = șir_original2.translate(tabel_de_traducere2)
+print(șir_tradus2)                                        <span>==> 8ț3 pl1c c6pș5n3l2?</span>
+
+<span># Using x, y, and z to remove characters:</span>
+tabel_de_traducere3 = str.maketrans("abcr", "ABCF", "def")
+șir_original3 = "abcrdefg"
+șir_tradus3 = șir_original3.translate(tabel_de_traducere3)
+print(șir_tradus3)                                        <span>==> ABCFg</span>
+</code></pre>
+
+<pre><code>x: characters to be replaced ("abcr")
+
+y: replacement characters for x ("ABCF")
+
+z: characters to be deleted  ("def")
+</code></pre>
+
+<pre><code>x: caractere de înlocuit ("abcr")
+
+y: caractere de înlocuit pentru x ("ABCF")
+
+z: caractere de șterse ("def")
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+            <h2 id="TE">.translate(table)</h2>
+
+            <p>Sintaxă: şir.translate(table)</p>
+
+            <p><a href="https://www.w3schools.com/python/ref_string_translate.asp" target="_blank" rel="noopener">Python
+                    String
+                    translate() Method</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Metoda <b>str.translate()</b> este utilizată pentru a înlocui sau elimina eficient caracterele
+                        dintr-un șir de caractere pe baza unui tabel de traducere. Acest tabel este de obicei creat
+                        folosind metoda statică str.maketrans().</p>
+                    <dl>
+                        <dt>Parametri:</dt>
+                        <dd>tabel: Un tabel de traducere care definește modul în care ar trebui mapate caracterele.
+                            Acest tabel este de obicei generat de str.maketrans(). Poate mapa ordinale Unicode la
+                            ordinale Unicode, șiruri de caractere sau None (pentru ștergere).</dd>
+                        <dt>Cum se utilizează str.translate():</dt>
+                        <dd>Creați un tabel de traducere folosind str.maketrans():</dd>
+                        <dt>str.maketrans() primește trei argumente opționale:</dt>
+                        <dd>intab: Un șir de caractere care conține caracterele care trebuie înlocuite.</dd>
+                        <dd>outtab: Un șir de caractere care conține caracterele de înlocuire. Lungimea lui outtab ar
+                            trebui să corespundă în mod ideal cu intab.</dd>
+                        <dd>delchars: Un șir de caractere care conține caracterele care trebuie șterse.</dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p><b>str.translate()</b> method is used to efficiently replace or remove characters in a string
+                        based on a translation table. This table is typically created using the str.maketrans() static
+                        method.</p>
+                    <dl>
+                        <dt>Parameters:</dt>
+                        <dd>table: A translation table that defines how characters should be mapped. This table is
+                            usually generated by str.maketrans(). It can map Unicode ordinals to Unicode ordinals,
+                            strings, or None (for deletion).</dd>
+                        <dt>How to Use str.translate():</dt>
+                        <dd>Create a translation table using str.maketrans():</dd>
+                        <dt>str.maketrans() takes three optional arguments:</dt>
+                        <dd>intab: A string containing characters to be replaced.</dd>
+                        <dd>outtab: A string containing the replacement characters. The length of outtab should ideally
+                            match intab.</dd>
+                        <dd>delchars: A string containing characters to be deleted.</dd>
+                    </dl>
+                </div>
+            </div>
+
+<pre><code>tabel_traducere = str.maketrans("aeiouăâî", "12345678", "klm")
+șir = "îți plac căpșunile? Le găsești la km 12"
+traduce_șir = șir.translate(tabel_traducere)
+print(traduce_șir)                          <span>==> 8ț3 p1c c6pș5n32? L2 g6s2șt3 1  12</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Explicație:</dt>
+                    <dd>Fiecare vocală din "aeiouăâî" este înlocuită cu cifra corespunzătoare din 12345678.</dd>
+                    <dd>Caracterele "k", "l" și "m" sunt șterse din șir.</dd>
+                    <dd>Caracterele care nu sunt prezente în intab sau delchars rămân neschimbate.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Explanation:</dt>
+                    <dd>Each vowel of "aeiouăâî" is replaced by coresponding digit from 12345678 respectively.</dd>
+                    <dd>Characters 'k', 'l', and 'm' are deleted from the string.</dd>
+                    <dd>Characters not present in intab or delchars remain unchanged.</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <p><b>Alternativă (fără maketrans()):</b>
+                    De asemenea, puteți crea tabelul de traducere ca un dicționar care mapează ordinalele Unicode
+                    (obținute folosind ord()) cu înlocuitorii lor sau None pentru ștergere.</p>
+                <p><b>Alternative (without maketrans()):</b>
+                    You can also create the translation table as a dictionary mapping Unicode ordinals (obtained using
+                    ord()) to their replacements or None for deletion.</p>
+            </div>
+
+<pre><code>dict_traducere = {ord('a'): 'A', ord('b'): None}
+text = "arbagic busuioc"
+text_tradus = text.translate(dict_traducere)
+print(text_tradus)   <span>==> ArAgic usuioc</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="RE">Găsiți cu Regex-Find with Regex</h2>
+
+            <p><a href="https://docs.python.org/3/library/re.html" target="_blank" rel="noopener">re — Regular
+                    expression
+                    operations</a></p>
+
+            <p><a href="https://www.w3schools.com/python/python_regex.asp" target="_blank" rel="noopener">Python
+                    RegEx</a></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>Expresiile regulate, adesea abreviate regex, sunt șiruri specializate folosite pentru a defini
+                        modele de căutare pentru text. În Python, modulul <b>re</b> oferă suport complet pentru lucrul
+                        cu expresii regulate.</p>
+                    <dl>
+                        <dt>Concepte și utilizare.</dt>
+                        <dd>Importați modulul re: Toate operațiunile cu expresii regulate în Python încep prin importul
+                            modulului re.</dd>
+                        <dd>model= r"\d+" Se potrivește cu una sau mai multe cifre.</dd>
+                        <dd>Pentru a găsi un subșir în Python folosind expresii regulate cu condiții specifice, se
+                            utilizează modulul re, în principal cu re.search() sau re.findall().</dd>
+                        <dd>Definiți șirul de caractere și modelul regex: Modelul va încorpora condițiile pentru subșir.
+                            Șirurile brute (cu prefixul r) sunt recomandate pentru modelele regex pentru a preveni
+                            interpretarea backslash-urilor ca secvențe de escape de către Python.
+                        <dd>
+                    </dl>
+                </div>
+
+                <div>
+                    <p>Regular expressions, often abbreviated as regex, are specialized strings used to define search
+                        patterns for text. In Python, the <b>re</b> module provides comprehensive support for working
+                        with regular expressions.</p>
+                    <dl>
+                        <dt>Concepts and Usage.</dt>
+                        <dd>Import the re module: All regular expression operations in Python begin by importing the re
+                            module.</dd>
+                        <dd>pattern = r"\d+" Matches one or more digits.</dd>
+                        <dd>To find a substring in Python using regular expressions with specific conditions, the re
+                            module is utilized, primarily with re.search() or re.findall().</dd>
+                        <dd>Define your string and the regex pattern: The pattern will incorporate the conditions for
+                            the substring. Raw strings (prefixed with r) are recommended for regex patterns to prevent
+                            backslashes from being interpreted as escape sequences by Python.</dd>
+                    </dl>
+                </div>
+            </div>
+
+          <div class="grid-container">
+            <p><b>re.search(model, şir):</b> Caută prima apariție a modelului în șir. Returnează un obiect potrivit dacă
+                este găsit, altfel None.</p>
+            <p><b>re.search(pattern, string):</b> Searches for the first occurrence of the pattern in the string.
+                Returns a match object if found, None otherwise.</p>
+          </div>
+
+<pre><code>import re
+
+text1 = "E foarte interesant să înveți Python!"
+cuvânt1 = "python" <span># Căutare fără distincție între majuscule și minuscule</span>
+
+<span># re.search() returnează un obiect potrivire dacă este găsit, altfel returnează  None</span>
+se_potrivește1 = re.search(cuvânt1, text1, re.IGNORECASE)
+
+if se_potrivește1:
+    print(f'Cuvântul "{cuvânt1}" este găsit în "{text1}" (fără distincție între majuscule și minuscule)') 
+<span>==> Cuvântul "python" este găsit în ...</span>
+else:
+    print(f'Cuvânt "{cuvânt1}" negăsit în "{text1}"')
+
+<span># Definește textul și modelul.</span>
+text2 = "Aneta are un câine și o pisică neagră care sare repede peste câinele tolănit, iar câinele nici măcar nu clipește."
+model1 = r"câine" <span># Litera "r" dinaintea șirului indică un șir brut, recomandată pentru expresii regulate.</span>
+model2 = r"câinele"
+
+se_potrivește2 = re.search(model1, text2)
+if se_potrivește2:
+    print(f"Sa găsit potrivirea: {se_potrivește2.group()}") <span>==> Sa găsit potrivirea: câine</span>
+else:
+    print("Nu s-a găsit nicio potrivire")
+    
+<span># Găsirea unui cuvânt care începe cu 'd' și se termină cu 'e'</span>
+text3 = "Acest șir este o  testare despre un agricultor care ară aria cu plugul."
+model3 = r"\b[dD]\w*[eE]\b"
+
+potrivire3 = re.search(model3, text3)
+if potrivire3:
+    print(f"Prima potrivire: {potrivire3.group()}") <span>==> Prima potrivire: despre</span>
+else:
+    print("Nu s-a găsit nicio potrivire.")
+
+<span># Găsirea unui număr urmat de un cuvânt specific.</span>
+text4 = "Există 126 studenți în 5 grupe şi 35 profesori în cancelarie."
+model4 = r"\d+\s+studenți"
+    
+potrivire4 = re.search(model4, text4)
+if potrivire4:
+    print(f"Prima potrivire: {potrivire4.group()}")
+else:
+    print("Nu s-a găsit nicio potrivire.") <span>==> Prima potrivire: 126 studenți</span>
+</code></pre>
+
+          <div class="grid-container">
+            <p><b>re.findall(model, şir):</b> Returnează o listă cu toate potrivirile nesuprapuse ale modelului din
+                șir.</p>
+            <p><b>re.findall(pattern, string):</b> Returns a list of all non-overlapping matches of the pattern in the
+                string.</p>
+          </div>
+
+<pre><code>toate_potrivirile1 = re.findall(model1, text2)
+print(f"Toate potrivirile: {toate_potrivirile1}") <span>==> Toate potrivirile: ['câine', 'câine', 'câine']</span>
+
+toate_potrivirile2 = re.findall(model2, text2)
+print(f"Toate potrivirile: {toate_potrivirile2}") <span>==> Toate potrivirile: ['câinele', 'câinele']</span>
+
+toate_potrivirile3 = re.findall(model3, text3)
+print(f"Toate potrivirile: {toate_potrivirile3}") <span>==> Toate potrivirile: ['despre']</span>
+
+toate_potrivirile4 = re.findall(model4, text4)
+print(f"Toate potrivirile: {toate_potrivirile4}") <span>==> Toate potrivirile: ['126 studenți']</span>
+</code></pre>
+
+          <div class="grid-container">
+            <p><b>re.compile()</b> pentru performanță: Pentru modelele utilizate în mod repetat, compilarea lor poate
+                îmbunătăți performanța.</p>
+            <p><b>re.compile()</b> for performance: For patterns used repeatedly, compiling them can improve
+                performance.</p>
+          </div>
+
+<pre><code>text_pentru_compile = "Pisici, epuri şi un câine într-o curte. Pisicile  şi epurii sar peste câinele tolănit."
+model_compilat = re.compile(r"\b\w+\b") <span># Caută cuvinte întregi</span>
+cuvinte_compilate = model_compilat.findall(text_pentru_compile)
+print(f"Cuvinte extrase: {cuvinte_compilate}")
+<span>==> Cuvinte extrase: ['Pisici', 'epuri', 'şi', 'un', 'câine', 'într', 'o', 'curte', 'Pisicile', 'şi', 'epurii', 'sar', 'peste', 'câinele', 'tolănit']</span>
+</code></pre>
+
+          <div class="grid-container">
+            <p><b>re.sub(model, înlocuire, şir):</b> Înlocuiește toate aparițiile modelului din șir cu înlocuitorul
+                specificat.</p>
+            <p><b>re.sub(pattern, replacement, string):</b> Replaces all occurrences of the pattern in the string with
+                the specified replacement.</p>
+          </div>
+
+<pre><code>text_nou1 = re.sub(model1, "epure", text2)
+print(f"Text după substituția1:\n{text_nou1}")
+<span>==> Text după substituția1:
+    Aneta are un epure și o pisică neagră care sare repede peste epurele tolănit, iar epurele nici măcar nu clipește.</span>
+
+text_nou2 = re.sub(model1, "șoarece", text2)
+print(f"Text după substituția2:\n{text_nou2}")
+<span>==> Text după substituția2:
+    Aneta are un șoarece și o pisică neagră care sare repede peste șoarecele tolănit, iar șoarecele nici măcar nu clipește.</span>
+
+text_împărțit1 = re.split(r"\s", text2) # Împărțit după spații albe
+print(f"Text împărțit: {text_împărțit1}")
+<span>==> Text împărțit: ['Aneta', 'are', 'un', 'câine', 'și', 'o', 'pisică', 'neagră', 'care', 'sare', 'repede', 'peste', 'câinele',   'tolănit,', 'iar', 'câinele', 'nici', 'măcar', 'nu', 'clipește.']</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea unei funcții de înlocuire:</dt>
+                    <dd>Pentru înlocuiri mai complexe bazate pe grupurile capturate, puteți transmite o funcție ca
+                        argument repl către re.sub(). Această funcție va fi apelată pentru fiecare potrivire, primind un
+                        obiect potrivire ca argument. Apoi puteți utiliza potrivire.group(n) pentru a accesa textul
+                        capturat de grupuri specifice și a returna șirul de înlocuire dorit.</dd>
+                </dl>
+                <dl>
+                    <dt>Using a Replacement Function:</dt>
+                    <dd>For more complex replacements based on the captured groups, you can pass a function as the repl
+                        argument to re.sub(). This function will be called for each match, receiving a match object as
+                        its argument. You can then use match.group(n) to access the text captured by specific groups and
+                        return the desired replacement string.</dd>
+                </dl>
+            </div>
+
+<pre><code>import re
+
+text5 = "O curte, 3 pisici şi un câine. O pisică neagră sare repede peste câinele tolănit. Numărul meu este 222-173-9999."
+
+def înlocuiește_cuvinte(potrivire5):
+    if potrivire5.group(1) == "3 pisici":
+        return "epuri"
+    elif potrivire5.group(2) == "O pisică neagră":
+        return "Unul din epuri"
+    elif potrivire5.group(3) == "222":
+        return "777"
+    return potrivire5.group(0)  <span># Returnează potrivirea originală dacă nu există un înlocuitor specific</span>
+<span># Capturi de modele în grupul 1 sau în grupul 2</span>
+model5 = r"(3 pisici)|(O pisică neagră)|(222)"
+rezultat5 = re.sub(model5, înlocuiește_cuvinte, text5)
+print(rezultat5)
+<span>==> O curte, epuri şi un câine. Unul din epuri sare repede peste câinele tolănit. Numărul meu este 777-173-9999.</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Combinarea condițiilor în cadrul modelului regex.
+                    <dt>
+                    <dd>Regex permite crearea unui model puternic pentru a defini diverse condiții:</dd>
+                    <dt>Privește în jur (anticipare pozitivă/negativă privire înainte/privire în urmă):</dt>
+                    <dd>Acestea afirmă o condiție fără a consuma caractere.
+                    <dd>
+                    <dd>(?=...): Anticipare pozitivă (de exemplu, word(?=\s+after))</dd>
+                    <dd>(?!...): Anticipare negativă (de exemplu, word(?!\s+not_after))</dd>
+                    <dd>(?&lt;=...): Anticipare pozitivă (de exemplu, (?&lt;=before\s+)word)</dd>
+                    <dd>(?&lt;!...): Anticipare negativă (de exemplu, (?&lt;!not_before\s+)word)</dd>
+                    <dt>Clase de caractere și cuantificatori:
+                    <dt>
+                    <dd>[a-z], \d, \s, \w pentru tipuri specifice de caractere.</dd>
+                    <dd>*, +, ?, {n,m} pentru specificarea numărului de repetiții.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Combining conditions within the regex pattern.
+                    <dt>
+                    <dd>Regex allows for powerful pattern creation to define various conditions:</dd>
+                    <dt>Lookarounds (positive/negative lookahead/lookbehind):</dt>
+                    <dd>These assert a condition without consuming characters.
+                    <dd>
+                    <dd>(?=...): Positive lookahead (e.g., word(?=\s+after))</dd>
+                    <dd>(?!...): Negative lookahead (e.g., word(?!\s+not_after))</dd>
+                    <dd>(?&lt;=...): Positive lookbehind (e.g., (?&lt;=before\s+)word)</dd>
+                    <dd>(?&lt;!...): Negative lookbehind (e.g., (?&lt;!not_before\s+)word)</dd>
+                    <dt>Character classes and quantifiers:
+                    <dt>
+                    <dd>[a-z], \d, \s, \w for specific character types.</dd>
+                    <dd>*, +, ?, {n,m} for specifying the number of repetitions.</dd>
+                </dl>
+            </div>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Găsirea tuturor cuvintelor care încep cu "p"</dt>
+                    <dd>Acest exemplu folosește re.findall() pentru a obține o listă cu toate subșirurile care încep cu
+                        litera "p" și sunt urmate de una sau mai multe litere mici ([a-z]+)</dd>
+                </dl>
+
+                <dl>
+                    <dt>Finding all words that start with "p"</dt>
+                    <dd>This example uses re.findall() to get a list of all substrings that start with the letter "p"
+                        and are followed by one or more lowercase letters ([a-z]+)</dd>
+                </dl>
+            </div>
+
+<pre><code>import re
+
+<span># Găsește toate cuvintele care încep cu p</span>
+text6 = "programarea cu python este puternică."
+model6 = r"p[a-z]+"
+potrivire6 = re.findall(model6, text6)
+print(potrivire6) <span>==> ['programarea', 'python', 'puternic']</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Găsirea unui șir cu condiții multiple (logica "AND")</dt>
+                    <dd>Pentru a găsi un subșir care îndeplinește mai multe criterii, puteți utiliza funcții de
+                        anticipare pozitive (?=...). Acest lucru este util pentru validarea unui șir care trebuie să
+                        conțină anumite caractere, cum ar fi o parolă. Partea (?=.*[A-Z]), de exemplu, afirmă că șirul
+                        trebuie să conțină cel puțin o literă mare, fără a consuma caractere în sine.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Finding a string with multiple conditions ("AND" logic)</dt>
+                    <dd>To find a substring that meets multiple criteria, you can use positive lookaheads (?=...). This
+                        is useful for validating a string that must contain specific characters, like a password. The
+                        (?=.*[A-Z]) part, for example, asserts that the string must contain at least one uppercase
+                        letter, without consuming any characters itself. </dd>
+                </dl>
+            </div>
+
+<pre><code>import re
+
+<span># Găsește șiruri de caractere care au cel puțin 6 caractere</span>
+<span># și conțin cel puțin o cifră și o literă mare.</span>
+model7 = r"^(?=.*[0-9])(?=.*[A-Z]).{6,}$"
+șir_valid = "Jan25Uarie%"
+șir_invalid = "februarie10!"
+
+if re.search(model7, șir_valid):
+    print(f"'{șir_valid}' este un șir valid") <span>==> 'Jan25Uarie%' este un șir valid</span>
+else:
+    print(f"'{șir_valid}' nu este valid")
+    
+if re.search(model7, șir_invalid):
+    print(f"'{șir_invalid}' este un șir valid")
+else:
+    print(f"'{șir_invalid}' nu este valid") <span>==> 'februarie10!' nu este valid</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Găsirea unui subșir dintre mai multe subșiruri posibile (logica SAU)</dt>
+                    <dd>Pentru a găsi un subșir care corespunde uneia dintre mai multe opțiuni, utilizați caracterul
+                        bară verticală |. Acest model corespunde fie cu "roșu", fie cu "verde", fie cu "galben".</dd>
+                </dl>
+
+                <dl>
+                    <dt>Finding one of several possible substrings ("OR" logic)</dt>
+                    <dd>To find a substring that matches one of several options, use the pipe | character. This pattern
+                        matches either "red", "green" or "yellow".</dd>
+                </dl>
+            </div>
+
+<pre><code>import re
+
+text8 = "Semaforul  are trei culori: roșu și galben și verde ."
+model8 = r"roșu | verde | galben"
+se_potrivește8 = re.findall(model8, text8) <span>==> ['roșu ', ' galben', ' verde ']</span>
+
+print(se_potrivește8)
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Utilizarea grupurilor condiționale</dt>
+                    <dd> În unele cazuri, este posibil să aveți o potrivire condițională mai complexă. De exemplu, dacă
+                        un subșir începe cu ghilimele duble, trebuie să se termine tot cu ghilimele duble. Expresia
+                        regulată condițională (?(1)"|) verifică dacă grupul 1 a fost potrivit.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Using conditional groups</dt>
+                    <dd>In some cases, you may have a more complex conditional match. For example, if a substring starts
+                        with a double quote, it must also end with one. The conditional regex (?(1)"|) checks if group 1
+                        was matched.</dd>
+                </dl>
+            </div>
+
+
+<pre><code>import re
+
+<span># Se potrivește cu un cuvânt, iar dacă acesta începe cu ghilimele duble,</span>
+<span>#trebuie să se termine tot cu ghilimele duble.</span>
+model9 = r'"?(\w+)"?(?(1)"|)'
+
+text9 = 'text cuvântul "citat"'
+text10 = 'text "citat_lipsă'
+
+potriviri9 = re.findall(model9, text9)
+print(f"Text 9 se potrivește cu: {potriviri9}")   <span>==> Text 9 se potrivește cu: ['citat']</span>
+
+potriviri10 = re.findall(model9, text10)
+print(f"Text 10 se potrivește cu: {potriviri10}") <span>==> Text 10 se potrivește cu: []</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Cum să abordezi problema ta.</dt>
+                    <dd>Importă modulul re: import re.</dd>
+                    <dd>Definește modelul tău: Creează un șir brut (r"....") care descrie condițiile subșirului tău.
+                    </dd>
+                    <dd>Alege funcția ta: Folosește re.findall() pentru toate potrivirile sau re.search() pentru prima.
+                    </dd>
+                    <dd>
+                        <dl>
+                            <dt>Extrage rezultatele:</dt>
+                            <dd>Pentru re.findall(), rezultatul este o listă de șiruri.</dd>
+                            <dd>Pentru re.search(), obține subșirul potrivit folosind match.group() pe obiectul match
+                                returnat.</dd>
+                        </dl>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>How to approach your problem.</dt>
+                    <dd>Import the re module: import re.</dd>
+                    <dd>Define your pattern: Create a raw string (r"...") that describes your substring conditions.</dd>
+                    <dd>Choose your function: Use re.findall() for all matches or re.search() for the first.</dd>
+                    <dd>
+                        <dl>
+                            <dt>Extract the results:</dt>
+                            <dd>For re.findall(), the result is a list of strings.</dd>
+                            <dd>For re.search(), get the matched substring using match.group() on the returned match
+                                object. </dd>
+                        </dl>
+                    </dd>
+                </dl>
+            </div>
+
+            <p><b>Componente regex cheie:</b> - <b>Key regex components:</b></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Șiruri brute:</dt>
+                    <dd>Introduceți modelul cu r (de exemplu, r'\d+') pentru a împiedica Python să interpreteze
+                        backslash-urile ca secvențe de escape.</dd>
+
+                    <dt>Metacharacters:</dt>
+                    <dd>`\` (Bară oblică inversată): Evită caracterele speciale sau introduce secvențe speciale.</dd>
+                    <dd>[] (Paranteze pătrate): Definește o clasă de caractere, potrivind orice caracter individual din
+                        paranteze (de exemplu, [abc], [0-9]).</dd>
+                    <dd>^ (Caret): Se potrivește cu începutul șirului sau liniei (cu re.MULTILINE). În interiorul [],
+                        neagă clasa de caractere (de exemplu, [^abc]).</dd>
+                    <dd>$ (Dollar): Se potrivește cu sfârșitul șirului sau liniei (cu re.MULTILINE).</dd>
+                    <dd>. (Dot): Se potrivește cu orice caracter individual, cu excepția unei linii noi (cu excepția
+                        cazului în care se utilizează steagul re.DOTALL).</dd>
+                    <dd>| (Pipe): Acționează ca operator SAU, potrivind fie modelul din stânga, fie din dreapta sa.</dd>
+                    <dd>? (Semn de întrebare): Se potrivește cu zero sau o apariție a elementului precedent (opțional).
+                    </dd>
+                    <dd>* (Asterisc): Se potrivește cu zero sau mai multe apariții ale elementului precedent.</dd>
+                    <dd>+ (Plus): Se potrivește cu una sau mai multe apariții ale elementului precedent.</dd>
+                    <dd>{m,n} (Acolade): Se potrivește cu un număr specific de apariții (m până la n) ale elementului
+                        precedent.</dd>
+
+                    <dt>Secvențe speciale:</dt>
+                    <dd>\d: Se potrivește cu orice cifră (0-9). \D se potrivește cu orice valoare care nu este o cifră.
+                    </dd>
+                    <dd>\w: Se potrivește cu orice caracter alfanumeric (caracter cuvânt). \W se potrivește cu orice
+                        valoare non-alfanumeric.</dd>
+                    <dd>\s: Se potrivește cu orice caracter spațiu alb (spațiu, tabulator, linie nouă). \S se potrivește
+                        cu orice caracter care nu este un spațiu alb.</dd>
+                    <dd>\b: Se potrivește cu o limită de cuvânt. \B se potrivește cu o limită care nu este un cuvânt.
+                    </dd>
+
+                    <dt>Cuantificatori:</dt>
+                    <dd>+: Se potrivește cu una sau mai multe apariții ale caracterului precedent.</dd>
+                    <dd>*: Se potrivește cu zero sau mai multe apariții.</dd>
+                    <dd>?: Se potrivește cu zero sau o apariție.</dd>
+                    <dd>{n}: Se potrivește cu exact n apariții.</dd>
+
+                    <dt>Seturi de caractere:</dt>
+                    <dd>[abc]: Se potrivește cu oricare dintre caracterele a, b sau c.</dd>
+                    <dd>[a-z]: Se potrivește cu orice caracter din intervalul specificat.</dd>
+                    <dd>[^abc]: Se potrivește cu orice caracter care nu se află în set. </dd>
+
+                    <dt>Grupuri și capturare:</dt>
+                    <dd>(...): (Paranteze): Grupează sub-modele pentru aplicarea cuantificatorilor sau capturarea
+                        textului potrivit.</dd>
+                    <dd>(?P&lt;nume&gt;...) (Grupuri denumite): Capturează un grup și îi atribuie un nume pentru o
+                        regăsire mai ușoară.</dd>
+                    <dd>(?:...) (Grupuri fără capturare): Grupează modelele fără a captura textul potrivit.</dd>
+
+                    <dt>Indicatori:</dt>
+                    <dd>re.IGNORECASE (sau re.I): Efectuează potriviri fără a ține cont de majuscule/minuscule.</dd>
+                    <dd>re.MULTILINE (sau re.M): Face ca ^ și $ să se potrivească cu începutul/sfârșitul liniilor, nu
+                        doar cu întregul șir.</dd>
+                    <dd>re.DOTALL (sau re.S): Face ca să se potrivească și cu caracterele de linie nouă.</dd>
+                    <dd>re.VERBOSE (sau re.X): Permite adăugarea de spații albe și comentarii în expresia regulată
+                        pentru lizibilitate.</dd>
+
+                    <dt>Funcții din modulul re:</dt>
+                    <dd>re.search(): Scanează un șir de caractere, găsind prima locație în care modelul regex produce o
+                        potrivire.</dd>
+                    <dd>re.match(): Verifică o potrivire doar la începutul șirului de caractere.</dd>
+                    <dd>re.findall(): Returnează o listă cu toate potrivirile modelului care nu se suprapun.</dd>
+                    <dd>re.sub(): Înlocuiește aparițiile unui model într-un șir de caractere.</dd>
+                    <dd>re.split(): Împarte un șir de caractere după aparițiile unui model.</dd>
+                    <dd>re.compile(): Compilează un model regex într-un obiect regex, util pentru utilizare repetată.
+                    </dd>
+
+                    <dt>Obiecte de potrivire:</dt>
+                    <dd>re.search() și re.match() returnează după o potrivire reușită.</dd>
+                    <dd>.group(): Preia șirul de caractere potrivit (sau grupurile specifice capturate).</dd>
+                    <dd>.start() și .end(): Returnează indicii de început și de sfârșit ai potrivirii.</dd>
+                    <dd>.span(): Returnează un tuplu care conține indicii de început și de sfârșit.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Raw strings:</dt>
+                    <dd>Precede your pattern with r (e.g., r'\d+') to prevent Python from interpreting backslashes as
+                        escape sequences.</dd>
+
+                    <dt>Metacharacters:</dt>
+                    <dd>`\` (Backslash): Escapes special characters or introduces special sequences.</dd>
+                    <dd>[] (Square Brackets): Defines a character class, matching any single character within the
+                        brackets (e.g., [abc], [0-9]).</dd>
+                    <dd>^ (Caret): Matches the beginning of the string or line (with re.MULTILINE). Inside [], it
+                        negates the character class (e.g., [^abc]).</dd>
+                    <dd>$ (Dollar): Matches the end of the string or line (with re.MULTILINE).</dd>
+                    <dd>. (Dot): Matches any single character except a newline (unless re.DOTALL flag is used).</dd>
+                    <dd>| (Pipe): Acts as an OR operator, matching either the pattern on its left or right.</dd>
+                    <dd>? (Question Mark): Matches zero or one occurrence of the preceding element (optional).</dd>
+                    <dd>* (Asterisk): Matches zero or more occurrences of the preceding element.</dd>
+                    <dd>+ (Plus): Matches one or more occurrences of the preceding element.</dd>
+                    <dd>{m,n} (Braces): Matches a specific number of occurrences (m to n) of the preceding element.</dd>
+
+                    <dt>Special sequences:</dt>
+                    <dd>\d: Matches any digit (0-9). \D matches any non-digit.</dd>
+                    <dd>\w: Matches any alphanumeric character (word character). \W matches any non-alphanumeric.</dd>
+                    <dd>\s: Matches any whitespace character (space, tab, newline). \S matches any non-whitespace.</dd>
+                    <dd>\b: Matches a word boundary. \B matches a non-word boundary.</dd>
+
+                    <dt>Quantifiers:</dt>
+                    <dd>+: Matches one or more occurrences of the preceding character.</dd>
+                    <dd>*: Matches zero or more occurrences.</dd>
+                    <dd>?: Matches zero or one occurrence.</dd>
+                    <dd>{n}: Matches exactly n occurrences.</dd>
+
+                    <dt>Character sets:</dt>
+                    <dd>[abc]: Matches any one of the characters a, b, or c.</dd>
+                    <dd>[a-z]: Matches any character in the specified range.</dd>
+                    <dd>[^abc]: Matches any character not in the set.</dd>
+
+                    <dt>Groups and Capturing:</dt>
+                    <dd>(...): (Parentheses): Groups sub-patterns for applying quantifiers or capturing matched text.
+                    </dd>
+                    <dd>(?P&lt;name&gt;...) (Named Groups): Captures a group and assigns it a name for easier retrieval.
+                    </dd>
+                    <dd>(?:...) (Non-capturing Groups): Groups patterns without capturing the matched text.</dd>
+
+                    <dt>Flags:</dt>
+                    <dd>re.IGNORECASE (or re.I): Performs case-insensitive matching.</dd>
+                    <dd>re.MULTILINE (or re.M): Makes ^ and $ match the start/end of lines, not just the entire string.
+                    </dd>
+                    <dd>re.DOTALL (or re.S): Makes . match newline characters as well.</dd>
+                    <dd>re.VERBOSE (or re.X): Allows adding whitespace and comments within the regex for readability.
+                    </dd>
+
+                    <dt>Functions in the re Module:</dt>
+                    <dd>re.search(): Scans through a string, finding the first location where the regex pattern produces
+                        a match.</dd>
+                    <dd>re.match(): Checks for a match only at the beginning of the string. </dd>
+                    <dd>re.findall(): Returns a list of all non-overlapping matches of the pattern.</dd>
+                    <dd>re.sub(): Replaces occurrences of a pattern within a string.</dd>
+                    <dd>re.split(): Splits a string by the occurrences of a pattern.</dd>
+                    <dd>re.compile(): Compiles a regex pattern into a regex object, useful for repeated use.</dd>
+
+                    <dt>Match Objects:</dt>
+                    <dd>Returned by re.search() and re.match() upon a successful match.</dd>
+                    <dd>.group(): Retrieves the matched string (or specific captured groups).</dd>
+                    <dd>.start() and .end(): Returns the start and end indices of the match.</dd>
+                    <dd>.span(): Returns a tuple containing the start and end indices.</dd>
+                </dl>
+            </div>
+
+            <p><b>metoda regex span()</b> -<b>regex span() method</b></p>
+
+            <div class="grid-container">
+                <div>
+                    <p>În modulul re din Python pentru expresii regulate, metoda "span()" este o funcție a lui Match
+                        Object care returnează indicii de început și de sfârșit ai subșirului potrivit din șirul
+                        original.</p>
+                    <p>În Python, un obiect Match (re.Match) este un obiect returnat de operațiile cu expresii regulate
+                        atunci când o potrivire de model este găsită cu succes. Acesta conține metadate bogate despre
+                        căutare, cum ar fi subșirurile potrivite, grupurile de capturare și pozițiile indexului de
+                        caractere. Dacă nu se găsește nicio potrivire, aceste funcții returnează None.</p>
+                    <p><b>Efectuați o căutare regex:</b> Folosiți funcții precum re.search(), re.match() sau
+                        re.finditer() pentru a găsi o potrivire pentru modelul dvs. într-un șir de caractere. Aceste
+                        funcții returnează un MatchObject dacă se găsește o potrivire.</p>
+                </div>
+                <div>
+                    <p>In Python's re module for regular expressions, the "span()" method is a function of a Match
+                        Object that returns the start and end indices of the matched substring within the original
+                        string.</p>
+                    <p>In Python, a Match Object (re.Match) is an object returned by regular expression operations when
+                        a pattern match is successfully found. It contains rich metadata about the search, such as the
+                        matched substrings, capturing groups, and character index positions. If no match is found, these
+                        functions return None.</p>
+                    <p><b>Perform a regex search:</b> Use functions like re.search(), re.match(), or re.finditer() to
+                        find a match for your pattern in a string. These functions return a MatchObject if a match is
+                        found.</p>
+                </div>
+            </div>
+
+
+<pre><code>import re
+text_interval1 = "Acesta este un șir de testare cu un agricultor care ară aria cu plugul."
+model_interval1 = r"ară aria"
+potrivire_interval1 = re.search(model_interval1, text_interval1)
+
+<span># Accesați metoda span() pe MatchObject</span>
+if potrivire_interval1:
+    indici_de_interval1 = potrivire_interval1.span()
+    print(f"'{model_interval1}' este in intervlul: {indici_de_interval1}") <span>==> 'ară aria' este in intervlul: (52, 60)</span>
+else:
+    print("Nu s-a găsit nicio potrivire.")
+
+text_interval2 = "În clasă există 126 studenți în 5 grupe şi 35 profesori în cancelarie."
+model_interval2 = r"126 studenți"
+potrivire_interval2 = re.search(model_interval2, text_interval2)
+
+if potrivire_interval2:
+    indici_de_interval2 = potrivire_interval2.span()
+    print(f"'{model_interval2}' este in intervalul: {indici_de_interval2}") <span>==> '126 studenți' este in intervalul: (16, 28)</span>
+else:
+    print("Nu s-a găsit nicio potrivire.")
+</code></pre>
+
+            <p><b>span() cu grupuri</b> - <b>span() with groups</b></p>
+
+            <div class="grid-container">
+                <p>Metoda <b>span()</b> poate primi și un argument opțional: numărul grupului (sau numele grupului dacă
+                    se utilizează grupuri denumite). Aceasta vă permite să obțineți intervalul unui anumit grup de
+                    captură din expresia regulată.</p>
+                <p>The <b>span()</b> method can also take an optional argument: the group number (or group name if using
+                    named groups). This allows you to get the span of a specific capturing group within your regex.</p>
+            </div>
+
+<pre><code>text_mail = "email: utilizator@exemplu.com"
+model_mail = r"(\w+)@(\w+\.\w+)"
+potrivire_mail = re.search(model_mail, text_mail)
+
+if potrivire_mail:
+    print("Interval complet de potrivire:", potrivire_mail.span(0)) <span># Intervalul întregii potriviri ==> ...: (7, 29)</span>
+    print("Interval nume utilizator:", potrivire_mail.span(1)) <span># Intervalul primului grup (nume utilizator) ==> ... (7, 17)</span>
+    print("Interval domeniu:", potrivire_mail.span(2)) <span># Intervalul celui de-al doilea grup (domeniu) ==> ... (18, 29)</span>
+else:
+    print("Nu s-a găsit nicio potrivire.")
+</code></pre>
+
+            <div class="grid-container">
+                <p><b>Notă:</b> Dacă un grup nu a contribuit la potrivire (de exemplu, un grup opțional care nu era
+                    prezent), span() pentru acel grup va returna (-1, -1). Dacă nu se găsește nicio potrivire,
+                    încercarea de a apela span() pe None va genera o eroare AttributeError.</p>
+
+                <p><b>Note:</b> If a group did not contribute to the match (e.g., an optional group that wasn't
+                    present), span() for that group will return (-1, -1). If no match is found, attempting to call
+                    span() on None will raise an AttributeError.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Beneficii în Jupyter Notebook:</dt>
+                    <dd>Experimentare interactivă: Testați și rafinați cu ușurință modelele regex în celule individuale.
+                    </dd>
+                    <dd>Vizualizarea rezultatelor: Afișați datele extrase, șirurile modificate sau potriviți obiectele
+                        direct în celulele de ieșire.</dd>
+                    <dd>Documentație: Combinați codul, explicațiile și exemplele într-un singur document pentru
+                        claritate și partajare.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Benefits in Jupyter Notebook:</dt>
+                    <dd>Interactive experimentation: Easily test and refine your regex patterns in individual cells.
+                    </dd>
+                    <dd>Visualization of results: Display extracted data, modified strings, or match objects directly in
+                        the output cells.</dd>
+                    <dd>Documentation: Combine code, explanations, and examples in a single document for clarity and
+                        sharing.</dd>
+                </dl>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="PR">operatorul in - in operator</h2>
+
+            <p><a href="https://www.w3schools.com/python/ref_keyword_in.asp" target="_blank" rel="noopener">Python in
+                    Keyword</a></p>
+
+            <p><a href="https://realpython.com/python-in-operator/" target="_blank" rel="noopener">Python's "in" and
+                    "not in"
+                    Operators: Check for Membership</a></p>
+
+            <div class="grid-container">
+                <p>Operatorul <b>in</b> este un operator de apartenență folosit pentru a verifica dacă un subșir este
+                    prezent într-un șir mai mare. Returnează True dacă subșirul este găsit și False în caz contrar.</p>
+                <p>The <b>in</b> is a membership operator used to check if a substring is present within a larger
+                    string. It returns True if the substring is found and False otherwise.</p>
+            </div>
+
+<pre><code>text_câine_pisică = "O pisică neagră care sare repede peste un câinele tolănit."
+
+<span># Verificare pentru un singur cuvânt</span>
+print("repede" in text_câine_pisică)  <span>==> True</span>
+
+<span># Verificare pentru o sintagmă</span>
+print("pisică neagră" in text_câine_pisică) <span>==> True</span> 
+
+<span># Verificare pentru un subșir care nu este prezent</span>
+print("epure" in text_câine_pisică) <span>==> False</span>
+
+<span># Sensibilitate la majuscule/minuscule:</span>
+<span>#Operatorul "in" este sensibil la majuscule/minuscule.</span>
+print("Sare" in text_câine_pisică) <span>==> False</span>
+
+<span># Pentru a efectua o verificare insensibilă la majuscule/minuscule,</span> 
+<span>#convertiți ambele șiruri la aceeași majuscule/minuscule:</span>
+print("Sare".lower() in text_câine_pisică) <span>==> True</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Puncte cheie:</dt>
+                    <dd>Verificare subșir: Operatorul "in" determină dacă o secvență de caractere (subșirul) există
+                        oriunde în cadrul unei alte secvențe de caractere (șirul principal).</dd>
+                    <dd>Rezultat boolean: Returnează întotdeauna o valoare booleană (True sau False).</dd>
+                    <dd>Sensibilitate la majuscule/minuscule: Verificarea este sensibilă la majuscule/minuscule în mod
+                        implicit. Pentru a ignora majusculele/minusculele, convertiți ambele șiruri în aceeași
+                        majuscule/minuscule folosind .lower() sau .upper().</dd>
+                </dl>
+
+                <dl>
+                    <dt>Key Points:</dt>
+                    <dd>Substring Check: The "in" operator determines if a sequence of characters (the substring) exists
+                        anywhere within another sequence of characters (the main string).</dd>
+                    <dd>Boolean Result: It always returns a boolean value (True or False).</dd>
+                    <dd>Case Sensitivity: The check is case-sensitive by default. To ignore case, convert both strings
+                        to the same case using .lower() or .upper().</dd>
+                </dl>
+            </div>
+
+            <div class="grid-container">
+                <p>Operatorul <b>not in</b>: Operatorul "not in" este inversul lui "in", returnând True dacă subșirul nu
+                    este găsit și False dacă este găsit.</p>
+                <p><b>not in</b> Operator: The "not in" operator is the inverse of "in", returning True if the substring
+                    is not found and False if it is found.</p>
+            </div>
+
+
+<pre><code>print("epure" not in text_câine_pisică) <span>==> True</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Comportamentul între tipurile de date</dt>
+                    <dd>Comportamentul și performanța operatorului <b>in</b> variază în funcție de structura de date pe
+                        care o interogați:</dd>
+                    <dd>Liste și tupluri: Scanează secvențial de la început până la sfârșit (complexitate temporală
+                        O(n)).</dd>
+                    <dd>Șiruri: Verifică dacă există un subșir specific în interiorul șirului mai mare.</dd>
+                    <dd>Dicționare: Verifică exclusiv cheile potrivite, nu valorile (complexitate temporală medie O(1)).
+                    </dd>
+                    <dd>Seturi: Folosește hashing-ul pentru căutare aproape instantanee (complexitate temporală medie
+                        O(1))</dd>
+                    <dt>Distincții cheie</dt>
+                    <dd>Operatorul invers: Îl puteți combina în <b>not in</b> pentru a verifica în mod clar dacă un
+                        element este complet absent dintr-o colecție.</dd>
+                    <dd>Cuvânt cheie operator vs. buclă: Nu confundați valoarea în colecție (operatorul de apartenență)
+                        cu valoarea for în colecție: Într-o buclă for, <b>in</b> servește doar ca sintaxă pentru a
+                        direcționa iterația buclei.</dd>
+                    <dd>Sub acoperire: Când executați x în y, Python încearcă să apeleze metoda magică a containerului
+                        y.__contains__(x). Dacă aceasta nu există, se revine la iterarea manuală a colecției.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Behavior Across Data Types</dt>
+                    <dd>The behavior and performance of the <b>in</b> operator vary depending on the data structure you
+                        are querying:</dd>
+                    <dd>Lists & Tuples: Scans sequentially from start to finish (O(n) time complexity).</dd>
+                    <dd>Strings: Checks if a specific substring exists inside the larger string.</dd>
+                    <dd>Dictionaries: Checks exclusively for matching keys, not values (O(1) average time complexity).
+                    </dd>
+                    <dd>Sets: Uses hashing for near-instant lookup (O(1) average time complexity)</dd>
+                    <dt>Key Distinctions</dt>
+                    <dd>The Inverse Operator: You can combine it into <b>not in</b> to cleanly verify if an item is
+                        completely absent from a collection.</dd>
+                    <dd>Operator vs. Loop Keyword: Do not confuse value in collection (the membership operator) with for
+                        value in collection: In a for loop, <b>in</b> serves purely as syntax to direct the loop's
+                        iteration.</dd>
+                    <dd>Under the Hood: When you execute x in y, Python attempts to call the container's magic method
+                        y.__contains__(x). If that does not exist, it falls back to iterating through the collection
+                        manually.</dd>
+                </dl>
+            </div>
+
+<pre><code><span># 1. Utilizarea funcției 'in' cu o listă</span>
+fructe = ["măr", "banană", "cireașă"] print("banană" in fructe) <span>==>: True</span>
+
+<span># 2. Utilizarea funcției 'in' cu un șir de caractere (sensibil la majuscule/minuscule)</span>
+text = "Salut Lume"
+print("Salut" in text) <span>==>: True</span>
+print("slaut" in text) <span>==>: False (Majusculele/minusculele contează!)</span>
+
+<span># 3. Utilizarea funcției 'in' cu un dicționar (verifică doar cheile)</span>
+scoruri = {"Teodora": 95, "Emil": 88}
+print("Teodora" in scoruri) <span>==>: True</span>
+print(95 in scoruri) <span>==>: False (95 este o valoare, nu o cheie)</span>
+
+<span># 4. Utilizarea variantei 'not in'</span>
+interzis = ["virgil_12", "ilie-12"]
+print("invitat" (not in interzis) <span>==>: True</span>
+</code></pre>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a>
+                    </address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+    <script src="JS/treileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/main-style.css">
+
+
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 2.1 Text-Create-String</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-1 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-1"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaT.svg" alt="T" class="logo">
+          <h1>2.0 Tipuri Text-Text Type</h1>
+        </div>
+      </div>
+
+      <div class="second-empty-1-1"></div>
+
+      <div class="subtitlu-1-1">
+        <div class="grid-cell">
+          <h2>2.1 Cum se creează un șir de caractere - How to create a string</h2>
+        </div>
+      </div>
+
+      <div class="third-empty-1-1"></div>
+
+      <div class="ro-en-1-1 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="#GH">Includerea caracterelor între ghilimele<br> simple, duble sau triple</a></li>
+            <li><a href="#CR">Constructor str()</a></li>
+            <li><a href="#MS">Metoda str()</a></li>
+            <li><a href="#MR">Metoda repr()</a></li>
+            <li><a href="#SR">str() și repr() funcții încorporate</a></li>
+            <li><a href="#SE">Secvențe de evadare în șirurile literale</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul>
+            <li>In this chapter you will study:</li>
+            <li><a href="#GH">Enclosing characters between single, double, or triple quotes</a></li>
+            <li><a href="#CR">Str() constructor</a></li>
+            <li><a href="#MS">Str() method</a></li>
+            <li><a href="#MR">Repr() method</a></li>
+            <li><a href="#SR">Str() and repr() built-in functions</a></li>
+            <li><a href="#SE">Escape sequences in string literals</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="forth-empty-1-1"></div>
+
+    <div class="contents-1-1">
+
+      <h2 id="GH">Includerea caracterelor între ghilimele simple, duble sau triple - Enclosing characters in single,
+        double, or triple quotes</h2>
+
+      <div class="grid-container">
+        <p>Puteți crea un șir de caractere în Python prin includerea caracterelor între ghilimele simple, duble sau
+          triple.</p>
+        <p>You can create a string in Python by enclosing characters in single, double, or triple quotes.</p>
+      </div>
+
+
+<pre><code><span># Ghilimele simple</span>
+şir_simplu = 'Salut, lume!'
+print(şir_simplu)
+
+<span># Ghilimele duble</span>
+şir_dublu = "Salut, lume!"
+print(şir_dublu)
+
+<span># Folosește ghilimele duble pentru șiruri de caractere care conțin ghilimele simple în interior</span>
+print("E o zi 'frumoasă'")
+
+<span># Ghilimele duble triple pentru șiruri de caractere pe linii multiple</span>
+şir_duble_triple = """
+Acesta este un
+șir de caractere dispus pe mai multe
+rânduri folosind ghilimele duble triple."""
+print(şir_duble_triple)
+
+<span># Ghilimele simple triple pentru șiruri de caractere pe linii multiple</span>
+şir_simple_triple = '''
+Acesta este un
+șir de caractere pe mai multe linii
+folosind ghilimele simple triple.'''
+print(şir_simple_triple)
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Caracteristici cheie ale șirurilor de caractere</dt>
+          <dd>Imuabil: Odată ce un șir de caractere este creat, acesta nu poate fi modificat. Orice operațiune care pare
+            să modifice un șir de caractere, cum ar fi înlocuirea unui caracter, creează și returnează de fapt un șir
+            complet nou.</dd>
+          <dd>Secvență: Caracterele dintr-un șir sunt stocate într-o secvență specifică, ordonată. Acest lucru vă
+            permite să accesați caracterele individuale după poziția lor (index).</dd>
+          <dd>Iterabil: Deoarece șirurile de caractere sunt secvențe, puteți itera peste caracterele lor folosind
+            diferite metode.</dd>
+          <dd>Unicode: Șirurile de caractere Python gestionează caractere Unicode, care acceptă text din toate limbile
+            lumii, precum și emoji-uri.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key characteristics of strings</dt>
+          <dd>Immutable: Once a string is created, it cannot be changed. Any operation that appears to modify a string,
+            like replacing a character, actually creates and returns a completely new string.</dd>
+          <dd>Sequence: Characters in a string are stored in a specific, ordered sequence. This allows you to access
+            individual characters by their position (index).</dd>
+          <dd>Iterable: Since strings are sequences, you can iterate over their characters using different methods.</dd>
+          <dd>Unicode: Python strings handle Unicode characters, which support text from all the world's languages as
+            well as emojis.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="CR">Constructor str() - str() Constructor</h2>
+
+    <div class="grid-container">
+      <p>Puteți converti alte tipuri de date în șiruri de caractere folosind funcția str() încorporată.</p>
+
+      <p>You can convert other data types into strings using the built-in str() function.</p>
+    </div>
+
+<pre><code>număr = 123
+număr_ca_șir = str(123)   
+print(număr_ca_șir)       <span>==> 123</span>
+print(type(număr_ca_șir)) <span>==> &lt;class 'str'&gt;</span>
+
+listă = [1, 2, 3]
+șir_listă = str(listă)
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Puncte cheie:</dt>
+          <dd>Consistență: Deși atât ghilimelele simple, cât și cele duble sunt valide, este o practică bună să
+            mențineți consecvența în codul dvs.
+          <dd>
+          <dd>Caractere de evadare: Dacă trebuie să includeți un caracter ghilimea care se potrivește cu tipul de
+            ghilimea utilizată pentru a defini șirul (de exemplu, o ghilimea dublă într-un șir între ghilimele duble),
+            puteți utiliza o bară oblică inversată (\) pentru a-l evada.</dd>
+          <dd>Imutabilitate: Șirurile Python sunt imuabile, ceea ce înseamnă că odată create, conținutul lor nu poate fi
+            modificat direct. Orice operațiune care pare să modifice un șir creează de fapt un șir nou.</dd>
+        </dl>
+
+        <dl>
+          <dt>Key Points:</dt>
+          <dd>Consistency: While both single and double quotes are valid, it's good practice to maintain consistency
+            within your code.</dd>
+          <dd>Escaping Characters: If you need to include a quote character that matches the quote type used to define
+            the string (e.g., a double quote within a double-quoted string), you can use a backslash (\) to escape it.
+          </dd>
+          <dd>Immutability: Python strings are immutable, meaning once created, their content cannot be changed
+            directly. Any operation that appears to modify a string actually creates a new string.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="MS">Metoda str() - str() Method</h2>
+
+
+      <div class="grid-container">
+        <p>Metoda __str__ din Python este o metodă specială de tip "dunder" (subliniere dublă) care definește modul în
+          care un obiect al unei clase ar trebui reprezentat ca un șir de caractere atunci când este convertit pentru a
+          fi lizibil de către om.</p>
+
+        <p>The __str__ method in Python is a special "dunder" (double underscore) method that defines how an object of a
+          class should be represented as a string when converted for human readability.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Scop:</dt>
+          <dd>Reprezentare lizibilă de către om: Scopul său principal este de a oferi o reprezentare ușor de utilizat a
+            unui obiect sub formă de șir de caractere, potrivită pentru afișare către utilizatori, înregistrare în
+            jurnal sau imprimare.</dd>
+          <dd>Apelată de print() și str(): Când utilizați funcția print() cu un obiect sau apelați explicit str(object),
+            Python invocă automat metoda __str__ a obiectului (dacă este definită).</dd>
+          <dt>Implementare:</dt>
+          <dd>Metoda __str__ primește un argument, self, care se referă la instanța clasei.</dd>
+          <dd>Trebuie să returneze un șir de caractere.</dd>
+        </dl>
+
+        <dl>
+          <dt>Purpose:</dt>
+          <dd>Human-readable representation: Its primary goal is to provide a user-friendly string representation of an
+            object, suitable for displaying to users, logging, or printing.</dd>
+          <dd>Called by print() and str(): When you use the print() function with an object, or explicitly call
+            str(object), Python automatically invokes the object's __str__ method (if defined).</dd>
+          <dt>Implementation:</dt>
+          <dd>The __str__ method takes one argument, self, which refers to the instance of the class.</dd>
+          <dd>It must return a string.</dd>
+        </dl>
+      </div>
+
+
+<pre><code>class Carte:
+    def __init__(self, titlul, autorul, anul):
+        self.titlul = titlul
+        self.autorul = autorul
+        self.anul = anul
+
+    def __str__(self):
+        return f"'{self.titlul}' de {self.autorul} ({self.anul})"
+
+cartea = Carte("Baltagul", "Mihail Sadoveanu", 1930)
+
+print(cartea)      <span>==> 'Baltagul' de Mihail Sadoveanu (1930)</span>
+print(str(cartea)) <span>==> 'Baltagul' de Mihail Sadoveanu (1930)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Comparație cu __repr__:</dt>
+          <dd>În timp ce __str__ se concentrează pe ieșiri lizibile de către om, metoda __repr__ își propune să ofere o
+            reprezentare oficială a unui șir de caractere care ar putea fi utilizată în mod ideal pentru a recrea
+            obiectul. Dacă __str__ nu este definită într-o clasă, __repr__ va fi utilizată ca alternativă atunci când se
+            apelează print() sau str().</dd>
+        </dl>
+        <dl>
+          <dt>Comparison with __repr__:</dt>
+          <dd>While __str__ focuses on human-readable output, the __repr__ method aims to provide an official string
+            representation that could ideally be used to recreate the object. If __str__ is not defined in a class,
+            __repr__ will be used as a fallback when print() or str() is called.</dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="MR">Metoda repr() - repr() Method</h2>
+
+
+      <div class="grid-container">
+        <p><b>Funcția încorporată repr()</b> din Python returnează o reprezentare "prietenoasă pentru dezvoltatori" sau
+          "oficială" a unui obiect sub formă de șir de caractere. Această reprezentare este concepută să fie lipsită de
+          ambiguitate și, în mod ideal, ar putea fi utilizată pentru a recrea obiectul folosind funcția eval(), dacă
+          este posibil.</p>
+
+        <p>The <b>repr() built-in function</b> in Python returns a "developer-friendly" or "official" string
+          representation of an object. This representation is intended to be unambiguous and, ideally, could be used to
+          recreate the object using the eval() function if possible.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Caracteristici cheie ale repr():</dt>
+          <dd>Reprezentare lipsită de ambiguitate: Scopul său este de a oferi o reprezentare clară și precisă a stării
+            unui obiect, inclusiv tipul și valorile sale.</dd>
+          <dd>Corectare și înregistrare în jurnal: repr() este deosebit de utilă pentru corectare și înregistrare în
+            jurnal, deoarece oferă o vedere detaliată a structurii interne a unui obiect.</dd>
+          <dd>Recreere de obiecte (unde este posibil): Pentru multe tipuri încorporate și clase personalizate bine
+            concepute, șirul de caractere returnat de repr() poate fi transmis către eval() pentru a reconstrui un
+            obiect echivalent.</dd>
+          <dd>În contrast cu str(): În timp ce str() oferă o reprezentare lizibilă de către om, repr() se concentrează
+            pe o reprezentare precisă din punct de vedere tehnic și adesea mai detaliată pentru dezvoltatori.</dd>
+          <dt>Implementarea metodei __repr__ în clasele personalizate:</dt>
+          <dd>Pentru a defini comportamentul repr() pentru propriile clase, trebuie să implementați metoda specială
+            __repr__ în cadrul clasei. Această metodă ar trebui să returneze un șir de caractere care reprezintă
+            obiectul.
+          <dd>
+        </dl>
+
+        <dl>
+          <dt>Key Characteristics of repr():</dt>
+          <dd>Unambiguous Representation: It aims to provide a clear and precise representation of an object's state,
+            including its type and values.</dd>
+          <dd>Debugging and Logging: repr() is particularly useful for debugging and logging, as it offers a detailed
+            view of an object's internal structure.</dd>
+          <dd>Object Recreation (where possible): For many built-in types and well-designed custom classes, the string
+            returned by repr() can be passed to eval() to reconstruct an equivalent object.</dd>
+          <dd>Contrast with str(): While str() provides a human-readable representation, repr() focuses on a technically
+            accurate and often more verbose representation for developers.</dd>
+          <dt>Implementing __repr__ in Custom Classes:</dt>
+          <dd>To define the repr() behavior for your own classes, you need to implement the __repr__ special method
+            within the class. This method should return a string that represents the object.</dd>
+        </dl>
+      </div>
+
+<pre><code>class Punct:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f"Punctul cardinal(x={self.x}, y={self.y})"
+
+p = Punct("LONGITUDINE", "LATITUDINE")
+print(repr(p)) <span>==> Punctul cardinal(x=LONGITUDINE, y=LATITUDINE)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <p>În exemplul de mai sus, repr(p) returnează un șir de caractere care indică în mod clar tipul obiectului și
+          valorile atributelor sale și ar putea fi teoretic utilizat pentru a recrea un obiect Point cu aceleași
+          coordonate.</p>
+
+        <p>In the example above, repr(p) returns a string that clearly indicates the object's type and its attribute
+          values, and could theoretically be used to recreate a Point object with the same coordinates.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Cum funcționează</dt>
+          <dd>Când apelați repr(obj), Python caută o metodă specială în clasa obiectului numită __repr__().</dd>
+          <dd>Dacă __repr__() este definită, atunci este apelată pentru a obține reprezentarea sub formă de șir de
+            caractere.</dd>
+          <dd>Dacă __repr__() nu este definită, Python revine la o reprezentare implicită, care de obicei arată tipul
+            obiectului, adresa de memorie și numele clasei.</dd>
+          <dd>Pentru o clasă personalizată, este considerată cea mai bună practică să definiți întotdeauna o metodă
+            __repr__() pentru a oferi informații utile de intreținere.</dd>
+        </dl>
+
+        <dl>
+          <dt>How it works</dt>
+          <dd>When you call repr(obj), Python looks for a special method on the object's class called __repr__().</dd>
+          <dd>If __repr__() is defined, it is called to get the string representation.</dd>
+          <dd>If __repr__() is not defined, Python falls back to a default representation, which typically shows the
+            object's type, memory address, and class name.</dd>
+          <dd>For a custom class, it's considered best practice to always define a __repr__() method to provide useful
+            debugging information</dd>
+        </dl>
+      </div>
+
+      <p>
+        Luați în considerare o clasă personalizată Pasăre cu ambele metode __repr__() și __str__().<br>
+        Consider a custom Pasăre class with both __repr__() and __str__() methods.
+      </p>
+
+<pre><code>class Pasăre:
+    def __init__(self, nume, vârstă):
+        self.nume = nume
+        self.vârstă = vârstă
+
+    def __repr__(self):
+        <span># Rezultat axat pe dezvoltator care poate recrea obiectul</span>
+        return f"Papagal('{self.nume}', {self.vârstă})"
+
+    def __str__(self):
+        <span># Rezultat axat pe utilizator</span>
+        return f"{self.nume} are vârsta de {self.vârstă} ani"
+
+<span># Create an instance of the class</span>
+papagal = Pasăre("Zeli", 5)
+
+<span># Apelează direct repr()</span>
+print(f"{repr(papagal)} - apelat cu 'repr'") <span>==> Papagal('Zeli', 5) - apelat cu 'repr'</span>
+
+<span># Apelează direct str()</span>
+print(f"{str(papagal)} - apelat cu 'str'")   <span>==> Zeli are vârsta de 5 ani - apelat cu 'str'</span>
+
+<span># Folosește print(), care apelează implicit str()</span>
+print(f"{papagal} - apelat fără 'repr' sau 'str'") <span>==> Zeli are vârsta de 5 ani - apelat fără 'repr' sau 'str'</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>repr() vs. str()</dt>
+          <dd>repr(): Rezultatul este destinat dezvoltatorilor. Ar trebui să fie lipsit de ambiguitate și detaliat
+            pentru depanare și înregistrare în jurnal.</dd>
+          <dd>str(): Rezultatul este destinat utilizatorilor finali. Ar trebui să fie ușor de citit și concis.</dd>
+        </dl>
+
+        <dl>
+          <dt>repr() vs. str()</dt>
+          <dd>repr(): The output is for developers. It should be unambiguous and detailed for debugging and logging.
+          </dd>
+          <dd>str(): The output is for end-users. It should be human-readable and concise. </dd>
+        </dl>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Ce se întâmplă dacă __str__() nu este definit?
+          <dt>
+          <dd>Dacă o clasă definește doar __repr__(), atunci str() va folosi în continuare ieșirea __repr__(). Acest
+            lucru face ca definirea __repr__() să fie un prim pas bun pentru orice clasă personalizată, deoarece asigură
+            o reprezentare utilă atât în contexte de dezvoltare, cât și în contexte orientate către utilizator.</dd>
+        </dl>
+        <dl>
+          <dt>What happens if __str__() is not defined?
+          <dt>
+          <dd>If a class only defines __repr__(), then str() will fall back to using the __repr__() output. This makes
+            defining __repr__() a good first step for any custom class, as it ensures you get a useful representation in
+            both development and user-facing contexts.</dd>
+        </dl>
+      </div>
+
+<pre><code>class Pasăre:
+    def __init__(self, nume, vârstă):
+        self.nume = nume
+        self.vârstă = vârstă
+
+    def __repr__(self):
+        <span># Doar __repr__ este definit</span>
+        return f"Papagal('{self.nume}', {self.vârstă})"
+
+
+<span># Creați o instanță a clasei</span>
+papagal = Pasăre("Zeli", 5)
+
+<span># Ambele apeluri folosesc acum ieșirea __repr__</span>
+print(f"{papagal} - apelat fără 'repr' sau 'str'") <span>==> Papagal('Zeli', 5) - apelat fără 'repr' sau 'str'</span>
+print(f"{str(papagal)} - apelat cu 'str'")         <span>==> Papagal('Zeli', 5) - apelat cu 'str'</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="SR">str() și repr() funcții încorporate - str() and repr() built-in functions</h2>
+
+      <div class="grid-container">
+        <p><b>str()</b> și <b>repr()</b> sunt funcții încorporate utilizate pentru a obține reprezentări sub formă de
+          șiruri ale obiectelor, dar servesc scopuri diferite și vizează diferite grupuri de oameni.</p>
+
+        <p><b>str() and repr()</b> are built-in functions used to obtain string representations of objects, but they
+          serve different purposes and target different audiences.</p>
+      </div>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Funcția str():</dt>
+          <dd><em>Scop:</em> str() este concepută pentru a returna o reprezentare sub formă de șir de caractere
+            "lizibilă de om" sau "imprimabilă cu ușurință" a unui obiect. Această reprezentare este destinată
+            utilizatorilor finali sau afișajului, cum ar fi la imprimarea unui obiect sau la convertirea acestuia
+            într-un șir de caractere pentru ieșire.</dd>
+          <dd><em>Metoda de bază:</em> Când este apelată metoda str(obj), Python apelează intern metoda specială
+            __str__() a obiectului obj.</dd>
+        </dl>
+
+        <dl>
+          <dt>str() Function:</dt>
+          <dd><em>Purpose:</em> str() is designed to return a "human-readable" or "nicely printable" string
+            representation of an object. This representation is intended for end-users or for display purposes, such as
+            when printing an object or converting it to a string for output.</dd>
+          <dd><em>Underlying Method:</em> When str(obj) is called, Python internally calls the __str__() special method
+            of the object obj.</dd>
+        </dl>
+      </div>
+
+<pre><code>class ClasăStrig:
+    def __init__(self, valoare):
+        self.valoare = valoare
+
+    def __str__(self):
+        return f"Un obiect StrigClass cu valoare: {self.valoare}"
+
+obct = ClasăStrig(10)
+print(str(obct))      <span>==> Un obiect StrigClass cu valoare: 10</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Funcția repr():</dt>
+          <dd><em>Scop:</em> repr() este concepută pentru a returna o reprezentare "oficială" sau "neambiguă" sub formă
+            de șir de caractere a unui obiect, destinată în principal dezvoltatorilor și depanării (corectării,
+            remedierii). În mod ideal, șirul de caractere returnat de repr() ar trebui să fie o expresie Python validă
+            care ar putea fi utilizată pentru a recrea obiectul.</dd>
+          <dd><em>Metodă de bază:</em> Când este apelată repr(obj), Python apelează intern metoda specială __repr__() a
+            obiectului obj.</dd>
+        </dl>
+
+        <dl>
+          <dt>repr() Function:</dt>
+          <dd><em>Purpose:</em> repr() is designed to return an "official" or "unambiguous" string representation of an
+            object, primarily intended for developers and debugging. Ideally, the string returned by repr() should be a
+            valid Python expression that could be used to recreate the object.</dd>
+          <dd><em>Underlying Method:</em> When repr(obj) is called, Python internally calls the __repr__() special
+            method of the object obj.</dd>
+        </dl>
+      </div>
+
+<pre><code>class ClasăRepr:
+    def __init__(self, valoare):
+        self.valoare = valoare
+
+    def __repr__(self):
+        return f"ClasăRepr(valoare={self.valoare})"
+
+obct = ClasăRepr(10)
+print(repr(obct))    <span>==> ClasăRepr(valoare=10)</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Diferențele rezumat:</dt>
+          <dd>Public: str() este pentru utilizatorii finali; repr() este pentru dezvoltatori.</dd>
+          <dd>Scop: str() vizează lizibilitatea; repr() vizează reprezentarea lipsită de ambiguitate, adesea
+            reconstruibilă.</dd>
+          <dd>Metode subiacente: str() apelează __str__(); repr() apelează __repr__().</dd>
+          <dd>Comportament implicit: Dacă __str__() nu este definit pentru o clasă, str() va apela alternativ
+            __repr__().</dd>
+          <dt>Când se utilizează fiecare dintre methode:</dt>
+          <dd>Folosește str() atunci când trebuie să afișezi un obiect într-un format ușor de utilizat (de exemplu, în
+            jurnale, instrucțiuni de imprimare, elemente UI).</dd>
+          <dd>Folosește repr() atunci când ai nevoie de o reprezentare detaliată și lipsită de ambiguitate a unui obiect
+            pentru depanare, inspecție sau pentru a recrea obiectul programatic.</dd>
+        </dl>
+
+        <dl>
+          <dt>Differences Summarized:</dt>
+          <dd>Audience: str() is for end-users; repr() is for developers.</dd>
+          <dd>Goal: str() aims for readability; repr() aims for unambiguous representation, often reconstructible.</dd>
+          <dd>Underlying Methods: str() calls __str__(); repr() calls __repr__().</dd>
+          <dd>Default Behavior: If __str__() is not defined for a class, str() will fall back to calling __repr__().
+          </dd>
+          <dt>When to use which:</dt>
+          <dd>Use str() when you need to display an object in a user-friendly format (e.g., in logs, print statements,
+            UI elements).</dd>
+          <dd>Use repr() when you need a detailed, unambiguous representation of an object for debugging, inspection, or
+            to recreate the object programmatically.</dd>
+        </dl>
+      </div>
+
+      <p>Să creăm o clasă personalizată care implementează atât __str__(), cât și __repr__().<br>
+        Let's create a custom class that implements both __str__() and __repr__().</p>
+
+<pre><code>class Angajat:
+    def __init__(self, nume, funcția):
+        self.nume = nume
+        self.funcția = funcția
+
+    def __str__(self):
+        <span># Un format lizibil de către utilizatorul final</span>
+        return f"Eu sunt {self.nume} şi am {self.funcția} de programator."
+
+    def __repr__(self):
+        <span># Un format lipsit de ambiguitate pentru dezvoltatori</span>
+        return f"Angajat('{self.nume}', {self.funcția})"
+
+<span># Creați o instanță a clasei</span>
+ion = Angajat("Ion Barb", "poziția")
+</code></pre>
+
+      <p>Funcția str() și funcția print(), care apelează str(), vor utiliza șirul de caractere lizibil de către om.<br>
+        The str() function and the print() function, which calls str(), will use the human-readable string.</p>
+
+<pre><code><span># Folosind print()</span>
+print(ion)         <span>==> Eu sunt Ion Barb şi am poziția programator.</span>
+
+<span># Folosind str()</span>   
+print(str(ion))    <span>==> Eu sunt Ion Barb şi am poziția programator.</span>        
+</code></pre>
+
+      <p>funcția repr() (dacă tastați numele variabilei) vor utiliza șirul de caractere ușor de utilizat pentru
+        dezvoltatori.<br>
+        repr() function (if you type the variable name) will use the developer-friendly string.</p>
+
+<pre><code><span># Folosind repr()</span>
+repr(ion)         <span>==> "Angajat('Ion Barb', poziția)"</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Când se utilizează fiecare:</dt>
+          <dd>Folosește str() sau print() pentru ieșiri orientate către utilizator, cum ar fi înregistrarea în jurnal,
+            afișarea mesajelor într-o interfață cu utilizatorul sau scrierea într-un raport.</dd>
+          <dd>Folosește repr() pentru depanare, dezvoltare și înregistrare în jurnal, unde ai nevoie de o reprezentare
+            completă și lipsită de ambiguitate a stării unui obiect.</dd>
+          <dd>Recomandare: Implementează întotdeauna __repr__() pentru clasele tale personalizate, deoarece oferă o
+            reprezentare implicită utilă pentru depanare. Implementează __str__() numai dacă ai nevoie de o ieșire
+            separată, mai ușor de utilizat, pentru obiectul respectiv.</dd>
+        </dl>
+        <dl>
+          <dt>When to use each:</dt>
+          <dd>Use str() or print() for user-facing output, such as logging, displaying messages in a user interface, or
+            writing to a report.</dd>
+          <dd>Use repr() for debugging, development, and logging, where you need a complete and unambiguous
+            representation of an object's state.</dd>
+          <dd>Recommendation: Always implement __repr__() for your custom classes, as it provides a useful default
+            representation for debugging. Implement __str__() only if you need a separate, more user-friendly output for
+            that object. </dd>
+        </dl>
+      </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+      <h2 id="SE">Secvențe de evadare în șirurile literale - Escape sequences in string literals</h2>
+
+      <div class="grid-container">
+        <p>Secvențele <b>escape</b> sunt combinații speciale de caractere utilizate în șirurile de caractere literale
+          pentru a reprezenta caractere dificil sau imposibil de tastat direct, cum ar fi linii noi, tabulatori sau
+          ghilimele. Acestea sunt inițiate de o bară oblică inversată (\) urmată de unul sau mai multe caractere.</p>
+
+        <p><b>Escape</b> sequences are special character combinations used within string literals to represent
+          characters that are difficult or impossible to type directly, such as newlines, tabs, or quotes. They are
+          initiated by a backslash (\) followed by one or more characters.</p>
+      </div>
+
+<pre><code>\n: Reprezintă un caracter de linie nouă (se mută la o linie nouă).
+\n: Represents a newline character (moves to a new line).
+
+print("Prima linie\nA doua linie")
+
+<span>==> Prima linie
+    A doua linie</span>
+
+\t: Reprezintă un caracter de tabulare, inserând un spațiu orizontal.
+\t: Represents a tab character, inserting horizontal space.
+
+print("Nume:\tIon Barb") <span>==> Nume:	Ion Barb</span>
+
+\': Reprezintă o apostră simplă într-un șir de caractere între gilimele simple.
+\': Represents a single quote within a single-quoted string.
+
+print('\'neața! dom\'le') <span>==> 'neața! dom'le</span>
+
+\": Reprezintă o ghilimea dublă într-un șir de caractere între ghilimele duble.
+\": Represents a double quote within a double-quoted string.
+</code></pre>
+
+<pre><code>print("Mi-a spus, \"mâine să vii la întâlnire\".") <span>==> Mi-a spus, "mâine să vii la întâlnire".</span>
+</code></pre>
+
+<pre><code>\\: Reprezintă un caracter oblic inversat literal.
+\\: Represents a literal backslash character.
+</code></pre>
+
+<pre><code>print("C:\\Users\\Username") <span>==> C:\Users\Username</span>
+</code></pre>
+
+<pre><code>\b: Represents a backspace character (șterge caracterul precedent).
+  
+\r: Represents a carriage return character (mută cursorul la începutul liniei).
+
+\f: Represents a form feed character (utilizarea sa directă pentru controlul imprimantei este mai puțin frecventă în mediul informatic modern).
+
+\N{&lt;name&gt;}: Character from Unicode database with given &lt;name&gt;
+
+\v: ASCII Vertical tab (VT) character
+
+\uxxxx: Unicode character with 16-bit hex value xxxx
+
+\Uxxxxxxxx: Unicode character with 32-bit hex value xxxxxxxx
+    
+\xdd: Represents a character by its hexadecimal value dd.
+</code></pre>
+
+<pre><code>print("\x41")           <span>==> A</span>
+print("\N{snake}")      <span>==> 🐍</span>
+print(len("\N{snake}")) <span>==> 1</span>
+print(len("🐍"))        <span>==> 1</span>
+print("\N{duck}")       <span>==> 🦆</span>
+print("\N{pig}")        <span>==> 🐖</span>
+</code></pre>
+
+      <div class="grid-container">
+        <dl>
+          <dt>Șiruri brute:</dt>
+          <dd>Pentru a împiedica Python să interpreteze secvențele de escape dintr-un șir, puteți utiliza un "șir brut"
+            prin prefixarea literalului șirului cu un r sau R. În șirurile brute, barele oblice inversate sunt tratate
+            ca și caractere literale, cu excepția cazului în care acestea escape un caracter de ghilimele care ar
+            termina șirul.</dd>
+        </dl>
+
+        <dl>
+          <dt>Raw Strings:</dt>
+          <dd>To prevent Python from interpreting escape sequences within a string, you can use a "raw string" by
+            prefixing the string literal with an r or R. In raw strings, backslashes are treated as literal characters,
+            except when they escape a quote character that would terminate the string.</dd>
+        </dl>
+      </div>
+
+<pre><code>cale = r"C:\Utilizatori\Documente\fișier.txt" <span>==> C:\Utilizatori\Documente\fișier.txt</span>
+print(cale)
+</code></pre>
+
+      <p>Nu interpretează \U, \D, or \f ca secvenţe escape</p>
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/treileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>

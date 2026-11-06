@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/main-style.css">
+
+    <link rel="icon" type="img/png" href="images/logo-title.png">
+    <title>Gazeta Python 4.1.1 Metode auxiliare(liste)</title>
+</head>
+
+<body>
+
+    <div id="sus" class="main-1-1 navigare">
+        <header>
+            <div class="header-menu">
+                <img src="images/logo-menu.svg" alt="Gazeta Python">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+                        <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+                        <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+                        <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="first-empty-1-1"></div>
+
+            <div class="titlu-1-0">
+                <div class="grid-cell">
+                    <img src="images/literaS.svg" alt="S" class="logo">
+                    <h1>4.0 Tipuri secvență - Sequence Types</h1>
+                </div>
+            </div>
+
+            <div class="second-empty-1-1"></div>
+
+            <div class="subtitlu-1-1">
+                <div class="grid-cell">
+                    <h2>4.1.1 Metode auxiliare(liste) - Auxiliary methods(lists)</h2>
+                </div>
+            </div>
+
+            <div class="third-empty-1-1"></div>
+
+            <div class="ro-en-1-1 container-links ro-en">
+                <div>
+                    <ul>
+                        <li>În acest capitol veți studia:</li>
+                        <li><a href="#AN">Află adâncimea sau nivelul de imbricare a listei</a></li>
+                        <li><a href="#NR">Returnează numărul de elemente din listă</a></li>
+                        <li><a href="#MS">max(), min(), sum()</a></li>
+                        <li><a href="#SL">Sortarea unei liste: sorted() şi .sort()</a>
+                            <ul>
+                                <li><a href="#SLA">sorted()</a></li>
+                                <li><a href="#SLB">.sort()</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#RL">Inversarea unei liste: reversed() şi .reverse()</a>
+                            <ul>
+                                <li><a href="#RLA">reversed()</a></li>
+                                <li><a href="#RLB">.reverse()</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#RI">listă.index(value, start, end)</a></li>
+                        <li><a href="#NT">listă.count(value)</a></li>
+                        <li><a href="#ER">listă şi filter()</a></li>
+                        <li><a href="#TF">Convertire liste de numere întregi în True și Fale, 0 și 1</a></li>
+                        <li><a href="#FE">in, not in, un element este sau nu într-o listă</a></li>
+                        <li><a href="#FH">Duplicate dintr-o listă Python</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <ul>
+                        <li>In this chapter, you will study:</li>
+                        <li><a href="#AN">Find the depth or nesting level of the list</a></li>
+                        <li><a href="#NR">Returns the number of elements in the list</a></li>
+                        <li><a href="#MS">max(), min(), sum()</a></li>
+                        <li><a href="#SL">Sorting a List: sorted() and .sort()</a>
+                            <ul>
+                                <li><a href="#SLA">sorted()</a></li>
+                                <li><a href="#SLB">.sort()</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#RL">Reversing a List: reversed() and .reverse()</a>
+                            <ul>
+                                <li><a href="#RLA">reversed()</a></li>
+                                <li><a href="#RLB">.reverse()</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#RI">list.index(value, start, end)</a></li>
+                        <li><a href="#NT">list.count(value)</a></li>
+                        <li><a href="#ER">list and filter()</a></li>
+                        <li><a href="#TF">Convert an integer list to True and False, 0 and 1</a></li>
+                        <li><a href="#FE">in, not in, an element is or is not in a list</a></li>
+                        <li><a href="#FH">Duplicates from a Python list</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="forth-empty-1-1"></div>
+
+        <div class="contents-1-1">
+
+            <div class="grid-container">
+                <p>În Python, pe lângă metodele utilizate în mod obișnuit, există și alte câteva metode utile și funcții
+                    încorporate care facilitează lucrul cu liste.</p>
+                <p>In Python, beyond the commonly used methods, several other useful methods and built-in functions
+                    facilitate working with lists.</p>
+            </div>
+
+            <h2 id="AN">Află adâncimea sau nivelul de imbricare a listei - Find the depth or nesting level of the list</h2>
+
+            <div class="grid-container">
+                <p>O listă pe un singur nivel are o adâncime de 1, iar adâncimea sa crește pe măsură ce lista conține
+                    subliste.
+                    Pot fi utilizate mai multe metode pentru a determina adâncimea sau nivelul de imbricare a unei liste
+                    în Python.</p>
+
+                <p>A single-level list has a depth of 1, and its depth increases as the list contains sublists.
+                    Several methods can be used to determine the depth or nesting level of a list in Python.</p>
+            </div>
+
+<pre><code><span># Abordare recursivă (recomandată)</span>
+
+def obține_adâncimea(listă):
+    if isinstance(listă, list):
+        <span># numără nivelul curent al listei plus cel mai profund nivel de sublistă.</span>
+        return 1 + max((obține_adâncimea(element) for element in listă), default=0)
+    return 0
+
+print(obține_adâncimea([10, 20, 30]))   <span>==> 1</span>
+print(obține_adâncimea([1, 2, [3, 4]])) <span>==> 2</span>
+print(obține_adâncimea([1, [2, 3], [4, [5, 6, [7, 8]]], 9, [10, [11]]])) <span>==> 4</span>
+print(obține_adâncimea([]))  <span>==> 1</span>
+</code></pre>
+
+<pre><code><span># Abordarea iterativă (pentru liste mari)</span>
+def adâncimea_listei_iterativ(listă):
+    if not isinstance(listă, list):
+        return 0
+        
+    adâncime_maximă = 0
+    stoc = [(listă, 1)] <span># Stochează (elementul curent, adâncimea curentă)</span>
+    
+    while stoc:
+        actual, adâncime = stoc.pop()
+        if isinstance(actual, list):
+            adâncime_maximă = max(adâncime_maximă, adâncime)
+            for element in actual:
+                stoc.append((element, adâncime + 1))
+                
+    return adâncime_maximă
+
+listă_nivel_x = [[1, 2], [3, [4, 5]]]
+print(adâncimea_listei_iterativ(listă_nivel_x)) <span>==> 3</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Dacă lista conține doar numere (fără șiruri de caractere care includ paranteze), poți determina rapid
+                    nivelul de imbricare transformând lista într-un șir de caractere și numărând parantezele deschise
+                    consecutive "[" de la început.</p>
+
+                <p>If your list contains only numbers (no strings containing brackets), you can quickly determine the
+                    depth by converting the list to a string and counting the consecutive opening brackets "[" at the
+                    start.</p>
+            </div>
+
+<pre><code><span># Soluție rapidă</span>
+def adâncime_rapidă(listă):
+    return len(str(listă)) - len(str(listă).lstrip('['))
+
+print(adâncime_rapidă([[1, 2], [3, [4]]])) <span>==> 2</span>
+print(adâncime_rapidă([[[1, 2], [3, [4]], [[[5, [6]]]]]]) <span>==> 3</span>
+
+
+A = [[[1, 2], [3, [4]], [[[5, [6]]]]]]
+
+print(len(str(A)))  <span>==> 34</span> 
+print(str(A).lstrip('[')) <span>==> 1, 2], [3, [4]], [[[5, [6]]]]]]</span>
+print(len(str(A).lstrip('['))) <span>==> 31</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="NR">Returnează numărul de elemente din listă - Returns the number of elements in the list</h2>
+
+            <p><a href="https://www.w3schools.com/python/ref_func_len.asp" target="_blank" rel="noopener">Python len()
+                    Function</a></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>len(listă):</dt>
+                    <dd>len() funcționează pe diverse tipuri de containere, inclusiv șiruri de caractere, tupluri,
+                        dicționare și seturi, pe lângă liste.</dd>
+                    <dt>Returnează o valoare întreagă.</dt>
+                    <dd>Atunci când este aplicată unei liste, aceasta returnează un număr întreg care reprezintă numărul
+                        total de elemente din acea listă.</dd>
+                    <dd>Dacă lista conține o altă listă, acea sublistă este considerată un singur element.</dd>
+                    <dd>Pentru o listă goală, len() va returna 0.</dd>
+                    <dd>Testarea pentru o listă goală se poate face mai idiomatic prin evaluarea directă a listei
+                        într-un context boolean (de exemplu, <b>if listă: ...</b> or <b>if not listă: ...</b>), în loc
+                        să se verifice dacă len(listă) == 0.</dd>
+                    <dt>Performanță:</dt>
+                    <dd>Foarte rapidă. Python stochează intern dimensiunea listei, astfel încât funcția len() citește
+                        acea valoare stocată în loc să numere elementele unul câte unul (complexitate temporală
+                        constantă O(1)).</dd>
+                </dl>
+
+                <dl>
+                    <dt>len(list):</dt>
+                    <dd>len() works on various container types, including strings, tuples, dictionaries, and sets, in
+                        addition to lists.</dd>
+                    <dt>It returns an integer value.</dt>
+                    <dd> When applied to a list, it returns an integer representing the total count of elements within
+                        that list.</dd>
+                    <dd>If the list contains another list, that sub-list counts as exactly one item.</dd>
+                    <dd>For an empty list, len() will return 0.</dd>
+                    <dd>Testing for an empty list can be done more idiomatically by directly evaluating the list in a
+                        boolean context (e.g., <b>if my_list: ...</b> or <b>if not my_list: ...</b>) rather than
+                        checking len(my_list) == 0.
+                    <dd>
+                    <dt>Performance:</dt>
+                    <dd>Very fast. Python stores the size of the list internally, so len() reads that stored value
+                        instead of counting the items one by one (O(1) constant time complexity)</dd>
+                </dl>
+            </div>
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana"]
+fructe = ["măr", "pară", "cireșă"]
+listă_eterogenă = [1, "salut", 3.14, True, [5, 6], {"key": "value"}]
+listă_nivel_3 = [
+    [[1, 2], [3, 4]], [[5, 6, [9]], [7, 8]], [[9, 10]], [[11, [12, 13]]]
+]
+print(len(nume))   <span>==> 7</span>
+print(len(fructe)) <span>==> 3</span>
+print(len(listă_eterogenă)) <span>==> 6</span>
+print(len(listă_nivel_3)) <span>==> 4</span>
+</code></pre>
+
+<pre><code><span>#List comprehensions</span>
+
+<span># lungimea fiecarui element</span>
+print([len(fruct) for fruct in fructe])   <span>==> [3, 4, 6]</span>
+print([len(listă) for listă in listă_nivel_3]) <span>==> [2, 2, 1, 1]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="MS">max(), min(), sum()</h2>
+
+            <p><a href="https://docs.python.org/3/library/functions.html" target="_blank" rel="noopener">Built-in
+                    Functions</a></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>max(), min(), sum()</dt>
+                    <dd>Sunt funcții încorporate utilizate pentru a extrage informații dintr-o listă.</dd>
+                    <dt>max()</dt>
+                    <dd>Funcția max() returnează cel mai mare element din listă.</dd>
+                    <dd>Cu numere: Returnează cea mai mare valoare numerică.</dd>
+                    <dd>Cu șiruri de caractere: Returnează elementul care apare ultimul în ordine alfabetică (sensibil
+                        la majuscule/minuscule, unde literele mici vin după literele mari).</dd>
+
+                    <dt>min()</dt>
+                    <dd>Funcția min() returnează cel mai mic element din listă.</dd>
+                    <dd>Pentru numere: returnează cea mai mică valoare numerică.</dd>
+                    <dd>Pentru șiruri de caractere: returnează elementul care apare primul în ordine alfabetică.</dd>
+
+                    <dt>sum(iterable, start=0)</dt>
+                    <dd>Funcția sum() însumează toate elementele din listă, de la stânga la dreapta, și returnează
+                        totalul.</dd>
+                    <dd>sum() funcționează doar cu liste care conțin numere (întregi și în virgulă mobilă).Încercarea de
+                        a însuma o listă de șiruri de caractere va genera o eroare de tip TypeError.</dd>
+                    <dd>Parametrul de start: Opțional, poți transmite un al doilea argument ca valoare inițială.</dd>
+                </dl>
+
+                <dl>
+                    <dt>max(), min(), sum()</dt>
+                    <dd>Are built-in functions used to extract information.</dd>
+                    <dt>max()</dt>
+                    <dd>The max() function returns the largest element in the lis.</dd>
+                    <dd>With Numbers: Returns the highest numerical value.</dd>
+                    <dd>With Strings: Returns the element that comes last alphabetically (case-sensitive, where
+                        lowercase letters come after uppercase letters).</dd>
+
+                    <dt>min()</dt>
+                    <dd>The min() function returns the smallest element in the list.</dd>
+                    <dd>With Numbers: Returns the lowest numerical value.</dd>
+                    <dd>With Strings: Returns the element that comes first alphabetically.</dd>
+
+                    <dt>sum(iterable, start=0)</dt>
+                    <dd>The sum() function adds up all the elements in the list from left to right and returns the
+                        total.</dd>
+                    <dd>sum() only works with lists containing numbers (integers and floats). Trying to sum a list of
+                        strings will throw a TypeError.</dd>
+                    <dd>Start Parameter: You can optionally pass a second argument as a starting value</dd>
+                </dl>
+            </div>
+
+<pre><code>numere = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+print(max(numere)) <span>==> 10</span>
+print(min(numere)) <span>==> -2</span>
+print(sum(numere)) <span>==> 52.0</span>
+print(sum(numere, 100>  <span>==> 152.0</span>
+</code></pre>
+
+<pre><code>articole = ['masă', 'pat', 'oglindă', 'ușă', 'poartă']
+
+print(max(articole))  <span>==> ușă</span>
+print(min(articole))  <span>==> masă</span>
+
+<span>Găsește poziția/indicele</span>
+print(articole.index(max(articole))) <span>==> 3</span>
+print(articole.index(min(articole))) <span>==> 0</span>
+
+print(sum([len(articol) for articol in articole])) <span>==> 23</span>
+</code></pre>
+
+            <p>Explicație pentru max(articole)</p>
+            <p>Funcția max() din Python returnează cel mai mare element dintr-un șir de date. Când compară cuvinte,
+                Python folosește ordinea lexicografică (alfabetică/după codul literelor în tabelul Unicode), luând
+                fiecare caracter pe rând, de la stânga la dreapta.</p>
+
+            <p>Cum se face calculul:</p>
+            <ol>
+                <li>Prima literă: Python compară literele inițiale: m (din masă), o (din oglindă), p (din pat/poartă) și
+                    u (din ușă).</li>
+                <li>Cea mai mare literă: Conform codificării, litera <b>u</b> are cea mai mare valoare.</li>
+                <li>Rezultat: Deoarece ușă începe cu <b>u</b>, iar restul cuvintelor încep cu litere mai mici
+                    (alfabetic: (m &lt; o &lt; p &lt; u)), ușă este identificat drept cel mai mare element și va fi
+                    returnat ca rezultat.</li>
+            </ol>
+
+
+            <p>Când două elemente au aceeași lungime, Python îl alege pe cel care apare primul.<br>
+                When two items have the same length python choose the first occurred.</p>
+
+<pre><code>articole = ['masă', 'pat', 'oglindă', 'ușă', 'poartă']
+print(max(articole, key=len))  <span>==> oglindă</span>
+print(min(articole, key=len))  <span>==> pat</span>
+</code></pre>
+
+<pre><code><span># Găsește dicționarul cu cea mai mare valoare a vârstei</span>
+date_personale = [
+    {"nume": "Virgil", "vârstă": 85, "oraş": "Turnu Severin"},
+    {"nume": "Tatiana", "vârstă": 90, "oraş": "Herculane"},
+    {"nume": "Sever", "vârstă": 70, "oraş": "Lugoj"}
+]
+
+print(max(date_personale, key=lambda persoană:  persoană["vârstă"]))
+<span>==> {'nume': 'Tatiana', 'vârstă': 90, 'oraş': 'Herculane'}</span>
+</code></pre>
+
+<pre><code><span># Găsește lista cu cea mai mare valoare a vârstei</span>
+listă_date = [
+    ["Aneta", 30, "Panciu"],
+    ["Vasile", 25, "Cluj"],
+    ["Nelu", 35, "Satu Mare"]
+]
+vârstă_maximă = max(listă_date, key=lambda x: x[1])
+print(vârstă_maximă) <span>==>['Nelu', 35, 'Satu Mare']</span>
+
+print(f"Persoana cu vârstă_maximă: {vârstă_maximă[0]}")
+<span>==> Persoana cu vârstă_maximă: Nelu</span>
+</code></pre>
+
+            <div class="grid-container">
+                <div>
+                    <p><b>Liste goale:</b> Apelarea funcției max() sau min() pe o listă goală generează o eroare
+                        ValueError. Puteți gestiona în siguranță acest lucru furnizând un argument implicit de tip
+                        cuvânt cheie. Apelarea funcției sum() pe o listă goală returnează în siguranță 0.</p>
+                    <p><b>Tipuri mixte:</b> Dacă lista conține un amestec de tipuri incompatibile (cum ar fi șiruri de
+                        caractere și numere întregi laolaltă), funcțiile max() și min() vor genera o eroare de tip
+                        (TypeError).</p>
+                </div>
+
+                <div>
+                    <p><b>Empty Lists:</b> Calling max() or min() on an empty list throws a ValueError. You can safely
+                        handle this by providing a default keyword argument. Calling sum() on an empty list safely
+                        returns 0.</p>
+                    <p><b>Mixed Types:</b> If your list contains a mix of uncomparable types (like strings and integers
+                        together), max() and min() will raise a TypeError</p>
+                </div>
+            </div>
+
+<pre><code>listă_goală = []
+
+print(sum(listă_goală))  <span>==> 0</span>
+print(max(listă_goală, default="Fără date")) <span>==> Fără date</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="SL">Sortarea unei liste: sorted() şi .sort() - Sorting a List: sorted() and .sort()</h2>
+
+
+            <div class="grid-container">
+                <p>În Python, există două metode principale de sortare a unei liste: sorted() and .sort().
+                    Principala diferență este că .sort() modifică lista originală pe loc și returnează None, în timp ce
+                    sorted() returnează o listă sortată nouă, lăsând secvența originală neschimbată.</p>
+
+                <p>In Python, there are two primary ways to sort a list: sorted() and .sort()
+                    the primary difference is that .sort() modifies the original list in-place and returns None, while
+                    sorted() returns a new sorted list, leaving the original sequence completely unchanged.</p>
+            </div>
+
+            <table class="outer-hidden">
+                <caption>Comparaţie</caption>
+                <tr>
+                    <th>Caracteristici</th>
+                    <th>list.sort()</th>
+                    <th>sorted()</th>
+                </tr>
+                <tr>
+                    <td>Valoare returnată</td>
+                    <td>None</td>
+                    <td>O nouă listă sortată</td>
+                </tr>
+                <tr>
+                    <td>Lista originală</td>
+                    <td>Modificată (mutată)</td>
+                    <td>Neschimbată</td>
+                </tr>
+                <tr>
+                    <td>Tipuri de date permise</td>
+                    <td>Doar liste</td>
+                    <td>Orice obiect iterabil (șiruri de caractere, tupluri, mulțimi, dicționare)</td>
+                </tr>
+                <tr>
+                    <td>Eficiența utilizării memoriei</td>
+                    <td>Ridicată (utilizează memoria existentă)</td>
+                    <td>Scăzută (creează o copie)</td>
+                </tr>
+            </table>
+
+            <p id="SLA" class="solid">funcție încorporată <b>sorted()</b><br>
+                <a href="https://docs.python.org/3/library/functions.html#sorted" target="_blank"
+                    rel="noopener">sorted() built-in function</a>
+            </p>
+
+            <p>help(sorted)<br>
+                Sintaxă: sorted(iterable, /, *, key=None, reverse=False)</p>
+
+
+            <div class="grid-container">
+                <div>
+                    <p>Funcția sorted() poate accepta și argumente opționale pentru personalizare:</p>
+                    <p>O funcție pentru extragerea unei chei de comparație din fiecare element (de exemplu, key=len
+                        pentru sortarea după lungimea șirului).</p>
+                    <p>O valoare booleană (implicit False) pentru sortare în ordine descrescătoare atunci când este
+                        setată la True.</p>
+                </div>
+
+                <div>
+                    <p>The sorted() function can also accept optional arguments for customization:</p>
+                    <p>A function to extract a comparison key from each element (e.g., key=len to sort by string
+                        length).</p>
+                    <p>A boolean value (default False) to sort in descending order when set to True.</p>
+                </div>
+            </div>
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana"]
+fructe = ["măr", "pară", "cireșă"]
+
+nume_sortate_descendent = sorted(nume)
+fructe_sortate_descendent = sorted(fructe)
+print(nume_sortate_descendent)
+<span>==> ['Alexandru', 'Andrei', 'Cristina', 'Elena', 'Ioana', 'Mihai', 'Vasile']</span>
+print(fructe_sortate_descendent) <span>==> ['cireșă', 'măr', 'pară']</span>
+
+nume_sortate_lungime = sorted(nume, key=len)
+fructe_sortate_lungime = sorted(fructe, key=len)
+print(f"Nume sortate după lungime: {nume_sortate_lungime}")
+<span>==> Nume sortate după lungime: ['Mihai', 'Elena', 'Ioana', 'Andrei', 'Vasile', 'Cristina', 'Alexandru']</span>
+print(f"Fructe sortate după lungime: {fructe_sortate_lungime}")
+<span>==> Fructe sortate după lungime: ['măr', 'pară', 'cireșă']</span>
+
+nume_sortare_inversată = sorted(nume, reverse=True)
+fructe_sortare_inversată = sorted(fructe, reverse=True)
+print(f"Lista nume sortată inversată: {nume_sortare_inversată}")
+<span>==> Lista nume sortată inversată: ['Vasile', 'Mihai', 'Ioana', 'Elena', 'Cristina', 'Andrei', 'Alexandru']</span>
+print(f"Lista fructe sortată inversată: {fructe_sortare_inversată}")
+<span>==> Lista fructe sortată inversată: ['pară', 'măr', 'cireșă']</span>
+</code></pre>
+
+<pre><code><span># Python interpretează valoarea booleană False ca 0 și True ca 1</span>
+sorted([1, 3, False, True, 0])  <span>==> [False, 0, 1, True, 3]</span>
+
+<span># listă de șiruri</span>
+sorted(["aaaa", "a"])  <span>==> ['a', 'aaaa']</span>
+
+<span>#În mod implicit, sortarea în Python este sensibilă la majuscule/minuscule.</span>
+<span># Sortarea șirurilor de caractere</span>
+sorted(["veveriţă", "Urs", "epure", "Zebră", "Lup"])
+<span>==> ['Lup', 'Urs', 'Zimbru', 'epure', 'veveriţă']</span>  
+</code></pre>
+
+            <div class="grid-container">
+                <div>
+                    <p>În Python, orice funcție transmisă unui parametru <b>key</b> (cum ar fi în sorted(), max(),
+                        min(), list.sort() trebuie să accepte exact un argument pozițional.</p>
+                    <p>Pentru a evita problemele la utilizarea parametrului <b>key</b> al funcției sorted() din Python,
+                        asigurați-vă că funcția specificată returnează un tip de date consistent și comparabil. Evitați
+                        efectuarea de modificări sau calcule complexe în interiorul funcției și utilizați utilitarul
+                        <b>functools.cmp_to_key</b> dacă migrați o logică de comparare din versiuni mai vechi de Python
+                        (Python 2).
+                    </p>
+                </div>
+
+                <div>
+                    <p>In Python, any function passed to a <b>key</b> parameter (such as in sorted(), max(), min(),
+                        list.sort() must accept exactly one positional argument.</p>
+                    <p>To avoid pitfalls when using the <b>key</b> argument in Python's sorted() function, ensure your
+                        key function returns a consistent, comparable data type. Do not perform modifications or heavy
+                        computations inside the function, and use the <b>functools.cmp_to_key</b> utility if migrating
+                        legacy Python 2 comparison logic.</p>
+                </div>
+            </div>
+
+<pre><code><span># Sortează o listă de tupluri în funcție de al doilea element al acestora.</span>
+perechi = [(1, 'unu'), (2, 'doi'), (3, 'trei')]
+
+<span># Funcția lambda primește exact un argument (tuplul x).</span>
+perechi_sortate = sorted(perechi, key=lambda x: x[1])
+print(perechi_sortate) <span>==> [(2, 'doi'), (3, 'trei'), (1, 'unu')]</span>
+</code></pre>
+
+<pre><code><span># Asigurați-vă că funcția lambda sau funcția</span> 
+<span>returnează un singur tip de date, consecvent.</span>
+stoc_de_fructe = [
+    {'caisă': 10, 'preț': '2.40'},
+    {'măr': 50}, <span># fără preț</span>
+    {'pară': 25, 'preț': 1.5},
+    {'cireșă': 35, 'preț': 1.7}
+]
+
+stoc_sortat = sorted(stoc_de_fructe, key=lambda x: float(x['preț']) if 'preț' in x else 0)
+print(stoc_sortat)
+<span>==> [{'măr': 50}, {'pară': 25, 'preț': 1.5}, {'cireșă': 35, 'preț': 1.7}, {'caisă': 10, 'preț': '2.40'}]
+</span>
+</code></pre>
+
+
+<pre><code>numere_de_convertit = ["24", "111", "14"]
+
+<span># List comprehensive</span>
+numere =[int(x) for x in numere_de_convertit]
+rezultat = sorted(numere)
+print(sorted(rezultat))   <span>==> [14, 24, 111]</span>
+print(type(rezultat[0]))  <span>==> &lt;class 'int'></span>
+
+<span># map() aplică funcția lambda fiecărui element din listă</span>
+numere_lambd = list(map(lambda x: int(x), numere_de_convertire))
+print(sorted(numere_lambd))          <span>==> [14, 24, 111]</span>
+print(type(sorted(numere_lambd)[0])) <span>==> &lt;class 'int'></span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Funcția-cheie trebuie să fie pură – aceasta trebuie doar să preia o intrare și să returneze o
+                    valoare, fără a modifica nimic.</p>
+                <p>The key function must be pure—it should only take an input and return a value without changing
+                    anything.</p>
+            </div>
+
+<pre><code>animale = ["maimuță", "Zebră", "elefant", "Lup"]
+
+<span># Modificarea datelor din interiorul unei chei nu este recomandată.</span>
+sorted(animale, key=lambda x: x.lower() or x.strip()) <span># Modifică sau are efect secundar</span>
+
+<span># str.lower ca valoare a cheii recomandată</span>
+print(f'Sortat corect: {sorted(["maimuță", "Zebră", "elefant", "Lup"], key=str.lower)}')
+<span>==> Sortat corect: ['elefant', 'Lup', 'maimuță', 'Zebră']</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Folosește un tuplu drept cheie pentru a defini un criteriu de departajare. Python rezolvă automat
+                    egalitățile comparând al doilea element al tuplului, apoi pe al treilea și așa mai departe.</p>
+
+                <p>Use a tuple as your key to define a tie-breaker. Python automatically resolves ties by comparing the
+                    second element of the tuple, then the third, and so on.</p>
+            </div>
+
+<pre><code><span># Sortează după "vârstă", dar departajează egalitățile folosind "numele"</span>
+persoane = [
+    {'nume': 'Vasile', 'vârsta': 20},
+    {'nume': 'Ana', 'vârsta': 70},
+    {'nume': 'Ana', 'vârsta': 30},
+    {'nume': 'Petre', 'vârsta': 35},
+]
+
+listă_sortată = sorted(persoane, key=lambda persoană: (persoană['vârsta'], persoană['nume']))
+print(listă_sortată)
+<span>==> [{'nume': 'Vasile', 'vârsta': 20}, {'nume': 'Ana', 'vârsta': 30}, {'nume': 'Petre', 'vârsta': 35}, {'nume': 'Ana', 'vârsta': 70}]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h3 id="SLB" class="solid">funcție încorporată <b>list.sort()</b> - <a href="https://docs.python.org/3/library/functions.html#sort" target="_blank" rel="noopener">sort() built-in function</a></h3>
+
+<pre><code>help(list.sort)
+
+<span>
+Help on method_descriptor:
+
+sort(self, /, *, key=None, reverse=False)
+    Sort the list in ascending order and return None.
+    
+    The sort is in-place (i.e. the list itself is modified) and stable (i.e. the
+    order of two equal elements is maintained).
+    
+    If a key function is given, apply it once to each list item and sort them,
+    ascending or descending, according to their function values.
+    
+    The reverse flag can be set to sort in descending order.
+</span>
+</code></pre>
+
+            <div class="grid-container">
+                <div>
+                    <p>Pentru a sorta o listă in-place în Python, se folosește metoda <b>listă.sort()</b>. Această
+                        metodă modifică direct lista originală și nu returnează o listă nouă.</p>
+                    <ul>
+                        <li>este o metodă a clasei list.</li>
+                        <li>poate fi utilizată doar cu liste.</li>
+                        <li>returnează None.</li>
+                        <li>modifică ordinea elementelor în lista originală.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p>To sort a list in-place in Python, the <b>list.sort()</b> method is used. This method modifies
+                        the original list directly and does not return a new list.</p>
+                    <ul>
+                        <li>is a method of the list class.</li>
+                        <li>can only be used with lists.</li>
+                        <li>returns None.</li>
+                        <li>modifies the order of elements in place.</li>
+                    </ul>
+                </div>
+            </div>
+
+<pre><code><span># sortarea greșită</span>
+animale = ["veveriţă", "Urs", "epure", "Zimbru", "Lup"]
+print(animale.sort(key=str.lower)) <span>==> None</span>
+</code></pre>
+
+            <dl>
+                <dt>Explicaţie sortarea greșită:</dt>
+                <dd>Metoda .sort(key=str.lower) în sine este corectă pentru sortarea care nu ține cont de majuscule și
+                    minuscule, însă plasarea ei pe aceeași linie cu instrucțiunea de afișare (print) este incorectă în
+                    Python.</dd>
+                <dd>Metoda .sort() modifică lista "pe loc" (in-place) și returnează None; astfel, înlănțuirea ei directă
+                    cu o instrucțiune <b>print</b> va avea ca rezultat afișarea valorii None.</dd>
+                <dd>Trebuie să separi sortarea și afișarea în două linii de cod diferite:
+                    <ul>
+                        <li>Linia 1: animale.sort(key=str.lower) actualizează lista existentă astfel încât ordinea
+                            alfabetică este evaluată ca și cum toate cuvintele ar fi scrise cu litere mici.</li>
+                        <li>Linia 2: print(animale) afișează lista actualizată.</li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>Explanation of the sorting error</dt>
+                <dd>The .sort(key=str.lower) method itself is correct for case-insensitive sorting, but putting it on
+                    the same line as the variable print is incorrect in Python. The .sort() method alters the list
+                    "in-place" and returns None. Chaining it directly with a <b>print</b> statement will output None.
+                </dd>
+                <dd>You need to separate the sorting and the printing into two different lines of code:
+                    <ul>
+                        <li>Line1: animale.sort(key=str.lower) updates the existing list so that alphabetical order is
+                            evaluated as if all words were lowercase.</li>
+                        <li>Line 2: print(animale) displays the updated list.</li>
+                    </ul>
+            </dl>
+
+<pre><code><span># Sortare corectă</span>
+animale = ["veveriţă", "Urs", "epure", "Zimbru", "Lup"]
+animale.sort() <span># Linie 1</span>
+print(animale) <span># Linie 2 ['Lup', 'Urs', 'Zimbru', 'epure', 'veveriţă']</span>
+</code></pre>
+
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana"]
+fructe = ["măr", "pară", "cireșă"]
+
+print(nume.sort()) <span>==> None</span>
+print(nume) <span>==> ['Alexandru', 'Andrei', 'Cristina', 'Elena', 'Ioana', 'Mihai', 'Vasile']</span>
+
+fructe.sort()
+print(fructe)  <span>==> ['cireșă', 'măr', 'pară']</span>
+</code></pre>
+
+<pre><code>numere_tuplu = (5, 1, 3, 7, 1)
+
+valori_de_sortat = list(numere_tuplu)
+print(f"Listă înainte de sortare: {valori_de_sortat}")
+<span>==> Listă înainte de sortare: [5, 1, 3, 7, 1]</span>
+
+sortate_din_tuplu = valori_de_sortat.sort()
+print(sortate_din_tuplu)  <span>==> None</span>
+print(f"Listă sortată: {valori_de_sortat}")
+<span>==> Listă sortată: [1, 1, 3, 5, 7]</span>
+</code></pre>
+
+<pre><code><span># Lista cu elemente mixte</span>
+listă_eterogenă = [1, "salut", 3.14, True, [5, 6], {"key": "value"}]
+listă_eterogenă.sort()
+<span>==> TypeError: '&lt;' not supported between instances of 'str' and 'int'</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="RL">Inversarea unei liste: reversed() şi .reverse() - Reversing a List: reversed() and .reverse()</h2>
+
+            <div class="grid-container">
+                <p>În Python, există două modalități principale de a inversa o listă în funcție de necesitatea de a
+                    modifica lista originală sau de a crea o listă nouă, inversată. Principala diferență este că
+                    .reverse() modifică lista originală pe loc și returnează None, în timp ce reversed() lasă lista
+                    originală neschimbată.</p>
+
+                <p>In Python, there are two main ways to reverse a list depending on whether the original list should be
+                    modified or a new reversed list should be created. Main difference is that .reverse() modifies the
+                    original list in-place and returns None, while reversed() leaves the original list unchanged.</p>
+            </div>
+
+            <table class="outer-hidden">
+                <caption>Comparaţie</caption>
+                <tr>
+                    <th>Caracteristici</th>
+                    <th>reversed(list)</th>
+                    <th>list.reverse()</th>
+                </tr>
+                <tr>
+                    <td>Modificare</td>
+                    <td>Păstrează lista originală intactă.</td>
+                    <td>Modifică direct lista originală.</td>
+                </tr>
+                <tr>
+                    <td>Valoare returnată</td>
+                    <td> Returnează un obiect iterator.</td>
+                    <td>Returnează None.</td>
+                </tr>
+                <tr>
+                    <td>Utilizarea memoriei</td>
+                    <td>Foarte eficient din punct de vedere al memoriei (evaluare leneșă)</td>
+                    <td>Foarte eficient din punctul de vedere al utilizării memoriei (spațiu suplimentar O(1))</td>
+                </tr>
+                <tr>
+                    <td>Tipuri de date</td>
+                    <td>Funcționează cu orice secvență (șiruri de caractere, tupluri, intervale).</td>
+                    <td>Funcționează doar pe liste Python.</td>
+                </tr>
+                <tr>
+                    <td>Utilizare</td>
+                    <td>Atunci când se parcurge sau se păstrează lista originală.</td>
+                    <td>
+                        Când nu mai este nevoie de ordinea inițială.</td>
+                </tr>
+            </table>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <p id="RLA" class="bold">reversed()</p>
+            <p><a href="https://www.w3schools.com/python/ref_func_reversed.asp" target="_blank" rel="noopener">Python
+                    reversed() Function</a></p>
+
+            <p>help(reversed)</p>
+
+            <p>Funcția reversed() încorporată returnează un iterator , care poate fi apoi convertit într-o listă
+                folosind list().<br>
+                The built-in reversed() function returns a reverse iterator, which can then be converted into a list
+                using list().</p>
+
+<pre><code>fructe = ["măr", "pară", "cireșă", "caisă"]
+fruct_inversat = reversed(fructe)   <span># Obțineți iteratorul</span>
+print(fruct_inversat)
+<span>==> &lt;list_reverseiterator object at 0x0000028F84885540></span> 
+</code></pre>
+
+            <p>Modificarea listei originale afectează iteratorul<br>
+                Modifying the original list affects the iterator<p>
+
+<pre><code>fructe[-1] = "gutuie"
+fruct_inversat = reversed(fructe)   <span># Obțineți iteratorul</span>
+print(fruct_inversat)
+<span>==> &lt;list_reverseiterator object at 0x0000029143E6E8C0></span>
+
+next(fruct_inversat) <span>==> 'gutuie'</span>
+next(fruct_inversat) <span>==> 'cireșă'</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Pentru a obține o copie inversată a listei de fructe, puteți apela apoi funcția list() pentru a
+                    consuma iteratorul rezultat din apelul funcției reversed() și a crea o nouă listă ca o copie
+                    inversată a celei originale.</p>
+
+                <p>To get a reversed copy of the fruits list, you can then call list() to consume the iterator that
+                    results from calling reversed() and create a new list as a reversed copy of the original one.</p>
+            </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă", "caisă"]
+list(reversed(fructe)) <span>==> ['caisă', 'cireșă', 'pară', 'măr']</span>
+
+<span># Utilizarea într-o buclă</span>
+for fruct in reversed(fructe):
+    print(fruct, end=", ") <span>==> caisă, cireșă, pară, măr,</span>
+</code></pre>
+
+<pre><code><span># Personalizarea obiectelor</span>
+class NumărătoareaInversă:
+    def __init__(self, start):
+        self.start = start
+
+    def __reversed__(self):
+        for i in range(self.start, -1, -2):
+            yield i
+
+for număr in reversed(NumărătoareaInversă(7)):
+    print(număr, end="") <span>==> 7531</span>
+</code></pre>
+
+
+            <div class="grid-container">
+                <p>Inversarea unui șir: Deoarece șirurile sunt imutabile, trebuie să folosești "".join() pentru a
+                    reasambla iteratorul inversat într-un șir.</p>
+
+                <p>Reversing a String: Since strings are immutable, you must use "".join() to bundle the reversed
+                    iterator back into a string.</p>
+            </div>
+
+<pre><code>cuvânt = "reversed"
+cuvânt_invers = "".join(reversed(cuvânt))
+print(cuvânt_invers) <span>==> desrever</span>
+print(cuvânt) <span>==> reversed # Ne schimbat</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Deoarece funcția reversed() încorporată returnează un iterator invers, nu puteți utiliza reversed()
+                    cu iteratori arbitrari.</p>
+
+                <p>Because the built-in reversed() function returns a reverse iterator, then you can’t use reversed()
+                    with arbitrary iterators.</p>
+            </div>
+
+<pre><code>cifre = iter([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(cifre) <span>==> &lt;list_iterator object at 0x0000029143E72AA0></span>
+print(next(cifre))  <span>==> 0</span>
+
+reversed(cifre) <span>==> TypeError: 'list_iterator' object is not reversible</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+            <h3 id="RLB">.reverse()</h3>
+
+            <p><a href="https://www.w3schools.com/Python/ref_list_reverse.asp" target="_blank" rel="noopener">Python
+                    List reverse() Method</a></p>
+
+            <p><a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Data
+                    Structures</a></p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Inversarea unei liste (Modificarea listei originale)</dt>
+                    <dd>Metoda listă.reverse() modifică lista originală prin inversarea directă a ordinii elementelor
+                        sale. Nu returnează o listă nouă. Este folosit în general pentru eficiența memoriei atunci când
+                        inversați listă mari.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Reversing a List In-Place (Modifying the Original List)</dt>
+                    <dd>The list.reverse() method modifies the original list by reversing the order of its elements
+                        directly. It does not return a new list. It is generally used for memory efficiency when
+                        reversing large list objects.</dd>
+                </dl>
+            </div>
+
+<pre><code>listă_originală = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana"]
+listă_originală.reverse()
+print(listă_originală)  
+<span>==> ['Ioana', 'Elena', 'Alexandru', 'Vasile', 'Mihai', 'Andrei', 'Cristina']</span>
+
+numere = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+numere.reverse()
+print(numere) <span>==> [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
+
+
+<span># Lista cu elemente mixte</span>
+listă_eterogenă = [1, "salut", 3.14, True, [5, 6], {"key": "value"}]
+listă_eeterogenă.reverse()
+print(listă_eterogenă) <span>==> [{'key': 'value'}, [5, 6], True, 3.14, 'salut', 1]</span>
+</code></pre>
+
+            <p>Nu atribuiți o variabilă valorii reverse() deoarece obțineți "None"<br>
+                Do not assign a variable to reverse() value because you obtain "None"</p>
+
+<pre><code>numere = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+numere_inversate = numere.reverse()
+
+print(numere_inversate) <span>==> None</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="RI">listă.index(value, start, end) - list.index(value, start, end)</h2>
+
+            <p><a href="https://www.w3schools.com/Python/ref_list_index.asp" target="_blank" rel="noopener">Python List
+                    index() Method</a></p>
+
+            <p><a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Data
+                    Structures</a></p>
+
+            <p>Sintaxă: .index(value, start, end)</p>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Parametri:</dt>
+                    <dd>value (obligatoriu): Elementul al cărui index doriți să îl găsiți.</dd>
+                    <dd>start (opțional): Un număr întreg care specifică poziția de început pentru căutarea în cadrul
+                        listei (inclusiv). Dacă este omis, căutarea începe de la începutul listei (index 0).</dd>
+                    <dd>end (opțional): Un număr întreg care specifică poziția de sfârșit pentru căutarea în cadrul
+                        listei (exclusiv). Dacă este omis, căutarea continuă până la sfârșitul listei.</dd>
+
+                    <dt>Valoare returnată:</dt>
+                    <dd>Metoda index() returnează indexul primei apariții a valorii în listă.</dd>
+
+                    <dt>Generare:</dt>
+                    <dd>O eroare ValueError este generată dacă valoarea nu este găsită în listă.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Parameters:</dt>
+                    <dd>value (required): The element whose index you want to find.</dd>
+                    <dd>start (optional): An integer specifying the starting position for the search within the list
+                        (inclusive). If omitted, the search starts from the beginning of the list (index 0).</dd>
+                    <dd>end (optional): An integer specifying the ending position for the search within the list
+                        (exclusive). If omitted, the search continues to the end of the list.</dd>
+
+                    <dt>Return Value:</dt>
+                    <dd>The index() method returns the index of the first occurrence of the value in the list.</dd>
+
+                    <dt>Raises:</dt>
+                    <dd>A ValueError is raised if the value is not found in the list.</dd>
+                </dl>
+            </div>
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Andrei", "Ioana"]
+
+<span># Găsiți indexul pentru Vasile</span>
+index_vasile = nume.index("Vasile")
+print(f"Vasile este al {index_vasile+1}-lea in listă: indexul {index_vasile}")
+<span>==> Vasile este al 4-lea in listă: indexul 3</span>
+
+<span># Găsiți indexul primului Andrei în listă</span>
+indicele_primului_andrei = nume.index("Andrei")
+print(f"Indicele primului Andrei în listă este: {indicele_primului_andrei}")
+<span>==> Indicele primului Andrei în listă este: 1</span>
+
+<span># Găsiți indicele lui Andrei începând de la indicele 2</span>
+indicele_al_doilea_andrei = nume.index("Andrei", 2)
+print(f"Indicele celui de-al doilea Andrei în listă este: {indicele_al_doilea_andrei}")
+<span>==> Indicele celui de-al doilea Andrei în listă este: 6</span>
+</code></pre>
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Andrei", "Ioana"]
+<span># Încercare de a găsi o valoare (nume) care nu se află în listă (va genera o eroare ValueError)</span>
+try:
+    indice_ion = nume.index("Ion")
+except ValueError as e:
+    print(e)
+<span>==> 'Ion' is not in list</span>
+
+
+fructe = ["măr", "pară", "cireșă", "smochine", "mure", "caisă"]
+try:
+    index = fructe.index("pară")
+    print(f"Para se află la indexul: {index}")
+except ValueError:
+    print("Para nu a fost găsită în listă.")
+<span>==> Para se află la indexul: 1</span>
+</code></pre>
+
+<pre><code>fructe = ["nuci", "căpșuni", "prune", "smochine"]
+<span># Verifică mai întâi dacă elementul există.</span>
+if "căpșuni" in fructe:
+    print(f'Indexul este: {fructe.index("căpșuni")}')
+else: print("căpșuni nu este in lista")
+<span>==> Indexul este: 1</span>
+
+<span>#Obține atât indicele, cât și valoarea într-o buclă</span>
+for indice, valoare in enumerate(fructe):
+    print(f"Indexul {indice} are valoarea {valoare}")
+<span>==> Indexul 0 are valoarea nuci</span>
+<span>==> Indexul 1 are valoarea căpșuni</span>
+<span>==> Indexul 2 are valoarea prune</span>
+<span>==> Indexul 3 are valoarea smochine</span>
+</code></pre>
+
+<pre><code>numere = [2, 4, 2, 1, 4, 3, 2]
+<span># Găsiți toți indicii unde valoarea este 2</span>
+indici = [număr for număr, valoare in enumerate(numere) if valoare == 2]
+print(indici)  <span>==> [0, 2, 6]</span>
+</code></pre>
+
+<pre><code>litere = ['a', 'b', 'c', 'd']
+<span># Găsește valoarea la un indice cunoscut</span>
+print(litere[0], litere[-1]) <span>==> a d</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Pentru a accesa sau modifica o valoare dintr-o listă imbricată în Python, se folosesc mai multe
+                    perechi de paranteze pătrate succesive: listă_imbricată[index_exterior][index_interior]. Primul
+                    indice vizează sublista, iar al doilea indice selectează elementul specific din acea sublistă.</p>
+
+                <p>To access or modify a value inside a nested list in Python, multiple square brackets together:
+                    deep_list[outer_index][inner_index]. The first index targets the sublist, and the second index grabs
+                    the specific item within that sublist.</p>
+            </div>
+
+<pre><code>listă_imbricată = [
+    1, 
+    [2, 3], 
+    [4, [5, 6, [7, 8]]],
+    9, 
+    [10, [11]]
+]
+print(listă_imbricată[2][1][2][0]) <span>==> 7</span>
+</code></pre>
+
+            <p>Detaliere pas cu pas</p>
+            <ul>
+                <li>listă_imbricată[2] vizează al treilea element din listă: [4, [5, 6, [7, 8]]]</li>
+                <li>listă_imbricată[2][1] vizează al doilea element din acea sublistă: [5, 6, [7, 8]]</li>
+                <li>listă_imbricată[2][1][2] vizează al treilea element din acea listă imbricată: [7, 8]</li>
+                <li>listă_imbricată[2][1][2][0] vizează primul element al celei mai profunde liste: 7</li>
+            </ul>
+
+<pre><code><span># pentru a găsi indicii (rând și coloană) ai primei apariții</span> 
+<span>a unui element într-o listă bidimensională</span>
+def găsește_indicele(imbricată, element):
+    for r_idx, sublistă in enumerate(imbricată):
+        if element in sublistă:
+            c_idx = sublistă.index(element)
+            return r_idx, c_idx
+    return None
+
+<span># Definim lista de test</span>
+listă_imbricată = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+<span># Găsește unde se află 7</span>
+print(găsește_indicele(listă_imbricată, 7)) <span>==> (2, 0)</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Pentru a căuta un element într-o structură adânc imbricată (indiferent de nivelul de adâncime), cea
+                    mai eficientă metodă este recursivitatea.</p>
+
+                <p>To search for an element within a deeply nested structure (regardless of the depth level), the most
+                    efficient method is recursion.</p>
+            </div>
+
+<pre><code>def caută_adânc(structură, element):
+    <span># Verificăm dacă structura curentă este o listă</span>
+    if isinstance(structură, list):
+        for idx, sub_element in enumerate(structură):
+            <span># Căutăm recursiv în sub-element</span>
+            traseu = caută_adânc(sub_element, element)
+            if traseu is not None:
+                <span># Dacă sa găsit elementul, se adăugă indexul curent în fața traseului</span>
+                return [idx] + traseu
+    else:
+        <span># Dacă nu este o listă, se verifică dacă elementul este cel dorit</span>
+        if structură == element:
+            return []
+            
+    return None
+
+<span># Exemplu cu o listă de nivelul patru</span>
+listă_complexă = [1, [2, 3], [4, [5, 6, [7, 8]]], 9, [10, [11]]]
+
+<span># Căutăm elementul 7</span>
+print(caută_adânc(listă_complexă, 7)) <span>==> [2, 1, 2, 0]</span>
+</code></pre>
+
+
+<pre><code>fructe = ["măr", "smochină", "pară", "cireșă", "smochină", "mure", "caisă",]
+
+<span># Căutare pentru smochine în întreaga listă</span>
+index1 = fructe.index('smochină')
+print(f"Indexul primei 'smochine' este: {index1}")
+<span>==> Indexul primei 'smochine' este: 1</span>
+
+<span># Căutare pentru smochină începând de la indexul 3</span>
+index2 = fructe.index('smochină', 3)
+print(f"Indexul primei smochine începând de la indexul 2 este: {index2}")
+<span>==> Indexul primei smochine începând de la indexul 2 este: 4</span>
+
+<span># Căutare pentru smochină între indexul 1 (inclusiv) și indexul 5 (exclusiv)</span>
+<span># Căutarea este efectuată în sublista ["smochină", "pară", "cireșă", "smochină"]</span>
+index3 = fructe.index('smochină', 1, 5)
+print(f"Indexul smochinei între indicii 1 și 5 este: {index3}")
+<span>==> Indexul smochinei între indicii 1 și 5 este: 1</span>
+</code></pre>
+
+<pre><code><span># Găsirea indicelui valorii maxime</span>
+lista_mea = [3, 2, 5, 6, 10, 7, 9]
+valoare_max = max(lista_mea)
+index_max = lista_mea.index(valoare_max)
+print(f"Valoarea maximă este {valoare_max} la indexul {index_max}")
+<span>==> Valoarea maximă este 10 la indexul 4</span>
+</code></pre>
+
+
+<pre><code><span># Găsirea indicelui valorii minime</span>
+lista_mea = [3, 2, 5, 6, 10, 7, 9]
+valoare_min = min(lista_mea)
+index_min = lista_mea.index(valoare_min)
+print(f"Valoarea minimă este {valoare_min} la indexul {index_min}")
+<span>==> Valoarea minimă este 2 la indexul 1</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="NT">listă.count(value) - list.count(value)</h2>
+
+            <p><a href="https://www.w3schools.com/python/ref_list_count.asp" target="_blank" rel="noopener">Python List
+                    count() Method</a></p>
+
+            <p><a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Data
+                    Structures</a></p>
+
+            <div class="grid-container">
+                <p>Metoda count() este o funcție încorporată pentru liste care numără eficient aparițiile unui anumit
+                    element.</p>
+                <p>The count() method is a built-in function for lists that efficiently counts the occurrences of a
+                    given element.</p>
+            </div>
+
+<pre><code><span>Numără elemente specifice</span>
+numere = [1, 2, 3, 2, 4, 2, 5]
+număr_val = 2
+
+apariții = numere.count(număr_val)
+print(f"Numărul {număr_val} apare de {apariții} ori în listă.")
+<span>==> Numărul 2 apare de 3 ori în listă.</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>numere.count(număr_val): Aceasta apelează metoda count() pe lista numere, transmițând
+                    <b>număr_val</b> ca argument.
+                    Metoda returnează un număr întreg care reprezintă numărul de câte ori număr_val este găsit în lista
+                    numere.
+                </p>
+
+                <p>my_list.count(count_val): This calls the count() method on my_list, passing <b>count_val</b> as the
+                    argument. The method returns an integer representing the number of times count_val is found in
+                    my_list.</p>
+            </div>
+
+<pre><code>fructe_grup= ["mere", "pere","cireșe", "mere", "caise"]
+fruct = "mere"
+
+fruct_numarăt = fructe_grup.count(fruct)
+print(f"{fruct} apare de {fruct_numarăt} ori în listă.")
+<span>==> mere apare de 2 ori în listă.</span>
+
+<span># Numără un element care nu se află în listă</span>
+fructe_lipsă = "gutui"
+gutui_numarăte = fructe_grup.count(fructe_lipsă)
+print(f"{fructe_lipsă} apare de {gutui_numarăte} ori în listă.")
+<span>==> gutui apare de 0 ori în listă.</span>
+</code></pre>
+
+<pre><code>parolă_puternică = "Azi_8@28_Aug_ust_2026"
+apariția_sublinierii = parolă_puternică.count("_") > 2
+print(apariția_sublinierii)
+print(parolă_puternică.count("_"))
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+            <h2 id="ER">listă şi filter() - list and filter()</h2>
+
+            <p>Sintaxă: filter(funcție, iterabil)</p>
+
+
+            <p><a href="https://www.w3schools.com/python/ref_func_filter.asp" target="_blank" rel="noopener">Python
+                    filter() Function</a></p>
+
+            <div class="grid-container">
+                <p>Funcția filter() din Python este utilizată pentru a extrage dintr-un obiect iterabil (cum ar fi o
+                    listă) elementele care îndeplinesc o anumită condiție.. Pentru a "elimina" eficient elementele,
+                    definiți o condiție care identifică elementele pe care doriți să le păstrați, iar funcția filter()
+                    creează apoi un iterator care conține doar acele elemente.</p>
+
+                <p>The Python's filter() function is used to extract elements from an iterable (like a list) that
+                    satisfy a given condition. To effectively "remove" items, you define a condition that identifies the
+                    items you want to keep, and the filter() function then creates an iterator containing only those
+                    elements.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Definiți o funcție de filtrare:</dt>
+                    <dd>Aveți nevoie de o funcție care preia un element din listă ca intrare și returnează True dacă
+                        elementul ar trebui păstrat (extras) sau False dacă ar trebui eliminat (efectiv eliminat).
+                        Aceasta poate fi o funcție denumită sau o funcție lambda pentru definiții concise, inline.</dd>
+
+                    <dt>Aplicați filter():</dt>
+                    <dd>Funcția filter() primește două argumente:
+                        <ul>
+                            <li>Funcția de filtrare.</li>
+                            <li>Iterabilul (de exemplu, lista dvs.).</li>
+                        </ul>
+                    </dd>
+                    <dd>Returnează un iterator, pe care de obicei îl convertiți într-o listă folosind list() dacă aveți
+                        nevoie de un nou obiect listă.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Define a Filtering Function:</dt>
+                    <dd>You need a function that takes an element from the list as input and returns True if the element
+                        should be kept (extracted) or False if it should be discarded (effectively removed). This can be
+                        a named function or a lambda function for concise, inline definitions.</dd>
+
+                    <dt>Apply filter():</dt>
+
+                    <dd>The filter() function takes two arguments:
+                        <ul>
+                            <li>The filtering function.</li>
+                            <li>The iterable (e.g., your list).</li>
+                        </ul>
+                    </dd>
+                    <dd>It returns an iterator, which you typically convert to a list using list() if you need a new
+                        list object.</dd>
+                </dl>
+            </div>
+
+
+<pre><code><span># Eliminarea valorilor false (None ca funcție)</span>
+date_mixte = [0, False, "salut", "lume", "", True, None]
+
+<span># Elimină toate valorile false</span>
+date_curate = list(filter(None, date_mixte))
+print(date_curate) <span>==> ['salut', 'lume', True]</span>
+</code></pre>
+
+            <p>Găsirea elementelor pe baza unei condiții (filtrare)<br>
+                Finding Elements Based on a Condition (Filtering)</p>
+
+<pre><code><span># List Comprehension</span>
+articole = ["măr", "cămară", "pară", "cireșă", "caisă", "amară"]
+articole_filtrate = [articol for articol in articole if "ar" in articol]
+print(f"Articole care conțin 'ar': {articole_filtrate}")
+<span>==> Articole care conțin 'ar': ['cămară', 'pară', 'amară']</span>
+
+lista_mea = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+numere_pare = [număr for număr in lista_mea if număr % 2 == 0]
+print(numere_pare) <span>==> [2, 4, 6, 8, 10]</span>
+</code></pre>
+
+<pre><code><span># Funcția filter()</span>
+def este_pozitiv(număr):
+    return număr > 0
+
+numere = [-1, 0, 1, 2, -3, 4]
+numere_pozitive = list(filter(este_pozitiv, numere))
+print(numere_pozitive)  <span>==> [1, 2, 4]</span>
+
+<span># filter, lambda, len</span>
+fructe = ["măr", "pară", "cireșă", "smochine"]
+
+cuvinte_lungi = list(filter(lambda fruct: len(fruct) > 5, fructe))
+print(cuvinte_lungi) <span>==> ['cireșă', 'smochine']</span>
+</code></pre>
+
+<pre><code><span># Bucla cu logică condiționată</span>
+lista_mea = [30, 40, 50, 150, 145]
+listă_filtrată = []
+for număr in lista_mea:
+    if număr > 45:
+        listă_filtrată.append(număr)
+print(listă_filtrată) <span>==> [50, 150, 145]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Funcția filter() este foarte eficientă din punctul de vedere al utilizării memoriei. Este preferată
+                    pentru seturi de date foarte mari, deoarece procesează elementele în mod "leneș" (lazy) — unul câte
+                    unul — în loc să creeze instantaneu o copie completă în memorie.</p>
+
+                <p>The filter() function is highly memory-efficient. It is preferred for very large datasets because it
+                    processes elements "lazily"—one by one—rather than instantly creating a full copy in memory.</p>
+            </div>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Alegerea metodei potrivite</dt>
+                    <dd>Comprehensiunile listelor: sunt adesea preferate pentru lizibilitatea și concizia lor atunci
+                        când se creează o listă nouă pe baza unei condiții simple.</dd>
+
+                    <dd>filter(): este util atunci când aveți o logică de filtrare mai complexă, care ar putea fi mai
+                        bine încapsulată într-o funcție separată sau când aveți nevoie de un iterator pentru eficiența
+                        memoriei cu liste foarte mari.</dd>
+
+                    <dd>Buclele: oferă cel mai explicit control și pot fi utile pentru scenarii de filtrare foarte
+                        complexe sau atunci când efectuați alte operațiuni în cadrul buclei, pe lângă filtrare.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Choosing the right method</dt>
+                    <dd>List comprehensions: are often preferred for their readability and conciseness when creating a
+                        new list based on a simple condition.</dd>
+
+                    <dd>filter(): is useful when you have a more complex filtering logic that might be better
+                        encapsulated in a separate function, or when you need an iterator for memory efficiency with
+                        very large lists.</dd>
+
+                    <dd>Loops: provide the most explicit control and can be useful for very complex filtering scenarios
+                        or when performing other operations within the loop in addition to filtering.</dd>
+                </dl>
+            </div>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+            <h2 id="TF">Convertire liste de numere întregi în True și Fale, 0 și 1 - Convert an integer list to True and False, 0 and 1</h2>
+
+            <div class="grid-container">
+                <p>Funcția bool() încorporată poate fi aplicată fiecărui element din listă. În Python, 0 se evaluează ca
+                    False, iar orice număr întreg diferit de zero (pozitiv sau negativ) se evaluează ca True.</p>
+
+                <p>The built-in bool() function can be applied to each element in the list. In Python, 0 evaluates to
+                    False, and any non-zero integer (positive or negative) evaluates to True.</p>
+            </div>
+
+<pre><code><span># Conversia la True/False (Booleans)</span>
+listă_întregi = [0, 1, 5, -2, 0]
+<span># listă comprehensions</span>
+listă_booleană = [bool(num) for num in listă_întregi]
+<span># Funcției map()</span>
+listă_booleană = list(map(bool, listă_întregi))
+print(f"Același rezultat pentru ambele: {listă_booleană}")
+
+<span>==> Același rezultat pentru ambele: [False, True, True, True, False]</span>
+</code></pre>
+
+<pre><code><span># Conversia la 0 și 1</span>
+<span># listă booleană</span>
+listă_fals_adevărat = [False, True, True, False, True]
+<span># listă comprehensions</span>
+listă_binară= [int(bit) for bit in listă_fals_adevărat]
+<span># Funcția map()</span>
+listă_binară = list(map(int, listă_fals_adevărat))
+print(f"Același rezultat pentru ambele: {listă_binară}")
+ 
+<span>==> Același rezultat pentru ambele: [0, 1, 1, 0, 1]</span>
+</code></pre>
+
+<pre><code><span># Conversia la 0 și 1</span>
+listă_întregi = [0, 1, 5, -2, 0]
+<span># listă comprehensions</span>
+listă_zero_unu = [int(bool(num)) for num in listă_întregi]
+<span># map() and lambda</span>
+listă_zero_unu = list(map(lambda n: int(bool(n)), listă_întregi))
+print(f"Același rezultat pentru ambele: {listă_zero_unu}")
+ 
+<span>==> Același rezultat pentru ambele: [0, 1, 1, 1, 0]</span>
+</code></pre>
+
+
+<pre><code><span># Conversie condiţionată</span>
+listă_întregi = [0, 1, 5, -2, 0]
+<span># Varianta 1</span>
+listă_binară_cond = [1 if n != 0 else 0 for n in listă_întregi]
+<span># Varianta 2</span>
+listă_binară_cond = [int(n != 0) for n in listă_întregi]
+
+print(f"Același rezultat pentru ambele: {listă_binară_cond}") 
+<span>==> Același rezultat pentru ambele: [0, 1, 1, 1, 0]</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+            <h2 id="FE">in, not in, un element este sau nu într-o listă - in, not in, an element is or is not in a list</h2>
+
+            <div class="grid-container">
+                <p>Cel mai eficient mod de a verifica dacă un element există într-o listă Python este utilizarea
+                    operatorilor in și not in.</p>
+
+                <p>The most efficient way to check if an item exists in a Python list is by using the in and not in
+                    operators</p>
+            </div>
+
+<pre><code>fructe = ["măr", "pară", "cireșă"]
+<span># Verificarea calității de membru (prezență)</span>
+if "cireșă" in fructe:
+    print(f"Cireasa este in lista") <span>==> Cireasa este in lista</span>
+</code></pre>
+
+<pre><code>nume = ["Cristina", "Andrei", "Mihai", "Vasile", "Alexandru", "Elena", "Ioana"]
+print(f"Andrei este in lista cu nume: {'Andrei' in nume}")
+<span>==> Andrei este in lista cu nume: True</span>
+print(f"Andreia este in lista cu nume: {'Andreia' in nume}")
+<span>==> Andreia este in lista cu nume: False</span>
+print(f"Vasile nu este in lista cu nume: {'Vasile' not in nume}")
+<span>==> Vasile nu este in lista cu nume: False</span>
+</code></pre>
+<p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+
+            <h2 id="FH">Duplicate dintr-o listă Python - Duplicates from a Python list</h2>
+
+
+            <div class="grid-container">
+                <div>
+                    <p>Pentru a verifica dacă o listă conține duplicate, atunci când nu sunt prezente obiecte care nu
+                        pot fi hașate, cea mai eficientă și comună metodă utilizează proprietățile obiectelor set.</p>
+
+                    <p>O valoare <b>hash</b> este un număr întreg care reprezintă în mod unic un obiect. Un obiect este
+                        considerat hashabil dacă are o valoare hash care rămâne constantă pe tot parcursul existenței
+                        sale. Valoare hash este un număr întreg care poate fi utilizat pentru a compara rapid obiectele
+                        și a determina egalitatea lor.</p>
+                </div>
+
+                <div>
+                    <p>To check if a list contains duplicate elements, when no unhashable objects are present, the most
+                        efficient and common method utilizes the properties of set objects.</p>
+
+                    <p>A <b>hash</b> value is an integer that uniquely represents an object. An object is considered
+                        hashable if it has a hash value that remains constant throughout its lifetime. This hash value
+                        is an integer that can be used to quickly compare objects and determine their equality.</p>
+                </div>
+            </div>
+
+<pre><code>def are_duplicate(lista_mea):
+    """
+    Verifică dacă o listă conține elemente duplicate.
+
+    Argumente:
+        lista_mea: Lista de verificat. Presupune că toate elementele sunt hashabile.
+
+    Returnează:
+        True dacă lista conține duplicate, False altfel.
+    """
+    return len(lista_mea) != len(set(lista_mea))
+
+<span># Exemplu de utilizare:</span>
+listă_cu_duplicate = [1, 2, 3, 2, 4, 5]
+listă_fără_duplicate = [1, 2, 3, 4, 5]
+
+print(f"{listă_cu_duplicate} duplicate: {are_duplicate(listă_cu_duplicate)}")
+<span>==> [1, 2, 3, 2, 4, 5] duplicate: True</span>
+print(f"{listă_fără_duplicate} dupuplicate: {are_duplicate(listă_fără_duplicate)}")
+<span>==> [1, 2, 3, 4, 5] dupuplicate: False</span>
+</code></pre>
+
+            <div class="grid-container">
+                <ul>
+                    <li>Explicație:</li>
+                    <li>set(lista_mea) creează o mulțime care conține doar elementele unice din lista_mea.</li>
+                    <li>len(lista_mea) indică numărul total de elemente din lista originală.</li>
+                    <li>len(set(lista_mea)) indică numărul de elemente unice.</li>
+                    <li>Dacă aceste lungimi sunt diferite, înseamnă că unele elemente au fost eliminate în timpul
+                        conversiei într-o mulțime, indicând prezența duplicatelor în lista originală.</li>
+                </ul>
+
+                <ul>
+                    <li>Explanation:</li>
+                    <li>set(lista_mea) creates a set containing only the unique elements from lista_mea.</li>
+                    <li>len(lista_mea) gives the total number of elements in the original list.</li>
+                    <li>len(set(lista_mea)) gives the number of unique elements.</li>
+                    <li>If these lengths are different, it means some elements were removed during the conversion to a
+                        set, indicating the presence of duplicates in the original list.</li>
+                </ul>
+            </div>
+
+            <p>O variantă mai clasică și ușor de citit cu un for simplu - A more classic and readable version using a
+                simple for-loop</p>
+
+<pre><code>numere = [1, 2, 3, 4, 2, 5, 3, 6, 7, 7]
+găsite = set()
+duplicate = []
+
+for număr in numere:
+    if număr in găsite:
+        duplicate.append(număr)
+    else:
+        găsite.add(număr)
+
+print("Duplicate:", duplicate) <span>==> Duplicate: [2, 3, 7]</span>
+</code></pre>
+
+          <div class="grid-container">
+            <p><b>Tuplurile</b> sunt imuabile și, prin urmare, hashabile, permițându-le să fie stocate într-o
+                mulțime.</p>
+            <p><b>Tuples</b> are immutable and therefore hashable, allowing them to be stored in a set.</p>
+          </div>
+
+<pre><code>listă_nivel_2 = [[1, 2, 3], [4, 5], [10, 11], [4, 5]]
+
+<span># Conversia listei de liste într-o listă de tupluri</span>
+lista_de_tupluri_2 = [tuple(sublist) for sublist in listă_nivel_2]
+
+<span># Verificarea duplicatelor folosind abordarea bazată pe mulțimi</span>
+are_duplicate_2 = len(lista_de_tupluri_2) != len(set(lista_de_tupluri_2))
+
+print(f"Lista {listă_nivel_2} are duplicate: {are_duplicate_2}")
+<span>==> Lista [[1, 2, 3], [4, 5], [10, 11], [4, 5]] are duplicate: True</span>
+</code></pre>
+
+            <div class="grid-container">
+                <div>
+                    <p>Bucla for cu o listă de colectori goală</p>
+                    <p>Dacă preferați să nu modificați structura datelor, puteți itera prin listă și puteți urmări
+                        elementele pe care le-ați iterat deja. Acest lucru este mai puțin eficient pentru listele mari
+                        decât abordarea bazată pe seturi, dar evită eroarea TypeError.</p>
+                </div>
+
+                <div>
+                    <p>for loop with an empty colector list</p>
+                    <p>If you prefer not to change the data structure, you can iterate through the list and keep track
+                        of the elements you have already iterated. This is less efficient for large lists than the
+                        set-based approach but avoids the TypeError.</p>
+                </div>
+            </div>
+
+<pre><code>listă_nivel_3 = [[[1, 2], [3, 4]], [[1, 3, [9]], [3, 4]], [[9, 10]], [[11, [12, 13]]], [[1, 2], [3, 4]]]
+colector = []
+are_duplicate = False
+
+for sublistă in listă_nivel_3:
+    if sublistă in colector:
+        are_duplicate = True
+        break
+    colector.append(sublistă)
+
+print(f"Lista {listă_nivel_3} are duplicate: {are_duplicate}")
+<span>==> Lista [[[1, 2], [3, 4]], [[1, 3, [9]], [3, 4]], [[9, 10]], [[11, [12, 13]]], [[1, 2], [3, 4]]] are duplicate: True</span>
+print(f"Lista are {len(listă_nivel_3)} subliste din care prima și ultima listă sunt duplicate")
+<span>==> Lista are 5 subliste din care prima și ultima listă sunt duplicate</span>
+</code></pre>
+
+          <div class="grid-container">
+            <p>Generează o listă cu valori unice folosind înțelegerea listei și apoi compară numărul de elemente.</p>
+            <p>Generates a list of only unique values using list comprehension and then compares element counts.</p>
+          </div>
+
+<pre><code>def are_duplicate(listă_duplicate):
+    găsit = []
+    listă_unică = [sublistă for sublistă in listă_duplicate if sublistă not in găsit and not găsit.append(sublistă)]
+    return len(listă_duplicate) != len(listă_unică)
+
+listă_nivel_3 = [[[1, 2], [3, 4]], [[1, 3, [9]], [3, 4]], [[9, 10]], [[11, [12, 13]]], [[1, 2], [3, 4]]]
+print(f"Lista {listă_nivel_3} are duplicate: {are_duplicate(listă_nivel_3)}")
+<span>==> Lista [[[1, 2], [3, 4]], [[1, 3, [9]], [3, 4]], [[9, 10]], [[11, [12, 13]]], [[1, 2], [3, 4]]] are duplicate: True</span>
+</code></pre>
+
+            <div class="grid-container">
+                <p>Pentru a găsi duplicatele dintr-o listă și indexurile lor, o abordare comună și eficientă implică
+                    utilizarea unui dicționar pentru a stoca elementele și indexurile lor întâlnite. Această metodă
+                    identifică eficient duplicatele și colectează toate indexurile acestora fără verificări redundante.
+                </p>
+
+                <p>To find the duplicates in a Python list and their corresponding indexes, one common and efficient
+                    approach involves using a dictionary to store elements and their encountered indices. This method
+                    efficiently identifies duplicates and collects all their indices without redundant checks.</p>
+            </div>
+
+
+<pre><code>def duplicate_cu_indexuri(lista_duplicate):
+    duplicate_indici = {}
+    elemente_index = {}
+    
+    for index, element in enumerate(lista_duplicate):
+        if element in elemente_index:
+            <span># Dacă elementul a mai fost găsit anterior, este un duplicat</span>
+            if element not in duplicate_indici:
+                <span># Adăugați primul index de apariție dacă nu a fost deja adăugat</span>
+                duplicate_indici[element] = [elemente_index[element]]
+            <span># Adaugă indexul curent</span>
+            duplicate_indici[element].append(index)
+        else:
+            <span># Prima dată când este găsit acest element, înregistrați indexul acestuia</span>
+            elemente_index[element] = index
+            
+    <span># return elemente_index</span>
+
+    return duplicate_indici
+    
+
+listă_cu_duplicate = [10, 20, 30, 20, 40, 30, 50, 60, 10, 70]
+elemente_duplicate_şi_indici = duplicate_cu_indexuri(listă_cu_duplicate)
+print(elemente_duplicate_şi_indici)
+<span>==> {20: [1, 3], 30: [2, 5], 10: [0, 8]}</span>
+</code></pre>
+
+            <p>Buclă for standardă - Standard For-Loop</p>
+
+<pre><code>listă_duplicate = [10, 20, 30, 20, 40, 30, 50, 60, 10, 70]
+rezultat = {}
+
+<span># Bucla exterioară: Parcurge fiecare element unic pentru cheie.</span>
+for număr in listă_duplicate:
+    lista_indici = []
+    
+    <span># Bucla interioară: Parcurge lista pentru a găsi toți indicii corespunzători.</span>
+    for indice, _ in enumerate(listă_duplicate):
+        if _ == număr:
+            lista_indici.append(indice)
+            
+    rezultat[număr] = lista_indici
+
+print(rezultat)
+<span>==> {10: [0, 8], 20: [1, 3], 30: [2, 5], 40: [4], 50: [6], 60: [7], 70: [9]}</span>
+</code></pre>
+
+
+          <div class="grid-container">
+            <dl>
+                <dt>collections.Counter</dt>
+                <dd>Această metodă este eficientă și oferă numărul tuturor elementelor, facilitând identificarea
+                    duplicatelor</dd>
+            </dl>
+            <dl>
+                <dt>collections.Counter</dt>
+                <dd>This method is efficient and provides the counts of all elements, making it easy to identify
+                    duplicates</dd>
+            </dl>
+          </div>
+
+<pre><code>import collections
+lista = [3, 2, 1, 5, 1, 4, 2, 3, 2]
+print(collections.Counter(lista))
+<span>==> Counter({2: 3, 3: 2, 1: 2, 5: 1, 4: 1})</span>
+</code></pre>
+
+          <div class="grid-container">
+            <p>Recuperează chei și valori cu items(). Poți extrage chei cu mai mult de două numărări prin înțelegerea
+                listei (list comprehension).</p>
+            <p>Retrieve keys and values with items(). You can extract keys with more than two counts by list
+                comprehension.</p>
+          </div>
+
+<pre><code>import collections
+lista = [3, 2, 1, 5, 1, 4, 2, 3, 2]
+print([k for k, v in collections.Counter(lista).items() if v > 1])
+<span>==> [3, 2, 1]</span>
+print(sorted([k for k, v in collections.Counter(lista).items() if v >1], key=lista.index))
+<span>==> [3, 2, 1]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Seturi și iterație.</dt>
+                    <dd>Această abordare implică iterația prin listă și utilizarea unei seturi pentru a urmări
+                        elementele văzute și a unei alte seturi pentru duplicate.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Sets and Iteration.</dt>
+                    <dd>This approach involves iterating through the list and using a set to keep track of seen elements
+                        and another set for duplicates.</dd>
+                </dl>
+            </div>
+
+<pre><code>numere = [1, 2, 3, 2, 4, 5, 3, 6]
+no_duplicate = set()
+duplicate = set()
+
+for număr in numere:
+    if număr in no_duplicate:
+        duplicate.add(număr)
+    else:
+        no_duplicate.add(număr)
+print(no_duplicate)    <span>==> {1, 2, 3, 4, 5, 6}</span>
+print(list(duplicate)) <span>==> [2, 3]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Înțelegerea (Comprehension) listei și count() (mai puțin eficient pentru liste mari)</dt>
+                    <dd>Această metodă verifică direct numărul fiecărui element din lista originală. Deși este concisă,
+                        list.count() iterează prin listă pentru fiecare element, ceea ce duce la o eficiență mai scăzută
+                        pentru listele mari.</dd>
+                </dl>
+
+                <dl>
+                    <dt>List Comprehension and count() (less efficient for large lists)</dt>
+                    <dd>This method directly checks the count of each element in the original list. While concise,
+                        list.count() iterates through the list for each element, leading to lower efficiency for large
+                        lists.</dd>
+                </dl>
+            </div>
+
+<pre><code>numere = [1, 2, 3, 2, 4, 5, 3, 6]
+duplicate = list(set([x for x in numere if numere.count(x) > 1]))
+print(duplicate) <span>==> [2, 3]</span>
+</code></pre>
+
+            <div class="grid-container">
+                <dl>
+                    <dt>Alegerea unei metode.</dt>
+                    <dd>Pentru găsirea duplicatelor în scopuri generale, collections.Counter este adesea cea mai
+                        recomandată datorită eficienței și lizibilității sale.</dd>
+                    <dd>Metoda de iterare bazată pe seturi este, de asemenea, eficientă și poate fi utilă dacă trebuie
+                        să construiți setul de elemente văzute în alte scopuri.</dd>
+                    <dd>Înțelegerea listei cu count() trebuie utilizată cu precauție pentru listele foarte mari din
+                        cauza potențialelor probleme de performanță.</dd>
+                </dl>
+
+                <dl>
+                    <dt>Choosing a Method.</dt>
+                    <dd>For general-purpose duplicate finding, collections.Counter is often the most recommended due to
+                        its efficiency and readability.</dd>
+                    <dd>The set-based iteration method is also efficient and can be useful if you need to build the set
+                        of seen elements for other purposes.</dd>
+                    <dd>The list comprehension with count() should be used with caution for very large lists due to
+                        potential performance issues.</dd>
+                </dl>
+            </div>
+
+
+      <p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+      <p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+            <div class="footer footer-link">
+                <footer>
+                    &copy; <span id="year-picior"></span> Gazeta Python.
+                    <address><a href="https://gazetapython.wordpress.com/" target="_blank"
+                            rel="noopener">www.gazetapython.com</a></address>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+
+    <script src="JS/treileaGreeting.js"></script>
+    <script src="JS/update-year.js"></script>
+
+</body>
+
+</html>

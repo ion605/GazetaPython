@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="ro">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="stylesheet" href="CSS/main-style.css">
+  
+  <link rel="icon" type="img/png" href="images/logo-title.png">
+  <title>Gazeta Python 4.0 Tipuri Secventa</title>
+</head>
+
+<body>
+
+  <div id="sus" class="main-1-0 navigare">
+    <header>
+      <div class="header-menu">
+        <img src="images/logo-menu.svg" alt="Gazeta Python">
+        <nav>
+          <ul>
+            <li><a href="index.html" target="_blank" rel="noopener">Cuprins</a></li>
+            <li><a href="stiri.html" target="_blank" rel="noopener">Știri</a></li>
+            <li><a href="despre.html" target="_blank" rel="noopener">Despre</a></li>
+            <li><a href="donare.html" target="_blank" rel="noopener">Donație</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="first-empty-1-0"></div>
+
+      <div class="titlu-1-0">
+        <div class="grid-cell">
+          <img src="images/literaS.svg" alt="S" class="logo">
+          <h1>4.0 Tipuri de secvențe-Sequence types</h1>
+        </div>
+      </div>
+
+      <div class="ro-en-1-0 container-links ro-en">
+        <div>
+          <ul>
+            <li>În acest capitol veți studia:</li>
+            <li><a href="4.1-Liste.html" target="_blank" rel="noopener">Liste</a></li>
+            <li><a href="4.1.1-Metode-Auxiliare(liste).html" target="_blank" rel="noopener">Metode Auxiliare(liste)</a></li>
+            <li><a href="4.1.2-Copii-ale-listelor.html" target="_blank" rel="noopener">Copii ale listelor</a></li>
+            <li><a href="4.1.3-Lucrul-cu-liste.html" target="_blank" rel="noopener">Lucrul cu liste</a></li>
+            <li><a href="4.1.4-Liste-comprehension.html" target="_blank" rel="noopener">Liste comprehension</a></li>
+            <li><a href="4.2-Tuplu.html" target="_blank" rel="noopener">Tuplu</a></li>
+            <li><a href="4.3-Tuplu-namedtuple.html" target="_blank" rel="noopener">Tuplu namedtuple</a></li>
+            <li><a href="4.4-Interval(range).html" target="_blank" rel="noopener">Interval(range)</a></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li>In this chapter, you will study:</li>
+            <li><a href="4.1-Liste.html" target="_blank" rel="noopener">Lists</a></li>
+            <li><a href="4.1.1-Metode-Auxiliare(liste).html" target="_blank" rel="noopener">Auxiliary Methods (lists)</a></li>
+            <li><a href="4.1.2-Copii-ale-listelor.html" target="_blank" rel="noopener">Copies of the lists</a></li>
+            <li><a href="4.1.3-Lucrul-cu-liste.html" target="_blank" rel="noopener">Working with lists</a></li>
+            <li><a href="4.1.4-Liste-comprehension.html" target="_blank" rel="noopener">List comprehension</a></li>
+            <li><a href="4.2-Tuplu.html" target="_blank" rel="noopener">Tuple</a></li>
+            <li><a href="4.3-Tuplu-namedtuple.html" target="_blank" rel="noopener">Tuple namedtuple</a></li>
+            <li><a href="4.4-Interval(range).html" target="_blank" rel="noopener">Range</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="second-empty-1-0"></div>
+
+    <div class="contents-1-0">
+
+<div class="grid-container">
+  <p>O <b>listă</b> în Python este o colecție predefinită, ordonată și mutabilă (modificabilă), utilizată pentru a stoca mai multe elemente într-o singură variabilă.</p>
+  <p>A Python <b>list</b> is a built-in, ordered, and mutable (changeable) collection used to store multiple items in a single variable.</p>
+</div>
+
+<div class="grid-container">
+<dl>
+<dt>Caracteristici</dt>
+  <dd>Ordonată: Elementele își păstrează o ordine de inserare definită și fixă.</dd>
+  <dd>Mutabilă: Elementele pot fi modificate, adăugate sau eliminate după crearea listei.</dd>
+  <dd>Eterogenă: O singură listă poate conține tipuri de date mixte (cum ar fi numere întregi, șiruri de caractere, valori booleene sau chiar alte liste).</dd>
+  <dd>Duplicarea permisă: Aceeași valoare poate apărea de mai multe ori.</dd>
+</dl>
+
+<dl>
+<dt>Characteristics</dt>
+  <dd>Ordered: Items maintain a defined, fixed insertion order.</dd>
+  <dd>Mutable: You can change, add, or remove items after the list is created.</dd>
+  <dd>Heterogeneous: A single list can hold mixed data types (such as integers, strings, booleans, or even other lists).</dd>
+  <dd>Duplicates allowed: The same value can appear more than once.</dd>
+</dl>     
+</div>
+
+<div class="grid-container">
+<dl>
+<dt>Sintaxă de bază și creare</dt>
+  <dd>O listă se definește folosind paranteze pătrate [] sau constructorul list()</dd>
+<dt>Indexare și feliere (slicing)</dt>
+  <dd>Python utilizează indexarea bazată pe zero (primul element are indicele 0). De asemenea, se pot folosi numere negative pentru a număra invers, de la sfârșit (-1 reprezintă ultimul element).</dd>
+</dl>
+
+<dl>
+<dt>Basic Syntax and Creation</dt>
+  <dd>You define a list using square brackets [] or the list() constructor</dd>
+<dt>Indexing and Slicing</dt>
+  <dd>Python uses zero-based indexing (the first item is at index 0). You can also use negative numbers to count backward from the end (-1 is the last item).</dd>
+</dl>       
+</div>
+
+<table class="outer-hidden">
+<caption>Metode și operații uzuale pentru liste</caption>
+<tr><th>Operație / Metodă</th><th>Descriere</th><th>Exemplu</th></tr>
+<tr><td>len()</td><td>Returnează numărul de elemente din listă</td><td>len(fructe)</td></tr>
+<tr><td>.append(val)</td><td>Adaugă un element la sfârșitul listei</td><td>fructe.append("gutuie")</td></tr>
+<tr><td>.insert(idx, val)</td><td>Inserează un element la un anumit indice</td><td>fructe.insert(1, "strugure")</td></tr>
+<tr><td>.extend(iterable)</td><td>Adaugă elementele dintr-o altă colecție la sfârșitul listei</td><td>fructe.extend(["ananas", "pepene"])</td></tr>
+<tr><td>.remove(val)</td><td>Elimină prima apariție a unei valori</td><td>fructe.remove("mango")</td></tr>
+<tr><td>.pop(idx)</td><td>Elimină și returnează un element de la un indice dat (implicit, ultimul element)</td><td>ultimul_fruct = fructe.pop()</td></tr>
+<tr><td>.sort()</td><td>Sortează lista în ordine crescătoare (modifică lista originală)</td><td>numere.sort()</td></tr>
+<tr><td>in</td><td>Verifică dacă o valoare există în listă (returnează True/False)</td><td>"fistic" in fructe</td></tr>
+</table>
+
+
+
+<p>Pentru mai multe detalii și exemple, consultați 
+<a href="https://www.w3schools.com/python/python_lists.asp" target="_blank" rel="noopener">Python Lists</a>, 
+<a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Data Structures</a>, 
+<a href="https://realpython.com/python-list/" target="_blank" rel="noopener">Python's list Data Type: A Deep Dive With Examples</a></p>
+
+<p>For more details and examples, refer to the official 
+<a href="https://www.w3schools.com/python/python_lists.asp" target="_blank" rel="noopener">Python Lists</a>,
+<a href="https://docs.python.org/3/tutorial/datastructures.html" target="_blank" rel="noopener">Data Structures</a>, 
+<a href="https://realpython.com/python-list/" target="_blank" rel="noopener">Python's list Data Type: A Deep Dive With Examples</a></p>
+
+
+<div class="grid-container">
+<p>Un <b>tuplu</b> este un tip de date încorporat în Python, utilizat pentru a stoca o colecție ordonată, imuabilă (care nu poate fi modificată) cu elemente eterogene. Spre deosebire de liste, odată ce un tuplu a fost creat, elementele sale nu mai pot fi modificate, adăugate sau eliminate.</p>
+
+<p><b>tuple</b> is a built-in Python data type used to store an ordered, immutable (unchangeable), and heterogeneous collection of items. Unlike lists, once a tuple is created, its elements cannot be modified, added, or removed.</p>        
+</div>
+
+<div class="grid-container">
+<dl>
+<dt>Crearea unui tuplu</dt>
+  <dd>Tuplurile sunt definite folosind paranteze rotunde () și separând elementele prin virgule.</dd>
+  <dd>Pentru a crea un tuplu care conține un singur element, trebuie să adaugi o virgulă la final ("gutuie",). În caz contrar, Python îl va trata ca pe un tip de date obișnuit, inclus între paranteze ("gutuie").</dd>
+
+<dt>Accesarea și felierea elementelor</dt>
+  <dd>Tuplurile suportă indexarea de la zero și felierea, la fel ca listele.</dd>
+
+<dt>Proprietăți și comportament cheie</dt>
+  <dd>Imuabilitate: Nu poți modifica structura de date odată ce a fost definită.</dd>
+  <dd>Despachetarea tuplurilor: Elementele pot fi extrase în variabile individuale.</dd>
+
+<dt>Metode încorporate: Datorită imutabilității, tuplurile dispun de două metode încorporate:</dt>
+  <dd>count(valoare): Returnează numărul de apariții ale unei valori.</dd>
+  <dd>index(valoare): Returnează indicele primei apariții a unei valori.</dd>  
+</dl>
+
+<dl>
+<dt>Creating a Tuple</dt>
+  <dd>Tuples are defined using parentheses () and separating items with commas.</dd>
+  <dd>To create a tuple containing only one element, you must include a trailing comma ("gutuie",). Otherwise, Python will treat it as a regular data type wrapped in parentheses ("gutuie").</dd>
+
+<dt>Accessing and Slicing Elements</dt>
+  <dd>Tuples support zero-based indexing and slicing just like lists.</dd>
+
+<dt>Key Properties and Behavior</dt>
+  <dd>Immutability: You cannot alter the data structure once defined.</dd>
+  <dd>Tuple Unpacking: Can be extracted items into individual variables.</dd>
+
+<dt>Built-in Methods: Because of immutablity, tuples have two built-in methods:</dt>
+  <dd>count(value): Returns the number of times a value occurs.</dd>
+  <dd>index(value): Returns the index of the first occurrence of a value.</dd>
+</dl>        
+</div>
+
+<table class="outer-hidden">
+<caption>Tuplu vs. Listă: O scurtă prezentare generală</caption>
+<tr><th>Caracteristică</th><th>Tuplu (())</th><th>Listă ([])</th></tr>
+<tr><td>Mutabilitate</td><td>Imuabil (nu poate fi modificat)</td><td>Mutabilă (permite adăugarea/eliminarea/modificarea elementelor)</td></tr>
+<tr><td>Performanță</td><td>Mai rapid și consumă mai puțină memorie</td><td>Mai lentă, din cauza costurilor suplimentare generate de redimensionarea dinamică</td></tr>
+<tr><td>Utilizare frecventă</td><td>Înregistrări din baze de date, coordonate, valori returnate de funcții</td><td>Colecții dinamice de elemente similare</td></tr>
+<tr><td>Posibilitatea de a fi hash-uit</td><td>Poate fi utilizat ca cheie într-un dicționar (dacă elementele sale pot fi hash-uite)</td><td>Nu poate fi utilizat ca cheie într-un dicționar</td></tr>
+</table>
+
+<div class="grid-container">
+<p>În Python, termenul "hash" se referă, în principal, la două concepte distincte: funcția încorporată hash(), utilizată pentru căutarea rapidă a datelor în dicționare, și hashing-ul criptografic securizat, realizat prin intermediul modulului hashlib.</p>
+
+<p>In Python, "hash" primarily refers to two distinct concepts: the built-in hash() function used for fast data lookups in dictionaries, and secure cryptographic hashing via the hashlib module</p>
+</div>
+
+<div class="grid-container">
+<p>Python aleatorizează hash-urile șirurilor de caractere la fiecare rulare a scriptului, pentru a preveni atacurile de tip Denial of Service (DoS). Nu utilizați funcția hash() pentru a salva valori într-o bază de date externă.</p>
+
+<p>Python randomizes string hashes on every script launch to prevent Denial of Service (DoS) attacks. Do not use hash() to save values to an external database.</p>
+</div>
+
+
+<p>Pentru mai multe detalii și exemple, consultați <a href="https://www.w3schools.com/python/python_tuples.asp" target="_blank" rel="noopener">Python Tuples</a>, 
+<a href="https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences" target="_blank" rel="noopener">Tuples and Sequences</a>, 
+<a href="https://realpython.com/python-tuple/" target="_blank" rel="noopener">Python's tuple Data Type: A Deep Dive With Examples</a></p>
+
+<p>For more details and examples, refer to the official <a href="https://www.w3schools.com/python/python_tuples.asp" target="_blank" rel="noopener">Python Tuples</a>, 
+<a href="https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences" target="_blank" rel="noopener">Tuples and Sequences</a>, 
+<a href="https://realpython.com/python-tuple/" target="_blank" rel="noopener">Python's tuple Data Type: A Deep Dive With Examples</a></p>
+
+<div class="grid-container">
+<p>Funcția <b>range()</b> generează o secvență imutabilă de numere întregi. Aceasta este utilizată cel mai frecvent pentru a controla numărul de execuții ale unei bucle for sau pentru a parcurge indicii unei liste.</p>
+
+<p><b>range()</b> function generates an immutable sequence of integers. It is most commonly used to control the execution count of a for loop or to loop through list indices.</p>        
+</div>
+
+<table class="outer-hidden">
+<caption>Cum se utilizează</caption>
+<tr><th>Variante</th><th>Exemplu de cod</th><th>Secvență rezultată</th></tr>
+<tr><td>parametru (stop)</td><td>range(5)</td><td>0, 1, 2, 3, 4</td></tr>
+<tr><td>parametri (start, stop)</td><td>range(2, 7)</td><td>2, 3, 4, 5, 6</td></tr>
+<tr><td>parametri (start, stop, pas)</td><td>range(0, 10, 2)</td><td>0, 2, 4, 6, 8</td></tr>
+<tr><td>Pas negativ (numărătoare inversă)</td><td>range(5, 0, -1)</td><td>5, 4, 3, 2, 1</td></tr>
+</table>
+
+<div class="grid-container">
+<dl>
+<dt>Proprietăți principale</dt>
+  <dd>Eficiență a memoriei: range() returnează un obiect iterabil de tip lazy (evaluat la cerere), în loc să genereze o listă propriu-zisă în memorie. Numerele sunt calculate pe parcurs, în momentul în care sunt necesare.</dd>
+  <dd>Conversia într-o listă: Pentru a afișa sau a vizualiza imediat toate numerele, utilizați constructorul list(): list(range(5)).</dd>
+  <dd>Doar numere întregi: Funcția încorporată range() acceptă exclusiv valori întregi. Dacă aveți nevoie să generați secvențe de numere cu virgulă mobilă (zecimale), utilizați alternativa oferită de o bibliotecă externă: numpy.arange().</dd>
+</dl>
+
+<dl>
+<dt>Key Properties</dt>
+  <dd>Memory Efficient: range() returns a lazy iterable range object rather than generating an actual list in memory. It calculates numbers on the fly.</dd>
+  <dd>Converting to a List: To print out or see the raw numbers instantly, wrap it inside a list constructor: list(range(5)).</dd>
+  <dd>Integers Only: The built-in range() function only accepts integer values. If you need to generate float/decimal sequences, use the third-party library alternative numpy.arange()</dd>
+</dl>
+</div>
+
+<p>Pentru mai multe detalii și exemple, consultați <a href="https://www.w3schools.com/python/python_range.asp" target="_blank" rel="noopener">Python range</a>, 
+<a href="https://www.w3schools.com/python/ref_func_range.asp" target="_blank" rel="noopener">Python range() Function</a>, <a href="https://docs.python.org/3/builtins/functions.html#func-range" target="_blank" rel="noopener">class range(start, stop, step=1, /)</a>, 
+<a href="https://realpython.com/python-range/" target="_blank" rel="noopener">Python range(): Represent Numerical Ranges</a></p> 
+
+<p>For more details and examples, refer to the official <a href="https://www.w3schools.com/python/python_range.asp" target="_blank" rel="noopener">Python range</a>, 
+<a href="https://www.w3schools.com/python/ref_func_range.asp" target="_blank" rel="noopener">Python range() Function</a>, <a href="https://docs.python.org/3/builtins/functions.html#func-range" target="_blank" rel="noopener">class range(start, stop, step=1, /)</a>, 
+<a href="https://realpython.com/python-range/" target="_blank" rel="noopener">Python range(): Represent Numerical Ranges</a></p>
+
+
+<p class="other">Click <a href="CSS/main-style.css" target="_blank" rel="noopener">CSS</a> pentru style sheet</p>
+<p class="other">Click <a href="JS/update-year.js" target="_blank" rel="noopener">JavaScript</a> pentru style sheet</p>
+
+
+      <div class="footer footer-link">
+        <footer>
+          &copy; <span id="year-picior"></span> Gazeta Python.
+          <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+          </address>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <p class="go-to"><a href="#sus">Sus-Top</a></p>
+
+  <script src="JS/doileaGreeting.js"></script>
+  <script src="JS/update-year.js"></script>
+</body>
+
+</html>
