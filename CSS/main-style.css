@@ -2,7 +2,7 @@
 body {
   /* Typography (Inherited by child elements) */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  font-size: .85rem;
+  font-size: .75rem;
   line-height: 1.125;
   color: #1a1a1a;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +32,7 @@ p,
 li,
 dl {
   font-family: Times, "Times New Roman", Georgia, serif;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 dt {
