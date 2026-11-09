@@ -184,9 +184,23 @@
 
     <footer>
       &copy; <span id="year-picior"></span> Gazeta Python.
-      <address><a href="https://gazetapython.wordpress.com/" target="_blank" rel="noopener">www.gazetapython.com</a>
+      <address>
+        <a href="https://wordpress.com" target="_blank" rel="noopener">://gazetapython.com</a>
       </address>
+      <div style="margin-top: 8px; font-size: 0.9em;">
+        Vizite: <span id="visitor-count">1</span>
+      </div>
     </footer>
+
+    <script>
+      (function () {
+        let visits = localStorage.getItem("gazeta_python_visits");
+        visits = visits ? parseInt(visits, 10) + 1 : 1;
+        localStorage.setItem("gazeta_python_visits", visits);
+        document.getElementById("visitor-count").textContent = visits;
+      })();
+    </script>
+      
   <script src="JS/primulGreeting.js"></script>
   <script src="JS/update-year.js"></script>
 
