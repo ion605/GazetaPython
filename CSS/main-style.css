@@ -581,3 +581,15 @@ footer {
 #year-picior {
   color: #ffffff
 }
+
+.visitor-counter {
+  margin-top: 4px;
+  font-size: 1.5em;
+  color: yellowgreen;
+  font-weight: bold;
+}
+
+#visitor-count {
+  color: whitesmoke;
+  font-weight: bold;
+}
