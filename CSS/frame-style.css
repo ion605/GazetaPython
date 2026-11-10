@@ -76,3 +76,15 @@ frame {
   color: blue;
   font-weight: bold;
 }
+
+.coming-soon {
+  color: #D97706;
+  font-style: italic;
+  font-size: 0.9em;
+  font-weight: normal;
+  margin-left: 6px;
+}
+
+.upcoming-chapter {
+  color: #32CD32;
+}
